@@ -103,7 +103,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <table class="table table1 table-advance table-hover align-middle anggota">
+                            <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
                                     <th scope="col">Program Studi</th>
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <table class="table table2 table-advance table-hover align-middle anggota">
+                            <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
                                     <th scope="col">Bidang Keahlian</th>
@@ -149,7 +149,9 @@
                             }
 
                             function add() {
-                                $(".table1").append("<tr><td><input name='namaAnggota' class='form-control' type='text' id='namaAnggota' required></td><td><input name='studiAnggota' class='form-control' type='text' id='studiAnggota' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                var rowCount = document.getElementById('myTableID').rows.length;
+                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount);
                             }
 
                             function rm2() {
@@ -157,7 +159,9 @@
                             }
 
                             function add2() {
-                                $(".table2").append("<tr><td><input name='namaAnggota2' class='form-control' type='text' id='namaAnggota2' required></td><td><input name='bidangAnggota' class='form-control' type='text' id='bidangAnggota' required></td><td><input name='tugasAnggota' class='form-control' type='text' id='tugasAnggota' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                var rowCount2 = document.getElementById('myTableID2').rows.length;
+                                $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota2' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount2);
                             }
                         </script>
 
