@@ -64,10 +64,13 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Selesai</h5>
+                            <h5 class="card-title text-center">Penelitian Selesai</h5>
                             <hr>
-                            <p>Kegiatan penelitian selesai dilakukan </p>
+                            <p>Kegiatan penelitian selesai dilakukan. Anda dapat melakukan download laporan jika diperlukan</p>
                             <hr>
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-primary">Download Laporan </button>
+                            </div>
 
                         </div>
                     </div>

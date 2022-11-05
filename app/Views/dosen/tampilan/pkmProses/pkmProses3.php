@@ -13,7 +13,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-box blue service-box1">
+                        <div class="service-box blue ">
                             <i class="ri-discuss-line icon"></i>
                             <h3>Form</h3>
                             <p>
@@ -25,8 +25,8 @@
 
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-box green">
-                            <i class="ri-discuss-line icon service-box3"></i>
+                        <div class="service-box green service-box3">
+                            <i class="ri-discuss-line icon "></i>
                             <h3>Laporan</h3>
                             <p>
                                 Pelaporan kegiatan PKM yang dilakukan oleh dosen
@@ -82,7 +82,7 @@
                             <form>
                                 <div class="row mb-4">
                                     <div class="row mb-3">
-                                        <table class="table table2 table-advance table-hover align-middle anggota">
+                                        <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID">
                                             <tr class="table-primary">
                                                 <th scope="col">Nama Anggota</th>
                                                 <th scope="col">Bidang Keahlian</th>
@@ -106,7 +106,9 @@
                                         }
 
                                         function add2() {
-                                            $(".table2").append("<tr><td><input name='namaAnggota2' class='form-control' type='text' id='namaAnggota2' required></td><td><input name='bidangAnggota' class='form-control' type='text' id='bidangAnggota' required></td><td><input name='tugasAnggota' class='form-control' type='text' id='tugasAnggota' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                            var rowCount = document.getElementById('myTableID').rows.length;
+                                            $(".table2").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='bidangAnggota" + rowCount + "' class='form-control' type='text' id='bidangAnggota" + rowCount + "' required></td><td><input name='tugasAnggota" + rowCount + "' class='form-control' type='text' id='tugasAnggota" + rowCount + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                            console.log(rowCount);
                                         }
                                     </script>
 

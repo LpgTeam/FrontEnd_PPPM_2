@@ -64,13 +64,45 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Pelaporan</h5>
+                            <h5 class="card-title text-center">Laporan</h5>
                             <hr>
-                            <p>Upload laporan penelitian yang telah dilakukan oleh
+                            <p>Upload laporan penelitian dan pengisian tabel
+                                luaran dan capaian yang telah dilakukan oleh
                                 Dosen Politeknik Statistika STIS
                             </p>
                             <hr>
                             <form>
+                                <div class="row mb-3">
+                                    <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
+                                        <tr class="table-primary">
+                                            <th scope="col">Jenis Luaran</th>
+                                            <th scope="col">Capaian</th>
+                                            <th scope="col">Jurnal/Konferensi</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="col-md-4 col-lg-6">
+                                        <button onclick='add()' class="btn btn-warning">
+                                            Tambah Anggota <i class=" bi bi-plus-square"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function rm() {
+                                        $(event.target).closest("tr").remove();
+                                    }
+
+                                    function add() {
+                                        var rowCount = document.getElementById('myTableID').rows.length;
+                                        $(".table1").append("<tr><td><input name='jenisLuaran" + rowCount + "' class='form-control' type='text' id='jenisLuaran" + rowCount + "' required></td><td><input name='capaian" + rowCount + "' class='form-control' type='text' id='capaian" + rowCount + "' required></td><td><input name='jurnal" + rowCount + "' class='form-control' type='text' id='jurnal" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                        console.log(rowCount);
+                                    }
+                                </script>
+
                                 <div class="row mb-4">
                                     <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Laporan</label>
                                     <div class="col-md-3 col-lg-8">

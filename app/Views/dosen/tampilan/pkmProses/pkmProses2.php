@@ -58,17 +58,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Surat Pernyataan</h5>
                             <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Surat </button>
-                                <button class="btn btn-primary">Download Surat </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Persetujuan Surat Pernyataan</h5>
-                            <hr>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                                 when an unknown printer took a galley of type and scrambled it to make a
@@ -76,20 +65,25 @@
                                 leap into electronic typesetting, remaining essentially unchanged. It was
                                 popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
                             </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tolak</button>
-                                </div>
-                                <div class="text-end">
-                                    <p>&nbsp&nbsp&nbsp</p>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-secondary">Lihat Surat </button>
+                                <button class="btn btn-primary">Download Surat </button>
                             </div>
-
+                            <hr>
+                            <form>
+                                <div class="row mb-4">
+                                    <label for="suratPernyataan" class="col-md-3 col-lg-4 col-form-label ">Surat Pernyataan</label>
+                                    <div class="col-md-3 col-lg-8">
+                                        <input class="form-control" type="file" id="suratPernyataan" name="suratPernyataan" required>
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="col-lg-6">

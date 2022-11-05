@@ -63,19 +63,16 @@ $routes->get('/penelitianSemiMandiri1', 'Dosen::penelitianSemiMandiri1');
 $routes->get('/penelitianSemiMandiri2', 'Dosen::penelitianSemiMandiri2');
 $routes->get('/penelitianSemiMandiri3', 'Dosen::penelitianSemiMandiri3');
 $routes->get('/penelitianSemiMandiri4', 'Dosen::penelitianSemiMandiri4');
-$routes->get('/penelitianSemiMandiri5', 'Dosen::penelitianSemiMandiri5');
 
 $routes->get('/penelitianDidanaiInstitusi1', 'Dosen::penelitianDidanaiInstitusi1');
 $routes->get('/penelitianDidanaiInstitusi2', 'Dosen::penelitianDidanaiInstitusi2');
 $routes->get('/penelitianDidanaiInstitusi3', 'Dosen::penelitianDidanaiInstitusi3');
 $routes->get('/penelitianDidanaiInstitusi4', 'Dosen::penelitianDidanaiInstitusi4');
-$routes->get('/penelitianDidanaiInstitusi5', 'Dosen::penelitianDidanaiInstitusi5');
 
 $routes->get('/penelitianInstitusi1', 'Dosen::penelitianInstitusi1');
 $routes->get('/penelitianInstitusi2', 'Dosen::penelitianInstitusi2');
 $routes->get('/penelitianInstitusi3', 'Dosen::penelitianInstitusi3');
 $routes->get('/penelitianInstitusi4', 'Dosen::penelitianInstitusi4');
-$routes->get('/penelitianInstitusi5', 'Dosen::penelitianInstitusi5');
 
 $routes->get('/pkmMandiri1', 'Dosen::pkmMandiri1');
 $routes->get('/pkmMandiri2', 'Dosen::pkmMandiri2');
