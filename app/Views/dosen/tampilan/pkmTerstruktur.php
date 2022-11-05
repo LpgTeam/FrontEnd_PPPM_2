@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <table class="table table1 table-advance table-hover align-middle anggota">
+                            <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
                                     <th scope="col">NIP</th>

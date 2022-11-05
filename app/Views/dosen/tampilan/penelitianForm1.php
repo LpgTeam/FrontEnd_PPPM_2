@@ -96,6 +96,13 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="biaya" class="col-md-4 col-lg-3 col-form-label">Biaya</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="biaya" type="number" min="1" step="any" class="form-control" id="biaya" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
                             <div class="col-md-8 col-lg-9">
                                 <input name="upload" class="form-control" type="file" id="upload" required>
@@ -143,6 +150,29 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-lg-3 col-form-label ">Luaran dan Target Capaian</label>
+                        </div>
+
+                        <div class="row mb-3">
+                            <table class="table table3 table-advance table-hover align-middle anggota" id="myTableID3">
+                                <tr class="table-primary">
+                                    <th scope="col">Jenis Luaran</th>
+                                    <th scope="col">Target Capaian</th>
+                                    <th scope="col">Jurnal/Konferensi Yanag Dituju</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                            <div class="col-md-4 col-lg-6">
+                                <button onclick='add3()' class="btn btn-warning">
+                                    Tambah Luaran <i class=" bi bi-plus-square"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         <script>
                             function rm() {
                                 $(event.target).closest("tr").remove();
@@ -162,6 +192,16 @@
                                 var rowCount2 = document.getElementById('myTableID2').rows.length;
                                 $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota2' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount2);
+                            }
+
+                            function rm3() {
+                                $(event.target).closest("tr").remove();
+                            }
+
+                            function add3() {
+                                var rowCount3 = document.getElementById('myTableID3').rows.length;
+                                $(".table3").append("<tr><td><input name='jenisLuaran" + rowCount3 + "' class='form-control' type='text' id='jenisLuaran' required></td><td><input name='targetCapaian" + rowCount3 + "' class='form-control' type='text' id='targetCapaian' required></td><td><input name='jurnalTujuan" + rowCount3 + "' class='form-control' type='text' id='jurnalTujuan' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount3);
                             }
                         </script>
 
