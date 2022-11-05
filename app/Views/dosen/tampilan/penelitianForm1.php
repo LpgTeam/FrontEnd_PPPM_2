@@ -96,13 +96,6 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="biaya" class="col-md-4 col-lg-3 col-form-label">Biaya</label>
-                            <div class="col-md-8 col-lg-9">
-                                <input name="biaya" type="number" min="1" step="any" class="form-control" id="biaya" required>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
                             <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
                             <div class="col-md-8 col-lg-9">
                                 <input name="upload" class="form-control" type="file" id="upload" required>

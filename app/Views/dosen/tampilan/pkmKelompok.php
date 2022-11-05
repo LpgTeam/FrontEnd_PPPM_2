@@ -100,7 +100,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <table class="table table1 table-advance table-hover align-middle anggota">
+                            <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
                                     <th scope="col">NIP</th>
@@ -123,7 +123,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <table class="table table2 table-advance table-hover align-middle anggota">
+                            <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
                                 <tr class="table-primary">
                                     <th scope="col">Pembiayaan/Lainnya Yang Diajukan</th>
                                     <th scope="col">Aksi</th>
@@ -145,7 +145,9 @@
                             }
 
                             function add() {
-                                $(".table1").append("<tr><td><input name='namaAnggota' class='form-control' type='text' id='namaAnggota' required></td><td><input name='nipAnggota' class='form-control' type='text' id='nipAnggota' required></td><td><input name='pangkatAnggota' class='form-control' type='text' id='pangkatAnggota' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                var rowCount = document.getElementById('myTableID').rows.length;
+                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota' required></td><td><input name='nipAnggota" + rowCount + "' class='form-control' type='text' id='nipAnggota' required></td><td><input name='pangkatAnggota" + rowCount + "' class='form-control' type='text' id='pangkatAnggota' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount);
                             }
 
                             function rm2() {
@@ -153,7 +155,9 @@
                             }
 
                             function add2() {
-                                $(".table2").append("<tr><td><input name='pembiayaan' class='form-control' type='text' id='pembiayaan' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                var rowCount2 = document.getElementById('myTableID2').rows.length;
+                                $(".table2").append("<tr><td><input name='pembiayaan" + rowCount2 + "' class='form-control' type='text' id='pembiayaan' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount2);
                             }
                         </script>
 
