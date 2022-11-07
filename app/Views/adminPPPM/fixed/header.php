@@ -14,7 +14,6 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li>
-                        <i class="bi bi-house-door-fill"></i>
                         <a class="nav-link scrollto" href="/indexAdmin">Home</a>
                     </li>
                     <li><a class="nav-link scrollto" href="/anggaranAdmin">Anggaran</a></li>

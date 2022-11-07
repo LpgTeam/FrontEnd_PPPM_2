@@ -18,7 +18,7 @@
                         <div class="d-flex justify-content-center">
                             <div class="search-bar col-lg-8 d-flex justify-content-end">
                                 <form class="search-form d-flex align-items-center" method="POST" action="#">
-                                    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                                    <input type="text" id="myInput" name="query" placeholder="Search" title="Enter search keyword">
                                     <button type="button" title="Search"><i class="bi bi-search"></i></button>
                                 </form>
                             </div><!-- End Search Bar -->
@@ -36,7 +36,7 @@
                                     <th scope="col">Detail</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="myTable">
                                 <tr>
                                     <th scope="row">1</th>
                                     <td>Mandiri</td>
@@ -100,7 +100,14 @@
         </div>
 
         <script>
-
+            $(document).ready(function() {
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
         </script>
     </section>
 
