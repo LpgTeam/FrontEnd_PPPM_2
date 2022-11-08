@@ -64,6 +64,7 @@
                                 <input name="email" type="email" class="form-control" id="email" required>
                             </div>
                         </div>
+                        <input name="biaya" type="hidden" min="1" step="any" class="form-control" id="biaya" value="0">
 
                         <hr>
 

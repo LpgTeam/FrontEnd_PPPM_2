@@ -86,6 +86,8 @@ class Penelitian extends BaseController
             'tanggal_pengajuan' => Time::now(),
             'id_status' => '1',
             'status_pengajuan' => 'diajukan',
+            'file_proposal' => $this->request->getFile('upload'),
+            'biaya'  => $this->request->getVar('biaya')
             // 'file_proposal' => $this->request->getVar(''),
             // 'biaya'  => '8348538319439'
 
