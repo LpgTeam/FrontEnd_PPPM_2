@@ -35,21 +35,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=1;?>
+                                <?php $i = 1; ?>
                                 <?php foreach ($penelitian as $key => $post) :  ?>
 
                                     <tr>
-                                        <!-- <td><?php //echo $post['id_penelitian'] ?></td> -->
+                                        <!-- <td><?php //echo $post['id_penelitian'] 
+                                                    ?></td> -->
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $post['jenis_penelitian'] ?></td>
                                         <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                         <td><?php echo $post['judul_penelitian'] ?></td>
                                         <td><?php echo $post['status_pengajuan'] ?></td>
                                         <td>
-                                        <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a>
+                                            <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a>
                                         </td>
                                     </tr>
-                                <?php $i++;    ?>
+                                    <?php $i++;    ?>
                                 <?php endforeach ?>
                             </tbody>
                         </table>
