@@ -15,17 +15,17 @@
                 <div class="card">
                     <h5>&nbsp;</h5>
                     <div class="card-body">
-                        <div class="d-flex justify-content-center">
+                        <!-- <div class="d-flex justify-content-center">
                             <div class="search-bar col-lg-8 d-flex justify-content-end">
                                 <form class="search-form d-flex align-items-center" method="POST" action="#">
                                     <input type="text" id="myInput" name="query" placeholder="Search" title="Enter search keyword">
                                     <button type="button" title="Search"><i class="bi bi-search"></i></button>
                                 </form>
-                            </div><!-- End Search Bar -->
-                        </div>
-                        <p>&nbsp</p>
+                            </div>
+                        </div> -->
+                        <!-- End Search Bar -->
                         <!-- Table with stripped rows -->
-                        <table class="table table-advance table-hover align-middle ">
+                        <table class="table table-advance table-hover align-middle datatable">
                             <thead>
                                 <tr class="table-primary">
                                     <th scope="col">Nomor</th>
@@ -99,7 +99,7 @@
         </div>
         </div>
 
-        <script>
+        <!-- <script>
             $(document).ready(function() {
                 $("#myInput").on("keyup", function() {
                     var value = $(this).val().toLowerCase();
@@ -108,7 +108,7 @@
                     });
                 });
             });
-        </script>
+        </script> -->
     </section>
 
 </main>

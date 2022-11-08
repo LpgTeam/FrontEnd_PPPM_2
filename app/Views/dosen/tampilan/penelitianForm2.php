@@ -78,11 +78,11 @@
                             <div class="col-md-8 col-lg-9">
                                 <select class="form-select" id="bidang" name="bidang">
                                     <option selected disabled>Pilih</option>
-                                    <option value="1">Small Area Estimation</option>
-                                    <option value="2">SDG's</option>
-                                    <option value="3">Metodologi Survei dan Sensus</option>
-                                    <option value="4">Sistem Indormasi Statistik </option>
-                                    <option value="5">Lainnya </option>
+                                    <option value="Small Area Estimation">Small Area Estimation</option>
+                                    <option value="SDG's">SDG's</option>
+                                    <option value="Metodologi Survei dan Sensus">Metodologi Survei dan Sensus</option>
+                                    <option value="Sistem Indormasi Statistik">Sistem Indormasi Statistik </option>
+                                    <option value="Lainnya">Lainnya </option>
                                 </select>
                             </div>
                         </div>

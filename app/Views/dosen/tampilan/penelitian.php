@@ -21,9 +21,8 @@
                     <h5>&nbsp;</h5>
                     <div class="card-body">
                         <a href="/penelitianjenisDosen" class="btn-pilih">Tambah Penelitian <i class="bi bi-plus-square"></i></a>
-                        <p>&nbsp</p>
                         <!-- Table with stripped rows -->
-                        <table class="table table-advance table-hover align-middle ">
+                        <table class="table table-advance table-hover align-middle datatable">
                             <thead>
                                 <tr class="table-primary">
                                     <th scope="col">Nomor</th>
