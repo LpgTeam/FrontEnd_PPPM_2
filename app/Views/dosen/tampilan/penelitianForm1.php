@@ -37,6 +37,8 @@
                             </div>
                         </div>
 
+                        <input name="nip" type="text" class="form-control" id="nip" hidden>
+
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
                             <div class="col-md-8 col-lg-9">
@@ -143,6 +145,29 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-lg-3 col-form-label ">Luaran dan Target Capaian</label>
+                        </div>
+
+                        <div class="row mb-3">
+                            <table class="table table3 table-advance table-hover align-middle anggota" id="myTableID3">
+                                <tr class="table-primary">
+                                    <th scope="col">Jenis Luaran</th>
+                                    <th scope="col">Target Capaian</th>
+                                    <th scope="col">Jurnal/Konferensi Yanag Dituju</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                            <div class="col-md-4 col-lg-6">
+                                <button onclick='add3()' class="btn btn-warning">
+                                    Tambah Luaran <i class=" bi bi-plus-square"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         <script>
                             function rm() {
                                 $(event.target).closest("tr").remove();
@@ -150,7 +175,7 @@
 
                             function add() {
                                 var rowCount = document.getElementById('myTableID').rows.length;
-                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount);
                             }
 
@@ -160,8 +185,18 @@
 
                             function add2() {
                                 var rowCount2 = document.getElementById('myTableID2').rows.length;
-                                $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota2' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount2);
+                            }
+
+                            function rm3() {
+                                $(event.target).closest("tr").remove();
+                            }
+
+                            function add3() {
+                                var rowCount3 = document.getElementById('myTableID3').rows.length;
+                                $(".table3").append("<tr><td><input name='jenisLuaran" + rowCount3 + "' class='form-control' type='text' id='jenisLuaran" + rowCount3 + "' required></td><td><input name='targetCapaian" + rowCount3 + "' class='form-control' type='text' id='targetCapaian" + rowCount3 + "' required></td><td><input name='jurnalTujuan" + rowCount3 + "' class='form-control' type='text' id='jurnalTujuan" + rowCount3 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount3);
                             }
                         </script>
 

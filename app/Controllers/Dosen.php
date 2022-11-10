@@ -181,12 +181,6 @@ class Dosen extends BaseController
     public function penelitianSemiMandiri4()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('dosen/tampilan/penelitianProses/penelitianSemiMandiri4', $data);
-    }
-
-    public function penelitianSemiMandiri5()
-    {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('dosen/tampilan/penelitianProses/penelitianSelesai', $data);
     }
 
@@ -211,14 +205,9 @@ class Dosen extends BaseController
     public function penelitianDidanaiInstitusi4()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('dosen/tampilan/penelitianProses/penelitianProses4', $data);
-    }
-
-    public function penelitianDidanaiInstitusi5()
-    {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('dosen/tampilan/penelitianProses/penelitianSelesai', $data);
     }
+
 
     public function penelitianInstitusi1()
     {
@@ -241,14 +230,9 @@ class Dosen extends BaseController
     public function penelitianInstitusi4()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('dosen/tampilan/penelitianProses/penelitianProses4', $data);
-    }
-
-    public function penelitianInstitusi5()
-    {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('dosen/tampilan/penelitianProses/penelitianSelesai', $data);
     }
+
 
     public function pkmMandiri1()
     {

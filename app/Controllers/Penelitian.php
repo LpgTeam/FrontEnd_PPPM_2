@@ -15,11 +15,15 @@ class Penelitian extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $ketuatimpenelitiModel;
     protected $timpenelitiModel;
+    protected $dosenModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
         $this->timpenelitiModel = new TimPenelitiModel();
+        $this->ketuatimpenelitiModel = new TimPenelitiModel();
+        $this->dosenModel = new DosenModel();
     }
 
     public function index()
@@ -93,18 +97,37 @@ class Penelitian extends BaseController
 
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
         // dd($idpenelitian);
-        $timpenelitiModel = new TimPenelitiModel();
+        $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
+        // dd($nipdosen);
 
+
+
+        $ketuatimpenelitiModel = new TimPenelitiModel();
+
+        $ketuatimpenelitiModel->save([
+            'id_penelitian' => $idpenelitian['id_penelitian'],
+            // 'fullname'      => $this->request->getVar('namaLengkap'),
+            // 'jabatan'       => $this->request->getVar('jabatan'),
+            // 'nohp'          => $this->request->getVar('hp'),
+            // 'email'         => $this->request->getVar('email'),
+            'NIP' => $nipdosen['NIP_dosen'],
+            'bidang_keahlian' => "efadsd",
+            'peran'         => "Ketua Penelitian"
+        ]);
+
+        $timpenelitiModel = new TimPenelitiModel();
         $timpenelitiModel->save([
             'id_penelitian' => $idpenelitian['id_penelitian'],
             // 'fullname'      => $this->request->getVar('namaLengkap'),
             // 'jabatan'       => $this->request->getVar('jabatan'),
             // 'nohp'          => $this->request->getVar('hp'),
             // 'email'         => $this->request->getVar('email'),
-            'NIP' => "3112",
+            // 'NIP' => $this->request->getVar('email'),
+            ,
             'bidang_keahlian' => "efadsd",
             'peran'         => "Ketua Penelitian"
         ]);
+
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
 

@@ -78,11 +78,11 @@
                             <div class="col-md-8 col-lg-9">
                                 <select class="form-select" id="bidang" name="bidang">
                                     <option selected disabled>Pilih</option>
-                                    <option value="1">Small Area Estimation</option>
-                                    <option value="2">SDG's</option>
-                                    <option value="3">Metodologi Survei dan Sensus</option>
-                                    <option value="4">Sistem Indormasi Statistik </option>
-                                    <option value="5">Lainnya </option>
+                                    <option value="Small Area Estimation">Small Area Estimation</option>
+                                    <option value="SDG's">SDG's</option>
+                                    <option value="Metodologi Survei dan Sensus">Metodologi Survei dan Sensus</option>
+                                    <option value="Sistem Indormasi Statistik">Sistem Indormasi Statistik </option>
+                                    <option value="Lainnya">Lainnya </option>
                                 </select>
                             </div>
                         </div>
@@ -95,45 +95,37 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="biaya" class="col-md-4 col-lg-3 col-form-label">Biaya</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="biaya" type="number" min="1" step="any" class="form-control" id="biaya" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
                             <div class="col-md-8 col-lg-9">
                                 <input name="upload" class="form-control" type="file" id="upload" required>
                             </div>
                         </div>
 
-                        <!-- <div class="row mb-3">
-                            <table class="table table-advance table-hover align-middle ">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Program Studi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Joko Sulistyo</td>
-                                        <td>Komputasi Statistik</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Annisa Rahmawati</td>
-                                        <td>Komputasi Statistik</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Susanto Jayakertanegara</td>
-                                        <td>Komputasi Statistik</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
+                            <div class="col-md-8 col-lg-9">
+                                <button class="btn btn-primary">
+                                    Download Surat Pernyataan</i>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col-md-4 col-lg-3">
-                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#add">Tambah Anggota <i class=" bi bi-plus-square"></i></button>
+                            <label for="uploadSurat" class="col-md-4 col-lg-3 col-form-label ">Upload Surat Pernyataan</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="uploadSurat" class="form-control" type="file" id="uploadSurat" required>
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="row mb-3">
-                            <table class="table table1 table-advance table-hover align-middle anggota">
+                            <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
                                     <th scope="col">Program Studi</th>
@@ -155,7 +147,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <table class="table table2 table-advance table-hover align-middle anggota">
+                            <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
                                     <th scope="col">Bidang Keahlian</th>
@@ -173,13 +165,38 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-lg-3 col-form-label ">Luaran dan Target Capaian</label>
+                        </div>
+
+                        <div class="row mb-3">
+                            <table class="table table3 table-advance table-hover align-middle anggota" id="myTableID3">
+                                <tr class="table-primary">
+                                    <th scope="col">Jenis Luaran</th>
+                                    <th scope="col">Target Capaian</th>
+                                    <th scope="col">Jurnal/Konferensi Yanag Dituju</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                            <div class="col-md-4 col-lg-6">
+                                <button onclick='add3()' class="btn btn-warning">
+                                    Tambah Luaran <i class=" bi bi-plus-square"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         <script>
                             function rm() {
                                 $(event.target).closest("tr").remove();
                             }
 
                             function add() {
-                                $(".table1").append("<tr><td><input name='namaAnggota' class='form-control' type='text' id='namaAnggota' required></td><td><input name='studiAnggota' class='form-control' type='text' id='studiAnggota' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                var rowCount = document.getElementById('myTableID').rows.length;
+                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount);
                             }
 
                             function rm2() {
@@ -187,27 +204,22 @@
                             }
 
                             function add2() {
-                                $(".table2").append("<tr><td><input name='namaAnggota2' class='form-control' type='text' id='namaAnggota2' required></td><td><input name='bidangAnggota' class='form-control' type='text' id='bidangAnggota' required></td><td><input name='tugasAnggota' class='form-control' type='text' id='tugasAnggota' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                var rowCount2 = document.getElementById('myTableID2').rows.length;
+                                $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount2);
+                            }
+
+                            function rm3() {
+                                $(event.target).closest("tr").remove();
+                            }
+
+                            function add3() {
+                                var rowCount3 = document.getElementById('myTableID3').rows.length;
+                                $(".table3").append("<tr><td><input name='jenisLuaran" + rowCount3 + "' class='form-control' type='text' id='jenisLuaran" + rowCount3 + "' required></td><td><input name='targetCapaian" + rowCount3 + "' class='form-control' type='text' id='targetCapaian" + rowCount3 + "' required></td><td><input name='jurnalTujuan" + rowCount3 + "' class='form-control' type='text' id='jurnalTujuan" + rowCount3 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                console.log(rowCount3);
                             }
                         </script>
 
-                        <div class="row justify-content-md-center" data-aos="fade-up">
-                            <div class="surat row gy-4 justify-content-md-center col-md-9">
-                                <h2>Surat Pernyataan</h2>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a type
-                                    specimen book. It has survived not only five centuries, but also the leap into
-                                    electronic typesetting, remaining essentially unchanged. It was popularised in
-                                    the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-text">
-                                        <input id="agree" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-                                        <label>&nbspSetuju</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row mb-3"></div>
                         <div class="row mb-3"></div>

@@ -21,9 +21,8 @@
                     <h5>&nbsp;</h5>
                     <div class="card-body">
                         <a href="/penelitianjenisDosen" class="btn-pilih">Tambah Penelitian <i class="bi bi-plus-square"></i></a>
-                        <p>&nbsp</p>
                         <!-- Table with stripped rows -->
-                        <table class="table table-advance table-hover align-middle ">
+                        <table class="table table-advance table-hover align-middle datatable">
                             <thead>
                                 <tr class="table-primary">
                                     <th scope="col">Nomor</th>
@@ -47,7 +46,14 @@
                                         <td><?php echo $post['judul_penelitian'] ?></td>
                                         <td><?php echo $post['status_pengajuan'] ?></td>
                                         <td>
-                                            <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a>
+                                            <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
+                                            <?php
+                                            if ($post['jenis_penelitian'] == 'Mandiri' || $post['jenis_penelitian'] == 'Kerjasama') {
+                                                echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
+                                            } else {
+                                                echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
+                                            }
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php $i++;    ?>

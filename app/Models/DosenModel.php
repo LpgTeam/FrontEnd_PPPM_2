@@ -49,4 +49,9 @@ class DosenModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_nip_peneliti($nip)
+    {
+        return $this->where(['NIP_dosen' => $nip])->first();
+    }
 }
