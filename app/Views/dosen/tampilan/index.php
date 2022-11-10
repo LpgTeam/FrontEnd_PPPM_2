@@ -62,6 +62,9 @@
                                     Profil Dosen
                                 </button>
                             </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                            </li>
                         </ul>
                         <div class="tab-content pt-2">
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -78,11 +81,7 @@
                                     <div class="col-lg-3 col-md-4 label">
                                         Minat Penelitian
                                     </div>
-                                    <div class="col-lg-9 col-md-8">
-                                        <ul>
-                                            <li>Matematika</li>
-                                            <li>Data Mining</li>
-                                        </ul>
+                                    <div class="col-lg-9 col-md-8">Matematika dan Data Mining
                                     </div>
                                 </div>
 
@@ -92,6 +91,15 @@
                                     </div>
                                     <div class="col-lg-9 col-md-8">
                                         Lorem ipsum dolor sit amet. Aut odio blanditiis
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">
+                                        NIP
+                                    </div>
+                                    <div class="col-lg-9 col-md-8">
+                                        197218367829453287
                                     </div>
                                 </div>
 
@@ -147,7 +155,113 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                                <!-- Profile Edit Form -->
+                                <form>
+                                    <div class="row mb-3">
+                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto Profil</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <img src="assets/img/yellow.png" alt="Profile">
+                                            <div class="pt-2">
+                                                <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="namaLengkap" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="namaLengkap" type="text" class="form-control" id="namaLengkap">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="minat" class="col-md-4 col-lg-3 col-form-label">Minat Penelitian</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="minat" type="text" class="form-control" id="minat">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabartan Fungsional</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="jabatan" type="text" class="form-control" id="jabatan" readonly style="background: #E8E8E8;">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="nip" class="col-md-4 col-lg-3 col-form-label">NIP</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="nip" type="text" class="form-control" id="nip" readonly style="background: #E8E8E8;">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="progStudi" class="col-md-4 col-lg-3 col-form-label">Program Studi</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="progStudi" type="text" class="form-control" id="progStudi" readonly style="background: #E8E8E8;">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="hp" class="col-md-4 col-lg-3 col-form-label">Nomot Handphone</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="hp" type="text" class="form-control" id="hp">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="email" type="email" class="form-control" id="email">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="scholar" class="col-md-4 col-lg-3 col-form-label">Google Scholar</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="scholar" type="text" class="form-control" id="scholar">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="sinta" class="col-md-4 col-lg-3 col-form-label">Link Sinta</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="sinta" type="text" class="form-control" id="sinta">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="orcid" class="col-md-4 col-lg-3 col-form-label">Link Orcid</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="orcid" type="text" class="form-control" id="orcid">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="wos" class="col-md-4 col-lg-3 col-form-label">Link WOS</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="wos" type="text" class="form-control" id="wos">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="scopus" class="col-md-4 col-lg-3 col-form-label">Link Scopus</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="scopus" type="text" class="form-control" id="scopus">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                    </div>
+                                </form><!-- End Profile Edit Form -->
+
+                            </div>
                         </div>
+
                         <!-- End Bordered Tabs -->
                     </div>
                 </div>

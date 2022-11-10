@@ -89,7 +89,8 @@ class Penelitian extends BaseController
             'status_pengajuan' => 'diajukan',
             'file_proposal' => $this->request->getFile('upload'),
             'biaya'  => $this->request->getVar('biaya')
-
+            // 'file_proposal' => $this->request->getVar(''),
+            // 'biaya'  => '8348538319439'
         ]);
 
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
