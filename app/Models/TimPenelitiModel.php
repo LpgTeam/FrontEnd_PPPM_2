@@ -17,7 +17,9 @@ class TimPenelitiModel extends Model
         'id_penelitian',
         'NIP',
         'peran',
-        'bidang_keahlian'
+        'bidang_keahlian',
+        'namaPeneliti',
+        'programStudi',
     ];
 
     // Dates

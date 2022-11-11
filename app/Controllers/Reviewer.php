@@ -77,6 +77,44 @@ class Reviewer extends BaseController
     public function persetujuan()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+
+
+
+        // //model initialize
+        // $Model = new PenelitianModel();
+        // $penelitian = $Model->find($id);
+        // $idP = $penelitian['id_penelitian'];
+        // dd($idP);
+
+        // $data = array(
+        //     'penelitian' => $penelitian->find($id)
+        // );
+
         return view('reviewer/tampilan/persetujuan', $data);
+    }
+
+
+    public function setuju($id)
+    {
+        // ambil artikel yang akan diedit
+        $penelitian = new PenelitianModel();
+        $data['penelitian'] = $penelitian->where('id_penelitian', $id)->first();
+
+        // lakukan validasi data artikel
+        $validation =  \Config\Services::validation();
+        $validation->setRules([
+            'id_penelitian' => 'required',
+            'status_pengajuan' => 'required',
+            'id_status' => 'required'
+        ]);
+        $isDataValid = $validation->withRequest($this->request)->run();
+        // jika data vlid, maka simpan ke database
+        if ($isDataValid) {
+            $penelitian->update($id, [
+                "status_pengajuan" => 'Disetujui Reviewer',
+                "id_status" => 2,
+            ]);
+            return view('reviewer/tampilan/penelitian');
+        }
     }
 }

@@ -108,7 +108,9 @@ class Penelitian extends BaseController
         for ($i=1; $i <= $no ; $i++) { 
             $timpenelitiModel->save([
                 'id_penelitian' => $idpenelitian['id_penelitian'],
-                'NIP' => "3112".$i,
+                'namaPeneliti' => $this->request->getVar('namaAnggota'.$i),
+                'programStudi' => $this->request->getVar('studiAnggota'.$i),
+                'NIP' => $this->request->getVar('nip'.$i),
                 'bidang_keahlian' => $this->request->getVar('bidangAnggota'.$i),
                 'peran'         => $this->request->getVar('tugasAnggota'.$i),
             ]);
