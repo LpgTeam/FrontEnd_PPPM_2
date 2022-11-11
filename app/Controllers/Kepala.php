@@ -9,9 +9,17 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use CodeIgniter\API\ResponseTrait;
 
 class Kepala extends BaseController
 {
+    use ResponseTrait;
+    protected $penelitianModel;
+    public function __construct()
+    {
+        $this->penelitianModel = new PenelitianModel();
+    }
+
     public function index()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
@@ -74,9 +82,15 @@ class Kepala extends BaseController
         return view('kepala/tampilan/penelitian', $data);
     }
 
-    public function penelitianPersetujuan()
+    public function penelitianPersetujuan($id_penelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $this->penelitianModel->find($id_penelitian);
+
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'penelitian'    => $this->penelitianModel->find($id_penelitian)
+        ];
+
         return view('kepala/tampilan/penelitianPersetujuan', $data);
     }
 
@@ -92,5 +106,31 @@ class Kepala extends BaseController
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('kepala/tampilan/pkmPersetujuan', $data);
+    }
+
+    public function acc_penelitian_kepala($id_penelitian)
+    {
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => 3,
+            'status_pengajuan'  => 'Disetujui kepala pppm'
+        ]);
+
+        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+
+        return redirect()->to('/penelitianKepala');
+    }
+
+    public function rjc_penelitian_kepala($id_penelitian)
+    {
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => 6,
+            'status_pengajuan'  => 'Ditolak kepala pppm'
+        ]);
+
+        session()->setFlashdata('pesan', 'Penelitian telah ditolak');
+
+        return redirect()->to('/penelitianKepala');
     }
 }

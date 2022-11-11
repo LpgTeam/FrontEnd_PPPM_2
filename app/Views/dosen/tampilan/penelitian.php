@@ -52,7 +52,7 @@
                                                 echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
                                             } else {
                                                 echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                            }
+                                        }
                                             ?>
                                         </td>
                                     </tr>

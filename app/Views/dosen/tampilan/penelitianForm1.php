@@ -66,6 +66,7 @@
                                 <input name="email" type="email" class="form-control" id="email" required>
                             </div>
                         </div>
+                        <input name="biaya" type="hidden" min="1" step="any" class="form-control" id="biaya" value="0">
 
                         <hr>
 
@@ -104,10 +105,13 @@
                             </div>
                         </div>
 
+                        <input name="biaya" type="hidden" min="1" step="any" class="form-control" id="biaya" value="0">
+
                         <div class="row mb-3">
                             <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
+                                    <th scope="col">NIM/NIP</th>
                                     <th scope="col">Program Studi</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -175,7 +179,7 @@
 
                             function add() {
                                 var rowCount = document.getElementById('myTableID').rows.length;
-                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nip" + rowCount + "' class='form-control' type='text' id='nip" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount);
                             }
 
