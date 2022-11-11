@@ -85,56 +85,63 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <!-- Section: Timeline
-                            <ul class="timeline-with-icons">
+
+                            <!-- <ul id="list">
+                                <li>item
+                                </li>
+                            </ul>
+
+                            <button id="addElem">Add</button>
+                            <script>
+                                var i = 1;
+                                var list = document.getElementById("list");
+                                var add = document.getElementById('addElem');
+                                add.addEventListener('click', function() {
+                                    var itemsByTagName = document.getElementsByTagName("li");
+                                    list.innerHTML += '<li>item ' + i++ + '</li>'
+                                });
+                            </script> -->
+
+                            <!-- Section: Timeline -->
+                            <!-- <ul class="timeline-with-icons">
                                 <li class="timeline-item mb-5">
                                     <span class="timeline-icon">
-                                        <i class="fas fa-rocket text-primary fa-sm fa-fw"></i>
+                                        <i class="bi bi-card-list"></i>
                                     </span>
 
                                     <h5 class="fw-bold">Proposal</h5>
                                     <p class="text-muted">
-                                        Proposal sedang direview oleh reviewer
+                                        Proposal telah di submit dan proposal sedang direview oleh reviewer
                                     </p>
                                 </li>
 
                                 <li class="timeline-item mb-5">
 
                                     <span class="timeline-icon">
-                                        <i class="fas fa-hand-holding-usd text-primary fa-sm fa-fw"></i>
+                                        <i class="bi bi-card-list"></i>
                                     </span>
                                     <h5 class="fw-bold">Proposal</h5>
                                     <p class="text-muted">
-                                        Proposal telah disetujui oleh reviewer
+                                        Proposal telah disetujui oleh reviewer dan menunggu perssetujuan dari Kepala PPPM
+                                    </p>
+                                </li>
+
+
+                                <li class="timeline-item mb-5">
+
+                                    <span class="timeline-icon">
+                                        <i class="bi bi-card-list"></i>
+                                    </span>
+                                    <h5 class="fw-bold">Proposal</h5>
+                                    <p class="text-muted">
+                                        Proposal disetujui oleh Kepala PPPM dan menunggu penanda tanganan oleh Direktur Polstat STIS
                                     </p>
                                 </li>
 
                                 <li class="timeline-item mb-5">
 
                                     <span class="timeline-icon">
-                                        <i class="fas fa-users text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal sedang ditinjau oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal disetujui oleh Kepala PPPM
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
+                                        <i class="bi bi-card-list"></i>
                                     </span>
                                     <h5 class="fw-bold">Proposal</h5>
                                     <p class="text-muted">
