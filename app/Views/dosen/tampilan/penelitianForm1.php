@@ -37,6 +37,8 @@
                             </div>
                         </div>
 
+                        <input name="nip" type="text" class="form-control" id="nip" hidden>
+
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
                             <div class="col-md-8 col-lg-9">

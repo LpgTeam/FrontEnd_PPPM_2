@@ -9,9 +9,18 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use CodeIgniter\API\ResponseTrait;
+
 
 class Reviewer extends BaseController
 {
+    use ResponseTrait;
+    protected $penelitianModel;
+    public function __construct()
+    {
+        $this->penelitianModel = new PenelitianModel();
+    }
+
     public function index()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
@@ -74,47 +83,41 @@ class Reviewer extends BaseController
         return view('reviewer/tampilan/penelitian', $data);
     }
 
-    public function persetujuan()
+    public function persetujuan($id_penelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $this->penelitianModel->find($id_penelitian);
 
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian)
 
-
-        // //model initialize
-        // $Model = new PenelitianModel();
-        // $penelitian = $Model->find($id);
-        // $idP = $penelitian['id_penelitian'];
-        // dd($idP);
-
-        // $data = array(
-        //     'penelitian' => $penelitian->find($id)
-        // );
-
+        ];
         return view('reviewer/tampilan/persetujuan', $data);
     }
 
-
-    public function setuju($id)
+    public function acc_penelitian_reviewer($id_penelitian)
     {
-        // ambil artikel yang akan diedit
-        $penelitian = new PenelitianModel();
-        $data['penelitian'] = $penelitian->where('id_penelitian', $id)->first();
-
-        // lakukan validasi data artikel
-        $validation =  \Config\Services::validation();
-        $validation->setRules([
-            'id_penelitian' => 'required',
-            'status_pengajuan' => 'required',
-            'id_status' => 'required'
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => 2,
+            'status_pengajuan'  => 'Disetujui'
         ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
-        // jika data vlid, maka simpan ke database
-        if ($isDataValid) {
-            $penelitian->update($id, [
-                "status_pengajuan" => 'Disetujui Reviewer',
-                "id_status" => 2,
-            ]);
-            return view('reviewer/tampilan/penelitian');
-        }
+
+        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+
+        return redirect()->to('/penelitianReviewer');
+    }
+
+    public function rjc_penelitian_reviewer($id_penelitian)
+    {
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => 5,
+            'status_pengajuan'  => 'Ditolak'
+        ]);
+
+        session()->setFlashdata('pesan', 'Penelitian telah ditolak');
+
+        return redirect()->to('/penelitianReviewer');
     }
 }

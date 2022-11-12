@@ -9,9 +9,17 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use CodeIgniter\API\ResponseTrait;
 
 class Direktur extends BaseController
 {
+    use ResponseTrait;
+    protected $penelitianModel;
+    public function __construct()
+    {
+        $this->penelitianModel = new PenelitianModel();
+    }
+
     public function index()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
@@ -74,9 +82,28 @@ class Direktur extends BaseController
         return view('direktur/tampilan/penelitian', $data);
     }
 
-    public function persetujuan()
+    public function persetujuan($id_penelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $this->penelitianModel->find($id_penelitian);
+
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'penelitian'    => $this->penelitianModel->find($id_penelitian)
+
+        ];
         return view('direktur/tampilan/persetujuan', $data);
+    }
+
+    public function acc_penelitian_direktur($id_penelitian)
+    {
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => 4,
+            'status_pengajuan'  => 'Disetujui - ditandatangani direktur'
+        ]);
+
+        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+
+        return redirect()->to('/penelitianDirektur');
     }
 }

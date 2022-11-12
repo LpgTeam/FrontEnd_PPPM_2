@@ -15,12 +15,15 @@ class Penelitian extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
-    protected $timpenelitiModel;
     protected $ketuatimpenelitiModel;
+    protected $timpenelitiModel;
+    protected $dosenModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
         $this->timpenelitiModel = new TimPenelitiModel();
+        $this->ketuatimpenelitiModel = new TimPenelitiModel();
+        $this->dosenModel = new DosenModel();
     }
 
     public function index()
@@ -71,16 +74,7 @@ class Penelitian extends BaseController
 
         // $slug = url_title($this->request->getVar('judul_penelitian'), '-', true);
 
-        // dd($this->request->getVar());
         $this->penelitianModel->save([
-            // 'jenis_penelitian' => "mandiri",
-            // 'judul_penelitian' => $this->request->getVar('judul_penelitian'),
-            // 'nama_subunit_kajian' => $this->request->getVar('bidang'),
-            // 'tanggal_pengajuan' => Time::now(),
-            // 'file_proposal' => 'belumada',
-            // 'status_pengajuan' => 'diajukan',
-            // 'biaya' => rand(10000000, 100000000),
-            // 'jenis_penelitian' => $this->request->getVar('jenis_penelitian'),
             'jenis_penelitian' => $this->request->getVar('jenis_penelitian'),
             'judul_penelitian' => $this->request->getVar('judul_penelitian'),
             'bidang' => $this->request->getVar('bidang'),
@@ -95,27 +89,31 @@ class Penelitian extends BaseController
 
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
         // dd($idpenelitian);
+        $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
+        // dd($nipdosen);
+
+
+
         $KetuatimpenelitiModel = new TimPenelitiModel();
         $timpenelitiModel = new TimPenelitiModel();
 
         $KetuatimpenelitiModel->save([
             'id_penelitian' => $idpenelitian['id_penelitian'],
-            'NIP' => "3112",
+            'NIP' => $nipdosen,
             'bidang_keahlian' => "efadsd",
             'peran'         => "Ketua Penelitian"
         ]);
         $no = $this->request->getVar('anggota');
-        for ($i=1; $i <= $no ; $i++) { 
+        for ($i = 1; $i <= $no; $i++) {
             $timpenelitiModel->save([
                 'id_penelitian' => $idpenelitian['id_penelitian'],
-                'namaPeneliti' => $this->request->getVar('namaAnggota'.$i),
-                'programStudi' => $this->request->getVar('studiAnggota'.$i),
-                'NIP' => $this->request->getVar('nip'.$i),
-                'bidang_keahlian' => $this->request->getVar('bidangAnggota'.$i),
-                'peran'         => $this->request->getVar('tugasAnggota'.$i),
+                'NIP' => "3112" . $i,
+                'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
+                'peran'         => $this->request->getVar('tugasAnggota' . $i),
             ]);
         };
-       
+
+
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
 
