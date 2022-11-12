@@ -2,25 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModelCode;
-use CodeIgniter\RESTful\ResourceController;
-use CodeIgniter\API\ResponseTrait;
-use App\Models\PenelitianModel;
+use App\Controllers\BaseController;
+use App\Models\pkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
 use CodeIgniter\I18n\Time;
 
-
-class Penelitian extends BaseController
+class PKM extends BaseController
 {
-    use ResponseTrait;
-    protected $penelitianModel;
-    protected $ketuatimpenelitiModel;
-    protected $timpenelitiModel;
-    protected $dosenModel;
     public function __construct()
     {
-        $this->penelitianModel = new PenelitianModel();
+        $this->pkmModel = new pkmModel();
         $this->timpenelitiModel = new TimPenelitiModel();
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
         $this->dosenModel = new DosenModel();
@@ -31,16 +23,16 @@ class Penelitian extends BaseController
 
         //pager initialize
         $pager = \Config\Services::pager();
-        // $penelitianModel = new PenelitianModel();
+        // $pkmModel = new pkmModel();
         $data = array(
             // 'posts' => $postModel->paginate(2, 'post'),
-            // 'penelitian' => $penelitianModel,
+            // 'pkm' => $pkmModel,
             // 'pager' => $postModel->pager
         );
-        $data['title'] = 'Penelitian';
+        $data['title'] = 'pkm';
 
 
-        return view('penelitian/index', $data);
+        return view('pkm/index', $data);
     }
 
 
@@ -69,14 +61,14 @@ class Penelitian extends BaseController
         //     // $validation = \Config\Services::validation();
         //     // dd($validation);
         //     // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
-        //     return redirect()->to('/add-penelitian')->withInput();
+        //     return redirect()->to('/add-pkm')->withInput();
         // }
 
-        // $slug = url_title($this->request->getVar('judul_penelitian'), '-', true);
+        // $slug = url_title($this->request->getVar('judul_pkm'), '-', true);
 
-        $this->penelitianModel->save([
-            'jenis_penelitian' => $this->request->getVar('jenis_penelitian'),
-            'judul_penelitian' => $this->request->getVar('judul_penelitian'),
+        $this->pkmModel->save([
+            'jenis_pkm' => $this->request->getVar('jenis_pkm'),
+            'judul_pkm' => $this->request->getVar('judul_pkm'),
             'bidang' => $this->request->getVar('bidang'),
             'tanggal_pengajuan' => Time::now(),
             'id_status' => '1',
@@ -87,8 +79,8 @@ class Penelitian extends BaseController
             // 'biaya'  => '8348538319439'
         ]);
 
-        $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
-        // dd($idpenelitian);
+        $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('judul_pkm'));
+        // dd($idpkm);
         $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
         // dd($nipdosen);
 
@@ -98,22 +90,18 @@ class Penelitian extends BaseController
         $timpenelitiModel = new TimPenelitiModel();
 
         $KetuatimpenelitiModel->save([
-            'id_penelitian' => $idpenelitian['id_penelitian'],
-            'NIP' => $nipdosen['NIP_dosen'],
-            'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
-            'namaPeneliti' => $this->request->getVar('namaLengkap'),
-            'programStudi' => $this->request->getVar('progStudi'),
-            'peran'         => "Ketua Penelitian"
+            'ID_pkm' => $idpkm['ID_pkm'],
+            'NIP' => $nipdosen,
+            'bidang_keahlian' => "efadsd",
+            'peran'         => "Ketua pkm"
         ]);
         $no = $this->request->getVar('anggota');
         for ($i = 1; $i <= $no; $i++) {
             $timpenelitiModel->save([
-                'id_penelitian' => $idpenelitian['id_penelitian'],
-                'NIP' => $this->request->getVar('nip' . $i),
+                'ID_pkm' => $idpkm['ID_pkm'],
+                'NIP' => "3112" . $i,
                 'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
                 'peran'         => $this->request->getVar('tugasAnggota' . $i),
-                'namaPeneliti' => $this->request->getVar('namaAnggota' . $i),
-                'programStudi' => $this->request->getVar('studiAnggota' . $i),
             ]);
         };
 
@@ -123,7 +111,7 @@ class Penelitian extends BaseController
 
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
-        return redirect()->to('/penelitianDosen');
+        return redirect()->to('/pkmDosen');
         // return $this->respondCreated($response);
     }
 
@@ -149,3 +137,4 @@ class Penelitian extends BaseController
         echo json_encode($w);
     }
 }
+
