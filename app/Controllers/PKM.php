@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\pkmModel;
 use App\Models\DosenModel;
-use App\Models\TimPenelitiModel;
+use App\Models\TimPKMModel;
 use CodeIgniter\I18n\Time;
 
 class PKM extends BaseController
@@ -13,8 +13,8 @@ class PKM extends BaseController
     public function __construct()
     {
         $this->pkmModel = new pkmModel();
-        $this->timpenelitiModel = new TimPenelitiModel();
-        $this->ketuatimpenelitiModel = new TimPenelitiModel();
+        $this->timModel = new TimPKMModel();
+        $this->ketuaModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
     }
 
@@ -29,7 +29,7 @@ class PKM extends BaseController
             // 'pkm' => $pkmModel,
             // 'pager' => $postModel->pager
         );
-        $data['title'] = 'pkm';
+        $data['title'] = 'Pkm';
 
 
         return view('pkm/index', $data);
@@ -68,40 +68,43 @@ class PKM extends BaseController
 
         $this->pkmModel->save([
             'jenis_pkm' => $this->request->getVar('jenis_pkm'),
-            'judul_pkm' => $this->request->getVar('judul_pkm'),
-            'bidang' => $this->request->getVar('bidang'),
-            'tanggal_pengajuan' => Time::now(),
+            'topik_kegiatan' => $this->request->getVar('topik'),
+            // 'bidang' => $this->request->getVar('bidang'),
+            'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
+            'waktu_pelaksanaan' =>$this->request->getVar('waktu'),
+            'tempat_kegiatan' =>$this->request->getVar('tempat'),
+            'sasaran' =>$this->request->getVar('sasaran'),
+            'target_peserta' =>$this->request->getVar('target'),
             'id_status' => '1',
-            'status_pengajuan' => 'diajukan',
-            'file_proposal' => $this->request->getFile('upload'),
-            'biaya'  => $this->request->getVar('biaya')
-            // 'file_proposal' => $this->request->getVar(''),
-            // 'biaya'  => '8348538319439'
+            'status' => 'diajukan',
+            // 'file_proposal' => $this->request->getFile('upload'),
+            'biaya'  => $this->request->getVar('biaya'),
+            'tanggal_pengajuan' => Time::now()
         ]);
 
-        $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('judul_pkm'));
+        $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
         // dd($idpkm);
-        $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
+        // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
         // dd($nipdosen);
 
 
 
-        $KetuatimpenelitiModel = new TimPenelitiModel();
-        $timpenelitiModel = new TimPenelitiModel();
+        $KetuatimModel = new TimPKMModel();
+        $timModel = new TimPKMModel();
 
-        $KetuatimpenelitiModel->save([
-            'ID_pkm' => $idpkm['ID_pkm'],
-            'NIP' => $nipdosen,
-            'bidang_keahlian' => "efadsd",
-            'peran'         => "Ketua pkm"
+        $KetuatimModel->save([
+            'id_pkm' => $idpkm['ID_pkm'],
+            'nip' =>$this->request->getVar('nip') ,
+            'pangkat' => $this->request->getVar('pangkat'),
+            'peran'         => "Ketua PKM"
         ]);
         $no = $this->request->getVar('anggota');
         for ($i = 1; $i <= $no; $i++) {
-            $timpenelitiModel->save([
-                'ID_pkm' => $idpkm['ID_pkm'],
-                'NIP' => "3112" . $i,
-                'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
-                'peran'         => $this->request->getVar('tugasAnggota' . $i),
+            $timModel->save([
+                'id_pkm' => $idpkm['ID_pkm'],
+                'nip' => $this->request->getVar('nipAnggota' . $i),
+                'pangkat' => $this->request->getVar('pangkatAnggota' . $i),
+                'peran'         => "Anggota".$i,
             ]);
         };
 
@@ -115,26 +118,6 @@ class PKM extends BaseController
         // return $this->respondCreated($response);
     }
 
-    public function list()
-    {
-        // $model = new M_user();
-        $model = new DosenModel();
-        $request = \Config\Services::request();
-        $id = $request->getPostGet('term');
-        $user = $model->like('nama_dosen', $id)->findAll();
-        $w = array();
-        foreach ($user as $rt) :
-            $w[] = [
-                "label" => $rt['nama_dosen'],
-                "nip" => $rt['NIP_dosen'],
-                "jabatan" => $rt['jabatan_dosen'],
-                "progStudi" => $rt['program_studi'],
-                "hp" => $rt['no_hp'],
-                "email" => $rt['email_dosen'],
-            ];
-
-        endforeach;
-        echo json_encode($w);
-    }
+  
 }
 

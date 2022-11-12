@@ -101,8 +101,8 @@ class Penelitian extends BaseController
             'id_penelitian' => $idpenelitian['id_penelitian'],
             'NIP' => $nipdosen['NIP_dosen'],
             'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
-            'namaPeneliti' => $this->request->getVar('namaLengkap'),
-            'programStudi' => $this->request->getVar('progStudi'),
+            'namaPeneliti' => $nipdosen['nama_dosen'],
+            'programStudi' => $nipdosen['program_studi'],
             'peran'         => "Ketua Penelitian"
         ]);
         $no = $this->request->getVar('anggota');

@@ -42,28 +42,28 @@
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="jabatan" type="text" class="form-control" id="jabatan" readonly>
+                                <input name="jabatan" type="text" class="form-control" id="jabatan" disabled>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="progStudi" class="col-md-4 col-lg-3 col-form-label">Program Studi</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="progStudi" type="text" class="form-control" id="progStudi" readonly>
+                                <input name="progStudi" type="text" class="form-control" id="progStudi" disabled>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="hp" class="col-md-4 col-lg-3 col-form-label">Nomor Handphone</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="hp" type="text" class="form-control" id="hp" readonly>
+                                <input name="hp" type="text" class="form-control" id="hp" disabled>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="email" type="email" class="form-control" id="email" readonly>
+                                <input name="email" type="email" class="form-control" id="email" disabled>
                             </div>
                         </div>
 
