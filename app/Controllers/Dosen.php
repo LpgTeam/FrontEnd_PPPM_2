@@ -104,46 +104,55 @@ class Dosen extends BaseController
     }
 
     public function penelitianMandiri()
-    {
+    {   session();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Mandiri'
+            'jenis' => 'Mandiri',
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm1', $data);
     }
 
     public function penelitianKerjasama()
     {
+        session();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Kerjasama'
+            'jenis' => 'Kerjasama',
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm1', $data);
     }
 
     public function penelitianSemiMandiri()
     {
+        session();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Semi Mandiri'
+            'jenis' => 'Semi Mandiri',
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm2', $data);
     }
 
     public function penelitianDidanaiInstitusi()
     {
+        session();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Di Danai Institusi'
+            'jenis' => 'Di Danai Institusi',
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm2', $data);
     }
 
     public function penelitianInstitusi()
     {
+        session();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Institusi'
+            'jenis' => 'Institusi',
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm2', $data);
     }
