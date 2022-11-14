@@ -35,8 +35,8 @@
                                 <input name="namaLengkap" type="text" class="form-control" id="cari" required>
                             </div>
                         </div>
-                       
-                        <input name="nip" type="hidden" class="form-control" id="nip" >
+
+                        <input name="nip" type="hidden" class="form-control" id="nip">
 
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
@@ -113,7 +113,10 @@
                         <div class="row mb-3">
                             <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="upload" class="form-control" type="file" id="upload" required>
+                                <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload" >
+                                <div class="invalid-feedback" id="uploadValid">
+                                    <?= $validation->getError('upload'); ?>
+                                </div>
                             </div>
                         </div>
 
@@ -129,7 +132,7 @@
                         <div class="row mb-3">
                             <label for="uploadSurat" class="col-md-4 col-lg-3 col-form-label ">Upload Surat Pernyataan</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="uploadSurat" class="form-control" type="file" id="uploadSurat" required>
+                                <input name="uploadSurat" class="form-control" type="file" id="uploadSurat" >
                             </div>
                         </div>
 
