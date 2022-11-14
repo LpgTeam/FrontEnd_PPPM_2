@@ -92,6 +92,7 @@ $routes->get('/pkmKelompok4', 'Dosen::pkmKelompok4');
 $routes->get('/login', 'Login::index');
 //routes create pengajuan
 $routes->get('/penelitian/save', 'Penelitian::save');
+$routes->get('/pkm/save', 'PKM::save');
 
 // ================================================================
 //                          Admin PPPM

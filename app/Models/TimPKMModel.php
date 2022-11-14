@@ -4,22 +4,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TimPenelitiModel extends Model
+class TimPKMModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'tim_peneliti';
+    protected $table            = 'tim_pkm';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_penelitian',
-        'NIP',
-        'peran',
-        'bidang_keahlian',
-        'namaPeneliti',
-        'programStudi',
+        'id_pkm',
+        'nip',
+        'nama',
+    	'peran',
+    	'pangkat'
     ];
 
     // Dates

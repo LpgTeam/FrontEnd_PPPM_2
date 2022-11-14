@@ -13,7 +13,11 @@
                 <div class="form-body pt-3 col-md-14">
                     <!-- Bordered Tabs -->
                     <!-- Form -->
-                    <form>
+                    <form action="<?= base_url('/pkm/save'); ?>" method="post" enctype="multipart/form-data">
+
+                        <input name="jenis_pkm" type="text" class="form-control" id="jenis_pkm" value="<?= $jenis ?>" hidden>
+
+
                         <div class="row mb-3">
                             <label label for="topik" class="col-md-4 col-lg-3 col-form-label">Topik PKM</label>
                             <div class="col-md-8 col-lg-9">
@@ -228,7 +232,7 @@
                         <hr>
 
                         <div class="text-end">
-                            <button class="btn btn-success">Submit Form</button>
+                            <button type="submit" class="btn btn-success">Submit Form</button>
                         </div>
                     </form><!-- Form End -->
 

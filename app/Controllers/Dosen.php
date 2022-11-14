@@ -10,6 +10,7 @@ use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
 use App\Models\PenelitianModel;
+use App\Models\PkmModel;
 
 class Dosen extends BaseController
 {
@@ -81,7 +82,12 @@ class Dosen extends BaseController
 
     public function pkm()
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $pkmModel = new PkmModel();
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'pkm' => $pkmModel->getData(),
+        
+        ];
         return view('dosen/tampilan/pkm', $data);
     }
 
@@ -144,19 +150,28 @@ class Dosen extends BaseController
 
     public function pkmMandiri()
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'jenis' => 'Mandiri'
+        ];
         return view('dosen/tampilan/pkmMandiri', $data);
     }
 
     public function pkmKelompok()
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'jenis' => 'Kelompok'
+        ];
         return view('dosen/tampilan/pkmKelompok', $data);
     }
 
     public function pkmTerstruktur()
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'jenis' => 'Terstruktur'
+        ];
         return view('dosen/tampilan/pkmTerstruktur', $data);
     }
 

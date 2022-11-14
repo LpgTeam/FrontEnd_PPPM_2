@@ -4,22 +4,31 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TimPenelitiModel extends Model
+class PkmModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'tim_peneliti';
+    protected $table            = 'pengajuan_pkm';
+    protected $primaryKey       = 'ID_pkm';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_penelitian',
-        'NIP',
-        'peran',
-        'bidang_keahlian',
-        'namaPeneliti',
-        'programStudi',
+        'ID_pkm',
+        'jenis_pkm',
+        'topik_kegiatan',
+    	'bentuk_kegiatan',
+    	'waktu_kegiatan',
+        'tempat_kegiatan',
+    	'sasaran',
+        'target_peserta',
+        'hasil',
+    	'pembiayaan_diajukan',
+        'diajukan_lainnya',
+        'tanggal_pengajuan',	
+        'status',	
+        'id_status'	
     ];
 
     // Dates
@@ -45,4 +54,19 @@ class TimPenelitiModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getData()
+    {
+        return $this->findAll();
+    }
+
+    public function get_id_pkm($judul_pkm)
+    {
+        return $this->where(['topik_kegiatan' => $judul_pkm])->first();
+    }
+
+    public function get_pkm($id_pkm)
+    {
+        return $this->where(['ID_pkm' => $id_pkm])->first();
+    }
 }

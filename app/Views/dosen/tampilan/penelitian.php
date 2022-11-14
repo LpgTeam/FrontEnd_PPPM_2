@@ -11,7 +11,7 @@
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success" role="alert" data-aos="zoom-in">
                 <?= session()->getFlashdata('pesan'); ?>
             </div>
         <?php endif; ?>
@@ -52,7 +52,7 @@
                                                 echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
                                             } else {
                                                 echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                        }
+                                            }
                                             ?>
                                         </td>
                                     </tr>
