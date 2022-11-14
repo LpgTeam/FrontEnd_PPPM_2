@@ -4,26 +4,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DosenModel extends Model
+class TimPKMModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'dosen';
-    protected $primaryKey       = 'NIP_dosen';
+    protected $table            = 'tim_pkm';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'NIP_dosen',
-        'username',
-        'nama_dosen',
-        'jabatan_dosen',
-        'program_studi',
-        'no_hp',
-        'email_dosen',
-        'minat_penelitian'
-
+        'id_pkm',
+        'nip',
+        'nama',
+    	'peran',
+    	'pangkat'
     ];
 
     // Dates
@@ -49,9 +44,4 @@ class DosenModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function get_nip_peneliti($nip)
-    {
-        return $this->where(['NIP_dosen' => $nip])->first();
-    }
 }

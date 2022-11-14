@@ -5,7 +5,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Penelitian (----)</h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -88,7 +88,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-danger" onclick="location.href=''">Ya</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/acc-direktur/<?= $penelitian['id_penelitian']; ?>'">Ya</button>
             </div>
         </div>
     </div>

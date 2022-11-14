@@ -9,9 +9,18 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use CodeIgniter\API\ResponseTrait;
+
 
 class Reviewer extends BaseController
 {
+    use ResponseTrait;
+    protected $penelitianModel;
+    public function __construct()
+    {
+        $this->penelitianModel = new PenelitianModel();
+    }
+
     public function index()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
@@ -74,9 +83,41 @@ class Reviewer extends BaseController
         return view('reviewer/tampilan/penelitian', $data);
     }
 
-    public function persetujuan()
+    public function persetujuan($id_penelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $this->penelitianModel->find($id_penelitian);
+
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian)
+
+        ];
         return view('reviewer/tampilan/persetujuan', $data);
+    }
+
+    public function acc_penelitian_reviewer($id_penelitian)
+    {
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => 2,
+            'status_pengajuan'  => 'Disetujui'
+        ]);
+
+        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+
+        return redirect()->to('/penelitianReviewer');
+    }
+
+    public function rjc_penelitian_reviewer($id_penelitian)
+    {
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => 5,
+            'status_pengajuan'  => 'Ditolak'
+        ]);
+
+        session()->setFlashdata('pesan', 'Penelitian telah ditolak');
+
+        return redirect()->to('/penelitianReviewer');
     }
 }

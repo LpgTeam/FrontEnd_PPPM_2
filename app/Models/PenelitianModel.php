@@ -58,4 +58,9 @@ class PenelitianModel extends Model
     {
         return $this->where(['judul_penelitian' => $judul_penelitian])->first();
     }
+
+    public function get_penelitian($id_penelitian)
+    {
+        return $this->where(['id_penelitian' => $id_penelitian])->first();
+    }
 }

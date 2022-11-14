@@ -4,26 +4,31 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DosenModel extends Model
+class PkmModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'dosen';
-    protected $primaryKey       = 'NIP_dosen';
+    protected $table            = 'pengajuan_pkm';
+    protected $primaryKey       = 'ID_pkm';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'NIP_dosen',
-        'username',
-        'nama_dosen',
-        'jabatan_dosen',
-        'program_studi',
-        'no_hp',
-        'email_dosen',
-        'minat_penelitian'
-
+        'ID_pkm',
+        'jenis_pkm',
+        'topik_kegiatan',
+    	'bentuk_kegiatan',
+    	'waktu_kegiatan',
+        'tempat_kegiatan',
+    	'sasaran',
+        'target_peserta',
+        'hasil',
+    	'pembiayaan_diajukan',
+        'diajukan_lainnya',
+        'tanggal_pengajuan',	
+        'status',	
+        'id_status'	
     ];
 
     // Dates
@@ -50,8 +55,18 @@ class DosenModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function get_nip_peneliti($nip)
+    public function getData()
     {
-        return $this->where(['NIP_dosen' => $nip])->first();
+        return $this->findAll();
+    }
+
+    public function get_id_pkm($judul_pkm)
+    {
+        return $this->where(['topik_kegiatan' => $judul_pkm])->first();
+    }
+
+    public function get_pkm($id_pkm)
+    {
+        return $this->where(['ID_pkm' => $id_pkm])->first();
     }
 }

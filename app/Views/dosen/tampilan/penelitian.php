@@ -11,7 +11,7 @@
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success" role="alert" data-aos="zoom-in">
                 <?= session()->getFlashdata('pesan'); ?>
             </div>
         <?php endif; ?>
@@ -46,14 +46,14 @@
                                         <td><?php echo $post['judul_penelitian'] ?></td>
                                         <td><?php echo $post['status_pengajuan'] ?></td>
                                         <td>
+                                            <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
                                             <?php
                                             if ($post['jenis_penelitian'] == 'Mandiri' || $post['jenis_penelitian'] == 'Kerjasama') {
                                                 echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
                                             } else {
                                                 echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                            }
+                                        }
                                             ?>
-
                                         </td>
                                     </tr>
                                     <?php $i++;    ?>

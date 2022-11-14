@@ -32,35 +32,44 @@
                         <div class="row mb-3">
                             <label for="namaLengkap" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="namaLengkap" type="text" class="form-control" id="namaLengkap" required>
+                                <input name="namaLengkap" type="text" class="form-control" id="cari" required>
                             </div>
                         </div>
+                       
+                        <input name="nip" type="hidden" class="form-control" id="nip" >
 
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
-                            <div class="col-md-8 col-lg-9">
-                                <input name="jabatan" type="text" class="form-control" id="jabatan" required>
+                            <div class="col-md-8 col-lg-9 ">
+                                <input name="jabatan" type="text" class="form-control" id="jabatan" disabled>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="progStudi" class="col-md-4 col-lg-3 col-form-label">Program Studi</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="progStudi" type="text" class="form-control" id="progStudi" required>
+                                <input name="progStudi" type="text" class="form-control" id="progStudi" disabled>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="hp" class="col-md-4 col-lg-3 col-form-label">Nomor Handphone</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="hp" type="text" class="form-control" id="hp" required>
+                                <input name="hp" type="text" class="form-control" id="hp" disabled>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="email" type="email" class="form-control" id="email" required>
+                                <input name="email" type="email" class="form-control" id="email" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="bidangKeahlian" class="col-md-4 col-lg-3 col-form-label">Bidang Keahlian</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="bidangKeahlian" type="text" class="form-control" id="bidangKeahlian" required>
                             </div>
                         </div>
 

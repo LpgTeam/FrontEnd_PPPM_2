@@ -92,6 +92,7 @@ $routes->get('/pkmKelompok4', 'Dosen::pkmKelompok4');
 $routes->get('/login', 'Login::index');
 //routes create pengajuan
 $routes->get('/penelitian/save', 'Penelitian::save');
+$routes->get('/pkm/save', 'PKM::save');
 
 // ================================================================
 //                          Admin PPPM
@@ -130,7 +131,9 @@ $routes->get('/pkmTerstrukturAdmin2', 'Admin::pkmAdminProses2');
 $routes->get('/indexReviewer', 'Reviewer::index');
 $routes->get('/anggaranReviewer', 'Reviewer::anggaran');
 $routes->get('/penelitianReviewer', 'Reviewer::penelitian');
-$routes->get('/persetujuanReviewer', 'Reviewer::persetujuan');
+$routes->get('/persetujuanReviewer/(:any)', 'Reviewer::persetujuan/$1');
+$routes->get('/acc-reviewer/(:any)', 'Reviewer::acc_penelitian_reviewer/$1');
+$routes->get('/rjc-reviewer/(:any)', 'Reviewer::rjc_penelitian_reviewer/$1');
 
 // ================================================================
 //                          Direktur
@@ -138,7 +141,8 @@ $routes->get('/persetujuanReviewer', 'Reviewer::persetujuan');
 $routes->get('/indexDirektur', 'Direktur::index');
 $routes->get('/anggaranDirektur', 'Direktur::anggaran');
 $routes->get('/penelitianDirektur', 'Direktur::penelitian');
-$routes->get('/persetujuanDirektur', 'Direktur::persetujuan');
+$routes->get('/persetujuanDirektur/(:any)', 'Direktur::persetujuan/$1');
+$routes->get('/acc-direktur/(:any)', 'Direktur::acc_penelitian_direktur/$1');
 
 // ================================================================
 //                          Kepala PPPM
@@ -146,10 +150,11 @@ $routes->get('/persetujuanDirektur', 'Direktur::persetujuan');
 $routes->get('/indexKepala', 'Kepala::index');
 $routes->get('/anggaranKepala', 'Kepala::anggaran');
 $routes->get('/penelitianKepala', 'Kepala::penelitian');
-$routes->get('/penelitianPersetujuanKepala', 'Kepala::penelitianPersetujuan');
+$routes->get('/penelitianPersetujuanKepala/(:any)', 'Kepala::penelitianPersetujuan/$1');
 $routes->get('/pkmKepala', 'Kepala::pkm');
 $routes->get('/pkmPersetujuanKepala', 'Kepala::pkmPersetujuan');
-
+$routes->get('/acc-kepala/(:any)', 'Kepala::acc_penelitian_kepala/$1');
+$routes->get('/rjc-kepala/(:any)', 'Kepala::rjc_penelitian_kepala/$1');
 
 
 /*

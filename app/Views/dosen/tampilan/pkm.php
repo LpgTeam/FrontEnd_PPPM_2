@@ -10,6 +10,11 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
         </div>
+        <?php if (session()->getFlashdata('pesan')) : ?>
+            <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                <?= session()->getFlashdata('pesan'); ?>
+            </div>
+        <?php endif; ?>
         <div class="row" data-aos="fade-up">
             <div class="">
                 <div class="card">
@@ -29,56 +34,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mandiri</td>
-                                    <td>24-06-2022</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>
-                                        <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Dosen</td>
-                                    <td>22-04-2022</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>
-                                        <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Kelompok Dosen</td>
-                                    <td>24-06-2022</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>
-                                        <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Mandiri</td>
-                                    <td>24-06-2022</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>
-                                        <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Terstruktur</td>
-                                    <td>24-06-2022</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>Lorem Ipsum</td>
-                                    <td>
-                                        <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                    </td>
-                                </tr>
+                                <?php $i = 1; ?>
+                                <?php foreach ($pkm as $key => $post) :  ?>
+
+                                    <tr>
+                                        <!-- <td><?php //echo $post['id_penelitian'] 
+                                                    ?></td> -->
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $post['jenis_pkm'] ?></td>
+                                        <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                        <td><?php echo $post['topik_kegiatan'] ?></td>
+                                        <td><?php echo $post['status'] ?></td>
+                                        <td>
+                                            <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
+                                            <?php
+                                            if ($post['jenis_pkm'] == 'Mandiri') {
+                                                echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
+                                            } else {
+                                                echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
+                                        }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php $i++;    ?>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

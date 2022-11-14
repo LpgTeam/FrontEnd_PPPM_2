@@ -5,7 +5,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Penelitian (----)</h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -34,7 +34,8 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Proposal</h5>
                             <hr>
-                            <p>(Judul Proposal) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            <p><?= $penelitian['judul_penelitian'] ?></p>
+                            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                                 when an unknown printer took a galley of type and scrambled it to make a
                                 type specimen book. It has survived not only five centuries, but also the
@@ -94,7 +95,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href=''">Ya</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/acc-reviewer/<?= $penelitian['id_penelitian']; ?>'">Ya</button>
             </div>
         </div>
     </div>
@@ -116,7 +117,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href=''">Selesai</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/rjc-reviewer/<?= $penelitian['id_penelitian']; ?>'">Selesai</button>
             </div>
         </div>
     </div>
