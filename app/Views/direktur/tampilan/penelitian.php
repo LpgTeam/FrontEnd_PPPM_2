@@ -68,7 +68,8 @@
                                         <td><?php echo $post['judul_penelitian'] ?></td>
                                         <td><?php echo $post['status_pengajuan'] ?></td>
                                         <td>
-                                            <a class="btn btn-primary" onclick="location.href='/persetujuanReviewer'"><i class="bi bi-pencil-square"></i></a>
+                                            <!-- <a class="btn btn-primary" onclick="location.href='/persetujuanReviewer'"><i class="bi bi-pencil-square"></i></a> -->
+                                            <a href="/persetujuanDirektur/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                         </td>
                                     </tr>
                                     <?php $i++;    ?>

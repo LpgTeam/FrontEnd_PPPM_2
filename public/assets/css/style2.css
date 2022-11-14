@@ -1804,6 +1804,10 @@ section {
   margin: 30px 20px 20px 20px;
 }
 
+.timeline-with-icons .timeline-item h5 {
+  color: #012970;
+}
+
 .timeline-with-icons .timeline-item {
   position: relative;
 }
@@ -1817,8 +1821,10 @@ section {
 .timeline-with-icons .timeline-icon {
   position: absolute;
   left: -48px;
-  background-color: hsl(217, 88.2%, 90%);
-  color: hsl(217, 88.8%, 35.1%);
+  background-color: #fff;
+  color: #012970;
+  border-style: solid;
+  border-color: #ffc107;
   border-radius: 50%;
   height: 31px;
   width: 31px;
