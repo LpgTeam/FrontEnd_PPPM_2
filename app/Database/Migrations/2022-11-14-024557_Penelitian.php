@@ -69,7 +69,7 @@ class Penelitian extends Migration
                 'nullable' => false
             ]
         ]);
-        $this->forge->addKey('ID_penelitian', true);
+        $this->forge->addKey('id_penelitian', true);
         $this->forge->createTable('penelitian');
     }
 

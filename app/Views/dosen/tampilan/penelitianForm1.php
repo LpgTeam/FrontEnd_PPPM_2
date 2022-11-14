@@ -20,7 +20,7 @@
                         <div class="row mb-3">
                             <label for="judul_penelitian" class="col-md-4 col-lg-3 col-form-label">Judul Penelitian</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="judul_penelitian" type="text" class="form-control" id="judul_penelitian" required>
+                                <input name="judul_penelitian" type="text" class="form-control" id="judul_penelitian" value="<?= old('judul_penelitian'); ?>" required>
                             </div>
                         </div>
 
@@ -33,48 +33,46 @@
                         <div class="row mb-3">
                             <label for="namaLengkap" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="namaLengkap" type="text" class="form-control" id="cari" required>
+                                <input name="namaLengkap" type="text" class="form-control" id="cari" value="<?= old('namaLengkap'); ?>" required>
                             </div>
                         </div>
 
-                        <input name="nip" type="hidden" class="form-control" id="nip">
+                        <input name="nip" type="hidden" class="form-control" id="nip" value="<?= old('nip'); ?>">
 
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="jabatan" type="text" class="form-control" id="jabatan" disabled>
+                                <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= old('jabatan'); ?>" readonly>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="progStudi" class="col-md-4 col-lg-3 col-form-label">Program Studi</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="progStudi" type="text" class="form-control" id="progStudi" disabled>
+                                <input name="progStudi" type="text" class="form-control" id="progStudi" value="<?= old('progStudi'); ?>" readonly>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="hp" class="col-md-4 col-lg-3 col-form-label">Nomor Handphone</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="hp" type="text" class="form-control" id="hp" disabled>
+                                <input name="hp" type="text" class="form-control" id="hp" value="<?= old('hp'); ?>" readonly>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="email" type="email" class="form-control" id="email" disabled>
+                                <input name="email" type="email" class="form-control" id="email" value="<?= old('email'); ?>" readonly>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="bidangKeahlian" class="col-md-4 col-lg-3 col-form-label">Bidang Keahlian</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="bidangKeahlian" type="text" class="form-control" id="bidangKeahlian" required>
+                                <input name="bidangKeahlian" type="text" class="form-control" id="bidangKeahlian" value="<?= old('bidangKeahlian'); ?>" required>
                             </div>
                         </div>
-
-                        <input name="biaya" type="hidden" min="1" step="any" class="form-control" id="biaya" value="0">
 
                         <hr>
 
@@ -89,7 +87,7 @@
                             <label class="col-md-4 col-lg-3 col-form-label" for="bidang">Bidang</label>
                             <div class="col-md-8 col-lg-9">
                                 <select class="form-select" id="bidang" name="bidang">
-                                    <option selected disabled>Pilih</option>
+                                    <option selected readonly>Pilih</option>
                                     <option value="Small Area Estimation">Small Area Estimation</option>
                                     <option value="SDG's">SDG's</option>
                                     <option value="Metodologi Survei dan Sensus">Metodologi Survei dan Sensus</option>
@@ -102,7 +100,7 @@
                         <div class="row mb-3">
                             <label for="anggota" class="col-md-4 col-lg-3 col-form-label">Jumlah Anggota</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="anggota" type="number" class="form-control" id="anggota" required>
+                                <input name="anggota" type="number" class="form-control" id="anggota" value="<?= old('anggota'); ?>" required>
                             </div>
                         </div>
 
@@ -133,9 +131,13 @@
                             </table>
 
                             <div class="col-md-4 col-lg-6">
-                                <button onclick='add()' class="btn btn-warning">
+                                <!-- <button onclick='add()' class="btn btn-warning" id="btn" >
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                </button>
+                                </button> -->
+                                <a onclick="add()" class="btn btn-warning" id="btn">
+                                    Tambah Anggota <i class=" bi bi-plus-square"></i>
+                                </a>
+                                <p class="invalid-feedback" id="m" style="display: none ;">Jumlah Anggota sudah full</p>
                             </div>
                         </div>
 
@@ -156,9 +158,13 @@
                             </table>
 
                             <div class="col-md-4 col-lg-6">
-                                <button onclick='add2()' class="btn btn-warning">
+                                <!-- <button onclick='add2()' class="btn btn-warning">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                </button>
+                                </button> -->
+                                <a onclick="add2()" class="btn btn-warning" id="btn2">
+                                    Tambah Anggota <i class=" bi bi-plus-square"></i>
+                                </a>
+                                <p class="invalid-feedback" id="m2" style="display: none ;">Jumlah Anggota sudah full</p>
                             </div>
                         </div>
 
@@ -192,8 +198,19 @@
 
                             function add() {
                                 var rowCount = document.getElementById('myTableID').rows.length;
-                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nip" + rowCount + "' class='form-control' type='text' id='nip" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
-                                console.log(rowCount);
+                                var x = document.getElementById('anggota').value;
+                                var btn = document.getElementById('btn');
+                                var m = document.getElementById('m');
+                                // btn.style.display = "block";
+                                if (x > rowCount-1) {
+                                    m.style.display = 'none';
+                                    $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nip" + rowCount + "' class='form-control' type='text' id='nip" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                    console.log(rowCount);
+                                    console.log(x);
+                                } else {
+                                    m.style.display = "block";
+                                    btn.onclick() = null;
+                                }
                             }
 
                             function rm2() {
@@ -201,9 +218,20 @@
                             }
 
                             function add2() {
+
                                 var rowCount2 = document.getElementById('myTableID2').rows.length;
+                                var x = document.getElementById('anggota').value;
+                                var btn = document.getElementById('btn2');
+                                var m = document.getElementById('m2');
+                                // btn.style.display = "block";
+                                if (x > rowCount2-1) {
+                                    m.style.display = 'none';
                                 $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount2);
+                                }else{
+                                    m.style.display = "block";
+                                    btn.onclick() = null;
+                                }
                             }
 
                             function rm3() {
