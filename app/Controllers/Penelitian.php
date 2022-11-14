@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModelCode;
-use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
@@ -19,6 +17,7 @@ class Penelitian extends BaseController
     protected $dosenModel;
     public function __construct()
     {
+        //new
         $this->penelitianModel = new PenelitianModel();
         $this->timpenelitiModel = new TimPenelitiModel();
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
@@ -68,6 +67,14 @@ class Penelitian extends BaseController
                     'uploaded' => "{field} file tidak boleh kosong",
                     'ext_in' => "Format file harus pdf",
                     'max_size' => "Ukuran File terlalu besar"
+                ]
+            ],
+            'uploadSurat' => [
+                'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,100]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar (Max 100kb)"
                 ]
             ]
 
@@ -171,26 +178,6 @@ class Penelitian extends BaseController
 
     public function printpdf()
     {
-        // Initialize a file URL to
-        // the variable
-        $url =
-            base_url('/surat_pernyataan/Template_surat_pernyataan_penelitian.docx');
-
-        // Use basename() function to
-        // return the file
-        $file_name = basename($url);
-
-        // Use file_get_contents() function
-        // to get the file from url and use
-        // file_put_contents() function to
-        // save the file by using base name
-        if (file_put_contents(
-            $file_name,
-            file_get_contents($url)
-        )) {
-            echo "File downloaded successfully";
-        } else {
-            echo "File downloading failed.";
-        }
+        return $this->response->download('surat_pernyataan/Template_surat_pernyataan_penelitian.pdf',null)->setFileName("Surat-Pernyataan.pdf");//download file
     }
 }
