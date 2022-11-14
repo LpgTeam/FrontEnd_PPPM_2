@@ -70,7 +70,8 @@ class PKM extends BaseController
             'jenis_pkm' => $this->request->getVar('jenis_pkm'),
             'topik_kegiatan' => $this->request->getVar('topik'),
             // 'bidang' => $this->request->getVar('bidang'),
-            'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
+            // 'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
+            'bentuk_kegiatan' => $this->request->getVar('pilihKegiatan'),
             'waktu_pelaksanaan' =>$this->request->getVar('waktu'),
             'tempat_kegiatan' =>$this->request->getVar('tempat'),
             'sasaran' =>$this->request->getVar('sasaran'),
@@ -94,6 +95,7 @@ class PKM extends BaseController
 
         $KetuatimModel->save([
             'id_pkm' => $idpkm['ID_pkm'],
+            'nama' =>$this->request->getVar('namaLengkap') ,
             'nip' =>$this->request->getVar('nip') ,
             'pangkat' => $this->request->getVar('pangkat'),
             'peran'         => "Ketua PKM"
@@ -102,6 +104,7 @@ class PKM extends BaseController
         for ($i = 1; $i <= $no; $i++) {
             $timModel->save([
                 'id_pkm' => $idpkm['ID_pkm'],
+                'nama' => $this->request->getVar('namaAnggota' . $i),
                 'nip' => $this->request->getVar('nipAnggota' . $i),
                 'pangkat' => $this->request->getVar('pangkatAnggota' . $i),
                 'peran'         => "Anggota".$i,
