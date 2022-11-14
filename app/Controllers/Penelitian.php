@@ -109,25 +109,25 @@ class Penelitian extends BaseController
         $KetuatimpenelitiModel = new TimPenelitiModel();
         $timpenelitiModel = new TimPenelitiModel();
 
-        // $KetuatimpenelitiModel->save([
-        //     'id_penelitian' => $idpenelitian['id_penelitian'],
-        //     'NIP' => $nipdosen['NIP_dosen'],
-        //     'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
-        //     'namaPeneliti' => $nipdosen['nama_dosen'],
-        //     'programStudi' => $nipdosen['program_studi'],
-        //     'peran'         => "Ketua Penelitian"
-        // ]);
-        // $no = $this->request->getVar('anggota');
-        // for ($i = 1; $i <= $no; $i++) {
-        //     $timpenelitiModel->save([
-        //         'id_penelitian' => $idpenelitian['id_penelitian'],
-        //         'NIP' => $this->request->getVar('nip' . $i),
-        //         'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
-        //         'peran'         => $this->request->getVar('tugasAnggota' . $i),
-        //         'namaPeneliti' => $this->request->getVar('namaAnggota' . $i),
-        //         'programStudi' => $this->request->getVar('studiAnggota' . $i),
-        //     ]);
-        // };
+        $KetuatimpenelitiModel->save([
+            'id_penelitian' => $idpenelitian['id_penelitian'],
+            'NIP' => $nipdosen['NIP_dosen'],
+            'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
+            'namaPeneliti' => $nipdosen['nama_dosen'],
+            'programStudi' => $nipdosen['program_studi'],
+            'peran'         => "Ketua Penelitian"
+        ]);
+        $no = $this->request->getVar('anggota');
+        for ($i = 1; $i <= $no; $i++) {
+            $timpenelitiModel->save([
+                'id_penelitian' => $idpenelitian['id_penelitian'],
+                'NIP' => $this->request->getVar('nip' . $i),
+                'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
+                'peran'         => $this->request->getVar('tugasAnggota' . $i),
+                'namaPeneliti' => $this->request->getVar('namaAnggota' . $i),
+                'programStudi' => $this->request->getVar('studiAnggota' . $i),
+            ]);
+        };
 
 
 
