@@ -116,9 +116,14 @@
                             </table>
 
                             <div class="col-md-4 col-lg-6">
-                                <button onclick='add()' class="btn btn-warning">
+                                <!-- <button onclick='add()' class="btn btn-warning">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                </button>
+                                </button> -->
+                                <a onclick="add()" class="btn btn-warning" id="btn">
+                                    Tambah Anggota <i class=" bi bi-plus-square"></i>
+                                </a>
+                                <p class="invalid-feedback" id="m" style="display: none ;">Jumlah Anggota sudah full</p>
+
                             </div>
                         </div>
 
@@ -149,9 +154,18 @@
                             }
 
                             function add() {
+                                var btn = document.getElementById('btn');
+                                var x = document.getElementById('anggota').value;
+                                var m = document.getElementById('m');
                                 var rowCount = document.getElementById('myTableID').rows.length;
-                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nipAnggota" + rowCount + "' class='form-control' type='text' id='nipAnggota" + rowCount + "' required></td><td><input name='pangkatAnggota" + rowCount + "' class='form-control' type='text' id='pangkatAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
-                                console.log(rowCount);
+                                if (x > rowCount - 1) {
+                                    m.style.display = 'none';
+                                    $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nipAnggota" + rowCount + "' class='form-control' type='text' id='nipAnggota" + rowCount + "' required></td><td><input name='pangkatAnggota" + rowCount + "' class='form-control' type='text' id='pangkatAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                    console.log(rowCount);
+                                } else {
+                                    m.style.display = "block";
+                                    btn.onclick() = null;
+                                }
                             }
 
                             function rm2() {
