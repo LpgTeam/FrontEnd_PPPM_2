@@ -111,9 +111,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
+                            <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Proposal</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload" >
+                                <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload">
                                 <div class="invalid-feedback" id="uploadValid">
                                     <?= $validation->getError('upload'); ?>
                                 </div>
@@ -123,16 +123,19 @@
                         <div class="row mb-3">
                             <label class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
                             <div class="col-md-8 col-lg-9">
-                                <button class="btn btn-primary">
+                                <!-- <button onclick ="" class="btn btn-primary">
                                     Download Surat Pernyataan</i>
-                                </button>
+                                </button> -->
+                                <a href="<?= base_url('penelitian/printpdf') ?>" class="btn btn-primary">
+                                    Download Surat Pernyataan
+                                </a>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="uploadSurat" class="col-md-4 col-lg-3 col-form-label ">Upload Surat Pernyataan</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="uploadSurat" class="form-control" type="file" id="uploadSurat" >
+                                <input name="uploadSurat" class="form-control" type="file" id="uploadSurat">
                             </div>
                         </div>
 

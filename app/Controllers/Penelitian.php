@@ -10,7 +10,6 @@ use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
 use CodeIgniter\I18n\Time;
 
-
 class Penelitian extends BaseController
 {
     use ResponseTrait;
@@ -27,7 +26,7 @@ class Penelitian extends BaseController
     }
 
     public function index()
-    {   
+    {
         //pager initialize
         $pager = \Config\Services::pager();
         // $penelitianModel = new PenelitianModel();
@@ -63,26 +62,36 @@ class Penelitian extends BaseController
             //         'mime_in' => "Yang anda pilih bukan gambar"
             //     ]
             // ]
-            'upload' =>[
-                    'rules' => 'uploaded[upload]|ext_in[upload,pdf]|max_size[upload,10]' ,
-                    'errors' => [
-                        'uploaded' => "{field} file tidak boleh kosong",
-                        'ext_in' => "Format file harus pdf",
-                        'max_size' => "Ukuran File terlalu besar"
-                    ]
+            'upload' => [
+                'rules' => 'uploaded[upload]|ext_in[upload,pdf]|max_size[upload,1000000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar"
                 ]
+            ]
 
         ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
             $jenisPenelitian = $this->request->getVar('jenis_penelitian');
             // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
-            if($jenisPenelitian == 'Mandiri'){
+            if ($jenisPenelitian == 'Mandiri') {
                 return redirect()->to('/penelitianMandiri')->withInput();
-            }else if($jenisPenelitian == 'Semi Mandiri'){
+            } else if ($jenisPenelitian == 'Semi Mandiri') {
                 return redirect()->to('/penelitianSemiMandiri')->withInput();
             }
         }
+
+        // ambil gambar
+        $fileProposal = $this->request->getFile('upload');
+        $fileSurat = $this->request->getFile('uploadSurat');
+
+        $namaProposal = $fileProposal->getName();
+        $namaSurat = $fileSurat->getName();
+
+        $fileProposal->move('proposal', $namaProposal);
+        $fileSurat->move('surat_pernyataan', $namaSurat);
 
         // $slug = url_title($this->request->getVar('judul_penelitian'), '-', true);
 
@@ -93,7 +102,8 @@ class Penelitian extends BaseController
             'tanggal_pengajuan' => Time::now(),
             'id_status' => '1',
             'status_pengajuan' => 'diajukan',
-            'file_proposal' => $this->request->getFile('upload'),
+            'file_proposal' => $namaProposal,
+            'surat_pernyataan' => $namaSurat,
             'biaya'  => $this->request->getVar('biaya')
             // 'file_proposal' => $this->request->getVar(''),
             // 'biaya'  => '8348538319439'
@@ -104,30 +114,28 @@ class Penelitian extends BaseController
         $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
         // dd($nipdosen);
 
-
-
         $KetuatimpenelitiModel = new TimPenelitiModel();
         $timpenelitiModel = new TimPenelitiModel();
 
-        // $KetuatimpenelitiModel->save([
-        //     'id_penelitian' => $idpenelitian['id_penelitian'],
-        //     'NIP' => $nipdosen['NIP_dosen'],
-        //     'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
-        //     'namaPeneliti' => $nipdosen['nama_dosen'],
-        //     'programStudi' => $nipdosen['program_studi'],
-        //     'peran'         => "Ketua Penelitian"
-        // ]);
-        // $no = $this->request->getVar('anggota');
-        // for ($i = 1; $i <= $no; $i++) {
-        //     $timpenelitiModel->save([
-        //         'id_penelitian' => $idpenelitian['id_penelitian'],
-        //         'NIP' => $this->request->getVar('nip' . $i),
-        //         'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
-        //         'peran'         => $this->request->getVar('tugasAnggota' . $i),
-        //         'namaPeneliti' => $this->request->getVar('namaAnggota' . $i),
-        //         'programStudi' => $this->request->getVar('studiAnggota' . $i),
-        //     ]);
-        // };
+        $KetuatimpenelitiModel->save([
+            'id_penelitian' => $idpenelitian['id_penelitian'],
+            'NIP' => $nipdosen['NIP_dosen'],
+            'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
+            'namaPeneliti' => $nipdosen['nama_dosen'],
+            'programStudi' => $nipdosen['program_studi'],
+            'peran'         => "Ketua Penelitian"
+        ]);
+        $no = $this->request->getVar('anggota');
+        for ($i = 1; $i <= $no; $i++) {
+            $timpenelitiModel->save([
+                'id_penelitian' => $idpenelitian['id_penelitian'],
+                'NIP' => $this->request->getVar('nip' . $i),
+                'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
+                'peran'         => $this->request->getVar('tugasAnggota' . $i),
+                'namaPeneliti' => $this->request->getVar('namaAnggota' . $i),
+                'programStudi' => $this->request->getVar('studiAnggota' . $i),
+            ]);
+        };
 
 
 
@@ -159,5 +167,30 @@ class Penelitian extends BaseController
 
         endforeach;
         echo json_encode($w);
+    }
+
+    public function printpdf()
+    {
+        // Initialize a file URL to
+        // the variable
+        $url =
+            base_url('/surat_pernyataan/Template_surat_pernyataan_penelitian.docx');
+
+        // Use basename() function to
+        // return the file
+        $file_name = basename($url);
+
+        // Use file_get_contents() function
+        // to get the file from url and use
+        // file_put_contents() function to
+        // save the file by using base name
+        if (file_put_contents(
+            $file_name,
+            file_get_contents($url)
+        )) {
+            echo "File downloaded successfully";
+        } else {
+            echo "File downloading failed.";
+        }
     }
 }

@@ -69,9 +69,7 @@
                                         <td><?php echo $post['status_pengajuan'] ?></td>
                                         <td>
                                             <!-- <a class="btn btn-primary" onclick="location.href='/persetujuanDirektur'"><i class="bi bi-pencil-square"></i></a> -->
-
                                             <a href="/persetujuanReviewer/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-
                                         </td>
                                     </tr>
                                     <?php $i++;    ?>
