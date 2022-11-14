@@ -9,7 +9,7 @@ class Penelitian extends Migration
     public function up()
     {
         $this->forge->addField([
-            'ID_penelitian' => [
+            'id_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15,
                 'nullable' => false,
@@ -69,7 +69,7 @@ class Penelitian extends Migration
                 'nullable' => false
             ]
         ]);
-        $this->forge->addKey('id_penelitian', true);
+        $this->forge->addKey('ID_penelitian', true);
         $this->forge->createTable('penelitian');
     }
 

@@ -9,18 +9,18 @@ class AnggaranTotal extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id_tahunAnggaran' => [
+            'id_total' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'auto_increment' => true
             ],
             
-            'tahun_anggaran' => [
+            'tahun' => [
                 'type' => 'VARCHAR',
                 'constraint' => 4
             ],
             
-            'jumlah' => [
+            'dana_keluar' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50
             ],
@@ -30,7 +30,7 @@ class AnggaranTotal extends Migration
                 'constraint' => 50
             ]
         ]);
-        $this->forge->addKey('id_tahunAnggaran', true);
+        $this->forge->addKey('id_total', true);
         $this->forge->createTable('anggaran_total');
     }
 
