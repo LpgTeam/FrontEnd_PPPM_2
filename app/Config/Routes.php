@@ -59,7 +59,7 @@ $routes->get('/pkmMandiri', 'Dosen::pkmMandiri');
 $routes->get('/pkmKelompok', 'Dosen::pkmKelompok');
 $routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
 
-$routes->get('/penelitianSemiMandiri1', 'Dosen::penelitianSemiMandiri1');
+$routes->get('/penelitianSemiMandiri1/(:any)', 'Dosen::penelitianSemiMandiri1/$1');
 $routes->get('/penelitianSemiMandiri2', 'Dosen::penelitianSemiMandiri2');
 $routes->get('/penelitianSemiMandiri3', 'Dosen::penelitianSemiMandiri3');
 $routes->get('/penelitianSemiMandiri4', 'Dosen::penelitianSemiMandiri4');
@@ -156,6 +156,12 @@ $routes->get('/pkmPersetujuanKepala', 'Kepala::pkmPersetujuan');
 $routes->get('/acc-kepala/(:any)', 'Kepala::acc_penelitian_kepala/$1');
 $routes->get('/rjc-kepala/(:any)', 'Kepala::rjc_penelitian_kepala/$1');
 
+
+//download proposal
+$routes->get('/penelitian/download-p1-proposal/(:any)', 'ProposalPenelitian::download_p1_proposal/$1');
+$routes->get('/penelitian/download-p2-proposal/(:any)', 'ProposalPenelitian::download_p2_proposal/$1');
+$routes->get('/penelitian/download-p3-proposal/(:any)', 'ProposalPenelitian::download_p3_proposal/$1');
+$routes->get('/penelitian/download-p4-proposal/(:any)', 'ProposalPenelitian::download_p4_proposal/$1');
 
 /*
  * --------------------------------------------------------------------

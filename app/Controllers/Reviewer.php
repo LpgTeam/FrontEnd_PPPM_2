@@ -90,7 +90,6 @@ class Reviewer extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian)
-
         ];
         return view('reviewer/tampilan/persetujuan', $data);
     }

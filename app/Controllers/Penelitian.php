@@ -2,13 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModelCode;
-use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
 use CodeIgniter\I18n\Time;
+use App\Libraries\Pdfgenerator;
 
 class Penelitian extends BaseController
 {
@@ -46,14 +45,6 @@ class Penelitian extends BaseController
     {
         // //validasi input
         if (!$this->validate([
-            // 'nama_obat' => 'required|is_unique[obat.nama_obat]'
-            // 'nama_obat' => [
-            //     'rules' => 'required|is_unique[obat.nama_obat]',
-            //     'errors' => [
-            //         'required' => '{field} obat harus diisi.',
-            //         'is_unique' => '{field} obat sudah terdaftar.'
-            //     ]
-            // ],
             // 'sampul' => [
             //     'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
             //     'errors' => [
@@ -62,28 +53,44 @@ class Penelitian extends BaseController
             //         'mime_in' => "Yang anda pilih bukan gambar"
             //     ]
             // ]
+            'judul_penelitian' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Judul penelitian harus diisi.',
+                ]
+            ],
             'upload' => [
-                'rules' => 'uploaded[upload]|ext_in[upload,pdf]|max_size[upload,1000000]',
+                'rules' => 'uploaded[upload]|ext_in[upload,pdf]|max_size[upload,10000]',
                 'errors' => [
                     'uploaded' => "{field} file tidak boleh kosong",
                     'ext_in' => "Format file harus pdf",
                     'max_size' => "Ukuran File terlalu besar"
+                ]
+            ],
+            'uploadSurat' => [
+                'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar (Max 100kb)"
                 ]
             ]
 
         ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
-            $jenisPenelitian = $this->request->getVar('jenis_penelitian');
             // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
-            if ($jenisPenelitian == 'Mandiri') {
-                return redirect()->to('/penelitianMandiri')->withInput();
-            } else if ($jenisPenelitian == 'Semi Mandiri') {
-                return redirect()->to('/penelitianSemiMandiri')->withInput();
-            }
+            $jenisPenelitian = $this->request->getVar('jenis_penelitian');
+            return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
+
+            // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
+            //     return redirect()->to('/penelitianMandiri')->withInput();
+            // } else if (($jenisPenelitian == 'Semi Mandiri') || ($jenisPenelitian == 'Di Danai Institusi') || ($jenisPenelitian == 'Institusi')) {
+            //     return redirect()->to('/penelitianSemiMandiri')->withInput();
+            // }
         }
 
-        // ambil gambar
+        // ambil proposal dan surat
         $fileProposal = $this->request->getFile('upload');
         $fileSurat = $this->request->getFile('uploadSurat');
 
@@ -105,8 +112,6 @@ class Penelitian extends BaseController
             'file_proposal' => $namaProposal,
             'surat_pernyataan' => $namaSurat,
             'biaya'  => $this->request->getVar('biaya')
-            // 'file_proposal' => $this->request->getVar(''),
-            // 'biaya'  => '8348538319439'
         ]);
 
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
@@ -137,10 +142,7 @@ class Penelitian extends BaseController
             ]);
         };
 
-
-
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
-
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
         return redirect()->to('/penelitianDosen');
@@ -171,26 +173,6 @@ class Penelitian extends BaseController
 
     public function printpdf()
     {
-        // Initialize a file URL to
-        // the variable
-        $url =
-            base_url('/surat_pernyataan/Template_surat_pernyataan_penelitian.docx');
-
-        // Use basename() function to
-        // return the file
-        $file_name = basename($url);
-
-        // Use file_get_contents() function
-        // to get the file from url and use
-        // file_put_contents() function to
-        // save the file by using base name
-        // if (file_put_contents(
-        //     $file_name,
-        //     file_get_contents($url)
-        // )) {
-        //     echo "File downloaded successfully";
-        // } else {
-        //     echo "File downloading failed.";
-        // }
+        return $this->response->download('surat_pernyataan/Template_surat_pernyataan_penelitian.pdf', null)->setFileName("Surat-Pernyataan.pdf"); //download file
     }
 }

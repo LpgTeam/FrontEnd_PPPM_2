@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
+use CodeIgniter\API\ResponseTrait;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
@@ -14,6 +15,13 @@ use App\Models\PkmModel;
 
 class Dosen extends BaseController
 {
+    use ResponseTrait;
+    protected $penelitianModel;
+    public function __construct()
+    {
+        $this->penelitianModel = new PenelitianModel();
+    }
+
     public function index()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
@@ -86,7 +94,7 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $pkmModel->getData(),
-        
+
         ];
         return view('dosen/tampilan/pkm', $data);
     }
@@ -104,7 +112,8 @@ class Dosen extends BaseController
     }
 
     public function penelitianMandiri()
-    {   session();
+    {
+        session();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Mandiri',
@@ -184,9 +193,12 @@ class Dosen extends BaseController
         return view('dosen/tampilan/pkmTerstruktur', $data);
     }
 
-    public function penelitianSemiMandiri1()
+    public function penelitianSemiMandiri1($id_penelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian)
+        ];
         return view('dosen/tampilan/penelitianProses/penelitianSemiMandiri1', $data);
     }
 

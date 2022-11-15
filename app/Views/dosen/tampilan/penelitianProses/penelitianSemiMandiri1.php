@@ -77,6 +77,21 @@
                                 <button class="btn btn-secondary">Lihat Proposal </button>
                                 <button class="btn btn-primary">Download Proposal </button>
                             </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <a href="/penelitian/download-p1-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
+                                    Download P1 Proposal
+                                </a>
+                                <a href="/penelitian/download-p2-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
+                                    Download P2 Proposal
+                                </a>
+                                <a href="/penelitian/download-p3-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
+                                    Download P3 Proposal
+                                </a>
+                                <a href="/penelitian/download-p4-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
+                                    Download P4 Proposal
+                                </a>
+                            </div>
 
                         </div>
                     </div>

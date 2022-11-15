@@ -45,4 +45,11 @@ class TimPenelitiModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_timpeneliti_byid($id_penelitian)
+    {
+        $builder = $this->db->table('tim_peneliti');
+        $query = $builder->getWhere(['id_penelitian' => $id_penelitian]);
+        return $query->getResultArray();
+    }
 }
