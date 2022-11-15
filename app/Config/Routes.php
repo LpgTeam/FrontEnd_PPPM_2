@@ -157,6 +157,16 @@ $routes->get('/acc-kepala/(:any)', 'Kepala::acc_penelitian_kepala/$1');
 $routes->get('/rjc-kepala/(:any)', 'Kepala::rjc_penelitian_kepala/$1');
 
 
+// ================================================================
+//                          BAU
+// ================================================================
+$routes->get('/indexBAU', 'BAU::index');
+$routes->get('/anggaranBAU', 'BAU::anggaran');
+$routes->get('/penelitianBAU', 'BAU::penelitian');
+$routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
+$routes->get('/acc-BAU/(:any)', 'BAU::acc_penelitian_BAU/$1');
+$routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
+
 //download proposal
 $routes->get('/penelitian/download-p1-proposal/(:any)', 'ProposalPenelitian::download_p1_proposal/$1');
 $routes->get('/penelitian/download-p2-proposal/(:any)', 'ProposalPenelitian::download_p2_proposal/$1');
