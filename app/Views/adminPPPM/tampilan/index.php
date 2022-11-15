@@ -19,7 +19,7 @@
                     </h1>
                     <h2 data-aos="fade-up" data-aos-delay="400">
                         Website Pengelolaan Penelitian dan Pengabdian Kepada Masyarakat
-                        Admin Politeknik Statistika STIS
+                        Dosen Politeknik Statistika STIS
                     </h2>
                 </div>
             </div>
