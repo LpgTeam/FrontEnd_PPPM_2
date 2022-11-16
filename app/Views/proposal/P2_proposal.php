@@ -26,43 +26,77 @@
             Judul Penelitian : <?= $penelitian['judul_penelitian'] ?>
         </li>
         <li>
-            2. Bidang : <?= $penelitian['bidang'] ?>
+            Bidang : <?= $penelitian['bidang'] ?>
         </li>
         <li>
-            3. Ketua Tim Peneliti
+            Ketua Tim Peneliti
             <ol type="a">
                 <li>
-                    Nama Lengkap
+                    Nama Lengkap : <?= $timpeneliti[0]['namaPeneliti']; ?>
                 </li>
                 <li>
-                    Jabatan Fungsional
+                    Jabatan Fungsional : <?= $ketuapeneliti['jabatan_dosen']; ?>
                 </li>
                 <li>
-                    Program Studi
+                    Program Studi : <?= $ketuapeneliti['program_studi']; ?>
                 </li>
                 <li>
-                    Nomor HP
+                    Nomor HP : <?= $ketuapeneliti['no_hp']; ?>
                 </li>
                 <li>
-                    Email
+                    Email : <?= $ketuapeneliti['email_dosen']; ?>
                 </li>
             </ol>
         <li>
-            Jumlah Anggota : .... orang
+            Jumlah Anggota : ... orang
             <ol type="a">
-                <li>Nama Anggota I :
+                <?php foreach ($timpeneliti as $key => $peneliti) : ?>
+                    <li>Nama Anggota : <?= $peneliti['namaPeneliti']; ?></li>
+                    Program Studi : <?= $peneliti['programStudi']; ?>
+                <?php endforeach ?>
+                <!-- <li>Nama Anggota I :
                     Program Studi
                 </li>
                 <li>
                     Nama Anggota II :
                     Program Studi
-                </li>
+                </li> -->
             </ol>
         </li>
     </ol>
 
 
-    Mengetahui
+    <div class="row">
+        <div class="col-">
+            <p>Mengetahui</p>
+            Kepala PPPM
+            <br>
+            <br>
+
+            <p>Arie Wahyu</p>
+            NIDN
+
+        </div>
+        <hr>
+        <div class="col">
+            <p>Jakarta,...</p>
+            Ketua Peneliti
+            <br>
+            <br>
+            <p><?= $ketuapeneliti['nama_dosen']; ?></p>
+            <?= $ketuapeneliti['NIP_dosen']; ?>
+        </div>
+        <hr>
+        <div class="col">
+            <p>Menyetujui</p>
+            Direktur Politeknik Statistika STIS
+            <br>
+            <br>
+            <p>Erni Tri Astuti</p>
+            NIDN
+
+        </div>
+    </div>
 
 
 </body>

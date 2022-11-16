@@ -17,52 +17,30 @@
 
     <u><b>P3. Surat Pernyataan:</b></u>
     <div class="text-center">
-        <h3>HALAMAN PENGESAHAN</h3>
-        <H3>PROPOSAL PENELITIAN DOSEN</H3>
+        <h3>SURAT PERNYATAAN</h3>
     </div>
 
-    <ol>
-        <li>
-            Judul Penelitian : <?= $penelitian['judul_penelitian'] ?>
-        </li>
-        <li>
-            2. Bidang : <?= $penelitian['bidang'] ?>
-        </li>
-        <li>
-            3. Ketua Tim Peneliti
-            <ol type="a">
-                <li>
-                    Nama Lengkap
-                </li>
-                <li>
-                    Jabatan Fungsional
-                </li>
-                <li>
-                    Program Studi
-                </li>
-                <li>
-                    Nomor HP
-                </li>
-                <li>
-                    Email
-                </li>
-            </ol>
-        <li>
-            Jumlah Anggota : .... orang
-            <ol type="a">
-                <li>Nama Anggota I :
-                    Program Studi
-                </li>
-                <li>
-                    Nama Anggota II :
-                    Program Studi
-                </li>
-            </ol>
-        </li>
-    </ol>
+    Yang bertanda tangan di bawah ini
 
+    <p>Nama : <?= $ketuapeneliti['nama_dosen'] ?></p>
+    <p>NIDN : <?= $ketuapeneliti['NIP_dosen'] ?></p>
+    <p>Jabatan Fungsional : <?= $ketuapeneliti['jabatan_dosen'] ?></p>
 
-    Mengetahui
+    <p>dengan ini menyatakan bahwa proposal penelitian saya yang berjudul:</p>
+    <?= $penelitian['judul_penelitian']; ?>
+    <p>Diusulkan dengan skema penelitian dosen tahun <?= date("Y"); ?> bersifat original dan belum pernah mendapatkan biaya/dibiayai oleh lembaga atau sumber biaya lainnya. Jika dikemudian hari ditemukan ketidaksesuaian dengan pernyataan ini, saya bersedia dituntut dan diproses sesuai dengan ketentuan yang berlaku dan mengembalikan seluruh biaya yang sudah saya terima.</p>
+
+    <div class="row">
+        <div class="col">
+            <p>Jakarta,...</p>
+            Ketua Peneliti
+            <br>
+            <br>
+            <p><?= $ketuapeneliti['nama_dosen']; ?></p>
+            <?= $ketuapeneliti['NIP_dosen']; ?>
+        </div>
+    </div>
+
 
 
 </body>

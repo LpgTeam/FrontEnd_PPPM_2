@@ -10,6 +10,13 @@
         .text-center {
             text-align: center;
         }
+
+        table,
+        tr,
+        td {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 
@@ -17,52 +24,29 @@
 
     <u><b>P4. Tugas Tim Peneliti</b></u>
     <div class="text-center">
-        <h3>HALAMAN PENGESAHAN</h3>
-        <H3>PROPOSAL PENELITIAN DOSEN</H3>
+        <h3>TUGAS/PERAN TIM PENELITI</h3>
     </div>
 
-    <ol>
-        <li>
-            Judul Penelitian : <?= $penelitian['judul_penelitian'] ?>
-        </li>
-        <li>
-            2. Bidang : <?= $penelitian['bidang'] ?>
-        </li>
-        <li>
-            3. Ketua Tim Peneliti
-            <ol type="a">
-                <li>
-                    Nama Lengkap
-                </li>
-                <li>
-                    Jabatan Fungsional
-                </li>
-                <li>
-                    Program Studi
-                </li>
-                <li>
-                    Nomor HP
-                </li>
-                <li>
-                    Email
-                </li>
-            </ol>
-        <li>
-            Jumlah Anggota : .... orang
-            <ol type="a">
-                <li>Nama Anggota I :
-                    Program Studi
-                </li>
-                <li>
-                    Nama Anggota II :
-                    Program Studi
-                </li>
-            </ol>
-        </li>
-    </ol>
+    <table>
+        <tr>
+            <td>NO</td>
+            <td>NAMA PENELITI</td>
+            <td>BIDANG KEAHLIAN</td>
+            <td>TUGAS/PERAN DALAM PENELITIAN</td>
+        </tr>
+        <?php $i = 1;
+        foreach ($timpeneliti as $key => $peneliti) : ?>
+            <tr>
+                <td><?= $i ?></td>
+                <td><?= $peneliti['namaPeneliti']; ?></td>
+                <td><?= $peneliti['bidang_keahlian']; ?></td>
+                <td><?= $peneliti['peran']; ?></td>
+            </tr>
 
+        <?php $i++;
+        endforeach ?>
+    </table>
 
-    Mengetahui
 
 
 </body>

@@ -58,10 +58,12 @@ class ProposalPenelitian extends BaseController
 
         // $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
         // $penelitian = $this->penelitianModel->find($id_penelitian);
-
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
+        // dd($timpeneliti[0]['NIP']);
         $dataPenelitian = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
         ];
 
         $file_pdf = 'P2. Halaman Pengesahan - ' . $dataPenelitian['penelitian']['judul_penelitian'];
@@ -77,10 +79,12 @@ class ProposalPenelitian extends BaseController
 
         // $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
         // $penelitian = $this->penelitianModel->find($id_penelitian);
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
 
         $dataPenelitian = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
         ];
 
         $file_pdf = 'P3. Surat Pernyataan - ' . $dataPenelitian['penelitian']['judul_penelitian'];
