@@ -200,6 +200,7 @@
                         <div class="row mb-3">
                             <label class="col-md-4 col-lg-3 col-form-label ">Luaran dan Target Capaian</label>
                         </div>
+                        <input name="jumlahrow" id="jumlahrow" value="" type="hidden">
 
                         <div class="row mb-3">
                             <table class="table table3 table-advance table-hover align-middle anggota" id="myTableID3">
@@ -278,9 +279,11 @@
                             }
 
                             function add3() {
+                                var m = document.getElementById('jumlahrow');
                                 var rowCount3 = document.getElementById('myTableID3').rows.length;
                                 $(".table3").append("<tr><td><input name='jenisLuaran" + rowCount3 + "' class='form-control' type='text' id='jenisLuaran" + rowCount3 + "' required></td><td><input name='targetCapaian" + rowCount3 + "' class='form-control' type='text' id='targetCapaian" + rowCount3 + "' required></td><td><input name='jurnalTujuan" + rowCount3 + "' class='form-control' type='text' id='jurnalTujuan" + rowCount3 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount3);
+                                m.value = rowCount3;
                             }
                         </script>
 

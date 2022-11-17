@@ -9,6 +9,13 @@ class TargetPenelitian extends Migration
     public function up()
     {
         $this->forge->addField([
+            'id_luaran' => [
+                'type' => 'INT',
+                'constraint' => 15,
+                'nullable' => false,
+                'auto_increment' => true
+            ],
+
             'id_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15,
@@ -33,7 +40,7 @@ class TargetPenelitian extends Migration
                 'nullable' => false
             ]
         ]);
-        $this->forge->addKey('id_status', true);
+        $this->forge->addKey('id_luaran', true);
         $this->forge->createTable('target_penelitian');
     }
 
