@@ -1,4 +1,4 @@
-<?= $this->extend('reviewer/fixed/template') ?>
+<?= $this->extend('bau/fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
@@ -32,7 +32,7 @@
             <header class="section-header2">
                 <h2>Profil</h2>
                 <hr>
-                <p>Reviewer Politeknik Statistika STIS</p>
+                <p>BAU Politeknik Statistika STIS</p>
             </header>
             <div class="col-xl-4">
                 <div class="card">
@@ -59,7 +59,7 @@
                         <ul class="nav nav-tabs nav-tabs-bordered">
                             <li class="nav-item">
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">
-                                    Profil Reviewer
+                                    Profil BAU
                                 </button>
                             </li>
                         </ul>
