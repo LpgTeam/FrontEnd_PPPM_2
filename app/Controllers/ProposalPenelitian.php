@@ -6,6 +6,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
+use App\Models\LuaranTargetModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
 
@@ -16,12 +17,14 @@ class ProposalPenelitian extends BaseController
     protected $ketuatimpenelitiModel;
     protected $timpenelitiModel;
     protected $dosenModel;
+    protected $luaranModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
         $this->timpenelitiModel = new TimPenelitiModel();
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
         $this->dosenModel = new DosenModel();
+        $this->luaranModel = new LuaranTargetModel();
     }
 
     public function download_P1_proposal($id_penelitian)
@@ -47,7 +50,7 @@ class ProposalPenelitian extends BaseController
         $orientation = "portrait";
 
         $html = view('proposal/P1_proposal', $dataPenelitian);
-
+        // $html->set_option('isRemoteEnabled', true);
         // run dompdf
         $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
@@ -113,16 +116,62 @@ class ProposalPenelitian extends BaseController
         $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
 
-
-
-
-    public function lihat_pdf()
+    public function download_P5_proposal($id_penelitian)
     {
+        $Pdfgenerator = new Pdfgenerator();
+
         $dataPenelitian = [
-            'jenis_penelitian' => 'Mandiri',
-            'judul_penelitian' => 'Testing judul Mandiri',
+            'penelitian'    => $this->penelitianModel->find($id_penelitian),
+            'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
         ];
 
-        return view('dosen/tampilan/fileDownloadProposal', $dataPenelitian);
+        $file_pdf = 'P5. Luaran dan Target Capaian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
+        $paper = 'A4';
+        $orientation = "portrait";
+        $html = view('proposal/P5_proposal', $dataPenelitian);
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
+
+    public function download_all_proposal($id_penelitian)
+    {
+        $Pdfgenerator = new Pdfgenerator();
+
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
+
+        $dataPenelitian = [
+            'penelitian'    => $this->penelitianModel->find($id_penelitian),
+            'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
+            'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
+        ];
+
+        $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
+        $paper = 'A4';
+        $orientation = "portrait";
+        $html = view('proposal/all_proposal', $dataPenelitian);
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
+
+    public function lihat_pdf($id_penelitian)
+    {
+
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
+        // $penelitian = $this->penelitianModel->find($id_penelitian);
+
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
+
+        $dataPenelitian = [
+            'penelitian'    => $this->penelitianModel->find($id_penelitian),
+            'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
+            'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
+        ];
+        // $dataPenelitian = [
+        //     'jenis_penelitian' => 'Mandiri',
+        //     'judul_penelitian' => 'Testing judul Mandiri',
+        // ];
+
+        return view('proposal/p2_proposal', $dataPenelitian);
     }
 }

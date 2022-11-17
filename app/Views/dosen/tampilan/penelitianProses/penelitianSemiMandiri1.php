@@ -73,26 +73,7 @@
                                 leap into electronic typesetting, remaining essentially unchanged. It was
                                 popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
                             <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Proposal </button>
-                                <button class="btn btn-primary">Download Proposal </button>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <a href="/penelitian/download-p1-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
-                                    Download P1 Proposal
-                                </a>
-                                <a href="/penelitian/download-p2-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
-                                    Download P2 Proposal
-                                </a>
-                                <a href="/penelitian/download-p3-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
-                                    Download P3 Proposal
-                                </a>
-                                <a href="/penelitian/download-p4-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">
-                                    Download P4 Proposal
-                                </a>
-                            </div>
-
+                            <?= $this->include('proposal/download_per_proposal'); ?>
                         </div>
                     </div>
                 </div>

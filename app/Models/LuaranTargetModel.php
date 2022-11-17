@@ -39,4 +39,11 @@ class LuaranTargetModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_luaran_byid($id_penelitian)
+    {
+        $builder = $this->db->table('target_penelitian');
+        $query = $builder->getWhere(['id_penelitian' => $id_penelitian]);
+        return $query->getResultArray();
+    }
 }

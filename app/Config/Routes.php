@@ -172,6 +172,9 @@ $routes->get('/penelitian/download-p1-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-p2-proposal/(:any)', 'ProposalPenelitian::download_p2_proposal/$1');
 $routes->get('/penelitian/download-p3-proposal/(:any)', 'ProposalPenelitian::download_p3_proposal/$1');
 $routes->get('/penelitian/download-p4-proposal/(:any)', 'ProposalPenelitian::download_p4_proposal/$1');
+$routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::download_p5_proposal/$1');
+$routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
+$routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
 
 /*
  * --------------------------------------------------------------------

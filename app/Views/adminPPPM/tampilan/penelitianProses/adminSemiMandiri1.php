@@ -68,6 +68,8 @@
                                 <button class="btn btn-secondary">Lihat Proposal </button>
                                 <button class="btn btn-primary">Download Proposal </button>
                             </div>
+                            <hr>
+                            <?= $this->include('proposal/download_per_proposal'); ?>
 
                         </div>
                     </div>
