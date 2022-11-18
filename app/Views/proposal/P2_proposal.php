@@ -242,7 +242,7 @@
             <tr>
                 <td>Mengetahui</td>
                 <td>Jakarta, ...............</td>
-                <td>Jakarta, ...............</td>
+                <td>Jakarta, <?= $penelitian['tanggal_pengajuan']; ?></td>
             </tr>
             <tr>
                 <td>Kepala PPPM</td>

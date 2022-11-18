@@ -93,7 +93,7 @@
             <td>........................</td>
         </tr>
         <tr>
-            <td>Jakarta, ...............</td>
+            <td>Jakarta, <?= $penelitian['tanggal_pengajuan']; ?></td>
             <td>Jakarta, ...............</td>
             <td>Jakarta, ...............</td>
         </tr>
