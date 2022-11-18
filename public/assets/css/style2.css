@@ -1317,7 +1317,11 @@ section {
 }
 
 .kotak img {
-  padding: 30px 40px;
+  padding: 10px 60px;
+}
+
+.stis{
+  margin-top: -50px;
 }
 
 .kotak ul {
