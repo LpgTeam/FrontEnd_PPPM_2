@@ -11,11 +11,28 @@
             text-align: center;
         }
 
-        table,
-        tr,
-        td {
+        .tabel table,
+        .tabel tr,
+        .tabel td {
             border: 1px solid;
             border-collapse: collapse;
+        }
+
+        .tabel tr,
+        .tabel td {
+            padding: 10px
+        }
+
+        h3 {
+            padding-bottom: 10px;
+        }
+
+        u {
+            padding-bottom: 10px;
+        }
+
+        body {
+            margin: 40px;
         }
     </style>
 </head>
@@ -26,26 +43,28 @@
     <div class="text-center">
         <h3>LUARAN DAN TARGET CAPAIAN</h3>
     </div>
-
-    <table>
-        <tr>
-            <td>NO</td>
-            <td>JENIS LUARAN</td>
-            <td>TARGET CAPAIAN</td>
-            <td>JURNAL/KONFERENS YANG DITUJU*)</td>
-        </tr>
-        <?php $i = 1;
-        foreach ($luaran as $key => $luar) : ?>
+    <div class="tabel">
+        <table>
             <tr>
-                <td><?= $i ?></td>
-                <td><?= $luar['jenis_luaran']; ?></td>
-                <td><?= $luar['target_capaian']; ?></td>
-                <td><?= $luar['jurnal_tujuan']; ?></td>
+                <td>NO</td>
+                <td>JENIS LUARAN</td>
+                <td>TARGET CAPAIAN</td>
+                <td>JURNAL/KONFERENS YANG DITUJU*)</td>
             </tr>
+            <?php $i = 1;
+            foreach ($luaran as $key => $luar) : ?>
+                <tr>
+                    <td><?= $i ?></td>
+                    <td><?= $luar['jenis_luaran']; ?></td>
+                    <td><?= $luar['target_capaian']; ?></td>
+                    <td><?= $luar['jurnal_tujuan']; ?></td>
+                </tr>
 
-        <?php $i++;
-        endforeach ?>
-    </table>
+            <?php $i++;
+            endforeach ?>
+        </table>
+    </div>
+
     <p>*) tentative</p>
 
 
