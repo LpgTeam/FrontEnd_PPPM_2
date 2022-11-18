@@ -36,8 +36,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
+// $routes->get('/login', 'Login::index');
 
-$routes->get('/', 'Login::index');
 
 // ================================================================
 //                              Dosen
@@ -89,7 +89,7 @@ $routes->get('/pkmKelompok2', 'Dosen::pkmKelompok2');
 $routes->get('/pkmKelompok3', 'Dosen::pkmKelompok3');
 $routes->get('/pkmKelompok4', 'Dosen::pkmKelompok4');
 
-$routes->get('/login', 'Login::index');
+// $routes->get('/login', 'Login::index');
 //routes create pengajuan
 $routes->get('/penelitian/save', 'Penelitian::save');
 $routes->get('/pkm/save', 'PKM::save');

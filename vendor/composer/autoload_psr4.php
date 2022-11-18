@@ -20,5 +20,7 @@ return array(
     'Dompdf\\' => array($vendorDir . '/dompdf/dompdf/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'CodeIgniter\\Shield\\' => array($vendorDir . '/codeigniter4/shield/src'),
+    'CodeIgniter\\Settings\\' => array($vendorDir . '/codeigniter4/settings/src'),
     'CodeIgniter\\' => array($vendorDir . '/codeigniter4/framework/system'),
 );

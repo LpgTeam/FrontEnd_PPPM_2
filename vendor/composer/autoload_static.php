@@ -10,6 +10,8 @@ class ComposerStaticInit711ed77ad5a458a2ca0d0f6cb7b13a67
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '3f21dc9c7942b4b08e22c921761edb59' => __DIR__ . '/..' . '/codeigniter4/shield/src/Helpers/auth_helper.php',
+        'd769f6a3ea016e6093cedc85aa1e205d' => __DIR__ . '/..' . '/codeigniter4/shield/src/Helpers/email_helper.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     );
 
@@ -54,6 +56,8 @@ class ComposerStaticInit711ed77ad5a458a2ca0d0f6cb7b13a67
         ),
         'C' => 
         array (
+            'CodeIgniter\\Shield\\' => 19,
+            'CodeIgniter\\Settings\\' => 21,
             'CodeIgniter\\' => 12,
         ),
     );
@@ -114,6 +118,14 @@ class ComposerStaticInit711ed77ad5a458a2ca0d0f6cb7b13a67
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'CodeIgniter\\Shield\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codeigniter4/shield/src',
+        ),
+        'CodeIgniter\\Settings\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codeigniter4/settings/src',
         ),
         'CodeIgniter\\' => 
         array (
