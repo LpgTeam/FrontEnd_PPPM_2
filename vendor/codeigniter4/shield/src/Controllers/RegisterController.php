@@ -34,7 +34,7 @@ class RegisterController extends BaseController
         }
 
         // Check if registration is allowed
-        if (! setting('Auth.allowRegistration')) {
+        if (!setting('Auth.allowRegistration')) {
             return redirect()->back()->withInput()
                 ->with('error', lang('Auth.registerDisabled'));
         }
@@ -60,7 +60,7 @@ class RegisterController extends BaseController
         }
 
         // Check if registration is allowed
-        if (! setting('Auth.allowRegistration')) {
+        if (!setting('Auth.allowRegistration')) {
             return redirect()->back()->withInput()
                 ->with('error', lang('Auth.registerDisabled'));
         }
@@ -71,7 +71,7 @@ class RegisterController extends BaseController
         // like the password, can only be validated properly here.
         $rules = $this->getValidationRules();
 
-        if (! $this->validate($rules)) {
+        if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
@@ -83,7 +83,6 @@ class RegisterController extends BaseController
         );
         $user = $this->getUserEntity();
         $user->fill($this->request->getPost($allowedPostFields));
-
         // Workaround for email only registration/login
         if ($user->username === null) {
             $user->username = null;
@@ -159,8 +158,16 @@ class RegisterController extends BaseController
             config('AuthSession')->emailValidationRules,
             ['is_unique[auth_identities.secret]']
         );
+        $registrationNipRules = array_merge(
+            config('AuthSession')->nipValidationRules,
+            ['is_unique[auth_identities.secret]']
+        );
 
         return setting('Validation.registration') ?? [
+            'nip' => [
+                'label' => 'Auth.nip',
+                'rules' => $registrationNipRules,
+            ],
             'username' => [
                 'label' => 'Auth.username',
                 'rules' => $registrationUsernameRules,

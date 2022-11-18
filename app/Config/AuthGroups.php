@@ -14,7 +14,8 @@ class AuthGroups extends ShieldAuthGroups
      * --------------------------------------------------------------------
      * The group that a newly registered user is added to.
      */
-    public string $defaultGroup = 'user';
+    // public string $defaultGroup = 'user';
+    public string $defaultGroup = 'dosen';
 
     /**
      * --------------------------------------------------------------------
@@ -26,25 +27,45 @@ class AuthGroups extends ShieldAuthGroups
      *      auth('api')->attempt($credentials);
      */
     public array $groups = [
-        'superadmin' => [
-            'title'       => 'Super Admin',
-            'description' => 'Complete control of the site.',
+        // 'superadmin' => [
+        //     'title'       => 'Super Admin',
+        //     'description' => 'Complete control of the site.',
+        // ],
+        // 'admin' => [
+        //     'title'       => 'Admin',
+        //     'description' => 'Day to day administrators of the site.',
+        // ],
+        // 'developer' => [
+        //     'title'       => 'Developer',
+        //     'description' => 'Site programmers.',
+        // ],
+        // 'user' => [
+        //     'title'       => 'User',
+        //     'description' => 'General users of the site. Often customers.',
+        // ],
+        // 'beta' => [
+        //     'title'       => 'Beta User',
+        //     'description' => 'Has access to beta-level features.',
+        // ],
+        'direktur' => [
+            'title'       => 'Direktur Politeknik Statistika STIS',
+            'description' => 'Akses segala fitur yang tersedia untuk direktur',
         ],
-        'admin' => [
-            'title'       => 'Admin',
-            'description' => 'Day to day administrators of the site.',
+        'kepalaPPPM' => [
+            'title'       => 'Kepala PPPM',
+            'description' => 'Akses segala fitur yang tersedia untuk Kepala PPPM',
         ],
-        'developer' => [
-            'title'       => 'Developer',
-            'description' => 'Site programmers.',
+        'reviewer' => [
+            'title'       => 'Dosen PPPM',
+            'description' => 'Akses segala fitur yang tersedia untuk reviewer / dosen PPPM',
         ],
-        'user' => [
-            'title'       => 'User',
-            'description' => 'General users of the site. Often customers.',
+        'bau' => [
+            'title'       => 'BAU',
+            'description' => 'Akses segala fitur yang tersedia untuk BAU',
         ],
-        'beta' => [
-            'title'       => 'Beta User',
-            'description' => 'Has access to beta-level features.',
+        'dosen' => [
+            'title'       => 'Dosen',
+            'description' => 'Akses segala fitur yang tersedia untuk dosen',
         ],
     ];
 

@@ -38,6 +38,13 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 // $routes->get('/login', 'Login::index');
 
+// service('auth')->routes($routes);
+
+$routes->get('/', 'Dosen::index');
+$routes->get('/login', 'Login::loginView');
+$routes->post('/login', 'Login::loginAction');
+$routes->post('/loginAdmin', 'Login::loginActionAdmin');
+$routes->get('/logout', 'Login::logoutAction');
 
 // ================================================================
 //                              Dosen
@@ -175,6 +182,9 @@ $routes->get('/penelitian/download-p4-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::download_p5_proposal/$1');
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
 $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
+
+
+service('auth')->routes($routes, ['except' => ['login', 'logout']]);
 
 /*
  * --------------------------------------------------------------------

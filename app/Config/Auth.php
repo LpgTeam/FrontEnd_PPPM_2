@@ -64,6 +64,7 @@ class Auth extends ShieldAuth
      */
     public array $actions = [
         'register' => null,
+        // 'register' => 'CodeIgniter\Shield\Authentication\Actions\EmailActivator',
         'login'    => null,
     ];
 
@@ -240,7 +241,8 @@ class Auth extends ShieldAuth
      * For example:
      *     $personalFields = ['firstname', 'lastname'];
      */
-    public array $personalFields = [];
+    // public array $personalFields = [];
+    public array $personalFields = ['nip'];
 
     /**
      * --------------------------------------------------------------------
@@ -348,7 +350,9 @@ class Auth extends ShieldAuth
      */
     public function loginRedirect(): string
     {
-        $url = setting('Auth.redirects')['login'];
+        $url = auth()->user()->inGroup('admin')
+            ? '/admin'
+            : setting('Auth.redirects')['login'];
 
         return $this->getUrl($url);
     }

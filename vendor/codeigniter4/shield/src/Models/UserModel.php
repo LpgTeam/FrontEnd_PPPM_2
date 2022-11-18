@@ -23,6 +23,7 @@ class UserModel extends Model
     protected $returnType     = User::class;
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
+        'nip',
         'username',
         'status',
         'status_message',

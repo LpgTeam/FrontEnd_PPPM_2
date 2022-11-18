@@ -224,6 +224,7 @@ class Auth extends BaseConfig
     public array $validFields = [
         'email',
         'username',
+        'nip',
     ];
 
     /**
@@ -240,7 +241,9 @@ class Auth extends BaseConfig
      * For example:
      *     $personalFields = ['firstname', 'lastname'];
      */
-    public array $personalFields = [];
+    public array $personalFields = [
+        'nip',
+    ];
 
     /**
      * --------------------------------------------------------------------
