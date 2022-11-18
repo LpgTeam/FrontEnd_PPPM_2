@@ -95,6 +95,8 @@ class Login extends ShieldLoginController
             return redirect()->to(base_url() . '/login');
         } elseif (auth()->user()->inGroup('direktur')) {
             return redirect()->to(base_url() . '/indexDirektur')->withCookies();
+        } elseif (auth()->user()->inGroup('admin')) {
+            return redirect()->to(base_url() . '/indexAdmin')->withCookies();
         } elseif (auth()->user()->inGroup('kepalaPPPM')) {
             return redirect()->to(base_url() . '/indexKepala')->withCookies();
         } elseif (auth()->user()->inGroup('reviewer')) {
@@ -112,6 +114,6 @@ class Login extends ShieldLoginController
     {
         auth()->logout();
         // return redirect()->to(config('Auth')->logoutRedirect())->with('message', lang('Auth.successLogout'));
-        return redirect()->to(base_url() . '/login')->with('message', lang('Auth.successLogout'));
+        return redirect()->to(base_url())->with('message', lang('Auth.successLogout'));
     }
 }

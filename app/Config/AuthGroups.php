@@ -47,6 +47,10 @@ class AuthGroups extends ShieldAuthGroups
         //     'title'       => 'Beta User',
         //     'description' => 'Has access to beta-level features.',
         // ],
+        'admin' => [
+            'title'       => 'Admin Politeknik Statistika STIS',
+            'description' => 'Akses segala fitur yang tersedia untuk admin',
+        ],
         'direktur' => [
             'title'       => 'Direktur Politeknik Statistika STIS',
             'description' => 'Akses segala fitur yang tersedia untuk direktur',
