@@ -117,6 +117,7 @@
 
 
                         <input name="biaya" type="hidden" min="1" step="any" class="form-control" id="biaya" value="0">
+                        <!-- <input name="uploadSurat" type="hidden"class="form-control" id="uploadSurat" value="null"> -->
 
                         <div class="row mb-3">
                             <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
