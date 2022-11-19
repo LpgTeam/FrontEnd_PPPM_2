@@ -70,6 +70,11 @@ $routes->get('/penelitianProses2/(:any)', 'Dosen::penelitianProses2/$1');
 $routes->get('/penelitianProses2Kontrak/(:any)', 'Dosen::penelitianProses2Kontrak/$1');
 $routes->get('/penelitianProses3/(:any)', 'Dosen::penelitianProses3/$1');
 $routes->get('/penelitianProses4/(:any)', 'Dosen::penelitianProses4/$1');
+
+
+//===========================Detail============================================
+$routes->get('/penelitianDetail/saveLaporan/(:any)', 'PenelitianDetail::saveLaporan/$1');
+
 //===========================New============================================
 
 $routes->get('/penelitianDidanaiInstitusi1', 'Dosen::penelitianDidanaiInstitusi1');
