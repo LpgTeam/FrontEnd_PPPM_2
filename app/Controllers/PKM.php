@@ -70,12 +70,13 @@ class PKM extends BaseController
             'jenis_pkm' => $this->request->getVar('jenis_pkm'),
             'topik_kegiatan' => $this->request->getVar('topik'),
             // 'bidang' => $this->request->getVar('bidang'),
-            // 'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
-            'bentuk_kegiatan' => $this->request->getVar('pilihKegiatan'),
+            'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
+            // 'bentuk_kegiatan' => $this->request->getVar('pilihKegiatan'),
             'waktu_pelaksanaan' =>$this->request->getVar('waktu'),
             'tempat_kegiatan' =>$this->request->getVar('tempat'),
             'sasaran' =>$this->request->getVar('sasaran'),
             'target_peserta' =>$this->request->getVar('target'),
+            'hasil' =>$this->request->getVar('hasil'),
             'id_status' => '1',
             'status' => 'diajukan',
             // 'file_proposal' => $this->request->getFile('upload'),
@@ -85,6 +86,7 @@ class PKM extends BaseController
 
         $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
         // dd($idpkm);
+        // dd($this->request->getVar('hasil'));
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
         // dd($nipdosen);
 
