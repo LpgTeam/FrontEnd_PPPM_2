@@ -9,6 +9,11 @@ class LaporanPenelitian extends Migration
     public function up()
     {
         $this->forge->addField([
+            'id_laporan' => [
+                'type' => 'INT',
+                'constraint' => 15
+            ],
+
             'id_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15
@@ -44,6 +49,7 @@ class LaporanPenelitian extends Migration
                 'constraint' => 50
             ]
         ]);
+        $this->forge->addKey('id_laporan', true);
         $this->forge->createTable('laporan_penelitian');
     }
 

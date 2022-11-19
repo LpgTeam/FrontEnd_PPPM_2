@@ -5,7 +5,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Penelitian <?= $penelitian['jenis_penelitian'];?></h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -71,7 +71,7 @@
                                 Dosen Politeknik Statistika STIS
                             </p>
                             <hr>
-                            <form>
+                            <form action="<?= base_url('/penelitianDetail/saveLaporan/' . $penelitian['id_penelitian']); ?>" method="post" enctype="multipart/form-data">
                                 <div class="row mb-3">
                                     <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                         <tr class="table-primary">
@@ -90,6 +90,7 @@
                                         </button>
                                     </div>
                                 </div>
+                                <input name="jumlahrow" id="jumlahrow" value="" type="hidden">
 
                                 <script>
                                     function rm() {
@@ -97,9 +98,11 @@
                                     }
 
                                     function add() {
+                                        var m = document.getElementById('jumlahrow');
                                         var rowCount = document.getElementById('myTableID').rows.length;
-                                        $(".table1").append("<tr><td><input name='jenisLuaran" + rowCount + "' class='form-control' type='text' id='jenisLuaran" + rowCount + "' required></td><td><input name='capaian" + rowCount + "' class='form-control' type='text' id='capaian" + rowCount + "' required></td><td><input name='jurnal" + rowCount + "' class='form-control' type='text' id='jurnal" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                        $(".table1").append("<tr><td><input name='jenisLuaran" + rowCount + "' class='form-control' type='text' id='jenisLuaran" + rowCount + "' required></td><td><input name='targetCapaian" + rowCount + "' class='form-control' type='text' id='targetCapaian" + rowCount + "' required></td><td><input name='jurnalTujuan" + rowCount + "' class='form-control' type='text' id='jurnalTujuan" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
                                         console.log(rowCount);
+                                        m.value = rowCount;
                                     }
                                 </script>
 

@@ -8,20 +8,13 @@ class LaporanPenelitianModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'laporan_penelitian';
+    protected $primaryKey       = 'id_laporan';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'id_penelitian',
-        'kontrak',
-        'laporan_luaran',
-        'laporan_dana',
-        'hasil',
-        'form_usulan_publikasi',
-        'status_penelitian'
-    ];
+    protected $allowedFields    = ['id_penelitian', 'kontrak', 'laporan_luaran', 'laporan_dana	hasil', 'form_usulan_publikasi', 'status_penelitian'];
 
     // Dates
     protected $useTimestamps = false;
@@ -46,4 +39,9 @@ class LaporanPenelitianModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function find_by_idpenelitian($id_penelitian)
+    {
+        return $this->where(['id_penelitian' => $id_penelitian])->first();
+    }
 }
