@@ -4,8 +4,18 @@
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('error')) : ?>
+                <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
             <header class="section-header2">
-                <h2>Penelitian <?= $penelitian['jenis_penelitian'];?></h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -68,17 +78,20 @@
                             <hr>
                             <p>Melampirkan bukti pendanaan untuk kegiatan publikasi hasil dari penelitian</p>
                             <hr>
-                            <form>
+                            <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="confirm('Apakah Anda Setuju')" enctype="multipart/form-data">
                                 <div class="d-flex justify-content-between">
                                     <div class="row mb-4">
-                                        <label for="upload" class="col-md-3 col-lg-4 col-form-label ">Bukti Pendanaan</label>
-                                        <div class="col-md-3 col-lg-8">
-                                            <input class="form-control" type="file" id="upload" name="upload" required>
+                                        <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadPendanaan" class="form-control <?= ($validation->hasError('uploadPendanaan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadPendanaan" aria-describedby="uploadValid">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadPendanaan'); ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button class="btn btn-success">Submit Bukti </button>
+                                    <button type="submit" class="btn btn-success">Submit Bukti </button>
                                 </div>
                             </form>
                         </div>

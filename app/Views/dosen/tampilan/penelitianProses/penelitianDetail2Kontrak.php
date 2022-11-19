@@ -4,11 +4,22 @@
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('error')) : ?>
+                <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
             <header class="section-header2">
-                <h2>Penelitian <?= $penelitian['jenis_penelitian'];?></h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
+
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
@@ -65,6 +76,13 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Kontrak</h5>
                             <hr>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                when an unknown printer took a galley of type and scrambled it to make a
+                                type specimen book. It has survived not only five centuries, but also the
+                                leap into electronic typesetting, remaining essentially unchanged. It was
+                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            </p>
                             <div class="d-flex justify-content-between">
                                 <!-- <button class="btn btn-secondary">Lihat Kontrak </button> -->
                                 <a href="<?= base_url('penelitian/printpdfKontrak') ?>" class="btn btn-primary">
@@ -73,18 +91,33 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card">
+                        <div class="card-body mt-3">
+                            <h5 class="card-title text-center">Upload Kontrak</h5>
+                            <hr>
+                            <form action="<?= base_url('/penelitianDetail/saveKontrak/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="confirm('Apakah Anda Setuju')" enctype="multipart/form-data">
+                                <div class="row mb-3">
+                                    <label for="uploadKontrak" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="uploadKontrak" class="form-control <?= ($validation->hasError('uploadKontrak')) ? 'is-invalid' : ''; ?>" type="file" id="uploadKontrak" aria-describedby="uploadValid">
+                                        <div class="invalid-feedback" id="uploadValid">
+                                            <?= $validation->getError('uploadKontrak'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success">Submit Kontrak</button>
+                                    <!-- <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Submit Kontrak</button> -->
+                                </div>
+                            </form><!-- Form End -->
+                        </div>
+                    </div>
+
+                    <!-- <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Perjanjian Kontak Penelitan</h5>
                             <hr>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            </p>
+
                             <div class="d-flex justify-content-end">
                                 <div class="text-end">
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
@@ -97,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="col-lg-6">

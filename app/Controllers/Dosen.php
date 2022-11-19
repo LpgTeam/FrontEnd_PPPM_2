@@ -359,15 +359,17 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_penelitian)
+            'penelitian' => $this->penelitianModel->find($id_penelitian),
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
     }
     public function penelitianProses2Kontrak($id_penelitian)
-    {
+    {   
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_penelitian)
+            'penelitian' => $this->penelitianModel->find($id_penelitian),
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
     }

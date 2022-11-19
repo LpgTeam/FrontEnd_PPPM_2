@@ -2,12 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\PenelitianModel;
-use App\Models\DosenModel;
-use App\Models\TimPenelitiModel;
-use App\Models\LuaranTargetModel;
 use App\Models\LaporanPenelitianModel;
+use App\Models\PenelitianModel;
+use App\Models\LuaranTargetModel;
 
 class PenelitianDetail extends BaseController
 {
@@ -17,16 +16,14 @@ class PenelitianDetail extends BaseController
     protected $timpenelitiModel;
     protected $dosenModel;
     protected $luaranModel;
+
     protected $laporanPenelitianModel;
 
     public function __construct()
     {
-        $this->penelitianModel = new PenelitianModel();
-        $this->timpenelitiModel = new TimPenelitiModel();
-        $this->ketuatimpenelitiModel = new TimPenelitiModel();
-        $this->dosenModel = new DosenModel();
         $this->luaranModel = new LuaranTargetModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
+        $this->penelitianModel = new PenelitianModel();
     }
 
     public function saveLaporan($idpenelitian)
@@ -60,5 +57,84 @@ class PenelitianDetail extends BaseController
 
         return redirect()->to('/penelitianDosen');
         // return $this->respondCreated($response);
+    }
+
+    public function index()
+    {
+        //
+    }
+
+    public function saveKontrak($idPenelitian)
+    {
+
+        if (!$this->validate([
+            'uploadKontrak' => [
+                'rules' => 'uploaded[uploadKontrak]|ext_in[uploadKontrak,pdf]|max_size[uploadKontrak,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar"
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            session()->setFlashdata('error', 'Terjadi Kesalahan!');
+            return redirect()->to('/penelitianProses2Kontrak/' . $idPenelitian)->withInput();
+        }
+
+        $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
+
+        $fileKontrak = $this->request->getFile('uploadKontrak');
+        $namaKontrak = $fileKontrak->getName();
+        $this->laporanPenelitianModel->save([
+            "id_penelitian" => $idPenelitian,
+            "kontrak" => $namaKontrak,
+            "status_penelitian" => $penelitian['status_pengajuan']
+        ]);
+        $fileKontrak->move('kontrak', $namaKontrak);
+
+
+        session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
+        // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
+
+        return redirect()->to('/penelitianProses2Kontrak/' . $idPenelitian);
+    }
+
+    public function savePendanaan($idPenelitian)
+    {
+
+        if (!$this->validate([
+            'uploadPendanaan' => [
+                'rules' => 'uploaded[uploadPendanaan]|ext_in[uploadPendanaan,pdf]|max_size[uploadPendanaan,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar"
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            session()->setFlashdata('error', 'Terjadi Kesalahan!');
+            return redirect()->to('/penelitianProses2/' . $idPenelitian)->withInput();
+        }
+
+        $fileKontrak = $this->request->getFile('uploadPendanaan');
+        $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
+        // dd($penelitian);
+        $namaKontrak = $fileKontrak->getName();
+        $this->laporanPenelitianModel->save([
+            "id_penelitian" => $idPenelitian,
+            "kontrak" => $namaKontrak,
+            "status_penelitian" => $penelitian['status_pengajuan']
+        ]);
+        $fileKontrak->move('bukti_pendanaan', $namaKontrak);
+
+
+        session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
+        // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
+
+        return redirect()->to('/penelitianProses2/' . $idPenelitian);
     }
 }
