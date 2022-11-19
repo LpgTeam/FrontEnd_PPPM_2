@@ -20,6 +20,7 @@ class PenelitianModel extends Model
         'judul_penelitian',
         'bidang',
         'tanggal_pengajuan',
+        'jumlah_anggota',
         'id_status',
         'status_pengajuan',
         'file_proposal',

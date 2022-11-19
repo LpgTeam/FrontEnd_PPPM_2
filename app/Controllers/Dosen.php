@@ -119,7 +119,8 @@ class Dosen extends BaseController
             'jenis' => 'Mandiri',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm1', $data);
+        // return view('dosen/tampilan/penelitianForm1', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
     }
 
     public function penelitianKerjasama()
@@ -130,7 +131,8 @@ class Dosen extends BaseController
             'jenis' => 'Kerjasama',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm1', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
+        // return view('dosen/tampilan/penelitianForm1', $data);
     }
 
     public function penelitianSemiMandiri()
@@ -141,7 +143,8 @@ class Dosen extends BaseController
             'jenis' => 'Semi Mandiri',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm2', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
+        // return view('dosen/tampilan/penelitianForm2', $data);
     }
 
     public function penelitianDidanaiInstitusi()
@@ -152,7 +155,8 @@ class Dosen extends BaseController
             'jenis' => 'Di Danai Institusi',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm2', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
+        // return view('dosen/tampilan/penelitianForm2', $data);
     }
 
     public function penelitianInstitusi()
@@ -163,7 +167,8 @@ class Dosen extends BaseController
             'jenis' => 'Institusi',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm2', $data);
+        // return view('dosen/tampilan/penelitianForm2', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
     }
 
     public function pkmMandiri()

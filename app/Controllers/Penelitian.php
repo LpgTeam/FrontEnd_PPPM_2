@@ -51,73 +51,124 @@ class Penelitian extends BaseController
     public function save()
     {
         // //validasi input
-        if (!$this->validate([
-            // 'sampul' => [
-            //     'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
-            //     'errors' => [
-            //         'max_size' => "Ukuran gambar terlalu besar",
-            //         'is_image' => "Yang anda pilih bukan gambar",
-            //         'mime_in' => "Yang anda pilih bukan gambar"
-            //     ]
-            // ]
-            'judul_penelitian' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Judul penelitian harus diisi.',
-                ]
-            ],
-            'upload' => [
-                'rules' => 'uploaded[upload]|ext_in[upload,pdf]|max_size[upload,10000]',
-                'errors' => [
-                    'uploaded' => "{field} file tidak boleh kosong",
-                    'ext_in' => "Format file harus pdf",
-                    'max_size' => "Ukuran File terlalu besar"
-                ]
-            ],
-            'uploadSurat' => [
-                'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
-                'errors' => [
-                    'uploaded' => "{field} file tidak boleh kosong",
-                    'ext_in' => "Format file harus pdf",
-                    'max_size' => "Ukuran File terlalu besar (Max 100kb)"
-                ]
-            ]
-        ])) {
-            // $validation = \Config\Services::validation();
-            // dd($validation);
-            // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
-            $jenisPenelitian = $this->request->getVar('jenis_penelitian');
-            return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
 
-            // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
-            //     return redirect()->to('/penelitianMandiri')->withInput();
-            // } else if (($jenisPenelitian == 'Semi Mandiri') || ($jenisPenelitian == 'Di Danai Institusi') || ($jenisPenelitian == 'Institusi')) {
-            //     return redirect()->to('/penelitianSemiMandiri')->withInput();
-            // }
+        $jenisPenelitian = $this->request->getVar('jenis_penelitian');
+        // dd($jenisPenelitian);
+
+        if ($jenisPenelitian == "Mandiri" || $jenisPenelitian == "Kerjasama") {
+            if (!$this->validate([
+                // 'sampul' => [
+                //     'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                //     'errors' => [
+                //         'max_size' => "Ukuran gambar terlalu besar",
+                //         'is_image' => "Yang anda pilih bukan gambar",
+                //         'mime_in' => "Yang anda pilih bukan gambar"
+                //     ]
+                // ]
+                'judul_penelitian' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Judul penelitian harus diisi.',
+                    ]
+                ],
+                'uploadBukti' => [
+                    'rules' => 'uploaded[uploadBukti]|ext_in[uploadBukti,pdf]|max_size[uploadBukti,10000]',
+                    'errors' => [
+                        'uploaded' => "{field} file tidak boleh kosong",
+                        'ext_in' => "Format file harus pdf",
+                        'max_size' => "Ukuran File terlalu besar"
+                    ]
+                ]
+            ])) {
+                // $validation = \Config\Services::validation();
+                // dd($validation);
+                // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
+                $jenisPenelitian = $this->request->getVar('jenis_penelitian');
+                // dd($validation);
+                return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
+
+                // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
+                //     return redirect()->to('/penelitianMandiri')->withInput();
+                // } else if (($jenisPenelitian == 'Semi Mandiri') || ($jenisPenelitian == 'Di Danai Institusi') || ($jenisPenelitian == 'Institusi')) {
+                //     return redirect()->to('/penelitianSemiMandiri')->withInput();
+                // }
+            }
+            $namaSurat = "-";
+            $biaya = "0";
+            $namaProposal = "-";
+            $fileBukti = $this->request->getFile('uploadBukti');
+            $namaBukti = $fileBukti->getName();
+            $fileBukti->move('bukti_luaran', $namaBukti);
+        } else {
+            if (!$this->validate([
+                // 'sampul' => [
+                //     'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                //     'errors' => [
+                //         'max_size' => "Ukuran gambar terlalu besar",
+                //         'is_image' => "Yang anda pilih bukan gambar",
+                //         'mime_in' => "Yang anda pilih bukan gambar"
+                //     ]
+                // ]
+                'judul_penelitian' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Judul penelitian harus diisi.',
+                    ]
+                ],
+                'upload' => [
+                    'rules' => 'uploaded[upload]|ext_in[upload,pdf]|max_size[upload,10000]',
+                    'errors' => [
+                        'uploaded' => "{field} file tidak boleh kosong",
+                        'ext_in' => "Format file harus pdf",
+                        'max_size' => "Ukuran File terlalu besar"
+                    ]
+                ],
+                'uploadSurat' => [
+                    'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
+                    'errors' => [
+                        'uploaded' => "{field} file tidak boleh kosong",
+                        'ext_in' => "Format file harus pdf",
+                        'max_size' => "Ukuran File terlalu besar (Max 100kb)"
+                    ]
+                ]
+            ])) {
+                // $validation = \Config\Services::validation();
+                // dd($validation);
+                // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
+                $jenisPenelitian = $this->request->getVar('jenis_penelitian');
+                // dd($validation);
+                return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
+
+                // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
+                //     return redirect()->to('/penelitianMandiri')->withInput();
+                // } else if (($jenisPenelitian == 'Semi Mandiri') || ($jenisPenelitian == 'Di Danai Institusi') || ($jenisPenelitian == 'Institusi')) {
+                //     return redirect()->to('/penelitianSemiMandiri')->withInput();
+                // }
+            }
+            $fileProposal = $this->request->getFile('upload');
+            $fileSurat = $this->request->getFile('uploadSurat');
+            $namaSurat = $fileSurat->getName();
+            $namaProposal = $fileProposal->getName();
+            $fileSurat->move('surat_pernyataan', $namaSurat);
+            $fileProposal->move('proposal', $namaProposal);
+            $biaya = $this->request->getVar('biaya');
+            $namaBukti = "-";
         }
-
-        // ambil proposal dan surat
-        $fileProposal = $this->request->getFile('upload');
-        $fileSurat = $this->request->getFile('uploadSurat');
-
-        $namaProposal = $fileProposal->getName();
-        $namaSurat = $fileSurat->getName();
-
-        $fileProposal->move('proposal', $namaProposal);
-        $fileSurat->move('surat_pernyataan', $namaSurat);
 
         // $slug = url_title($this->request->getVar('judul_penelitian'), '-', true);
 
         $this->penelitianModel->save([
-            'jenis_penelitian' => $this->request->getVar('jenis_penelitian'),
+            'jenis_penelitian' => $jenisPenelitian,
             'judul_penelitian' => $this->request->getVar('judul_penelitian'),
             'bidang' => $this->request->getVar('bidang'),
+            'jumlah_anggota' => $this->request->getVar('anggota'),
             'tanggal_pengajuan' => Time::now(),
             'id_status' => '1',
             'status_pengajuan' => 'diajukan',
             'file_proposal' => $namaProposal,
             'surat_pernyataan' => $namaSurat,
-            'biaya'  => $this->request->getVar('biaya')
+            'biaya'  => $biaya,
+            'bukti_luaran' => $namaBukti
         ]);
 
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));

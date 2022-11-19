@@ -86,6 +86,7 @@ class PKM extends BaseController
 
         $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
         // dd($idpkm);
+        // dd($this->request->getVar('hasil'));
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
         // dd($nipdosen);
 

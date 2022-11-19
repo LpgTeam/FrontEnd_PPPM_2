@@ -11,11 +11,29 @@
             text-align: center;
         }
 
-        table,
-        tr,
-        td {
+        .tabel table,
+        .tabel tr,
+        .tabel td {
             border: 1px solid;
             border-collapse: collapse;
+        }
+
+
+        .tabel tr,
+        .tabel td {
+            padding: 10px
+        }
+
+        h3 {
+            padding-bottom: 10px;
+        }
+
+        u {
+            padding-bottom: 10px;
+        }
+
+        body {
+            margin: 40px;
         }
     </style>
 </head>
@@ -27,25 +45,28 @@
         <h3>TUGAS/PERAN TIM PENELITI</h3>
     </div>
 
-    <table>
-        <tr>
-            <td>NO</td>
-            <td>NAMA PENELITI</td>
-            <td>BIDANG KEAHLIAN</td>
-            <td>TUGAS/PERAN DALAM PENELITIAN</td>
-        </tr>
-        <?php $i = 1;
-        foreach ($timpeneliti as $key => $peneliti) : ?>
+    <div class="tabel">
+        <table>
             <tr>
-                <td><?= $i ?></td>
-                <td><?= $peneliti['namaPeneliti']; ?></td>
-                <td><?= $peneliti['bidang_keahlian']; ?></td>
-                <td><?= $peneliti['peran']; ?></td>
+                <td>NO</td>
+                <td>NAMA PENELITI</td>
+                <td>BIDANG KEAHLIAN</td>
+                <td>TUGAS/PERAN DALAM PENELITIAN</td>
             </tr>
+            <?php $i = 1;
+            foreach ($timpeneliti as $key => $peneliti) : ?>
+                <tr>
+                    <td><?= $i ?></td>
+                    <td><?= $peneliti['namaPeneliti']; ?></td>
+                    <td><?= $peneliti['bidang_keahlian']; ?></td>
+                    <td><?= $peneliti['peran']; ?></td>
+                </tr>
 
-        <?php $i++;
-        endforeach ?>
-    </table>
+            <?php $i++;
+            endforeach ?>
+        </table>
+    </div>
+
 
 
 

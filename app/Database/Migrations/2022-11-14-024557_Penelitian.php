@@ -38,6 +38,12 @@ class Penelitian extends Migration
                 'type' => 'DATE',
                 'nullable' => false
             ],
+
+            'jumlah_anggota' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'nullable' => false
+            ],
             
             'id_status' => [
                 'type' => 'INT',
