@@ -202,7 +202,7 @@
                                 var btn = document.getElementById('btn');
                                 var m = document.getElementById('m');
                                 // btn.style.display = "block";
-                                if (x > rowCount-1) {
+                                if (x > rowCount - 1) {
                                     m.style.display = 'none';
                                     $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nip" + rowCount + "' class='form-control' type='text' id='nip" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
                                     console.log(rowCount);
@@ -224,11 +224,11 @@
                                 var btn = document.getElementById('btn2');
                                 var m = document.getElementById('m2');
                                 // btn.style.display = "block";
-                                if (x > rowCount2-1) {
+                                if (x > rowCount2 - 1) {
                                     m.style.display = 'none';
-                                $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
-                                console.log(rowCount2);
-                                }else{
+                                    $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                    console.log(rowCount2);
+                                } else {
                                     m.style.display = "block";
                                     btn.onclick() = null;
                                 }

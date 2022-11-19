@@ -41,10 +41,7 @@
                                 leap into electronic typesetting, remaining essentially unchanged. It was
                                 popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
                             <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Proposal </button>
-                                <button class="btn btn-primary">Download Proposal </button>
-                            </div>
+                            <?= $this->include('proposal/download_per_proposal'); ?>
                         </div>
                     </div>
 

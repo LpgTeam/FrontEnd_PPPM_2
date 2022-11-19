@@ -8,6 +8,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
+use App\Models\LuaranTargetModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
 
@@ -18,6 +19,8 @@ class Penelitian extends BaseController
     protected $ketuatimpenelitiModel;
     protected $timpenelitiModel;
     protected $dosenModel;
+    protected $luaranModel;
+
     public function __construct()
     {
         //new
@@ -25,6 +28,7 @@ class Penelitian extends BaseController
         $this->timpenelitiModel = new TimPenelitiModel();
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
         $this->dosenModel = new DosenModel();
+        $this->luaranModel = new LuaranTargetModel();
     }
 
     public function index()
@@ -69,8 +73,15 @@ class Penelitian extends BaseController
                     'ext_in' => "Format file harus pdf",
                     'max_size' => "Ukuran File terlalu besar"
                 ]
+            ],
+            'uploadSurat' => [
+                'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar (Max 100kb)"
+                ]
             ]
-
         ])) {
             // $validation = \Config\Services::validation();
             // dd($validation);
@@ -137,6 +148,18 @@ class Penelitian extends BaseController
             ]);
         };
 
+        $nLuaran = (int)$this->request->getVar('jumlahrow');
+
+        // dd($nLuaran);
+        for ($i = 1; $i <= $nLuaran; $i++) {
+            $this->luaranModel->save([
+                'id_penelitian'     => $idpenelitian['id_penelitian'],
+                'jenis_luaran'      => $this->request->getVar('jenisLuaran' . $i),
+                'target_capaian'    => $this->request->getVar('targetCapaian' . $i),
+                'jurnal_tujuan'            => $this->request->getVar('jurnalTujuan' . $i),
+            ]);
+        };
+
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
@@ -168,26 +191,6 @@ class Penelitian extends BaseController
 
     public function printpdf()
     {
-        // Initialize a file URL to
-        // the variable
-        $url =
-            base_url('/surat_pernyataan/Template_surat_pernyataan_penelitian.docx');
-
-        // Use basename() function to
-        // return the file
-        $file_name = basename($url);
-
-        // Use file_get_contents() function
-        // to get the file from url and use
-        // file_put_contents() function to
-        // save the file by using base name
-        if (file_put_contents(
-            $file_name,
-            file_get_contents($url)
-        )) {
-            echo "File downloaded successfully";
-        } else {
-            echo "File downloading failed.";
-        }
+        return $this->response->download('surat_pernyataan/Template_surat_pernyataan_penelitian.pdf', null)->setFileName("Surat-Pernyataan.pdf"); //download file
     }
 }

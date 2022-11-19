@@ -18,7 +18,6 @@
             border-collapse: collapse;
         }
 
-
         .tabel tr,
         .tabel td {
             padding: 10px
@@ -40,26 +39,25 @@
 
 <body>
 
-    <u><b>P4. Tugas Tim Peneliti</b></u>
+    <u><b>P5. Luaran dan Target Capaian</b></u>
     <div class="text-center">
-        <h3>TUGAS/PERAN TIM PENELITI</h3>
+        <h3>LUARAN DAN TARGET CAPAIAN</h3>
     </div>
-
     <div class="tabel">
         <table>
             <tr>
                 <td>NO</td>
-                <td>NAMA PENELITI</td>
-                <td>BIDANG KEAHLIAN</td>
-                <td>TUGAS/PERAN DALAM PENELITIAN</td>
+                <td>JENIS LUARAN</td>
+                <td>TARGET CAPAIAN</td>
+                <td>JURNAL/KONFERENS YANG DITUJU*)</td>
             </tr>
             <?php $i = 1;
-            foreach ($timpeneliti as $key => $peneliti) : ?>
+            foreach ($luaran as $key => $luar) : ?>
                 <tr>
                     <td><?= $i ?></td>
-                    <td><?= $peneliti['namaPeneliti']; ?></td>
-                    <td><?= $peneliti['bidang_keahlian']; ?></td>
-                    <td><?= $peneliti['peran']; ?></td>
+                    <td><?= $luar['jenis_luaran']; ?></td>
+                    <td><?= $luar['target_capaian']; ?></td>
+                    <td><?= $luar['jurnal_tujuan']; ?></td>
                 </tr>
 
             <?php $i++;
@@ -67,7 +65,7 @@
         </table>
     </div>
 
-
+    <p>*) tentative</p>
 
 
 </body>

@@ -10,6 +10,36 @@
         .text-center {
             text-align: center;
         }
+
+        .logo {
+            margin: 8em;
+        }
+
+        body {
+            text-align: justify;
+            line-height: 16px;
+            margin: 40px;
+        }
+
+        body h2 {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        body h4 {
+            line-height: 16px;
+            font-weight: lighter;
+            font-size: 16px;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -17,14 +47,15 @@
 
     <u><b>P1. Halaman Sampul:</b></u>
     <div class="text-center">
-        <h1>USULAN PENELITIAN</h1>
+        <h2>USULAN PENELITIAN</h2>
 
         <h2><?= $penelitian['judul_penelitian'] ?></h2>
-        <hr>
-        logo stis
-        <!-- <img src="<?= base_url('assets/img/STIS.png'); ?>" width="100"> -->
 
-        <hr>
+        <div class="logo">
+            <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="250">
+            <!-- <img src="assets/img/STIS.png" alt="dfsd" /> -->
+            <!-- <img src="<?= base_url("assets/img/STIS.png"); ?>" alt="stis" /> -->
+        </div>
 
 
         <h4>Oleh:</h4>
@@ -33,9 +64,12 @@
         <?php endforeach ?>
 
 
-        <h1>PUSAT PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT</h1>
-        <h2>POLITEKNIK STATISTIKA STIS</h2>
-        <h2>JAKARTA <?= date("Y"); ?></h2>
+        <div class="footer">
+            <h2>PUSAT PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT</h2>
+            <h2>POLITEKNIK STATISTIKA STIS</h2>
+            <h2>JAKARTA <?= date("Y"); ?></h2>
+        </div>
+
     </div>
 </body>
 
