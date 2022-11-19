@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\LaporanPenelitianModel;
+use App\Models\PenelitianModel;
 
 class PenelitianDetail extends BaseController
 {
@@ -18,6 +19,7 @@ class PenelitianDetail extends BaseController
     {
         //new
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
+        $this->penelitianModel = new PenelitianModel();
       
     }
     public function index()
@@ -43,11 +45,14 @@ class PenelitianDetail extends BaseController
             return redirect()->to('/penelitianProses2Kontrak/'.$idPenelitian)->withInput();
         }
 
+        $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
+
         $fileKontrak = $this->request->getFile('uploadKontrak');
         $namaKontrak = $fileKontrak->getName();
         $this->laporanPenelitianModel->save([
             "id_penelitian" => $idPenelitian,
-            "kontrak" => $namaKontrak
+            "kontrak" => $namaKontrak,
+            "status_penelitian" => $penelitian['status_pengajuan']
         ]);
         $fileKontrak->move('kontrak', $namaKontrak);
 
@@ -77,10 +82,13 @@ class PenelitianDetail extends BaseController
         }
 
         $fileKontrak = $this->request->getFile('uploadPendanaan');
+        $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
+        // dd($penelitian);
         $namaKontrak = $fileKontrak->getName();
         $this->laporanPenelitianModel->save([
             "id_penelitian" => $idPenelitian,
-            "kontrak" => $namaKontrak
+            "kontrak" => $namaKontrak,
+            "status_penelitian" => $penelitian['status_pengajuan']
         ]);
         $fileKontrak->move('bukti_pendanaan', $namaKontrak);
 
