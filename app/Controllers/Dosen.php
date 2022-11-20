@@ -363,18 +363,18 @@ class Dosen extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
             'validation' => \Config\Services::validation(),
-            'laporan' =>$this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
     }
     public function penelitianProses2Kontrak($id_penelitian)
-    {   
+    {
         $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
             'validation' => \Config\Services::validation(),
-            'laporan' =>$this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
     }
@@ -383,7 +383,7 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
-            'laporan' =>$this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
     }
