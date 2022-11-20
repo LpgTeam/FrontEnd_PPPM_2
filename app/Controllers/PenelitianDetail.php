@@ -87,8 +87,11 @@ class PenelitianDetail extends BaseController
 
         $fileKontrak = $this->request->getFile('uploadKontrak');
         $namaKontrak = $fileKontrak->getName();
+
+        $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idPenelitian);
+
         $this->laporanPenelitianModel->save([
-            "id_penelitian" => $idPenelitian,
+            "id_laporan" => $laporan['id_laporan'],
             "kontrak" => $namaKontrak,
             "status_penelitian" => $penelitian['status_pengajuan']
         ]);
@@ -120,16 +123,19 @@ class PenelitianDetail extends BaseController
             return redirect()->to('/penelitianProses2/' . $idPenelitian)->withInput();
         }
 
-        $fileKontrak = $this->request->getFile('uploadPendanaan');
+        $filePendanaan = $this->request->getFile('uploadPendanaan');
         $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
         // dd($penelitian);
-        $namaKontrak = $fileKontrak->getName();
+        $namaPendanaan = $filePendanaan->getName();
+        
+        $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idPenelitian);
+
         $this->laporanPenelitianModel->save([
-            "id_penelitian" => $idPenelitian,
-            "kontrak" => $namaKontrak,
+            "id_laporan" => $laporan['id_laporan'],
+            "laporan_dana" => $namaPendanaan,
             "status_penelitian" => $penelitian['status_pengajuan']
         ]);
-        $fileKontrak->move('bukti_pendanaan', $namaKontrak);
+        $filePendanaan->move('bukti_pendanaan', $namaPendanaan);
 
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');

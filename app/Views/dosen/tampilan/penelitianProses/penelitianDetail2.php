@@ -72,31 +72,49 @@
 
             <div class="row" data-aos="fade-up">
                 <div class="col-lg-6">
+
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Pendanaan</h5>
                             <hr>
                             <p>Melampirkan bukti pendanaan untuk kegiatan publikasi hasil dari penelitian</p>
                             <hr>
-                            <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="confirm('Apakah Anda Setuju')" enctype="multipart/form-data">
-                                <div class="d-flex justify-content-between">
-                                    <div class="row mb-4">
-                                        <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="uploadPendanaan" class="form-control <?= ($validation->hasError('uploadPendanaan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadPendanaan" aria-describedby="uploadValid">
-                                            <div class="invalid-feedback" id="uploadValid">
-                                                <?= $validation->getError('uploadPendanaan'); ?>
+                            <?php
+                            if ($laporan['laporan_dana'] == null) {
+                            ?>
+                                <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="confirm('Apakah Anda Setuju')" enctype="multipart/form-data">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="row mb-4">
+                                            <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="uploadPendanaan" class="form-control <?= ($validation->hasError('uploadPendanaan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadPendanaan" aria-describedby="uploadValid">
+                                                <div class="invalid-feedback" id="uploadValid">
+                                                    <?= $validation->getError('uploadPendanaan'); ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-success">Submit Bukti </button>
+                                    </div>
+                                </form>
+                            <?php
+                            } else {
+                            ?>
+                                <div class="card-body mt-3">
+                                    <h5 class="card-title text-center">Upload Pendanaan</h5>
+                                    <hr>
+                                    <h5 class="text-center">Anda Sudah Upload Pendanaan!!</h5>
                                 </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-success">Submit Bukti </button>
-                                </div>
-                            </form>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
+
+
                 </div>
+
 
                 <div class="col-lg-6">
                     <div class="card">

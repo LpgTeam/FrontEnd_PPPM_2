@@ -6,6 +6,7 @@ use App\Models\UserModelCode;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
+use App\Models\LaporanPenelitianModel;
 use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
 use App\Models\LuaranTargetModel;
@@ -25,6 +26,7 @@ class Penelitian extends BaseController
     {
         //new
         $this->penelitianModel = new PenelitianModel();
+        $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->timpenelitiModel = new TimPenelitiModel();
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
         $this->dosenModel = new DosenModel();
@@ -211,6 +213,9 @@ class Penelitian extends BaseController
                 'jurnal_tujuan'            => $this->request->getVar('jurnalTujuan' . $i),
             ]);
         };
+        $this->laporanPenelitianModel->save([
+            'id_penelitian'=>$idpenelitian['id_penelitian']
+        ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];

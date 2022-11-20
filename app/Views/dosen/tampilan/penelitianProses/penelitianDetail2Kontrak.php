@@ -91,7 +91,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <?php
+                    if ($laporan['kontrak'] == null) {
+                    ?>
                         <div class="card-body mt-3">
                             <h5 class="card-title text-center">Upload Kontrak</h5>
                             <hr>
@@ -111,9 +113,23 @@
                                 </div>
                             </form><!-- Form End -->
                         </div>
+                </div>
+            <?php
+                    } else {
+            ?>
+                <div class="card">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title text-center">Upload Kontrak</h5>
+                        <hr>
+                        <h5 class="text-center">Anda Sudah Upload Kontrak!!</h5>
                     </div>
+                </div>
+            <?php
+                    }
+            ?>
+            </div>
 
-                    <!-- <div class="card">
+            <!-- <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Perjanjian Kontak Penelitan</h5>
                             <hr>
@@ -131,15 +147,15 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
 
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                        </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
 </main>
