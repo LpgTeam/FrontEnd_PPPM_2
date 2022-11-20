@@ -14,7 +14,7 @@ class LaporanPenelitianModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_penelitian', 'kontrak', 'laporan_luaran', 'laporan_dana	hasil', 'form_usulan_publikasi', 'status_penelitian'];
+    protected $allowedFields    = ['id_penelitian', 'kontrak', 'laporan_luaran', 'laporan_dana', 'hasil', 'form_usulan_publikasi', 'status_penelitian'];
 
     // Dates
     protected $useTimestamps = false;
