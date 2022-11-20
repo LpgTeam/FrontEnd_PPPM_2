@@ -1,7 +1,7 @@
 <?= $this->extend('login/fixed/template') ?>
 
 <?= $this->section('content'); ?>
-<i class="mobile-nav-toggle "></i>
+
 
 <!-- ======= Login Section ======= -->
 <section id="kotak" class="kotak">
@@ -31,7 +31,7 @@
         <?php endif; ?>
 
         <div class="section-header">
-            <img src="assets/img/STIS.png" alt="" width="250">
+            <img src="assets/img/STIS.png" alt="" width="250" class="stis">
             <p>PENGELOLAAN PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT</p>
             <p class="fw-normal">PPPM POLITEKNIK STATISTIKA STIS</p>
         </div>
@@ -59,6 +59,7 @@
             </div>
         </div>
     </div>
+    <i class="mobile-nav-toggle "></i>
 </section>
 <!-- End Login Section -->
 </main>

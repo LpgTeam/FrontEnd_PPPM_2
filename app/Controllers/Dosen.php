@@ -9,8 +9,9 @@ use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
-use App\Models\DanaPKMModel;
 use App\Models\PenelitianModel;
+use App\Models\LaporanPenelitianModel;
+use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
 
 class Dosen extends BaseController
@@ -20,6 +21,7 @@ class Dosen extends BaseController
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
+        $this->laporanPenelitianModel = new LaporanPenelitianModel();
     }
 
     public function index()
@@ -119,7 +121,8 @@ class Dosen extends BaseController
             'jenis' => 'Mandiri',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm1', $data);
+        // return view('dosen/tampilan/penelitianForm1', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
     }
 
     public function penelitianKerjasama()
@@ -130,7 +133,8 @@ class Dosen extends BaseController
             'jenis' => 'Kerjasama',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm1', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
+        // return view('dosen/tampilan/penelitianForm1', $data);
     }
 
     public function penelitianSemiMandiri()
@@ -141,7 +145,8 @@ class Dosen extends BaseController
             'jenis' => 'Semi Mandiri',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm2', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
+        // return view('dosen/tampilan/penelitianForm2', $data);
     }
 
     public function penelitianDidanaiInstitusi()
@@ -152,7 +157,8 @@ class Dosen extends BaseController
             'jenis' => 'Di Danai Institusi',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm2', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
+        // return view('dosen/tampilan/penelitianForm2', $data);
     }
 
     public function penelitianInstitusi()
@@ -163,7 +169,8 @@ class Dosen extends BaseController
             'jenis' => 'Institusi',
             'validation' => \Config\Services::validation()
         ];
-        return view('dosen/tampilan/penelitianForm2', $data);
+        // return view('dosen/tampilan/penelitianForm2', $data);
+        return view('dosen/tampilan/penelitianForm', $data);
     }
 
     public function pkmMandiri()
@@ -340,5 +347,52 @@ class Dosen extends BaseController
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('dosen/tampilan/pkmProses/pkmSelesai', $data);
+    }
+    //===========================new===========================================
+    public function penelitianProses1($id_penelitian)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian)
+        ];
+        return view('dosen/tampilan/penelitianProses/penelitianDetail1', $data);
+    }
+    public function penelitianProses2($id_penelitian)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian),
+            'validation' => \Config\Services::validation(),
+            'laporan' =>$this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+        ];
+        return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
+    }
+    public function penelitianProses2Kontrak($id_penelitian)
+    {   
+        $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian),
+            'validation' => \Config\Services::validation(),
+            'laporan' =>$this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+        ];
+        return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
+    }
+    public function penelitianProses3($id_penelitian)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian),
+            'laporan' =>$this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+        ];
+        return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
+    }
+    public function penelitianProses4($id_penelitian)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian)
+        ];
+        return view('dosen/tampilan/penelitianProses/penelitianDetail4', $data);
     }
 }

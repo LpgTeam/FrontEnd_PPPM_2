@@ -50,12 +50,29 @@
                                             <?php
                                             if ($post['jenis_penelitian'] == 'Mandiri' || $post['jenis_penelitian'] == 'Kerjasama') {
                                                 echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                            } else { ?>
-                                                <a href="/penelitianSemiMandiri1/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                            <?php
-                                                // echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
+                                            } else {
+                                                if ($post['id_status'] == 1) { ?>
+                                                    <a href="/penelitianProses1/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                } else if (($post['id_status'] == 2)&&($post['jenis_penelitian']=="Semi Mandiri")) { ?>
+                                                    <a href="/penelitianProses2/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                } else if (($post['id_status'] == 2)) { ?>
+                                                    <a href="/penelitianProses2Kontrak/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                }else if ($post['id_status'] == 3) { ?>
+                                                    <a href="/penelitianProses3/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                }else if ($post['id_status'] == 4) { ?>
+                                                    <a href="/penelitianProses4/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                }
                                             }
                                             ?>
+
+
+
+                                            <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
                                         </td>
                                     </tr>
                                     <?php $i++;    ?>

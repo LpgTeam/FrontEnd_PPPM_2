@@ -112,6 +112,40 @@
             flex: 0 0 auto;
             width: 58.33333333%;
         }
+
+        body {
+            text-align: justify;
+            line-height: 32px;
+            font-size: 16px;
+            margin: 40px;
+        }
+
+        .ttd1 td,
+        .ttd2 td,
+        .ttd1 th,
+        .ttd2 th {
+            text-align: center;
+            line-height: 32px;
+        }
+
+        .ttd1 td:nth-child(2),
+        .ttd2 td:nth-child(1),
+        .ttd2 td:nth-child(3) {
+            color: white;
+        }
+
+        .ttd1 tr:nth-child(1),
+        .ttd2 tr:nth-child(1),
+        .ttd1 tr:nth-child(4),
+        .ttd2 tr:nth-child(4),
+        .ttd1 tr:nth-child(5),
+        .ttd2 tr:nth-child(5) {
+            color: white;
+        }
+
+        table {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -134,27 +168,27 @@
             Ketua Tim Peneliti
             <ol type="a">
                 <li>
-                    Nama Lengkap : <?= $timpeneliti[0]['namaPeneliti']; ?>
+                    Nama Lengkap &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?= $timpeneliti[0]['namaPeneliti']; ?>
                 </li>
                 <li>
-                    Jabatan Fungsional : <?= $ketuapeneliti['jabatan_dosen']; ?>
+                    Jabatan Fungsional &nbsp;: <?= $ketuapeneliti['jabatan_dosen']; ?>
                 </li>
                 <li>
-                    Program Studi : <?= $ketuapeneliti['program_studi']; ?>
+                    Program Studi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $ketuapeneliti['program_studi']; ?>
                 </li>
                 <li>
-                    Nomor HP : <?= $ketuapeneliti['no_hp']; ?>
+                    Nomor HP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $ketuapeneliti['no_hp']; ?>
                 </li>
                 <li>
-                    Email : <?= $ketuapeneliti['email_dosen']; ?>
+                    Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $ketuapeneliti['email_dosen']; ?>
                 </li>
             </ol>
         <li>
             Jumlah Anggota : ... orang
             <ol type="a">
                 <?php foreach ($timpeneliti as $key => $peneliti) : ?>
-                    <li>Nama Anggota : <?= $peneliti['namaPeneliti']; ?></li>
-                    Program Studi : <?= $peneliti['programStudi']; ?>
+                    <li>Nama Anggota &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $peneliti['namaPeneliti']; ?></li>
+                    Program Studi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $peneliti['programStudi']; ?>
                 <?php endforeach ?>
                 <!-- <li>Nama Anggota I :
                     Program Studi
@@ -167,7 +201,7 @@
         </li>
     </ol>
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row align-items-start">
             <div class="col-5">
                 <p>Mengetahui</p>
@@ -196,6 +230,86 @@
                 NIDN
             </div>
         </div>
+    </div> -->
+
+    <div style="page-break-before: always;">
+        <table class="ttd1">
+            <tr>
+                <td>........................</td>
+                <td>........................</td>
+                <td>........................</td>
+            </tr>
+            <tr>
+                <td>Mengetahui</td>
+                <td>Jakarta, ...............</td>
+                <td>Jakarta, <?= $penelitian['tanggal_pengajuan']; ?></td>
+            </tr>
+            <tr>
+                <td>Kepala PPPM</td>
+                <td>Ketua Peneliti</td>
+                <td>Ketua Peneliti</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>a</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>a</td>
+            </tr>
+            <tr>
+                <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>
+                <td>(Nama Lengkap)</td>
+                <td><?= $ketuapeneliti['nama_dosen']; ?></td>
+            </tr>
+            <tr>
+                <td>NIDN : .................</td>
+                <td>NIDN : .................</td>
+                <td>NIDN : <?= $ketuapeneliti['NIP_dosen']; ?></tdt>
+            </tr>
+        </table>
+
+        <br>
+
+        <table class="ttd2">
+            <tr>
+                <td>........................</td>
+                <td>........................</td>
+                <td>........................</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Menyetujui</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Direktur Politeknik Statistika STIS</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>a</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>a</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Dr. Erni Tri Astuti, M.Math.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>NIDN : .................</td>
+                <td>NIDN : .................</td>
+                <td>NIDN : .................</td>
+            </tr>
+        </table>
     </div>
 
 </body>
