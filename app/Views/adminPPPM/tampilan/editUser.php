@@ -15,34 +15,36 @@
                 <div class="form-body pt-3 col-md-14">
                     <!-- Bordered Tabs -->
                     <!-- Form -->
-                    <form>
+                    <form action="/updateUser/<?= $user1->id; ?>">
                         <div class="row mb-3">
                             <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="username" type="text" class="form-control" id="username" required>
+                                <input name="username" type="text" class="form-control" id="username" value="<?= $user1->username; ?>" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label class="col-md-4 col-lg-3 col-form-label" for="role">Role</label>
                             <div class="col-md-8 col-lg-9">
+                                <!-- <input name="aaa" type="text" class="form-control" id="aaa" required> -->
+
                                 <select class="form-select" id="role" name="role">
-                                    <option selected disabled>Pilih</option>
-                                    <option value="1">Dosen</option>
-                                    <option value="2">Admin PPPM</option>
-                                    <option value="3">Kepala PPPM</option>
-                                    <option value="4">Reviewer </option>
-                                    <option value="5">Direktur </option>
+                                    <option selected readonly>Pilih</option>
+                                    <option value="dosen">Dosen</option>
+                                    <option value="admin">Admin PPPM</option>
+                                    <option value="kepalaPPPM">Kepala PPPM</option>
+                                    <option value="reviewer">Reviewer </option>
+                                    <option value="direktur">Direktur </option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <!-- <div class="row mb-3">
                             <label for="nama" class="col-md-4 col-lg-3 col-form-label">Nama</label>
                             <div class="col-md-8 col-lg-9">
                                 <input name="nama" type="text" class="form-control" id="nama" required>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <hr>

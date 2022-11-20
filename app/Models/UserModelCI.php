@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace CodeIgniter\Shield\Models;
-
+// namespace CodeIgniter\Shield\Models;
+namespace App\Models;
 
 use CodeIgniter\Database\Exceptions\DataException;
 use CodeIgniter\I18n\Time;
@@ -15,15 +15,17 @@ use CodeIgniter\Shield\Exceptions\InvalidArgumentException;
 use CodeIgniter\Shield\Exceptions\ValidationException;
 use Faker\Generator;
 
-class UserModel extends Model
+class UserModelCI extends Model
 {
-    use CheckQueryReturnTrait;
+
+    use \CodeIgniter\Shield\Models\CheckQueryReturnTrait;
 
     protected $table          = 'users';
     protected $primaryKey     = 'id';
     protected $returnType     = User::class;
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
+        'id',
         'nip',
         'username',
         'status',
@@ -60,6 +62,25 @@ class UserModel extends Model
         return $this;
     }
 
+    public function getData()
+    {
+        // $nip = "31232432";
+        // dd($this->join('dosen', 'NIP_dosen = nip')->where(['nip' => $nip])->first());
+        // $this->join('dosen', 'NIP_dosen = nip');
+        // $this->join('auth_groups_users', 'user_id = id');
+        $this->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->join('dosen', 'NIP_dosen = nip');
+        return $this->findAll();
+        // return  $this->findAll();
+    }
+
+
+    public function getAllData()
+    {
+        return $this->findAll();
+    }
+
+
     /**
      * Populates identities for all records
      * returned from a find* method. Called
@@ -69,7 +90,7 @@ class UserModel extends Model
      */
     protected function fetchIdentities(array $data): array
     {
-        if (! $this->fetchIdentities) {
+        if (!$this->fetchIdentities) {
             return $data;
         }
 
@@ -80,7 +101,7 @@ class UserModel extends Model
         /** @var UserIdentityModel $identityModel */
         $identityModel = model(UserIdentityModel::class);
 
-    // Get our identities for all users
+        // Get our identities for all users
         $identities = $identityModel->getIdentitiesByUserIds($userIds);
 
         if (empty($identities)) {
@@ -136,7 +157,7 @@ class UserModel extends Model
         $defaultGroup  = setting('AuthGroups.defaultGroup');
         $allowedGroups = array_keys(setting('AuthGroups.groups'));
 
-        if (empty($defaultGroup) || ! in_array($defaultGroup, $allowedGroups, true)) {
+        if (empty($defaultGroup) || !in_array($defaultGroup, $allowedGroups, true)) {
             throw new InvalidArgumentException(lang('Auth.unknownGroup', [$defaultGroup ?? '--not found--']));
         }
 
@@ -177,7 +198,7 @@ class UserModel extends Model
             $this->where('LOWER(' . $this->db->protectIdentifiers("users.{$key}") . ')', strtolower($value));
         }
 
-        if (! empty($email)) {
+        if (!empty($email)) {
             $data = $this->select('users.*, auth_identities.secret as email, auth_identities.secret2 as password_hash')
                 ->join('auth_identities', 'auth_identities.user_id = users.id')
                 ->where('auth_identities.type', Session::ID_TYPE_EMAIL_PASSWORD)

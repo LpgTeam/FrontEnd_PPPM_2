@@ -10,6 +10,8 @@ use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
 
+use function PHPUnit\Framework\isNull;
+
 class Admin extends BaseController
 {
     public function index()
@@ -128,15 +130,15 @@ class Admin extends BaseController
         return view('adminPPPM/tampilan/pkmProses/pkmProses2', $data);
     }
 
-    public function userSetting()
-    {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('adminPPPM/tampilan/userSetting', $data);
-    }
+    // public function userSetting()
+    // {
+//     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('adminPPPM/tampilan/userSetting', $data);
+    // }
 
-    public function editUser()
-    {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('adminPPPM/tampilan/editUser', $data);
-    }
+    // public function editUser()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('adminPPPM/tampilan/editUser', $data);
+    // }
 }

@@ -116,88 +116,102 @@ $routes->get('/pkm/save', 'PKM::save');
 // ================================================================
 //                          Admin PPPM
 // ================================================================
-if (auth()->user()->inGroup('admin')) {
-    $routes->get('/indexAdmin', 'Admin::index');
-    $routes->get('/anggaranAdmin', 'Admin::anggaran');
-    $routes->get('/penelitianAdmin', 'Admin::penelitian');
-    $routes->get('/pkmAdmin', 'Admin::pkm');
-    $routes->get('/userSetting', 'Admin::userSetting');
-    $routes->get('/editUser', 'Admin::editUser');
+if (auth()->loggedIn()) {
+    if (auth()->user()->inGroup('admin')) {
+        $routes->get('/indexAdmin', 'Admin::index');
+        $routes->get('/anggaranAdmin', 'Admin::anggaran');
+        $routes->get('/penelitianAdmin', 'Admin::penelitian');
+        $routes->get('/pkmAdmin', 'Admin::pkm');
+        // view list user
+        $routes->get('/userSetting', 'AdminUserSetting::index');
+        // view edit role user
+        $routes->get('/editRole/(:any)', 'AdminUserSetting::editRole/$1');
+        // view edit user
+        $routes->get('/editUser/(:any)', 'AdminUserSetting::editUser/$1');
 
-    $routes->get('/adminSemiMandiri1', 'Admin::adminSemiMandiri1');
-    $routes->get('/adminSemiMandiri2', 'Admin::adminSemiMandiri2');
-    $routes->get('/adminSemiMandiri3', 'Admin::adminSemiMandiri3');
+        // btn update user
+        $routes->get('/updateUser/(:any)', 'AdminUserSetting::updateUser/$1');
+        // delete user
+        $routes->get('/deleteUser/(:any)', 'AdminUserSetting::deleteUser/$1');
+        // delete role
+        $routes->get('/deleteRoleUser/(:any)', 'AdminUserSetting::deleteRole/$1');
 
-    $routes->get('/adminDidanaiInstitusi1', 'Admin::adminProses1');
-    $routes->get('/adminDidanaiInstitusi2', 'Admin::adminProses2');
-    $routes->get('/adminDidanaiInstitusi3', 'Admin::adminProses3');
 
-    $routes->get('/adminInstitusi1', 'Admin::adminProses1');
-    $routes->get('/adminInstitusi2', 'Admin::adminProses2');
-    $routes->get('/adminInstitusi3', 'Admin::adminProses3');
 
-    $routes->get('/pkmMandiriAdmin1', 'Admin::pkmAdminProses1');
-    $routes->get('/pkmMandiriAdmin2', 'Admin::pkmAdminProses2');
+        $routes->get('/adminSemiMandiri1', 'Admin::adminSemiMandiri1');
+        $routes->get('/adminSemiMandiri2', 'Admin::adminSemiMandiri2');
+        $routes->get('/adminSemiMandiri3', 'Admin::adminSemiMandiri3');
 
-    $routes->get('/pkmKelompokAdmin1', 'Admin::pkmAdminProses1');
-    $routes->get('/pkmKelompokAdmin2', 'Admin::pkmAdminProses2');
+        $routes->get('/adminDidanaiInstitusi1', 'Admin::adminProses1');
+        $routes->get('/adminDidanaiInstitusi2', 'Admin::adminProses2');
+        $routes->get('/adminDidanaiInstitusi3', 'Admin::adminProses3');
 
-    $routes->get('/pkmTerstrukturAdmin1', 'Admin::pkmAdminProses1');
-    $routes->get('/pkmTerstrukturAdmin2', 'Admin::pkmAdminProses2');
+        $routes->get('/adminInstitusi1', 'Admin::adminProses1');
+        $routes->get('/adminInstitusi2', 'Admin::adminProses2');
+        $routes->get('/adminInstitusi3', 'Admin::adminProses3');
+
+        $routes->get('/pkmMandiriAdmin1', 'Admin::pkmAdminProses1');
+        $routes->get('/pkmMandiriAdmin2', 'Admin::pkmAdminProses2');
+
+        $routes->get('/pkmKelompokAdmin1', 'Admin::pkmAdminProses1');
+        $routes->get('/pkmKelompokAdmin2', 'Admin::pkmAdminProses2');
+
+        $routes->get('/pkmTerstrukturAdmin1', 'Admin::pkmAdminProses1');
+        $routes->get('/pkmTerstrukturAdmin2', 'Admin::pkmAdminProses2');
+    }
+    // ================================================================
+    //                          Reviewer
+    // ================================================================
+
+    if (auth()->user()->inGroup('reviewer')) {
+
+        $routes->get('/indexReviewer', 'Reviewer::index');
+        $routes->get('/anggaranReviewer', 'Reviewer::anggaran');
+        $routes->get('/penelitianReviewer', 'Reviewer::penelitian');
+        $routes->get('/persetujuanReviewer/(:any)', 'Reviewer::persetujuan/$1');
+        $routes->get('/acc-reviewer/(:any)', 'Reviewer::acc_penelitian_reviewer/$1');
+        $routes->get('/rjc-reviewer/(:any)', 'Reviewer::rjc_penelitian_reviewer/$1');
+    }
+
+    // ================================================================
+    //                          Direktur
+    // ================================================================
+
+    if (auth()->user()->inGroup('direktur')) {
+        $routes->get('/indexDirektur', 'Direktur::index');
+        $routes->get('/anggaranDirektur', 'Direktur::anggaran');
+        $routes->get('/penelitianDirektur', 'Direktur::penelitian');
+        $routes->get('/persetujuanDirektur/(:any)', 'Direktur::persetujuan/$1');
+        $routes->get('/acc-direktur/(:any)', 'Direktur::acc_penelitian_direktur/$1');
+    }
+
+    // ================================================================
+    //                          Kepala PPPM
+    // ================================================================
+
+    if (auth()->user()->inGroup('kepalaPPPM')) {
+        $routes->get('/indexKepala', 'Kepala::index');
+        $routes->get('/anggaranKepala', 'Kepala::anggaran');
+        $routes->get('/penelitianKepala', 'Kepala::penelitian');
+        $routes->get('/penelitianPersetujuanKepala/(:any)', 'Kepala::penelitianPersetujuan/$1');
+        $routes->get('/pkmKepala', 'Kepala::pkm');
+        $routes->get('/pkmPersetujuanKepala', 'Kepala::pkmPersetujuan');
+        $routes->get('/acc-kepala/(:any)', 'Kepala::acc_penelitian_kepala/$1');
+        $routes->get('/rjc-kepala/(:any)', 'Kepala::rjc_penelitian_kepala/$1');
+    }
+
+    // ================================================================
+    //                          BAU
+    // ================================================================
+    if (auth()->user()->inGroup('bau')) {
+        $routes->get('/indexBAU', 'BAU::index');
+        $routes->get('/anggaranBAU', 'BAU::anggaran');
+        $routes->get('/penelitianBAU', 'BAU::penelitian');
+        $routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
+        $routes->get('/acc-BAU/(:any)', 'BAU::acc_penelitian_BAU/$1');
+        $routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
+    }
 }
-// ================================================================
-//                          Reviewer
-// ================================================================
-
-if (auth()->user()->inGroup('reviewer')) {
-
-    $routes->get('/indexReviewer', 'Reviewer::index');
-    $routes->get('/anggaranReviewer', 'Reviewer::anggaran');
-    $routes->get('/penelitianReviewer', 'Reviewer::penelitian');
-    $routes->get('/persetujuanReviewer/(:any)', 'Reviewer::persetujuan/$1');
-    $routes->get('/acc-reviewer/(:any)', 'Reviewer::acc_penelitian_reviewer/$1');
-    $routes->get('/rjc-reviewer/(:any)', 'Reviewer::rjc_penelitian_reviewer/$1');
-}
-
-// ================================================================
-//                          Direktur
-// ================================================================
-
-if (auth()->user()->inGroup('direktur')) {
-    $routes->get('/indexDirektur', 'Direktur::index');
-    $routes->get('/anggaranDirektur', 'Direktur::anggaran');
-    $routes->get('/penelitianDirektur', 'Direktur::penelitian');
-    $routes->get('/persetujuanDirektur/(:any)', 'Direktur::persetujuan/$1');
-    $routes->get('/acc-direktur/(:any)', 'Direktur::acc_penelitian_direktur/$1');
-}
-
-// ================================================================
-//                          Kepala PPPM
-// ================================================================
-
-if (auth()->user()->inGroup('kepalaPPPM')) {
-    $routes->get('/indexKepala', 'Kepala::index');
-    $routes->get('/anggaranKepala', 'Kepala::anggaran');
-    $routes->get('/penelitianKepala', 'Kepala::penelitian');
-    $routes->get('/penelitianPersetujuanKepala/(:any)', 'Kepala::penelitianPersetujuan/$1');
-    $routes->get('/pkmKepala', 'Kepala::pkm');
-    $routes->get('/pkmPersetujuanKepala', 'Kepala::pkmPersetujuan');
-    $routes->get('/acc-kepala/(:any)', 'Kepala::acc_penelitian_kepala/$1');
-    $routes->get('/rjc-kepala/(:any)', 'Kepala::rjc_penelitian_kepala/$1');
-}
-
-// ================================================================
-//                          BAU
-// ================================================================
-if (auth()->user()->inGroup('bau')) {
-    $routes->get('/indexBAU', 'BAU::index');
-    $routes->get('/anggaranBAU', 'BAU::anggaran');
-    $routes->get('/penelitianBAU', 'BAU::penelitian');
-    $routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
-    $routes->get('/acc-BAU/(:any)', 'BAU::acc_penelitian_BAU/$1');
-    $routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
-}
-
 //download proposal
 $routes->get('/penelitian/download-p1-proposal/(:any)', 'ProposalPenelitian::download_p1_proposal/$1');
 $routes->get('/penelitian/download-p2-proposal/(:any)', 'ProposalPenelitian::download_p2_proposal/$1');

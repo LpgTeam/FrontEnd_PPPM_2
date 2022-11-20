@@ -4,15 +4,10 @@
 <main id="main" class="main">
     <section class="section">
         <div class="container" data-aos="fade-up">
-            <?php if (session()->getFlashdata('pesan')) : ?>
-                <div class="alert alert-success" role="alert" data-aos="zoom-in">
-                    <?= session()->getFlashdata('pesan'); ?>
-                </div>
-            <?php endif; ?>
             <header class="section-header2">
-                <h2>User Setting</h2>
+                <h2>User Setting </h2>
                 <hr>
-                <p>Website PPPM Politeknik Statistika STIS</p>
+                <p><?= $user1->username; ?></p>
             </header>
         </div>
         <div class="row" data-aos="fade-up">
@@ -21,46 +16,38 @@
                     <h5>&nbsp;</h5>
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <div class="search-bar col-lg-8 d-flex justify-content-end">
+                            <!-- <div class="search-bar col-lg-8 d-flex justify-content-end">
                                 <form class="search-form d-flex align-items-center" method="POST" action="#">
                                     <input type="text" name="query" placeholder="Search" title="Enter search keyword">
                                     <button type="button" title="Search"><i class="bi bi-search"></i></button>
                                 </form>
-                            </div><!-- End Search Bar -->
+                            </div>End Search Bar -->
+                        </div>
+                        <div>
+                            <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<?= $userRole[0]['user_id']; ?>">Tambah role</i></a>
+                            <!-- <a class="btn btn-warning" id="editButton" id="editButton">Tambah role</i></a> -->
                         </div>
                         <p>&nbsp</p>
                         <!-- Table with stripped rows -->
-                        <table class="table table-advance table-hover align-middle ">
+                        <table class=" table table-advance table-hover align-middle ">
                             <thead>
-                                <tr class="table-primary">
+                                <tr class=" table-primary">
                                     <th scope="col">Nomor</th>
-                                    <th scope="col">Username</th>
-                                    <!-- <th scope="col">Role</th> -->
-                                    <th scope="col">NIP</th>
-                                    <th scope="col">Role Setting</th>
-                                    <th scope="col">Hapus User</th>
+                                    <th scope="col">Role</th>
+
+                                    <th scope="col">Hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($user as $key => $post) :  ?>
+                                <?php foreach ($userRole as $key => $post) :  ?>
 
                                     <tr>
-                                        <!-- <td><?php //echo $post['id_penelitian'] 
-                                                    ?></td> -->
                                         <td><?= $i; ?></td>
-                                        <td><?= $post->username; ?></td>
-                                        <!-- <td><?= $post->group; ?> -->
-                                        <td><?= $post->nip; ?></td>
-                                        <!-- <td><?= $post->nama_dosen; ?></td> -->
+                                        <td><?= $post['group']; ?>
                                         <td>
-                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
-                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
-                                            <a href="/editRole/<?= $post->id; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger" id="deleteButton" data-bs-toggle="modal" data-bs-target="#delete"><i class="bi bi-trash"></i></i></a>
-                                            <!-- <a class="btn btn-danger" id="deleteButton" href="/deel"><i class="bi bi-trash"></i></i></a> -->
+                                            <!-- <a class="btn btn-danger" id="deleteButton" data-bs-toggle="modal" data-bs-target="#delete"><i class="bi bi-trash"></i></i></a> -->
+                                            <a class="btn btn-danger" id="deleteButton" href="/deleteRoleUser/<?= $post['id']; ?>"><i class="bi bi-trash"></i></i></a>
                                         </td>
                                     </tr>
                                     </td>
@@ -100,8 +87,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <!-- <button type="button" class="btn btn-primary" onclick="location.href=''">Ya</button> -->
-                <button type="button" class="btn btn-primary" onclick="location.href='/deleteUser/<?= $post->id; ?>'">Ya</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='deleteRoleUser/<?= $userRole[0]['id'] ?>'">Ya</button>
             </div>
         </div>
     </div>
