@@ -52,4 +52,12 @@ class TimPenelitiModel extends Model
         $query = $builder->getWhere(['id_penelitian' => $id_penelitian]);
         return $query->getResultArray();
     }
+
+    public function get_penelitian_by_nip_user($nip)
+    {
+        //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
+        //     ->where(['auth_groups_users.id' => $id])->first();
+        return $this->join('penelitian', 'penelitian.id_penelitian = tim_peneliti.id_penelitian')->select('tim_peneliti.nip')->select('penelitian.*')
+            ->where(['nip' => $nip])->findAll();
+    }
 }

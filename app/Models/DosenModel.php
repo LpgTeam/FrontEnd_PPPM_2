@@ -22,8 +22,13 @@ class DosenModel extends Model
         'program_studi',
         'no_hp',
         'email_dosen',
-        'minat_penelitian'
-
+        'foto_dosen',
+        'minat_penelitian',
+        'google_scholar',
+        'link_sinta',
+        'link_orcid',
+        'link_wos',
+        'link_scopus'
     ];
 
     // Dates

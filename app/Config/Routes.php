@@ -111,6 +111,11 @@ $routes->get('/pkmKelompok4', 'Dosen::pkmKelompok4');
 // $routes->get('/login', 'Login::index');
 //routes create pengajuan
 $routes->get('/penelitian/save', 'Penelitian::save');
+//submit Edit Profil dosen
+$routes->get('/dosen/editProfil', 'Dosen::editProfil');
+//menampilkan foto 
+$routes->get('/foto_profil/(:any)', 'Dosen::editProfil');
+
 $routes->get('/pkm/save', 'PKM::save');
 
 // ================================================================

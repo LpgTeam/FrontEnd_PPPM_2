@@ -1425,6 +1425,13 @@ section {
   max-width: 120px;
 }
 
+/* upload-foto-profil */
+.inputFotoProfil{
+  display: none;
+}
+.fotoProfil i, .fotoProfil p{
+  color: white ;
+}
 /*--------------------------------------------------------------
 # F.A.Q
 --------------------------------------------------------------*/

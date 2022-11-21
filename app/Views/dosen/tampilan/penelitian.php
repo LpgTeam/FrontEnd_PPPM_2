@@ -34,49 +34,52 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($penelitian as $key => $post) :  ?>
+                                <?php
+                                if (!$penelitian == null) {
+                                    $i = 1; ?>
+                                    <?php foreach ($penelitian as $key => $post) :  ?>
 
-                                    <tr>
-                                        <!-- <td><?php //echo $post['id_penelitian'] 
-                                                    ?></td> -->
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $post['jenis_penelitian'] ?></td>
-                                        <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                        <td><?php echo $post['judul_penelitian'] ?></td>
-                                        <td><?php echo $post['status_pengajuan'] ?></td>
-                                        <td>
-                                            <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                            <?php
-                                            if ($post['jenis_penelitian'] == 'Mandiri' || $post['jenis_penelitian'] == 'Kerjasama') {
-                                                echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                            } else {
-                                                if ($post['id_status'] == 1) { ?>
-                                                    <a href="/penelitianProses1/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                        <tr>
+                                            <!-- <td><?php //echo $post['id_penelitian'] 
+                                                        ?></td> -->
+                                            <td><?php echo $i ?></td>
+                                            <td><?php echo $post['jenis_penelitian'] ?></td>
+                                            <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                            <td><?php echo $post['judul_penelitian'] ?></td>
+                                            <td><?php echo $post['status_pengajuan'] ?></td>
+                                            <td>
+                                                <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
                                                 <?php
-                                                } else if (($post['id_status'] == 2)&&($post['jenis_penelitian']=="Semi Mandiri")) { ?>
-                                                    <a href="/penelitianProses2/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                if ($post['jenis_penelitian'] == 'Mandiri' || $post['jenis_penelitian'] == 'Kerjasama') {
+                                                    echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
+                                                } else {
+                                                    if ($post['id_status'] == 1) { ?>
+                                                        <a href="/penelitianProses1/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <?php
+                                                    } else if (($post['id_status'] == 2) && ($post['jenis_penelitian'] == "Semi Mandiri")) { ?>
+                                                        <a href="/penelitianProses2/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <?php
+                                                    } else if (($post['id_status'] == 2)) { ?>
+                                                        <a href="/penelitianProses2Kontrak/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <?php
+                                                    } else if ($post['id_status'] == 3) { ?>
+                                                        <a href="/penelitianProses3/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <?php
+                                                    } else if ($post['id_status'] == 4) { ?>
+                                                        <a href="/penelitianProses4/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 <?php
-                                                } else if (($post['id_status'] == 2)) { ?>
-                                                    <a href="/penelitianProses2Kontrak/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                <?php
-                                                }else if ($post['id_status'] == 3) { ?>
-                                                    <a href="/penelitianProses3/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                <?php
-                                                }else if ($post['id_status'] == 4) { ?>
-                                                    <a href="/penelitianProses4/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                <?php
+                                                    }
                                                 }
-                                            }
-                                            ?>
+                                                ?>
 
 
 
-                                            <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
-                                        </td>
-                                    </tr>
-                                    <?php $i++;    ?>
-                                <?php endforeach ?>
+                                                <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
+                                            </td>
+                                        </tr>
+                                        <?php $i++;    ?>
+                                <?php endforeach;
+                                } ?>
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

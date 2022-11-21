@@ -10,23 +10,37 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\PenelitianModel;
+use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
+use App\Models\DosenModel;
 
 class Dosen extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $dosenModel;
+    protected $timPenelitiModel;
+
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
+        $this->dosenModel = new DosenModel();
+        $this->timPenelitiModel = new TimPenelitiModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
     }
 
     public function index()
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $user = auth()->user();
+        $nip = $user->nip;
+        // dd($user);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'loginUser' => $this->dosenModel->get_nip_peneliti($nip)
+        ];
+        // dd($data['loginUser']);
         return view('dosen/tampilan/index', $data);
     }
 
@@ -82,11 +96,16 @@ class Dosen extends BaseController
 
     public function penelitian()
     {
+        //mengambil data user yang sedang login
+        $user = auth()->user();
+        $nip = $user->nip;
+        // dd($nip);
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
         ];
+        // dd($data['penelitian']);
         return view('dosen/tampilan/penelitian', $data);
     }
 
@@ -394,5 +413,56 @@ class Dosen extends BaseController
             'penelitian' => $this->penelitianModel->find($id_penelitian)
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail4', $data);
+    }
+
+
+    public function editProfil()
+    {
+        if (!$this->validate([
+            'fotoProfil' => [
+                'rules' => 'uploaded[fotoProfil]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong"
+                ]
+            ]
+        ])) {
+            $this->dosenModel->save([
+                'NIP_dosen' => auth()->user()->nip,
+                'nama_dosen' => $this->request->getVar('namaLengkap'),
+                'email_dosen' => $this->request->getVar('email'),
+                'minat_penelitian' => $this->request->getVar('minat'),
+                'no_hp' => $this->request->getVar('hp'),
+                'google_scholar' => $this->request->getVar('scholar'),
+                'link_sinta' => $this->request->getVar('sinta'),
+                'link_orcid' => $this->request->getVar('orcid'),
+                'link_wos' => $this->request->getVar('wos'),
+                'link_scopus' => $this->request->getVar('scopus'),
+            ]);
+        } else {
+            $fileFoto = $this->request->getFile('fotoProfil');
+            $namaFoto = $fileFoto->getName();
+            $fileFoto->move('foto_profil', $namaFoto);
+            // if ($fileFoto == null) {
+            //     $namaFoto = -;
+            // } else {
+            // }
+            $this->dosenModel->save([
+                'NIP_dosen' => auth()->user()->nip,
+                'nama_dosen' => $this->request->getVar('namaLengkap'),
+                'email_dosen' => $this->request->getVar('email'),
+                'minat_penelitian' => $this->request->getVar('minat'),
+                'foto_dosen' => $namaFoto,
+                'no_hp' => $this->request->getVar('hp'),
+                'google_scholar' => $this->request->getVar('scholar'),
+                'link_sinta' => $this->request->getVar('sinta'),
+                'link_orcid' => $this->request->getVar('orcid'),
+                'link_wos' => $this->request->getVar('wos'),
+                'link_scopus' => $this->request->getVar('scopus'),
+            ]);
+        }
+        session()->setFlashdata('pesan', 'Data berhasil diedit');
+        // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
+
+        return redirect()->to('/indexDosen');
     }
 }
