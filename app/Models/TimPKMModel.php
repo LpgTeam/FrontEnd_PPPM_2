@@ -44,4 +44,12 @@ class TimPKMModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_pkm_by_nip_user($nip)
+    {
+        //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
+        //     ->where(['auth_groups_users.id' => $id])->first();
+        return $this->join('pengajuan_pkm', 'pengajuan_pkm.ID_pkm = tim_pkm.id_pkm')->select('tim_pkm.nip')->select('pengajuan_pkm.*')
+            ->where(['nip' => $nip])->findAll();
+    }
 }

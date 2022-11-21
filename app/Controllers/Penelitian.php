@@ -176,7 +176,8 @@ class Penelitian extends BaseController
 
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
         // dd($idpenelitian );
-        $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
+        // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         // dd($nipdosen);
 
         $KetuatimpenelitiModel = new TimPenelitiModel();

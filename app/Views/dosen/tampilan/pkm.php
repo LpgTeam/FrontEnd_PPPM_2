@@ -34,30 +34,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($pkm as $key => $post) :  ?>
+                                <?php
+                                if (!$pkm == null) {
+                                    $i = 1; ?>
+                                    <?php foreach ($pkm as $key => $post) :  ?>
 
-                                    <tr>
-                                        <!-- <td><?php //echo $post['id_penelitian'] 
-                                                    ?></td> -->
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $post['jenis_pkm'] ?></td>
-                                        <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                        <td><?php echo $post['topik_kegiatan'] ?></td>
-                                        <td><?php echo $post['status'] ?></td>
-                                        <td>
-                                            <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                            <?php
-                                            if ($post['jenis_pkm'] == 'Mandiri') {
-                                                echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                            } else {
-                                                echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                        }
-                                            ?>
-                                        </td>
-                                    </tr>
-                                    <?php $i++;    ?>
-                                <?php endforeach ?>
+                                        <tr>
+                                            <!-- <td><?php //echo $post['id_penelitian'] 
+                                                        ?></td> -->
+                                            <td><?php echo $i ?></td>
+                                            <td><?php echo $post['jenis_pkm'] ?></td>
+                                            <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                            <td><?php echo $post['topik_kegiatan'] ?></td>
+                                            <td><?php echo $post['status'] ?></td>
+                                            <td>
+                                                <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
+                                                <?php
+                                                if ($post['jenis_pkm'] == 'Mandiri') {
+                                                    echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
+                                                } else {
+                                                    echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <?php $i++;    ?>
+                                <?php endforeach;
+                                } ?>
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

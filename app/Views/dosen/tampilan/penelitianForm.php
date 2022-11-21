@@ -35,7 +35,7 @@
                         <div class="row mb-3">
                             <label for="namaLengkap" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="namaLengkap" type="text" class="form-control" id="cari" value="<?= old('namaLengkap'); ?>" required>
+                                <input name="namaLengkap" type="text" class="form-control" id="cari" value="<?= $user['nama_dosen'] ?>" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
@@ -44,28 +44,28 @@
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
                             <div class="col-md-8 col-lg-9 ">
-                                <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= old('jabatan'); ?>" readonly>
+                                <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= $user['jabatan_dosen'] ?>" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="progStudi" class="col-md-4 col-lg-3 col-form-label">Program Studi</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="progStudi" type="text" class="form-control" id="progStudi" value="<?= old('progStudi'); ?>" readonly>
+                                <input name="progStudi" type="text" class="form-control" id="progStudi" value="<?= $user['program_studi'] ?>" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="hp" class="col-md-4 col-lg-3 col-form-label">Nomor Handphone</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="hp" type="text" class="form-control" id="hp" value="<?= old('hp'); ?>" readonly>
+                                <input name="hp" type="text" class="form-control" id="hp" value="<?= $user['no_hp'] ?>" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="email" type="email" class="form-control" id="email" value="<?= old('email'); ?>" readonly>
+                                <input name="email" type="email" class="form-control" id="email" value="<?= $user['email_dosen'] ?>" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 

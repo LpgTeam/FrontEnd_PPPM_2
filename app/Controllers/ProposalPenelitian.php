@@ -39,6 +39,7 @@ class ProposalPenelitian extends BaseController
         $dataPenelitian = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            // 'timpeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
         ];
 
         // dd($dataPenelitian);
@@ -66,8 +67,10 @@ class ProposalPenelitian extends BaseController
         $dataPenelitian = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
         ];
+        // dd($dataPenelitian['timpeneliti']);
 
         $file_pdf = 'P2. Halaman Pengesahan - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
@@ -142,10 +145,11 @@ class ProposalPenelitian extends BaseController
         $dataPenelitian = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
         ];
-
+        // dd($dataPenelitian['timpeneliti']);
         $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
         $orientation = "portrait";

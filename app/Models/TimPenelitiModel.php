@@ -52,6 +52,12 @@ class TimPenelitiModel extends Model
         $query = $builder->getWhere(['id_penelitian' => $id_penelitian]);
         return $query->getResultArray();
     }
+    public function get_anggota_timpeneliti($id_penelitian)
+    {
+        $builder = $this->db->table('tim_peneliti');
+        $query = $builder->getWhere(['id_penelitian' => $id_penelitian , 'peran !=' => "Ketua Penelitian"]);
+        return $query->getResultArray();
+    }
 
     public function get_penelitian_by_nip_user($nip)
     {

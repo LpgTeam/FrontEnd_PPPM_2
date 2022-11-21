@@ -184,9 +184,9 @@
                 </li>
             </ol>
         <li>
-            Jumlah Anggota : ... orang
+            Jumlah Anggota : <?= $penelitian['jumlah_anggota']?> orang
             <ol type="a">
-                <?php foreach ($timpeneliti as $key => $peneliti) : ?>
+                <?php foreach ($anggotapeneliti as $key => $peneliti) : ?>
                     <li>Nama Anggota &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $peneliti['namaPeneliti']; ?></li>
                     Program Studi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $peneliti['programStudi']; ?>
                 <?php endforeach ?>

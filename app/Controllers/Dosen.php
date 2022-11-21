@@ -14,6 +14,7 @@ use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
+use App\Models\TimPkmModel;
 use App\Models\DosenModel;
 
 class Dosen extends BaseController
@@ -22,12 +23,14 @@ class Dosen extends BaseController
     protected $penelitianModel;
     protected $dosenModel;
     protected $timPenelitiModel;
+    protected $timPKMModel;
 
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
         $this->dosenModel = new DosenModel();
         $this->timPenelitiModel = new TimPenelitiModel();
+        $this->timPKMModel = new TimPKMModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
     }
 
@@ -98,9 +101,8 @@ class Dosen extends BaseController
     {
         //mengambil data user yang sedang login
         $user = auth()->user();
-        $nip = $user->nip;
+        // $nip = $user->nip;
         // dd($nip);
-        $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
@@ -112,11 +114,14 @@ class Dosen extends BaseController
     public function pkm()
     {
         $pkmModel = new PkmModel();
+        $user = auth()->user();
+        // $nip = $user->nip;
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $pkmModel->getData(),
+            'pkm' => $this->timPKMModel->get_pkm_by_nip_user($user->nip),
 
         ];
+        // dd($data['pkm']);
         return view('dosen/tampilan/pkm', $data);
     }
 
@@ -159,9 +164,11 @@ class Dosen extends BaseController
     public function penelitianSemiMandiri()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Semi Mandiri',
+            'user' => $nipdosen,
             'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm', $data);
