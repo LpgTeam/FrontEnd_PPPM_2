@@ -1,4 +1,6 @@
-<?= $this->extend('dosen/fixed/templatePKM') ?>
+<? //= $this->extend('dosen/fixed/templatePKM') 
+?>
+<?= $this->extend('fixed/templatePKM') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">

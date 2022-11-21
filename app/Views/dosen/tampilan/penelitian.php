@@ -1,4 +1,6 @@
-<?= $this->extend('dosen/fixed/template') ?>
+<? //= $this->extend('dosen/fixed/template') 
+?>
+<?= $this->extend('fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
@@ -54,18 +56,18 @@
                                                 if ($post['id_status'] == 1) { ?>
                                                     <a href="/penelitianProses1/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 <?php
-                                                } else if (($post['id_status'] == 2)&&($post['jenis_penelitian']=="Semi Mandiri")) { ?>
+                                                } else if (($post['id_status'] == 2) && ($post['jenis_penelitian'] == "Semi Mandiri")) { ?>
                                                     <a href="/penelitianProses2/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 <?php
                                                 } else if (($post['id_status'] == 2)) { ?>
                                                     <a href="/penelitianProses2Kontrak/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 <?php
-                                                }else if ($post['id_status'] == 3) { ?>
+                                                } else if ($post['id_status'] == 3) { ?>
                                                     <a href="/penelitianProses3/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 <?php
-                                                }else if ($post['id_status'] == 4) { ?>
+                                                } else if ($post['id_status'] == 4) { ?>
                                                     <a href="/penelitianProses4/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                <?php
+                                            <?php
                                                 }
                                             }
                                             ?>

@@ -1,4 +1,6 @@
-<?= $this->extend('direktur/fixed/template') ?>
+<? //= $this->extend('direktur/fixed/template') 
+?>
+<?= $this->extend('fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
