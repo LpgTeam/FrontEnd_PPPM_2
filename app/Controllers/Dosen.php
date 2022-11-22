@@ -140,9 +140,11 @@ class Dosen extends BaseController
     public function penelitianMandiri()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Mandiri',
+            'user' => $nipdosen,
             'validation' => \Config\Services::validation()
         ];
         // return view('dosen/tampilan/penelitianForm1', $data);
@@ -152,9 +154,11 @@ class Dosen extends BaseController
     public function penelitianKerjasama()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Kerjasama',
+            'user' => $nipdosen,
             'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm', $data);
@@ -178,9 +182,11 @@ class Dosen extends BaseController
     public function penelitianDidanaiInstitusi()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Di Danai Institusi',
+            'user' => $nipdosen,
             'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianForm', $data);
@@ -190,9 +196,11 @@ class Dosen extends BaseController
     public function penelitianInstitusi()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Institusi',
+            'user' => $nipdosen,
             'validation' => \Config\Services::validation()
         ];
         // return view('dosen/tampilan/penelitianForm2', $data);
@@ -203,7 +211,7 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Mandiri'
+            'jenis' => 'Mandiri',
         ];
         return view('dosen/tampilan/pkmMandiri', $data);
     }

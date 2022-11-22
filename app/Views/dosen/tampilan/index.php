@@ -205,24 +205,24 @@
                                             // console.log(fotoPrev.src);
                                         }
 
-                                        function deleteFoto() {
-                                            // var myImage = new Image();
-                                            // myImage.src = 'assets/img/yellow.png';
-                                            const fotoPrev = document.querySelector('.foto-prev');
-                                            const fotoLabel = document.querySelector('.fotoProfil');
-                                            const input = document.getElementById('fotoProfil');
+                                        // function deleteFoto() {
+                                        //     // var myImage = new Image();
+                                        //     // myImage.src = 'assets/img/yellow.png';
+                                        //     const fotoPrev = document.querySelector('.foto-prev');
+                                        //     const fotoLabel = document.querySelector('.fotoProfil');
+                                        //     const input = document.getElementById('fotoProfil');
 
-                                            fotoPrev.src = 'assets/img/yellow.png';
-                                            input.value = <?=base_url("/assets/img/yellow.png")?>;
+                                        //     fotoPrev.src = 'assets/img/yellow.png';
+                                        //     input.value = <?= base_url("/assets/img/yellow.png") ?>;
 
-                                            const fileFoto = new FileReader();
-                                            fileFoto.readAsDataURL(input.files[0])
+                                        //     const fileFoto = new FileReader();
+                                        //     fileFoto.readAsDataURL(input.files[0]);
 
 
-                                            console.log(input.value);
-                                            // console.log(input.value);
+                                        //     console.log(input.value);
+                                        //     // console.log(input.value);
 
-                                        }
+                                        // }
                                     </script>
 
                                     <div class="row mb-3">

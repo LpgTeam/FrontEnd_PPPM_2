@@ -113,7 +113,7 @@ class Kepala extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 3,
-            'status_pengajuan'  => 'Disetujui kepala pppm'
+            'status_pengajuan'  => 'Proposal disetujui oleh Kepala PPPM'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
