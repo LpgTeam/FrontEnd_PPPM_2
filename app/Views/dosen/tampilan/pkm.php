@@ -50,16 +50,27 @@
                                             <td>
                                                 <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
                                                 <?php
-                                                if ($post['jenis_pkm'] == 'Mandiri') {
-                                                    echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                                } else {
-                                                    echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                                }
-                                                ?>
+                                                // if ($post['jenis_pkm'] == 'Mandiri') {
+                                                //     echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
+                                                // } else {
+                                                //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
+                                                // }
+                                                if ($post['id_status'] == 1) { ?>
+                                                    <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                } else if (($post['id_status'] == 2)) { ?>
+                                                    <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                } else if ($post['id_status'] == 3) { ?>
+                                                    <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php
+                                                } else if ($post['id_status'] == 4) { ?>
+                                                    <a href="/pkmSelesai/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
-                                        <?php $i++;    ?>
-                                <?php endforeach;
+                                <?php $i++;
+                                    endforeach;
                                 } ?>
                             </tbody>
                         </table>
