@@ -240,7 +240,7 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabartan Fungsional</label>
+                                        <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= $loginUser['jabatan_dosen']; ?>"         >
                                         </div>
@@ -261,7 +261,7 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="hp" class="col-md-4 col-lg-3 col-form-label">Nomot Handphone</label>
+                                        <label for="hp" class="col-md-4 col-lg-3 col-form-label">Nomor Handphone</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="hp" type="text" class="form-control" value="<?= $loginUser['no_hp']; ?>" id="hp">
                                         </div>

@@ -220,7 +220,7 @@
                                 <tr class="table-primary">
                                     <th scope="col">Jenis Luaran</th>
                                     <th scope="col">Target Capaian</th>
-                                    <th scope="col">Jurnal/Konferensi Yanag Dituju</th>
+                                    <th scope="col">Jurnal/Konferensi Yang Dituju</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                                 <tbody>
