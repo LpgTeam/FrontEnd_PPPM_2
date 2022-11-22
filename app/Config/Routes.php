@@ -215,6 +215,9 @@ if (auth()->loggedIn()) {
         $routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
         $routes->get('/acc-BAU/(:any)', 'BAU::acc_penelitian_BAU/$1');
         $routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
+
+        $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
+        
     }
 }
 //download proposal

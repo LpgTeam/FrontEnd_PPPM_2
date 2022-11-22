@@ -89,7 +89,7 @@ class Login extends ShieldLoginController
             return redirect()->route('auth-action-show')->withCookies();
         }
 
-        if (!(auth()->user()->inGroup('admin') || auth()->user()->inGroup('direktur') || auth()->user()->inGroup('kepalaPPPM') || auth()->user()->inGroup('reviewer'))) {
+        if (!(auth()->user()->inGroup('admin') || auth()->user()->inGroup('direktur') || auth()->user()->inGroup('kepalaPPPM') || auth()->user()->inGroup('reviewer') || auth()->user()->inGroup('bau'))) {
             session()->setFlashdata('pesan', 'Login gagal. Anda bukan administrator. Pilih menu login yang sesuai');
             auth()->logout();
             return redirect()->to(base_url() . '/login');

@@ -84,7 +84,7 @@
                 <div class="swiper-pagination"></div>
             </div>
 
-            <div class="row gy-4 justify-content-md-center" data-aos="fade-up">
+            <!-- <div class="row gy-4 justify-content-md-center" data-aos="fade-up">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
@@ -94,7 +94,7 @@
                         <br>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Bar Chart -->
             <div class="justify-content-md-center">
@@ -171,7 +171,7 @@
 <!-- End Testimonials Section -->
 
 <!-- Ubah dana awal -->
-<div class="modal fade" id="ubah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ubahLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="ubah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ubahLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -190,11 +190,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/penelitianMandiri'">Ya</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/anggaranAdmin'">Ya</button>
             </div>
             <div class="w-100">
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <?= $this->endSection(); ?>
