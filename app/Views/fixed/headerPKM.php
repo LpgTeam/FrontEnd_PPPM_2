@@ -61,35 +61,52 @@
                 </div>
             </span>
         </a> -->
-
         <nav id="navbar" class="navbar">
             <ul>
                 <!-- Dosen -->
-                <li><a class="nav-link scrollto" href="/pkmDosen">Kembali</a></li>
-                <li class="dropdown">
-                    <a class="username scrollto" href="#"><span>Dosen</span></a>
-                    <ul>
-                        <li><a href="/login">Logout</a></li>
-                    </ul>
-                </li>
+                <?php
+                if ($_SESSION['group'] == "dosen") {
+                ?>
+                    <li><a class="nav-link scrollto" href="/pkmDosen">Kembali</a></li>
+                    <li class="dropdown">
+                        <a class="username scrollto" href="#"><span>Dosen</span></a>
+                        <ul>
+                            <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li>
+                <?php
+                }
+                ?>
 
                 <!-- Admin PPPM -->
-                <li><a class="nav-link scrollto" href="/pkmAdmin">Kembali</a></li>
-                <li class="dropdown">
-                    <a class="username scrollto" href="#"><span>Admin</span></a>
-                    <ul>
-                        <li><a href="/login">Logout</a></li>
-                    </ul>
-                </li>
+                <?php
+                if ($_SESSION['group'] == "admin") {
+                ?>
+                    <li><a class="nav-link scrollto" href="/pkmAdmin">Kembali</a></li>
+                    <li class="dropdown">
+                        <a class="username scrollto" href="#"><span>Admin</span></a>
+                        <ul>
+                            <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li>
+                <?php
+                }
+                ?>
 
                 <!-- Kepala PPPM -->
-                <li><a class="nav-link scrollto" href="/pkmKepala">Kembali</a></li>
-                <li class="dropdown">
-                    <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
-                    <ul>
-                        <li><a href="/login">Logout</a></li>
-                    </ul>
-                </li>
+                <?php
+                if ($_SESSION['group'] == "kepalapppm") {
+                ?>
+                    <li><a class="nav-link scrollto" href="/pkmKepala">Kembali</a></li>
+                    <li class="dropdown">
+                        <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                        <ul>
+                            <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li>
+                <?php
+                }
+                ?>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
