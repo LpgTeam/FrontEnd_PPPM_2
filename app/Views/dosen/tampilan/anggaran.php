@@ -1,4 +1,6 @@
-<?= $this->extend('dosen/fixed/template') ?>
+<? //= $this->extend('dosen/fixed/template') 
+?>
+<?= $this->extend('fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <!-- ======= Anggaran Section ======= -->
@@ -10,7 +12,7 @@
                 <hr>
                 <p>Anggaran Penelitian dan PKM Dosen</p>
             </header>
-        
+
             <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -21,9 +23,9 @@
                             </div>
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
-                            <?php 
-                            if(isset($anggaranAwal)){
-                                echo '<h2>Rp ',number_format($anggaranAwal['jumlah'],0,",","."),'</h2>';
+                            <?php
+                            if (isset($anggaranAwal)) {
+                                echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -39,9 +41,9 @@
                             </div>
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
-                            <?php 
-                            if(isset($anggaranTerealisasi)){
-                                echo '<h2>Rp ',number_format($anggaranTerealisasi['dana_keluar'],0,",","."),'</h2>';
+                            <?php
+                            if (isset($anggaranTerealisasi)) {
+                                echo '<h2>Rp ', number_format($anggaranTerealisasi['dana_keluar'], 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -71,9 +73,9 @@
                             </div>
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
-                            <?php 
-                            if(isset($anggaranTerealisasi)){
-                                echo '<h2>Rp ',number_format($anggaranTerealisasi['sisa_anggaran'],0,",","."),'</h2>';
+                            <?php
+                            if (isset($anggaranTerealisasi)) {
+                                echo '<h2>Rp ', number_format($anggaranTerealisasi['sisa_anggaran'], 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -113,24 +115,24 @@
                                         type: 'pie',
                                         radius: '50%',
                                         data: [{
-                                            <?php
-                                                if(isset($anggaranAwal)){
-                                                   echo 'value: ', $anggaranTerealisasi['dana_keluar']; 
+                                                <?php
+                                                if (isset($anggaranAwal)) {
+                                                    echo 'value: ', $anggaranTerealisasi['dana_keluar'];
                                                 }
-                                            ?>,
-                                            name: 'Dana Terealisasi'
-                                                
+                                                ?>,
+                                                name: 'Dana Terealisasi'
+
                                             },
                                             {
                                                 value: 1000000,
                                                 name: 'Dana Pengajuan'
                                             },
                                             {
-                                               <?php
-                                                if(isset($anggaranAwal)){
-                                                   echo 'value: ', $anggaranTerealisasi['sisa_anggaran']; 
+                                                <?php
+                                                if (isset($anggaranAwal)) {
+                                                    echo 'value: ', $anggaranTerealisasi['sisa_anggaran'];
                                                 }
-                                            ?>,
+                                                ?>,
                                                 name: 'Dana Tersedia'
                                             }
                                         ],

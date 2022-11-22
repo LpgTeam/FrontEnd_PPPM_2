@@ -58,7 +58,7 @@ class Login extends ShieldLoginController
         if ($authenticator->hasAction()) {
             return redirect()->route('auth-action-show')->withCookies();
         }
-
+        $_SESSION['group'] = "dosen";
         return redirect()->to(base_url() . '/indexDosen')->withCookies();
     }
 
@@ -94,14 +94,19 @@ class Login extends ShieldLoginController
             auth()->logout();
             return redirect()->to(base_url() . '/login');
         } elseif (auth()->user()->inGroup('direktur')) {
+            $_SESSION['group'] = "direktur";
             return redirect()->to(base_url() . '/indexDirektur')->withCookies();
         } elseif (auth()->user()->inGroup('admin')) {
+            $_SESSION['group'] = "admin";
             return redirect()->to(base_url() . '/indexAdmin')->withCookies();
         } elseif (auth()->user()->inGroup('kepalapppm')) {
+            $_SESSION['group'] = "kepalapppm";
             return redirect()->to(base_url() . '/indexKepala')->withCookies();
         } elseif (auth()->user()->inGroup('reviewer')) {
+            $_SESSION['group'] = "reviewer";
             return redirect()->to(base_url() . '/indexReviewer')->withCookies();
         } elseif (auth()->user()->inGroup('bau')) {
+            $_SESSION['group'] = "bau";
             return redirect()->to(base_url() . '/indexBAU')->withCookies();
         } else {
             session()->setFlashdata('pesan', 'Login gagal. Anda bukan administrator. Pilih menu login yang sesuai');

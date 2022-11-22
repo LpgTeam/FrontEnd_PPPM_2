@@ -1,4 +1,6 @@
-<?= $this->extend('adminPPPM/fixed/templateUser') ?>
+<? //= $this->extend('adminPPPM/fixed/templateUser') 
+?>
+<?= $this->extend('fixed/templateUserSetting') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
