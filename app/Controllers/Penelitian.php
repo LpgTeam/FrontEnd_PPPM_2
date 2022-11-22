@@ -173,7 +173,25 @@ class Penelitian extends BaseController
             'biaya'  => $biaya,
             'bukti_luaran' => $namaBukti
         ]);
-
+        // $dosenModel = new DosenModel();
+        // $dosenModel->save([
+        //     'NIP_dosen'     => $this->request->getVar('judul_penelitian'),
+        //     // 'username'      => $this->request->getVar('username'),
+        //     'username'      => $this->request->getVar('judul_penelitian'),
+        //     'email_dosen'   => $this->request->getVar('judul_penelitian'),
+        //     'jabatan_dosen' => $this->request->getVar('judul_penelitian'),
+        //     'nama_dosen'    => $this->request->getVar('judul_penelitian'),
+        //     'program_studi' => $this->request->getVar('judul_penelitian'),
+        //     'no_hp' => $this->request->getVar('judul_penelitian'),
+        //     'foto_dosen' => $this->request->getVar('judul_penelitian'),
+        //     'minat_penelitian' => $this->request->getVar('judul_penelitian'),
+        //     'google_scholar' => $this->request->getVar('judul_penelitian'),
+        //     'link_sinta' => $this->request->getVar('judul_penelitian'),
+        //     'link_orcid' => $this->request->getVar('judul_penelitian'),
+        //     'link_scopus' => $this->request->getVar('judul_penelitian'),
+        //     'link_wos' => $this->request->getVar('judul_penelitian')
+        // ]);
+        
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
         // dd($idpenelitian );
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));

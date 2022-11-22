@@ -63,9 +63,10 @@ $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 // $routes->get('/penelitianDidanaiInstitusi', 'Dosen::penelitianDidanaiInstitusi');
 // $routes->get('/penelitianInstitusi', 'Dosen::penelitianInstitusi');
 
-$routes->get('/pkmMandiri', 'Dosen::pkmMandiri');
-$routes->get('/pkmKelompok', 'Dosen::pkmKelompok');
-$routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
+// $routes->get('/pkmMandiri', 'Dosen::pkmMandiri');
+// $routes->get('/pkmKelompok', 'Dosen::pkmKelompok');
+// $routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
+$routes->get('/pkmForm/(:any)', 'Dosen::pkmForm/$1');
 
 // $routes->get('/penelitianSemiMandiri1/(:any)', 'Dosen::penelitianSemiMandiri1/$1');
 // $routes->get('/penelitianSemiMandiri2', 'Dosen::penelitianSemiMandiri2');

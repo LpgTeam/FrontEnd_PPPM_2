@@ -38,4 +38,10 @@ class AuthSession extends BaseConfig
         'required',
         'regex_match[/\A[a-zA-Z0-9\.]+\z/]',
     ];
+
+    public array $namaValidationRules = [
+        'required',
+        'max_length[254]',
+    ];
+
 }

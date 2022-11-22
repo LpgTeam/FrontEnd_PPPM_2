@@ -39,7 +39,7 @@ class Dosen extends BaseController
         $user = auth()->user();
         // dd(auth()->user()->getGroups());
         $nip = $user->nip;
-        // dd($user);
+        // dd($nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'loginUser' => $this->dosenModel->get_nip_peneliti($nip)
@@ -227,32 +227,50 @@ class Dosen extends BaseController
     //     return view('dosen/tampilan/penelitianForm', $data);
     // }
 
-    public function pkmMandiri()
+    public function pkmForm($jenis)
     {
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Mandiri'
+            'jenis' => $jenis,
+            'user' => $nipdosen,
         ];
-        return view('dosen/tampilan/pkmMandiri', $data);
+        // dd($data['jenis']);
+        return view('dosen/tampilan/pkmForm', $data);
     }
 
-    public function pkmKelompok()
-    {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Kelompok'
-        ];
-        return view('dosen/tampilan/pkmKelompok', $data);
-    }
+    // public function pkmMandiri()
+    // {
+    //     $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Mandiri',
+    //         'user' => $nipdosen,
+    //     ];
+    //     return view('dosen/tampilan/pkmMandiri', $data);
+    // }
 
-    public function pkmTerstruktur()
-    {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Terstruktur'
-        ];
-        return view('dosen/tampilan/pkmTerstruktur', $data);
-    }
+    // public function pkmKelompok()
+    // {
+    //     $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+    //     $data = [
+    //         'user' => $nipdosen,
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Kelompok'
+    //     ];
+    //     return view('dosen/tampilan/pkmKelompok', $data);
+    // }
+
+    // public function pkmTerstruktur()
+    // {
+    //     $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'user' => $nipdosen,
+    //         'jenis' => 'Terstruktur'
+    //     ];
+    //     return view('dosen/tampilan/pkmTerstruktur', $data);
+    // }
 
     // public function penelitianSemiMandiri1($id_penelitian)
     // {
