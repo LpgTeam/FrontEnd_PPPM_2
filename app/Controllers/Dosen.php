@@ -140,8 +140,10 @@ class Dosen extends BaseController
     public function penelitianMandiri()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
+            'user' => $nipdosen,
             'jenis' => 'Mandiri',
             'validation' => \Config\Services::validation()
         ];
@@ -152,8 +154,10 @@ class Dosen extends BaseController
     public function penelitianKerjasama()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
+            'user' => $nipdosen,
             'jenis' => 'Kerjasama',
             'validation' => \Config\Services::validation()
         ];
@@ -178,8 +182,10 @@ class Dosen extends BaseController
     public function penelitianDidanaiInstitusi()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
+            'user' => $nipdosen,
             'jenis' => 'Di Danai Institusi',
             'validation' => \Config\Services::validation()
         ];
@@ -190,9 +196,11 @@ class Dosen extends BaseController
     public function penelitianInstitusi()
     {
         session();
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Institusi',
+            'user' => $nipdosen,
             'validation' => \Config\Services::validation()
         ];
         // return view('dosen/tampilan/penelitianForm2', $data);
@@ -201,16 +209,20 @@ class Dosen extends BaseController
 
     public function pkmMandiri()
     {
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => 'Mandiri'
+            'jenis' => 'Mandiri',
+            'user' => $nipdosen,
         ];
         return view('dosen/tampilan/pkmMandiri', $data);
     }
 
     public function pkmKelompok()
     {
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
+            'user' => $nipdosen,
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => 'Kelompok'
         ];
@@ -219,8 +231,10 @@ class Dosen extends BaseController
 
     public function pkmTerstruktur()
     {
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
+            'user' => $nipdosen,
             'jenis' => 'Terstruktur'
         ];
         return view('dosen/tampilan/pkmTerstruktur', $data);

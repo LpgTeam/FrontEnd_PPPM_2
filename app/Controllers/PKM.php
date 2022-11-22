@@ -84,11 +84,12 @@ class PKM extends BaseController
             'tanggal_pengajuan' => Time::now()
         ]);
 
+        // dd(auth()->user()->nip);
         $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
         // dd($idpkm);
         // dd($this->request->getVar('hasil'));
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
-        // dd($nipdosen);
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
 
 
 
@@ -97,10 +98,10 @@ class PKM extends BaseController
 
         $KetuatimModel->save([
             'id_pkm' => $idpkm['ID_pkm'],
-            'nama' => $this->request->getVar('namaLengkap'),
-            'nip' => $this->request->getVar('nip'),
+            'nama' => $nipdosen['nama_dosen'],
+            'nip' => $nipdosen['NIP_dosen'],
             'pangkat' => $this->request->getVar('pangkat'),
-            'peran'         => "Ketua PKM"
+            'peran'         => "    tua PKM"
         ]);
         $no = $this->request->getVar('anggota');
         for ($i = 1; $i <= $no; $i++) {
