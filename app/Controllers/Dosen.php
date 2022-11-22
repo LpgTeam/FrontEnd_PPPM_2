@@ -362,19 +362,28 @@ class Dosen extends BaseController
 
     public function pkmDetail2($idPKM)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'pkm' => $this->pkmModel->find($idPKM)
+        ];
         return view('dosen/tampilan/pkmProses/pkmProses2', $data);
     }
 
     public function pkmDetail3($idPKM)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'pkm' => $this->pkmModel->find($idPKM)
+        ];
         return view('dosen/tampilan/pkmProses/pkmProses3', $data);
     }
 
     public function pkmDetail4($idPKM)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'pkm' => $this->pkmModel->find($idPKM)
+        ];
         return view('dosen/tampilan/pkmProses/pkmSelesai', $data);
     }
 
