@@ -47,7 +47,7 @@
                             <img src="/foto_profil/<?= $loginUser['foto_dosen']; ?>" alt="Profile">
                         <?php } ?>
                         <h2><?= $loginUser['nama_dosen']; ?></h2>
-                        <h3>Lektor</h3>
+                        <h3><?=$loginUser['jabatan_dosen']; ?></h3>
                         <div class="social-links mt-2">
                             <?php ?>
                             <p>

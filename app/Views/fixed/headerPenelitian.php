@@ -73,87 +73,87 @@
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
                         <ul>
-                            <li><a href="/login">Logout</a></li>
+                            <!-- <li><a href="/login">Logout</a></li>
                         </ul>
-                    </li>
-                <?php
-                }
-                ?>
+                    </li> -->
+                        <?php
+                    }
+                        ?>
 
-                <!-- Admin PPPM -->
-                <?php
-                if ($_SESSION['group'] == "admin") {
-                ?>
-                    <li><a class="nav-link scrollto" href="/penelitianAdmin">Kembali</a></li>
-                    <li class="dropdown">
-                        <a class="username scrollto" href="#"><span>Admin</span></a>
-                        <ul>
-                            <li><a href="/login">Logout</a></li>
+                        <!-- Admin PPPM -->
+                        <?php
+                        if ($_SESSION['group'] == "admin") {
+                        ?>
+                            <li><a class="nav-link scrollto" href="/penelitianAdmin">Kembali</a></li>
+                            <li class="dropdown">
+                                <a class="username scrollto" href="#"><span>Admin</span></a>
+                                <ul>
+                                    <!-- <li><a href="/login">Logout</a></li>
                         </ul>
-                    </li>
-                <?php
-                }
-                ?>
+                    </li> -->
+                                <?php
+                            }
+                                ?>
 
-                <!-- Reviewer -->
-                <?php
-                if ($_SESSION['group'] == "reviewer") {
-                ?>
-                    <li><a class="nav-link scrollto" href="/penelitianReviewer">Kembali</a></li>
-                    <li class="dropdown">
-                        <a class="username scrollto" href="#"><span>Reviewer</span></a>
-                        <ul>
-                            <li><a href="/login">Logout</a></li>
+                                <!-- Reviewer -->
+                                <?php
+                                if ($_SESSION['group'] == "reviewer") {
+                                ?>
+                                    <li><a class="nav-link scrollto" href="/penelitianReviewer">Kembali</a></li>
+                                    <li class="dropdown">
+                                        <a class="username scrollto" href="#"><span>Reviewer</span></a>
+                                        <ul>
+                                            <!-- <li><a href="/login">Logout</a></li>
                         </ul>
-                    </li>
-                <?php
-                }
-                ?>
-                <!-- Kepala PPPM -->
-                <?php
-                if ($_SESSION['group'] == "kepalapppm") {
-                ?>
-                    <li><a class="nav-link scrollto" href="/penelitianKepala">Kembali</a></li>
-                    <li class="dropdown">
-                        <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
-                        <ul>
-                            <li><a href="/login">Logout</a></li>
+                    </li> -->
+                                        <?php
+                                    }
+                                        ?>
+                                        <!-- Kepala PPPM -->
+                                        <?php
+                                        if ($_SESSION['group'] == "kepalapppm") {
+                                        ?>
+                                            <li><a class="nav-link scrollto" href="/penelitianKepala">Kembali</a></li>
+                                            <li class="dropdown">
+                                                <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                                <ul>
+                                                    <!-- <li><a href="/login">Logout</a></li>
                         </ul>
-                    </li>
-                <?php
-                }
-                ?>
-                <!-- Direktur -->
-                <?php
-                if ($_SESSION['group'] == "direktur") {
-                ?>
-                    <li><a class="nav-link scrollto" href="/penelitianDirektur">Kembali</a></li>
-                    <li class="dropdown">
-                        <a class="username scrollto" href="#"><span>Direktur</span></a>
-                        <ul>
-                            <li><a href="/login">Logout</a></li>
+                    </li> -->
+                                                <?php
+                                            }
+                                                ?>
+                                                <!-- Direktur -->
+                                                <?php
+                                                if ($_SESSION['group'] == "direktur") {
+                                                ?>
+                                                    <li><a class="nav-link scrollto" href="/penelitianDirektur">Kembali</a></li>
+                                                    <li class="dropdown">
+                                                        <a class="username scrollto" href="#"><span>Direktur</span></a>
+                                                        <ul>
+                                                            <!-- <li><a href="/login">Logout</a></li>
                         </ul>
-                    </li>
-                <?php
-                }
-                ?>
+                    </li> -->
+                                                        <?php
+                                                    }
+                                                        ?>
 
-                <!-- BAU -->
-                <?php
-                if ($_SESSION['group'] == "bau") {
-                ?>
-                    <li><a class="nav-link scrollto" href="/penelitianBAU">Kembali</a></li>
-                    <li class="dropdown">
-                        <a class="username scrollto" href="#"><span>BAU</span></a>
-                        <ul>
-                            <li><a href="/login">Logout</a></li>
-                        </ul>
-                    </li>
-                <?php
-                }
-                ?>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
+                                                        <!-- BAU -->
+                                                        <?php
+                                                        if ($_SESSION['group'] == "bau") {
+                                                        ?>
+                                                            <li><a class="nav-link scrollto" href="/penelitianBAU">Kembali</a></li>
+                                                            <li class="dropdown">
+                                                                <a class="username scrollto" href="#"><span>BAU</span></a>
+                                                                <ul>
+                                                                <?php
+                                                            }
+                                                                ?>
+                                                                <li><a href="/logout">Logout</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                        <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
     </div>
