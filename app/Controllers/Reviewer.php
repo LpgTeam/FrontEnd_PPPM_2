@@ -99,7 +99,7 @@ class Reviewer extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 2,
-            'status_pengajuan'  => 'Disetujui'
+            'status_pengajuan'  => 'Proposal disetujui oleh Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
