@@ -27,7 +27,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info">
-                            <a href="/pkmMandiri" class="btn-pilih">PILIH</a>
+                            <a href="/pkmForm/Mandiri" class="btn-pilih">PILIH</a>
                             <h4>PKM Mandiri</h4>
                             <p>
                                 Kegatan pengabdian kepada masyarakat oleh dosen, tanpa
@@ -43,7 +43,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info box">
-                            <a href="/pkmKelompok" class="btn-pilih">PILIH</a>
+                            <a href="/pkmForm/Kelompok" class="btn-pilih">PILIH</a>
                             <h4>PKM Perorangan/Kelompok</h4>
                             <p>
                                 Pengabdian kepada masyarakat yang kegiatannya merupakan
@@ -61,7 +61,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info">
-                            <a href="/pkmTerstruktur" class="btn-pilih">PILIH</a>
+                            <a href="/pkmForm/Terstruktur" class="btn-pilih">PILIH</a>
                             <h4>PKM Terstruktur</h4>
                             <p>
                                 Pengabdian kepada masyarakat yang kegiatannya dirancang oleh
