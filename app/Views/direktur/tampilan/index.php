@@ -78,7 +78,7 @@
                                     <div class="col-lg-3 col-md-4 label">
                                         Minat Penelitian
                                     </div>
-                                    <div class="col-lg-9 col-md-8">
+                                <div class="col-lg-9 col-md-8">
                                         <ul>
                                             <li>Pengembangan Aplikasi Statistik</li>
                                             <li>Sistem Informasi PAK Dosen</li>
