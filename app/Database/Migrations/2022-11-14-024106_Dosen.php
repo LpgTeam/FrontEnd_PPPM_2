@@ -14,7 +14,7 @@ class Dosen extends Migration
                 'constraint' => 20
             ],
 
-            'id_user' => [
+            'user_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,

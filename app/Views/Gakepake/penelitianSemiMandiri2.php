@@ -1,4 +1,6 @@
-<?= $this->extend('dosen/fixed/templatePenelitian') ?>
+<? //= $this->extend('dosen/fixed/templatePenelitian') 
+?>
+<?= $this->extend('fixed/templatePenelitian') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">

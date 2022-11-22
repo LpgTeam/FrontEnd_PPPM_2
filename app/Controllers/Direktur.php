@@ -99,7 +99,7 @@ class Direktur extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 4,
-            'status_pengajuan'  => 'Disetujui - ditandatangani direktur'
+            'status_pengajuan'  => 'Proposal disetujui oleh Direktur'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');

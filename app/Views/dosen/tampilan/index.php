@@ -1,4 +1,6 @@
-<?= $this->extend('dosen/fixed/template') ?>
+<? //= $this->extend('dosen/fixed/template') 
+?>
+<?= $this->extend('fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
@@ -45,7 +47,7 @@
                             <img src="/foto_profil/<?= $loginUser['foto_dosen']; ?>" alt="Profile">
                         <?php } ?>
                         <h2><?= $loginUser['nama_dosen']; ?></h2>
-                        <h3>Lektor</h3>
+                        <h3><?=$loginUser['jabatan_dosen']; ?></h3>
                         <div class="social-links mt-2">
                             <?php ?>
                             <p>
@@ -205,24 +207,24 @@
                                             // console.log(fotoPrev.src);
                                         }
 
-                                        function deleteFoto() {
-                                            // var myImage = new Image();
-                                            // myImage.src = 'assets/img/yellow.png';
-                                            const fotoPrev = document.querySelector('.foto-prev');
-                                            const fotoLabel = document.querySelector('.fotoProfil');
-                                            const input = document.getElementById('fotoProfil');
+                                        // function deleteFoto() {
+                                        //     // var myImage = new Image();
+                                        //     // myImage.src = 'assets/img/yellow.png';
+                                        //     const fotoPrev = document.querySelector('.foto-prev');
+                                        //     const fotoLabel = document.querySelector('.fotoProfil');
+                                        //     const input = document.getElementById('fotoProfil');
 
-                                            fotoPrev.src = 'assets/img/yellow.png';
-                                            input.value = <?=base_url("/assets/img/yellow.png")?>;
+                                        //     fotoPrev.src = 'assets/img/yellow.png';
+                                        //     input.value = <?= base_url("/assets/img/yellow.png") ?>;
 
-                                            const fileFoto = new FileReader();
-                                            fileFoto.readAsDataURL(input.files[0])
+                                        //     const fileFoto = new FileReader();
+                                        //     fileFoto.readAsDataURL(input.files[0])
 
 
-                                            console.log(input.value);
-                                            // console.log(input.value);
+                                        //     console.log(input.value);
+                                        //     // console.log(input.value);
 
-                                        }
+                                        // }
                                     </script>
 
                                     <div class="row mb-3">
@@ -242,7 +244,7 @@
                                     <div class="row mb-3">
                                         <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= $loginUser['jabatan_dosen']; ?>"         >
+                                            <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= $loginUser['jabatan_dosen']; ?>">
                                         </div>
                                     </div>
 

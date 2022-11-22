@@ -1,4 +1,6 @@
-<?= $this->extend('reviewer/fixed/templatePenelitian') ?>
+<? //= $this->extend('reviewer/fixed/templatePenelitian') 
+?>
+<?= $this->extend('fixed/templatePenelitian') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">

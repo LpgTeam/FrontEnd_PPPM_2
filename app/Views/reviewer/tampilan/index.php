@@ -1,4 +1,6 @@
-<?= $this->extend('reviewer/fixed/template') ?>
+<? //= $this->extend('reviewer/fixed/template') 
+?>
+<?= $this->extend('fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">

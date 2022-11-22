@@ -1,4 +1,6 @@
-<?= $this->extend('bau/fixed/template') ?>
+<? //= $this->extend('bau/fixed/template') 
+?>
+<?= $this->extend('fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <!-- ======= Anggaran Section ======= -->

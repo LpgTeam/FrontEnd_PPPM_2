@@ -1,11 +1,13 @@
-<?= $this->extend('dosen/fixed/templatePKM') ?>
+<? //= $this->extend('dosen/fixed/templatePKM') 
+?>
+<?= $this->extend('fixed/templatePKM') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>PKM (----)</h2>
+                <h2>PKM <?=$pkm['jenis_pkm'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>

@@ -1,4 +1,6 @@
-<?= $this->extend('adminPPPM/fixed/template') ?>
+<? //= $this->extend('adminPPPM/fixed/template') 
+?>
+<?= $this->extend('fixed/template') ?>
 
 <?= $this->section('content'); ?>
 <!-- ======= Anggaran Section ======= -->
