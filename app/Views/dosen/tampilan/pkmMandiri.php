@@ -1,4 +1,6 @@
-<?= $this->extend('dosen/fixed/templatePKM') ?>
+<? //= $this->extend('dosen/fixed/templatePKM') 
+?>
+<?= $this->extend('fixed/templatePKM') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
@@ -156,7 +158,7 @@
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </a>
                                 <p class="invalid-feedback" id="m" style="display: none ;">Jumlah Anggota sudah full</p>
-                            
+
                             </div>
                         </div>
 
@@ -172,9 +174,9 @@
                                 var rowCount = document.getElementById('myTableID').rows.length;
                                 if (x > rowCount - 1) {
                                     m.style.display = 'none';
-                                $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nipAnggota" + rowCount + "' class='form-control' type='text' id='nipAnggota" + rowCount + "' required></td><td><input name='pangkatAnggota" + rowCount + "' class='form-control' type='text' id='pangkatAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
-                                console.log(rowCount);
-                                }else{
+                                    $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nipAnggota" + rowCount + "' class='form-control' type='text' id='nipAnggota" + rowCount + "' required></td><td><input name='pangkatAnggota" + rowCount + "' class='form-control' type='text' id='pangkatAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                    console.log(rowCount);
+                                } else {
                                     m.style.display = "block";
                                     btn.onclick() = null;
                                 }

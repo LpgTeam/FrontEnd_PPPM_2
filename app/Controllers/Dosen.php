@@ -39,7 +39,7 @@ class Dosen extends BaseController
     public function index()
     {
         $user = auth()->user();
-        // dd($user->email);
+        // dd(auth()->user()->getGroups());
         $nip = $user->nip;
         // dd($nip);
         $data = [

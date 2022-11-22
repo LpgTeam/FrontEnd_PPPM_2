@@ -1,11 +1,13 @@
-<?= $this->extend('dosen/fixed/templatePenelitian') ?>
+<? //= $this->extend('dosen/fixed/templatePenelitian') 
+?>
+<?= $this->extend('fixed/templatePenelitian') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Penelitian <?= $penelitian['jenis_penelitian'];?></h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
