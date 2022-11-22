@@ -242,7 +242,7 @@
                                     <div class="row mb-3">
                                         <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabartan Fungsional</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= $loginUser['jabatan_dosen']; ?>" readonly style="background: #E8E8E8;">
+                                            <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= $loginUser['jabatan_dosen']; ?>"         >
                                         </div>
                                     </div>
 

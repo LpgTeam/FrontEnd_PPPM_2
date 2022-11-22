@@ -34,14 +34,14 @@
                         <div class="row mb-3">
                             <label for="namaLengkap" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="namaLengkap" type="text" class="form-control" id="namaLengkap" required>
+                                <input name="namaLengkap" type="text" class="form-control" value="<?= $user['nama_dosen']; ?>" id="namaLengkap" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="nip" class="col-md-4 col-lg-3 col-form-label">NIP</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="nip" type="text" class="form-control" id="nip" required>
+                                <input name="nip" type="text" class="form-control" id="nip" value="<?= $user['nama_dosen']; ?>"  readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
