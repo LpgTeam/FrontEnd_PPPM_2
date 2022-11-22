@@ -97,7 +97,7 @@ class Login extends ShieldLoginController
             return redirect()->to(base_url() . '/indexDirektur')->withCookies();
         } elseif (auth()->user()->inGroup('admin')) {
             return redirect()->to(base_url() . '/indexAdmin')->withCookies();
-        } elseif (auth()->user()->inGroup('kepalaPPPM')) {
+        } elseif (auth()->user()->inGroup('kepalapppm')) {
             return redirect()->to(base_url() . '/indexKepala')->withCookies();
         } elseif (auth()->user()->inGroup('reviewer')) {
             return redirect()->to(base_url() . '/indexReviewer')->withCookies();

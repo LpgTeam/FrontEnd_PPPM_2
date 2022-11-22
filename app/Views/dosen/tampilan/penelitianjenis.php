@@ -27,7 +27,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info">
-                            <a href="/penelitianMandiri" class="btn-pilih">PILIH</a>
+                            <a href="/penelitianForm/mandiri" class="btn-pilih">PILIH</a>
                             <h4>Penelitian Mandiri</h4>
                             <p>
                                 Penelitian yang dalam proses penyelesaian serta publikasinya
@@ -43,7 +43,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info box">
-                            <a href="/penelitianSemiMandiri" class="btn-pilih">PILIH</a>
+                            <a href="/penelitianForm/semi-mandiri" class="btn-pilih">PILIH</a>
                             <h4>Penelitian Semi Mandiri</h4>
                             <p>
                                 Penelitian yang dalam proses penelitiannya dibiayai secara
@@ -62,7 +62,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info">
-                            <a href="/penelitianDidanaiInstitusi" class="btn-pilih">PILIH</a>
+                            <a href="/penelitianForm/didanai-institusi" class="btn-pilih">PILIH</a>
                             <h4>Penelitian Didanai Institusi</h4>
                             <p>
                                 Penelitian yang dalam proses penyelesaian maupun publikasinya
@@ -85,7 +85,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info">
-                            <a href="/penelitianInstitusi" class="btn-pilih">PILIH</a>
+                            <a href="/penelitianForm/institusi" class="btn-pilih">PILIH</a>
                             <h4>Penelitian Institusi</h4>
                             <p>
                                 Penelitian Institusi adalah penelitian yang dilakukan oleh
@@ -103,7 +103,7 @@
                             <img src="assets/img/Book.jpg" class="img-fluid" alt="" />
                         </div>
                         <div class="member-info">
-                            <a href="/penelitianKerjasama" class="btn-pilih">PILIH</a>
+                            <a href="/penelitianForm/kerja-sama" class="btn-pilih">PILIH</a>
                             <h4>Penelitian Kerjasama</h4>
                             <p>
                                 Penelitian yang dalam proses penyelesaian serta publikasinya

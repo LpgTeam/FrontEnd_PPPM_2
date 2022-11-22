@@ -14,8 +14,7 @@ class AuthGroups extends ShieldAuthGroups
      * --------------------------------------------------------------------
      * The group that a newly registered user is added to.
      */
-    // public string $defaultGroup = 'user';
-    public string $defaultGroup = 'dosen';
+    public string $defaultGroup = 'user';
 
     /**
      * --------------------------------------------------------------------
@@ -55,7 +54,7 @@ class AuthGroups extends ShieldAuthGroups
             'title'       => 'Direktur Politeknik Statistika STIS',
             'description' => 'Akses segala fitur yang tersedia untuk direktur',
         ],
-        'kepalaPPPM' => [
+        'kepalapppm' => [
             'title'       => 'Kepala PPPM',
             'description' => 'Akses segala fitur yang tersedia untuk Kepala PPPM',
         ],

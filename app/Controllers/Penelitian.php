@@ -167,7 +167,7 @@ class Penelitian extends BaseController
             'jumlah_anggota' => $this->request->getVar('anggota'),
             'tanggal_pengajuan' => Time::now(),
             'id_status' => '1',
-            'status_pengajuan' => 'diajukan',
+            'status_pengajuan' => 'Proposal diajukan',
             'file_proposal' => $namaProposal,
             'surat_pernyataan' => $namaSurat,
             'biaya'  => $biaya,
@@ -233,7 +233,7 @@ class Penelitian extends BaseController
             ]);
         };
         $this->laporanPenelitianModel->save([
-            'id_penelitian'=>$idpenelitian['id_penelitian']
+            'id_penelitian' => $idpenelitian['id_penelitian']
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
