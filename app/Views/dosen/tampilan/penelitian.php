@@ -48,8 +48,7 @@
                                             <td><?php echo $post['jenis_penelitian'] ?></td>
                                             <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                             <td><?php echo $post['judul_penelitian'] ?></td>
-                                            <td><?php echo $post['status_pengajuan'] ?></td>
-                                            <td>
+                                            <td><?php echo $post['status_pengajuan'] ?></td>                                            <td>
                                                 <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
                                                 <?php
                                                 if ($post['jenis_penelitian'] == 'Mandiri' || $post['jenis_penelitian'] == 'Kerjasama') {
