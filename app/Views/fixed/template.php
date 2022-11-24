@@ -34,6 +34,9 @@
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>/assets/css/style2.css" rel="stylesheet" />
+    <script src="<?= base_url() ?>/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/status.js"></script>
+    <?= $this->include('dosen/tampilan/scriptAutoComplete') ?>
 </head>
 
 
@@ -48,6 +51,7 @@
     <?= $this->include('fixed/footer') ?>
 
     <!-- Vendor JS Files 1-->
+
     <script src="<?= base_url() ?>/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="<?= base_url() ?>/assets/vendor/aos/aos.js"></script>
     <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -57,6 +61,7 @@
     <script src="<?= base_url() ?>/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Vendor JS Files 2-->
+
     <script src="<?= base_url() ?>/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>/assets/vendor/chart.js/chart.min.js"></script>
@@ -69,10 +74,7 @@
     <!-- Template Main JS File -->
     <script src="<?= base_url() ?>/assets/js/main2.js"></script>
     <script src="<?= base_url() ?>/assets/js/main.js"></script>
-    <script src="<?= base_url() ?>/assets/js/jquery-3.5.1.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/status.js"></script>
 
-    <?= $this->include('dosen/tampilan/scriptAutoComplete') ?>
 </body>
 
 </html>

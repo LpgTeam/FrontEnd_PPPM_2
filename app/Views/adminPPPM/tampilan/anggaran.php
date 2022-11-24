@@ -192,7 +192,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/penelitianMandiri'">Ya</button>
+                <button type="button" class="btn btn-danger" onclick="location.href='/anggaranAdmin'">Ya</button>
             </div>
             <div class="w-100">
             </div>
