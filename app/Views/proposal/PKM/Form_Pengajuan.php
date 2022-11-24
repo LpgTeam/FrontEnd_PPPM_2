@@ -146,7 +146,7 @@
                 <td>........................</td>
             </tr>
             <tr>
-                <td>Mengetahui</td>
+                <td>Disetujui</td>
                 <td>Jakarta, ...............</td>
                 <td>Diajukan Oleh</td>
             </tr>
