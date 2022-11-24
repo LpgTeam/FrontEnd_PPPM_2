@@ -17,8 +17,8 @@ class TimPKMModel extends Model
         'id_pkm',
         'nip',
         'nama',
-    	'peran',
-    	'pangkat'
+        'peran',
+        'pangkat'
     ];
 
     // Dates
@@ -51,5 +51,18 @@ class TimPKMModel extends Model
         //     ->where(['auth_groups_users.id' => $id])->first();
         return $this->join('pengajuan_pkm', 'pengajuan_pkm.ID_pkm = tim_pkm.id_pkm')->select('tim_pkm.nip')->select('pengajuan_pkm.*')
             ->where(['nip' => $nip])->findAll();
+    }
+
+    public function get_timpkm_byid($id_pkm)
+    {
+        $builder = $this->db->table('tim_pkm');
+        $query = $builder->getWhere(['ID_pkm' => $id_pkm]);
+        return $query->getResultArray();
+    }
+    public function get_anggota_timpkm($id_pkm)
+    {
+        $builder = $this->db->table('tim_pkm');
+        $query = $builder->getWhere(['ID_pkm' => $id_pkm, 'peran !=' => "Ketua PKM"]);
+        return $query->getResultArray();
     }
 }

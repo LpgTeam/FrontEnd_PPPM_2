@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\pkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPKMModel;
+use App\Models\RincianPKMModel;
 use CodeIgniter\I18n\Time;
 
 class PKM extends BaseController
@@ -14,8 +15,9 @@ class PKM extends BaseController
     {
         $this->pkmModel = new pkmModel();
         $this->timModel = new TimPKMModel();
-        $this->ketuaModel = new TimPKMModel();
+        $this->ketuaTimModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
+        $this->rincianPkm = new RincianPKMModel();
     }
 
     public function index()
@@ -38,50 +40,38 @@ class PKM extends BaseController
 
     public function save()
     {
-        // //validasi input
-        // if (!$this->validate([
-        //     // 'nama_obat' => 'required|is_unique[obat.nama_obat]'
-        //     'nama_obat' => [
-        //         'rules' => 'required|is_unique[obat.nama_obat]',
-        //         'errors' => [
-        //             'required' => '{field} obat harus diisi.',
-        //             'is_unique' => '{field} obat sudah terdaftar.'
-        //         ]
-        //     ],
-        //     'sampul' => [
-        //         'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
-        //         'errors' => [
-        //             'max_size' => "Ukuran gambar terlalu besar",
-        //             'is_image' => "Yang anda pilih bukan gambar",
-        //             'mime_in' => "Yang anda pilih bukan gambar"
-        //         ]
-        //     ]
-
-        // ])) {
-        //     // $validation = \Config\Services::validation();
-        //     // dd($validation);
-        //     // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
-        //     return redirect()->to('/add-pkm')->withInput();
-        // }
-
-        // $slug = url_title($this->request->getVar('judul_pkm'), '-', true);
-        // dd($idpkm['ID_pkm']);
+        $jenisPKM = $this->request->getVar('jenis_pkm');
+//================================save PKM=================================    
+        ///=====================Waktu========================
+        $tahun = substr($this->request->getVar('waktu'),0,4);
+        $bulan = substr($this->request->getVar('waktu'),5,2);
+        $hari = substr($this->request->getVar('waktu'),8,2);
+        $waktu = Time::createFromDate($tahun, $bulan, $hari, 'Asia/jakarta');
+        // dd($waktu);
+        // dd(Time::now('Asia/jakarta'));
+        // dd($this->request->getPost('waktu'));
+        //===================================================
+        if($jenisPKM=="Mandiri"){
+            $hasil = "-"; 
+        }else{
+            $hasil = $this->request->getVar('hasil');
+        }
         $this->pkmModel->save([
-            'jenis_pkm' => $this->request->getVar('jenis_pkm'),
+            'jenis_pkm' => $jenisPKM,
             'topik_kegiatan' => $this->request->getVar('topik'),
             // 'bidang' => $this->request->getVar('bidang'),
             'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
             // 'bentuk_kegiatan' => $this->request->getVar('pilihKegiatan'),
-            'waktu_pelaksanaan' => $this->request->getVar('waktu'),
+            'waktu_kegiatan' => $this->request->getVar('waktu'),
             'tempat_kegiatan' => $this->request->getVar('tempat'),
             'sasaran' => $this->request->getVar('sasaran'),
             'target_peserta' => $this->request->getVar('target'),
-            'hasil' => $this->request->getVar('hasil'),
+            'hasil' => $hasil,
             'id_status' => '1',
             'status' => 'diajukan',
             // 'file_proposal' => $this->request->getFile('upload'),
             'biaya'  => $this->request->getVar('biaya'),
-            'tanggal_pengajuan' => Time::now()
+            'tanggal_pengajuan' => Time::now('Asia/jakarta')
         ]);
 
         // dd($this->request->getVar('topik'));
@@ -90,14 +80,49 @@ class PKM extends BaseController
         // dd($idpkm['ID_pkm']+$this->request->getVar('target'));
         // dd($this->request->getVar('hasil'));
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
+        
+// =================Save Rincian PKM==========================
+        if ($jenisPKM == "Mandiri") {
+            if (!$this->validate([
+                'uploadSurat' => [
+                    'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
+                    'errors' => [
+                        'uploaded' => "{field} file tidak boleh kosong",
+                        'ext_in' => "Format file harus pdf",
+                        'max_size' => "Ukuran File terlalu besar"
+                    ]
+                    ],
+                'uploadBukti' => [
+                    'rules' => 'uploaded[uploadBukti]|ext_in[uploadBukti,pdf]|max_size[uploadBukti,10000]',
+                    'errors' => [
+                        'uploaded' => "{field} file tidak boleh kosong",
+                        'ext_in' => "Format file harus pdf",
+                        'max_size' => "Ukuran File terlalu besar"
+                    ]
+                ]
+            ])) {
+                session()->setFlashdata('error', 'Terjadi Kesalahan!!');
+                return redirect()->to('/pkmForm/' . str_replace(' ', '', $jenisPKM))->withInput();
+            }
+            //Save surat pernyataan
+            $fileSurat = $this->request->getFile('uploadSurat');
+            $namaSurat = $fileSurat->getName();
+            $fileSurat->move('surat_pernyataan/pkm', $namaSurat);
+            //save bukti kegiatan
+            $fileBukti = $this->request->getFile('uploadBukti');
+            $namaBukti = $fileBukti->getName();
+            $fileBukti->move('bukti_kegiatan/pkm', $namaBukti);  
+            $this->rincianPkm->save([
+                'id_pkm' => $idpkm['ID_pkm'],
+                'surat_pernyataan' => $namaSurat,
+                'bukti_kegiatan' => $namaBukti,
+            ]);
+        }
+        
+        
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
-
-
-
-        $KetuatimModel = new TimPKMModel();
-        $timModel = new TimPKMModel();
-
-        $KetuatimModel->save([
+//===========================Save Tim PKM================================
+        $this->ketuaTimModel->save([
             'id_pkm' => $idpkm['ID_pkm'],
             'nama' => $nipdosen['nama_dosen'],
             'nip' => $nipdosen['NIP_dosen'],
@@ -106,7 +131,7 @@ class PKM extends BaseController
         ]);
         $no = $this->request->getVar('anggota');
         for ($i = 1; $i <= $no; $i++) {
-            $timModel->save([
+            $this->timModel->save([
                 'id_pkm' => $idpkm['ID_pkm'],
                 'nama' => $this->request->getVar('namaAnggota' . $i),
                 'nip' => $this->request->getVar('nipAnggota' . $i),
@@ -116,7 +141,7 @@ class PKM extends BaseController
         };
 
 
-
+//==========================Set Pesan Sukses===================================
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
 
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];

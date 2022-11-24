@@ -234,6 +234,7 @@ class Dosen extends BaseController
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
+            'validation' => \Config\Services::validation(),
             'jenis' => $jenis,
             'user' => $nipdosen,
         ];

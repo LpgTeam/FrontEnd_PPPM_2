@@ -88,7 +88,8 @@ class Penelitian extends BaseController
                 // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
                 $jenisPenelitian = $this->request->getVar('jenis_penelitian');
                 // dd($validation);
-                return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
+                session()->setFlashdata('error', 'Terjadi Kesalahan!!');
+                return redirect()->to('/penelitianForm/' . strtolower(str_replace(' ', '-', $jenisPenelitian)))->withInput();
 
                 // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
                 //     return redirect()->to('/penelitianMandiri')->withInput();
@@ -140,7 +141,8 @@ class Penelitian extends BaseController
                 // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
                 $jenisPenelitian = $this->request->getVar('jenis_penelitian');
                 // dd($validation);
-                return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
+                session()->setFlashdata('error', 'Terjadi Kesalahan!!');
+                return redirect()->to('/penelitianForm/' . strtolower(str_replace(' ', '-', $jenisPenelitian)))->withInput();
 
                 // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
                 //     return redirect()->to('/penelitianMandiri')->withInput();
@@ -165,7 +167,8 @@ class Penelitian extends BaseController
             'judul_penelitian' => $this->request->getVar('judul_penelitian'),
             'bidang' => $this->request->getVar('bidang'),
             'jumlah_anggota' => $this->request->getVar('anggota'),
-            'tanggal_pengajuan' => Time::now(),
+            'tanggal_pengajuan' => Time::now('Asia/jakarta'
+        ),
             'id_status' => '1',
             'status_pengajuan' => 'Proposal diajukan',
             'file_proposal' => $namaProposal,
