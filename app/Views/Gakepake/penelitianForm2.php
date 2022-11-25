@@ -1,26 +1,30 @@
-<?= $this->extend('dosen/fixed/templatePenelitian') ?>
+<? //= $this->extend('dosen/fixed/templatePenelitian') 
+?>
+<?= $this->extend('fixed/templatePenelitian') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
     <section class="section">
         <header class="section-header2">
-            <h2>Penelitian <?= $jenis  ?></h2>
+            <h2>Penelitian <?= $jenis ?></h2>
             <hr>
-            <p><?= $title ?></p>
+            <p>Dosen Politeknik Statistika STIS</p>
         </header>
         <div class="row justify-content-md-center" data-aos="fade-up">
             <div class="form row gy-4 justify-content-md-center col-md-8">
                 <div class="form-body pt-3 col-md-14">
                     <!-- Bordered Tabs -->
                     <!-- Form -->
-                    <form action="<?= base_url('/penelitian/save'); ?>" method="post" enctype="multipart/form-data">
-
+                    <form action="<?= base_url('/penelitian/save'); ?>" method="post" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Anda Harus Menyetujui Surat Pernyataan terlebih dahulu!'); return false; }" enctype="multipart/form-data">
                         <input name="jenis_penelitian" type="text" class="form-control" id="jenis_penelitian" value="<?= $jenis ?>" hidden>
 
                         <div class="row mb-3">
                             <label for="judul_penelitian" class="col-md-4 col-lg-3 col-form-label">Judul Penelitian</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="judul_penelitian" type="text" class="form-control" id="judul_penelitian" value="<?= old('judul_penelitian'); ?>" required>
+                                <input name="judul_penelitian" type="text" class="form-control <?= ($validation->hasError('judul_penelitian')) ? 'is-invalid' : '' ?>" id="judul_penelitian" value="<?= old('judul_penelitian'); ?>" required>
+                                <div class="invalid-feedback" id="judulValid">
+                                    <?= $validation->getError('judul_penelitian'); ?>
+                                </div>
                             </div>
                         </div>
 
@@ -37,11 +41,11 @@
                             </div>
                         </div>
 
-                        <input name="nip" type="hidden" class="form-control" id="nip" value="<?= old('nip'); ?>">
+                        <input name="nip" type="hidden" class="form-control" id="nip">
 
                         <div class="row mb-3">
                             <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan Fungsional</label>
-                            <div class="col-md-8 col-lg-9">
+                            <div class="col-md-8 col-lg-9 ">
                                 <input name="jabatan" type="text" class="form-control" id="jabatan" value="<?= old('jabatan'); ?>" readonly>
                             </div>
                         </div>
@@ -105,24 +109,49 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
+                            <label for="biaya" class="col-md-4 col-lg-3 col-form-label">Biaya</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload" aria-describedby="uploadValid ">
+                                <input name="biaya" type="number" min="1" step="any" class="form-control" id="biaya" value="<?= old('biaya'); ?>" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Proposal</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload">
                                 <div class="invalid-feedback" id="uploadValid">
                                     <?= $validation->getError('upload'); ?>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
+                            <div class="col-md-8 col-lg-9">
+                                <!-- <button onclick ="" class="btn btn-primary">
+                                    Download Surat Pernyataan</i>
+                                </button> -->
+                                <a href="<?= base_url('penelitian/printpdf') ?>" class="btn btn-primary">
+                                    Download Surat Pernyataan
+                                </a>
+                            </div>
+                        </div>
 
-                        <input name="biaya" type="hidden" min="1" step="any" class="form-control" id="biaya" value="0">
-                        <!-- <input name="uploadSurat" type="hidden"class="form-control" id="uploadSurat" value="null"> -->
+                        <div class="row mb-3">
+                            <label for="uploadSurat" class="col-md-4 col-lg-3 col-form-label ">Upload Surat Pernyataan</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="uploadSurat" class="form-control  <?= ($validation->hasError('uploadSurat')) ? 'is-invalid' : ''; ?>" type="file" id="uploadSurat">
+                                <div class="invalid-feedback" id="uploadValid2">
+                                    <?= $validation->getError('uploadSurat'); ?>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
-                                    <th scope="col">NIM/NIP</th>
+                                    <th scope="col">NIP/NIM</th>
                                     <th scope="col">Program Studi</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -131,13 +160,14 @@
                             </table>
 
                             <div class="col-md-4 col-lg-6">
-                                <!-- <button onclick='add()' class="btn btn-warning" id="btn" >
+                                <!-- <button onclick='add()' class="btn btn-warning">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </button> -->
                                 <a onclick="add()" class="btn btn-warning" id="btn">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </a>
                                 <p class="invalid-feedback" id="m" style="display: none ;">Jumlah Anggota sudah full</p>
+
                             </div>
                         </div>
 
@@ -165,12 +195,14 @@
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </a>
                                 <p class="invalid-feedback" id="m2" style="display: none ;">Jumlah Anggota sudah full</p>
+
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label class="col-md-4 col-lg-3 col-form-label ">Luaran dan Target Capaian</label>
                         </div>
+                        <input name="jumlahrow" id="jumlahrow" value="" type="hidden">
 
                         <div class="row mb-3">
                             <table class="table table3 table-advance table-hover align-middle anggota" id="myTableID3">
@@ -196,6 +228,11 @@
                                 $(event.target).closest("tr").remove();
                             }
 
+                            // function add() {
+                            //     var rowCount = document.getElementById('myTableID').rows.length;
+                            //     $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nip" + rowCount + "' class='form-control' type='text' id='nip" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                            //     console.log(rowCount);
+                            // }
                             function add() {
                                 var rowCount = document.getElementById('myTableID').rows.length;
                                 var x = document.getElementById('anggota').value;
@@ -217,6 +254,11 @@
                                 $(event.target).closest("tr").remove();
                             }
 
+                            // function add2() {
+                            //     var rowCount2 = document.getElementById('myTableID2').rows.length;
+                            //     $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                            //     console.log(rowCount2);
+                            // }
                             function add2() {
 
                                 var rowCount2 = document.getElementById('myTableID2').rows.length;
@@ -239,33 +281,14 @@
                             }
 
                             function add3() {
+                                var m = document.getElementById('jumlahrow');
                                 var rowCount3 = document.getElementById('myTableID3').rows.length;
                                 $(".table3").append("<tr><td><input name='jenisLuaran" + rowCount3 + "' class='form-control' type='text' id='jenisLuaran" + rowCount3 + "' required></td><td><input name='targetCapaian" + rowCount3 + "' class='form-control' type='text' id='targetCapaian" + rowCount3 + "' required></td><td><input name='jurnalTujuan" + rowCount3 + "' class='form-control' type='text' id='jurnalTujuan" + rowCount3 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount3);
+                                m.value = rowCount3;
                             }
                         </script>
 
-                        <!-- <table class="table table-advance table-hover align-middle anggota">
-                            <thead>
-                                <tr class="table-primary">
-                                    <th scope="col">Nama Anggota</th>
-                                    <th scope="col">Program Studi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                </tr>
-                            </tbody>
-                        </table> -->
-
-                        <!-- <div class="row mb-3">
-                            <div class="col-md-4 col-lg-6">
-                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#add" required>Tambah Anggota <i class=" bi bi-plus-square"></i></button>
-                                <a href="" class="btn-tambah" data-bs-toggle="modal" data-bs-target="#add">Tambah Anggota <i class="bi bi-plus-square"></i></a>
-                            </div>
-                        </div> -->
 
                         <div class="row mb-3"></div>
                         <div class="row mb-3"></div>
@@ -275,9 +298,9 @@
                         <div class="text-end">
                             <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Submit Form</button>
                         </div>
+                    </form><!-- Form End -->
                 </div>
 
-                </form><!-- Form End -->
             </div>
         </div>
 
@@ -307,7 +330,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href=''">Ya</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/penelitianInstitusi'">Ya</button>
             </div>
             <div class="w-100">
             </div>

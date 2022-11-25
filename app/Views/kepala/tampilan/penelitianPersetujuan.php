@@ -1,4 +1,6 @@
-<?= $this->extend('kepala/fixed/templatePenelitian') ?>
+<? //= $this->extend('kepala/fixed/templatePenelitian') 
+?>
+<?= $this->extend('fixed/templatePenelitian') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">

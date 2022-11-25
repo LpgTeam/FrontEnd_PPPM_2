@@ -4,7 +4,7 @@
 <main id="main" class="main">
     <section class="section">
         <header class="section-header2">
-            <h2>PKM Terstruktur</h2>
+            <h2>PKM <?= $jenis ?></h2>
             <hr>
             <p>Dosen Politeknik Statistika STIS</p>
         </header>
@@ -33,14 +33,14 @@
                         <div class="row mb-3">
                             <label for="namaLengkap" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="namaLengkap" type="text" class="form-control" id="namaLengkap" required>
+                                <input name="namaLengkap" type="text" class="form-control" id="namaLengkap" value="<?= $user['nama_dosen']; ?>" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="nip" class="col-md-4 col-lg-3 col-form-label">NIP</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="nip" type="text" class="form-control" id="nip" required>
+                                <input name="nip" type="text" class="form-control" id="nip" value="<?= $user['NIP_dosen']; ?>" readonly style="background: #E8E8E8;">
                             </div>
                         </div>
 
@@ -52,8 +52,13 @@
                         </div>
 
                         <hr>
-
                         <div class="row mb-3">
+                            <label for="bentukKegiatan" class="col-md-4 col-lg-3 col-form-label">Bentuk Kegiatan</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="bentukKegiatan" type="text" class="form-control" id="bentukKegiatan" required>
+                            </div>
+                        </div>
+                        <!-- <div class="row mb-3">
                             <label class="  col-md-4 col-lg-3 col-form-label" for="pilihKegiatan">Bentuk Kegiatan</label>
                             <div class="col-md-8 col-lg-9">
                                 <select class="form-select" id="pilihKegiatan" name="pilihKegiatan" required>
@@ -63,7 +68,7 @@
                                     <option value="3">Three</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="row mb-3">
                             <label for="waktu" class="col-md-4 col-lg-3 col-form-label">Waktu Pelaksanaan</label>
@@ -99,13 +104,14 @@
                                 <input name="anggota" type="number" class="form-control" id="anggota" required>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="hasil" class="col-md-4 col-lg-3 col-form-label">Hasil Yang Diharapkan</label>
-                            <div class="col-md-8 col-lg-9">
-                                <textarea class="form-control" id="hasil" name="hasil" rows="3" required></textarea>
+                        <?php if (($jenis == "Kelompok" || $jenis == "Terstruktur")) : ?>
+                            <div class="row mb-3">
+                                <label for="hasil" class="col-md-4 col-lg-3 col-form-label">Hasil Yang Diharapkan</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <textarea class="form-control" id="hasil" name="hasil" rows="3" required></textarea>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
 
                         <div class="row mb-3">
                             <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
@@ -130,28 +136,29 @@
 
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-lg-3 col-form-label ">Pembiayaan/Lainnya Yang Diajukan</label>
-                        </div>
-
-                        <div class="row mb-3">
-                            <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
-                                <tr class="table-primary">
-                                    <th scope="col">Pembiayaan/Lainnya Yang Diajukan</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                                <tbody>
-                                </tbody>
-                            </table>
-
-                            <div class="col-md-4 col-lg-6">
-                                <button onclick='add2()' class="btn btn-warning">
-                                    Tambah Pengajuan <i class=" bi bi-plus-square"></i>
-                                </button>
+                        <?php if (($jenis == "Kelompok" || $jenis == "Terstruktur")) : ?>
+                            <div class="row mb-3">
+                                <label class="col-md-4 col-lg-3 col-form-label ">Pembiayaan/Lainnya Yang Diajukan</label>
                             </div>
-                        </div>
 
+                            <div class="row mb-3">
+                                <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
+                                    <tr class="table-primary">
+                                        <th scope="col">Pembiayaan/Lainnya Yang Diajukan</th>
+                                        <th scope="col">Jumlah Biaya</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                                <div class="col-md-4 col-lg-6">
+                                    <a onclick="add2()" class="btn btn-warning" id="btn">
+                                        Tambah Pengajuan <i class=" bi bi-plus-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                         <script>
                             function rm() {
                                 $(event.target).closest("tr").remove();
@@ -178,7 +185,7 @@
 
                             function add2() {
                                 var rowCount2 = document.getElementById('myTableID2').rows.length;
-                                $(".table2").append("<tr><td><input name='pembiayaan" + rowCount2 + "' class='form-control' type='text' id='pembiayaan" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                $(".table2").append("<tr><td><input name='pembiayaan" + rowCount2 + "' class='form-control' type='text' id='pembiayaan" + rowCount2 + "' required></td><td><input name='jumlahBiaya" + rowCount2 + "' class='form-control' type='text' id='jumlahBiaya" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount2);
                             }
                         </script>

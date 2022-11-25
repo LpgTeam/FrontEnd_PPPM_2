@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CodeIgniter\Shield\Controllers;
 
+use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use CodeIgniter\Events\Events;
 use CodeIgniter\HTTP\RedirectResponse;
@@ -11,6 +12,8 @@ use CodeIgniter\Shield\Authentication\Authenticators\Session;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Exceptions\ValidationException;
 use CodeIgniter\Shield\Models\UserModel;
+use App\Models\DosenModel;
+use App\Models\TimPenelitiModel;
 
 /**
  * Class RegisterController
@@ -20,6 +23,14 @@ use CodeIgniter\Shield\Models\UserModel;
  */
 class RegisterController extends BaseController
 {
+    use ResponseTrait;
+    protected $dosenModel;
+
+    public function __construct()
+    {
+        $this->dosenModel = new DosenModel();
+    }
+
     protected $helpers = ['setting'];
 
     /**
@@ -118,6 +129,42 @@ class RegisterController extends BaseController
 
         $authenticator->completeLogin($user);
 
+//---tambah manual user di tabel database dosen
+        $user = auth()->user();
+        // dd($user->email);
+
+        // dd($this->request->getVar('nama'));
+        $dosenModel = new DosenModel();
+        $tim = new TimPenelitiModel();
+        $tim->save([
+            'id_penelitian' =>'1',
+            'NIP' => '2',
+            'namaPeneliti' => 'asdasd',
+            'programStudi' => 'sadasd',
+            'peran' => 'asdsad',
+            'bidang_keahlian' =>'asdasd'
+
+        ]);
+        
+        $dosenModel->save([
+            'NIP_dosen'     => $user->nip,
+            // 'username'      => $this->request->getVar('username'),
+            'username'      => $user->username,
+            'email_dosen'   => $user->email,
+            'jabatan_dosen' => $this->request->getVar('jabatan'),
+            'nama_dosen'    => $this->request->getVar('nama_dosen'),
+            // 'program_studi' => "-",
+            // 'no_hp' => "-",
+        ]);
+        
+        // dd($user->nip);
+
+
+
+
+
+//---
+
         // Success!
         return redirect()->to(config('Auth')->registerRedirect())
             ->with('message', lang('Auth.registerSuccess'));
@@ -150,6 +197,10 @@ class RegisterController extends BaseController
      */
     protected function getValidationRules(): array
     {
+        $registrationNamaRules = array_merge(
+            config('AuthSession')->namaValidationRules,
+            // ['is_unique[users.nama]']
+        );
         $registrationUsernameRules = array_merge(
             config('AuthSession')->usernameValidationRules,
             ['is_unique[users.username]']
@@ -164,6 +215,13 @@ class RegisterController extends BaseController
         );
 
         return setting('Validation.registration') ?? [
+            'nama' => [
+                'label' => 'Auth.nama',
+                'rules' => $registrationNamaRules,
+            ],
+            'jabatan' => [
+                // 'label' => 'Auth.jabatan',
+            ],
             'nip' => [
                 'label' => 'Auth.nip',
                 'rules' => $registrationNipRules,

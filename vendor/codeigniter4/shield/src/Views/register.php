@@ -28,6 +28,12 @@
                 <?= csrf_field() ?>
 
                 <div class="mb-2">
+                    <input type="text" class="form-control" name="nama" inputmode="nama" autocomplete="nama" placeholder="<?= lang('Auth.nama') ?>" value="<?= old('nama') ?>" required />
+                </div>
+                <div class="mb-2">
+                    <input type="text" class="form-control" name="jabatan" inputmode="jabatan" autocomplete="jabatan" placeholder="<?= lang('Auth.jabatan') ?>" value="<?= old('jabatan') ?>" required />
+                </div>
+                <div class="mb-2">
                     <input type="text" class="form-control" name="nip" inputmode="nip" autocomplete="nip" placeholder="<?= lang('Auth.nip') ?>" value="<?= old('nip') ?>" required />
                 </div>
                 <!-- Email -->
