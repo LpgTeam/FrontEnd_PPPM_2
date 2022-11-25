@@ -237,6 +237,8 @@ $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
 $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
 
+$routes->get('/pkm/download-proposal/(:any)', 'ProposalPKM::download_proposal/$1');
+
 
 //error page routes
 $routes->get('/backurl', 'Error::index');

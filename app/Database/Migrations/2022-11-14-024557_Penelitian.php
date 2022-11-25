@@ -44,7 +44,7 @@ class Penelitian extends Migration
                 'constraint' => 11,
                 'nullable' => false
             ],
-            
+
             'id_status' => [
                 'type' => 'INT',
                 'constraint' => 11,
