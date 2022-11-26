@@ -124,8 +124,8 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 5,
-            'status_pengajuan'  => 'Ditolak'
+            'id_status'         => 8,
+            'status_pengajuan'  => 'Ditolak oleh Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');

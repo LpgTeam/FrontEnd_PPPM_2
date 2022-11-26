@@ -106,8 +106,7 @@
                                                         } else if (($post['id_status'] == 5)) { ?>
                                                             <a href="/penelitianProses2Kontrak/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php
-                                                        } else if ($post['id_status'] == 6) {
-                                                        ?>
+                                                        } else if ($post['id_status'] == 6) { ?>
                                                             <a href="/penelitianProses3/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php
                                                         } else if (($post['id_status'] == 10)) { ?>

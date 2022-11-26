@@ -9,6 +9,7 @@ use App\Models\TimPenelitiModel;
 use App\Models\LuaranTargetModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
+// use App\Libraries\Pdfgenerator\Option;
 
 class ProposalPenelitian extends BaseController
 {
@@ -150,10 +151,12 @@ class ProposalPenelitian extends BaseController
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
         ];
         // dd($dataPenelitian['timpeneliti']);
+
         $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
         $orientation = "portrait";
         $html = view('proposal/all_proposal', $dataPenelitian);
+        // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
         $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
 
