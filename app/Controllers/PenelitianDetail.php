@@ -25,7 +25,11 @@ class PenelitianDetail extends BaseController
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
     }
-
+    
+    public function index()
+    {
+        //
+    }
     public function saveLaporan($idpenelitian)
     {
         $nLuaran = (int)$this->request->getVar('jumlahrow');
@@ -34,8 +38,14 @@ class PenelitianDetail extends BaseController
         $namaLaporan = $fileLaporan->getName();
         $fileLaporan->move('laporan_penelitian', $namaLaporan);
 
+        $Pen = $this->penelitianModel->get_penelitian($idpenelitian);
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idpenelitian);
         
+        $this->penelitianModel->save([
+            'id_penelitian'     => $Pen['id_penelitian'],
+            'id_status'         => "6",
+            'status_pengajuan'  => "Kegiatan sedang berlangsung"
+        ]);
 
         $this->laporanPenelitianModel->save([
             'id_laporan'        => $laporan['id_laporan'],
@@ -60,10 +70,6 @@ class PenelitianDetail extends BaseController
         // return $this->respondCreated($response);
     }
 
-    public function index()
-    {
-        //
-    }
 
     public function saveKontrak($idPenelitian)
     {
