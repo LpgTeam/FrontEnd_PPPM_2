@@ -15,8 +15,8 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <a href="<?= base_url('pkmPersetujuanKepala') ."/" .$pkm["ID_pkm"]; ?>">
-                            <div class="service-box blue service-box1">
+                        <a href="<?= base_url('pkmPersetujuanKepala') ."/" .$pkm["ID_pkm"]; ?>">
+                            <div class="service-box blue">
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Form</h3>
                                 <p>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <a href="<?= base_url('pkmPersetujuanKepalaSelesai') ."/" .$pkm["ID_pkm"]; ?>">
-                            <div class="service-box 2 orange">
+                            <div class="service-box orange service-box2">
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Surat Keterangan</h3>
                                 <p>
@@ -40,7 +40,6 @@
                     </div>
                 </div>
             </div>
-
             <br>
             <br>
             <!-- End Proses -->
@@ -49,7 +48,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Form</h5>
+                            <h5 class="card-title text-center">Laporan</h5>
                             <hr>
                             <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -59,8 +58,8 @@
                                 popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Form </button>
-                                <button class="btn btn-primary">Download Form </button>
+                                <button class="btn btn-secondary">Lihat Laporan </button>
+                                <button class="btn btn-primary">Download Laporan </button>
                             </div>
                         </div>
                     </div>
@@ -107,11 +106,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Apakah anda yakin menyetujui form PKM ini?
+                Apakah anda yakin menyetujui untuk menyelesaikan PKM ini?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/pkmacc-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/pkmaccAkhir-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
             </div>
         </div>
     </div>

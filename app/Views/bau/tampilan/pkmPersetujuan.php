@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>PKM <?= $pkm['jenis_pkm'] ?></h2>
+                <h2>PKM <?= $pkm['jenis_pkm']?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -15,32 +15,17 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <a href="<?= base_url('pkmPersetujuanKepala') ."/" .$pkm["ID_pkm"]; ?>">
-                            <div class="service-box blue service-box1">
-                                <i class="ri-discuss-line icon"></i>
-                                <h3>Form</h3>
-                                <p>
-                                    Proses peninjauan form PKM yang telah diisi oleh dosen
-                                    Politeknik Statistika STIS
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <a href="<?= base_url('pkmPersetujuanKepalaSelesai') ."/" .$pkm["ID_pkm"]; ?>">
-                            <div class="service-box 2 orange">
-                                <i class="ri-discuss-line icon"></i>
-                                <h3>Surat Keterangan</h3>
-                                <p>
-                                    Proses peninjauan SK PKM yang telah diisi oleh dosen
-                                    Politeknik Statistika STIS
-                                </p>
-                            </div>
-                        </a>
+                        <div class="service-box blue service-box1">
+                            <i class="ri-discuss-line icon"></i>
+                            <h3>Form</h3>
+                            <p>
+                                Proses peninjauan form PKM yang telah diisi oleh dosen
+                                Politeknik Statistika STIS
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <br>
             <br>
             <!-- End Proses -->
@@ -111,7 +96,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/pkmacc-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/pkmacc-BAU/<?= $pkm['ID_pkm']; ?>'">Ya</button>
             </div>
         </div>
     </div>
@@ -133,7 +118,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/pkmrjc-kepala/<?= $pkm['ID_pkm']; ?>'">Selesai</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/pkmrjc-BAU/<?= $pkm['ID_pkm']; ?>'">Selesai</button>
             </div>
         </div>
     </div>

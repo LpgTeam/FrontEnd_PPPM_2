@@ -268,12 +268,12 @@ class Penelitian extends BaseController
         echo json_encode($w);
     }
 
-    public function printpdf()
+    public function printSurat()
     {
         return $this->response->download('surat_pernyataan/Template_surat_pernyataan_penelitian.docx', null)->setFileName("Surat-Pernyataan.docx"); //download file
     }
 
-    public function printpdfKontrak()
+    public function printKontrak()
     {
         return $this->response->download('kontrak/[PENELITIAN] Kontrak.docx', null)->setFileName("Kontrak_penelitian.docx"); //download file
     }

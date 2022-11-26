@@ -1,4 +1,4 @@
-<? //= $this->extend('dosen/fixed/template') 
+<? //= $this->extend('kepala/fixed/template') 
 ?>
 <?= $this->extend('fixed/template') ?>
 
@@ -11,24 +11,33 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <section class="section">
-        <div class="container" data-aos="fade-up">
+    <?php if (session()->getFlashdata('pesan')) : ?>
+            <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                <?= session()->getFlashdata('pesan'); ?>
+            </div>
+        <?php endif; ?>
+
+    <div class="container" data-aos="fade-up">
             <header class="section-header2">
                 <h2>Pengabdian Kepada Masyarakat</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
         </div>
-        <?php if (session()->getFlashdata('pesan')) : ?>
-            <div class="alert alert-success" role="alert" data-aos="zoom-in">
-                <?= session()->getFlashdata('pesan'); ?>
-            </div>
-        <?php endif; ?>
         <div class="row" data-aos="fade-up">
             <div class="">
                 <div class="card">
                     <h5>&nbsp;</h5>
                     <div class="card-body">
-                        <a href="/pkmjenisDosen" class="btn-pilih">Tambah PKM <i class="bi bi-plus-square"></i></a>
+                        <!-- <div class="d-flex justify-content-center">
+                            <div class="search-bar col-lg-8 d-flex justify-content-end">
+                                <form class="search-form d-flex align-items-center" method="POST" action="#">
+                                    <input type="text" id="myInput" name="query" placeholder="Search" title="Enter search keyword">
+                                    <button type="button" title="Search"><i class="bi bi-search"></i></button>
+                                </form>
+                            </div>
+                        </div> -->
+                        <!-- End Search Bar -->
                         <!-- Table with stripped rows -->
                         <div class="content">
                             <div class="row mb-3 justify-content-md-start">
@@ -80,25 +89,8 @@
                                                 <td><?php echo $post['topik_kegiatan'] ?></td>
                                                 <td><?php echo $post['status'] ?></td>
                                                 <td>
-                                                    <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                                    <?php
-                                                    // if ($post['jenis_pkm'] == 'Mandiri') {
-                                                    //     echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                                    // } else {
-                                                    //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                                    // }
-                                                    if ($post['id_status'] == 1 || $post['id_status'] == 2 ||  $post['id_status'] == 5 || $post['id_status'] == 6 ) { ?>
-                                                        <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
-                                                    } else if (($post['id_status'] == 3)) { ?>
-                                                        <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
-                                                    } else if ($post['id_status'] == 4) { ?>
-                                                        <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
-                                                    } else if ($post['id_status'] == 7) { ?>
-                                                        <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php } ?>
+                                                    <a href="/pkmPersetujuanBAU/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+
                                                 </td>
                                             </tr>
                                     <?php $i++;
@@ -140,9 +132,16 @@
         </div>
         </div>
 
-        <script>
-
-        </script>
+        <!-- <script>
+            $(document).ready(function() {
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script> -->
     </section>
 
 </main>

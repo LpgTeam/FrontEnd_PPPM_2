@@ -225,7 +225,8 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses2', $data);
     }
@@ -234,7 +235,8 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses3', $data);
     }
