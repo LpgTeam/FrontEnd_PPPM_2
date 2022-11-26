@@ -7,6 +7,7 @@ use App\Models\pkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPKMModel;
 use CodeIgniter\I18n\Time;
+use DateTime;
 
 class PKM extends BaseController
 {
@@ -66,13 +67,28 @@ class PKM extends BaseController
 
         // $slug = url_title($this->request->getVar('judul_pkm'), '-', true);
         // dd($idpkm['ID_pkm']);
+        // $waktu = date('Y-m-d', strtotime($this->request->getVar('waktu')));
+        // $waktu = date('Y-m-d H:i:s', strtotime($this->request->getVar('waktu')));
+        // dd(date($waktu));
+        $tahun = substr($this->request->getVar('waktu'), 0, 4);
+        $bulan = substr($this->request->getVar('waktu'), 5, 2);
+        $hari = substr($this->request->getVar('waktu'), 8, 2);
+        $waktu = Time::createFromDate($tahun, $bulan, $hari, 'Asia/jakarta');
+
+        $waktu = date('Y-m-d H:i:s', strtotime($this->request->getVar('waktu')));
+        // $waktu = date_create([$this->request->getVar('waktu')]);
+        // dd(date($waktu));
+        dd($waktu);
+
+        // dd(Time::now());
+
         $this->pkmModel->save([
             'jenis_pkm' => $this->request->getVar('jenis_pkm'),
             'topik_kegiatan' => $this->request->getVar('topik'),
             // 'bidang' => $this->request->getVar('bidang'),
             'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
             // 'bentuk_kegiatan' => $this->request->getVar('pilihKegiatan'),
-            'waktu_pelaksanaan' => $this->request->getVar('waktu'),
+            'waktu_pelaksanaan' => $waktu,
             'tempat_kegiatan' => $this->request->getVar('tempat'),
             'sasaran' => $this->request->getVar('sasaran'),
             'target_peserta' => $this->request->getVar('target'),
@@ -83,6 +99,9 @@ class PKM extends BaseController
             'biaya'  => $this->request->getVar('biaya'),
             'tanggal_pengajuan' => Time::now()
         ]);
+
+        dd($waktu);
+
 
         // dd($this->request->getVar('topik'));
         $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
