@@ -11,34 +11,47 @@
             text-align: center;
         }
 
-        .logo {
-            margin: 8em;
-        }
-
         body {
             text-align: justify;
-            line-height: 16px;
+            line-height: 24px;
+            font-size: 16px;
             margin: 40px;
         }
 
-        body h2 {
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
+        .tebal,
+        ol li {
+            font-weight: 800;
         }
 
-        body h4 {
-            line-height: 16px;
-            font-weight: lighter;
-            font-size: 16px;
-        }
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
+        .ttd1 td,
+        .ttd2 td,
+        .ttd1 th,
+        .ttd2 th {
             text-align: center;
+            line-height: 32px;
+        }
+
+        .ttd1 td:nth-child(2),
+        .ttd2 td:nth-child(1),
+        .ttd2 td:nth-child(3) {
+            color: white;
+        }
+
+        .ttd1 tr:nth-child(1),
+        .ttd2 tr:nth-child(1),
+        .ttd1 tr:nth-child(4),
+        .ttd2 tr:nth-child(4),
+        .ttd1 tr:nth-child(5),
+        .ttd2 tr:nth-child(5) {
+            color: white;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .isi {
+            line-height: 24px;
         }
     </style>
 </head>
@@ -46,14 +59,15 @@
 <body>
 
     <div class="text-center">
-        <h2>FORM USULAN KEGIATAN</h2>
-        <h2>PENGABDIAN KEPADA MASYARAKAT (PKM) TAHUN <?= date("Y"); ?></h2>
+        <h3>FORM USULAN KEGIATAN</h3>
+        <h3>PENGABDIAN KEPADA MASYARAKAT (PKM) TAHUN <?= date("Y"); ?></h3>
     </div>
+
 
     <ol type="A">
         <li>PENGUSUL KEGIATAN PKM</li>
-        <p>Ketua</p>
-        <table>
+        <p class="tebal">Ketua</p>
+        <table class="isi">
             <tr>
                 <td>Nama</td>
                 <td>: <?= $timpkm[0]["nama"]; ?></td>
@@ -67,30 +81,43 @@
                 <td>: <?= $timpkm[0]["pangkat"] ?></td>
             </tr>
         </table>
+<<<<<<< HEAD
         <p>Anggota</p>
         <table>
             <?php foreach ($anggotapkm as $key => $anggota) : ?>
+=======
+        <p class="tebal">Anggota (boleh lebih dari satu)</p>
+        <table class="isi">
+            <?php foreach ($timpkm as $key => $anggota) : ?>
+>>>>>>> 1d582b4fc4b00887850d597566b9e426e28c6646
                 <tr>
-                    <td>Nama</td>
+                    <td style="width: 45%;">Nama</td>
                     <td>: <?= $anggota["nama"]; ?></td>
                 </tr>
                 <tr>
-                    <td>NIP</td>
+                    <td style="width: 45%;">NIP</td>
                     <td>: <?= $anggota["nip"]; ?></td>
                 </tr>
                 <tr>
-                    <td>Pangkat/Golongan</td>
+                    <td style="width: 45%;">Pangkat/Golongan</td>
                     <td>: <?= $anggota["pangkat"] ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
-
+        <br>
 
         <li>TOPIK</li>
+        <p>Tuliskan Topik</p>
+        <br>
+
         <li>BENTUK KEGIATAN</li>
+        <p>Tuliskan Bentuk Kegiatan</p>
+        <br>
+
         <li>WAKTU, TEMPAT DAN SASARAN</li>
-        <table>
+        <table class="isi">
             <tr>
+<<<<<<< HEAD
                 <td>Waktu Pelaksanaan</td>
                 <td>: <?= $pkm['waktu_kegiatan']?></td>
             </tr>
@@ -105,12 +132,39 @@
             <tr>
                 <td>Perkiraan/target jumlah peserta</td>
                 <td>: <?= $pkm['target_peserta']?></td>
+=======
+                <td style="width: 45%;">Waktu Pelaksanaan</td>
+                <td>: (___________)</td>
+            </tr>
+            <tr>
+                <td style="width: 45%;">Tempat</td>
+                <td>: (___________)</td>
+            </tr>
+            <tr>
+                <td style="width: 45%;">Sasaran</td>
+                <td>: (___________)</td>
+            </tr>
+            <tr>
+                <td style="width: 45%;">Perkiraan/target jumlah peserta</td>
+                <td>: (___________)</td>
+>>>>>>> 1d582b4fc4b00887850d597566b9e426e28c6646
             </tr>
         </table>
+        <br>
+
         <li>HASIL/TARGET YANG DIHARAPKAN</li>
+<<<<<<< HEAD
         <?= $pkm['hasil']?>
         <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN*)</li>
         BELUM KELARR!!!
+=======
+        <p>Tuliskan hasil dan target</p>
+        <br>
+
+        <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN*)</li>
+        <p>Tulis Pembiayaan</p>
+        <br>
+>>>>>>> 1d582b4fc4b00887850d597566b9e426e28c6646
     </ol>
 
     <div style="page-break-before: always;">
@@ -121,14 +175,14 @@
                 <td>........................</td>
             </tr>
             <tr>
-                <td>Mengetahui</td>
+                <td>Disetujui</td>
                 <td>Jakarta, ...............</td>
-                <td>Jakarta, <?= $pkm['tanggal_pengajuan']; ?></td>
+                <td>Diajukan Oleh</td>
             </tr>
             <tr>
                 <td>Kepala PPPM</td>
                 <td>Ketua Peneliti</td>
-                <td>Ketua Peneliti</td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
@@ -143,12 +197,12 @@
             <tr>
                 <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>
                 <td>(Nama Lengkap)</td>
-                <td></td>
+                <td>Nama Dosen Pengaju</td>
             </tr>
             <tr>
                 <td>NIDN : .................</td>
                 <td>NIDN : .................</td>
-                <td>NIDN : </tdt>
+                <td>NIDN : .................</td>
             </tr>
         </table>
     </div>

@@ -59,8 +59,11 @@
                             </div>
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
-                            <h2>Rp 1.000.000</h2>
-
+                            <?php
+                            if (isset($anggaranTerealisasi)) {
+                                echo '<h2>Rp ', number_format($anggaranDiajukan, 0, ",", "."), '</h2>';
+                            }
+                            ?>
                         </div>
                     </div>
                     <!-- End testimonial item -->
@@ -84,6 +87,18 @@
                     <!-- End testimonial item -->
                 </div>
                 <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="row gy-4 justify-content-md-center" data-aos="fade-up">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Pengubahan Dana Awal Anggaran</h5>
+                        </div>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ubah">Ubah Dana Awal</i></button>
+                        <br>
+                    </div>
+                </div>
             </div>
 
             <!-- Bar Chart -->
@@ -158,5 +173,37 @@
         </div>
     </section>
 </main>
+
+<!-- Ubah dana awal -->
+<div class="modal fade" id="ubah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ubahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="ubahLabel">Ubah Dana</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/updateAnggaran"  method="post">
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="danaAwal" class="col-form-label">Dana awal saat ini :</label>
+                    <?php
+                        echo '<input type="text" class="form-control" id="danaAwal" name="danaAwal" value= "', number_format($anggaranAwal['jumlah'],0,",","."),'" disabled>'
+                    ?>
+                </div>
+                <div class="mb-3">
+                    <label for="danaBaru" class="col-form-label">Dana Awal terbaru :</label>
+                    <input type="text" class="form-control" id="danaBaru" name="danaBaru">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                <button type="submit" class="btn btn-danger" onclick="location.href='/anggaranBAU'">Ya</button>
+            </div>
+
+            <div class="w-100">
+            </div>
+        </div>
+    </div>
+</div>
 <!-- End Testimonials Section -->
 <?= $this->endSection(); ?>

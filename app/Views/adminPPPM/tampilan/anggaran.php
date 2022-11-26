@@ -59,7 +59,11 @@
                             </div>
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
-                            <h2>Rp 1.000.000</h2>
+                            <?php
+                            if (isset($anggaranTerealisasi)) {
+                                echo '<h2>Rp ', number_format($anggaranDiajukan, 0, ",", "."), '</h2>';
+                            }
+                            ?>
 
                         </div>
                     </div>
@@ -86,7 +90,7 @@
                 <div class="swiper-pagination"></div>
             </div>
 
-            <div class="row gy-4 justify-content-md-center" data-aos="fade-up">
+            <!-- <div class="row gy-4 justify-content-md-center" data-aos="fade-up">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
@@ -96,7 +100,7 @@
                         <br>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Bar Chart -->
             <div class="justify-content-md-center">
@@ -173,7 +177,7 @@
 <!-- End Testimonials Section -->
 
 <!-- Ubah dana awal -->
-<div class="modal fade" id="ubah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ubahLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="ubah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ubahLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -198,5 +202,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <?= $this->endSection(); ?>
