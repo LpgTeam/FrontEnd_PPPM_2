@@ -87,10 +87,10 @@
                                                     // } else {
                                                     //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
                                                     // }
-                                                    if ($post['id_status'] == 1) { ?>
+                                                    if ($post['id_status'] == 1 || $post['id_status'] == 5 || $post['id_status'] == 6 ) { ?>
                                                         <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     <?php
-                                                    } else if (($post['id_status'] == 2)) { ?>
+                                                    } else if (($post['id_status'] == 3)) { ?>
                                                         <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     <?php
                                                     } else if ($post['id_status'] == 3) { ?>

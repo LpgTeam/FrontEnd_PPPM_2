@@ -77,7 +77,7 @@ class Kepala extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $penelitianModel->get_penelitian_by_id_status(3),
         ];
         return view('kepala/tampilan/penelitian', $data);
     }
@@ -112,8 +112,8 @@ class Kepala extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 3,
-            'status_pengajuan'  => 'Proposal disetujui oleh Kepala PPPM'
+            'id_status'         => 4,
+            'status_pengajuan'  => 'Disetujui oleh Kepala PPPM'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');

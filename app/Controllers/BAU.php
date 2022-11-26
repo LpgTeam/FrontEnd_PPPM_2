@@ -78,7 +78,7 @@ class BAU extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $penelitianModel->$penelitianModel->get_penelitian_by_id_status(1),
         ];
         return view('bau/tampilan/penelitian', $data);
     }
@@ -99,7 +99,7 @@ class BAU extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 2,
-            'status_pengajuan'  => 'Disetujui - BAU'
+            'status_pengajuan'  => 'Disetujui oleh BAU'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');

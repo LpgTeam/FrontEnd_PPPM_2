@@ -68,7 +68,7 @@ class PKM extends BaseController
             'target_peserta' => $this->request->getVar('target'),
             'hasil' => $hasil,
             'id_status' => '1',
-            'status' => 'diajukan',
+            'status' => 'Diajukan oleh Dosen',
             // 'file_proposal' => $this->request->getFile('upload'),
             'biaya'  => $this->request->getVar('biaya'),
             'tanggal_pengajuan' => Time::now('Asia/jakarta')
