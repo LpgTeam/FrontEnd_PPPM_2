@@ -22,9 +22,6 @@
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success" role="alert" data-aos="zoom-in">
                 <?= session()->getFlashdata('pesan'); ?>
-                <li>
-                    <?= $validation->getError(); ?>
-                </li>
             </div>
         <?php endif; ?>
         <div class="row" data-aos="fade-up">

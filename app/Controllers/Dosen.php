@@ -95,7 +95,7 @@ class Dosen extends BaseController
 
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
-        $total_pengajuan = null;
+        $total_pengajuan = 0;
         foreach($ambil_pengajuan as $data_pengajuan){
             if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
@@ -116,6 +116,7 @@ class Dosen extends BaseController
 
     public function penelitian()
     {
+        session();
         //mengambil data user yang sedang login
         $user = auth()->user();
         // $nip = $user->nip;
@@ -381,7 +382,8 @@ class Dosen extends BaseController
             $data = [
                 'title' => 'PPPM Politeknik Statistika STIS',
                 'penelitian' => $this->penelitianModel->find($id_penelitian),
-                'laporan' => $laporan
+                'laporan' => $laporan,
+                'validation' =>\Config\Services::validation()
             ];
             return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
         // } 
