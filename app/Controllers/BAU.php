@@ -86,7 +86,6 @@ class BAU extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-        // dd($data['anggaranDiajukan']);
 
         return view('bau/tampilan/anggaran', $data);
     }

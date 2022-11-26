@@ -182,26 +182,26 @@
                 <h1 class="modal-title fs-5" id="ubahLabel">Ubah Dana</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/updateAnggaran"  method="post">
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="danaAwal" class="col-form-label">Dana awal saat ini :</label>
-                    <?php
-                        echo '<input type="text" class="form-control" id="danaAwal" name="danaAwal" value= "', number_format($anggaranAwal['jumlah'],0,",","."),'" disabled>'
-                    ?>
+            <form action="/updateAnggaran" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="danaAwal" class="col-form-label">Dana awal saat ini :</label>
+                        <?php
+                        echo '<input type="text" class="form-control" id="danaAwal" name="danaAwal" value= "', number_format($anggaranAwal['jumlah'], 0, ",", "."), '" disabled>'
+                        ?>
+                    </div>
+                    <div class="mb-3">
+                        <label for="danaBaru" class="col-form-label">Dana Awal terbaru :</label>
+                        <input type="text" class="form-control" id="danaBaru" name="danaBaru">
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="danaBaru" class="col-form-label">Dana Awal terbaru :</label>
-                    <input type="text" class="form-control" id="danaBaru" name="danaBaru">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-danger" onclick="location.href='/anggaranBAU'">Ya</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="submit" class="btn btn-danger" onclick="location.href='/anggaranBAU'">Ya</button>
-            </div>
 
-            <div class="w-100">
-            </div>
+                <div class="w-100">
+                </div>
         </div>
     </div>
 </div>

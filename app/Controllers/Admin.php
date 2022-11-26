@@ -61,8 +61,8 @@ class Admin extends BaseController
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
         $total_pengajuan = null;
-        foreach($ambil_pengajuan as $data_pengajuan){
-            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
@@ -74,7 +74,7 @@ class Admin extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-     
+
         return view('adminPPPM/tampilan/anggaran', $data);
     }
 
@@ -144,7 +144,7 @@ class Admin extends BaseController
 
     // public function userSetting()
     // {
-//     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
     //     return view('adminPPPM/tampilan/userSetting', $data);
     // }
 
