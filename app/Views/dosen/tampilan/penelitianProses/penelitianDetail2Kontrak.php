@@ -21,7 +21,8 @@
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
-
+            <p hidden id="status"><?= $penelitian['id_status']; ?></p>
+            <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
@@ -115,20 +116,34 @@
                                 </div>
                             </form><!-- Form End -->
                         </div>
-                </div>
-            <?php
+                    <?php
                     } else {
-            ?>
-                <div class="card">
-                    <div class="card-body mt-3">
-                        <h5 class="card-title text-center">Upload Kontrak</h5>
-                        <hr>
-                        <h5 class="text-center">Anda Sudah Upload Kontrak!!</h5>
+                    ?>
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-body mt-3">
+                                    <h5 class="card-title text-center">Upload Kontrak</h5>
+                                    <hr>
+                                    <h5 class="text-center">Anda Sudah Upload Kontrak!!</h5>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="list">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keterangan">
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            <?php
-                    }
-            ?>
             </div>
 
             <!-- <div class="card">
@@ -151,12 +166,7 @@
                     </div> -->
 
 
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
+
         </div>
     </section>
 

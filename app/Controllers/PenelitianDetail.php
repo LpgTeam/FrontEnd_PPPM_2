@@ -33,8 +33,23 @@ class PenelitianDetail extends BaseController
     public function saveLaporan($idpenelitian)
     {
         $nLuaran = (int)$this->request->getVar('jumlahrow');
+        if (!$this->validate([
+            'uploadLaporan' => [
+                'rules' => 'uploaded[uploadLaporan]|ext_in[uploadLaporan,pdf]|max_size[uploadLaporan,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar"
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            session()->setFlashdata('error', 'Terjadi Kesalahan!');
+            return redirect()->to('/penelitianProses3/' . $idpenelitian)->withInput();
+        }
 
-        $fileLaporan = $this->request->getFile('laporan');
+        $fileLaporan = $this->request->getFile('uploadLaporan');
         $namaLaporan = $fileLaporan->getName();
         $fileLaporan->move('laporan_penelitian', $namaLaporan);
 
@@ -43,8 +58,8 @@ class PenelitianDetail extends BaseController
         
         $this->penelitianModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
-            'id_status'         => "6",
-            'status_pengajuan'  => "Kegiatan sedang berlangsung"
+            'id_status'         => "10",
+            'status_pengajuan'  => "Kegiatan telah selesai dilaksanakan"
         ]);
 
         $this->laporanPenelitianModel->save([

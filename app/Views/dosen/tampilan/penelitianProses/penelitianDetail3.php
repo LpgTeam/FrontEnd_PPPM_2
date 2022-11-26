@@ -11,6 +11,8 @@
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
+            <p hidden id="status"><?= $penelitian['id_status']; ?></p>
+            <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
@@ -25,16 +27,32 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-box orange">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Bukti Luaran</h3>
-                            <p>
-                                Bukti Luaran untuk kegiatan publikasi dari penelitian yang
-                                dilakukan oleh dosen
-                            </p>
+                    <?php
+                    if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
+                    ?>
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="service-box orange">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Pendanaan</h3>
+                                <p>
+                                    Pendanaan untuk kegiatan publikasi dari penelitian yang
+                                    dilakukan oleh dosen
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    <?php  }
+                    if ($penelitian['jenis_penelitian'] == 'Di Danai Institusi' || $penelitian['jenis_penelitian'] == 'Institusi') {
+                    ?>
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="service-box orange ">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Kontrak</h3>
+                                <p>
+                                    Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
+                                </p>
+                            </div>
+                        </div>
+                    <?php } ?>
 
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="service-box green service-box3">
@@ -114,8 +132,12 @@
                                     <div class="row mb-4">
                                         <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Bukti Luaran</label>
                                         <div class="col-md-3 col-lg-8">
-                                            <input class="form-control" type="file" id="laporan" name="laporan" required>
+                                            <input class="form-control <?= ($validation->hasError('uploadLaporan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLaporan" name="uploadLaporan">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadLaporan'); ?>
+                                            </div>
                                         </div>
+
                                     </div>
                                     <div class="text-end">
                                         <button type="submit" class="btn btn-success">Submit</button>
@@ -138,9 +160,15 @@
                     </div>
                 </div>
 
+
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="list">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keterangan">
+                            </ul>
                         </div>
                     </div>
                 </div>
