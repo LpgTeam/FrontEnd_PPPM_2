@@ -5,6 +5,11 @@
 <?= $this->section('content'); ?>
 <main id="main" class="main">
     <section class="section">
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <header class="section-header2">
             <h2>Penelitian <?= $jenis ?></h2>
             <hr>
@@ -230,9 +235,9 @@
                             </table>
 
                             <div class="col-md-4 col-lg-6">
-                                <button onclick='add3()' class="btn btn-warning">
+                                <a onclick='add3()' class="btn btn-warning">
                                     Tambah Luaran <i class=" bi bi-plus-square"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
 

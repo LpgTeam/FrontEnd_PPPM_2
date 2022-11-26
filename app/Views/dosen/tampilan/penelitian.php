@@ -22,6 +22,9 @@
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success" role="alert" data-aos="zoom-in">
                 <?= session()->getFlashdata('pesan'); ?>
+                <li>
+                    <?= $validation->getError(); ?>
+                </li>
             </div>
         <?php endif; ?>
         <div class="row" data-aos="fade-up">
@@ -80,9 +83,10 @@
                                         <?php foreach ($penelitian as $key => $post) :  ?>
 
                                             <tr>
-                                                <!-- <td><?php //echo $post['id_penelitian'] 
+                                                <td><?php echo $post['id_penelitian']
+                                                    ?></td>
+                                                <!-- <td><?php //echo $i 
                                                             ?></td> -->
-                                                <td><?php echo $i ?></td>
                                                 <td><?php echo $post['jenis_penelitian'] ?></td>
                                                 <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                 <td><?php echo $post['judul_penelitian'] ?></td>
@@ -93,32 +97,32 @@
                                                     if ($post['jenis_penelitian'] == 'Mandiri' || $post['jenis_penelitian'] == 'Kerjasama') {
                                                         echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
                                                     } else {
-                                                        if ($post['id_status'] == 1) { ?>
+                                                        if ($post['id_status'] == 1 || $post['id_status'] == 2 || $post['id_status'] == 3 || $post['id_status'] == 4 || $post['id_status'] == 7 || $post['id_status'] == 8 || $post['id_status'] == 9) { ?>
                                                             <a href="/penelitianProses1/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php
-                                                        } else if (($post['id_status'] == 2) && ($post['jenis_penelitian'] == "Semi Mandiri")) { ?>
+                                                        } else if (($post['id_status'] == 5) && ($post['jenis_penelitian'] == "Semi Mandiri")) { ?>
                                                             <a href="/penelitianProses2/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php
-                                                        } else if (($post['id_status'] == 2)) { ?>
+                                                        } else if (($post['id_status'] == 5)) { ?>
                                                             <a href="/penelitianProses2Kontrak/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php
-                                                        } else if ($post['id_status'] == 3) { ?>
+                                                        } else if ($post['id_status'] == 6) { ?>
                                                             <a href="/penelitianProses3/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php
-                                                        } else if ($post['id_status'] == 4) { ?>
+                                                        } else if (($post['id_status'] == 10)) { ?>
                                                             <a href="/penelitianProses4/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
+                                                        <?php
                                                         }
-                                                    }
-                                                    ?>
+                                                        ?>
 
 
 
-                                                    <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
+                                                        <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
                                                 </td>
                                             </tr>
-                                            <?php $i++;    ?>
-                                    <?php endforeach;
+                                        <?php }
+                                                    $i++;    ?>
+                                <?php endforeach;
                                     } ?>
                                 </tbody>
                             </table>

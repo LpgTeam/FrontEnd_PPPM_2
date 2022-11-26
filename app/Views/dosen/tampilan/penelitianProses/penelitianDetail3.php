@@ -91,7 +91,7 @@
 
                                         <div class="col-md-4 col-lg-6">
                                             <button onclick='add()' class="btn btn-warning">
-                                                Tambah Anggota <i class=" bi bi-plus-square"></i>
+                                                Tambah Bukti Luaran <i class=" bi bi-plus-square"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@
                                     </script>
 
                                     <div class="row mb-4">
-                                        <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Laporan</label>
+                                        <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Bukti Luaran</label>
                                         <div class="col-md-3 col-lg-8">
                                             <input class="form-control" type="file" id="laporan" name="laporan" required>
                                         </div>

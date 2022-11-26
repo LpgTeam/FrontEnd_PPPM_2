@@ -61,7 +61,7 @@
                             <h5 class="card-title text-center">Bukti Kegiatan dan Tugas/Peran Tim PKM</h5>
                             <hr>
                             <p>
-                                Hal yang perlu disertakan dalam buktu kegiatan
+                                Hal yang perlu disertakan dalam bukti kegiatan
                             <ul>
                                 <li>
                                     Slide paparan/artikel/dokumen/bukti lain
@@ -78,13 +78,16 @@
                                 <li>
                                     Penggunaan dana
                                 </li>
+                                <li>
+                                    Dijadikan di 1 file PDF
+                                </li>
                             </ul>
                             </p>
                             <hr>
                             <form>
                                 <div class="row mb-4">
                                     <div class="row mb-3">
-                                        <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID">
+                                        <!-- <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID">
                                             <tr class="table-primary">
                                                 <th scope="col">Nama Anggota</th>
                                                 <th scope="col">Bidang Keahlian</th>
@@ -99,8 +102,8 @@
                                             <button onclick='add2()' class="btn btn-warning">
                                                 Tambah Anggota <i class=" bi bi-plus-square"></i>
                                             </button>
-                                        </div>
-                                    </div>
+                                        </div>-->
+                                    </div> 
 
                                     <script>
                                         function rm2() {

@@ -55,7 +55,7 @@ class TimPenelitiModel extends Model
     public function get_anggota_timpeneliti($id_penelitian)
     {
         $builder = $this->db->table('tim_peneliti');
-        $query = $builder->getWhere(['id_penelitian' => $id_penelitian , 'peran !=' => "Ketua Penelitian"]);
+        $query = $builder->getWhere(['id_penelitian' => $id_penelitian, 'peran !=' => "Ketua Penelitian"]);
         return $query->getResultArray();
     }
 
@@ -63,7 +63,10 @@ class TimPenelitiModel extends Model
     {
         //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
         //     ->where(['auth_groups_users.id' => $id])->first();
-        return $this->join('penelitian', 'penelitian.id_penelitian = tim_peneliti.id_penelitian')->select('tim_peneliti.nip')->select('penelitian.*')
+        return $this->join('penelitian', 'penelitian.id_penelitian = tim_peneliti.id_penelitian')
+            // ->join('laporan_penelitian', 'laporan_penelitian.id_penelitian = tim_peneliti.id_penelitian')
+            ->select('tim_peneliti.nip')->select('penelitian.*')
+            // ->select('laporan_penelitian.*')
             ->where(['nip' => $nip])->findAll();
     }
 }

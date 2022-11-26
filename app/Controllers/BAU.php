@@ -69,8 +69,8 @@ class BAU extends BaseController
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
         $total_pengajuan = null;
-        foreach($ambil_pengajuan as $data_pengajuan){
-            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
@@ -82,11 +82,12 @@ class BAU extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-       
+
         return view('bau/tampilan/anggaran', $data);
     }
 
-    public function updateAnggaran(){
+    public function updateAnggaran()
+    {
         $dana_awal = new AnggaranAwalModel();
 
         //current year
@@ -106,7 +107,7 @@ class BAU extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $penelitianModel->$penelitianModel->get_penelitian_by_id_status(1),
         ];
         return view('bau/tampilan/penelitian', $data);
     }
@@ -127,7 +128,7 @@ class BAU extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 2,
-            'status_pengajuan'  => 'Disetujui - BAU'
+            'status_pengajuan'  => 'Disetujui oleh BAU'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
