@@ -42,6 +42,7 @@ class Pdfgenerator extends BaseController
         $dompdf->loadHtml($html);
         $dompdf->setPaper($paper, $orientation);
         $dompdf->render();
-        file_put_contents('cache/' . $filename . '.pdf', $dompdf->output());
+        if (file_exists('cache/' . $filename . '.pdf'))
+            file_put_contents('cache/' . $filename . '.pdf', $dompdf->output());
     }
 }

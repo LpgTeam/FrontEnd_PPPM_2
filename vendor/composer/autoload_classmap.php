@@ -8,6 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Dompdf\\Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
+    'FPDF' => $vendorDir . '/setasign/fpdf/fpdf.php',
+    'Jurosh\\PDFMerge\\PDFMerger' => $vendorDir . '/jurosh/pdf-merge/src/Jurosh/PDFMerge/PDFMerger.php',
+    'Jurosh\\PDFMerge\\PdfObject' => $vendorDir . '/jurosh/pdf-merge/src/Jurosh/PDFMerge/PDFObject.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => $vendorDir . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert.php',
