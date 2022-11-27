@@ -58,7 +58,7 @@ class PKM extends BaseController
         $waktu = date('Y-m-d H:i:s', strtotime($this->request->getVar('waktu')));
         // $waktu = date_create([$this->request->getVar('waktu')]);
         // dd(date($waktu));
-        dd($waktu);
+        // dd($waktu);
 
         // dd(Time::now());
         // dd($waktu);
@@ -67,8 +67,12 @@ class PKM extends BaseController
         //===================================================
         if ($jenisPKM == "Mandiri") {
             $hasil = "-";
+            $idStatus = "2";
+            $status = "Menunggu Persetujuan Kepala PPPM";
         } else {
             $hasil = $this->request->getVar('hasil');
+            $idStatus = "1";
+            $status = "Diajukan oleh Dosen";
         }
         $this->pkmModel->save([
             'jenis_pkm' => $jenisPKM,
@@ -81,14 +85,14 @@ class PKM extends BaseController
             'sasaran' => $this->request->getVar('sasaran'),
             'target_peserta' => $this->request->getVar('target'),
             'hasil' => $hasil,
-            'id_status' => '1',
-            'status' => 'Diajukan oleh Dosen',
+            'id_status' => $idStatus,
+            'status' => $status,
             // 'file_proposal' => $this->request->getFile('upload'),
             'biaya'  => $this->request->getVar('biaya'),
             'tanggal_pengajuan' => Time::now('Asia/jakarta')
         ]);
 
-        dd($waktu);
+        // dd($waktu);
 
 
         // dd($this->request->getVar('topik'));
