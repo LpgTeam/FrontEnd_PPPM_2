@@ -89,7 +89,7 @@ foreach ($peneliti as $key => $anggota) : ?>
             </tr>
             <tr>
                 <td>Jabatan</td>
-                <td>:</td>
+                <td>: <?= $anggota['jabatan_dosen'] ?></td>
             </tr>
         </table>
 

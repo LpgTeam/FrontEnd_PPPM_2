@@ -55,12 +55,12 @@ class TimPKMModel extends Model
 
     public function get_data_timpkm($idpkm)
     {
-        // return $this->join('dosen', 'dosen.NIP_dosen = tim_pkm.nip')->select('tim_pkm.*')->select('dosen.jabatan_dosen')
-        //     ->where(['id_pkm' => $idpkm])->findAll();
-        $builder = $this->db->table('tim_pkm');
-        $builder->join('dosen', 'dosen.NIP_dosen = tim_pkm.nip');
-        $query = $builder->getWhere(['ID_pkm' => $idpkm]);
-        return $query->getResultArray();
+        return $this->join('dosen', 'dosen.NIP_dosen = tim_pkm.nip')->select('tim_pkm.*')->select('dosen.jabatan_dosen')
+            ->where(['id_pkm' => $idpkm])->findAll();
+        // $builder = $this->db->table('tim_pkm');
+        // $builder->join('dosen', 'dosen.NIP_dosen = tim_pkm.nip');
+        // $query = $builder->getWhere(['ID_pkm' => $idpkm]);
+        // return $query->getResultArray();
     }
 
     public function get_timpkm_byid($id_pkm)
