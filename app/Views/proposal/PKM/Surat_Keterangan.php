@@ -96,8 +96,10 @@ foreach ($peneliti as $key => $anggota) : ?>
 
 
         <p>
-            <span>Telah Melaksanakan : </span><span>Pengabdian Kepada Masyarakat
-                Narasumber pada kegiatan …………………………………. Kegiatan ini diselenggarakan oleh ...................... dalam rangka ......................
+            <span>Telah Melaksanakan : </span><span> <b>Pengabdian Kepada Masyarakat</b>
+                <p>Narasumber pada kegiatan ………………………………….</p>
+                <p> Kegiatan ini diselenggarakan oleh ...................... dalam rangka ......................
+                </p>
             </span>
         </p>
         <p>

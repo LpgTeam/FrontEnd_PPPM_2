@@ -88,9 +88,9 @@
                             <hr>
                             <p>Kegiatan penelitian selesai dilakukan. Anda dapat melakukan download laporan jika diperlukan</p>
                             <hr>
-                            <div class="d-flex justify-content-end">
-                                <!-- <button class="btn btn-primary">Download Laporan </button> -->
-                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Proposal </a>
+                            <div class="d-flex justify-content-between">
+                                <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Proposal </a>
+                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
                             </div>
 
                         </div>

@@ -58,14 +58,14 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Selesai</h5>
+                            <h5 class="card-title text-center">Surat Keterangan</h5>
                             <hr>
                             <p>Kegiatan PKM selesai dilakukan. Anda dapat melihat atau mendownload
                                 surat keterangan telah melaksanakan kegiatan PKM </p>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat</button>
-                                <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
+                                <!-- <button class="btn btn-secondary">Lihat</button> -->
+                                <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Surat Keterangan </a>
                             </div>
 
                         </div>

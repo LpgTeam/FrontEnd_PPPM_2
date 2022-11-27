@@ -259,7 +259,10 @@ $routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
 //download Kontrak penelitian
 $routes->get('/penelitian/printKontrak', 'Penelitian::printKontrak');
 //download laporan
-$routes->get('/penelitian/download-laporan/(:any)', 'ProposalPenelitian::printLaporan/$1');
+$routes->get('/penelitian/download-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
+$routes->get('/penelitian/download_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::download_laporan_proposal/$1/$2');
+//viewlaporan
+$routes->get('/penelitian/view-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
 $routes->get('/penelitian/view_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::view_laporan_proposal/$1/$2');
 
 
