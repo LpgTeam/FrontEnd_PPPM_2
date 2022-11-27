@@ -153,7 +153,7 @@
                                                     <li><a href="/pkmKepala">PKM</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a class="nav-link scrollto" href="#">Reimburse</a></li>
+                                            <li><a class="nav-link scrollto" href="/reimburseKepala">Reimburse</a></li>
                                             <li class="dropdown">
                                                 <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
                                                 <ul>
@@ -177,7 +177,7 @@
                                                             <li><a href="/penelitianDirektur">Penelitian</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a class="nav-link scrollto" href="#">Reimburse</a></li>
+                                                    <li><a class="nav-link scrollto" href="/reimburseDirektur">Reimburse</a></li>
                                                     <li class="dropdown">
                                                         <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                         <ul>

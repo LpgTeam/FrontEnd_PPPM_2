@@ -213,4 +213,29 @@ class Kepala extends BaseController
 
         return redirect()->to('/pkmKepala');
     }
+
+    public function reimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('kepala/tampilan/reimburse', $data);
+    }
+
+    public function detailReimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('kepala/tampilan/detailReimburse', $data);
+    }
+
+
+    public function detailReimburse2()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('kepala/tampilan/detailReimburse2', $data);
+    }
 }

@@ -202,6 +202,9 @@ if (auth()->loggedIn()) {
         $routes->get('/indexDirektur', 'Direktur::index');
         $routes->get('/anggaranDirektur', 'Direktur::anggaran');
         $routes->get('/penelitianDirektur', 'Direktur::penelitian');
+        $routes->get('/reimburseDirektur', 'Direktur::reimburse');
+        $routes->get('/detailReimburseDirektur', 'Direktur::detailReimburse');
+        $routes->get('/detailReimburse2Direktur', 'Direktur::detailReimburse2');
         $routes->get('/persetujuanDirektur/(:any)', 'Direktur::persetujuan/$1');
         $routes->get('/acc-direktur/(:any)', 'Direktur::acc_penelitian_direktur/$1');
     }
@@ -223,6 +226,9 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmacc-kepala/(:any)', 'Kepala::acc_pkm_kepala/$1');
         $routes->get('/pkmaccAkhir-kepala/(:any)', 'Kepala::accAkhir_pkm_kepala/$1');
         $routes->get('/pkmrjc-kepala/(:any)', 'Kepala::rjc_pkm_kepala/$1');
+        $routes->get('/reimburseKepala', 'Kepala::reimburse');
+        $routes->get('/detailReimburseKepala', 'Kepala::detailReimburse');
+        $routes->get('/detailReimburse2Kepala', 'Kepala::detailReimburse2');
     }
 
     // ================================================================
