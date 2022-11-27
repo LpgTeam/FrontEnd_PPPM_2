@@ -13,7 +13,7 @@
             </header>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
-                <div class="row gy-4">
+                <div class="row gy-4 justify-content-md-center">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
@@ -24,18 +24,19 @@
                             </p>
                         </div>
                     </div>
-
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-box green">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Laporan</h3>
-                            <p>
-                                Pelaporan kegiatan PKM yang dilakukan oleh dosen
-                                Politeknik Statistika STIS
-                            </p>
+                    
+                    <?php if ($pkm['jenis_pkm'] != 'Mandiri') { ?>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="service-box green">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Laporan</h3>
+                                <p>
+                                    Pelaporan kegiatan PKM yang dilakukan oleh dosen
+                                    Politeknik Statistika STIS
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                         <div class="service-box purple">

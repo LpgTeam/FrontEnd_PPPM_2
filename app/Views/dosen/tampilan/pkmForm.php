@@ -134,7 +134,7 @@
                                     <!-- <button onclick ="" class="btn btn-primary">
                                     Download Surat Pernyataan</i>
                                 </button> -->
-                                    <a href="<?= base_url('penelitian/printpdf') ?>" class="btn btn-primary">
+                                    <a href="<?= base_url('pkm/printSurat') ?>" class="btn btn-primary">
                                         Download Surat Pernyataan
                                     </a>
                                 </div>
@@ -149,6 +149,8 @@
                                     </div>
                                 </div>
                             </div>
+                        <?php else : ?>
+                            <input class="form-control" id="hasil" name="hasil" rows="3" value="-" hidden></input>
                         <?php endif; ?>
 
                         <div class="row mb-3">

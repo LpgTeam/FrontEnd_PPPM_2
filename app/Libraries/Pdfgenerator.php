@@ -4,8 +4,9 @@ namespace App\Libraries;
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use App\Controllers\BaseController;
 
-class Pdfgenerator
+class Pdfgenerator extends BaseController
 {
     public function generate($html, $filename = '', $paper = '', $orientation = '', $stream = true)
     {
@@ -26,5 +27,25 @@ class Pdfgenerator
         } else {
             return $dompdf->output();
         }
+    }
+
+    public function save_to_local($html, $filename = '', $direktori = '', $paper = '', $orientation = '', $stream = true)
+    {
+
+        // $filename = 'cache/pdffile.pdf';
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $dompdf = new Dompdf($options, [
+            'enable_remote' => true,
+            'chroot' => '/public/assets/img',
+        ]);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper($paper, $orientation);
+        $dompdf->render();
+        // if(!file_exists($direktori . "/".$filename.".pdf"))
+
+        file_put_contents($direktori.'/'. $filename . '.pdf', $dompdf->output());       
+
+
     }
 }

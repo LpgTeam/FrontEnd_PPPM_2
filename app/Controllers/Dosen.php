@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
+use mikehaertl\pdftk\Pdf;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
@@ -14,7 +15,7 @@ use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
-use App\Models\TimPkmModel;
+use App\Models\TimPKMModel;
 use App\Models\DosenModel;
 
 class Dosen extends BaseController
@@ -39,6 +40,10 @@ class Dosen extends BaseController
 
     public function index()
     {
+        // $pdf = base_url('') . \mikehaertl\pdftk\src\Pdf;
+        // $pdf->addFile('/bukti_pendanaan/DHM.pdf');
+        // $pdf->addFile('/bukti_pendanaan/DHM.pdf');
+
         $user = auth()->user();
         // dd(auth()->user()->getGroups());
         $nip = $user->nip;
@@ -96,13 +101,13 @@ class Dosen extends BaseController
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
         $total_pengajuan = 0;
-        foreach($ambil_pengajuan as $data_pengajuan){
-            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
 
-     
+
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -110,7 +115,7 @@ class Dosen extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-     
+
         return view('dosen/tampilan/anggaran', $data);
     }
 
@@ -225,7 +230,8 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses2', $data);
     }
@@ -234,7 +240,8 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses3', $data);
     }
@@ -357,13 +364,13 @@ class Dosen extends BaseController
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
 
         // if (!($laporan['kontrak'] == null || $laporan['laporan_dana'] == null)) {
-            $data = [
-                'title' => 'PPPM Politeknik Statistika STIS',
-                'penelitian' => $this->penelitianModel->find($id_penelitian),
-                'validation' => \Config\Services::validation(),
-                'laporan' => $laporan
-            ];
-            return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian),
+            'validation' => \Config\Services::validation(),
+            'laporan' => $laporan
+        ];
+        return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
         // } else {
         //     // $data = [
         //     //     'title' => 'PPPM Politeknik Statistika STIS',
@@ -379,13 +386,13 @@ class Dosen extends BaseController
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
 
         // if (($laporan['laporan_luaran'] == null)) {
-            $data = [
-                'title' => 'PPPM Politeknik Statistika STIS',
-                'penelitian' => $this->penelitianModel->find($id_penelitian),
-                'laporan' => $laporan,
-                'validation' =>\Config\Services::validation()
-            ];
-            return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_penelitian),
+            'laporan' => $laporan,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
         // } 
         // else {
         //     $data = [

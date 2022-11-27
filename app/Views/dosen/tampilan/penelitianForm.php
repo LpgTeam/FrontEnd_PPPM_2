@@ -135,7 +135,7 @@
                                     <!-- <button onclick ="" class="btn btn-primary">
                                     Download Surat Pernyataan</i>
                                 </button> -->
-                                    <a href="<?= base_url('penelitian/printpdf') ?>" class="btn btn-primary">
+                                    <a href="<?= base_url('penelitian/printSurat') ?>" class="btn btn-primary">
                                         Download Surat Pernyataan
                                     </a>
                                 </div>

@@ -8,13 +8,14 @@ class RincianPKMModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'pkm';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_pkm',    'surat_pernyataan',    'bukti_kegiatan'
+        'id', 'id_pkm',    'surat_pernyataan',    'bukti_kegiatan'
     ];
 
     // Dates
@@ -40,4 +41,10 @@ class RincianPKMModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function find_by_idpkm($id_pkm)
+    {
+        return $this->where(['id_pkm' => $id_pkm])->first();
+    }    
+
 }

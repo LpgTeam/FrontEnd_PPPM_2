@@ -62,7 +62,7 @@ $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 // $routes->get('/penelitianSemiMandiri', 'Dosen::penelitianSemiMandiri');
 // $routes->get('/penelitianDidanaiInstitusi', 'Dosen::penelitianDidanaiInstitusi');
 // $routes->get('/penelitianInstitusi', 'Dosen::penelitianInstitusi');
-   
+
 // $routes->get('/pkmMandiri', 'Dosen::pkmMandiri');
 // $routes->get('/pkmKelompok', 'Dosen::pkmKelompok');
 // $routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
@@ -74,6 +74,8 @@ $routes->get('/pkmProses2/(:any)', 'Dosen::pkmDetail2/$1');
 $routes->get('/pkmProses3/(:any)', 'Dosen::pkmDetail3/$1');
 $routes->get('/pkmProses4/(:any)', 'Dosen::pkmDetail4/$1');
 
+$routes->get('/pkm/saveSurat/(:any)', 'PkmDetail::saveSurat/$1');
+$routes->get('/pkm/saveBukti/(:any)', 'PkmDetail::saveBukti/$1');
 // $routes->get('/penelitianSemiMandiri1/(:any)', 'Dosen::penelitianSemiMandiri1/$1');
 // $routes->get('/penelitianSemiMandiri2', 'Dosen::penelitianSemiMandiri2');
 // $routes->get('/penelitianSemiMandiri3', 'Dosen::penelitianSemiMandiri3');
@@ -117,6 +119,12 @@ $routes->get('/penelitianDetail/saveLaporan/(:any)', 'PenelitianDetail::saveLapo
 // $routes->get('/pkmKelompok4', 'Dosen::pkmKelompok4');
 
 // $routes->get('/login', 'Login::index');
+
+
+
+
+
+
 //routes create pengajuan
 $routes->get('/penelitian/save', 'Penelitian::save');
 //submit Edit Profil dosen
@@ -208,9 +216,13 @@ if (auth()->loggedIn()) {
         $routes->get('/penelitianKepala', 'Kepala::penelitian');
         $routes->get('/penelitianPersetujuanKepala/(:any)', 'Kepala::penelitianPersetujuan/$1');
         $routes->get('/pkmKepala', 'Kepala::pkm');
-        $routes->get('/pkmPersetujuanKepala', 'Kepala::pkmPersetujuan');
+        $routes->get('/pkmPersetujuanKepala/(:any)', 'Kepala::pkmPersetujuan/$1');
+        $routes->get('/pkmPersetujuanKepalaSelesai/(:any)', 'Kepala::pkmPersetujuanSelesai/$1');
         $routes->get('/acc-kepala/(:any)', 'Kepala::acc_penelitian_kepala/$1');
         $routes->get('/rjc-kepala/(:any)', 'Kepala::rjc_penelitian_kepala/$1');
+        $routes->get('/pkmacc-kepala/(:any)', 'Kepala::acc_pkm_kepala/$1');
+        $routes->get('/pkmaccAkhir-kepala/(:any)', 'Kepala::accAkhir_pkm_kepala/$1');
+        $routes->get('/pkmrjc-kepala/(:any)', 'Kepala::rjc_pkm_kepala/$1');
     }
 
     // ================================================================
@@ -220,25 +232,47 @@ if (auth()->loggedIn()) {
         $routes->get('/indexBAU', 'BAU::index');
         $routes->get('/anggaranBAU', 'BAU::anggaran');
         $routes->get('/penelitianBAU', 'BAU::penelitian');
+        $routes->get('/pkmBAU', 'BAU::pkm');
+        $routes->get('/pkmPersetujuanBAU/(:any)', 'BAU::pkmPersetujuan/$1');
         $routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
         $routes->get('/acc-BAU/(:any)', 'BAU::acc_penelitian_BAU/$1');
         $routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
+        $routes->get('/pkmacc-BAU/(:any)', 'BAU::acc_pkm_BAU/$1');
+        $routes->get('/pkmrjc-BAU/(:any)', 'BAU::rjc_pkm_BAU/$1');
 
         $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
-        
     }
 }
-//download proposal
+//===========================================download Penelitian===============================================
+//proposal
 $routes->get('/penelitian/download-p1-proposal/(:any)', 'ProposalPenelitian::download_p1_proposal/$1');
 $routes->get('/penelitian/download-p2-proposal/(:any)', 'ProposalPenelitian::download_p2_proposal/$1');
 $routes->get('/penelitian/download-p3-proposal/(:any)', 'ProposalPenelitian::download_p3_proposal/$1');
 $routes->get('/penelitian/download-p4-proposal/(:any)', 'ProposalPenelitian::download_p4_proposal/$1');
 $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::download_p5_proposal/$1');
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
+$routes->get('/penelitian/view_proposal_savelocal/(:any)', 'ProposalPenelitian::view_proposal_savelocal/$1');
+$routes->get('/penelitian/view_proposal/(:any)/(:any)', 'ProposalPenelitian::view_proposal/$1/$2');
 $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
+//download surat pernyataan penelitian
+$routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
+//download Kontrak penelitian
+$routes->get('/penelitian/printKontrak', 'Penelitian::printKontrak');
+//download laporan
+$routes->get('/penelitian/download-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
+$routes->get('/penelitian/download_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::download_laporan_proposal/$1/$2');
+//viewlaporan
+$routes->get('/penelitian/view-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
+$routes->get('/penelitian/view_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::view_laporan_proposal/$1/$2');
 
+
+
+//============================download pkm===================================
+//form pengajuan
 $routes->get('/pkm/download-proposal/(:any)', 'ProposalPKM::download_proposal/$1');
-
+$routes->get('/pkm/download-surat-keterangan/(:any)', 'ProposalPKM::download_surat_keterangan/$1');
+//surat pernyataan pkm
+$routes->get('/pkm/printSurat', 'PKM::printSurat');
 
 //error page routes
 $routes->get('/backurl', 'Error::index');

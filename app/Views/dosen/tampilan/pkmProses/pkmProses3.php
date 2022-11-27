@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>PKM <?=$pkm['jenis_pkm'] ?></h2>
+                <h2>PKM <?= $pkm['jenis_pkm'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -84,7 +84,7 @@
                             </ul>
                             </p>
                             <hr>
-                            <form>
+                            <form action="<?= base_url('/pkmDetail/saveBukti/' . $pkm['ID_pkm']); ?>" method="post" enctype="multipart/form-data">
                                 <div class="row mb-4">
                                     <div class="row mb-3">
                                         <!-- <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID">
@@ -103,7 +103,7 @@
                                                 Tambah Anggota <i class=" bi bi-plus-square"></i>
                                             </button>
                                         </div>-->
-                                    </div> 
+                                    </div>
 
                                     <script>
                                         function rm2() {
@@ -119,7 +119,7 @@
 
                                     <label for="bukti" class="col-md-3 col-lg-4 col-form-label ">Bukti Kegiatan</label>
                                     <div class="col-md-3 col-lg-8">
-                                        <input class="form-control" type="file" id="bukti" name="bukti" required>
+                                        <input class="form-control" type="file" id="uplodBukti" name="uploadBukti" required>
                                     </div>
 
                                     <div class="col-md-3 col-lg-8">&nbsp</div>
@@ -129,7 +129,6 @@
                                     <div class="text-end">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </div>
@@ -205,42 +204,6 @@
 </main>
 <!-- End #main -->
 
-<!-- Submit -->
-<div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Setuju Surat Pernyataan</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah anda yakin menyetujui surat pernyataan?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/penelitianDosen'">Ya</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<!-- Tidak Setuju -->
-<div class="modal fade" id="tidak" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tidakLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tidakLabel">Tidak Setujui Surat Pernyataan</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apak anda yakin tidak ingin menyetujui surat pernyataans?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/penelitianDosen'">Ya</button>
-            </div>
-        </div>
-    </div>
-</div>
 <?= $this->endSection(); ?>

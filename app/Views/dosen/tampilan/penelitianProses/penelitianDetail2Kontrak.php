@@ -88,7 +88,7 @@
                             </p>
                             <div class="d-flex justify-content-between">
                                 <!-- <button class="btn btn-secondary">Lihat Kontrak </button> -->
-                                <a href="<?= base_url('penelitian/printpdfKontrak') ?>" class="btn btn-primary">
+                                <a href="<?= base_url('penelitian/printKontrak') ?>" class="btn btn-primary">
                                     Download Kontrak
                                 </a>
                             </div>
