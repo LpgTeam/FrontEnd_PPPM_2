@@ -10,6 +10,17 @@
         'dev' => true,
     ),
     'versions' => array(
+        'clegginabox/pdf-merger' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'ca9367d0d4e21faa686414961d3e096973ecef14',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../clegginabox/pdf-merger',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'codeigniter4/appstarter' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',

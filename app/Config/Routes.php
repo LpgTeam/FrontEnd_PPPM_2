@@ -120,13 +120,9 @@ $routes->get('/penelitianDetail/saveLaporan/(:any)', 'PenelitianDetail::saveLapo
 
 // $routes->get('/login', 'Login::index');
 
-//download surat pernyataan penelitian
-$routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
-//download Kontrak penelitian
-$routes->get('/penelitian/printKontrak', 'Penelitian::printKontrak');
 
-//download surat pernyataan pkm
-$routes->get('/pkm/printSurat', 'PKM::printSurat');
+
+
 
 
 //routes create pengajuan
@@ -247,7 +243,8 @@ if (auth()->loggedIn()) {
         $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
     }
 }
-//download proposal
+//===========================================download Penelitian===============================================
+//proposal
 $routes->get('/penelitian/download-p1-proposal/(:any)', 'ProposalPenelitian::download_p1_proposal/$1');
 $routes->get('/penelitian/download-p2-proposal/(:any)', 'ProposalPenelitian::download_p2_proposal/$1');
 $routes->get('/penelitian/download-p3-proposal/(:any)', 'ProposalPenelitian::download_p3_proposal/$1');
@@ -256,11 +253,23 @@ $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
 $routes->get('/penelitian/view_proposal_savelocal/(:any)', 'ProposalPenelitian::view_proposal_savelocal/$1');
 $routes->get('/penelitian/view_proposal/(:any)/(:any)', 'ProposalPenelitian::view_proposal/$1/$2');
-
 $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
+//download surat pernyataan penelitian
+$routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
+//download Kontrak penelitian
+$routes->get('/penelitian/printKontrak', 'Penelitian::printKontrak');
+//download laporan
+$routes->get('/penelitian/download-laporan/(:any)', 'ProposalPenelitian::printLaporan/$1');
+$routes->get('/penelitian/view_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::view_laporan_proposal/$1/$2');
 
+
+
+//============================download pkm===================================
+//form pengajuan
 $routes->get('/pkm/download-proposal/(:any)', 'ProposalPKM::download_proposal/$1');
-
+$routes->get('/pkm/download-surat-keterangan/(:any)', 'ProposalPKM::download_surat_keterangan/$1');
+//surat pernyataan pkm
+$routes->get('/pkm/printSurat', 'PKM::printSurat');
 
 //error page routes
 $routes->get('/backurl', 'Error::index');

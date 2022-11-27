@@ -47,7 +47,7 @@ class Dosen extends BaseController
         $user = auth()->user();
         // dd(auth()->user()->getGroups());
         $nip = $user->nip;
-        dd($nip);
+        // dd($nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'loginUser' => $this->dosenModel->get_nip_peneliti($nip)

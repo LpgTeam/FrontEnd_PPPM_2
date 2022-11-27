@@ -12,7 +12,8 @@
         "dompdf/dompdf": "^2.0",
         "codeigniter4/shield": "^1.0@beta",
         "mikehaertl/php-pdftk": "^0.12.1",
-        "jurosh/pdf-merge": "^2.1"
+        "jurosh/pdf-merge": "^2.1",
+        "clegginabox/pdf-merger": "dev-master"
     },
     "require-dev": {
     "fakerphp/faker": "^1.9",

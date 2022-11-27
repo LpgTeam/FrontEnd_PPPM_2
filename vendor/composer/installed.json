@@ -1,6 +1,50 @@
 {
     "packages": [
         {
+            "name": "clegginabox/pdf-merger",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clegginabox/pdf-merger.git",
+                "reference": "ca9367d0d4e21faa686414961d3e096973ecef14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clegginabox/pdf-merger/zipball/ca9367d0d4e21faa686414961d3e096973ecef14",
+                "reference": "ca9367d0d4e21faa686414961d3e096973ecef14",
+                "shasum": ""
+            },
+            "require": {
+                "setasign/fpdf": "^1.8",
+                "setasign/fpdi": "^2.2"
+            },
+            "time": "2021-01-16T08:44:14+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "src/PDFMerger/PDFMerger.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Clegg",
+                    "email": "paul@clegginabox.co.uk"
+                }
+            ],
+            "description": "PDF File Merger for PHP5",
+            "support": {
+                "source": "https://github.com/clegginabox/pdf-merger/tree/master"
+            },
+            "install-path": "../clegginabox/pdf-merger"
+        },
+        {
             "name": "codeigniter4/framework",
             "version": "v4.2.10",
             "version_normalized": "4.2.10.0",

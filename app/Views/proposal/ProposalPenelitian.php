@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use mikehaertl\pdftk\src\Pdf;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
@@ -181,10 +180,9 @@ class ProposalPenelitian extends BaseController
         $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
         $orientation = "portrait";
-        $direktori = 'cache';
         $html = view('proposal/all_proposal', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
-        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation, $direktori);
+        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation);
 
         $judul_penelitian = $file_pdf . ".pdf";
         return redirect()->to('/penelitian/view_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
@@ -232,9 +230,9 @@ class ProposalPenelitian extends BaseController
         $laporan = $this->laporanModel->find($id_penelitian);
 
         if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
-            $tambahanFile = 'bukti_pendanaan/' . $laporan['laporan_dana'];
+            $tambahanFile = $laporan['laporan_dana'];
         } else {
-            $tambahanFile = 'kontrak/' . $laporan['kontrak'];
+            $tambahanFile = $laporan['kontrak'];
         }
 
         $dataPenelitian = [
@@ -243,36 +241,15 @@ class ProposalPenelitian extends BaseController
             'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
             'ketuapeneliti'     => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'            => $this->luaranModel->get_luaran_byid($id_penelitian),
-            // 'addProses2'        => $tambahanFile,
+            'addProses2'        => $tambahanFile,
         ];
         // dd($dataPenelitian['timpeneliti']);
 
-        $file_pdf = 'Laporan Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
+        $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
         $orientation = "portrait";
-        $direktori = 'laporan_akhir_penelitian';
         $html = view('proposal/all_Laporan', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
-        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation, $direktori);
-
-        $pdf = new \Jurosh\PDFMerge\PDFMerger;
-        $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-            ->addPDF($tambahanFile . '.pdf', 'all');
-        $pdf->merge('file', 'bukti_pendanaan/' . $file_pdf . ' - Akhir.pdf');
-
-        $judul_penelitian = $file_pdf . " - Akhir.pdf";
-        return redirect()->to('/penelitian/view_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
+        $hasil = $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
-
-    public function view_laporan_proposal($id_penelitian, $judul_penelitian)
-    {
-        $data = [
-            'penelitian'    => $this->penelitianModel->find($id_penelitian),
-            'judul_penelitian' => $judul_penelitian,
-        ];
-        // dd($data['judul_penelitian']);
-
-        return view('proposal/ViewLaporanProposal', $data);
-    }    
-
 }

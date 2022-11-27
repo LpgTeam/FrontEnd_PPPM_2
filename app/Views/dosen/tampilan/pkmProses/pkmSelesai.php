@@ -65,7 +65,7 @@
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-secondary">Lihat</button>
-                                <button class="btn btn-primary">Download</button>
+                                <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
                             </div>
 
                         </div>

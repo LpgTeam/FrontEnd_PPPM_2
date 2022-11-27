@@ -170,6 +170,7 @@ class ComposerStaticInit711ed77ad5a458a2ca0d0f6cb7b13a67
     );
 
     public static $classMap = array (
+        'Clegginabox\\PDFMerger\\PDFMerger' => __DIR__ . '/..' . '/clegginabox/pdf-merger/src/PDFMerger/PDFMerger.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'FPDF' => __DIR__ . '/..' . '/setasign/fpdf/fpdf.php',
