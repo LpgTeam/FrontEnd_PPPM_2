@@ -80,7 +80,7 @@ function tambah(){
     "</span>"+
     "<h5 class='fw-bold'>Kontrak</h5>"+
     "<p class='text-muted'>"+
-        "Menyetujui Kontrak Penelitian"+
+        "Proses Persetujuan Kontrak Penelitian"+
     "</p>"+
 "</li>";  
 

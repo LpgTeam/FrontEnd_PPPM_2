@@ -68,6 +68,10 @@ $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 // $routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
 $routes->get('/pkmForm/(:any)', 'Dosen::pkmForm/$1');
 
+$routes->get('/reimburseDosen', 'Dosen::reimburse');
+$routes->get('/detailReimburseDosen', 'Dosen::detailReimburse');
+$routes->get('/detailReimburse2Dosen', 'Dosen::detailReimburse2');
+
 //=====================PKM Detail======================
 $routes->get('/pkmProses1/(:any)', 'Dosen::pkmDetail1/$1');
 $routes->get('/pkmProses2/(:any)', 'Dosen::pkmDetail2/$1');
