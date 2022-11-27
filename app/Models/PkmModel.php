@@ -82,4 +82,11 @@ class PkmModel extends Model
     {
         return $this->where(['id_status >' => $id_status])->findAll();
     }
+
+    public function get_pkm_by_status_bau($id_status)
+    {
+        $builder = $this->db->table('pengajuan_pkm');
+        $query = $builder->getWhere(['id_status' => $id_status, 'jenis_pkm !=' => "Mandiri"]);
+        return $query->getResultArray();
+    }
 }

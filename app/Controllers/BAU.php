@@ -156,9 +156,10 @@ class BAU extends BaseController
     //========================PKM===========================
     public function pkm()
     {
+        // dd($this->pkmModel->get_pkm_by_status_bau(1));
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm'   => $this->pkmModel->get_pkm_by_status(1),
+            'pkm'   => $this->pkmModel->get_pkm_by_status_bau(1),
         ];
         return view('bau/tampilan/pkm', $data);
     }
