@@ -2,10 +2,12 @@
 
 namespace App\Controllers;
 
+use mikehaertl\pdftk\src\Pdf;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
+use App\Models\LaporanPenelitianModel;
 use App\Models\LuaranTargetModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
@@ -14,6 +16,7 @@ use App\Libraries\Pdfgenerator;
 class ProposalPenelitian extends BaseController
 {
     use ResponseTrait;
+    protected $laporanModel;
     protected $penelitianModel;
     protected $ketuatimpenelitiModel;
     protected $timpenelitiModel;
@@ -22,6 +25,7 @@ class ProposalPenelitian extends BaseController
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
+        $this->laporanModel = new LaporanPenelitianModel();
         $this->timpenelitiModel = new TimPenelitiModel();
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
         $this->dosenModel = new DosenModel();
@@ -177,9 +181,10 @@ class ProposalPenelitian extends BaseController
         $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
         $orientation = "portrait";
+        $direktori = 'cache';
         $html = view('proposal/all_proposal', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
-        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation);
+        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation,$direktori);
 
         $judul_penelitian = $file_pdf . ".pdf";
         return redirect()->to('/penelitian/view_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
@@ -216,5 +221,52 @@ class ProposalPenelitian extends BaseController
         // ];
 
         return view('proposal/p2_proposal', $dataPenelitian);
+    }
+
+    public function printLaporan($id_penelitian)
+    {
+        $Pdfgenerator = new Pdfgenerator();
+
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
+        $penelitian = $this->penelitianModel->find($id_penelitian);
+        $laporan = $this->laporanModel->find($id_penelitian);
+
+        if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
+            $tambahanFile = $laporan['laporan_dana'];
+        } else {
+            $tambahanFile = $laporan['kontrak'];
+        }
+
+        $dataPenelitian = [
+            'penelitian'        => $penelitian,
+            'timpeneliti'       => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
+            'ketuapeneliti'     => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
+            'luaran'            => $this->luaranModel->get_luaran_byid($id_penelitian),
+            'addProses2'        => $tambahanFile,
+        ];
+        // dd($dataPenelitian['timpeneliti']);
+
+        // $file_pdf = 'Laporan Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
+        // $paper = 'A4';
+        // $orientation = "portrait";
+        // $direktori = 'laporan_akhir_penelitian';
+        // $html = view('proposal/all_Laporan', $dataPenelitian);
+        // // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
+        // $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation, $direktori);
+
+        $pdf = new \Clegginabox\PDFMerger\PDFMerger;
+
+        // $pdf->addPDF('/one.pdf', '1, 3, 4');
+        $pdf->addPDF(base_url('/bukti_kegiatan/3SI2_Kelompok5_222011494_TugasPertemuan11_3.pdf') , '1-2');
+        $pdf->addPDF('/public/bukti_kegiatan/surat pernyataan penelitian.docx_1.pdf', 'all');
+        
+        //You can optionally specify a different orientation for each PDF
+        // $pdf->addPDF('samplepdfs/one.pdf', '1, 3, 4', 'L');
+        // $pdf->addPDF('samplepdfs/two.pdf', '1-2', 'P');
+        
+        $pdf->merge('file', '/public/bukti_kegiatan/tes-merge.pdf', 'P');
+        
+        // $pdf->addFile();
     }
 }

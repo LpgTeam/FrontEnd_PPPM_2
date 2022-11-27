@@ -46,4 +46,23 @@ class ProposalPKM extends BaseController
         $html = view('proposal/PKM/Form_Pengajuan', $dataPkm);
         $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
+
+    public function download_surat_keterangan($id_pkm)
+    {
+        $Pdfgenerator = new Pdfgenerator();
+
+        $dataPkm = [
+            'pkm'    => $this->pkmModel->find($id_pkm),
+            'peneliti' => $this->timpkmModel->get_data_timpkm($id_pkm),
+            // 'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
+        ];
+        dd($dataPkm['peneliti']);
+
+        $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
+        // . $dataPkm['penelitian']['judul_penelitian'];
+        $paper = 'A4';
+        $orientation = "portrait";
+        $html = view('proposal/PKM/Surat_Keterangan', $dataPkm);
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
 }

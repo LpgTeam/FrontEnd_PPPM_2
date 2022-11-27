@@ -111,7 +111,6 @@
         <li>WAKTU, TEMPAT DAN SASARAN</li>
         <table class="isi">
             <tr>
-<<<<<<< HEAD
                 <td>Waktu Pelaksanaan</td>
                 <td>: <?= $pkm['waktu_kegiatan']?></td>
             </tr>
@@ -126,39 +125,14 @@
             <tr>
                 <td>Perkiraan/target jumlah peserta</td>
                 <td>: <?= $pkm['target_peserta']?></td>
-=======
-                <td style="width: 45%;">Waktu Pelaksanaan</td>
-                <td>: (___________)</td>
-            </tr>
-            <tr>
-                <td style="width: 45%;">Tempat</td>
-                <td>: (___________)</td>
-            </tr>
-            <tr>
-                <td style="width: 45%;">Sasaran</td>
-                <td>: (___________)</td>
-            </tr>
-            <tr>
-                <td style="width: 45%;">Perkiraan/target jumlah peserta</td>
-                <td>: (___________)</td>
->>>>>>> 1d582b4fc4b00887850d597566b9e426e28c6646
             </tr>
         </table>
         <br>
 
         <li>HASIL/TARGET YANG DIHARAPKAN</li>
-<<<<<<< HEAD
         <?= $pkm['hasil']?>
         <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN*)</li>
         BELUM KELARR!!!
-=======
-        <p>Tuliskan hasil dan target</p>
-        <br>
-
-        <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN*)</li>
-        <p>Tulis Pembiayaan</p>
-        <br>
->>>>>>> 1d582b4fc4b00887850d597566b9e426e28c6646
     </ol>
 
     <div style="page-break-before: always;">

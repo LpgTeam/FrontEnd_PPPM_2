@@ -10,7 +10,9 @@
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
         "dompdf/dompdf": "^2.0",
-        "codeigniter4/shield": "^1.0@beta"
+        "codeigniter4/shield": "^1.0@beta",
+        "mikehaertl/php-pdftk": "^0.12.1",
+        "clegginabox/pdf-merger": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

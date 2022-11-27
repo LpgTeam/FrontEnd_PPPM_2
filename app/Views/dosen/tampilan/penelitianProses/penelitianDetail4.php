@@ -89,7 +89,8 @@
                             <p>Kegiatan penelitian selesai dilakukan. Anda dapat melakukan download laporan jika diperlukan</p>
                             <hr>
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-primary">Download Laporan </button>
+                                <!-- <button class="btn btn-primary">Download Laporan </button> -->
+                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Proposal </a>
                             </div>
 
                         </div>
