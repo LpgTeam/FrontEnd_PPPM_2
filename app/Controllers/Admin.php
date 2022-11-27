@@ -26,7 +26,9 @@ class Admin extends BaseController
         $dana_penelitian = new DanaPenelitianModel();
         $dana_pkm = new DanaPKMModel();
         $dana_terealisasi = new AnggaranTotalModel();
+        $dana_pengajuan = new PenelitianModel();
 
+        //ambil dana penelitian
         $ambil_penelitian = $dana_penelitian->findAll();
         $ambil_pkm = $dana_pkm->findAll();
 
@@ -53,15 +55,25 @@ class Admin extends BaseController
         ];
 
         // update data tabel anggaran_total
+        //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
         $total_saved = $dana_terealisasi->save($input_terealisasi);
+
+        //ambil dana pengajuan 
+        $ambil_pengajuan = $dana_pengajuan->findAll();
+        $total_pengajuan = null;
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
+                $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+            }
+        }
 
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'        => $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first(),
-            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first()
+            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
+            'anggaranDiajukan'    => $total_pengajuan
         ];
-        //dd($data['jumlah']);
 
         return view('adminPPPM/tampilan/anggaran', $data);
     }
@@ -132,7 +144,7 @@ class Admin extends BaseController
 
     // public function userSetting()
     // {
-//     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
     //     return view('adminPPPM/tampilan/userSetting', $data);
     // }
 

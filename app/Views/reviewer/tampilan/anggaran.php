@@ -59,8 +59,11 @@
                             </div>
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
-                            <h2>Rp 1.000.000</h2>
-
+                            <?php
+                            if (isset($anggaranTerealisasi)) {
+                                echo '<h2>Rp ', number_format($anggaranDiajukan, 0, ",", "."), '</h2>';
+                            }
+                            ?>
                         </div>
                     </div>
                     <!-- End testimonial item -->

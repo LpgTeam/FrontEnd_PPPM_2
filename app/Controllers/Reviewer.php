@@ -33,7 +33,9 @@ class Reviewer extends BaseController
         $dana_penelitian = new DanaPenelitianModel();
         $dana_pkm = new DanaPKMModel();
         $dana_terealisasi = new AnggaranTotalModel();
+        $dana_pengajuan = new PenelitianModel();
 
+        //ambil dana penelitian
         $ambil_penelitian = $dana_penelitian->findAll();
         $ambil_pkm = $dana_pkm->findAll();
 
@@ -60,16 +62,26 @@ class Reviewer extends BaseController
         ];
 
         // update data tabel anggaran_total
+        //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
         $total_saved = $dana_terealisasi->save($input_terealisasi);
+
+        //ambil dana pengajuan 
+        $ambil_pengajuan = $dana_pengajuan->findAll();
+        $total_pengajuan = null;
+        foreach($ambil_pengajuan as $data_pengajuan){
+            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+                $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+            }
+        }
 
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'        => $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first(),
-            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first()
+            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
+            'anggaranDiajukan'    => $total_pengajuan
         ];
-        //dd($data['jumlah']);
-
+     
         return view('reviewer/tampilan/anggaran', $data);
     }
 
@@ -78,8 +90,9 @@ class Reviewer extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $penelitianModel->get_penelitian_by_id_status(2)
         ];
+        // dd($data['penelitian']);
         return view('reviewer/tampilan/penelitian', $data);
     }
 
@@ -98,8 +111,8 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 2,
-            'status_pengajuan'  => 'Proposal disetujui oleh Reviewer'
+            'id_status'         => 3,
+            'status_pengajuan'  => 'Disetujui oleh Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
@@ -111,8 +124,8 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 5,
-            'status_pengajuan'  => 'Ditolak'
+            'id_status'         => 8,
+            'status_pengajuan'  => 'Ditolak oleh Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');

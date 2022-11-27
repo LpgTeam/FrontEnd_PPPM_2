@@ -68,8 +68,8 @@
                                 popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <a class="btn btn-secondary">Lihat Proposal </a>
-                                <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Proposal </a>
+                                <a class="btn btn-secondary">Lihat Form </a>
+                                <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
                             </div>
                             <!-- <div class="d-flex justify-content-between">
                                 <button class="btn btn-secondary">Lihat Form </button>
