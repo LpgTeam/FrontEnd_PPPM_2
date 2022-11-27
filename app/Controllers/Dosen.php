@@ -14,7 +14,7 @@ use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
-use App\Models\TimPkmModel;
+use App\Models\TimPKMModel;
 use App\Models\DosenModel;
 
 class Dosen extends BaseController

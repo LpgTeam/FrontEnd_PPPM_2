@@ -149,6 +149,8 @@
                                     </div>
                                 </div>
                             </div>
+                        <?php else : ?>
+                            <input class="form-control" id="hasil" name="hasil" rows="3" value="-" hidden></input>
                         <?php endif; ?>
 
                         <div class="row mb-3">

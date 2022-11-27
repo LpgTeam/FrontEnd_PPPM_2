@@ -62,7 +62,7 @@ $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 // $routes->get('/penelitianSemiMandiri', 'Dosen::penelitianSemiMandiri');
 // $routes->get('/penelitianDidanaiInstitusi', 'Dosen::penelitianDidanaiInstitusi');
 // $routes->get('/penelitianInstitusi', 'Dosen::penelitianInstitusi');
-   
+
 // $routes->get('/pkmMandiri', 'Dosen::pkmMandiri');
 // $routes->get('/pkmKelompok', 'Dosen::pkmKelompok');
 // $routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
@@ -227,7 +227,6 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmacc-kepala/(:any)', 'Kepala::acc_pkm_kepala/$1');
         $routes->get('/pkmaccAkhir-kepala/(:any)', 'Kepala::accAkhir_pkm_kepala/$1');
         $routes->get('/pkmrjc-kepala/(:any)', 'Kepala::rjc_pkm_kepala/$1');
-
     }
 
     // ================================================================
@@ -246,7 +245,6 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmrjc-BAU/(:any)', 'BAU::rjc_pkm_BAU/$1');
 
         $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
-        
     }
 }
 //download proposal
@@ -256,6 +254,9 @@ $routes->get('/penelitian/download-p3-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-p4-proposal/(:any)', 'ProposalPenelitian::download_p4_proposal/$1');
 $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::download_p5_proposal/$1');
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
+$routes->get('/penelitian/view_proposal_savelocal/(:any)', 'ProposalPenelitian::view_proposal_savelocal/$1');
+$routes->get('/penelitian/view_proposal/(:any)/(:any)', 'ProposalPenelitian::view_proposal/$1/$2');
+
 $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
 
 $routes->get('/pkm/download-proposal/(:any)', 'ProposalPKM::download_proposal/$1');

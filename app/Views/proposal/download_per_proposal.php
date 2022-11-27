@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-    <a class="btn btn-secondary">Lihat Proposal </a>
+    <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a>
     <a href="/penelitian/download-all-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Proposal </a>
 </div>
 <hr>

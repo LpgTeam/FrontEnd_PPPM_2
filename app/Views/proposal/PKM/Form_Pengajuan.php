@@ -81,15 +81,9 @@
                 <td>: <?= $timpkm[0]["pangkat"] ?></td>
             </tr>
         </table>
-<<<<<<< HEAD
-        <p>Anggota</p>
-        <table>
-            <?php foreach ($anggotapkm as $key => $anggota) : ?>
-=======
         <p class="tebal">Anggota (boleh lebih dari satu)</p>
         <table class="isi">
             <?php foreach ($timpkm as $key => $anggota) : ?>
->>>>>>> 1d582b4fc4b00887850d597566b9e426e28c6646
                 <tr>
                     <td style="width: 45%;">Nama</td>
                     <td>: <?= $anggota["nama"]; ?></td>

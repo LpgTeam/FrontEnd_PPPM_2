@@ -157,7 +157,43 @@ class ProposalPenelitian extends BaseController
         $orientation = "portrait";
         $html = view('proposal/all_proposal', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
-        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+        $hasil = $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
+
+    public function view_proposal_savelocal($id_penelitian)
+    {
+        $Pdfgenerator = new Pdfgenerator();
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
+
+        $dataPenelitian = [
+            'penelitian'    => $this->penelitianModel->find($id_penelitian),
+            'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
+            'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
+            'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
+        ];
+        // dd($dataPenelitian['ketuapeneliti']);
+
+        $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
+        $paper = 'A4';
+        $orientation = "portrait";
+        $html = view('proposal/all_proposal', $dataPenelitian);
+        // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
+        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation);
+
+        $judul_penelitian = $file_pdf . ".pdf";
+        return redirect()->to('/penelitian/view_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
+    }
+
+    public function view_proposal($id_penelitian, $judul_penelitian)
+    {
+        $data = [
+            'penelitian'    => $this->penelitianModel->find($id_penelitian),
+            'judul_penelitian' => $judul_penelitian,
+        ];
+        // dd($data['judul_penelitian']);
+
+        return view('proposal/ViewProposal', $data);
     }
 
     public function lihat_pdf($id_penelitian)

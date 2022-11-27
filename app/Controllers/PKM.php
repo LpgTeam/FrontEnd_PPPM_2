@@ -8,6 +8,7 @@ use App\Models\DosenModel;
 use App\Models\TimPKMModel;
 use App\Models\RincianPKMModel;
 use CodeIgniter\I18n\Time;
+use DateTime;
 
 class PKM extends BaseController
 {
@@ -53,6 +54,13 @@ class PKM extends BaseController
         $bulan = substr($this->request->getVar('waktu'), 5, 2);
         $hari = substr($this->request->getVar('waktu'), 8, 2);
         $waktu = Time::createFromDate($tahun, $bulan, $hari, 'Asia/jakarta');
+
+        $waktu = date('Y-m-d H:i:s', strtotime($this->request->getVar('waktu')));
+        // $waktu = date_create([$this->request->getVar('waktu')]);
+        // dd(date($waktu));
+        dd($waktu);
+
+        // dd(Time::now());
         // dd($waktu);
         // dd(Time::now('Asia/jakarta'));
         // dd($this->request->getPost('waktu'));
@@ -79,6 +87,9 @@ class PKM extends BaseController
             'biaya'  => $this->request->getVar('biaya'),
             'tanggal_pengajuan' => Time::now('Asia/jakarta')
         ]);
+
+        dd($waktu);
+
 
         // dd($this->request->getVar('topik'));
         $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
