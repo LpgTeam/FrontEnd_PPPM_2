@@ -29,8 +29,9 @@ class Pdfgenerator extends BaseController
         }
     }
 
-    public function save_to_local($html, $filename = '', $paper = '', $orientation = '', $stream = true, $direktori = '')
+    public function save_to_local($html, $filename = '', $direktori = '', $paper = '', $orientation = '', $stream = true)
     {
+
         // $filename = 'cache/pdffile.pdf';
         $options = new Options();
         $options->set('isRemoteEnabled', true);
@@ -41,8 +42,9 @@ class Pdfgenerator extends BaseController
         $dompdf->loadHtml($html);
         $dompdf->setPaper($paper, $orientation);
         $dompdf->render();
-        if(!file_exists($direktori . "/".$filename.".pdf"))
-            file_put_contents($direktori . "/". $filename . '.pdf', $dompdf->output());       
+        // if(!file_exists($direktori . "/".$filename.".pdf"))
+
+        file_put_contents($direktori.'/'. $filename . '.pdf', $dompdf->output());       
 
 
     }

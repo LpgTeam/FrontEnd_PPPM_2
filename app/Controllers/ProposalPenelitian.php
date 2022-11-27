@@ -229,8 +229,8 @@ class ProposalPenelitian extends BaseController
 
         $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
         $penelitian = $this->penelitianModel->find($id_penelitian);
-        $laporan = $this->laporanModel->find($id_penelitian);
-
+        $laporan = $this->laporanModel->find_by_idpenelitian($id_penelitian);
+        // dd($laporan);
         if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
             $tambahanFile = 'bukti_pendanaan/' . $laporan['laporan_dana'];
         } else {
@@ -253,14 +253,16 @@ class ProposalPenelitian extends BaseController
         $direktori = 'laporan_akhir_penelitian';
         $html = view('proposal/all_Laporan', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
-        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation, $direktori);
+        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf,$direktori, $paper, $orientation);
 
         $pdf = new \Jurosh\PDFMerge\PDFMerger;
         $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-            ->addPDF($tambahanFile . '.pdf', 'all');
-        $pdf->merge('file', 'bukti_pendanaan/' . $file_pdf . ' - Akhir.pdf');
+            ->addPDF($tambahanFile , 'all');
+        $pdf->merge('file', $direktori.'/'.$file_pdf.' - Akhir.pdf');
 
         $judul_penelitian = $file_pdf . " - Akhir.pdf";
+        // dd($judul_penelitian);
+
         return redirect()->to('/penelitian/view_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
     }
 
