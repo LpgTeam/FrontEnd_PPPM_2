@@ -461,4 +461,29 @@ class Dosen extends BaseController
 
         return redirect()->to('/indexDosen');
     }
+
+    public function reimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('dosen/tampilan/reimburse', $data);
+    }
+
+    public function detailReimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('dosen/tampilan/detailReimburse', $data);
+    }
+
+
+    public function detailReimburse2()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('dosen/tampilan/detailReimburse2', $data);
+    }
 }
