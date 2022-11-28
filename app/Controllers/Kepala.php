@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
-use App\Models\PKMModel;
+use App\Models\PkmModel;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
@@ -20,26 +20,26 @@ class Kepala extends BaseController
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
-        $this->pkmModel = new PKMModel();
+        $this->pkmModel = new PkmModel();
     }
 
     public function index()
     {
-        $email = \Config\Services::email();
-        $email->setFrom('lpgteam6@gmail.com');
-        $email->setTo('aljaffarsyah10@gmail.com');
-        $email->setSubject('testing');
-        $email->setMessage('<p>testing email</p>');
-        // $email->send();
-        if ($email->send()) {
-            echo 'Email successfully sent';
-        } else {
-            $data = $email->printDebugger(['headers']);
-            print_r($data);
-        }
+        // $email = \Config\Services::email();
+        // $email->setFrom('lpgteam6@gmail.com');
+        // $email->setTo('aljaffarsyah10@gmail.com');
+        // $email->setSubject('testing');
+        // $email->setMessage('<p>testing email</p>');
+        // // $email->send();
+        // if ($email->send()) {
+        //     echo 'Email successfully sent';
+        // } else {
+        //     $data = $email->printDebugger(['headers']);
+        //     print_r($data);
+        // }
 
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        // return view('kepala/tampilan/index', $data);
+        return view('kepala/tampilan/index', $data);
     }
 
     public function anggaran()

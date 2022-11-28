@@ -74,6 +74,12 @@ class UserModelCI extends Model
         // return  $this->findAll();
     }
 
+    public function getAllUser(){
+        $this->join('auth_groups_users', 'auth_groups_users.user_id = users.id')
+        ->select('auth_groups_users.group')->select('users.*')->where(['group !=' => 'admin']);
+        return $this->findAll();
+    }
+
 
     public function getAllData()
     {

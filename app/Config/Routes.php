@@ -139,7 +139,7 @@ $routes->get('/pkm/save', 'PKM::save');
 // ================================================================
 if (auth()->loggedIn()) {
     if (auth()->user()->inGroup('admin')) {
-        $routes->get('/indexAdmin', 'Admin::index');
+        $routes->get('/indexAdmin', 'Dosen::index');
         $routes->get('/anggaranAdmin', 'Admin::anggaran');
         $routes->get('/penelitianAdmin', 'Admin::penelitian');
         $routes->get('/pkmAdmin', 'Admin::pkm');
@@ -186,7 +186,7 @@ if (auth()->loggedIn()) {
 
     if (auth()->user()->inGroup('reviewer')) {
 
-        $routes->get('/indexReviewer', 'Reviewer::index');
+        $routes->get('/indexReviewer', 'Dosen::index');
         $routes->get('/anggaranReviewer', 'Reviewer::anggaran');
         $routes->get('/penelitianReviewer', 'Reviewer::penelitian');
         $routes->get('/persetujuanReviewer/(:any)', 'Reviewer::persetujuan/$1');
@@ -199,7 +199,7 @@ if (auth()->loggedIn()) {
     // ================================================================
 
     if (auth()->user()->inGroup('direktur')) {
-        $routes->get('/indexDirektur', 'Direktur::index');
+        $routes->get('/indexDirektur', 'Dosen::index');
         $routes->get('/anggaranDirektur', 'Direktur::anggaran');
         $routes->get('/penelitianDirektur', 'Direktur::penelitian');
         $routes->get('/persetujuanDirektur/(:any)', 'Direktur::persetujuan/$1');
@@ -211,7 +211,7 @@ if (auth()->loggedIn()) {
     // ================================================================
 
     if (auth()->user()->inGroup('kepalaPPPM')) {
-        $routes->get('/indexKepala', 'Kepala::index');
+        $routes->get('/indexKepala', 'Dosen::index');
         $routes->get('/anggaranKepala', 'Kepala::anggaran');
         $routes->get('/penelitianKepala', 'Kepala::penelitian');
         $routes->get('/penelitianPersetujuanKepala/(:any)', 'Kepala::penelitianPersetujuan/$1');
@@ -229,7 +229,7 @@ if (auth()->loggedIn()) {
     //                          BAU
     // ================================================================
     if (auth()->user()->inGroup('bau')) {
-        $routes->get('/indexBAU', 'BAU::index');
+        $routes->get('/indexBAU', 'Dosen::index');
         $routes->get('/anggaranBAU', 'BAU::anggaran');
         $routes->get('/penelitianBAU', 'BAU::penelitian');
         $routes->get('/pkmBAU', 'BAU::pkm');

@@ -28,8 +28,9 @@ class AdminUserSetting extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'user'  => $this->userModel->getAllData(),
+            // 'user'  => $this->userModel->getAllUser(),
         ];
-        // dd($data);
+        // dd($data['user']);
         return view('adminPPPM/tampilan/userSetting', $data);
     }
 
@@ -61,7 +62,7 @@ class AdminUserSetting extends BaseController
             'user1' => $this->userModel->find($user_id),
             'userRole' => $this->authGroupModel->get_all_role_by_user_id($user_id)
         ];
-        // dd($data['userRole']);
+        // dd($data['user1']);
         return view('adminPPPM/tampilan/userSettingRole', $data);
     }
 
