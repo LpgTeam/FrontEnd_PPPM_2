@@ -16,7 +16,7 @@
                 <hr>
                 <p>Website PPPM Politeknik Statistika STIS</p>
             </header>
-        </div>
+        </div>  
         <div class="row" data-aos="fade-up">
             <div class="">
                 <div class="card">
