@@ -68,6 +68,10 @@ $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 // $routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
 $routes->get('/pkmForm/(:any)', 'Dosen::pkmForm/$1');
 
+$routes->get('/reimburseDosen', 'Dosen::reimburse');
+$routes->get('/detailReimburseDosen', 'Dosen::detailReimburse');
+$routes->get('/detailReimburse2Dosen', 'Dosen::detailReimburse2');
+
 //=====================PKM Detail======================
 $routes->get('/pkmProses1/(:any)', 'Dosen::pkmDetail1/$1');
 $routes->get('/pkmProses2/(:any)', 'Dosen::pkmDetail2/$1');
@@ -139,7 +143,7 @@ $routes->get('/pkm/save', 'PKM::save');
 // ================================================================
 if (auth()->loggedIn()) {
     if (auth()->user()->inGroup('admin')) {
-        $routes->get('/indexAdmin', 'Admin::index');
+        $routes->get('/indexAdmin', 'Dosen::index');
         $routes->get('/anggaranAdmin', 'Admin::anggaran');
         $routes->get('/penelitianAdmin', 'Admin::penelitian');
         $routes->get('/pkmAdmin', 'Admin::pkm');
@@ -186,7 +190,7 @@ if (auth()->loggedIn()) {
 
     if (auth()->user()->inGroup('reviewer')) {
 
-        $routes->get('/indexReviewer', 'Reviewer::index');
+        $routes->get('/indexReviewer', 'Dosen::index');
         $routes->get('/anggaranReviewer', 'Reviewer::anggaran');
         $routes->get('/penelitianReviewer', 'Reviewer::penelitian');
         $routes->get('/persetujuanReviewer/(:any)', 'Reviewer::persetujuan/$1');
@@ -199,9 +203,12 @@ if (auth()->loggedIn()) {
     // ================================================================
 
     if (auth()->user()->inGroup('direktur')) {
-        $routes->get('/indexDirektur', 'Direktur::index');
+        $routes->get('/indexDirektur', 'Dosen::index');
         $routes->get('/anggaranDirektur', 'Direktur::anggaran');
         $routes->get('/penelitianDirektur', 'Direktur::penelitian');
+        $routes->get('/reimburseDirektur', 'Direktur::reimburse');
+        $routes->get('/detailReimburseDirektur', 'Direktur::detailReimburse');
+        $routes->get('/detailReimburse2Direktur', 'Direktur::detailReimburse2');
         $routes->get('/persetujuanDirektur/(:any)', 'Direktur::persetujuan/$1');
         $routes->get('/acc-direktur/(:any)', 'Direktur::acc_penelitian_direktur/$1');
     }
@@ -211,7 +218,7 @@ if (auth()->loggedIn()) {
     // ================================================================
 
     if (auth()->user()->inGroup('kepalaPPPM')) {
-        $routes->get('/indexKepala', 'Kepala::index');
+        $routes->get('/indexKepala', 'Dosen::index');
         $routes->get('/anggaranKepala', 'Kepala::anggaran');
         $routes->get('/penelitianKepala', 'Kepala::penelitian');
         $routes->get('/penelitianPersetujuanKepala/(:any)', 'Kepala::penelitianPersetujuan/$1');
@@ -223,13 +230,16 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmacc-kepala/(:any)', 'Kepala::acc_pkm_kepala/$1');
         $routes->get('/pkmaccAkhir-kepala/(:any)', 'Kepala::accAkhir_pkm_kepala/$1');
         $routes->get('/pkmrjc-kepala/(:any)', 'Kepala::rjc_pkm_kepala/$1');
+        $routes->get('/reimburseKepala', 'Kepala::reimburse');
+        $routes->get('/detailReimburseKepala', 'Kepala::detailReimburse');
+        $routes->get('/detailReimburse2Kepala', 'Kepala::detailReimburse2');
     }
 
     // ================================================================
     //                          BAU
     // ================================================================
     if (auth()->user()->inGroup('bau')) {
-        $routes->get('/indexBAU', 'BAU::index');
+        $routes->get('/indexBAU', 'Dosen::index');
         $routes->get('/anggaranBAU', 'BAU::anggaran');
         $routes->get('/penelitianBAU', 'BAU::penelitian');
         $routes->get('/pkmBAU', 'BAU::pkm');

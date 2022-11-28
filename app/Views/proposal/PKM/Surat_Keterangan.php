@@ -109,12 +109,7 @@ foreach ($peneliti as $key => $anggota) : ?>
             Jakarta, ....................... <br>
             Politeknik Statistika STIS<br>
             Kepala Pusat Penelitian dan Pengabdian Masyarakat
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            
             <p><u>Dr. Eng. Arie Wahyu Wijayanto, M.T.</u></p>
             <u>NIP. 198512222009021002</u>
 

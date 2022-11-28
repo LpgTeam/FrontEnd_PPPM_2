@@ -40,7 +40,11 @@ class Dosen extends BaseController
 
     public function index()
     {
+        // $_SESSION['group'] = "dosen";
 
+        // $user = auth()->user();
+
+        // dd(auth()->user()->nip);
         // and now we can use library
         // $pdf = new \Jurosh\PDFMerge\PDFMerger;
 
@@ -489,5 +493,30 @@ class Dosen extends BaseController
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
         return redirect()->to('/indexDosen');
+    }
+
+    public function reimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('dosen/tampilan/reimburse', $data);
+    }
+
+    public function detailReimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('dosen/tampilan/detailReimburse', $data);
+    }
+
+
+    public function detailReimburse2()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('dosen/tampilan/detailReimburse2', $data);
     }
 }

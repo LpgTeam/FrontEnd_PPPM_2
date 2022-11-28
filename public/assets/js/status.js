@@ -80,7 +80,7 @@ function tambah(){
     "</span>"+
     "<h5 class='fw-bold'>Kontrak</h5>"+
     "<p class='text-muted'>"+
-        "Menyetujui Kontrak Penelitian"+
+        "Proses Persetujuan Kontrak Penelitian"+
     "</p>"+
 "</li>";  
 
@@ -152,7 +152,7 @@ if (jenis == "Semi Mandiri") {
     else if (status == 2){
         list.innerHTML += status1 + status2 ;
     }
-    else if (status ==  3){
+    else if (status == 3){
         list.innerHTML += status1 + status2 + status3;
     }
     else if (status == 4){
