@@ -4,27 +4,29 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PenelitianModel extends Model
+class ReimburseModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'penelitian';
-    protected $primaryKey       = 'id_penelitian';
+    protected $table            = 'permohonan_reimburse';
+    protected $primaryKey       = 'id_reimburse';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id_reimburse',
         'id_penelitian',
+        'id_pkm',
         'jenis_penelitian',
-        'judul_penelitian',
-        'bidang',
+        'jenis_pkm',
         'tanggal_pengajuan',
-        'jumlah_anggota',
+        'laporan',
+        'loa',
+        'naskah_artikel',
+        'bukti_pembayaran',
         'id_status',
-        'status_pengajuan',
-        'file_proposal',
-        'biaya'
+        'status_reimburse'
     ];
     public function getData()
     {
@@ -55,25 +57,22 @@ class PenelitianModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function get_id_penelitian($judul_penelitian)
+    public function get_reimburse($id_reimburse)
     {
-        return $this->where(['judul_penelitian' => $judul_penelitian])->first();
+        return $this->where(['id_reimburse' => $id_reimburse])->first();
     }
 
-    public function get_penelitian($id_penelitian)
+    public function get_id_penelitian($id_penelitian)
     {
-        return $this->where(['id_penelitian' => $id_penelitian])->first();
+        return $this->join('penelitian', 'penelitian.id_penelitian = permohonan_reimburse.id_penelitian')
+        ->select('permohonan_reimburse.id_penelitian')->select('penelitian.*')
+            ->where(['id_penelitian' => $id_penelitian])->findAll();
     }
 
-    public function get_penelitian_done(){
-
+    public function get_id_pkm($id_pkm)
+    {
+        return $this->join('pengajuan_pkm', 'pengajuan_pkm.ID_pkm = permohonan_reimburse.id_pkm')
+        ->select('permohonan_reimburse.id_pkm')->select('pengajuan_pkm.*')
+            ->where(['id_pkm' => $id_pkm])->findAll();
     }
-
-    // public function get_penelitian_by_nip_user($nip)
-    // {
-    //     //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
-    //     //     ->where(['auth_groups_users.id' => $id])->first();
-    //     return $this->join('tim_peneliti', 'tim_peneliti.id_penelitan = penelitian.id_penelitian')->select('tim_peneliti.nip')->select('penelitian.*')
-    //         ->where(['nip' => $nip]);
-    // }
 }

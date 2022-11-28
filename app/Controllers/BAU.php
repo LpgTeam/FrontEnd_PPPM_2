@@ -75,6 +75,7 @@ class BAU extends BaseController
             }
         }
 
+     
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -82,8 +83,8 @@ class BAU extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-       
-        return view('bau/tampilan/anggaran', $data);
+     
+        return view('dosen/tampilan/anggaran', $data);
     }
 
     public function updateAnggaran(){
@@ -146,5 +147,15 @@ class BAU extends BaseController
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
 
         return redirect()->to('/penelitianBAU');
+    }
+
+    public function reimburse()
+    {
+        $penelitianModel = new PenelitianModel();
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $penelitianModel->getData(),
+        ];
+        return view('bau/tampilan/penelitian', $data);
     }
 }

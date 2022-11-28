@@ -490,7 +490,7 @@ class Dosen extends BaseController
             'validation' => \Config\Services::validation(),
             'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
-        return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
+        return view('dosen/tampilan/penelitianProses/penelitianDetaoil2', $data);
     }
     public function penelitianProses2Kontrak($id_penelitian)
     {
@@ -570,5 +570,19 @@ class Dosen extends BaseController
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
         return redirect()->to('/indexDosen');
+    }
+
+    public function reimburse()
+    {
+        //mengambil data user yang sedang login
+        $user = auth()->user();
+        // $nip = $user->nip;
+        // dd($nip);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+        ];
+        // dd($data['penelitian']);
+        return view('dosen/reimburse', $data);
     }
 }

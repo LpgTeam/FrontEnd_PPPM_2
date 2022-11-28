@@ -73,6 +73,7 @@ class Kepala extends BaseController
             }
         }
 
+     
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -81,7 +82,7 @@ class Kepala extends BaseController
             'anggaranDiajukan'    => $total_pengajuan
         ];
      
-        return view('kepala/tampilan/anggaran', $data);
+        return view('dosen/tampilan/anggaran', $data);
     }
 
     public function penelitian()
