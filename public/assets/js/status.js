@@ -1,3 +1,4 @@
+// Proses Peneltian
 function tambah(){
     var status = document.getElementById("status").innerHTML ;
     var jenis = document.getElementById("jenis").innerHTML ;
@@ -121,6 +122,7 @@ function tambah(){
             "</p>"+
         "</li>";
 
+
 if (jenis == "Semi Mandiri") {
     if (status == 1){
         list.innerHTML += status1 ;}
@@ -183,6 +185,8 @@ if (jenis == "Semi Mandiri") {
 
     console.log(jenis);
     console.log(status);
+
+    console.log(1);
 }
 
 tambah()
