@@ -10,6 +10,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\ReimburseModel;
 use CodeIgniter\API\ResponseTrait;
 
 
@@ -139,12 +140,47 @@ class BAU extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 5,
+            'id_status'         => 7,
             'status_pengajuan'  => 'Ditolak'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
 
         return redirect()->to('/penelitianBAU');
+    }
+
+    public function reimburse()
+    {
+        $reimburseModel = new ReimburseModel();
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $reimburseModel->getData(),
+        ];
+        return view('bau/tampilan/reimburse', $data);
+    }
+
+    public function persetujuanReimburse($id_reimburse)
+    {
+        $this->reimburseModel->find($id_reimburse);
+
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'reimburse'    => $this->reimburseModel->find($id_reimburse)
+
+        ];
+        return view('bau/tampilan/persetujuanReimburse', $data);
+    }
+
+    public function acc_reimburse($id_reimburse)
+    {
+        $this->reimburseModel->save([
+            'id_reimburse'     => $id_reimburse,
+            'id_status'         => 2,
+            'status_reimburse'  => 'Dana telah dicairkan oleh BAU'
+        ]);
+
+        session()->setFlashdata('pesan', 'Reimburse berhasil dicairkan');
+
+        return redirect()->to('/reimburseBAU');
     }
 }

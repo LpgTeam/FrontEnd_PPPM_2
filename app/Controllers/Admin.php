@@ -9,6 +9,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\ReimburseModel;
 
 use function PHPUnit\Framework\isNull;
 
@@ -153,4 +154,39 @@ class Admin extends BaseController
     //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
     //     return view('adminPPPM/tampilan/editUser', $data);
     // }
+
+    public function reimburse()
+    {
+        $reimburseModel = new ReimburseModel();
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $reimburseModel->getData(),
+        ];
+        return view('adminPPPM/tampilan/reimburse', $data);
+    }
+
+    public function persetujuanReimburse($id_reimburse)
+    {
+        $this->reimburseModel->find($id_reimburse);
+
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'penelitian'    => $this->reimburseModel->find($id_reimburse)
+
+        ];
+        return view('adminPPPM/tampilan/persetujuanReimburse', $data);
+    }
+
+    public function acc_reimburse($id_reimburse)
+    {
+        $this->reimburseModel->save([
+            'id_reimburse'     => $id_reimburse,
+            'id_status'         => 4,
+            'status_reimburse'  => 'Dana telah dicairkan oleh BAU'
+        ]);
+
+        session()->setFlashdata('pesan', 'Reimburse berhasil dicairkan');
+
+        return redirect()->to('/reimburseAdmin');
+    }
 }

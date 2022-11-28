@@ -171,6 +171,10 @@ if (auth()->loggedIn()) {
 
         $routes->get('/pkmTerstrukturAdmin1', 'Admin::pkmAdminProses1');
         $routes->get('/pkmTerstrukturAdmin2', 'Admin::pkmAdminProses2');
+
+        $routes->get('/reimburseAdmin', 'Admin::reimburse');
+        $routes->get('/persetujuanReimburseAdmin/(:any)', 'Admin::persetujuanReimburse/$1');
+        $routes->get('/acc-reimburseAdmin/(:any)', 'Admin::acc_reimburse/$1');
     }
     // ================================================================
     //                          Reviewer
@@ -223,8 +227,10 @@ if (auth()->loggedIn()) {
         $routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
         $routes->get('/acc-BAU/(:any)', 'BAU::acc_penelitian_BAU/$1');
         $routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
-
         $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
+        $routes->get('/reimburseBAU', 'BAU::reimburse');
+        $routes->get('/persetujuanReimburseBAU/(:any)', 'BAU::persetujuanReimburse/$1');
+        $routes->get('/acc-reimburseBAU/(:any)', 'BAU::acc_reimburse/$1');
         
     }
 }
