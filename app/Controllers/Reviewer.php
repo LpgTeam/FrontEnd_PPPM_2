@@ -91,8 +91,9 @@ class Reviewer extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $penelitianModel->get_penelitian_by_id_status(2)
         ];
+        // dd($data['penelitian']);
         return view('reviewer/tampilan/penelitian', $data);
     }
 
@@ -111,8 +112,8 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 2,
-            'status_pengajuan'  => 'Proposal disetujui oleh Reviewer'
+            'id_status'         => 3,
+            'status_pengajuan'  => 'Disetujui oleh Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
@@ -124,8 +125,8 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 5,
-            'status_pengajuan'  => 'Ditolak'
+            'id_status'         => 8,
+            'status_pengajuan'  => 'Ditolak oleh Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');

@@ -57,6 +57,23 @@
 </head>
 
 <body>
+            <!-- KOP Surat -->
+            <div>
+            <!-- <span class="logo"> -->
+            <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="80">
+            <!-- <img src="assets/img/STIS.png" alt="dfsd" /> -->
+            <!-- <img src="<? //= base_url("assets/img/STIS.png"); 
+                            ?>" alt="stis" /> -->
+            <!-- </span> -->
+            <b>
+                POLITEKNIK STATISTIKA STIS<br>
+                Jl. Otto Iskandardinata No. 64C, Jakarta 13330<br>
+                Telp. (021) 8508812, 8191437, Fax. 8197577<br>
+                Website: www.stis.ac.id, Email: info@stis.ac.id
+            </b>
+            <hr>
+
+        </div>
 
     <div class="text-center">
         <h3>FORM USULAN KEGIATAN</h3>
@@ -111,31 +128,28 @@
         <li>WAKTU, TEMPAT DAN SASARAN</li>
         <table class="isi">
             <tr>
-                <td style="width: 45%;">Waktu Pelaksanaan</td>
-                <td>: (___________)</td>
+                <td>Waktu Pelaksanaan</td>
+                <td>: <?= $pkm['waktu_kegiatan']?></td>
             </tr>
             <tr>
-                <td style="width: 45%;">Tempat</td>
-                <td>: (___________)</td>
+                <td>Tempat</td>
+                <td>: <?= $pkm['tempat_kegiatan']?></td>
             </tr>
             <tr>
-                <td style="width: 45%;">Sasaran</td>
-                <td>: (___________)</td>
+                <td>Sasaran</td>
+                <td>: <?= $pkm['sasaran']?></td>
             </tr>
             <tr>
-                <td style="width: 45%;">Perkiraan/target jumlah peserta</td>
-                <td>: (___________)</td>
+                <td>Perkiraan/target jumlah peserta</td>
+                <td>: <?= $pkm['target_peserta']?></td>
             </tr>
         </table>
         <br>
 
         <li>HASIL/TARGET YANG DIHARAPKAN</li>
-        <p>Tuliskan hasil dan target</p>
-        <br>
-
+        <?= $pkm['hasil']?>
         <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN*)</li>
-        <p>Tulis Pembiayaan</p>
-        <br>
+        BELUM KELARR!!!
     </ol>
 
     <div style="page-break-before: always;">

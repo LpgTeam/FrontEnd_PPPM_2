@@ -64,6 +64,11 @@ class PenelitianModel extends Model
     {
         return $this->where(['id_penelitian' => $id_penelitian])->first();
     }
+  
+    public function get_penelitian_by_id_status($id_status)
+    {
+        return $this->where(['id_status' => $id_status])->findAll();
+    }
 
     public function get_penelitian_done(){
 
@@ -76,4 +81,10 @@ class PenelitianModel extends Model
     //     return $this->join('tim_peneliti', 'tim_peneliti.id_penelitan = penelitian.id_penelitian')->select('tim_peneliti.nip')->select('penelitian.*')
     //         ->where(['nip' => $nip]);
     // }
+    public function get_penelitian_dan_laporan()
+    {
+        //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
+        //     ->where(['auth_groups_users.id' => $id])->first();
+        return $this->join('penelitian', 'penelitian.id_penelitian = laporan_penelitian.id_penelitian')->select('laporan_penelitian.*')->select('penelitian.*')->findAll();
+    }
 }

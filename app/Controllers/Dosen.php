@@ -484,6 +484,10 @@ class Dosen extends BaseController
     }
     public function penelitianProses2($id_penelitian)
     {
+        //Mencari Laporan dengan id penelitian
+        $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
+
+        // if (($laporan['kontrak'] == null || $laporan['laporan_dana'] == null)) {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
@@ -578,11 +582,18 @@ class Dosen extends BaseController
         $user = auth()->user();
         // $nip = $user->nip;
         // dd($nip);
+
+        $penelitian = new PenelitianModel();
+    //    $timPenelitiModel = new TimPenelitiModel();
+        $pkm = new PkmModel();
+
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user_done($user->nip),
+           // 'penelitian' => $this->timPenelitianModel->get_penelitian_by_nip_user_done($user->nip),
         ];
-        // dd($data['penelitian']);
+
         return view('dosen/reimburse', $data);
+
     }
 }

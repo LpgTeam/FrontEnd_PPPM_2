@@ -3,6 +3,11 @@
 <?= $this->section('content'); ?>
 <main id="main" class="main">
     <section class="section">
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <header class="section-header2">
             <h2>PKM <?= $jenis ?></h2>
             <hr>
@@ -20,7 +25,7 @@
                         <div class="row mb-3">
                             <label label for="topik" class="col-md-4 col-lg-3 col-form-label">Topik PKM</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="topik" type="text" class="form-control" id="topik" required>
+                                <input name="topik" type="text" class="form-control" id="topik" value="<?= old("topik") ?>" required>
                             </div>
                         </div>
 
@@ -47,7 +52,7 @@
                         <div class="row mb-3">
                             <label for="pangkat" class="col-md-4 col-lg-3 col-form-label">Pangkat/Golongan</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="pangkat" type="text" class="form-control" id="pangkat" required>
+                                <input name="pangkat" type="text" class="form-control" id="pangkat" value="<?= old("pangkat") ?>" required>
                             </div>
                         </div>
 
@@ -55,7 +60,7 @@
                         <div class="row mb-3">
                             <label for="bentukKegiatan" class="col-md-4 col-lg-3 col-form-label">Bentuk Kegiatan</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="bentukKegiatan" type="text" class="form-control" id="bentukKegiatan" required>
+                                <input name="bentukKegiatan" type="text" class="form-control" id="bentukKegiatan" value="<?= old("bentukKegiatan") ?>" required>
                             </div>
                         </div>
                         <!-- <div class="row mb-3">
@@ -73,44 +78,79 @@
                         <div class="row mb-3">
                             <label for="waktu" class="col-md-4 col-lg-3 col-form-label">Waktu Pelaksanaan</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="waktu" type="date" class="form-control" id="waktu" required>
+                                <input name="waktu" type="date" class="form-control" id="waktu" value="<?= old("waktu") ?>" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="tempat" class="col-md-4 col-lg-3 col-form-label">Tempat</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="tempat" type="text" class="form-control" id="tempat" required>
+                                <input name="tempat" type="text" class="form-control" id="tempat" value="<?= old("tempat") ?>" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="sasaran" class="col-md-4 col-lg-3 col-form-label">Sasaran</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="sasaran" type="text" class="form-control" id="sasaran" required>
+                                <input name="sasaran" type="text" class="form-control" id="sasaran" value="<?= old("sasaran") ?>" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="target" class="col-md-4 col-lg-3 col-form-label">Target jumlah peserta</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="target" type="number" class="form-control" id="target" required>
+                                <input name="target" type="number" class="form-control" id="target" value="<?= old("target") ?>" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="anggota" class="col-md-4 col-lg-3 col-form-label">Jumlah Anggota</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="anggota" type="number" class="form-control" id="anggota" required>
+                                <input name="anggota" type="number" class="form-control" id="anggota" value="<?= old("anggota") ?>" required>
                             </div>
                         </div>
                         <?php if (($jenis == "Kelompok" || $jenis == "Terstruktur")) : ?>
                             <div class="row mb-3">
                                 <label for="hasil" class="col-md-4 col-lg-3 col-form-label">Hasil Yang Diharapkan</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <textarea class="form-control" id="hasil" name="hasil" rows="3" required></textarea>
+                                    <textarea class="form-control" id="hasil" name="hasil" rows="3" value="<?= old("hasil") ?>" required></textarea>
                                 </div>
                             </div>
+                        <?php endif; ?>
+                        <?php if (!($jenis == "Kelompok" || $jenis == "Terstruktur")) : ?>
+                            <hr>
+                            <div class="row mb-3">
+                                <label for="uploadBukti" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Kegiatan</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="uploadBukti" class="form-control <?= ($validation->hasError('uploadBukti')) ? 'is-invalid' : ''; ?>" type="file" id="uploadBukti">
+                                    <div class="invalid-feedback" id="uploadValid">
+                                        <?= $validation->getError('uploadBukti'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <!-- <button onclick ="" class="btn btn-primary">
+                                    Download Surat Pernyataan</i>
+                                </button> -->
+                                    <a href="<?= base_url('pkm/printSurat') ?>" class="btn btn-primary">
+                                        Download Surat Pernyataan
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="uploadSurat" class="col-md-4 col-lg-3 col-form-label ">Upload Surat Pernyataan</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="uploadSurat" class="form-control  <?= ($validation->hasError('uploadSurat')) ? 'is-invalid' : ''; ?>" type="file" id="uploadSurat">
+                                    <div class="invalid-feedback" id="uploadValid2">
+                                        <?= $validation->getError('uploadSurat'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php else : ?>
+                            <input class="form-control" id="hasil" name="hasil" rows="3" value="-" hidden></input>
                         <?php endif; ?>
 
                         <div class="row mb-3">

@@ -88,7 +88,8 @@ class Penelitian extends BaseController
                 // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
                 $jenisPenelitian = $this->request->getVar('jenis_penelitian');
                 // dd($validation);
-                return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
+                session()->setFlashdata('error', 'Terjadi Kesalahan!!');
+                return redirect()->to('/penelitianForm/' . strtolower(str_replace(' ', '-', $jenisPenelitian)))->withInput();
 
                 // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
                 //     return redirect()->to('/penelitianMandiri')->withInput();
@@ -140,7 +141,8 @@ class Penelitian extends BaseController
                 // return redirect()->to('/obat/create')->withInput()->with('validation', $validation);
                 $jenisPenelitian = $this->request->getVar('jenis_penelitian');
                 // dd($validation);
-                return redirect()->to('/penelitian' . str_replace(' ', '', $jenisPenelitian))->withInput();
+                session()->setFlashdata('error', 'Terjadi Kesalahan!!');
+                return redirect()->to('/penelitianForm/' . strtolower(str_replace(' ', '-', $jenisPenelitian)))->withInput();
 
                 // if (($jenisPenelitian == 'Mandiri') || ($jenisPenelitian == 'Kerjasama')) {
                 //     return redirect()->to('/penelitianMandiri')->withInput();
@@ -165,9 +167,10 @@ class Penelitian extends BaseController
             'judul_penelitian' => $this->request->getVar('judul_penelitian'),
             'bidang' => $this->request->getVar('bidang'),
             'jumlah_anggota' => $this->request->getVar('anggota'),
-            'tanggal_pengajuan' => Time::now(),
+            'tanggal_pengajuan' => Time::now('Asia/jakarta'
+        ),
             'id_status' => '1',
-            'status_pengajuan' => 'Proposal diajukan',
+            'status_pengajuan' => 'Diajukan oleh Dosen',
             'file_proposal' => $namaProposal,
             'surat_pernyataan' => $namaSurat,
             'biaya'  => $biaya,
@@ -265,13 +268,18 @@ class Penelitian extends BaseController
         echo json_encode($w);
     }
 
-    public function printpdf()
+    public function printSurat()
     {
         return $this->response->download('surat_pernyataan/Template_surat_pernyataan_penelitian.docx', null)->setFileName("Surat-Pernyataan.docx"); //download file
     }
 
-    public function printpdfKontrak()
+    public function printKontrak()
     {
-        return $this->response->download('kontrak/Template_kontrak_penelitian.docx', null)->setFileName("Kontrak_penelitian.docx"); //download file
+        return $this->response->download('kontrak/[PENELITIAN] Kontrak.docx', null)->setFileName("Kontrak_penelitian.docx"); //download file
+    
+    }
+    public function printLaporan()
+    {
+        return $this->response->download('kontrak/[PENELITIAN] Kontrak.docx', null)->setFileName("Kontrak_penelitian.docx"); //download file
     }
 }
