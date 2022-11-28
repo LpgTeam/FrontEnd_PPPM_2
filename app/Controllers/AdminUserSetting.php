@@ -27,8 +27,8 @@ class AdminUserSetting extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            // 'user'  => $this->userModel->getAllData(),
-            'user'  => $this->userModel->getAllUser(),
+            'user'  => $this->userModel->getAllData(),
+            // 'user'  => $this->userModel->getAllUser(),
         ];
         // dd($data['user']);
         return view('adminPPPM/tampilan/userSetting', $data);
