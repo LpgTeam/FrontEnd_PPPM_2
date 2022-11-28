@@ -25,16 +25,42 @@ class PenelitianDetail extends BaseController
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
     }
-
+    
+    public function index()
+    {
+        //
+    }
     public function saveLaporan($idpenelitian)
     {
         $nLuaran = (int)$this->request->getVar('jumlahrow');
+        if (!$this->validate([
+            'uploadLaporan' => [
+                'rules' => 'uploaded[uploadLaporan]|ext_in[uploadLaporan,pdf]|max_size[uploadLaporan,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar"
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            // dd($validation);
+            session()->setFlashdata('error', 'Terjadi Kesalahan!');
+            return redirect()->to('/penelitianProses3/' . $idpenelitian)->withInput();
+        }
 
-        $fileLaporan = $this->request->getFile('laporan');
+        $fileLaporan = $this->request->getFile('uploadLaporan');
         $namaLaporan = $fileLaporan->getName();
         $fileLaporan->move('laporan_penelitian', $namaLaporan);
 
+        $Pen = $this->penelitianModel->get_penelitian($idpenelitian);
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idpenelitian);
+        
+        $this->penelitianModel->save([
+            'id_penelitian'     => $Pen['id_penelitian'],
+            'id_status'         => "10",
+            'status_pengajuan'  => "Kegiatan telah selesai dilaksanakan"
+        ]);
 
         $this->laporanPenelitianModel->save([
             'id_laporan'        => $laporan['id_laporan'],
@@ -59,10 +85,6 @@ class PenelitianDetail extends BaseController
         // return $this->respondCreated($response);
     }
 
-    public function index()
-    {
-        //
-    }
 
     public function saveKontrak($idPenelitian)
     {
@@ -90,6 +112,14 @@ class PenelitianDetail extends BaseController
 
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idPenelitian);
 
+        $Pen = $this->penelitianModel->get_penelitian($idPenelitian);
+        // dd($Pen);
+        $this->penelitianModel->save([
+            'id_penelitian'     => $Pen['id_penelitian'],
+            'id_status'         => "6",
+            'status_pengajuan'  => "Kegiatan sedang berlangsung"
+        ]);
+
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
             "kontrak" => $namaKontrak,
@@ -101,7 +131,7 @@ class PenelitianDetail extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
-        return redirect()->to('/penelitianProses2Kontrak/' . $idPenelitian);
+        return redirect()->to('/penelitianDosen');
     }
 
     public function savePendanaan($idPenelitian)
@@ -120,7 +150,8 @@ class PenelitianDetail extends BaseController
             // $validation = \Config\Services::validation();
             // dd($validation);
             session()->setFlashdata('error', 'Terjadi Kesalahan!');
-            return redirect()->to('/penelitianProses2/' . $idPenelitian)->withInput();
+            // return redirect()->to('/penelitianProses2/' . $idPenelitian)->withInput();
+            return redirect()->to('/penelitianDosen');
         }
 
         $filePendanaan = $this->request->getFile('uploadPendanaan');
@@ -129,6 +160,14 @@ class PenelitianDetail extends BaseController
         $namaPendanaan = $filePendanaan->getName();
         
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idPenelitian);
+
+        $Pen = $this->penelitianModel->get_penelitian($idPenelitian);
+        // dd($Pen);
+        $this->penelitianModel->save([
+            'id_penelitian'     => $Pen['id_penelitian'],
+            'id_status'         => "6",
+            'status_pengajuan'  => "Kegiatan sedang berlangsung"
+        ]);
 
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
@@ -141,6 +180,7 @@ class PenelitianDetail extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
-        return redirect()->to('/penelitianProses2/' . $idPenelitian);
+        // return redirect()->to('/penelitianProses2/' . $idPenelitian);
+        return redirect()->to('/penelitianDosen');
     }
 }

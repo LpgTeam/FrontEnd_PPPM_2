@@ -10,6 +10,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\PKMModel;
 use App\Models\ReimburseModel;
 use CodeIgniter\API\ResponseTrait;
 
@@ -18,9 +19,11 @@ class BAU extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $pkmModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
+        $this->pkmModel = new PKMModel();
     }
 
     public function index()
@@ -69,13 +72,14 @@ class BAU extends BaseController
 
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
-        $total_pengajuan = null;
-        foreach($ambil_pengajuan as $data_pengajuan){
-            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+        $total_pengajuan = 0;
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+                // dd($total_pengajuan);
             }
         }
-
+        // dd($ambil_pengajuan);
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -83,11 +87,12 @@ class BAU extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-       
+
         return view('bau/tampilan/anggaran', $data);
     }
 
-    public function updateAnggaran(){
+    public function updateAnggaran()
+    {
         $dana_awal = new AnggaranAwalModel();
 
         //current year
@@ -101,14 +106,14 @@ class BAU extends BaseController
         $update = $dana_awal->save($update_dana);
         return redirect()->to('/anggaranBAU');
     }
-
+    //=======================Penelitian================================
     public function penelitian()
     {
-        $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $this->penelitianModel->get_penelitian_by_id_status(1),
         ];
+        // dd($data['penelitian']);
         return view('bau/tampilan/penelitian', $data);
     }
 
@@ -128,7 +133,7 @@ class BAU extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 2,
-            'status_pengajuan'  => 'Disetujui - BAU'
+            'status_pengajuan'  => 'Disetujui oleh BAU'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
@@ -147,40 +152,5 @@ class BAU extends BaseController
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
 
         return redirect()->to('/penelitianBAU');
-    }
-
-    public function reimburse()
-    {
-        $reimburseModel = new ReimburseModel();
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'reimburse' => $reimburseModel->getData(),
-        ];
-        return view('bau/tampilan/reimburse', $data);
-    }
-
-    public function persetujuanReimburse($id_reimburse)
-    {
-        $this->reimburseModel->find($id_reimburse);
-
-        $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS',
-            'reimburse'    => $this->reimburseModel->find($id_reimburse)
-
-        ];
-        return view('bau/tampilan/persetujuanReimburse', $data);
-    }
-
-    public function acc_reimburse($id_reimburse)
-    {
-        $this->reimburseModel->save([
-            'id_reimburse'     => $id_reimburse,
-            'id_status'         => 2,
-            'status_reimburse'  => 'Dana telah dicairkan oleh BAU'
-        ]);
-
-        session()->setFlashdata('pesan', 'Reimburse berhasil dicairkan');
-
-        return redirect()->to('/reimburseBAU');
     }
 }

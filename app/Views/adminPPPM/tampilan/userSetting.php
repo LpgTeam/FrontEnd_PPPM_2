@@ -46,18 +46,17 @@
                             <tbody>
                                 <?php $i = 1; ?>
                                 <?php foreach ($user as $key => $post) :  ?>
-
                                     <tr>
                                         <!-- <td><?php //echo $post['id_penelitian'] 
                                                     ?></td> -->
                                         <td><?= $i; ?></td>
                                         <td><?= $post->username; ?></td>
-                                        <!-- <td><?= $post->group; ?> -->
                                         <td><?= $post->nip; ?></td>
-                                        <!-- <td><?= $post->nama_dosen; ?></td> -->
+                                        <!-- <td><//?= $post->nama_dosen; ?></td> -->
+                             
                                         <td>
-                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
-                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
+                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<//?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
+                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<//?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
                                             <a href="/editRole/<?= $post->id; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                         </td>
                                         <td>

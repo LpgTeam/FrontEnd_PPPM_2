@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>PKM <?=$pkm['jenis_pkm'] ?></h2>
+                <h2>PKM <?= $pkm['jenis_pkm'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -69,10 +69,29 @@
                             </p>
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-secondary">Lihat Surat </button>
-                                <button class="btn btn-primary">Download Surat </button>
+                                <a href="<?= base_url('pkm/printSurat') ?>" class="btn btn-primary">
+                                    Download Surat Pernyataan
+                                </a>
                             </div>
                             <hr>
-                            <form>
+
+                            <form action="<?= base_url('/pkmDetail/saveSurat/' . $pkm['ID_pkm']); ?>" method="post" enctype="multipart/form-data">
+                                <div class="d-flex justify-content-between">
+                                    <div class="row mb-4">
+                                        <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input id="suratPernyataan" name="suratPernyataan" class="form-control <?= ($validation->hasError('suratPernyataan')) ? 'is-invalid' : ''; ?>" type="file" aria-describedby="uploadValid">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('suratPernyataan'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                            <!-- <form>
                                 <div class="row mb-4">
                                     <label for="suratPernyataan" class="col-md-3 col-lg-4 col-form-label ">Surat Pernyataan</label>
                                     <div class="col-md-3 col-lg-8">
@@ -82,7 +101,7 @@
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
 
@@ -157,42 +176,8 @@
 </main>
 <!-- End #main -->
 
-<!-- Setuju -->
-<div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Setuju Surat Pernyataan</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah anda yakin menyetujui surat pernyataan?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href=''">Ya</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<!-- Tidak Setuju -->
-<div class="modal fade" id="tidak" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tidakLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tidakLabel">Tidak Setujui Surat Pernyataan</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apak anda yakin tidak ingin menyetujui surat pernyataans?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href=''">Ya</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 <?= $this->endSection(); ?>

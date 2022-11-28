@@ -66,9 +66,9 @@ class Direktur extends BaseController
 
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
-        $total_pengajuan = null;
-        foreach($ambil_pengajuan as $data_pengajuan){
-            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+        $total_pengajuan = 0;
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
@@ -80,7 +80,7 @@ class Direktur extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-     
+
         return view('direktur/tampilan/anggaran', $data);
     }
 
@@ -89,7 +89,7 @@ class Direktur extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $penelitianModel->get_penelitian_by_id_status(4),
         ];
         return view('direktur/tampilan/penelitian', $data);
     }
@@ -110,12 +110,37 @@ class Direktur extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 4,
-            'status_pengajuan'  => 'Proposal disetujui oleh Direktur'
+            'id_status'         => 5,
+            'status_pengajuan'  => 'Disetujui oleh Direktur'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
         return redirect()->to('/penelitianDirektur');
+    }
+
+    public function reimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('direktur/tampilan/reimburse', $data);
+    }
+
+    public function detailReimburse()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('direktur/tampilan/detailReimburse', $data);
+    }
+
+
+    public function detailReimburse2()
+    {
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS'
+        ];
+        return view('direktur/tampilan/detailReimburse2', $data);
     }
 }

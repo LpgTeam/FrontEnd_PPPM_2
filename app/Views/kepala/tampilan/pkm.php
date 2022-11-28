@@ -11,6 +11,12 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <section class="section">
+        <?php if (session()->getFlashdata('pesan')) : ?>
+            <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                <?= session()->getFlashdata('pesan'); ?>
+            </div>
+        <?php endif; ?>
+
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
                 <h2>Pengabdian Kepada Masyarakat</h2>
@@ -68,57 +74,31 @@
                                         <th scope="col">Detail</th>
                                     </tr>
                                 </thead>
-                                <tbody id="myTable">
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mandiri</td>
-                                        <td>24-06-2022</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Dosen</td>
-                                        <td>22-04-2022</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Kelompok Dosen</td>
-                                        <td>24-06-2022</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>Mandiri</td>
-                                        <td>24-06-2022</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>Terstruktur</td>
-                                        <td>24-06-2022</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
+                                <tbody>
+                                    <?php
+                                    if (!$pkm == null) {
+                                        $i = 1; ?>
+                                        <?php foreach ($pkm as $key => $post) :  ?>
+
+                                            <tr>
+                                                <!-- <td><?php //echo $post['id_penelitian'] 
+                                                            ?></td> -->
+                                                <td><?php echo $post['ID_pkm'] ?></td>
+                                                <td><?php echo $post['jenis_pkm'] ?></td>
+                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                <td><?php echo $post['topik_kegiatan'] ?></td>
+                                                <td><?php echo $post['status'] ?></td>
+                                                <td>
+                                                    <?php if ($post['id_status'] != 4) { ?>
+                                                        <a href="/pkmPersetujuanKepala/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <?php } else { ?>
+                                                        <a href="/pkmPersetujuanKepalaSelesai/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                    <?php $i++;
+                                        endforeach;
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>

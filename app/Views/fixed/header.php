@@ -79,7 +79,11 @@
                             <li><a href="/pkmDosen">PKM</a></li>
                         </ul>
                     </li>
+<<<<<<< HEAD
                     <li><a class="nav-link scrollto" href="/reimburseDosen">Reimburse</a></li>
+=======
+                    <li><a class="nav-link scrollto" href="reimburseDosen">Reimburse</a></li>
+>>>>>>> 913887a4058d85b6c90e9640d62f2867ba30299f
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
                         <ul>
@@ -200,6 +204,7 @@
                                                                 <a href="#"><span>Pengajuan</span> <i class="bi bi-chevron-down"></i></a>
                                                                 <ul>
                                                                     <li><a href="/penelitianBAU">Penelitian</a></li>
+                                                                    <li><a href="/pkmBAU">PKM</a></li>
                                                                 </ul>
                                                             </li>
                                                             <li><a class="nav-link scrollto" href="/reimburseBAU">Reimburse</a></li>

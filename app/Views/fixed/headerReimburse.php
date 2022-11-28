@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 <!-- ======= Header Penelitian ======= -->
 <header id="header" class="header fixed-top">
     <!-- Header Dosen Penelitian -->
+=======
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top">
+>>>>>>> 913887a4058d85b6c90e9640d62f2867ba30299f
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <!-- Logo Dosen -->
         <a href="/indexDosen" class="logo d-flex align-items-center">
@@ -62,7 +67,10 @@
                 </div>
             </span>
         </a> -->
+<<<<<<< HEAD
 
+=======
+>>>>>>> 913887a4058d85b6c90e9640d62f2867ba30299f
         <nav id="navbar" class="navbar">
             <ul>
                 <!-- Dosen -->
@@ -95,6 +103,7 @@
                             }
                                 ?>
 
+<<<<<<< HEAD
                                 <!-- Reviewer -->
                                 <?php
                                 if ($_SESSION['group'] == "reviewer") {
@@ -158,4 +167,49 @@
         <!-- .navbar -->
     </div>
     <!-- End Header Penelitian-->
+=======
+                                <!-- Kepala PPPM -->
+                                <?php
+                                if ($_SESSION['group'] == "kepalapppm") {
+                                ?>
+                                    <li><a class="nav-link scrollto" href="/reimburseKepala">Kembali</a></li>
+                                    <li class="dropdown">
+                                        <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                        <ul>
+                                        <?php
+                                    }
+                                        ?>
+
+                                        <!-- Direktur -->
+                                        <?php
+                                        if ($_SESSION['group'] == "direktur") {
+                                        ?>
+                                            <li><a class="nav-link scrollto" href="/reimburseDirektur">Kembali</a></li>
+                                            <li class="dropdown">
+                                                <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                                <ul>
+                                                <?php
+                                            }
+                                                ?>
+                                                <!-- BAU -->
+                                                <?php
+                                                if ($_SESSION['group'] == "bau") {
+                                                ?>
+                                                    <li><a class="nav-link scrollto" href="/reimburseBAU">Kembali</a></li>
+                                                    <li class="dropdown">
+                                                        <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                                        <ul>
+                                                        <?php
+                                                    }
+                                                        ?>
+                                                        <li><a href="/logout">Logout</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+    </div>
+    <!-- End Header Dosen PKM-->
+>>>>>>> 913887a4058d85b6c90e9640d62f2867ba30299f
 </header>

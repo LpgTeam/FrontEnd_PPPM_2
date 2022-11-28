@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 
-
-<?= $this->extend('adminPPPM/fixed/templatePenelitian') ?>
-=======
-<? //= $this->extend('adminPPPM/fixed/templatePenelitian') 
-?>
 <?= $this->extend('fixed/templatePenelitian') ?>
->>>>>>> ff13fdf33640b3f9d509327dba5c1c0c5c3c08d3
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">

@@ -184,7 +184,7 @@
                 </li>
             </ol>
         <li>
-            Jumlah Anggota : <?= $penelitian['jumlah_anggota']?> orang
+            Jumlah Anggota : <?= $penelitian['jumlah_anggota'] ?> orang
             <ol type="a">
                 <?php foreach ($anggotapeneliti as $key => $peneliti) : ?>
                     <li>Nama Anggota &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $peneliti['namaPeneliti']; ?></li>
@@ -257,7 +257,12 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td>a</td>
+                <td>
+                    <?php if ($penelitian['id_status'] == 4) { ?>
+                        <!-- <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100"> -->
+                        <img src="<?= base_url("") ?>/assets/img/ttd.png" alt="stis" width="120" />
+                    <?php } ?>
+                </td>
             </tr>
             <tr>
                 <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>
