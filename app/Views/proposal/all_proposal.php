@@ -1,5 +1,5 @@
-<?= $this->include('proposal/p1_proposal'); ?>
-<?= $this->include('proposal/p2_proposal'); ?>
-<?= $this->include('proposal/p3_proposal'); ?>
-<?= $this->include('proposal/p4_proposal'); ?>
-<?= $this->include('proposal/p5_proposal'); ?>
+<?= $this->include('/proposal/P1_proposal'); ?>
+<?= $this->include('/proposal/P2_proposal'); ?>
+<?= $this->include('/proposal/P3_proposal'); ?>
+<?= $this->include('/proposal/P4_proposal'); ?>
+<?= $this->include('/proposal/P5_proposal'); ?>

@@ -223,14 +223,14 @@ class ProposalPenelitian extends BaseController
         return view('proposal/p2_proposal', $dataPenelitian);
     }
 
-    public function printLaporan($id_penelitian)
+    public function printLaporan($id_penelitian, $btn)
     {
         $Pdfgenerator = new Pdfgenerator();
 
         $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
         $penelitian = $this->penelitianModel->find($id_penelitian);
-        $laporan = $this->laporanModel->find($id_penelitian);
-
+        $laporan = $this->laporanModel->find_by_idpenelitian($id_penelitian);
+        // dd($laporan);
         if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
             $tambahanFile = 'bukti_pendanaan/' . $laporan['laporan_dana'];
         } else {
@@ -253,15 +253,20 @@ class ProposalPenelitian extends BaseController
         $direktori = 'laporan_akhir_penelitian';
         $html = view('proposal/all_Laporan', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
-        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $paper, $orientation, $direktori);
+        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
 
         $pdf = new \Jurosh\PDFMerge\PDFMerger;
         $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-            ->addPDF($tambahanFile . '.pdf', 'all');
-        $pdf->merge('file', 'bukti_pendanaan/' . $file_pdf . ' - Akhir.pdf');
+            ->addPDF($tambahanFile, 'all');
+        $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
 
         $judul_penelitian = $file_pdf . " - Akhir.pdf";
-        return redirect()->to('/penelitian/view_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
+        // dd($btn);
+        if ($btn == 1) {
+            return redirect()->to('/penelitian/view_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
+        }elseif($btn == 2){
+            return redirect()->to('/penelitian/download_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
+        }
     }
 
     public function view_laporan_proposal($id_penelitian, $judul_penelitian)
@@ -272,7 +277,19 @@ class ProposalPenelitian extends BaseController
         ];
         // dd($data['judul_penelitian']);
 
+        // return $this->response->download('laporan_akhir_penelitian/'.$judul_penelitian, null);
         return view('proposal/ViewLaporanProposal', $data);
-    }    
+    }
 
+    public function download_laporan_proposal($id_penelitian, $judul_penelitian)
+    {
+        $data = [
+            'penelitian'    => $this->penelitianModel->find($id_penelitian),
+            'judul_penelitian' => $judul_penelitian,
+        ];
+        // dd($data['judul_penelitian']);
+
+        return $this->response->download('laporan_akhir_penelitian/' . $judul_penelitian, null);
+        // return view('proposal/ViewLaporanProposal', $data);
+    }
 }
