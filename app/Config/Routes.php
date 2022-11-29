@@ -164,9 +164,9 @@ if (auth()->loggedIn()) {
 
 
 
-        $routes->get('/adminSemiMandiri1', 'Admin::adminSemiMandiri1');
-        $routes->get('/adminSemiMandiri2', 'Admin::adminSemiMandiri2');
-        $routes->get('/adminSemiMandiri3', 'Admin::adminSemiMandiri3');
+        $routes->get('/adminSemiMandiri1/(:any)', 'Admin::adminSemiMandiri1/$1');
+        $routes->get('/adminSemiMandiri2/(:any)', 'Admin::adminSemiMandiri2/$1');
+        $routes->get('/adminSemiMandiri3/(:any)', 'Admin::adminSemiMandiri3/$1');
 
         $routes->get('/adminDidanaiInstitusi1', 'Admin::adminProses1');
         $routes->get('/adminDidanaiInstitusi2', 'Admin::adminProses2');

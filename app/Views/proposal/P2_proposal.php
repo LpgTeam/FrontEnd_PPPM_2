@@ -138,8 +138,7 @@
         .ttd2 tr:nth-child(1),
         .ttd1 tr:nth-child(4),
         .ttd2 tr:nth-child(4),
-        .ttd1 tr:nth-child(5),
-        .ttd2 tr:nth-child(5) {
+        .ttd1 tr:nth-child(5) {
             color: white;
         }
 
@@ -235,9 +234,9 @@
     <div style="page-break-before: always;">
         <table class="ttd1">
             <tr>
-                <td>........................</td>
-                <td>........................</td>
-                <td>........................</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td>Mengetahui</td>
@@ -246,27 +245,27 @@
             </tr>
             <tr>
                 <td>Kepala PPPM</td>
-                <td>Ketua Peneliti</td>
+                <td></td>
                 <td>Ketua Peneliti</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
-                <td>a</td>
+                <td></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
                 <td>
-                    <?php if ($penelitian['id_status'] == 4) { ?>
-                        <!-- <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100"> -->
-                        <img src="<?= base_url("") ?>/assets/img/ttd.png" alt="stis" width="120" />
+                    <?php if ($penelitian['id_status'] >= 4 || $penelitian['id_status'] <= 6 || $penelitian['id_status'] == 10) { ?>
+                        <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100">
+                        
                     <?php } ?>
                 </td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>
-                <td>(Nama Lengkap)</td>
+                <td></td>
                 <td><?= $ketuapeneliti['nama_dosen']; ?></td>
             </tr>
             <tr>
@@ -280,9 +279,9 @@
 
         <table class="ttd2">
             <tr>
-                <td>........................</td>
-                <td>........................</td>
-                <td>........................</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
@@ -296,14 +295,13 @@
             </tr>
             <tr>
                 <td></td>
-                <td></td>
+                <td> <?php if ($penelitian['id_status'] == 5 || $penelitian['id_status'] == 6 || $penelitian['id_status'] == 10) { ?>
+                        <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100">
+                       <?php } ?>
+                </td>
                 <td>a</td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>a</td>
-            </tr>
+ 
             <tr>
                 <td></td>
                 <td>Dr. Erni Tri Astuti, M.Math.</td>
