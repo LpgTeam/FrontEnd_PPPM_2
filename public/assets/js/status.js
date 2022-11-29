@@ -92,7 +92,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
             "<p class='text-muted'>"+
-                "Melaporkan Hasil Penelitian Yang Dilakukan Oleh Dosen Polstat STIS"+
+                "Melaporkan hasil penelitian yang dilakukan oleh Dosen Polstat STIS"+
             "</p>"+
         "</li>";   
     
@@ -183,10 +183,6 @@ if (jenis == "Semi Mandiri") {
         list.innerHTML += tanda ;
     }
 
-    console.log(jenis);
-    console.log(status);
-
-    console.log(1);
 }
 
 tambah()

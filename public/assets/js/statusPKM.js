@@ -59,7 +59,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
             "<p class='text-muted'>"+
-                "Melaporkan Hasil PKM Yang Dilakukan Oleh Dosen Polstat STIS"+
+                "Melaporkan hasil PKM yang dilakukan oleh Dosen Polstat STIS"+
             "</p>"+
         "</li>";    
     

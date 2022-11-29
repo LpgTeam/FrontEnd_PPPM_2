@@ -11,6 +11,8 @@
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
+            <p hidden id="status"><?= $penelitian['id_status']; ?></p>
+            <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
@@ -73,6 +75,11 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="list">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keterangan">
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -86,7 +93,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Setujui Proposal Penlitian</h1>
+                <h1 class="modal-title fs-5" id="submitLabel">Setujui Proposal Penelitian</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
