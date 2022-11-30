@@ -1,3 +1,4 @@
+// Proses Peneltian
 function tambah(){
     var status = document.getElementById("status").innerHTML ;
     var jenis = document.getElementById("jenis").innerHTML ;
@@ -91,7 +92,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
             "<p class='text-muted'>"+
-                "Melaporkan Hasil Penelitian Yang Dilakukan Oleh Dosen Polstat STIS"+
+                "Melaporkan hasil penelitian yang dilakukan oleh Dosen Polstat STIS"+
             "</p>"+
         "</li>";   
     
@@ -120,6 +121,7 @@ function tambah(){
                 "Gagal melewati Proses"+
             "</p>"+
         "</li>";
+
 
 if (jenis == "Semi Mandiri") {
     if (status == 1){
@@ -181,8 +183,6 @@ if (jenis == "Semi Mandiri") {
         list.innerHTML += tanda ;
     }
 
-    console.log(jenis);
-    console.log(status);
 }
 
 tambah()

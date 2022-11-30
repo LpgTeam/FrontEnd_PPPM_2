@@ -95,9 +95,13 @@ class Admin extends BaseController
         return view('adminPPPM/tampilan/pkm', $data);
     }
 
-    public function adminSemiMandiri1()
+    public function adminSemiMandiri1($idPenelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $penelitianModel = new PenelitianModel();
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' =>$penelitianModel->find($idPenelitian)
+        ];
         return view('adminPPPM/tampilan/penelitianProses/adminSemiMandiri1', $data);
     }
 

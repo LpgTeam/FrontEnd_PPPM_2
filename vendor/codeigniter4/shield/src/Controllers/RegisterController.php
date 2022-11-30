@@ -129,42 +129,36 @@ class RegisterController extends BaseController
 
         $authenticator->completeLogin($user);
 
-//---tambah manual user di tabel database dosen
+        //---tambah manual user di tabel database dosen
         $user = auth()->user();
-        // dd($user->email);
-
+        // dd($user->nip);
         // dd($this->request->getVar('nama'));
         $dosenModel = new DosenModel();
-        $tim = new TimPenelitiModel();
-        $tim->save([
-            'id_penelitian' =>'1',
-            'NIP' => '2',
-            'namaPeneliti' => 'asdasd',
-            'programStudi' => 'sadasd',
-            'peran' => 'asdsad',
-            'bidang_keahlian' =>'asdasd'
+        // dd($this->request->getVar('username'));
 
-        ]);
-        
-        $dosenModel->save([
+        $this->dosenModel->insert([
             'NIP_dosen'     => $user->nip,
             // 'username'      => $this->request->getVar('username'),
             'username'      => $user->username,
             'email_dosen'   => $user->email,
             'jabatan_dosen' => $this->request->getVar('jabatan'),
-            'nama_dosen'    => $this->request->getVar('nama_dosen'),
-            // 'program_studi' => "-",
-            // 'no_hp' => "-",
-        ]);
-        
+            // 'jabatan_dosen' => 'jabatan dosen 1',
+            'nama_dosen'    => $this->request->getVar('nama'),
+            // 'nama_dosen'    => 'nama dosen 1',
+            'program_studi' => "-",
+            'no_hp' => "-",
+            'NIDN_dosen' => "-",
+            'foto_dosen'  => "user.png",
+            'minat_penelitian'  => "-",
+            'google_scholar' => "-",
+            'link_sinta'     => "-",
+            'link_orcid'     => "-",
+            'link_wos'     => "-",
+            'link_scopus' => "-",
+        ]);        //---
+        $_SESSION['group'] = "dosen";
+
         // dd($user->nip);
-
-
-
-
-
-//---
-
         // Success!
         return redirect()->to(config('Auth')->registerRedirect())
             ->with('message', lang('Auth.registerSuccess'));

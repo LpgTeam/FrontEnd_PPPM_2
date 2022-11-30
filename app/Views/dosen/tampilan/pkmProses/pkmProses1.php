@@ -11,6 +11,8 @@
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
+
+            <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
@@ -24,7 +26,7 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <?php if ($pkm['jenis_pkm'] != 'Mandiri') { ?>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="service-box green">
@@ -84,63 +86,11 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <!-- Section: Timeline
-                            <ul class="timeline-with-icons">
-                                <li class="timeline-item mb-5">
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-rocket text-primary fa-sm fa-fw"></i>
-                                    </span>
-
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal sedang direview oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-hand-holding-usd text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal telah disetujui oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-users text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal sedang ditinjau oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal disetujui oleh Kepala PPPM
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal ditandatangani oleh Direktur Polstat STIS
-                                    </p>
-                                </li>
-                            </ul> -->
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="listPKM">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keteranganPKM">
+                            </ul>
                         </div>
                     </div>
                 </div>
