@@ -32,7 +32,7 @@
                         <div class="content">
                             <div class="row mb-3 justify-content-md-start">
                                 <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Jenis Penelitian/PKM</div>
+                                    <div class=" btn btn-primary">Jenis Penelitian</div>
                                 </div>
                                 <select class="form-control status-dropdown col-md-8 col-lg-4">
                                     <option value="">Semua</option>
@@ -40,6 +40,72 @@
                                     <option value="Di Danai Institusi">Penelitian Di Danai Institusi</option>
                                     <option value="Institusi">Penelitian Institusi</option>
                                     <option value="Kerjasama">Penelitian Kerjasama</option>
+                                </select>
+
+                                <div class="input-group-prepend col-md-4 col-lg-2">
+                                    <div class=" btn btn-primary">Status Reimbursemen</div>
+                                </div>
+
+                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
+                                    <option value="">Semua</option>
+                                    <option value="Reimbursemen diajukan">Reimburse diajukan</option>
+                                    <option value="Dana dicairkan">Dana berhasil dicairkan</option>
+                                </select>
+                            </div>
+
+                            <table id="example" class="table">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">Nomor</th>
+                                        <th scope="col">Id Penelitian</th>
+                                        <th scope="col">Jenis Penelitian</th>
+                                        <th scope="col">Judul Penelitian</th>
+                                        <th scope="col">Tanggal Pengajuan</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($reimburse as $key => $post) :  ?>
+
+                                        <tr>
+                                            <td><?php echo $i ?></td>
+                                            <td><?php if($id_penelitian != NULL) {
+                                                echo $post['id_penelitian'];
+                                            } else {
+                                                echo $post['id_pkm'];
+                                            } ?></td>
+                                            <td><?php if($jenis_penelitian != NULL) {
+                                                echo $post['jenis_penelitian'];
+                                            } else {
+                                                echo $post['jenis_pkm'];
+                                            } ?></td>
+                                            <td><?php if($judul_penelitian != NULL) {
+                                                echo $post['judul_penelitian'];
+                                            } else {
+                                                echo $post['judul_penelitian'];
+                                            } ?></td>
+                                            <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                            
+                                            <td><?php echo $post['status_reimburse'] ?></td>
+                                            <td>
+                                                <a href="/persetujuanReimburse/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                            </td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="content">
+                            <div class="row mb-3 justify-content-md-start">
+                                <div class="input-group-prepend col-md-4 col-lg-2">
+                                    <div class=" btn btn-primary">Jenis PKM</div>
+                                </div>
+                                <select class="form-control status-dropdown col-md-8 col-lg-4">
+                                    <option value="">Semua</option>
                                     <option value="Kelompok">PKM Kelompok</option>
                                     <option value="Terstruktur">PKM Terstruktur</option>
                                 </select>
@@ -59,8 +125,8 @@
                                 <thead>
                                     <tr class="table-primary">
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Id Penelitian/PKM</th>
-                                        <th scope="col">Jenis Penelitian/PKM</th>
+                                        <th scope="col">Id PKM</th>
+                                        <th scope="col">Jenis PKM</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Detail</th>
@@ -72,12 +138,12 @@
 
                                         <tr>
                                             <td><?php echo $i ?></td>
-                                            <td><?php echo $post['id_penelitianpkm'] ?></td>
-                                            <td><?php echo $post['jenis'] ?></td>
+                                            <td><?php echo $post['id_pkm'] ?></td>
+                                            <td><?php echo $post['jenis_pkm'] ?></td>
                                             <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                             <td><?php echo $post['status_reimburse'] ?></td>
                                             <td>
-                                                <a href="/persetujuanReimburseBAU/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="/persetujuanReimburse/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

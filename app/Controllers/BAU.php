@@ -153,4 +153,68 @@ class BAU extends BaseController
 
         return redirect()->to('/penelitianBAU');
     }
+
+    //=======================Reimbursemen================================
+    public function reimburse()
+    {
+        $reimburseModel = new ReimburseModel();
+        // $reimburseModel->save([
+        //     'id_reimburse' => $id_reimburse['id_reimburse'],
+        //     'id_penelitian' => $this->reimburseModel->get_id_penelitian(),
+        //     'id_pkm' => $this->reimburseModel->get_id_pkm(),
+        //     'jenis_penelitian' => $this->reimburseModel->get_jenis_penelitian(),
+        //     'jenis_pkm' => $this->reimburseModel->get_jenis_pkm(),
+        //     'judul_penelitian' => $this->reimburseModel->get_judul_penelitian(),
+        //     'judul_pkm' => $this->reimburseModel->get_judul_pkm(),
+
+        // ]);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'id_penelitian' => $this->reimburseModel->get_id_penelitian(),
+            'id_pkm' => $this->reimburseModel->get_id_pkm(),
+            'jenis_penelitian' => $this->reimburseModel->get_jenis_penelitian(),
+            'jenis_pkm' => $this->reimburseModel->get_jenis_pkm(),
+            'judul_penelitian' => $this->reimburseModel->get_judul_penelitian(),
+            'judul_pkm' => $this->reimburseModel->get_judul_pkm(),
+            'reimburse' => $reimburseModel->getData(),
+        ];
+        return view('bau/tampilan/reimburse', $data);
+    }
+
+    public function persetujuan1Reimburse($id_penelitian)
+    {
+        $this->reimburseModel->find($id_penelitian);
+
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'reimburse'    => $this->reimburseModel->find($id_penelitian)
+
+        ];
+        return view('bau/tampilan/persetujuan1Reimburse', $data);
+    }
+
+    public function persetujuan2Reimburse($id_pkm)
+    {
+        $this->reimburseModel->find($id_pkm);
+
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'reimburse'    => $this->reimburseModel->find($id_pkm)
+
+        ];
+        return view('bau/tampilan/persetujuan2Reimburse', $data);
+    }
+
+    public function acc_reimburse($id_reimburse)
+    {
+        $this->reimburseModel->save([
+            'id_reimburse'     => $id_reimburse,
+            'id_status'         => 2,
+            'status_reimburse'  => 'Dana telah dicairkan oleh BAU'
+        ]);
+
+        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+
+        return redirect()->to('/reimburseBAU');
+    }
 }

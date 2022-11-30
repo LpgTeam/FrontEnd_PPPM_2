@@ -253,9 +253,12 @@ if (auth()->loggedIn()) {
         $routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
         $routes->get('/pkmacc-BAU/(:any)', 'BAU::acc_pkm_BAU/$1');
         $routes->get('/pkmrjc-BAU/(:any)', 'BAU::rjc_pkm_BAU/$1');
-
-        $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
         
+        $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
+
+        $routes->get('/reimburseBAU', 'BAU::reimburse');
+        $routes->get('/detailReimburseBAU', 'BAU::detailReimburse');
+        $routes->get('/detailReimburse2BAU', 'BAU::detailReimburse2');
     }
 }
 //===========================================download Penelitian===============================================
