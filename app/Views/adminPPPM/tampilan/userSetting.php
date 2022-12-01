@@ -16,7 +16,7 @@
                 <hr>
                 <p>Website PPPM Politeknik Statistika STIS</p>
             </header>
-        </div>  
+        </div>
         <div class="row" data-aos="fade-up">
             <div class="">
                 <div class="card">
@@ -32,44 +32,46 @@
                         </div>
                         <p>&nbsp</p>
                         <!-- Table with stripped rows -->
-                        <table class="table table-advance table-hover align-middle ">
-                            <thead>
-                                <tr class="table-primary">
-                                    <th scope="col">Nomor</th>
-                                    <th scope="col">Username</th>
-                                    <!-- <th scope="col">Role</th> -->
-                                    <th scope="col">NIP</th>
-                                    <th scope="col">Role Setting</th>
-                                    <th scope="col">Hapus User</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($user as $key => $post) :  ?>
-                                    <tr>
-                                        <!-- <td><?php //echo $post['id_penelitian'] 
-                                                    ?></td> -->
-                                        <td><?= $i; ?></td>
-                                        <td><?= $post->username; ?></td>
-                                        <td><?= $post->nip; ?></td>
-                                        <!-- <td><//?= $post->nama_dosen; ?></td> -->
-                             
-                                        <td>
-                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<//?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
-                                            <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<//?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
-                                            <a href="/editRole/<?= $post->id; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger" id="deleteButton" data-bs-toggle="modal" data-bs-target="#delete"><i class="bi bi-trash"></i></i></a>
-                                            <!-- <a class="btn btn-danger" id="deleteButton" href="/deel"><i class="bi bi-trash"></i></i></a> -->
-                                        </td>
+                        <div class="table-responsive">
+                            <table class="table table-advance table-hover align-middle ">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">Nomor</th>
+                                        <th scope="col">Username</th>
+                                        <!-- <th scope="col">Role</th> -->
+                                        <th scope="col">NIP</th>
+                                        <th scope="col">Role Setting</th>
+                                        <th scope="col">Hapus User</th>
                                     </tr>
-                                    </td>
-                                    </tr>
-                                    <?php $i++;    ?>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($user as $key => $post) :  ?>
+                                        <tr>
+                                            <!-- <td><?php //echo $post['id_penelitian'] 
+                                                        ?></td> -->
+                                            <td><?= $i; ?></td>
+                                            <td><?= $post->username; ?></td>
+                                            <td><?= $post->nip; ?></td>
+                                            <!-- <td><//?= $post->nama_dosen; ?></td> -->
+
+                                            <td>
+                                                <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<//?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
+                                                <!-- <a class="btn btn-warning" id="editButton" id="editButton" href="/editUser/<//?= $post->id; ?>"><i class="bi bi-pencil-square"></i></a> -->
+                                                <a href="/editRole/<?= $post->id; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-danger" id="deleteButton" data-bs-toggle="modal" data-bs-target="#delete"><i class="bi bi-trash"></i></i></a>
+                                                <!-- <a class="btn btn-danger" id="deleteButton" href="/deel"><i class="bi bi-trash"></i></i></a> -->
+                                            </td>
+                                        </tr>
+                                        </td>
+                                        </tr>
+                                        <?php $i++;    ?>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
                         <!-- End Table with stripped rows -->
 
                     </div>
