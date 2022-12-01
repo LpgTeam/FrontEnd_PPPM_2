@@ -115,8 +115,8 @@
                             document.addEventListener("DOMContentLoaded", () => {
                                 echarts.init(document.querySelector("#pieChart")).setOption({
                                     title: {
-                                        text: 'Data Anggaran',
-                                        subtext: 'Grafik Mengenai Anggaran',
+                                        text: '',
+                                        subtext: '',
                                         left: 'center'
                                     },
                                     tooltip: {

@@ -78,7 +78,7 @@
                     <!-- <div class="mb-3 row justify-content-md-center">
                     <img src="assets/img/STIS.png" alt="" width="20" />
                 </div> -->
-                    <div class="container" data-aos="fade-down">
+                    <div class="container sipadu" data-aos="fade-down">
                         <div class="section-header">
                             <img src="assets/img/SIPADU.png" alt="" width="200">
                         </div>
