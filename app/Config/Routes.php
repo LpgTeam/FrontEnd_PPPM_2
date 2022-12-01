@@ -263,7 +263,7 @@ $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
 
 
-$routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
+// $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
 //download surat pernyataan penelitian
 $routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
 //download Kontrak penelitian

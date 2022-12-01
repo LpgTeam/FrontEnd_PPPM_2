@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-between">
     <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Proposal </a>
     <a href="/penelitian/download-proposal-akhir/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
+    <div class="btn btn-sm btn-primary mr-2 text-center proposal" style="cursor:pointer" data-nama="file test" data-file="<?= $penelitian["judul_penelitian"]; ?>"><i class="fa fa-eye mx-auto"></i>dsdf</div>
+
+    <!-- <a href="/penelitian/view_proposal_savelocal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a> -->
+    <!-- <a href="/penelitian/download-all-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Proposal </a> -->
 </div>
 
 <div id="modal-proposal" class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -23,15 +27,49 @@
 
 <script type="text/javascript">
     $('.proposal').click(function() {
+        console.log('klik');
         file = $(this).attr('data-file');
         nama = $(this).attr('data-nama');
         $("#iframe-doc").attr("src", "<?= base_url() ?>/proposal/" + file);
         $("#modal-title").html(nama);
-        $("#modal-proposal").modal('show');
+        $("modal-proposal").modal('show');
+    });
+    $.fn.dataTable.moment('D-M-YYYY');
+    $('#simpletable').DataTable({
+        "aoColumns": [{
+                "bSearchable": false
+            },
+            null,
+            null,
+            null
+        ],
+        "aaSorting": [],
+        "language": {
+            "lengthMenu": "Menampilkan _MENU_ data per halaman",
+            "zeroRecords": "Tidak ada notula",
+            "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+            "infoEmpty": "Tidak ada notula tersedia",
+            "infoFiltered": "(Disaring dari _MAX_ data total)",
+            "decimal": "",
+            "emptyTable": "Tidak ada notula tersedia",
+            "loadingRecords": "Memuat...",
+            "processing": "Memproses...",
+            "search": "Pencarian:",
+            "paginate": {
+                "first": "Pertama",
+                "last": "Terakhir",
+                "next": "Selanjutnya",
+                "previous": "Sebelumnya"
+            },
+            "aria": {
+                "sortAscending": ": klik untuk mengurutkan A-Z",
+                "sortDescending": ": klik untuk mengurutkan Z-A"
+            }
+        }
     });
 </script>
 
-<!-- <hr>
+<hr>
 Download P1-P5
 <div class="d-flex justify-content-between">
     <div class="col-md-4 col-lg-6">
@@ -72,4 +110,4 @@ Download P1-P5
             Download P5 Proposal
         </a>
     </div>
-</div> -->
+</div>

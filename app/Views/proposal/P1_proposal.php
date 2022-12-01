@@ -45,7 +45,8 @@
 
 <body>
 
-    <u><b>P1. Halaman Sampul:</b></u>
+    <u><b>
+            <?= $jenis; ?>1. Halaman Sampul:</b></u>
     <div class="text-center">
         <h2>USULAN PENELITIAN</h2>
 
