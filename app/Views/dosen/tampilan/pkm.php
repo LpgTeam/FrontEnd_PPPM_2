@@ -4,7 +4,7 @@
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -54,58 +54,60 @@
                                 </select>
                             </div>
 
-                            <table id="example" class="table">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Nomor</th>
-                                        <th scope="col">Jenis PKM</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul PKM</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if (!$pkm == null) {
-                                        $i = 1; ?>
-                                        <?php foreach ($pkm as $key => $post) :  ?>
+                            <div class="table-responsive">
+                                <table id="example" class="table">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">Nomor</th>
+                                            <th scope="col">Jenis PKM</th>
+                                            <th scope="col">Tanggal Pengajuan</th>
+                                            <th scope="col">Judul PKM</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if (!$pkm == null) {
+                                            $i = 1; ?>
+                                            <?php foreach ($pkm as $key => $post) :  ?>
 
-                                            <tr>
-                                                <!-- <td><?php //echo $post['id_penelitian'] 
-                                                            ?></td> -->
-                                                <td><?php echo $post['ID_pkm'] ?></td>
-                                                <td><?php echo $post['jenis_pkm'] ?></td>
-                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                <td><?php echo $post['topik_kegiatan'] ?></td>
-                                                <td><?php echo $post['status'] ?></td>
-                                                <td>
-                                                    <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                                    <?php
-                                                    // if ($post['jenis_pkm'] == 'Mandiri') {
-                                                    //     echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                                    // } else {
-                                                    //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                                    // }
-                                                    if ($post['id_status'] == 1 || $post['id_status'] == 2 ||  $post['id_status'] == 5 || $post['id_status'] == 6 ) { ?>
-                                                        <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
-                                                    } else if (($post['id_status'] == 3)) { ?>
-                                                        <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
-                                                    } else if ($post['id_status'] == 4) { ?>
-                                                        <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
-                                                    } else if ($post['id_status'] == 7) { ?>
-                                                        <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php } ?>
-                                                </td>
-                                            </tr>
-                                    <?php $i++;
-                                        endforeach;
-                                    } ?>
-                                </tbody>
-                            </table>
+                                                <tr>
+                                                    <!-- <td><?php //echo $post['id_penelitian'] 
+                                                                ?></td> -->
+                                                    <td><?php echo $post['ID_pkm'] ?></td>
+                                                    <td><?php echo $post['jenis_pkm'] ?></td>
+                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                    <td><?php echo $post['topik_kegiatan'] ?></td>
+                                                    <td><?php echo $post['status'] ?></td>
+                                                    <td>
+                                                        <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
+                                                        <?php
+                                                        // if ($post['jenis_pkm'] == 'Mandiri') {
+                                                        //     echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
+                                                        // } else {
+                                                        //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
+                                                        // }
+                                                        if ($post['id_status'] == 1 || $post['id_status'] == 2 ||  $post['id_status'] == 5 || $post['id_status'] == 6) { ?>
+                                                            <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <?php
+                                                        } else if (($post['id_status'] == 3)) { ?>
+                                                            <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <?php
+                                                        } else if ($post['id_status'] == 4) { ?>
+                                                            <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <?php
+                                                        } else if ($post['id_status'] == 7) { ?>
+                                                            <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                        <?php $i++;
+                                            endforeach;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
 

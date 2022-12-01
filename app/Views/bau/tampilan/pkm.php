@@ -4,20 +4,20 @@
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <section class="section">
-    <?php if (session()->getFlashdata('pesan')) : ?>
+        <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success" role="alert" data-aos="zoom-in">
                 <?= session()->getFlashdata('pesan'); ?>
             </div>
         <?php endif; ?>
 
-    <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
             <header class="section-header2">
                 <h2>Pengabdian Kepada Masyarakat</h2>
                 <hr>
@@ -63,41 +63,43 @@
                                 </select>
                             </div>
 
-                            <table id="example" class="table">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Nomor</th>
-                                        <th scope="col">Jenis PKM</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul PKM</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if (!$pkm == null) {
-                                        $i = 1; ?>
-                                        <?php foreach ($pkm as $key => $post) :  ?>
+                            <div class="table-responsive">
+                                <table id="example" class="table">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">Nomor</th>
+                                            <th scope="col">Jenis PKM</th>
+                                            <th scope="col">Tanggal Pengajuan</th>
+                                            <th scope="col">Judul PKM</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if (!$pkm == null) {
+                                            $i = 1; ?>
+                                            <?php foreach ($pkm as $key => $post) :  ?>
 
-                                            <tr>
-                                                <!-- <td><?php //echo $post['id_penelitian'] 
-                                                            ?></td> -->
-                                                <td><?php echo $post['ID_pkm'] ?></td>
-                                                <td><?php echo $post['jenis_pkm'] ?></td>
-                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                <td><?php echo $post['topik_kegiatan'] ?></td>
-                                                <td><?php echo $post['status'] ?></td>
-                                                <td>
-                                                    <a href="/pkmPersetujuanBAU/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <tr>
+                                                    <!-- <td><?php //echo $post['id_penelitian'] 
+                                                                ?></td> -->
+                                                    <td><?php echo $post['ID_pkm'] ?></td>
+                                                    <td><?php echo $post['jenis_pkm'] ?></td>
+                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                    <td><?php echo $post['topik_kegiatan'] ?></td>
+                                                    <td><?php echo $post['status'] ?></td>
+                                                    <td>
+                                                        <a href="/pkmPersetujuanBAU/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
 
-                                                </td>
-                                            </tr>
-                                    <?php $i++;
-                                        endforeach;
-                                    } ?>
-                                </tbody>
-                            </table>
+                                                    </td>
+                                                </tr>
+                                        <?php $i++;
+                                            endforeach;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
 
