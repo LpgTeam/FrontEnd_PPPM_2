@@ -52,9 +52,9 @@
         <h2><?= $penelitian['judul_penelitian'] ?></h2>
 
         <div class="logo">
-            <!-- <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="250"> -->
+            <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="250">
             <!-- <img src="assets/img/STIS.png" alt="dfsd" /> -->
-            <img src="<?= base_url("") ?>/assets/img/STIS.png" alt="stis" width="250" />
+            <!-- <img src="<?= base_url("") ?>/assets/img/STIS.png" alt="stis" width="250" /> -->
         </div>
 
 
