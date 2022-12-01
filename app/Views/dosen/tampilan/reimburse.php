@@ -13,7 +13,7 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSE</h2>
+                <h2>REIMBURSEMENT</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -73,7 +73,7 @@
 
                                 <select class="form-control status-dropdown2 col-md-8 col-lg-4">
                                     <option value="">Semua</option>
-                                    <option value="Reimburse diajukan">Reimburse diajukan</option>
+                                    <option value="Reimburse diajukan">Reimbursement diajukan</option>
                                     <option value="Dana berhasil dicairkan">Dana berhasil dicairkan</option>
                                 </select>
                             </div>
@@ -82,37 +82,67 @@
                                 <thead>
                                     <tr class="table-primary">
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Id Penelitian/PKM</th>
+                                        <!-- <th scope="col">Jenis Kegiatan</th> -->
                                         <th scope="col">Jenis Penelitian/PKM</th>
                                         <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul Penelitian</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Judul/Topik</th>
+                                        <th scope="col">jenis kegiatan</th>
                                         <th scope="col">Detail</th>
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>3</td>
-                                        <td>Semi Mandiri</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
+                                <?php
+                                    if (!$penelitian == null) {
+                                        $i = 1; ?>
+                                        <?php foreach ($penelitian as $key => $post) :  ?>
+
+                                            <tr>
+                                            <td><?php echo $post['id_penelitian']
+                                                    ?></td>
+                                                <!-- <td><?php //echo $i 
+                                                            ?></td> -->
+                                                <td><?php echo $post['jenis_penelitian'] ?></td>
+                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                <td><?php echo $post['judul_penelitian'] ?></td>
+                                                <td><?php echo 'Penelitian' ?></td>
+                                                <td>
+                                                <a href="/detailReimburseDosen/<?= $post['id_penelitian']; ?>/penelitian" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    
+
+
+
+                                                        <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
+                                                <!-- </td>
                                         <td>
                                             <a href="/detailReimburseDosen" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
+                                        </td> -->
                                     </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>3</td>
-                                        <td>Terstruktur</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a href="/detailReimburse2Dosen" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
+                                    <?php 
+                                                    $i++;    ?>
+                                <?php endforeach;
+                                    } ?>
+                                    <?php
+                                    if (!$pkm == null) {
+                                        $i = 1; ?>
+                                        <?php foreach ($pkm as $key => $post) :  ?>
+
+                                            <tr>
+                                                <!-- <td><?php //echo $post['id_penelitian'] 
+                                                            ?></td> -->
+                                                <td><?php echo $post['ID_pkm'] ?></td>
+                                                <td><?php echo $post['jenis_pkm'] ?></td>
+                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                <td><?php echo $post['topik_kegiatan'] ?></td>
+                                                <td><?php echo 'PKM' ?></td>
+                                                <td>
+                                                    <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
+                                                    <a href="/detailReimburseDosen/<?= $post['ID_pkm']; ?>/pkm" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    
+                                                </td>
+                                            </tr>
+                                    <?php $i++;
+                                        endforeach;
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>

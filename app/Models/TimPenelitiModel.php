@@ -70,11 +70,11 @@ class TimPenelitiModel extends Model
             ->where(['nip' => $nip])->findAll();
     }
 
-    public function get_penelitian_by_nip_user_done($nip){
+    public function get_penelitian_by_nip_user_done($nip,$id_status){
         return $this->join('penelitian', 'penelitian.id_penelitian = tim_peneliti.id_penelitian')
         ->select('tim_peneliti.nip')->select('penelitian.*')
         // ->select('laporan_penelitian.*')
-        ->where(['nip' => $nip] and ['penelitian.id_status' => '10'])->findAll();
+        ->where(['nip' => $nip] and ['id_status' => $id_status])->findAll();
     }
 
 }

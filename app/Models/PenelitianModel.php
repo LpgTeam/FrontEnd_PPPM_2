@@ -63,17 +63,21 @@ class PenelitianModel extends Model
     public function get_penelitian($id_penelitian)
     {
         return $this->where(['id_penelitian' => $id_penelitian])->first();
-    }
-  
+    }                                       
+
     public function get_penelitian_by_id_status($id_status)
     {
         return $this->where(['id_status' => $id_status])->findAll();
     }
 
-    public function get_penelitian_done(){
-
+    public function get_penelitian_done($nip, $id_status){
+        return $this->join('tim_peneliti', 'tim_peneliti.id_penelitian = penelitian.id_penelitian')
+        ->select('tim_peneliti.nip')->select('penelitian.*')
+        // ->select('laporan_penelitian.*')
+        ->where(['nip' => $nip])-> where (['id_status' => $id_status])->findAll();
+        // return $this->where(['id_status' => $id_status])->findAll();
     }
-
+  
     // public function get_penelitian_by_nip_user($nip)
     // {
     //     //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')

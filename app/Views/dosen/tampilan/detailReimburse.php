@@ -41,17 +41,20 @@
                             oleh Direktur Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
-                            <a href="" class="btn btn-success">Lihat Proposal</a>
+                            <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Proposal </a>
                         </div>
                         <hr>
                         <form action="">
                             <div class="row mb-3">
                                 <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (LOA)</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="loa" class="form-control " type="file" id="loa">
-
+                                    <input name="uploadLoa" class="form-control  <?= ($validation->hasError('uploadLoa')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLoa">
+                                    <div class="invalid-feedback" id="uploadValid">
+                                        <?= $validation->getError('uploadLoa'); ?>
+                                    </div>
                                 </div>
                             </div>
+                            
                             <div class="row mb-3">
                                 <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
                                 <div class="col-md-8 col-lg-9">

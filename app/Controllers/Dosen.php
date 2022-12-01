@@ -131,7 +131,7 @@ class Dosen extends BaseController
 
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
-        $total_pengajuan = null;
+        $total_pengajuan = 0;
         foreach($ambil_pengajuan as $data_pengajuan){
             if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
@@ -204,7 +204,8 @@ class Dosen extends BaseController
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";
         }
-        // dd($jenisPenelitian)
+        // dd($jenisPenelitian)198512122008011004
+
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
 
         $data = [
@@ -620,18 +621,32 @@ class Dosen extends BaseController
         // $nip = $user->nip;
         // dd($nip);
 
-        $penelitian = new PenelitianModel();
-    //    $timPenelitiModel = new TimPenelitiModel();
-        $pkm = new PkmModel();
-
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user_done($user->nip),
+            // 'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+            // 'penelitian' => $penelitian->get_penelitian_by_id_status(11)
              
-           // 'penelitian' => $this->timPenelitianModel->get_penelitian_by_nip_user_done($user->nip),
+           'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
+           'pkm' => $this->pkmModel->get_pkm_done($user->nip,7),
         ];
 
-        return view('dosen/reimburse', $data);
+        return view('dosen/tampilan/reimburse', $data);
+     }
 
-    }
+
+    public function detailReimburse($id_kegiatan, $kegiatan){
+        if($kegiatan == 'penelitian'){
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_kegiatan)
+            ];
+            return view('dosen/tampilan/detailReimburse', $data);
+        } else if ($kegiatan == 'pkm') {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'pkm' => $this->pkmModel->find($id_kegiatan)
+            ];
+            return view('dosen/tampilan/detailReimburse', $data);
+        }
+     }
 }

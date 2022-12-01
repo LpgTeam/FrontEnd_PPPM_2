@@ -89,4 +89,11 @@ class PkmModel extends Model
         $query = $builder->getWhere(['id_status' => $id_status, 'jenis_pkm !=' => "Mandiri"]);
         return $query->getResultArray();
     }
+
+    public function get_pkm_done($nip, $id_status){
+        return $this->join('tim_pkm', 'pengajuan_pkm.ID_pkm = tim_pkm.id_pkm')
+        ->select('tim_pkm.nip')->select('pengajuan_pkm.*')
+        // ->select('laporan_penelitian.*')
+        ->where(['nip' => $nip])->where(['id_status' => $id_status])->findAll();
+    }
 }
