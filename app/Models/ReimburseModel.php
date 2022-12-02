@@ -77,4 +77,9 @@ class ReimburseModel extends Model
         // ->select('permohonan_reimburse.id_pkm')->select('pengajuan_pkm.*')
             ->where(['id_pkm' => $id_pkm])->findAll();
     }
+
+    public function get_reimburse_by_id_status($id_status)
+    {
+        return $this->where(['id_status' => $id_status])->findAll();
+    }
 }
