@@ -7,6 +7,7 @@ function tambahPKM(){
     var keteranganPKM = document.getElementById("keteranganPKM");
     keteranganPKM.innerHTML = "";
     listPKM.innerHTML =  "";
+    
     var status1 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
@@ -89,6 +90,7 @@ function tambahPKM(){
             "</p>"+
         "</li>";
 
+        
     if (statusPKM == 1){
         listPKM.innerHTML += status1 ;}
     else if (statusPKM == 2){
