@@ -4,7 +4,7 @@
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -82,38 +82,40 @@
                                 </select>
                             </div>
 
-                            <table id="example" class="table">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Nomor</th>
-                                        <th scope="col">Jenis Penelitian</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul Penelitian</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="myTable">
-                                    <?php $i = 1; ?>
-                                    <?php foreach ($penelitian as $key => $post) :  ?>
-
-                                        <tr>
-                                            <!-- <td><?php //echo $post['id_penelitian'] 
-                                                        ?></td> -->
-                                            <td><?php echo $i ?></td>
-                                            <td><?php echo $post['jenis_penelitian'] ?></td>
-                                            <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                            <td><?php echo $post['judul_penelitian'] ?></td>
-                                            <td><?php echo $post['status_pengajuan'] ?></td>
-                                            <td>
-                                                <!-- <a class="btn btn-primary" onclick="location.href='/penelitianPersetujuanKepala'"><i class="bi bi-pencil-square"></i></a> -->
-                                                <a href="/penelitianPersetujuanKepala/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
+                            <div class="table-responsive">
+                                <table id="example" class="table">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">Nomor</th>
+                                            <th scope="col">Jenis Penelitian</th>
+                                            <th scope="col">Tanggal Pengajuan</th>
+                                            <th scope="col">Judul Penelitian</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Detail</th>
                                         </tr>
-                                        <?php $i++;    ?>
-                                    <?php endforeach ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody id="myTable">
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($penelitian as $key => $post) :  ?>
+
+                                            <tr>
+                                                <!-- <td><?php //echo $post['id_penelitian'] 
+                                                            ?></td> -->
+                                                <td><?php echo $i ?></td>
+                                                <td><?php echo $post['jenis_penelitian'] ?></td>
+                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                <td><?php echo $post['judul_penelitian'] ?></td>
+                                                <td><?php echo $post['status_pengajuan'] ?></td>
+                                                <td>
+                                                    <!-- <a class="btn btn-primary" onclick="location.href='/penelitianPersetujuanKepala'"><i class="bi bi-pencil-square"></i></a> -->
+                                                    <a href="/penelitianPersetujuanKepala/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++;    ?>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
 

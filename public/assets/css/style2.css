@@ -1,10 +1,3 @@
-/**
-* Template Name: FlexStart - v1.11.0
-* Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -91,6 +84,17 @@ section {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .section-header p {
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  .section-header img{
+    width: 60%;
+  }
+}
+
 /*--------------------------------------------------------------
 # Sections2
 --------------------------------------------------------------*/
@@ -128,6 +132,21 @@ section {
     font-size: 28px;
     line-height: 32px;
   }
+}
+
+@media (max-width: 600px) {
+  .section-header2 {
+    text-align: center;
+  }
+
+  .section-header2 h2 {
+    font-size: 24px;
+  }
+
+  .section-header2 p {
+    font-size: 18px;
+  }
+
 }
 
 
@@ -259,6 +278,22 @@ section {
 .card-body {
   padding: 0 20px 20px 20px;
   text-align: justify;
+}
+
+.card-body h2,
+.card-body h3{
+  text-align: center;
+}
+
+.card-body h5{
+  font-size: 24px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .card-body h5{
+    font-size: 16px;
+  }
 }
 
 .card-img-overlay {
@@ -836,21 +871,23 @@ section {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .hero {
     text-align: center;
   }
 
   .hero h1 {
-    font-size: 32px;
+    font-size: 24px;
+    line-height: 2;
   }
 
   .hero h2 {
-    font-size: 24px;
+    font-size: 18px;
+    line-height: 2;
   }
 
   .hero .hero-img img {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -1375,6 +1412,40 @@ section {
   color: #fff;
 }
 
+
+@media screen and (max-width: 600px) {
+  .section-header p {
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .kotak .box {
+    padding: 40px 20px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+  
+  .kotak .btn-login {
+    font-size: 12px;
+  }
+  
+  .kotak img{
+    width: 70%;
+  }
+
+  .sipadu .section-header img{
+    width: 50%;
+  }
+}
+
+
+
+
+
 /*--------------------------------------------------------------
 # Profie Page
 --------------------------------------------------------------*/
@@ -1387,10 +1458,12 @@ section {
   font-weight: 700;
   color: #012970;
   margin: 10px 0 0 0;
+  line-height: 2;
 }
 
 .profile .profile-card h3 {
   font-size: 18px;
+  line-height: 2;
 }
 
 .profile .profile-card .social-links p {
@@ -1425,6 +1498,22 @@ section {
   max-width: 120px;
 }
 
+@media  (max-width: 600px) {
+  /* .profile .profile-card{
+    line-height: 200;
+  } */
+  
+  .profile .profile-card h2 {
+    font-size: 18px;
+    line-height: 2;
+  }
+  
+  .profile .profile-card h3 {
+    font-size: 16px;
+    line-height: 2;
+  }
+}
+
 /* upload-foto-profil */
 .inputFotoProfil{
   display: none;
@@ -1432,6 +1521,8 @@ section {
 .fotoProfil i, .fotoProfil p{
   color: white ;
 }
+
+
 /*--------------------------------------------------------------
 # F.A.Q
 --------------------------------------------------------------*/
@@ -1804,6 +1895,13 @@ section {
   }
 }
 
+@media (max-width: 600px) {
+  .testimonials .testimonial-item h2 {
+    font-size: 24px;
+  }
+
+}
+
 /*--------------------------------------------------------------
 # Timeline
 --------------------------------------------------------------*/
@@ -1967,6 +2065,31 @@ section {
 
 }
 
+
+@media (max-width: 600px) {
+  .team .member .btn-pilih {
+    display: inline-block;
+    padding: 10px 40px 10px 40px;
+    margin:  10px 0px 10px 0px;
+    border-radius: 50px;
+    color: #1356aa;
+    transition: none;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    transition: 0.3s;
+    border: 1px solid #1356aa;
+    background: #fff;
+  }
+  
+  .team .member .btn-pilih:hover {
+    background: #1356aa;
+    color: #fff;
+    border: 1px solid #ffffff;
+  
+  }
+}
 /*--------------------------------------------------------------
 # Tambah
 --------------------------------------------------------------*/
@@ -1993,6 +2116,23 @@ section {
 
 }
 
+@media (max-width: 600px) {
+  .card .card-body .btn-pilih {
+    display: inline-block;
+    padding: 5px 20px 5px 20px;
+    margin:  30px 0px 0px 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: lighter;
+    align-items: center;
+  }
+  
+  .card .card-body .btn-pilih:hover {
+    background: #fff;
+    color: #1356aa;
+  
+  }
+}
 /*--------------------------------------------------------------
 # Tambah 2
 --------------------------------------------------------------*/

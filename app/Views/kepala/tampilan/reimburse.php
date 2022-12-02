@@ -4,7 +4,7 @@
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -78,43 +78,45 @@
                                 </select>
                             </div>
 
-                            <table id="example" class="table">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Nomor</th>
-                                        <th scope="col">Id Penelitian/PKM</th>
-                                        <th scope="col">Jenis Penelitian/PKM</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul Penelitian</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="myTable">
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>3</td>
-                                        <td>Semi Mandiri</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a href="/detailReimburseKepala" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>3</td>
-                                        <td>Terstruktur</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>Lorem Ipsum</td>
-                                        <td>
-                                            <a href="/detailReimburse2Kepala" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="example" class="table">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">Nomor</th>
+                                            <th scope="col">Id Penelitian/PKM</th>
+                                            <th scope="col">Jenis Penelitian/PKM</th>
+                                            <th scope="col">Tanggal Pengajuan</th>
+                                            <th scope="col">Judul Penelitian</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td>3</td>
+                                            <td>Semi Mandiri</td>
+                                            <td>Lorem Ipsum</td>
+                                            <td>Lorem Ipsum</td>
+                                            <td>Lorem Ipsum</td>
+                                            <td>
+                                                <a href="/detailReimburseKepala" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td>3</td>
+                                            <td>Terstruktur</td>
+                                            <td>Lorem Ipsum</td>
+                                            <td>Lorem Ipsum</td>
+                                            <td>Lorem Ipsum</td>
+                                            <td>
+                                                <a href="/detailReimburse2Kepala" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
 

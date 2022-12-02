@@ -40,18 +40,20 @@
                         <p>Proposal reimburse penelitian yang diajukan dosen
                             oleh Direktur Politeknik Statistika STIS
                         </p>
-                        <div class="d-flex justify-content-end">
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
-                            </div>
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
-                            </div>
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
-                            </div>
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
+                        <div class="d-flex justify-content-start">
+                            <div class="row mb-4">
+                                <div class="text-end col-md-4 col-lg-3 col-form-label">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
+                                </div>
+                                <div class="text-end col-md-4 col-lg-3 col-form-label">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
+                                </div>
+                                <div class="text-end col-md-4 col-lg-3 col-form-label">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
+                                </div>
+                                <div class="text-end col-md-4 col-lg-3 col-form-label">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
+                                </div>
                             </div>
                         </div>
                     </div>

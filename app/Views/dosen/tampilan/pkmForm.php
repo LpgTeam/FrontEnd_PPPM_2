@@ -154,16 +154,18 @@
                         <?php endif; ?>
 
                         <div class="row mb-3">
-                            <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
-                                <tr class="table-primary">
-                                    <th scope="col">Nama Anggota</th>
-                                    <th scope="col">NIP</th>
-                                    <th scope="col">Pangkat/Golongan</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
+                                    <tr class="table-primary">
+                                        <th scope="col">Nama Anggota</th>
+                                        <th scope="col">NIP</th>
+                                        <th scope="col">Pangkat/Golongan</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
 
                             <div class="col-md-4 col-lg-6">
                                 <!-- <button onclick='add()' class="btn btn-warning">
@@ -182,15 +184,17 @@
                             </div>
 
                             <div class="row mb-3">
-                                <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
-                                    <tr class="table-primary">
-                                        <th scope="col">Pembiayaan/Lainnya Yang Diajukan</th>
-                                        <th scope="col">Jumlah Biaya</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
+                                        <tr class="table-primary">
+                                            <th scope="col">Pembiayaan/Lainnya Yang Diajukan</th>
+                                            <th scope="col">Jumlah Biaya</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 <div class="col-md-4 col-lg-6">
                                     <a onclick="add2()" class="btn btn-warning" id="btn">
