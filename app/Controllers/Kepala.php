@@ -25,19 +25,6 @@ class Kepala extends BaseController
 
     public function index()
     {
-        // $email = \Config\Services::email();
-        // $email->setFrom('lpgteam6@gmail.com');
-        // $email->setTo('aljaffarsyah10@gmail.com');
-        // $email->setSubject('testing');
-        // $email->setMessage('<p>testing email</p>');
-        // // $email->send();
-        // if ($email->send()) {
-        //     echo 'Email successfully sent';
-        // } else {
-        //     $data = $email->printDebugger(['headers']);
-        //     print_r($data);
-        // }
-
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('kepala/tampilan/index', $data);
     }
