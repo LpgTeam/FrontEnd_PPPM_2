@@ -40,27 +40,32 @@
                         <!-- End Search Bar -->
                         <!-- Table with stripped rows -->
                         <div class="content">
-                            <div class="row mb-3 justify-content-md-start">
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Jenis PKM</div>
-                                </div>
-                                <select class="form-control status-dropdown col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="Mandiri">Mandiri</option>
-                                    <option value="Kelompok">Dosen/Kelompok</option>
-                                    <option value="Terstruktur">Terstruktur</option>
-                                </select>
+                            <div class="row mb-3">
 
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Status PKM (masih dummy)</div>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis PKM</label>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="form-select status-dropdown">
+                                        <option value="">Semua</option>
+                                        <option value="Mandiri">Mandiri</option>
+                                        <option value="Kelompok">Dosen/Kelompok</option>
+                                        <option value="Terstruktur">Terstruktur</option>
+                                    </select>
                                 </div>
 
-                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="diajukan">PKM diajukan</option>
-                                    <option value="Laporan PKM">Laporan PKM</option>
-                                    <option value="PKM Selesai">PKM Selesai</option>
-                                </select>
+
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status PKM</label>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="form-select status-dropdown2 ">
+                                        <option value="">Semua</option>
+                                        <option value="Diajukan oleh Dosen">Diajukan oleh Dosen</option>
+                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU</option>
+                                        <option value="Disetujui Oleh Kepala PPPM">Disetujui Oleh Kepala PPPM</option>
+                                        <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
+                                        <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="table-responsive">

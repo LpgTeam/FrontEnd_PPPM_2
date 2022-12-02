@@ -53,119 +53,124 @@
 
                         <!-- Table with stripped rows -->
                         <div class="content">
-                            <div class="row mb-3 justify-content-md-start">
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Jenis Penelitian/PKM</div>
-                                </div>
-                                <select class="form-control status-dropdown col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="Semi Mandiri">Penelitian Semi Mandiri</option>
-                                    <option value="Di Danai Institusi">Penelitian Di Danai Institusi</option>
-                                    <option value="Institusi">Penelitian Institusi</option>
-                                    <option value="Kerjasama">Penlitian Kerjasama</option>
-                                    <option value="Kelompok">PKM Kelompok/Dosen</option>
-                                    <option value="Terstruktur">PKM Terstruktur</option>
-                                </select>
+                            <div class="row mb-3">
 
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Status Reimbursemen</div>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian/PKM</label>
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="status-dropdown form-select">
+                                        <option value="">Semua</option>
+                                        <option value="Semi Mandiri">Penelitian Semi Mandiri</option>
+                                        <option value="Di Danai Institusi">Penelitian Di Danai Institusi</option>
+                                        <option value="Institusi">Penelitian Institusi</option>
+                                        <option value="Kerjasama">Penlitian Kerjasama</option>
+                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
+                                        <option value="Terstruktur">PKM Terstruktur</option>
+                                    </select>
                                 </div>
 
-                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="Reimburse diajukan">Reimbursement diajukan</option>
-                                    <option value="Dana berhasil dicairkan">Dana berhasil dicairkan</option>
-                                </select>
+
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursemen</label>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="status-dropdown2 form-select">
+                                        <option value="">Semua</option>
+                                        <option value="Reimburse diajukan">Reimbursement diajukan</option>
+                                        <option value="Dana berhasil dicairkan">Dana berhasil dicairkan</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <table id="example" class="table">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Nomor</th>
-                                        <!-- <th scope="col">Jenis Kegiatan</th> -->
-                                        <th scope="col">Jenis Penelitian/PKM</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul/Topik</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="myTable">
-                                <?php
-                                    if (!$penelitian == null) {
-                                        $i = 1; ?>
-                                        <?php foreach ($penelitian as $key => $post) :  ?>
+                            <div class="table-responsive">
+                                <table id="example" class="table">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">Nomor</th>
+                                            <!-- <th scope="col">Jenis Kegiatan</th> -->
+                                            <th scope="col">Jenis Penelitian/PKM</th>
+                                            <th scope="col">Tanggal Pengajuan</th>
+                                            <th scope="col">Judul/Topik</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                        <?php
+                                        if (!$penelitian == null) {
+                                            $i = 1; ?>
+                                            <?php foreach ($penelitian as $key => $post) :  ?>
 
-                                            <tr>
-                                            <td><?php echo $post['id_penelitian']
-                                                    ?></td>
-                                                <!-- <td><?php //echo $i 
-                                                            ?></td> -->
-                                                <td><?php echo $post['jenis_penelitian'] ?></td>
-                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                <td><?php echo $post['judul_penelitian'] ?></td>
-                                                <td>
-                                                    <?php if ($post['id_status_reimburse'] == 0){
+                                                <tr>
+                                                    <td><?php echo $post['id_penelitian']
+                                                        ?></td>
+                                                    <!-- <td><?php //echo $i 
+                                                                ?></td> -->
+                                                    <td><?php echo $post['jenis_penelitian'] ?></td>
+                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                    <td><?php echo $post['judul_penelitian'] ?></td>
+                                                    <td>
+                                                        <?php if ($post['id_status_reimburse'] == 0) {
                                                             echo 'Belum Diajukan';
-                                                        }else if($post['id_status_reimburse'] == 1) {
+                                                        } else if ($post['id_status_reimburse'] == 1) {
                                                             echo 'Dalam Proses';
-                                                        } else if($post['id_status_reimburse'] == 2){ 
+                                                        } else if ($post['id_status_reimburse'] == 2) {
                                                             echo 'Telah Dicairkan';
                                                         }
-                                                    ?>
-                                                </td>
-                                                
-                                                
-                                                
-                                                <td>
-                                                <a href="/detailReimburseDosen/penelitian/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    
+                                                        ?>
+                                                    </td>
+
+
+
+                                                    <td>
+                                                        <a href="/detailReimburseDosen/penelitian/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+
 
 
 
                                                         <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
-                                                <!-- </td>
+                                                        <!-- </td>
                                         <td>
                                             <a href="/detailReimburseDosen" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                         </td> -->
-                                    </tr>
-                                    <?php 
-                                                    $i++;    ?>
-                                <?php endforeach;
-                                    } ?>
-                                    <?php
-                                    if (!$pkm == null) {
-                                        $i = 1; ?>
-                                        <?php foreach ($pkm as $key => $post) :  ?>
+                                                </tr>
+                                                <?php
+                                                $i++;    ?>
+                                        <?php endforeach;
+                                        } ?>
+                                        <?php
+                                        if (!$pkm == null) {
+                                            $i = 1; ?>
+                                            <?php foreach ($pkm as $key => $post) :  ?>
 
-                                            <tr>
-                                                <!-- <td><?php //echo $post['id_penelitian'] 
-                                                            ?></td> -->
-                                                <td><?php echo $post['ID_pkm'] ?></td>
-                                                <td><?php echo $post['jenis_pkm'] ?></td>
-                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                <td><?php echo $post['topik_kegiatan'] ?></td>
-                                                <td>
-                                                    <?php if ($post['id_status_reimburse'] == 0){
+                                                <tr>
+                                                    <!-- <td><?php //echo $post['id_penelitian'] 
+                                                                ?></td> -->
+                                                    <td><?php echo $post['ID_pkm'] ?></td>
+                                                    <td><?php echo $post['jenis_pkm'] ?></td>
+                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                    <td><?php echo $post['topik_kegiatan'] ?></td>
+                                                    <td>
+                                                        <?php if ($post['id_status_reimburse'] == 0) {
                                                             echo 'Belum Diajukan';
-                                                        }else if($post['id_status_reimburse'] == 1) {
+                                                        } else if ($post['id_status_reimburse'] == 1) {
                                                             echo 'Dalam Proses';
-                                                        } else if($post['id_status_reimburse'] == 2){ 
+                                                        } else if ($post['id_status_reimburse'] == 2) {
                                                             echo 'Telah Dicairkan';
                                                         }
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                                    <a href="/detailReimburseDosen/pkm/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    
-                                                </td>
-                                            </tr>
-                                    <?php $i++;
-                                        endforeach;
-                                    } ?>
-                                </tbody>
-                            </table>
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
+                                                        <a href="/detailReimburseDosen/pkm/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+
+                                                    </td>
+                                                </tr>
+                                        <?php $i++;
+                                            endforeach;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
 
 
