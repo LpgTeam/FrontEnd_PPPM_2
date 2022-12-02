@@ -31,7 +31,6 @@
             <!-- End Proses -->
 
             <div class="row" data-aos="fade-up">
-                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Proposal</h5>
@@ -61,14 +60,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                        </div>
-                    </div>
-                </div>
             </div>
     </section>
 

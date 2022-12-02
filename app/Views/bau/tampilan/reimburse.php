@@ -125,7 +125,6 @@
                                 <thead>
                                     <tr class="table-primary">
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Id PKM</th>
                                         <th scope="col">Jenis PKM</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Status</th>

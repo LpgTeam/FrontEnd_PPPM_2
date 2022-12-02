@@ -157,17 +157,6 @@ class BAU extends BaseController
     //=======================Reimbursemen================================
     public function reimburse()
     {
-        $reimburseModel = new ReimburseModel();
-        // $reimburseModel->save([
-        //     'id_reimburse' => $id_reimburse['id_reimburse'],
-        //     'id_penelitian' => $this->reimburseModel->get_id_penelitian(),
-        //     'id_pkm' => $this->reimburseModel->get_id_pkm(),
-        //     'jenis_penelitian' => $this->reimburseModel->get_jenis_penelitian(),
-        //     'jenis_pkm' => $this->reimburseModel->get_jenis_pkm(),
-        //     'judul_penelitian' => $this->reimburseModel->get_judul_penelitian(),
-        //     'judul_pkm' => $this->reimburseModel->get_judul_pkm(),
-
-        // ]);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'id_penelitian' => $this->reimburseModel->get_id_penelitian(),
