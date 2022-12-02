@@ -77,32 +77,4 @@ class ReimburseModel extends Model
         // ->select('permohonan_reimburse.id_pkm')->select('pengajuan_pkm.*')
             ->where(['id_pkm' => $id_pkm])->findAll();
     }
-
-    public function get_jenis_penelitian($jenis_penelitian)
-    {
-        return $this->join('penelitian', 'penelitian.jenis_penelitian = permohonan_reimburse.jenis_penelitian')
-        // ->select('permohonan_reimburse.jenis_penelitian')->select('penelitian.*')
-            ->where(['jenis_penelitian' => $jenis_penelitian])->findAll();
-    }
-
-    public function get_jenis_pkm($jenis_pkm)
-    {
-        return $this->join('pengajuan_pkm', 'pengajuan_pkm.jenis_pkm = permohonan_reimburse.jenis_pkm')
-        // ->select('permohonan_reimburse.jenis_pkm')->select('pengajuan_pkm.*')
-            ->where(['jenis_pkm' => $jenis_pkm])->findAll();
-    }
-
-    public function get_judul_penelitian($judul_penelitian)
-    {
-        return $this->join('penelitian', 'penelitian.judul_penelitian = permohonan_reimburse.judul_penelitian')
-        // ->select('permohonan_reimburse.judul_penelitian')->select('penelitian.*')
-            ->where(['judul_penelitian' => $judul_penelitian])->findAll();
-    }
-
-    public function get_judul_pkm($judul_pkm)
-    {
-        return $this->join('pengajuan_pkm', 'pengajuan_pkm.topik_kegiatan = permohonan_reimburse.judul_pkm')
-        // ->select('permohonan_reimburse.judul_pkm')->select('pengajuan_pkm.*')
-            ->where(['topik_kegiatan' => $judul_pkm])->findAll();
-    }
 }
