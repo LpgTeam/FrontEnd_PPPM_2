@@ -16,11 +16,11 @@ class Penelitian extends Seeder
         $datapenelitian = $query->getResultArray();
 
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $data = [
                 'id_penelitian' => $i + $datapenelitian[0]['id_penelitian'],
                 'jenis_penelitian' => $faker->randomElement($array = array('Mandiri', 'Semi Mandiri', 'Di Danai Institusi', 'Institusi', 'Kerjasama')),
-                'judul_penelitian' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+                'judul_penelitian' => $faker->realText($maxNbChars = 20, $indexSize = 2),
                 'bidang'        => $faker->randomElement($array = array("Small Area Estimation", "SDG's", "Metodologi Survei dan Sensus", "Sistem Indormasi Statistik", "Lainnya")),
                 'tanggal_pengajuan' => Time::createFromTimestamp($faker->unixTime()),
                 'jumlah_anggota' => $faker->randomElement($array = array(1, 2, 3)),
@@ -77,6 +77,39 @@ class Penelitian extends Seeder
                 ];
                 $this->db->table('tim_peneliti')->insert($dataanggota);
             }
+
+            if (($data['id_status'] == 6) || ($data['id_status'] == 10)) {
+                $file_kontrak = null;
+                $file_laporan_dana = null;
+                if ($data['jenis_penelitian'] == 'Semi Mandiri') {
+                    $file_laporan_dana = 'default_laporan_dana.pdf';
+                } else {
+                    $file_kontrak = 'default_kontrak.pdf';
+                }
+
+                $file_laporan_luaran = null;
+                if ($data['id_status'] == 10) {
+                    $file_laporan_luaran = 'default_laporan_luaran.pdf';
+                }
+
+                $data_laporan_penelitian = [
+                    'id_penelitian'     =>  $data['id_penelitian'],
+                    'kontrak'           =>  $file_kontrak,
+                    'laporan_luaran'    =>  $file_laporan_luaran,
+                    'laporan_dana'      =>  $file_laporan_dana,
+                    'status_penelitian' =>  $data['id_status'],
+                ];
+                $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
+
+                $data_target_penelitian = [
+                    'id_penelitian'     =>  $data['id_penelitian'],
+                    'jenis_luaran'      =>  $faker->randomElement($array = array('Artikel pada jurnal nasional terakreditasi', 'Artikel pada prosiding terindeks scopus', 'Buku Cetak Hasil Penelitian ', 'Buku Elektronik Hasil Penelitian ')),
+                    'target_capaian'    =>  $faker->randomElement($array = array('accepted', 'published')),
+                    'jurnal_tujuan'     =>  $faker->randomElement($array = array('Media Statistika (Terakreditasi Sinta 2)', 'INDONESIAN JOURNAL OF SCIENCE AND TECHNOLOGY','INDONESIAN JOURNAL OF ELECTRICAL ENGINEERING AND COMPUTER SCIENCE','GADJAH MADA INTERNATIONAL JOURNAL OF BUSINESS (GAMAIJB)','JOURNAL ON MATHEMATICS EDUCATION','Indonesian Journal of Science and Technology','Journal of Mathematical and Fundamental Sciences','Asian Journal of Information Technology','Research Journal of Applied Sciences','International Journal of Computer Applications in Technology')),
+                ];
+                $this->db->table('target_penelitian')->insert($data_target_penelitian);
+            }
+
             $this->db->table('penelitian')->insert($data);
         }
 

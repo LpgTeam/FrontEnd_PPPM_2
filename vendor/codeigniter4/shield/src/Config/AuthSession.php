@@ -33,15 +33,4 @@ class AuthSession extends BaseConfig
         'max_length[254]',
         'valid_email',
     ];
-
-    public array $nipValidationRules = [
-        'required',
-        'regex_match[/\A[a-zA-Z0-9\.]+\z/]',
-    ];
-
-    public array $namaValidationRules = [
-        'required',
-        'max_length[254]',
-    ];
-
 }

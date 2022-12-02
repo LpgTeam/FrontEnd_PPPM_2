@@ -167,8 +167,9 @@ class Penelitian extends BaseController
             'judul_penelitian' => $this->request->getVar('judul_penelitian'),
             'bidang' => $this->request->getVar('bidang'),
             'jumlah_anggota' => $this->request->getVar('anggota'),
-            'tanggal_pengajuan' => Time::now('Asia/jakarta'
-        ),
+            'tanggal_pengajuan' => Time::now(
+                'Asia/jakarta'
+            ),
             'id_status' => '1',
             'status_pengajuan' => 'Diajukan oleh Dosen',
             'file_proposal' => $namaProposal,
@@ -194,7 +195,7 @@ class Penelitian extends BaseController
         //     'link_scopus' => $this->request->getVar('judul_penelitian'),
         //     'link_wos' => $this->request->getVar('judul_penelitian')
         // ]);
-        
+
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
         // dd($idpenelitian );
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
@@ -276,7 +277,7 @@ class Penelitian extends BaseController
     public function printKontrak()
     {
         return $this->response->download('kontrak/[PENELITIAN] Kontrak.docx', null)->setFileName("Kontrak_penelitian.docx"); //download file
-    
+
     }
     public function printLaporan()
     {

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CodeIgniter\Shield\Models;
 
-
 use CodeIgniter\Database\Exceptions\DataException;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Model;
@@ -24,7 +23,6 @@ class UserModel extends Model
     protected $returnType     = User::class;
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
-        'nip',
         'username',
         'status',
         'status_message',
@@ -80,7 +78,7 @@ class UserModel extends Model
         /** @var UserIdentityModel $identityModel */
         $identityModel = model(UserIdentityModel::class);
 
-    // Get our identities for all users
+        // Get our identities for all users
         $identities = $identityModel->getIdentitiesByUserIds($userIds);
 
         if (empty($identities)) {

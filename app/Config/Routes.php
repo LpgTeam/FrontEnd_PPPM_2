@@ -38,7 +38,6 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 // $routes->get('/login', 'Login::index');
 
-// service('auth')->routes($routes);
 
 $routes->get('/', 'Dosen::index');
 $routes->get('/login', 'Login::loginView');
@@ -289,6 +288,7 @@ $routes->get('/backurl', 'Error::index');
 
 //cek except login
 service('auth')->routes($routes, ['except' => ['login', 'logout']]);
+// service('auth')->routes($routes);
 
 /*
  * --------------------------------------------------------------------

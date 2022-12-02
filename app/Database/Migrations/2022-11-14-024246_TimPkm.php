@@ -9,6 +9,12 @@ class TimPkm extends Migration
     public function up()
     {
         $this->forge->addField([
+            'id_timpkm' => [
+                'type' => 'int',
+                'constraint' => 11,
+                'nullable' => false
+            ],
+
             'id_pkm' => [
                 'type' => 'int',
                 'constraint' => 11,
@@ -42,6 +48,7 @@ class TimPkm extends Migration
                 'nullable' => false
             ]
         ]);
+        $this->forge->addKey('id_timpkm', true);
         $this->forge->createTable('tim_pkm');
     }
 

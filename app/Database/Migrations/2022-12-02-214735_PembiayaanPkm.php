@@ -4,37 +4,38 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class PermohonanReimburse extends Migration
+class PembiayaanPkm extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'ID_permohonan_reimburse' => [
+            'id_biaya' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false
+                'nullable' => false,
+                'auto_increment' => true
             ],
 
-            'ID_penelitian' => [
+            'id_pkm' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false
+                'nullable' => false,
             ],
 
-            'berkas' => [
-                'type' => 'VARCHAR',
-                'constraint' => 100,
-                'nullable' => false
-            ],
-
-            'status_reimburse' => [
+            'pembiayaan_diajukan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
                 'nullable' => false
-            ]
+            ],
+
+            'jumlah_biaya' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+                'nullable' => false
+            ],
         ]);
-        $this->forge->addKey('ID_permohonan_reimburse', true);
-        $this->forge->createTable('permohonan_reimburse');
+        $this->forge->addKey('id_biaya', true);
+        $this->forge->createTable('penelitian');
     }
 
     public function down()
