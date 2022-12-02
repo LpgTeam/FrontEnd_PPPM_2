@@ -75,4 +75,8 @@ class ReimburseModel extends Model
         ->select('permohonan_reimburse.id_pkm')->select('pengajuan_pkm.*')
             ->where(['id_pkm' => $id_pkm])->findAll();
     }
+
+    public function find_by_idpenelitian($id_penelitian){
+        return $this->where(['id_penelitian' => $id_penelitian])->first();
+    }
 }

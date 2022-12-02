@@ -16,6 +16,7 @@ use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
 use App\Models\TimPkmModel;
 use App\Models\DosenModel;
+use App\Models\ReimburseModel;
 
 class Dosen extends BaseController
 {
@@ -34,6 +35,7 @@ class Dosen extends BaseController
         $this->timPKMModel = new TimPKMModel();
         $this->pkmModel = new PkmModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
+        $this->reimburseModel = new ReimburseModel();
     }
 
     public function index()
@@ -532,7 +534,7 @@ class Dosen extends BaseController
             'validation' => \Config\Services::validation(),
             'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
-        return view('dosen/tampilan/penelitianProses/penelitianDetaoil2', $data);
+        return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
     }
     public function penelitianProses2Kontrak($id_penelitian)
     {
@@ -550,7 +552,8 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
-            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian),
+            'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
     }
@@ -634,17 +637,26 @@ class Dosen extends BaseController
      }
 
 
-    public function detailReimburse($id_kegiatan, $kegiatan){
+    public function detailReimburse($kegiatan,$id_kegiatan){
         if($kegiatan == 'penelitian'){
             $data = [
                 'title' => 'PPPM Politeknik Statistika STIS',
-                'penelitian' => $this->penelitianModel->find($id_kegiatan)
+                'penelitian' => $this->penelitianModel->find($id_kegiatan),
+                'kegiatan' => $kegiatan,
+                //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
+                // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+                // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+                'validation' => \Config\Services::validation()
             ];
+            
             return view('dosen/tampilan/detailReimburse', $data);
+
         } else if ($kegiatan == 'pkm') {
             $data = [
                 'title' => 'PPPM Politeknik Statistika STIS',
-                'pkm' => $this->pkmModel->find($id_kegiatan)
+                'kegiatan' => $kegiatan,
+                'pkm' => $this->pkmModel->find($id_kegiatan),
+                'validation' => \Config\Services::validation()
             ];
             return view('dosen/tampilan/detailReimburse', $data);
         }

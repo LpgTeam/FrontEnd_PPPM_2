@@ -106,7 +106,7 @@
                                                 <td><?php echo $post['judul_penelitian'] ?></td>
                                                 <td><?php echo 'Penelitian' ?></td>
                                                 <td>
-                                                <a href="/detailReimburseDosen/<?= $post['id_penelitian']; ?>/penelitian" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="/detailReimburseDosen/penelitian/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     
 
 
@@ -136,7 +136,7 @@
                                                 <td><?php echo 'PKM' ?></td>
                                                 <td>
                                                     <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                                    <a href="/detailReimburseDosen/<?= $post['ID_pkm']; ?>/pkm" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="/detailReimburseDosen/pkm/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     
                                                 </td>
                                             </tr>
