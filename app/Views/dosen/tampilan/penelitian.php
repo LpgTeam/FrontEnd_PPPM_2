@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table id="example" class="table">
+                                <table id="example" class="table table-responsive">
                                     <thead>
                                         <tr class="table-primary">
                                             <th scope="col">Nomor</th>
