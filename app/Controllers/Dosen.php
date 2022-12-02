@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-use mikehaertl\pdftk\Pdf;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
@@ -15,8 +14,9 @@ use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
-use App\Models\TimPKMModel;
+use App\Models\TimPkmModel;
 use App\Models\DosenModel;
+use App\Models\ReimburseModel;
 
 class Dosen extends BaseController
 {
@@ -25,7 +25,6 @@ class Dosen extends BaseController
     protected $dosenModel;
     protected $timPenelitiModel;
     protected $timPKMModel;
-    protected $laporanPenelitianModel;
     protected $pkmModel;
 
     public function __construct()
@@ -36,6 +35,7 @@ class Dosen extends BaseController
         $this->timPKMModel = new TimPKMModel();
         $this->pkmModel = new PkmModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
+        $this->reimburseModel = new ReimburseModel();
     }
 
     public function index()
@@ -134,13 +134,13 @@ class Dosen extends BaseController
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
         $total_pengajuan = 0;
-        foreach ($ambil_pengajuan as $data_pengajuan) {
-            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
+        foreach($ambil_pengajuan as $data_pengajuan){
+            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
 
-
+     
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -148,34 +148,19 @@ class Dosen extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-
+     
         return view('dosen/tampilan/anggaran', $data);
     }
 
     public function penelitian()
     {
-        session();
         //mengambil data user yang sedang login
         $user = auth()->user();
         // $nip = $user->nip;
         // dd($nip);
-        $laporan = $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip);
-        // dd($laporan);
-
-        // if($laporan["jenis_penelitian"]=="Semi Mandiri"){
-        //     if($laporan["laporan_dana"]==null) $proses = "2";
-        //     else $proses = "3";
-        // }
-        // if(($laporan["jenis_penelitian"]=="Di Danai Institusi" ) || ($laporan["jenis_penelitian"]=="Institusi" )){
-        //     if($laporan["kontrak"]==null) $proses = "2Kontrak";
-        //     else $proses = "3";
-        // }
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
-            'validation' => \Config\Services::validation()
-            // 'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
-            // 'proses' => $proses,
         ];
         // dd($data['penelitian']);
         return view('dosen/tampilan/penelitian', $data);
@@ -221,6 +206,7 @@ class Dosen extends BaseController
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";
         }
+        // dd($jenisPenelitian)198512122008011004
 
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
 
@@ -234,13 +220,73 @@ class Dosen extends BaseController
         return view('dosen/tampilan/penelitianForm', $data);
     }
 
+    // public function penelitianMandiri()
+    // {
+    //     session();
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Mandiri',
+    //         'validation' => \Config\Services::validation()
+    //     ];
+    //     // return view('dosen/tampilan/penelitianForm1', $data);
+    //     return view('dosen/tampilan/penelitianForm', $data);
+    // }
+
+    // public function penelitianKerjasama()
+    // {
+    //     session();
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Kerjasama',
+    //         'validation' => \Config\Services::validation()
+    //     ];
+    //     return view('dosen/tampilan/penelitianForm', $data);
+    //     // return view('dosen/tampilan/penelitianForm1', $data);
+    // }
+
+    // public function penelitianSemiMandiri()
+    // {
+    //     session();
+    //     $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Semi Mandiri',
+    //         'user' => $nipdosen,
+    //         'validation' => \Config\Services::validation()
+    //     ];
+    //     return view('dosen/tampilan/penelitianForm', $data);
+    //     // return view('dosen/tampilan/penelitianForm2', $data);
+    // }
+
+    // public function penelitianDidanaiInstitusi()
+    // {
+    //     session();
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Di Danai Institusi',
+    //         'validation' => \Config\Services::validation()
+    //     ];
+    //     return view('dosen/tampilan/penelitianForm', $data);
+    //     // return view('dosen/tampilan/penelitianForm2', $data);
+    // }
+
+    // public function penelitianInstitusi()
+    // {
+    //     session();
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Institusi',
+    //         'validation' => \Config\Services::validation()
+    //     ];
+    //     // return view('dosen/tampilan/penelitianForm2', $data);
+    //     return view('dosen/tampilan/penelitianForm', $data);
+    // }
 
     public function pkmForm($jenis)
     {
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'validation' => \Config\Services::validation(),
             'jenis' => $jenis,
             'user' => $nipdosen,
         ];
@@ -248,6 +294,114 @@ class Dosen extends BaseController
         return view('dosen/tampilan/pkmForm', $data);
     }
 
+    // public function pkmMandiri()
+    // {
+    //     $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Mandiri',
+    //         'user' => $nipdosen,
+    //     ];
+    //     return view('dosen/tampilan/pkmMandiri', $data);
+    // }
+
+    // public function pkmKelompok()
+    // {
+    //     $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+    //     $data = [
+    //         'user' => $nipdosen,
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'jenis' => 'Kelompok'
+    //     ];
+    //     return view('dosen/tampilan/pkmKelompok', $data);
+    // }
+
+    // public function pkmTerstruktur()
+    // {
+    //     $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'user' => $nipdosen,
+    //         'jenis' => 'Terstruktur'
+    //     ];
+    //     return view('dosen/tampilan/pkmTerstruktur', $data);
+    // }
+
+    // public function penelitianSemiMandiri1($id_penelitian)
+    // {
+    //     $data = [
+    //         'title' => 'PPPM Politeknik Statistika STIS',
+    //         'penelitian' => $this->penelitianModel->find($id_penelitian)
+    //     ];
+    //     return view('dosen/tampilan/penelitianProses/penelitianSemiMandiri1', $data);
+    // }
+
+    // public function penelitianSemiMandiri2()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianSemiMandiri2', $data);
+    // }
+
+    // public function penelitianSemiMandiri3()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianSemiMandiri3', $data);
+    // }
+
+    // public function penelitianSemiMandiri4()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianSelesai', $data);
+    // }
+
+    // public function penelitianDidanaiInstitusi1()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianProses1', $data);
+    // }
+
+    // public function penelitianDidanaiInstitusi2()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianProses2', $data);
+    // }
+
+    // public function penelitianDidanaiInstitusi3()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianProses3', $data);
+    // }
+
+    // public function penelitianDidanaiInstitusi4()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianSelesai', $data);
+    // }
+
+
+    // public function penelitianInstitusi1()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianProses1', $data);
+    // }
+
+    // public function penelitianInstitusi2()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianProses2', $data);
+    // }
+
+    // public function penelitianInstitusi3()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianProses3', $data);
+    // }
+
+    // public function penelitianInstitusi4()
+    // {
+    //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+    //     return view('dosen/tampilan/penelitianProses/penelitianSelesai', $data);
+    // }
 
     // ======================PKM Detail=========================
     public function pkmDetail1($idPKM)
@@ -263,8 +417,7 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM),
-            'validation' => \Config\Services::validation(),
+            'pkm' => $this->pkmModel->find($idPKM)
         ];
         return view('dosen/tampilan/pkmProses/pkmProses2', $data);
     }
@@ -273,8 +426,7 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM),
-            'validation' => \Config\Services::validation(),
+            'pkm' => $this->pkmModel->find($idPKM)
         ];
         return view('dosen/tampilan/pkmProses/pkmProses3', $data);
     }
@@ -380,60 +532,30 @@ class Dosen extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
             'validation' => \Config\Services::validation(),
-            'laporan' => $laporan
+            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
-        // } else {
-        //     $data = [
-        //         'title' => 'PPPM Politeknik Statistika STIS',
-        //         'penelitian' => $this->penelitianModel->find($id_penelitian),
-        //         'laporan' => $laporan
-        //     ];
-        //     return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
-        // }
     }
     public function penelitianProses2Kontrak($id_penelitian)
     {
-        $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
-
-        // if (!($laporan['kontrak'] == null || $laporan['laporan_dana'] == null)) {
+        $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
             'validation' => \Config\Services::validation(),
-            'laporan' => $laporan
+            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
-        // } else {
-        //     // $data = [
-        //     //     'title' => 'PPPM Politeknik Statistika STIS',
-        //     //     'penelitian' => $this->penelitianModel->find($id_penelitian),
-        //     //     'laporan' => $laporan
-        //     // ];
-        //     // return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
-        //     penelitianProses3($id_penelitian);
-        // }
     }
     public function penelitianProses3($id_penelitian)
     {
-        $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
-
-        // if (($laporan['laporan_luaran'] == null)) {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_penelitian),
-            'laporan' => $laporan,
+            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian),
             'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
-        // } 
-        // else {
-        //     $data = [
-        //         'title' => 'PPPM Politeknik Statistika STIS',
-        //         'penelitian' => $this->penelitianModel->find($id_penelitian)
-        //     ];
-        //     return view('dosen/tampilan/penelitianProses/penelitianDetail4', $data);
-        // }
     }
     public function penelitianProses4($id_penelitian)
     {
@@ -497,26 +619,46 @@ class Dosen extends BaseController
 
     public function reimburse()
     {
+        //mengambil data user yang sedang login
+        $user = auth()->user();
+        // $nip = $user->nip;
+        // dd($nip);
+
         $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS'
+            'title' => 'PPPM Politeknik Statistika STIS',
+            // 'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+            // 'penelitian' => $penelitian->get_penelitian_by_id_status(11)
+             
+           'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
+           'pkm' => $this->pkmModel->get_pkm_done($user->nip,7),
         ];
+
         return view('dosen/tampilan/reimburse', $data);
-    }
-
-    public function detailReimburse()
-    {
-        $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS'
-        ];
-        return view('dosen/tampilan/detailReimburse', $data);
-    }
+     }
 
 
-    public function detailReimburse2()
-    {
-        $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS'
-        ];
-        return view('dosen/tampilan/detailReimburse2', $data);
-    }
+    public function detailReimburse($kegiatan,$id_kegiatan){
+        if($kegiatan == 'penelitian'){
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_kegiatan),
+                'kegiatan' => $kegiatan,
+                //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
+                // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+                // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+                'validation' => \Config\Services::validation()
+            ];
+            
+            return view('dosen/tampilan/detailReimburse', $data);
+
+        } else if ($kegiatan == 'pkm') {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'kegiatan' => $kegiatan,
+                'pkm' => $this->pkmModel->find($id_kegiatan),
+                'validation' => \Config\Services::validation()
+            ];
+            return view('dosen/tampilan/detailReimburse', $data);
+        }
+     }
 }
