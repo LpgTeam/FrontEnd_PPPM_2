@@ -86,7 +86,7 @@
                                         <th scope="col">Jenis Penelitian/PKM</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Judul/Topik</th>
-                                        <th scope="col">jenis kegiatan</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Detail</th>
                                     </tr>
                                 </thead>
@@ -104,7 +104,19 @@
                                                 <td><?php echo $post['jenis_penelitian'] ?></td>
                                                 <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                 <td><?php echo $post['judul_penelitian'] ?></td>
-                                                <td><?php echo 'Penelitian' ?></td>
+                                                <td>
+                                                    <?php if ($post['id_status_reimburse'] == 0){
+                                                            echo 'Belum Diajukan';
+                                                        }else if($post['id_status_reimburse'] == 1) {
+                                                            echo 'Dalam Proses';
+                                                        } else if($post['id_status_reimburse'] == 2){ 
+                                                            echo 'Telah Dicairkan';
+                                                        }
+                                                    ?>
+                                                </td>
+                                                
+                                                
+                                                
                                                 <td>
                                                 <a href="/detailReimburseDosen/penelitian/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     
@@ -133,7 +145,16 @@
                                                 <td><?php echo $post['jenis_pkm'] ?></td>
                                                 <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                 <td><?php echo $post['topik_kegiatan'] ?></td>
-                                                <td><?php echo 'PKM' ?></td>
+                                                <td>
+                                                    <?php if ($post['id_status_reimburse'] == 0){
+                                                            echo 'Belum Diajukan';
+                                                        }else if($post['id_status_reimburse'] == 1) {
+                                                            echo 'Dalam Proses';
+                                                        } else if($post['id_status_reimburse'] == 2){ 
+                                                            echo 'Telah Dicairkan';
+                                                        }
+                                                    ?>
+                                                </td>
                                                 <td>
                                                     <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
                                                     <a href="/detailReimburseDosen/pkm/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>

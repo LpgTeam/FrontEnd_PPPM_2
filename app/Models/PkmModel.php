@@ -28,7 +28,8 @@ class PkmModel extends Model
         'diajukan_lainnya',
         'tanggal_pengajuan',	
         'status',	
-        'id_status'	
+        'id_status'	,
+        'id_status_reimburse'
     ];
 
     // Dates

@@ -20,6 +20,8 @@ class ReimburseModel extends Model
         'id_pkm',
         'jenis_penelitian',
         'jenis_pkm',
+        'judul_penelitian',
+        'judul_pkm',
         'tanggal_pengajuan',
         'laporan',
         'loa',
@@ -79,4 +81,5 @@ class ReimburseModel extends Model
     public function find_by_idpenelitian($id_penelitian){
         return $this->where(['id_penelitian' => $id_penelitian])->first();
     }
+
 }

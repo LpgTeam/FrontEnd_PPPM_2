@@ -630,7 +630,9 @@ class Dosen extends BaseController
             // 'penelitian' => $penelitian->get_penelitian_by_id_status(11)
              
            'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
+        
            'pkm' => $this->pkmModel->get_pkm_done($user->nip,7),
+            
         ];
 
         return view('dosen/tampilan/reimburse', $data);
