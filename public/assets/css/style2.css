@@ -1896,10 +1896,14 @@ section {
   position: relative;
   list-style: none;
   margin: 30px 20px 20px 20px;
+  
 }
 
 .timeline-with-icons .timeline-item h5 {
   color: #012970;
+}
+.timeline-with-icons .timeline-item p {
+  color: #111;
 }
 
 .timeline-with-icons .timeline-item {
@@ -1918,7 +1922,7 @@ section {
   background-color: #fff;
   color: #012970;
   border-style: solid;
-  border-color: #ffc107;
+  border-color: #0084ce;
   border-radius: 50%;
   height: 31px;
   width: 31px;
@@ -1926,6 +1930,119 @@ section {
   align-items: center;
   justify-content: center;
 }
+
+/*--------------------------------------------------------------
+# Reimburse status
+--------------------------------------------------------------*/
+.main-timeline{ font-family: 'Heebo', sans-serif; }
+.main-timeline:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.main-timeline .timeline{
+    width: 100%;
+    padding: 50px 0 0 0;
+    margin: 0 5px 5px 0;
+    float: left;
+}
+.main-timeline .timeline-content{
+    color: #fff;
+    background: #1b449c;
+    min-height: 40px;
+    padding: 20px 20px 20px 275px;
+    border-radius: 40px;
+    display: block;
+    position: relative;
+    text-align: center;
+}
+.main-timeline .timeline-content:hover{ text-decoration: none; }
+.main-timeline .timeline-content:before{
+    content: '';
+    background-color: #0084ce;
+    height: calc(100% + 20px);
+    width: 105px;
+    border-radius: 40px 40px 0 0;
+    box-shadow: 0 0 10px -2px rgba(0,0,0,0.3);
+    position: absolute;
+    left: 130px;
+    bottom: 0; 
+}
+.main-timeline .timeline-icon{
+    color: #fff;
+    font-size: 40px;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 158px;
+    top: 50%;
+}
+.main-timeline .timeline-year{
+    font-size: 20px;
+    font-weight: 600;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 18px;
+    top: 50%;
+}
+.main-timeline .title{
+    font-size: 22px;
+    font-weight: 700;
+    text-transform:uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 5px;
+}
+.main-timeline .description{
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+@media screen and (max-width:767px){
+    .main-timeline .timeline,
+    .main-timeline .timeline:nth-child(even){
+        width: 100%;
+        margin: 0 0 30px;
+    }
+}
+@media screen and (max-width:576px){
+    .main-timeline .timeline,
+    .main-timeline .timeline:nth-child(even){
+        padding: 0 0 40px;
+    }
+    .main-timeline .timeline-content,
+    .main-timeline .timeline:nth-child(even) .timeline-content{
+        text-align: center;
+        padding: 65px 20px 55px;
+    }
+    .main-timeline .timeline-content:before,
+    .main-timeline .timeline:nth-child(even) .timeline-content:before{
+        width: 80px;
+        height: 80px;
+        border-radius: 0 0 30px 30px;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: -40px;
+    }
+    .main-timeline .timeline-year,
+    .main-timeline .timeline:nth-child(even) .timeline-year{
+        transform: translateY(0) translateX(-50%);
+        left: 50%;
+        right: auto;
+        top: 8px;
+    }
+    .main-timeline .timeline-icon,
+    .main-timeline .timeline:nth-child(even) .timeline-icon{
+        font-size: 45px;
+        transform: translateY(0) translateX(-50%);
+        left: 50%;
+        right: auto;
+        top: auto;
+        bottom: -35px;
+    }
+}
+
 
 /*--------------------------------------------------------------
 # Team
@@ -2095,6 +2212,10 @@ section {
 .card .card-body .btn-pilih:hover {
   background: #fff;
   color: #1356aa;
+}
+
+.card .card-body li {
+line-height: 2;
 }
 
 @media (max-width: 600px) {

@@ -63,12 +63,11 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Form</h5>
                             <hr>
-                            <p>(Tentang Form) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
+                            <ol>
+                                <li>Topik PKM &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
+                                <li>Jenis PKM &nbsp;&nbsp;&nbsp;&nbsp; : <?= $pkm['jenis_pkm']; ?></li>
+                            </ol>
+                            <hr>
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <a class="btn btn-secondary">Lihat Form </a>

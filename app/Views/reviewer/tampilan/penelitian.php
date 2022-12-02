@@ -54,34 +54,34 @@
 
                         <!-- Table with stripped rows -->
                         <div class="content">
-                            <div class="row mb-3 justify-content-md-start">
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Jenis Penelitian</div>
-                                </div>
-                                <select class="form-control status-dropdown col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="Mandiri">Mandiri</option>
-                                    <option value="Semi Mandiri">Semi Mandiri</option>
-                                    <option value="Di Danai Institusi">Di Danai Institusi</option>
-                                    <option value="Institusi">Institusi</option>
-                                    <option value="Kerjasama">Kerjasama</option>
-                                </select>
+                            <div class="row mb-3">
 
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Status Penelitian</div>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian</label>
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="form-select status-dropdown ">
+                                        <option value="">Semua</option>
+                                        <option value="Mandiri">Mandiri</option>
+                                        <option value="Semi Mandiri">Semi Mandiri</option>
+                                        <option value="Di Danai Institusi">Di Danai Institusi</option>
+                                        <option value="Institusi">Institusi</option>
+                                        <option value="Kerjasama">Kerjasama</option>
+                                    </select>
                                 </div>
 
-                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="Proposal diajukan">Proposal diajukan</option>
-                                    <option value="Proposal disetujui oleh Reviewer">Proposal disetujui oleh Reviewer</option>
-                                    <option value="Proposal disetujui oleh Kepala PPPM">Proposal disetujui oleh Kepala PPPM</option>
-                                    <option value="Proposal disetujui oleh Direktur">Proposal disetujui oleh Direktur</option>
-                                    <option value="Pendanaan">Pendanaan</option>
-                                    <option value="Kontrak">Kontrak</option>
-                                    <option value="Laporan">Laporan</option>
-                                    <option value="Selesai">Selesai</option>
-                                </select>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Penelitian</label>
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="form-select status-dropdown2">
+                                        <option value="">Semua</option>
+                                        <option value="Diajukan oleh Dosen">Diajukan oleh Dosen </option>
+                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
+                                        <option value="Disetujui oleh Reviewer">Disetujui oleh Reviewer</option>
+                                        <option value="Disetujui oleh Kepala PPPM">Disetujui oleh Kepala PPPM</option>
+                                        <option value="Disetujui oleh Direktur">Disetujui oleh Direktur</option>
+                                        <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
+                                        <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
+                                    </select>
+                                </div>
+
                             </div>
 
                             <div class="table-responsive">
