@@ -621,8 +621,6 @@ class Dosen extends BaseController
     {
         //mengambil data user yang sedang login
         $user = auth()->user();
-        // $nip = $user->nip;
-        // dd($nip);
 
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
@@ -639,28 +637,29 @@ class Dosen extends BaseController
      }
 
 
-    public function detailReimburse($kegiatan,$id_kegiatan){
-        if($kegiatan == 'penelitian'){
+    public function detailReimburse($id_kegiatan){
+       
             $data = [
                 'title' => 'PPPM Politeknik Statistika STIS',
                 'penelitian' => $this->penelitianModel->find($id_kegiatan),
-                'kegiatan' => $kegiatan,
+                // 'kegiatan' => $kegiatan,
                 //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
                 // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
                 // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
                 'validation' => \Config\Services::validation()
             ];
-            
             return view('dosen/tampilan/detailReimburse', $data);
 
-        } else if ($kegiatan == 'pkm') {
-            $data = [
-                'title' => 'PPPM Politeknik Statistika STIS',
-                'kegiatan' => $kegiatan,
-                'pkm' => $this->pkmModel->find($id_kegiatan),
-                'validation' => \Config\Services::validation()
-            ];
-            return view('dosen/tampilan/detailReimburse', $data);
-        }
-     }
+    }
+
+    public function detailReimburse2($id_kegiatan){
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            // 'kegiatan' => $kegiatan,
+            'pkm' => $this->pkmModel->find($id_kegiatan),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('dosen/tampilan/detailReimburse2', $data);
+    }
+
 }

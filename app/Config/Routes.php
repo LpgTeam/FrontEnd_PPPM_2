@@ -70,7 +70,7 @@ $routes->get('/pkmForm/(:any)', 'Dosen::pkmForm/$1');
 $routes->get('/reimburseDosen', 'Dosen::reimburse');
 
 $routes->get('/reimburseDosen', 'Dosen::reimburse');
-$routes->get('/detailReimburseDosen/(:any)/(:any)', 'Dosen::detailReimburse/$1/$2');
+$routes->get('/detailReimburseDosen/(:any)', 'Dosen::detailReimburse/$1');
 $routes->get('/reimburseDetail/savePkm/(:any)', 'ReimburseDetail::savePKM/$1');
 $routes->get('/reimburseDetail/savePenelitian/(:any)', 'ReimburseDetail::savePenelitian/$1');
 

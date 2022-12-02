@@ -114,11 +114,10 @@
                                                         }
                                                     ?>
                                                 </td>
-                                                
-                                                
+                                                                                              
                                                 
                                                 <td>
-                                                <a href="/detailReimburseDosen/penelitian/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="/detailReimburseDosen/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     
 
 
@@ -157,7 +156,7 @@
                                                 </td>
                                                 <td>
                                                     <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                                    <a href="/detailReimburseDosen/pkm/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="detailReimburse2Dosen/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     
                                                 </td>
                                             </tr>
