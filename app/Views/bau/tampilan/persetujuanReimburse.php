@@ -31,35 +31,43 @@
             <!-- End Proses -->
 
             <div class="row" data-aos="fade-up">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Proposal</h5>
-                            <hr>
-                            <p>(Judul Proposal) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
-                            <hr>
-                            <?= $this->include('proposal/download_per_proposal'); ?>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
-                            <hr>
-                            <p>Pencairan dana reimburse yang diajukan dosen
-                                oleh Bagian Administrasi Umum Politeknik Statistika STIS
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Cairkan Dana</button>
-                                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
+                        <hr>
+                        <p>Proposal reimburse penelitian yang diajukan dosen
+                            oleh Direktur Politeknik Statistika STIS
+                        </p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button>
+                            </div>
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loa">LOA</button>
+                            </div>
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#naskah">Naskah Artikel</button>
+                            </div>
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#invoice">Invoice</button>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
+                        <hr>
+                        <p>Pencairan dana reimburse yang diajukan dosen
+                            oleh Bagian Administrasi Umum Politeknik Statistika STIS
+                        </p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-end">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Cairkan Dana</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
     </section>
 

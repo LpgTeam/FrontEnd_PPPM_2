@@ -24,6 +24,7 @@ class BAU extends BaseController
     {
         $this->penelitianModel = new PenelitianModel();
         $this->pkmModel = new PKMModel();
+        $this->reimburseModel = new ReimburseModel();
     }
 
     public function index()
@@ -159,13 +160,7 @@ class BAU extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'id_penelitian' => $this->reimburseModel->get_id_penelitian(),
-            'id_pkm' => $this->reimburseModel->get_id_pkm(),
-            'jenis_penelitian' => $this->reimburseModel->get_jenis_penelitian(),
-            'jenis_pkm' => $this->reimburseModel->get_jenis_pkm(),
-            'judul_penelitian' => $this->reimburseModel->get_judul_penelitian(),
-            'judul_pkm' => $this->reimburseModel->get_judul_pkm(),
-            'reimburse' => $reimburseModel->getData(),
+            'reimburse' => $this->reimburseModel->get_reimburse_by_id_status(1)
         ];
         return view('bau/tampilan/reimburse', $data);
     }
