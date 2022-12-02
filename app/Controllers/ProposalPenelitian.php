@@ -69,6 +69,7 @@ class ProposalPenelitian extends BaseController
             'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
+            'jenis'         => 'P'
         ];
         // dd($dataPenelitian['ketuapeneliti']);
 
@@ -169,6 +170,7 @@ class ProposalPenelitian extends BaseController
             'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
             'ketuapeneliti'     => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'            => $this->luaranModel->get_luaran_byid($id_penelitian),
+            'jenis'             => 'R'
             // 'addProses2'        => $tambahanFile,
         ];
         // dd($dataPenelitian['timpeneliti']);

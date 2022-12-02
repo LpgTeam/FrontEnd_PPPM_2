@@ -150,7 +150,7 @@
 
 <body>
 
-    <u><b>P2. Halaman Pengesahan:</b></u>
+    <u><b><?= $jenis; ?>2. Halaman Pengesahan:</b></u>
     <div class="text-center">
         <h3>HALAMAN PENGESAHAN</h3>
         <H3>PROPOSAL PENELITIAN DOSEN</H3>

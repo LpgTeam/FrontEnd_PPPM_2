@@ -69,7 +69,7 @@
     });
 </script>
 
-<hr>
+<!-- <hr>
 Download P1-P5
 <div class="d-flex justify-content-between">
     <div class="col-md-4 col-lg-6">
@@ -110,4 +110,4 @@ Download P1-P5
             Download P5 Proposal
         </a>
     </div>
-</div>
+</div> -->
