@@ -171,7 +171,7 @@
                             <div class="main-timeline">
                                 <div class="timeline">
                                     <a href="#" class="timeline-content">
-                                        <div class="timeline-year">Dana</div>
+                                        <div class="timeline-year">Reimburse</div>
                                         <div class="timeline-icon"><i class="bi bi-hourglass-split"></i></div>
                                         <h3 class="title">Pengajuan Reimburse Anda Sedang dalam Proses</h3>
                                     </a>
@@ -184,7 +184,7 @@
                             <div class="main-timeline">
                                 <div class="timeline">
                                     <a href="#" class="timeline-content">
-                                        <div class="timeline-year">Dana</div>
+                                        <div class="timeline-year">Reimburse</div>
                                         <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
                                         <h3 class="title">Dana Reimburse Anda Sudah Dicairkan</h3>
                                         <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>

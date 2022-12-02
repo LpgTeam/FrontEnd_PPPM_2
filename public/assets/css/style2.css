@@ -1896,10 +1896,14 @@ section {
   position: relative;
   list-style: none;
   margin: 30px 20px 20px 20px;
+  
 }
 
 .timeline-with-icons .timeline-item h5 {
   color: #012970;
+}
+.timeline-with-icons .timeline-item p {
+  color: #111;
 }
 
 .timeline-with-icons .timeline-item {
@@ -1918,7 +1922,7 @@ section {
   background-color: #fff;
   color: #012970;
   border-style: solid;
-  border-color: #ffc107;
+  border-color: #0084ce;
   border-radius: 50%;
   height: 31px;
   width: 31px;
@@ -1961,7 +1965,7 @@ section {
     border-radius: 40px 40px 0 0;
     box-shadow: 0 0 10px -2px rgba(0,0,0,0.3);
     position: absolute;
-    left: 125px;
+    left: 130px;
     bottom: 0; 
 }
 .main-timeline .timeline-icon{
@@ -2208,6 +2212,10 @@ section {
 .card .card-body .btn-pilih:hover {
   background: #fff;
   color: #1356aa;
+}
+
+.card .card-body li {
+line-height: 2;
 }
 
 @media (max-width: 600px) {

@@ -13,7 +13,7 @@ function tambahPKM(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Form PKM telah di submit oleh dosen dan menunggu persetujuan BAU"+
             "</p>"+
         "</li>";
@@ -24,7 +24,7 @@ function tambahPKM(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Form PKM telah disetujui oleh BAU dan menunggu persetujuan Kepala PPPM"+
             "</p>"+
         "</li>";        
@@ -36,7 +36,7 @@ function tambahPKM(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Proposal disetujui oleh Kepala PPPM"+
             "</p>"+
         "</li>"; 
@@ -44,10 +44,10 @@ function tambahPKM(){
     var status4 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
-                "<i class='bi bi-card-list'></i>"+
+                "<i class='bi bi-card-checklist'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Proses persetujuan surat pernyataan oleh dosen"+
             "</p>"+
         "</li>";  
@@ -55,10 +55,10 @@ function tambahPKM(){
     var status5 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
-                "<i class='bi bi-card-list'></i>"+
+                "<i class='bi bi-card-checklist'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Melaporkan hasil PKM yang dilakukan oleh Dosen Polstat STIS"+
             "</p>"+
         "</li>";    
@@ -66,10 +66,10 @@ function tambahPKM(){
     var status6 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
-                "<i class='bi bi-card-list'></i>"+
+                "<i class='bi bi-check2-square'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Selesai</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Kegiatan PKM Telah Selesai dilsanakan"+
             "</p>"+
         "</li>";
@@ -84,7 +84,7 @@ function tambahPKM(){
                 "<i class='bi bi-file-earmark-excel'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Gagal</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Gagal melewati Proses"+
             "</p>"+
         "</li>";
