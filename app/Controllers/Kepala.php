@@ -11,6 +11,7 @@ use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
 use CodeIgniter\API\ResponseTrait;
+use App\Libraries\SendEmail;
 
 class Kepala extends BaseController
 {
@@ -25,19 +26,6 @@ class Kepala extends BaseController
 
     public function index()
     {
-        // $email = \Config\Services::email();
-        // $email->setFrom('lpgteam6@gmail.com');
-        // $email->setTo('aljaffarsyah10@gmail.com');
-        // $email->setSubject('testing');
-        // $email->setMessage('<p>testing email</p>');
-        // // $email->send();
-        // if ($email->send()) {
-        //     echo 'Email successfully sent';
-        // } else {
-        //     $data = $email->printDebugger(['headers']);
-        //     print_r($data);
-        // }
-
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('kepala/tampilan/index', $data);
     }
@@ -158,6 +146,8 @@ class Kepala extends BaseController
             'status_pengajuan'  => 'Disetujui oleh Kepala PPPM'
         ]);
 
+        $sendEmail = new SendEmail();
+        $sendEmail->send_email_persetujuan('Kepala PPPM');
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
         return redirect()->to('/penelitianKepala');

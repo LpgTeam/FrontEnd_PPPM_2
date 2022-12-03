@@ -58,7 +58,7 @@
 
 <body>
 
-    <u><b>P3. Surat Pernyataan:</b></u>
+    <u><b><?= $jenis; ?>3. Surat Pernyataan:</b></u>
     <div class="text-center">
         <h3>SURAT PERNYATAAN</h3>
     </div>

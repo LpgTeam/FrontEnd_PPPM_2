@@ -38,7 +38,6 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 // $routes->get('/login', 'Login::index');
 
-// service('auth')->routes($routes);
 
 $routes->get('/', 'Dosen::index');
 $routes->get('/login', 'Login::loginView');
@@ -272,19 +271,26 @@ $routes->get('/penelitian/download-p3-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-p4-proposal/(:any)', 'ProposalPenelitian::download_p4_proposal/$1');
 $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::download_p5_proposal/$1');
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
-$routes->get('/penelitian/view_proposal_savelocal/(:any)', 'ProposalPenelitian::view_proposal_savelocal/$1');
-$routes->get('/penelitian/view_proposal/(:any)/(:any)', 'ProposalPenelitian::view_proposal/$1/$2');
-$routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
+
+
+// $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
 //download surat pernyataan penelitian
 $routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
 //download Kontrak penelitian
 $routes->get('/penelitian/printKontrak', 'Penelitian::printKontrak');
-//download laporan
-$routes->get('/penelitian/download-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
-$routes->get('/penelitian/download_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::download_laporan_proposal/$1/$2');
+
+//viewproposal
+$routes->get('/penelitian/view_proposal_savelocal/(:any)/(:any)', 'ProposalPenelitian::view_proposal_savelocal/$1/$2');
+$routes->get('/penelitian/view_proposal/(:any)/(:any)', 'ProposalPenelitian::view_proposal/$1/$2');
+//download proposal merge
+$routes->get('/penelitian/download-proposal-akhir/(:any)/(:any)', 'ProposalPenelitian::view_proposal_savelocal/$1/$2');
+$routes->get('/penelitian/download_proposal/(:any)/(:any)', 'ProposalPenelitian::download_proposal/$1/$2');
 //viewlaporan
 $routes->get('/penelitian/view-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
 $routes->get('/penelitian/view_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::view_laporan_proposal/$1/$2');
+//download laporan
+$routes->get('/penelitian/download-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
+$routes->get('/penelitian/download_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::download_laporan_proposal/$1/$2');
 
 
 
@@ -300,6 +306,7 @@ $routes->get('/backurl', 'Error::index');
 
 //cek except login
 service('auth')->routes($routes, ['except' => ['login', 'logout']]);
+// service('auth')->routes($routes);
 
 /*
  * --------------------------------------------------------------------

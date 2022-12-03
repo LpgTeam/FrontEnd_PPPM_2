@@ -40,6 +40,25 @@ class Dosen extends BaseController
 
     public function index()
     {
+        // $db      = \Config\Database::connect();
+        // $builder = $db->table('penelitian');
+        // $builder->selectMax('id_penelitian');
+        // $query = $builder->get();
+        // $datadosen = $query->getResultArray();
+        // dd($datadosen);
+
+        // $builder = $db->table('penelitian');
+        // $query = $builder->getWhere(['judul_penelitian' => "COULD grin.' 'They all can,' said the Caterpillar. 'Not QUITE right, I'm afraid,' said Alice, 'and i"]);
+        // $datapenelitian = $query->getResultArray();
+        // dd($datapenelitian);
+        // $db      = \Config\Database::connect();
+        // // $builder = $db->table('dosen');
+
+        // $builder = $db->table('dosen');
+        // $builder->select('NIP_dosen');
+        // // $builder->from('dosen');
+        // // $query = $builder->get();
+        // dd($builder->());
         // $_SESSION['group'] = "dosen";
 
         // $user = auth()->user();
