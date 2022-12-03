@@ -12,43 +12,44 @@ class TimPeneliti extends Migration
             'id_timpeneliti' => [
                 'type' => 'int',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false,
+                'auto_increment' => true
             ],
 
             'id_penelitian' => [
                 'type' => 'int',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false
             ],
 
             'NIP' => [
                 'type' => 'VARCHAR',
                 'constraint' => 20,
-                'nullable' => true
+                'null' => true
             ],
 
             'namaPeneliti' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'nullable' => false
+                'null' => false
             ],
 
             'programStudi' => [
                 'type' => 'VARCHAR',
                 'constraint' => 10,
-                'nullable' => false
+                'null' => false
             ],
 
             'peran' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => true
+                'null' => true
             ],
 
             'bidang_keahlian' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => true
+                'null' => true
             ]
         ]);
         $this->forge->addKey('id_timpeneliti', true);

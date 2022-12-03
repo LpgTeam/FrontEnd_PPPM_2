@@ -17,6 +17,8 @@ use App\Models\PkmModel;
 use App\Models\TimPkmModel;
 use App\Models\DosenModel;
 use App\Models\ReimburseModel;
+use CodeIgniter\I18n\Time;
+
 
 class Dosen extends BaseController
 {
@@ -40,6 +42,20 @@ class Dosen extends BaseController
 
     public function index()
     {
+
+
+        // $db      = \Config\Database::connect();
+        // $builder = $db->table('detailstatus_penelitian');
+
+        // $query = $builder->getWhere(['id_detail' => 1]);
+        // $datapenelitian = $query->getResultArray();
+        // $query = $builder->get();
+        // $datastatus = $query->getResultArray();
+        // // $query = $builder->getWhere(['id_detail' => 1]);
+        // // $datastatus = $query->getResultArray();
+        // // $datastatus = $datastatus[0];
+        // dd($datastatus);
+
         // $db      = \Config\Database::connect();
         // $builder = $db->table('penelitian');
         // $builder->selectMax('id_penelitian');
@@ -153,13 +169,13 @@ class Dosen extends BaseController
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
         $total_pengajuan = 0;
-        foreach($ambil_pengajuan as $data_pengajuan){
-            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
 
-     
+
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -167,7 +183,7 @@ class Dosen extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-     
+
         return view('dosen/tampilan/anggaran', $data);
     }
 
@@ -646,33 +662,34 @@ class Dosen extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
             // 'penelitian' => $penelitian->get_penelitian_by_id_status(11)
-             
-           'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
-        
-           'pkm' => $this->pkmModel->get_pkm_done($user->nip,7),
-            
+
+            'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
+
+            'pkm' => $this->pkmModel->get_pkm_done($user->nip, 7),
+
         ];
 
         return view('dosen/tampilan/reimburse', $data);
-     }
-
-
-    public function detailReimburse($id_kegiatan){
-       
-            $data = [
-                'title' => 'PPPM Politeknik Statistika STIS',
-                'penelitian' => $this->penelitianModel->find($id_kegiatan),
-                // 'kegiatan' => $kegiatan,
-                //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
-                // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-                // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-                'validation' => \Config\Services::validation()
-            ];
-            return view('dosen/tampilan/detailReimburse', $data);
-
     }
 
-    public function detailReimburse2($id_kegiatan){
+
+    public function detailReimburse($id_kegiatan)
+    {
+
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_kegiatan),
+            // 'kegiatan' => $kegiatan,
+            //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
+            // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+            // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('dosen/tampilan/detailReimburse', $data);
+    }
+
+    public function detailReimburse2($id_kegiatan)
+    {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,
@@ -681,5 +698,4 @@ class Dosen extends BaseController
         ];
         return view('dosen/tampilan/detailReimburse2', $data);
     }
-
 }

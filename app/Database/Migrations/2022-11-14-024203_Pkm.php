@@ -12,17 +12,17 @@ class Pkm extends Migration
             'id_pkm' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false
+                'null' => false
             ],
 
             'surat_pernyataan' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => false
             ],
 
             'bukti_kegiatan' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => false
             ]
         ]);    
         $this->forge->createTable('pkm');

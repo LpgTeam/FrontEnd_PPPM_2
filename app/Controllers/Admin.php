@@ -37,8 +37,16 @@ class Admin extends BaseController
     }
     public function index()
     {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('penelitian');
+        $builder->selectMax('id_penelitian');
+        $query = $builder->get();
+        $datapenelitian = $query->getResultArray();
+
+        dd($datapenelitian);
+
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('adminPPPM/tampilan/index', $data);
+        // return view('adminPPPM/tampilan/index', $data);
     }
 
     public function anggaran()
@@ -88,7 +96,7 @@ class Admin extends BaseController
             }
         }
 
-     
+
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
