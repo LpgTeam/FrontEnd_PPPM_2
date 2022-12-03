@@ -44,7 +44,11 @@ class Dosen extends BaseController
     {
 
 
-        // $db      = \Config\Database::connect();
+        $db      = \Config\Database::connect();
+        $builder2 = $db->table('detailstatus_penelitian');
+        $query2 = $builder2->get();
+        $datastatus = $query2->getResultArray();
+        dd($datastatus[0]['deskripsi']);
         // $builder = $db->table('detailstatus_penelitian');
 
         // $query = $builder->getWhere(['id_detail' => 1]);
@@ -662,28 +666,28 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
-            'pkm' => $this->pkmModel->get_pkm_done($user->nip,7),
-            
+            'pkm' => $this->pkmModel->get_pkm_done($user->nip, 7),
+
         ];
 
         return view('dosen/tampilan/reimburse', $data);
-     }
+    }
 
 
-    public function detailReimburse($id_kegiatan){
-       
-            $data = [
-                'title' => 'PPPM Politeknik Statistika STIS',
-                'penelitian' => $this->penelitianModel->find($id_kegiatan),
-                // 'kegiatan' => $kegiatan,
-                //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
-                // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-                // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-                'validation' => \Config\Services::validation()
-            ];
+    public function detailReimburse($id_kegiatan)
+    {
 
-            return view('dosen/tampilan/detailReimburse', $data);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($id_kegiatan),
+            // 'kegiatan' => $kegiatan,
+            //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
+            // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+            // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+            'validation' => \Config\Services::validation()
+        ];
 
+        return view('dosen/tampilan/detailReimburse', $data);
     }
 
 
