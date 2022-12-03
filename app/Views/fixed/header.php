@@ -203,11 +203,7 @@
                                                                     <li><a href="/pkmBAU">PKM</a></li>
                                                                 </ul>
                                                             </li>
-<<<<<<< HEAD
                                                             <li><a class="nav-link scrollto" href="reimburseBau">Reimburse</a></li>
-=======
-                                                            <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
->>>>>>> 80e247aa8913b9cfb821244ce24cabfafd487606
                                                             <li class="dropdown">
                                                                 <a class="username scrollto" href="#"><span>BAU</span></a>
                                                                 <ul>

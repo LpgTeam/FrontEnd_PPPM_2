@@ -11,13 +11,9 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
-<<<<<<< HEAD
-use App\Models\PKMModel;
-use App\Models\ReimburseModel;
-=======
 use App\Models\PkmModel;
+use App\Models\ReimburseModel;
 use App\Models\StatusPkmModel;
->>>>>>> 80e247aa8913b9cfb821244ce24cabfafd487606
 use CodeIgniter\API\ResponseTrait;
 
 
@@ -32,13 +28,9 @@ class BAU extends BaseController
     {
         $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
-<<<<<<< HEAD
-        $this->pkmModel = new PKMModel();
-        $this->reimburseModel = new ReimburseModel();
-=======
         $this->pkmModel = new PkmModel();
         $this->statusPkmModel = new StatusPkmModel();
->>>>>>> 80e247aa8913b9cfb821244ce24cabfafd487606
+        $this->reimburseModel = new ReimburseModel();
     }
 
     public function index()
