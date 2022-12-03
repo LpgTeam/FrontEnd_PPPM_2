@@ -12,6 +12,11 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $pkm['alasan'];
+                                    } ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">

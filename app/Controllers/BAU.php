@@ -155,7 +155,7 @@ class BAU extends BaseController
 
     public function rjc_penelitian_bau($id_penelitian)
     {
-        
+
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 7,
@@ -215,14 +215,17 @@ class BAU extends BaseController
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
             'id_status'         => 5,
-            'status'            => 'Ditolak oleh BAU'
+            'status'            => 'Ditolak oleh BAU',
+            'alasan'            => $this->request->getVar('alasan')
         ]);
+
+        dd($this->request->getVar('alasan'));
 
         $this->statusPkmModel->save([
             'id_pkm' => $id_pkm,
             'status' => 'Ditolak oleh BAU'
         ]);
-        
+
         session()->setFlashdata('pesan', 'PKM telah ditolak');
 
         return redirect()->to('/pkmBAU');
@@ -239,29 +242,31 @@ class BAU extends BaseController
             'reimburse' => $this->reimburseModel->findAll(),
             // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
             // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
-            
+
         ];
 
         return view('bau/tampilan/reimburse', $data);
-     }
+    }
 
-     public function detailReimburse($id_reimburse){
+    public function detailReimburse($id_reimburse)
+    {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
             'validation' => \Config\Services::validation()
         ];
         return view('bau/tampilan/persetujuanReimburse', $data);
-     }
+    }
 
-    public function detailReimburse2($id_reimburse){
+    public function detailReimburse2($id_reimburse)
+    {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
             'validation' => \Config\Services::validation()
         ];
         return view('bau/tampilan/persetujuan2Reimburse', $data);
-     }
+    }
 
     public function acc_reimburse($id_reimburse)
     {
@@ -273,7 +278,7 @@ class BAU extends BaseController
 
         $id_penelitian = $this->reimburseModel->get_id_penelitian_done($id_reimburse);
         // $Pen = $this->penelitianModel->get_penelitian($id_penelitian);
-      
+
 
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
@@ -304,6 +309,4 @@ class BAU extends BaseController
 
         return redirect()->to('/reimburseBAU');
     }
-
 }
-

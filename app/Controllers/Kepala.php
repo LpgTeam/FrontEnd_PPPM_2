@@ -208,8 +208,11 @@ class Kepala extends BaseController
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
             'id_status'         => 6,
-            'status'            => 'Ditolak Oleh Kepala PPPM'
+            'status'            => 'Ditolak Oleh Kepala PPPM',
+            'alasan'            => $this->request->getVar('alasan')
         ]);
+
+        dd($this->request->getVar('alasan'));
 
         $this->statusPkmModel->save([
             'id_pkm' => $id_pkm,
