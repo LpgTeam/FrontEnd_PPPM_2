@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Proposal</h5>
                             <hr>
-                            <iframe class="responsive-iframe resp-container" src="/cache/<?= $judul_penelitian ?>" width="100%" height="500px"></iframe>
+                            <iframe class="responsive-iframe resp-container" src="/proposal_akhir/<?= $judul_penelitian ?>" width="100%" height="500px"></iframe>
 
                         </div>
                     </div>

@@ -72,7 +72,7 @@ class PengajuanPkm extends Migration
                 'type' => 'date',
                 'nullable' => false
             ],
-            
+
             'status' => [
                 'type' => 'text',
                 'nullable' => false
@@ -82,8 +82,15 @@ class PengajuanPkm extends Migration
                 'type' => 'INT',
                 'constraint' => 11,
                 'nullable' => false
+            ],
+
+            'jumlah_anggota' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'nullable' => false
             ]
         ]);
+
         $this->forge->addKey('ID_pkm', true);
         $this->forge->createTable('pengajuan_pkm');
     }

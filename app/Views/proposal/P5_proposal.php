@@ -39,7 +39,7 @@
 
 <body>
 
-    <u><b>P5. Luaran dan Target Capaian</b></u>
+    <u><b><?= $jenis; ?>5. Luaran dan Target Capaian</b></u>
     <div class="text-center">
         <h3>LUARAN DAN TARGET CAPAIAN</h3>
     </div>
