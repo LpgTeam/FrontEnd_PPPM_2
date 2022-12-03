@@ -2,6 +2,7 @@
 function tambah(){
     var status = document.getElementById("status").innerHTML ;
     var jenis = document.getElementById("jenis").innerHTML ;
+    var alasan = document.getElementById("alasan").innerHTML ;
     var ket = "";
     var list = document.getElementById("list");
     var keterangan = document.getElementById("keterangan");
@@ -106,21 +107,36 @@ function tambah(){
                 "Kegiatan Penelitian Telah Selesai dilsanakan"+
             "</p>"+
         "</li>";
+
+    var status9 = innerHTML = 
+        "<li class='timeline-item mb-5'>"+
+            "<h5 class='fw-bold'>Ditolak BAU</h5>"+
+            "<p>"+
+                alasan+
+            "</p>"+
+        "</li>";
+
+    var status10 = innerHTML = 
+        "<li class='timeline-item mb-5'>"+
+            "<h5 class='fw-bold'>Ditolak Reviewer</h5>"+
+            "<p>"+
+                alasan+
+            "</p>"+
+        "</li>";
+
+    var status11 = innerHTML = 
+        "<li class='timeline-item mb-5'>"+
+            "<h5 class='fw-bold'>Ditolak Kepala PPPM</h5>"+
+            "<p>"+
+                alasan+
+            "</p>"+
+        "</li>";
     
     var tanda = innerHTML = 
         "<h6 style='background : #38E54D; font-size : 5px;'>&nbsp</h6>";
 
     var tanda2 = innerHTML = 
-        "<h6 style='background : red; font-size : 5px;'>&nbsp</h6>"+
-        "<li class='timeline-item mb-5'>"+
-            "<span class='timeline-icon' style='border-color: red'>"+
-                "<i class='bi bi-file-earmark-excel'></i>"+
-            "</span>"+
-            "<h5 class='fw-bold'>Gagal</h5>"+
-            "<p>"+
-                "Gagal melewati Proses"+
-            "</p>"+
-        "</li>";
+        "<h6 style='background : #CF0A0A; font-size : 5px;'>&nbsp</h6>";
 
 
 if (jenis == "Semi Mandiri") {
@@ -147,6 +163,15 @@ if (jenis == "Semi Mandiri") {
     else if (status == 10){
         list.innerHTML += status1 + status2 + status3 + status4 + status5 + status6 + status7 + status8;
     }
+    else if (status == 7){
+        list.innerHTML += status9;
+    }
+    else if (status == 8){
+        list.innerHTML += status9;
+    }
+    else if (status == 9){
+        list.innerHTML += status9;
+    }
     
 } else if (jenis == "Di Danai Institusi" || jenis == "Institusi"){
     if (status == 1){
@@ -172,14 +197,23 @@ if (jenis == "Semi Mandiri") {
     else if (status == 10){
         list.innerHTML += status1 + status2 + status3 + status4 + status5 + status61 + status7 + status8;
     }
+    else if (status == 7){
+        list.innerHTML += status9;
+    }
+    else if (status == 8){
+        list.innerHTML += status9;
+    }
+    else if (status == 9){
+        list.innerHTML += status9;
+    }
 }
     
 
 
 
-    if (ket == "gagal"){
+    if (status == 7 || status == 8 || status == 9){
         keterangan.innerHTML += tanda2 ;}
-    else{
+    else {
         list.innerHTML += tanda ;
     }
 

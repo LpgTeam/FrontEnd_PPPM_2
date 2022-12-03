@@ -26,7 +26,8 @@ class PenelitianModel extends Model
         'tanda_tangan',
         'file_proposal',
         'biaya',
-        'id_status_reimburse'
+        'id_status_reimburse',
+        'alasan'
     ];
     public function getData()
     {

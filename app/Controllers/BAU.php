@@ -153,10 +153,12 @@ class BAU extends BaseController
 
     public function rjc_penelitian_bau($id_penelitian)
     {
+        
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 5,
-            'status_pengajuan'  => 'Ditolak'
+            'id_status'         => 7,
+            'status_pengajuan'  => 'Ditolak oleh BAU',
+            'alasan'            => $this->request->getVar('alasan')
         ]);
         $this->statusPenelitianModel->save([
             'id_penelitian' => $id_penelitian,

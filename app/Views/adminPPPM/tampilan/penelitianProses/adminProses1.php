@@ -107,10 +107,7 @@
 
                                             <tr>
                                                 <td><?php echo $post['status'] ?></td>
-                                                <!-- <td>
-                                                <a href="/removeStatus/<? //= $post['id_status']; 
-                                                                        ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                                            </td> -->
+                                                
                                             </tr>
                                             <?php $i++;    ?>
                                         <?php endforeach; ?>

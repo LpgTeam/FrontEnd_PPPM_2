@@ -167,7 +167,6 @@
                         <?php endif; ?>
 
                         <div class="row mb-3">
-<<<<<<< HEAD
                             <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                 <tr class="table-primary">
                                     <th scope="col">Nama Anggota</th>
@@ -180,50 +179,6 @@
                                 <tbody>
                                 </tbody>
                             </table>
-=======
-                            <div class="table-responsive">
-                                <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
-                                    <tr class="table-primary">
-                                        <th scope="col">Nama Anggota</th>
-                                        <th scope="col">NIP/NIM</th>
-                                        <th scope="col">Program Studi</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="col-md-4 col-lg-6">
-                                <!-- <button onclick='add()' class="btn btn-warning">
-                                    Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                </button> -->
-                                <a onclick="add()" class="btn btn-warning" id="btn">
-                                    Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                </a>
-                                <p class="invalid-feedback" id="m" style="display: none ;">Jumlah Anggota sudah full</p>
-
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-lg-3 col-form-label ">Tugas/Peran Tim Peneliti</label>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="table-responsive">
-                                <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
-                                    <tr class="table-primary">
-                                        <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Bidang Keahlian</th>
-                                        <th scope="col">Tugas/Peran</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
->>>>>>> 3695b752902fe952a96517afc9f7c0927736e7ba
 
                             <div class="col-md-4 col-lg-6">
                                 <a onclick="add()" class="btn btn-warning" id="btn">

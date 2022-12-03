@@ -168,7 +168,7 @@ class Kepala extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 6,
+            'id_status'         => 9,
             'status_pengajuan'  => 'Ditolak Kepala PPPM'
         ]);
 

@@ -54,6 +54,7 @@ class ProposalPKM extends BaseController
         $dataPkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
             'peneliti' => $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm),
+            
             // 'peneliti' => $this->timpkmModel->get_data_timpkm($id_pkm),
             // 'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
         ];

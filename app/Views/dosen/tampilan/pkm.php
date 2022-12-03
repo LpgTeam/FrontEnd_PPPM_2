@@ -79,7 +79,6 @@
                                             $i = 1; ?>
                                             <?php foreach ($pkm as $key => $post) :  ?>
 
-<<<<<<< HEAD
                                             <tr>
                                                 <!-- <td><?php //echo $post['id_penelitian'] 
                                                             ?></td> -->
@@ -118,44 +117,6 @@
                                     } ?>
                                 </tbody>
                             </table>
-=======
-                                                <tr>
-                                                    <!-- <td><?php //echo $post['id_penelitian'] 
-                                                                ?></td> -->
-                                                    <td><?php echo $post['ID_pkm'] ?></td>
-                                                    <td><?php echo $post['jenis_pkm'] ?></td>
-                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                    <td><?php echo $post['topik_kegiatan'] ?></td>
-                                                    <td><?php echo $post['status'] ?></td>
-                                                    <td>
-                                                        <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                                        <?php
-                                                        // if ($post['jenis_pkm'] == 'Mandiri') {
-                                                        //     echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                                        // } else {
-                                                        //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                                        // }
-                                                        if ($post['id_status'] == 1 || $post['id_status'] == 2 ||  $post['id_status'] == 5 || $post['id_status'] == 6) { ?>
-                                                            <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                        <?php
-                                                        } else if (($post['id_status'] == 3)) { ?>
-                                                            <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                        <?php
-                                                        } else if ($post['id_status'] == 4) { ?>
-                                                            <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                        <?php
-                                                        } else if ($post['id_status'] == 7) { ?>
-                                                            <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                        <?php } ?>
-                                                    </td>
-                                                </tr>
-                                        <?php $i++;
-                                            endforeach;
-                                        } ?>
-                                    </tbody>
-                                </table>
-                            </div>
->>>>>>> 3695b752902fe952a96517afc9f7c0927736e7ba
                         </div>
 
 
