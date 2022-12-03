@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
+use App\Models\StatusPenelitianModel;
 use App\Models\PkmModel;
+use App\Models\StatusPkmModel;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
@@ -17,11 +19,15 @@ class Kepala extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $statusPenelitianModel;
     protected $pkmModel;
+    protected $statusPkmModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
+        $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->pkmModel = new PkmModel();
+        $this->statusPkmModel = new StatusPkmModel();
     }
 
     public function index()
@@ -146,6 +152,11 @@ class Kepala extends BaseController
             'status_pengajuan'  => 'Disetujui oleh Kepala PPPM'
         ]);
 
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $id_penelitian,
+            'status'        => 'Disetujui oleh Kepala PPPM'
+        ]);
+
         $sendEmail = new SendEmail();
         $sendEmail->send_email_persetujuan('Kepala PPPM');
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
@@ -157,8 +168,13 @@ class Kepala extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 6,
-            'status_pengajuan'  => 'Ditolak kepala pppm'
+            'id_status'         => 9,
+            'status_pengajuan'  => 'Ditolak Kepala PPPM'
+        ]);
+
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $id_penelitian,
+            'status'        => 'Ditolak oleh Kepala PPPM'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
@@ -174,6 +190,11 @@ class Kepala extends BaseController
             'status'            => 'Disetujui Oleh Kepala PPPM'
         ]);
 
+        $this->statusPkmModel->save([
+            'id_pkm' => $id_pkm,
+            'status' => 'Disetujui oleh Kepala PPPM'
+        ]);
+
         session()->setFlashdata('pesan', 'PKM berhasil disetujui');
 
         return redirect()->to('/pkmKepala');
@@ -185,6 +206,11 @@ class Kepala extends BaseController
             'ID_pkm'            => $id_pkm,
             'id_status'         => 6,
             'status'            => 'Ditolak Oleh Kepala PPPM'
+        ]);
+
+        $this->statusPkmModel->save([
+            'id_pkm' => $id_pkm,
+            'status' => 'Ditolak Oleh Kepala PPPM'
         ]);
 
         session()->setFlashdata('pesan', 'PKM telah ditolak');

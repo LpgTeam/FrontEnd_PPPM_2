@@ -62,7 +62,6 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="table-responsive">
                                 <table id="example" class="table">
                                     <thead>
@@ -70,97 +69,64 @@
                                             <th scope="col">Nomor</th>
                                             <th scope="col">Jenis PKM</th>
                                             <th scope="col">Tanggal Pengajuan</th>
-                                            <th scope="col">Judul PKM</th>
+                                            <th scope="col">Topik PKM</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody id="myTable">
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mandiri</td>
-                                            <td>24-06-2022</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>
-                                                <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Dosen</td>
-                                            <td>22-04-2022</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>
-                                                <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Kelompok Dosen</td>
-                                            <td>24-06-2022</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>
-                                                <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>Mandiri</td>
-                                            <td>24-06-2022</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>
-                                                <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">5</th>
-                                            <td>Terstruktur</td>
-                                            <td>24-06-2022</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>
-                                                <a class="btn btn-primary" id="editButton" data-bs-toggle="modal" data-bs-target="#edit"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
-                                        </tr>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($pkm as $key => $post) :  ?>
+
+                                            <tr>
+                                                <!-- <td><?php //echo $post['id_penelitian'] 
+                                                            ?></td> -->
+                                                <td><?php echo $i ?></td>
+                                                <td><?php echo $post['jenis_pkm'] ?></td>
+                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                <td><?php echo $post['topik_kegiatan'] ?></td>
+                                                <td><?php echo $post['status'] ?></td>
+                                                <td>
+                                                    <a class="btn btn-primary" href='/adminPkmProses1/<?= $post['ID_pkm']; ?>'><i class="bi bi-pencil-square"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++;    ?>
+                                        <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>
+
+
+                            <script>
+                                $(document).ready(function() {
+                                    dataTable = $("#example").DataTable({});
+
+                                    $('.status-dropdown').on('change', function(e) {
+                                        var status = $(this).val();
+                                        $('.status-dropdown').val(status)
+                                        console.log(status)
+                                        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                        dataTable.column(1).search(status).draw();
+                                    })
+
+                                    $('.status-dropdown2').on('change', function(e) {
+                                        var status = $(this).val();
+                                        $('.status-dropdown2').val(status)
+                                        console.log(status)
+                                        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                        dataTable.column(4).search(status).draw();
+                                    })
+                                });
+                            </script>
+
                         </div>
-
-
-                        <script>
-                            $(document).ready(function() {
-                                dataTable = $("#example").DataTable({});
-
-                                $('.status-dropdown').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(1).search(status).draw();
-                                })
-
-                                $('.status-dropdown2').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown2').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(4).search(status).draw();
-                                })
-                            });
-                        </script>
-
                     </div>
                 </div>
             </div>
-        </div>
 
         </div>
         </div>
+
 
         <!-- <script>
             $(document).ready(function() {

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModelCode;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
+use App\Models\StatusPenelitianModel;
 use App\Models\PenelitianModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DosenModel;
@@ -16,6 +17,7 @@ use App\Libraries\Pdfgenerator;
 class Penelitian extends BaseController
 {
     use ResponseTrait;
+    protected $statusPenelitianModel;
     protected $penelitianModel;
     protected $ketuatimpenelitiModel;
     protected $timpenelitiModel;
@@ -25,6 +27,7 @@ class Penelitian extends BaseController
     public function __construct()
     {
         //new
+        $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->timpenelitiModel = new TimPenelitiModel();
@@ -77,7 +80,7 @@ class Penelitian extends BaseController
                 'uploadBukti' => [
                     'rules' => 'uploaded[uploadBukti]|ext_in[uploadBukti,pdf]|max_size[uploadBukti,10000]',
                     'errors' => [
-                        'uploaded' => "{field} file tidak boleh kosong",
+                        'uploaded' => "File tidak boleh kosong",
                         'ext_in' => "Format file harus pdf",
                         'max_size' => "Ukuran File terlalu besar"
                     ]
@@ -97,7 +100,7 @@ class Penelitian extends BaseController
                 //     return redirect()->to('/penelitianSemiMandiri')->withInput();
                 // }
             }
-            $namaSurat = "-";
+            $namaSign = "-";
             $biaya = "0";
             $namaProposal = "-";
             $fileBukti = $this->request->getFile('uploadBukti');
@@ -122,16 +125,16 @@ class Penelitian extends BaseController
                 'upload' => [
                     'rules' => 'uploaded[upload]|ext_in[upload,pdf]|max_size[upload,10000]',
                     'errors' => [
-                        'uploaded' => "{field} file tidak boleh kosong",
+                        'uploaded' => "File tidak boleh kosong",
                         'ext_in' => "Format file harus pdf",
                         'max_size' => "Ukuran File terlalu besar"
                     ]
                 ],
-                'uploadSurat' => [
-                    'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
+                'uploadSign' => [
+                    'rules' => 'uploaded[uploadSign]|is_image[uploadSign]|mime_in[uploadSign,image/jpg,image/jpeg,image/png]|max_size[uploadSign,10000]',
                     'errors' => [
-                        'uploaded' => "{field} file tidak boleh kosong",
-                        'ext_in' => "Format file harus pdf",
+                        'uploaded' => "File tidak boleh kosong",
+                        'mime_in','is_image' => "Format file harus image/jpg,image/jpeg,image/png",
                         'max_size' => "Ukuran File terlalu besar (Max 100kb)"
                     ]
                 ]
@@ -151,10 +154,12 @@ class Penelitian extends BaseController
                 // }
             }
             $fileProposal = $this->request->getFile('upload');
-            $fileSurat = $this->request->getFile('uploadSurat');
-            $namaSurat = $fileSurat->getName();
+            // $fileSurat = $this->request->getFile('uploadSign');
+            // $namaSurat = $fileSurat->getName();
+            $fileSign = $this->request->getFile('uploadSign');
+            $namaSign = $fileSign->getName();
             $namaProposal = $fileProposal->getName();
-            $fileSurat->move('surat_pernyataan', $namaSurat);
+            $fileSign->move('sign/penelitian', $namaSign);
             $fileProposal->move('proposal', $namaProposal);
             $biaya = $this->request->getVar('biaya');
             $namaBukti = "-";
@@ -173,39 +178,27 @@ class Penelitian extends BaseController
             'id_status' => '1',
             'status_pengajuan' => 'Diajukan oleh Dosen',
             'file_proposal' => $namaProposal,
-            'surat_pernyataan' => $namaSurat,
+            'tanda_tangan' => $namaSign,
             'biaya'  => $biaya,
             'bukti_luaran' => $namaBukti
         ]);
-        // $dosenModel = new DosenModel();
-        // $dosenModel->save([
-        //     'NIP_dosen'     => $this->request->getVar('judul_penelitian'),
-        //     // 'username'      => $this->request->getVar('username'),
-        //     'username'      => $this->request->getVar('judul_penelitian'),
-        //     'email_dosen'   => $this->request->getVar('judul_penelitian'),
-        //     'jabatan_dosen' => $this->request->getVar('judul_penelitian'),
-        //     'nama_dosen'    => $this->request->getVar('judul_penelitian'),
-        //     'program_studi' => $this->request->getVar('judul_penelitian'),
-        //     'no_hp' => $this->request->getVar('judul_penelitian'),
-        //     'foto_dosen' => $this->request->getVar('judul_penelitian'),
-        //     'minat_penelitian' => $this->request->getVar('judul_penelitian'),
-        //     'google_scholar' => $this->request->getVar('judul_penelitian'),
-        //     'link_sinta' => $this->request->getVar('judul_penelitian'),
-        //     'link_orcid' => $this->request->getVar('judul_penelitian'),
-        //     'link_scopus' => $this->request->getVar('judul_penelitian'),
-        //     'link_wos' => $this->request->getVar('judul_penelitian')
-        // ]);
-
+        
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
+       
+        //Status 
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $idpenelitian['id_penelitian'],
+            'status'        => 'Diajukan oleh Dosen'
+        ]);
+        
         // dd($idpenelitian );
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         // dd($nipdosen);
 
-        $KetuatimpenelitiModel = new TimPenelitiModel();
-        $timpenelitiModel = new TimPenelitiModel();
+        
 
-        $KetuatimpenelitiModel->save([
+        $this->ketuatimpenelitiModel->save([
             'id_penelitian' => $idpenelitian['id_penelitian'],
             'NIP' => $nipdosen['NIP_dosen'],
             'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
@@ -215,7 +208,7 @@ class Penelitian extends BaseController
         ]);
         $no = $this->request->getVar('anggota');
         for ($i = 1; $i <= $no; $i++) {
-            $timpenelitiModel->save([
+            $this->timpenelitiModel->save([
                 'id_penelitian' => $idpenelitian['id_penelitian'],
                 'NIP' => $this->request->getVar('nip' . $i),
                 'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
@@ -269,10 +262,10 @@ class Penelitian extends BaseController
         echo json_encode($w);
     }
 
-    public function printSurat()
-    {
-        return $this->response->download('surat_pernyataan/Template_surat_pernyataan_penelitian.docx', null)->setFileName("Surat-Pernyataan.docx"); //download file
-    }
+    // public function printSurat()
+    // {
+    //     return $this->response->download('surat_pernyataan/Template_surat_pernyataan_penelitian.docx', null)->setFileName("Surat-Pernyataan.docx"); //download file
+    // }
 
     public function printKontrak()
     {

@@ -6,11 +6,13 @@ use App\Controllers\BaseController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\LaporanPenelitianModel;
 use App\Models\PenelitianModel;
+use App\Models\StatusPenelitianModel;
 use App\Models\LuaranTargetModel;
 
 class PenelitianDetail extends BaseController
 {
     use ResponseTrait;
+    protected $statusPenelitianModel;
     protected $penelitianModel;
     protected $ketuatimpenelitiModel;
     protected $timpenelitiModel;
@@ -24,6 +26,7 @@ class PenelitianDetail extends BaseController
         $this->luaranModel = new LuaranTargetModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
+        $this->statusPenelitianModel = new StatusPenelitianModel();
     }
     
     public function index()
@@ -60,6 +63,11 @@ class PenelitianDetail extends BaseController
             'id_penelitian'     => $Pen['id_penelitian'],
             'id_status'         => "10",
             'status_pengajuan'  => "Kegiatan telah selesai dilaksanakan"
+        ]);
+
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $Pen['id_penelitian'],
+            'status'        => 'Kegiatan telah selesai dilaksanakan'
         ]);
 
         $this->laporanPenelitianModel->save([
@@ -120,6 +128,11 @@ class PenelitianDetail extends BaseController
             'status_pengajuan'  => "Kegiatan sedang berlangsung"
         ]);
 
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $Pen['id_penelitian'],
+            'status'        => 'Kegiatan sedang berlangsung'
+        ]);
+
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
             "kontrak" => $namaKontrak,
@@ -167,6 +180,11 @@ class PenelitianDetail extends BaseController
             'id_penelitian'     => $Pen['id_penelitian'],
             'id_status'         => "6",
             'status_pengajuan'  => "Kegiatan sedang berlangsung"
+        ]);
+
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $Pen['id_penelitian'],
+            'status'        => 'Kegiatan sedang berlangsung'
         ]);
 
         $this->laporanPenelitianModel->save([

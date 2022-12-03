@@ -241,7 +241,7 @@
             <tr>
                 <td>Mengetahui</td>
                 <td>Jakarta, ...............</td>
-                <td>Jakarta, <?= $penelitian['tanggal_pengajuan']; ?></td>
+                <td>Jakarta, <?= date("d F Y", strtotime($penelitian['tanggal_pengajuan'])); ?></td>
             </tr>
             <tr>
                 <td>Kepala PPPM</td>
@@ -255,13 +255,16 @@
             </tr>
             <tr>
                 <td>
-                    <?php if ($penelitian['id_status'] >= 4 || $penelitian['id_status'] <= 6 || $penelitian['id_status'] == 10) { ?>
+                    <?php if (($penelitian['id_status'] >= 4 && $penelitian['id_status'] <= 6 ) || $penelitian['id_status'] == 10) { ?>
                         <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100">
                         
                     <?php } ?>
                 </td>
                 <td></td>
-                <td></td>
+                <td>
+                    <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100">    
+                    <!-- <img src="<?= base_url("") ?>/assets/img/<?= $penelitian['tanda_tangan'];?>" alt="stis" width="120" /> -->
+                </td>
             </tr>
             <tr>
                 <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>

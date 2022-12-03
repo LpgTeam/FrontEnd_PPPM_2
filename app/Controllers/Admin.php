@@ -4,6 +4,11 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
+use App\Models\PkmModel;
+use App\Models\StatusPenelitianModel;
+use App\Models\StatusPkmModel;
+use App\Models\DetailStatusPenelitianModel;
+use App\Models\DetailStatusPkmModel;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
@@ -14,6 +19,22 @@ use function PHPUnit\Framework\isNull;
 
 class Admin extends BaseController
 {
+    protected $penelitianModel;
+    protected $pkmModel;
+    protected $statusPenelitianModel;
+    protected $statusPkmModel;
+    protected $detailStatus;
+    protected $detailStatusPkm;
+
+    public function __construct()
+    {
+        $this->statusPenelitianModel = new StatusPenelitianModel();
+        $this->statusPkmModel = new StatusPkmModel();
+        $this->detailStatus = new DetailStatusPenelitianModel();
+        $this->detailStatusPkm = new DetailStatusPkmModel();
+        $this->penelitianModel = new PenelitianModel();
+        $this->pkmModel = new PkmModel();
+    }
     public function index()
     {
         $db      = \Config\Database::connect();
@@ -89,71 +110,118 @@ class Admin extends BaseController
 
     public function penelitian()
     {
-        $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->getData(),
+            'penelitian' => $this->penelitianModel->getData(),
         ];
         return view('adminPPPM/tampilan/penelitian', $data);
     }
 
     public function pkm()
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('adminPPPM/tampilan/pkm', $data);
-    }
-
-    public function adminSemiMandiri1($idPenelitian)
-    {
-        $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->find($idPenelitian)
+            'pkm'   => $this->pkmModel->findAll()
         ];
-        return view('adminPPPM/tampilan/penelitianProses/adminSemiMandiri1', $data);
+        return view('adminPPPM/tampilan/pkm', $data);
     }
-
-    public function adminSemiMandiri2()
+    //=====================Peneliian Proses==============================================
+    public function adminProses1($idPenelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('adminPPPM/tampilan/penelitianProses/adminSemiMandiri2', $data);
-    }
-
-    public function adminSemiMandiri3()
-    {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('adminPPPM/tampilan/penelitianProses/adminSemiMandiri3', $data);
-    }
-
-    public function adminProses1()
-    {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'penelitian'    => $this->penelitianModel->find($idPenelitian),
+            'status'        => $this->statusPenelitianModel->get_status_by_id_penelitian($idPenelitian),
+            'statusTerbaru' => $this->statusPenelitianModel->get_status_by_id_penelitian_last($idPenelitian)
+        ];
+        // dd($data['status']);
         return view('adminPPPM/tampilan/penelitianProses/adminProses1', $data);
     }
 
-    public function adminProses2()
+    public function adminProses2($idPenelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($idPenelitian),
+            'status'        => $this->statusPenelitianModel->get_status_by_id_penelitian($idPenelitian)
+        ];
         return view('adminPPPM/tampilan/penelitianProses/adminProses2', $data);
     }
 
-    public function adminProses3()
+    public function adminProses3($idPenelitian)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'penelitian' => $this->penelitianModel->find($idPenelitian),
+            'status'        => $this->statusPenelitianModel->get_status_by_id_penelitian($idPenelitian)
+        ];
         return view('adminPPPM/tampilan/penelitianProses/adminProses3', $data);
     }
+    //==============================================================================
 
-    public function pkmAdminProses1()
+    public function pkmAdminProses1($idpkm)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'pkm'           => $this->pkmModel->find($idpkm),
+            'status'        => $this->statusPkmModel->get_status_by_id_pkm($idpkm),
+            'statusTerbaru' => $this->statusPkmModel->get_status_by_id_pkm_last($idpkm)
+        ];
         return view('adminPPPM/tampilan/pkmProses/pkmProses1', $data);
     }
 
-    public function pkmAdminProses2()
+    public function pkmAdminProses2($idpkm)
     {
-        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'pkm'   => $this->pkmModel->find($idpkm),
+            'status' => $this->statusPkmModel->get_status_by_id_pkm($idpkm)
+        ];
         return view('adminPPPM/tampilan/pkmProses/pkmProses2', $data);
     }
+//=========================Remove Status===============================================
+    //penelitian
+    public function removeStatus($id_penelitian, $id_status)
+    {
+        $this->statusPenelitianModel->delete([
+            'id_status' => $id_status
+        ]);
+
+        $currentStatus = $this->statusPenelitianModel->get_status_by_id_penelitian_last($id_penelitian);
+        $idCurrentStatus = $this->detailStatus->get_id_status_by_status($currentStatus['status']);
+        // dd($currentStatus['status']);
+        // dd($idCurrentStatus);
+
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status'         => $idCurrentStatus['id_detail'],
+            'status_pengajuan'  => $idCurrentStatus['deskripsi'],
+        ]);
+
+        return redirect()->to(site_url('penelitianAdmin'));
+    }
+
+    //pkm
+    public function removeStatusPkm($id_pkm, $id_status)
+    {
+        $this->statusPkmModel->delete([
+            'id_status' => $id_status
+        ]);
+
+        $currentStatus = $this->statusPkmModel->get_status_by_id_pkm_last($id_pkm);
+        $idCurrentStatus = $this->detailStatusPkm->get_id_status_by_status($currentStatus['status']);
+        // dd($currentStatus['status']);
+        // dd($idCurrentStatus);
+
+        $this->pkmModel->save([
+            'ID_pkm'     => $id_pkm,
+            'id_status'  => $idCurrentStatus['id_detail'],
+            'status'     => $idCurrentStatus['Deskripsi'],
+        ]);
+
+        return redirect()->to(site_url('pkmAdmin'));
+    }
+//=================================================================================
 
     // public function userSetting()
     // {

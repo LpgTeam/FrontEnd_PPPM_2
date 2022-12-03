@@ -93,7 +93,7 @@
             <div class="justify-content-md-center">
                 <div class="card">
                     <div class="card-body ">
-                        <h5 class="card-title">Diagram Batang Anggaran</h5>
+                        <h5 class="card-title">Diagram Pie Anggaran</h5>
 
                         <!-- Pie Chart -->
                         <div id="pieChart" style="min-height: 400px;" class="echart"></div>

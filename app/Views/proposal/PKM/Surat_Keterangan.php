@@ -89,7 +89,9 @@ foreach ($peneliti as $key => $anggota) : ?>
             </tr>
             <tr>
                 <td>Jabatan</td>
-                <td>: <?= $anggota['jabatan_dosen'] ?></td>
+                <td>: <?php if($anggota['jabatan_dosen'] != null){
+                    echo $anggota['jabatan_dosen']; 
+                    } else{ echo 'Mahaisiswa';} ?></td>
             </tr>
         </table>
 
@@ -118,4 +120,4 @@ foreach ($peneliti as $key => $anggota) : ?>
     </body>
 
     </html>
-<?php endforeach ?>
+<?php endforeach; ?>

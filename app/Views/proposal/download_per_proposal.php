@@ -1,9 +1,9 @@
 <div class="d-flex justify-content-between">
-    <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Proposal </a>
+    <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
     <a href="/penelitian/download-proposal-akhir/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
     <!-- <div class="btn btn-sm btn-primary mr-2 text-center proposal" style="cursor:pointer" data-nama="file test" data-file="<?= $penelitian["judul_penelitian"]; ?>"><i class="fa fa-eye mx-auto"></i>dsdf</div> -->
 
-    <!-- <a href="/penelitian/view_proposal_savelocal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a> -->
+    <!-- <a href="/penelitian/view_proposal_savelocal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-success">Lihat Proposal </a> -->
     <!-- <a href="/penelitian/download-all-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Proposal </a> -->
 </div>
 

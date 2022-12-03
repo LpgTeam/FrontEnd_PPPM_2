@@ -129,24 +129,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <label class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <!-- <button onclick ="" class="btn btn-primary">
+                                    <button onclick ="" class="btn btn-primary">
                                     Download Surat Pernyataan</i>
-                                </button> -->
-                                    <a href="<?= base_url('penelitian/printSurat') ?>" class="btn btn-primary">
-                                        Download Surat Pernyataan
+                                </button>
+                                    <a href="<? //= base_url('penelitian/printSurat') 
+                                                ?>" class="btn btn-primary">
+                                          Download Surat Pernyataan
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="row mb-3">
-                                <label for="uploadSurat" class="col-md-4 col-lg-3 col-form-label ">Upload Surat Pernyataan</label>
+                                <label for="uploadSign" class="col-md-4 col-lg-3 col-form-label ">Upload Tanda Tangan Anda (Ketua Tim)</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="uploadSurat" class="form-control  <?= ($validation->hasError('uploadSurat')) ? 'is-invalid' : ''; ?>" type="file" id="uploadSurat">
+                                    <input name="uploadSign" class="form-control  <?= ($validation->hasError('uploadSign')) ? 'is-invalid' : ''; ?>" type="file" id="uploadSign">
                                     <div class="invalid-feedback" id="uploadValid2">
-                                        <?= $validation->getError('uploadSurat'); ?>
+                                        <?= $validation->getError('uploadSign'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -166,23 +167,20 @@
                         <?php endif; ?>
 
                         <div class="row mb-3">
-                            <div class="table-responsive">
-                                <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
-                                    <tr class="table-primary">
-                                        <th scope="col">Nama Anggota</th>
-                                        <th scope="col">NIP/NIM</th>
-                                        <th scope="col">Program Studi</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
+                                <tr class="table-primary">
+                                    <th scope="col">Nama Anggota</th>
+                                    <th scope="col">NIP/NIM</th>
+                                    <th scope="col">Program Studi</th>
+                                    <th scope="col">Bidang Keahlian</th>
+                                    <th scope="col">Tugas/Peran</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                                <tbody>
+                                </tbody>
+                            </table>
 
                             <div class="col-md-4 col-lg-6">
-                                <!-- <button onclick='add()' class="btn btn-warning">
-                                    Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                </button> -->
                                 <a onclick="add()" class="btn btn-warning" id="btn">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </a>
@@ -191,35 +189,33 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <!-- <div class="row mb-3">
                             <label class="col-md-4 col-lg-3 col-form-label ">Tugas/Peran Tim Peneliti</label>
-                        </div>
+                        </div> -->
 
-                        <div class="row mb-3">
-                            <div class="table-responsive">
-                                <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
-                                    <tr class="table-primary">
-                                        <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Bidang Keahlian</th>
-                                        <th scope="col">Tugas/Peran</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <!-- <div class="row mb-3"> -->
+                        <!-- <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
+                                <tr class="table-primary">
+                                    <th scope="col">Nama Anggota</th>
+                                    <th scope="col">Bidang Keahlian</th>
+                                    <th scope="col">Tugas/Peran</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                                <tbody>
+                                </tbody>
+                            </table> -->
 
-                            <div class="col-md-4 col-lg-6">
-                                <!-- <button onclick='add2()' class="btn btn-warning">
+                        <!-- <div class="col-md-4 col-lg-6"> -->
+                        <!-- <button onclick='add2()' class="btn btn-warning">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </button> -->
-                                <a onclick="add2()" class="btn btn-warning" id="btn2">
+                        <!-- <a onclick="add2()" class="btn btn-warning" id="btn2">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </a>
                                 <p class="invalid-feedback" id="m2" style="display: none ;">Jumlah Anggota sudah full</p>
 
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
 
                         <div class="row mb-3">
                             <label class="col-md-4 col-lg-3 col-form-label ">Luaran dan Target Capaian</label>
@@ -265,7 +261,16 @@
                                 // btn.style.display = "block";
                                 if (x > rowCount - 1) {
                                     m.style.display = 'none';
-                                    $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nip" + rowCount + "' class='form-control' type='text' id='nip" + rowCount + "' required></td><td><input name='studiAnggota" + rowCount + "' class='form-control' type='text' id='studiAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                    $(".table1").append("<tr><td><input name='namaAnggota" + rowCount +
+                                        "' class='form-control' type='text' id='namaAnggota" + rowCount +
+                                        "' required></td><td><input name='nip" + rowCount + "' class='form-control' type='text' id='nip" + rowCount +
+                                        "' required></td><td><input name='studiAnggota" + rowCount +
+                                        "' class='form-control' type='text' id='studiAnggota" + rowCount +
+                                        "' required></td><td><input name='bidangAnggota" + rowCount +
+                                        "' class='form-control' type='text' id='bidangAnggota" + rowCount +
+                                        "' required></td><td><input name='tugasAnggota" + rowCount +
+                                        "' class='form-control' type='text' id='tugasAnggota" + rowCount +
+                                        "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
                                     console.log(rowCount);
                                     console.log(x);
                                 } else {
@@ -274,31 +279,31 @@
                                 }
                             }
 
-                            function rm2() {
-                                $(event.target).closest("tr").remove();
-                            }
+                            // function rm2() {
+                            //     $(event.target).closest("tr").remove();
+                            // }
 
                             // function add2() {
                             //     var rowCount2 = document.getElementById('myTableID2').rows.length;
                             //     $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                             //     console.log(rowCount2);
                             // }
-                            function add2() {
+                            // function add2() {
 
-                                var rowCount2 = document.getElementById('myTableID2').rows.length;
-                                var x = document.getElementById('anggota').value;
-                                var btn = document.getElementById('btn2');
-                                var m = document.getElementById('m2');
-                                // btn.style.display = "block";
-                                if (x > rowCount2 - 1) {
-                                    m.style.display = 'none';
-                                    $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
-                                    console.log(rowCount2);
-                                } else {
-                                    m.style.display = "block";
-                                    btn.onclick() = null;
-                                }
-                            }
+                            //     var rowCount2 = document.getElementById('myTableID2').rows.length;
+                            //     var x = document.getElementById('anggota').value;
+                            //     var btn = document.getElementById('btn2');
+                            //     var m = document.getElementById('m2');
+                            //     // btn.style.display = "block";
+                            //     if (x > rowCount2 - 1) {
+                            //         m.style.display = 'none';
+                            //         $(".table2").append("<tr><td><input name='namaAnggota" + rowCount2 + "' class='form-control' type='text' id='namaAnggota" + rowCount2 + "' required></td><td><input name='bidangAnggota" + rowCount2 + "' class='form-control' type='text' id='bidangAnggota" + rowCount2 + "' required></td><td><input name='tugasAnggota" + rowCount2 + "' class='form-control' type='text' id='tugasAnggota" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                            //         console.log(rowCount2);
+                            //     } else {
+                            //         m.style.display = "block";
+                            //         btn.onclick() = null;
+                            //     }
+                            // }
 
                             function rm3() {
                                 $(event.target).closest("tr").remove();
@@ -307,7 +312,13 @@
                             function add3() {
                                 var m = document.getElementById('jumlahrow');
                                 var rowCount3 = document.getElementById('myTableID3').rows.length;
-                                $(".table3").append("<tr><td><input name='jenisLuaran" + rowCount3 + "' class='form-control' type='text' id='jenisLuaran" + rowCount3 + "' required></td><td><input name='targetCapaian" + rowCount3 + "' class='form-control' type='text' id='targetCapaian" + rowCount3 + "' required></td><td><input name='jurnalTujuan" + rowCount3 + "' class='form-control' type='text' id='jurnalTujuan" + rowCount3 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                $(".table3").append("<tr><td><input name='jenisLuaran" + rowCount3 +
+                                    "' class='form-control' type='text' id='jenisLuaran" + rowCount3 +
+                                    "' required></td><td><input name='targetCapaian" + rowCount3 +
+                                    "' class='form-control' type='text' id='targetCapaian" + rowCount3 +
+                                    "' required></td><td><input name='jurnalTujuan" + rowCount3 +
+                                    "' class='form-control' type='text' id='jurnalTujuan" + rowCount3 +
+                                    "' required></td><td><button onclick='rm3()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount3);
                                 m.value = rowCount3;
                             }
@@ -315,9 +326,25 @@
 
 
                         <div class="row mb-3"></div>
-                        <div class="row mb-3"></div>
 
                         <hr>
+                        <div class="row justify-content-md-center" data-aos="fade-up">
+                            <div class="surat row gy-4 justify-content-md-center col-md-9">
+                                <h2>Surat Pernyataan</h2>
+                                <p>Dengan inimenyatakan bahwa hasil penelitian kami bersifat original dan bebas
+                                    dari unsur plagiarisme. Jika dikemudian hari ditemukan ketidaksesuaian dengan
+                                    pernyataan ini, saya bersedia dituntut dan diproses sesuai dengan ketentuan yang
+                                    berlaku dan mengembalikan seluruh biaya yang sudah saya terima. </p>
+                                <p>Dengan anda meyetujui maka tanda tangan yang anda upload akan otomatis tergenerate
+                                    ke file surat pernyataan pada proposal</p>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-text">
+                                        <input id="agree" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                        <label>&nbspSetuju</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="text-end">
                             <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Submit Form</button>
