@@ -63,7 +63,7 @@
                             <hr>
                             <p>Surat pernyataan PKM Dosen Politeknik Statistika STIS</p>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Surat </button>
+                                <button class="btn btn-success">Lihat Surat </button>
                                 <a href="<?= base_url('pkm/printSurat') ?>" class="btn btn-primary">
                                     Download Surat Pernyataan
                                 </a>
