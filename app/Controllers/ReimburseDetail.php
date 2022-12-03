@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
+use App\Models\PkmModel;
 use App\Models\ReimburseModel;
 use CodeIgniter\I18n\Time;
 use DateTime;
@@ -15,6 +16,7 @@ class ReimburseDetail extends BaseController
     {
         $this->penelitianModel = new PenelitianModel();
         $this->reimburseModel = new ReimburseModel();
+        $this->pkmModel = new PkmModel();
 
       
     }
@@ -76,6 +78,7 @@ class ReimburseDetail extends BaseController
         $this->reimburseModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
             'jenis_penelitian'  => $Pen['jenis_penelitian'],
+            'judul_penelitian'  => $Pen['judul_penelitian'],
             'tanggal_pengajuan' => Time::now('Asia/jakarta'),
             'loa'               => $namaLoa,
             'naskah_artikel'    => $namaNaskah,
@@ -83,10 +86,41 @@ class ReimburseDetail extends BaseController
             'id_status'         => "1",
             'status_reimburse'  => "Reimbursement diajukan"
         ]);
+        
+        $this->penelitianModel->save([
+            'id_penelitian'     => $Pen['id_penelitian'],
+            'id_status_reimburse' => 1
+        ]);
+    
 
         session()->setFlashdata('pesan', 'Reimbursement berhasil diajukan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
         return redirect()->to('/reimburseDosen');
     }
+
+    public function savePKM($id_pkm)
+    {
+        $pkm = $this->pkmModel->get_pkm($id_pkm);
+       
+        $this->reimburseModel->save([
+            'id_pkm'     => $pkm['ID_pkm'],
+            'jenis_pkm'  => $pkm['jenis_pkm'],
+            'judul_pkm'  => $pkm['topik_kegiatan'],
+            'tanggal_pengajuan' => Time::now('Asia/jakarta'),
+            'id_status'         => "1",
+            'status_reimburse'  => "Reimbursement diajukan"
+        ]);
+
+        $this->pkmModel->save([
+            'ID_pkm'     => $pkm['ID_pkm'],
+            'id_status_reimburse' => 1
+        ]);
+
+        session()->setFlashdata('pesan', 'Reimbursement berhasil diajukan.');
+        // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
+
+        return redirect()->to('/reimburseDosen');
+    }
+
 }

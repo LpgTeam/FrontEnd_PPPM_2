@@ -104,11 +104,23 @@
                                         <?php
                                     }
                                         ?>
-                                        <li><a href="/logout">Logout</a></li>
+
+                                        <!-- BAU -->
+                                        <?php
+                                        if ($_SESSION['group'] == "bau") {
+                                        ?>
+                                            <li><a class="nav-link scrollto" href="/pkmBAU">Kembali</a></li>
+                                            <li class="dropdown">
+                                                <a class="username scrollto" href="#"><span>BAU</span></a>
+                                                <ul>
+                                                <?php
+                                            }
+                                                ?>
+                                                <li><a href="/logout">Logout</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
-                                    </li>
-                                </ul>
-                                <i class="bi bi-list mobile-nav-toggle"></i>
+                                        <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
     </div>

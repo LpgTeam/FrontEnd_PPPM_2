@@ -47,7 +47,7 @@
                             <img src="/foto_profil/<?= $loginUser['foto_dosen']; ?>" alt="Profile">
                         <?php } ?>
                         <h2><?= $loginUser['nama_dosen']; ?></h2>
-                        <h3><?=$loginUser['jabatan_dosen']; ?></h3>
+                        <h3><?= $loginUser['jabatan_dosen']; ?></h3>
                         <div class="social-links mt-2">
                             <?php ?>
                             <p>
@@ -183,7 +183,7 @@
                                             <div class="pt-2">
                                                 <label for="fotoProfil" class="btn btn-primary btn-sm fotoProfil"><i class="bi bi-upload"></i></label>
                                                 <input type="file" class="inputFotoProfil" title="Upload new profile image" name="fotoProfil" id="fotoProfil" onchange="prevFoto()">
-                                                <a onclick="deleteFoto()" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a> 
+                                                <!-- <a onclick="deleteFoto()" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>  -->
                                             </div>
                                         </div>
                                     </div>

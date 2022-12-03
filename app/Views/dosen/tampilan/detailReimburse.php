@@ -42,135 +42,99 @@
                         </p>
 
                         <hr>
-                        
+
                         <div class="d-flex justify-content-end">
-                            <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Proposal </a>
+                            <a href="/penelitian/view_proposal/<?= $penelitian['id_penelitian']; ?>/<?= $penelitian['judul_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a>
                         </div>
                         <hr>
-                        <?php 
-                        if($kegiatan == 'penelitian'){
-                            ?>
-                        <form action="<?= base_url('/reimburseDetail/savePenelitian/' . $penelitian['id_penelitian']); ?>" method="post" enctype="multipart/form-data">
-                            <div class="row mb-3">
-                                <label for="loa" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (LOA)</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="uploadLoa" class="form-control  <?= ($validation->hasError('uploadLoa')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLoa">
-                                    <div class="invalid-feedback" id="uploadValid">
-                                        <?= $validation->getError('uploadLoa'); ?>
-                                    </div>
-                                </div>
-                            </div>
+                        <?php
 
-                            <div class="row mb-3">
-                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah">
-                                    <div class="invalid-feedback" id="uploadValid">
-                                        <?= $validation->getError('uploadNaskah'); ?>
-                                    </div>
-                                </div>
-                            </div>
+                        if ($penelitian['id_status_reimburse'] == 0) {
                             
-                            <div class="row mb-3">
-                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice">
-                                    <div class="invalid-feedback" id="uploadValid">
-                                        <?= $validation->getError('uploadInvoice'); ?>
+                        ?>
+                                <form action="<?= base_url('/reimburseDetail/savePenelitian/' . $penelitian['id_penelitian']); ?>" method="post" enctype="multipart/form-data">
+                                    <div class="row mb-3">
+                                        <label for="loa" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (LOA)</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadLoa" class="form-control  <?= ($validation->hasError('uploadLoa')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLoa">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadLoa'); ?>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
+                                    <div class="row mb-3">
+                                        <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadNaskah'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadInvoice'); ?>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
+
+                                    </div>
+
+                                    <!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="submitLabel">Submit Pengajuan Reimburse</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin mengajukan reimburse
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                                                <a button type="submit" class="btn btn-primary" onclick="location.href='<?= base_url('/reimburseDetail/save/' . $penelitian['id_penelitian']); ?>">Ya</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </form>
+    
                             
-                            </div>
-
-                            <!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="submitLabel">Submit Pengajuan Reimburse</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Apakah anda yakin mengajukan reimburse
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                            <a button type="submit" class="btn btn-primary" onclick="location.href='<?= base_url('/reimburseDetail/save/' . $penelitian['id_penelitian']); ?>">Ya</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </form>
+                                         
+                        <?php
+                        } else if($penelitian['id_status_reimburse'] == 1){
+                        ?>
+                            <h5 class="card-title text-center">Pengajuan Reimburse Anda Sedang dalam Proses</h5>
 
                         <?php
-                            } else  if($kegiatan == 'pkm'){
-                                ?>
-                        <form action="<?= base_url('/reimburseDetail/savePkm/' . $penelitian['id_penelitian']); ?>" method="post" enctype="multipart/form-data">
-                            <div class="row mb-3">
-                                <label for="loa" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (LOA)</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="uploadLoa" class="form-control  <?= ($validation->hasError('uploadLoa')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLoa">
-                                    <div class="invalid-feedback" id="uploadValid">
-                                        <?= $validation->getError('uploadLoa'); ?>
-                                    </div>
-                                </div>
-                            </div>
+                        } else if ($penelitian['id_status_reimburse'] == 2) {
+                        ?>
 
-                            <div class="row mb-3">
-                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah">
-                                    <div class="invalid-feedback" id="uploadValid">
-                                        <?= $validation->getError('uploadNaskah'); ?>
-                                    </div>
+                            <div class="main-timeline">
+                                <div class="timeline">
+                                    <a href="#" class="timeline-content">
+                                        <div class="timeline-year">Reimburse</div>
+                                        <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                        <h3 class="title">Dana Reimburse Anda Sudah Dicairkan</h3>
+                                        <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
+                                    </a>
                                 </div>
-                            </div>
-                            
-                            <div class="row mb-3">
-                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice">
-                                    <div class="invalid-feedback" id="uploadValid">
-                                        <?= $validation->getError('uploadInvoice'); ?>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
-                            
-                            </div>
-
-                            <!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="submitLabel">Submit Pengajuan Reimburse</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Apakah anda yakin mengajukan reimburse
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                            <a button type="submit" class="btn btn-primary" onclick="location.href='<?= base_url('/reimburseDetail/save/' . $penelitian['id_penelitian']); ?>">Ya</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </form>
-
-                        <?php
-                            }
+                            <?php
+                        }
                             ?>
 
-                      
 
+
+                            </div>
                     </div>
-                </div>
 
 
     </section>
