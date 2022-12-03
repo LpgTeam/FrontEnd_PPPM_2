@@ -79,11 +79,7 @@
                             <li><a href="/pkmDosen">PKM</a></li>
                         </ul>
                     </li>
-<<<<<<< HEAD
-                    <li><a class="nav-link scrollto" href="/reimburseDosen">Reimburse</a></li>
-=======
                     <li><a class="nav-link scrollto" href="reimburseDosen">Reimburse</a></li>
->>>>>>> 913887a4058d85b6c90e9640d62f2867ba30299f
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
                         <ul>
