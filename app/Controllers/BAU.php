@@ -154,6 +154,52 @@ class BAU extends BaseController
 
         return redirect()->to('/penelitianBAU');
     }
+    
+    //========================PKM===========================
+    public function pkm()
+    {
+        // dd($this->pkmModel->get_pkm_by_status_bau(1));
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'pkm'   => $this->pkmModel->get_pkm_by_status_bau(1),
+        ];
+        return view('bau/tampilan/pkm', $data);
+    }
+
+    public function pkmPersetujuan($id_pkm)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'pkm' => $this->pkmModel->find($id_pkm)
+        ];
+        return view('bau/tampilan/pkmPersetujuan', $data);
+    }
+
+    public function acc_pkm_bau($id_pkm)
+    {
+        $this->pkmModel->save([
+            'ID_pkm'            => $id_pkm,
+            'id_status'         => 2,
+            'status'            => 'Disetujui oleh BAU'
+        ]);
+
+        session()->setFlashdata('pesan', 'PKM berhasil disetujui');
+
+        return redirect()->to('/pkmBAU');
+    }
+
+    public function rjc_pkm_bau($id_pkm)
+    {
+        $this->pkmModel->save([
+            'ID_pkm'            => $id_pkm,
+            'id_status'         => 5,
+            'status'            => 'Ditolak oleh BAU'
+        ]);
+
+        session()->setFlashdata('pesan', 'PKM telah ditolak');
+
+        return redirect()->to('/pkmBAU');
+    }
 
     //=======================Reimbursemen================================
     public function reimburse()
