@@ -661,33 +661,31 @@ class Dosen extends BaseController
 
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            // 'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
-            // 'penelitian' => $penelitian->get_penelitian_by_id_status(11)
-
             'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
-
-            'pkm' => $this->pkmModel->get_pkm_done($user->nip, 7),
-
+            'pkm' => $this->pkmModel->get_pkm_done($user->nip,7),
+            
         ];
 
         return view('dosen/tampilan/reimburse', $data);
+     }
+
+
+    public function detailReimburse($id_kegiatan){
+       
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_kegiatan),
+                // 'kegiatan' => $kegiatan,
+                //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
+                // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+                // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
+                'validation' => \Config\Services::validation()
+            ];
+
+            return view('dosen/tampilan/detailReimburse', $data);
+
     }
 
-
-    public function detailReimburse($id_kegiatan)
-    {
-
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_kegiatan),
-            // 'kegiatan' => $kegiatan,
-            //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
-            // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-            // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-            'validation' => \Config\Services::validation()
-        ];
-        return view('dosen/tampilan/detailReimburse', $data);
-    }
 
     public function detailReimburse2($id_kegiatan)
     {

@@ -1931,6 +1931,21 @@ section {
   justify-content: center;
 }
 
+.timeline-with-icons .timeline-icon2 {
+  position: absolute;
+  left: -48px;
+  background-color: #fff;
+  color: #CF0A0A;
+  border-style: solid;
+  border-color: #CF0A0A;
+  border-radius: 50%;
+  height: 31px;
+  width: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /*--------------------------------------------------------------
 # Reimburse status
 --------------------------------------------------------------*/

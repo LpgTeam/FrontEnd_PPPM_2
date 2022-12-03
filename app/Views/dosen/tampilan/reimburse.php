@@ -28,29 +28,6 @@
                 <div class="card">
                     <h5>&nbsp;</h5>
                     <div class="card-body">
-                        <!-- <div class="d-flex justify-content-center">
-                            <div class="search-bar col-lg-8 d-flex justify-content-end">
-                                <form class="search-form d-flex align-items-center" method="POST" action="#">
-                                    <input type="text" id="myInput" name="query" placeholder="Search" title="Enter search keyword">
-                                    <button type="button" title="Search"><i class="bi bi-search"></i></button>
-                                </form>
-
-                            </div>
-                        </div> -->
-                        <!-- End Search Bar -->
-
-                        <!-- <div class="filter d-flex justify-content-end">
-                            <label class="judul col-md-2 col-lg-2 col-form-label" for="pilihKegiatan">Filter Bidang <i class="bi bi-funnel"></i></label>
-                            <div class="col-md-2 col-lg-2">
-                                <select class="form-select" id="pilihKegiatan">
-                                    <option selected>Tidak ada</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div> -->
-
                         <!-- Table with stripped rows -->
                         <div class="content">
                             <div class="row mb-3">
@@ -59,12 +36,12 @@
                                 <div class="col-md-8 col-lg-4">
                                     <select class="status-dropdown form-select">
                                         <option value="">Semua</option>
-                                        <option value="Semi Mandiri">Penelitian Semi Mandiri</option>
-                                        <option value="Di Danai Institusi">Penelitian Di Danai Institusi</option>
-                                        <option value="Institusi">Penelitian Institusi</option>
-                                        <option value="Kerjasama">Penlitian Kerjasama</option>
-                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
-                                        <option value="Terstruktur">PKM Terstruktur</option>
+                                        <option value="Penelitian Semi Mandiri">Penelitian Semi Mandiri</option>
+                                        <option value="Penelitian Di Danai Institusi">Penelitian Di Danai Institusi</option>
+                                        <option value="Penelitian Institusi">Penelitian Institusi</option>
+                                        <option value="Penelitian Kerjasama">Penelitian Kerjasama</option>
+                                        <option value="PKM Kelompok">PKM Kelompok/Dosen</option>
+                                        <option value="PKMTerstruktur">PKM Terstruktur</option>
                                     </select>
                                 </div>
 
@@ -74,18 +51,18 @@
                                 <div class="col-md-8 col-lg-4">
                                     <select class="status-dropdown2 form-select">
                                         <option value="">Semua</option>
-                                        <option value="Reimburse diajukan">Reimbursement diajukan</option>
-                                        <option value="Dana berhasil dicairkan">Dana berhasil dicairkan</option>
+                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
+                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
+                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="table-responsive">
-                                <table id="example" class="table">
+                                <table id="example" class="table table-responsive">
                                     <thead>
                                         <tr class="table-primary">
-                                            <th scope="col">Nomor</th>
-                                            <!-- <th scope="col">Jenis Kegiatan</th> -->
+                                            <!-- <th scope="col">Nomor</th> -->
                                             <th scope="col">Jenis Penelitian/PKM</th>
                                             <th scope="col">Tanggal Pengajuan</th>
                                             <th scope="col">Judul/Topik</th>
@@ -93,27 +70,23 @@
                                             <th scope="col">Detail</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="myTable">
+                                    <tbody>
                                         <?php
                                         if (!$penelitian == null) {
                                             $i = 1; ?>
                                             <?php foreach ($penelitian as $key => $post) :  ?>
 
                                                 <tr>
-                                                    <td><?php echo $post['id_penelitian']
-                                                        ?></td>
-                                                    <!-- <td><?php //echo $i 
-                                                                ?></td> -->
-                                                    <td><?php echo $post['jenis_penelitian'] ?></td>
+                                                    <td><?php echo 'Penelitian ', $post['jenis_penelitian'] ?></td>
                                                     <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                     <td><?php echo $post['judul_penelitian'] ?></td>
                                                     <td>
                                                         <?php if ($post['id_status_reimburse'] == 0) {
-                                                            echo 'Belum Diajukan';
+                                                            echo 'Reimbursement belum diajukan';
                                                         } else if ($post['id_status_reimburse'] == 1) {
-                                                            echo 'Dalam Proses';
+                                                            echo 'Reimbursement dalam proses';
                                                         } else if ($post['id_status_reimburse'] == 2) {
-                                                            echo 'Telah Dicairkan';
+                                                            echo 'Dana telah dicairkan';
                                                         }
                                                     ?>
                                                 </td>
@@ -143,17 +116,17 @@
                                                 <tr>
                                                     <!-- <td><?php //echo $post['id_penelitian'] 
                                                                 ?></td> -->
-                                                    <td><?php echo $post['ID_pkm'] ?></td>
-                                                    <td><?php echo $post['jenis_pkm'] ?></td>
+
+                                                    <td><?php echo 'PKM ', $post['jenis_pkm'] ?></td>
                                                     <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                     <td><?php echo $post['topik_kegiatan'] ?></td>
                                                     <td>
-                                                        <?php if ($post['id_status_reimburse'] == 0) {
-                                                            echo 'Belum Diajukan';
+                                                    <?php if ($post['id_status_reimburse'] == 0) {
+                                                            echo 'Reimbursement belum diajukan';
                                                         } else if ($post['id_status_reimburse'] == 1) {
-                                                            echo 'Dalam Proses';
+                                                            echo 'Reimbursement dalam proses';
                                                         } else if ($post['id_status_reimburse'] == 2) {
-                                                            echo 'Telah Dicairkan';
+                                                            echo 'Dana telah dicairkan';
                                                         }
                                                     ?>
                                                 </td>

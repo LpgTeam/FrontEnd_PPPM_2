@@ -13,6 +13,11 @@
             </header>
             <p hidden id="status"><?= $penelitian['id_status']; ?></p>
             <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
+            <p hidden id="alasan"><?php if ($penelitian['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $penelitian['alasan'];
+                                    } ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
@@ -59,7 +64,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Laporan</h3>
                             <p>
-                                Pelaporan hasil kegiatan penelitain yang dilakukan oleh dosen
+                                Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
                             </p>
                         </div>
                     </div>
@@ -89,8 +94,13 @@
                             <p>Kegiatan penelitian selesai dilakukan. Anda dapat melakukan download laporan jika diperlukan</p>
                             <hr>
                             <div class="d-flex justify-content-between">
+<<<<<<< HEAD
+                                <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Laporan </a>
+                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download laporan </a>
+=======
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
                                 <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporam </a>
+>>>>>>> 80e247aa8913b9cfb821244ce24cabfafd487606
                             </div>
 
                         </div>
