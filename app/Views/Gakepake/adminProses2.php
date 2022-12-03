@@ -26,18 +26,17 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-box orange">
+                        <div class="service-box orange service-box2">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Pendanaan</h3>
+                            <h3>Kontrak</h3>
                             <p>
-                                Pendanaan untuk kegiatan publikasi dari penelitian yang
-                                dilakukan oleh dosen
+                                Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-box green service-box3">
+                        <div class="service-box green">
                             <i class="ri-discuss-line icon"></i>
                             <h3>Laporan</h3>
                             <p>
@@ -57,19 +56,19 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Laporan</h5>
+                            <h5 class="card-title text-center">Kontrak Penelitian</h5>
                             <hr>
-                            <p>Laporan hasil kegiatan penelitian yang dilakukan oleh dosen Politeknik Statistika STIS </p>
+                            <p>Persetujuan kontrak penelitian yang dilakukan antara pihak Peneliti
+                                yaitu dosen dengan pihak Politeknik Statistika STIS</p>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Laporan</button>
-                                <button class="btn btn-primary">Download Laporan </button>
+                                <button class="btn btn-secondary">Lihat Kontrak Penelitian </button>
+                                <button class="btn btn-primary">Download Kontrak Penelitian </button>
                             </div>
 
                         </div>
                     </div>
                 </div>
-
 
                 <div class="col-lg-6">
                     <div class="card">

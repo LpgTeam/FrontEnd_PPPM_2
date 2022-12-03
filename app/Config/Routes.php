@@ -162,27 +162,36 @@ if (auth()->loggedIn()) {
         $routes->get('/deleteRoleUser/(:any)', 'AdminUserSetting::deleteRole/$1');
 
 
+//penelitian
+        $routes->get('/adminProses1/(:any)', 'Admin::adminProses1/$1');
+        $routes->get('/adminProses2/(:any)', 'Admin::adminProses2/$1');
+        $routes->get('/adminProses3/(:any)', 'Admin::adminProses3/$1');
 
-        $routes->get('/adminSemiMandiri1/(:any)', 'Admin::adminSemiMandiri1/$1');
-        $routes->get('/adminSemiMandiri2/(:any)', 'Admin::adminSemiMandiri2/$1');
-        $routes->get('/adminSemiMandiri3/(:any)', 'Admin::adminSemiMandiri3/$1');
+//pkm
+        $routes->get('/adminPkmProses1/(:any)', 'Admin::pkmAdminProses1/$1');
+        $routes->get('/adminPkmProses2/(:any)', 'Admin::pkmAdminProses2/$1');
+        $routes->get('/adminPkmProses3/(:any)', 'Admin::pkmAdminProses3/$1');
+        
+//delete Status
+        $routes->get('/removeStatus/(:any)/(:any)', 'Admin::removeStatus/$1/$2');
+        $routes->get('/removeStatusPkm/(:any)/(:any)', 'Admin::removeStatusPkm/$1/$2');
 
-        $routes->get('/adminDidanaiInstitusi1', 'Admin::adminProses1');
-        $routes->get('/adminDidanaiInstitusi2', 'Admin::adminProses2');
-        $routes->get('/adminDidanaiInstitusi3', 'Admin::adminProses3');
+        // $routes->get('/adminDidanaiInstitusi1', 'Admin::adminProses1');
+        // $routes->get('/adminDidanaiInstitusi2', 'Admin::adminProses2');
+        // $routes->get('/adminDidanaiInstitusi3', 'Admin::adminProses3');
 
-        $routes->get('/adminInstitusi1', 'Admin::adminProses1');
-        $routes->get('/adminInstitusi2', 'Admin::adminProses2');
-        $routes->get('/adminInstitusi3', 'Admin::adminProses3');
+        // $routes->get('/adminInstitusi1', 'Admin::adminProses1');
+        // $routes->get('/adminInstitusi2', 'Admin::adminProses2');
+        // $routes->get('/adminInstitusi3', 'Admin::adminProses3');
 
-        $routes->get('/pkmMandiriAdmin1', 'Admin::pkmAdminProses1');
-        $routes->get('/pkmMandiriAdmin2', 'Admin::pkmAdminProses2');
+        // $routes->get('/pkmMandiriAdmin1', 'Admin::pkmAdminProses1');
+        // $routes->get('/pkmMandiriAdmin2', 'Admin::pkmAdminProses2');
 
-        $routes->get('/pkmKelompokAdmin1', 'Admin::pkmAdminProses1');
-        $routes->get('/pkmKelompokAdmin2', 'Admin::pkmAdminProses2');
+        // $routes->get('/pkmKelompokAdmin1', 'Admin::pkmAdminProses1');
+        // $routes->get('/pkmKelompokAdmin2', 'Admin::pkmAdminProses2');
 
-        $routes->get('/pkmTerstrukturAdmin1', 'Admin::pkmAdminProses1');
-        $routes->get('/pkmTerstrukturAdmin2', 'Admin::pkmAdminProses2');
+        // $routes->get('/pkmTerstrukturAdmin1', 'Admin::pkmAdminProses1');
+        // $routes->get('/pkmTerstrukturAdmin2', 'Admin::pkmAdminProses2');
     }
     // ================================================================
     //                          Reviewer

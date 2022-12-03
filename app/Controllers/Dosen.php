@@ -183,12 +183,12 @@ class Dosen extends BaseController
             $jenisPenelitian = "Semi Mandiri";
         } elseif ($jenis == "kerja-sama") {
             $jenisPenelitian = "Kerjasama";
-        } elseif ($jenis == "didanai-institusi") {
+        } elseif ($jenis == "di-    danai-institusi") {
             $jenisPenelitian = "Di Danai Institusi";
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";
         }
-
+        // dd($jenisPenelitian);
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
 
         $data = [

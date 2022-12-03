@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
+use App\Models\StatusPenelitianModel;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
@@ -16,9 +17,12 @@ class Reviewer extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $statusPenelitianModel;
+
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
+        $this->statusPenelitianModel = new StatusPenelitianModel();
     }
 
     public function index()
@@ -114,6 +118,10 @@ class Reviewer extends BaseController
             'id_status'         => 3,
             'status_pengajuan'  => 'Disetujui oleh Reviewer'
         ]);
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $id_penelitian,
+            'status'        => 'Disetujui oleh Reviewer'
+        ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
@@ -128,6 +136,10 @@ class Reviewer extends BaseController
             'status_pengajuan'  => 'Ditolak oleh Reviewer'
         ]);
 
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $id_penelitian,
+            'status'        => 'Ditolak oleh Reviewer'
+        ]);
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
 
         return redirect()->to('/penelitianReviewer');

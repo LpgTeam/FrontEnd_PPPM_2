@@ -23,6 +23,7 @@ class PenelitianModel extends Model
         'jumlah_anggota',
         'id_status',
         'status_pengajuan',
+        'tanda_tangan',
         'file_proposal',
         'biaya'
     ];

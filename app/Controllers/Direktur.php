@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
+use App\Models\StatusPenelitianModel;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
@@ -15,9 +16,11 @@ class Direktur extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $statusPenelitianModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
+        $this->statusPenelitianModel = new StatusPenelitianModel();
     }
 
     public function index()
@@ -112,6 +115,11 @@ class Direktur extends BaseController
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 5,
             'status_pengajuan'  => 'Disetujui oleh Direktur'
+        ]);
+
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $id_penelitian,
+            'status'        => 'Disetujui oleh Direktur'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
