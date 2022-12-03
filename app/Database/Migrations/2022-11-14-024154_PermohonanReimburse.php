@@ -9,6 +9,12 @@ class PermohonanReimburse extends Migration
     public function up()
     {
         $this->forge->addField([
+            'ID_permohonan_reimburse' => [
+                'type' => 'INT',
+                'constraint' => 15,
+                'nullable' => false
+            ],
+
             'ID_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15,
@@ -27,6 +33,7 @@ class PermohonanReimburse extends Migration
                 'nullable' => false
             ]
         ]);
+        $this->forge->addKey('ID_permohonan_reimburse', true);
         $this->forge->createTable('permohonan_reimburse');
     }
 

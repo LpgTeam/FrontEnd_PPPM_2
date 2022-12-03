@@ -11,6 +11,9 @@
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
+
+            <p hidden id="status"><?= $penelitian['id_status']; ?></p>
+            <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
@@ -36,12 +39,10 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Proposal</h5>
                             <hr>
-                            <p>(Judul Proposal) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
+                            <ol>
+                                <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $penelitian['judul_penelitian']; ?></li>
+                                <li>Jenis Penelitian &nbsp;&nbsp; : <?= $penelitian['jenis_penelitian']; ?></li>
+                            </ol>
                             <hr>
                             <?= $this->include('proposal/download_per_proposal'); ?>
                         </div>
@@ -72,6 +73,11 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="list">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keterangan">
+                            </ul>
                         </div>
                     </div>
                 </div>

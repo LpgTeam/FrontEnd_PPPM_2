@@ -1,5 +1,3 @@
-<? //= $this->extend('adminPPPM/fixed/templatePenelitian') 
-?>
 <?= $this->extend('fixed/templatePenelitian') ?>
 
 <?= $this->section('content'); ?>
@@ -12,6 +10,8 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <!-- ======= Proses Section ======= -->
+            <p hidden id="status"><?= $penelitian['id_status']; ?></p>
+            <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 d-flex justify-content-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
@@ -58,12 +58,10 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Proposal</h5>
                             <hr>
-                            <p>(Judul Proposal) Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
+                            <ol>
+                                <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $penelitian['judul_penelitian']; ?></li>
+                                <li>Jenis Penelitian &nbsp;&nbsp; : <?= $penelitian['jenis_penelitian']; ?></li>
+                            </ol>
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-secondary">Lihat Proposal </button>
@@ -77,63 +75,11 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <!-- Section: Timeline
-                            <ul class="timeline-with-icons">
-                                <li class="timeline-item mb-5">
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-rocket text-primary fa-sm fa-fw"></i>
-                                    </span>
-
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal sedang direview oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-hand-holding-usd text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal telah disetujui oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-users text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal sedang ditinjau oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal disetujui oleh Kepala PPPM
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal ditandatangani oleh Direktur Polstat STIS
-                                    </p>
-                                </li>
-                            </ul> -->
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="list">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keterangan">
+                            </ul>
                         </div>
                     </div>
                 </div>

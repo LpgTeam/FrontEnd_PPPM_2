@@ -147,11 +147,9 @@
                             <?php
                             } else {
                             ?>
-                                <div class="card-body mt-3">
-                                    <h5 class="card-title text-center">Upload Bukti Luaran</h5>
-                                    <hr>
-                                    <h5 class="text-center">Anda Sudah Upload Bukti Luaran!!</h5>
-                                </div>
+                                <h5 class="card-title text-center">Upload Bukti Luaran</h5>
+                                <hr>
+                                <p class="text-center">Anda Sudah Upload Bukti Luaran!!</p>
                             <?php
                             }
                             ?>

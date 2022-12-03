@@ -44,11 +44,29 @@
                             <a href="" class="btn btn-success">Lihat Proposal</a>
                         </div>
                         <hr>
-                        <form action="">
+
+                        <?php 
+                            if($pkm['id_status_reimburse'] == 0){
+                        ?>
+                        <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
                             <div class="d-flex justify-content-end">
-                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </a>
+                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
                             </div>
                         </form>
+                        <?php
+                        } else if($pkm['id_status_reimburse'] == 1){
+                        ?>
+                            <h5 class="card-title text-center">Pengajuan Reimburse Anda Sedang dalam Proses</h5>
+
+                        <?php
+                        } else if($pkm['id_status_reimburse'] == 2){
+                        ?>   
+                            <h5 class="card-title text-center">Dana Reimburse Anda Sudah Dicairkan</h5>
+                            <hr>
+                            <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -58,7 +76,7 @@
 </main>
 <!-- End #main -->
 <!-- Submit -->
-<div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -70,9 +88,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/reimburseDosen'">Ya</button>
+                <button type="submit" class="btn btn-primary" onclick="location.href='<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">Ya</button>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <?= $this->endSection(); ?>

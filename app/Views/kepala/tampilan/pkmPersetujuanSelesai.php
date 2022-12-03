@@ -15,7 +15,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <a href="<?= base_url('pkmPersetujuanKepala') ."/" .$pkm["ID_pkm"]; ?>">
+                        <a href="<?= base_url('pkmPersetujuanKepala') . "/" . $pkm["ID_pkm"]; ?>">
                             <div class="service-box blue">
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Form</h3>
@@ -27,7 +27,7 @@
                         </a>
                     </div>
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <a href="<?= base_url('pkmPersetujuanKepalaSelesai') ."/" .$pkm["ID_pkm"]; ?>">
+                        <a href="<?= base_url('pkmPersetujuanKepalaSelesai') . "/" . $pkm["ID_pkm"]; ?>">
                             <div class="service-box orange service-box2">
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Surat Keterangan</h3>
@@ -50,12 +50,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Laporan</h5>
                             <hr>
-                            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a
-                                type specimen book. It has survived not only five centuries, but also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum </p>
+                            <p> Laporan kegiatan PKM yang dilakukan oleh Dosen Politeknik Statitika STIS</p>
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-secondary">Lihat Laporan </button>

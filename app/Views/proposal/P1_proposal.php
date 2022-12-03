@@ -33,7 +33,7 @@
             font-size: 16px;
         }
 
-        .footer {       
+        .footer {
             position: fixed;
             left: 0;
             bottom: 0;
@@ -45,7 +45,8 @@
 
 <body>
 
-    <u><b>P1. Halaman Sampul:</b></u>
+    <u><b>
+        <?= $jenis; ?>1. Halaman Sampul:</b></u>
     <div class="text-center">
         <h2>USULAN PENELITIAN</h2>
 
@@ -54,8 +55,7 @@
         <div class="logo">
             <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="250">
             <!-- <img src="assets/img/STIS.png" alt="dfsd" /> -->
-            <!-- <img src="<? //= base_url("assets/img/STIS.png"); 
-                            ?>" alt="stis" /> -->
+            <!-- <img src="<?= base_url("") ?>/assets/img/STIS.png" alt="stis" width="250" /> -->
         </div>
 
 

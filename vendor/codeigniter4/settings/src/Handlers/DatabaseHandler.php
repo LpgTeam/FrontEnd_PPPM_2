@@ -83,7 +83,7 @@ class DatabaseHandler extends ArrayHandler
                     'context'    => $context,
                     'updated_at' => $time,
                 ]);
-        // ...otherwise insert it
+            // ...otherwise insert it
         } else {
             $result = db_connect()->table($this->table)
                 ->insert([
@@ -122,7 +122,7 @@ class DatabaseHandler extends ArrayHandler
             ->where('context', $context)
             ->delete();
 
-        if (! $result) {
+        if (!$result) {
             throw new RuntimeException(db_connect()->error()['message'] ?? 'Error writing to the database.');
         }
 
@@ -152,7 +152,7 @@ class DatabaseHandler extends ArrayHandler
             $query = db_connect()->table($this->table)->where('context', $context);
 
             // If general has not been hydrated we will do that at the same time
-            if (! in_array(null, $this->hydrated, true)) {
+            if (!in_array(null, $this->hydrated, true)) {
                 $this->hydrated[] = null;
                 $query->orWhere('context', null);
             }
@@ -160,12 +160,12 @@ class DatabaseHandler extends ArrayHandler
             $this->hydrated[] = $context;
         }
 
-        if (is_bool($result = $query->get())) {
-            throw new RuntimeException(db_connect()->error()['message'] ?? 'Error reading from database.');
-        }
+        // if (is_bool($result = $query->get())) {
+        //     throw new RuntimeException(db_connect()->error()['message'] ?? 'Error reading from database.');
+        // }
 
-        foreach ($result->getResultObject() as $row) {
-            $this->setStored($row->class, $row->key, $this->parseValue($row->value, $row->type), $row->context);
-        }
+        // foreach ($result->getResultObject() as $row) {
+        //     $this->setStored($row->class, $row->key, $this->parseValue($row->value, $row->type), $row->context);
+        // }
     }
 }

@@ -78,6 +78,7 @@ class Reviewer extends BaseController
             }
         }
 
+     
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -86,7 +87,7 @@ class Reviewer extends BaseController
             'anggaranDiajukan'    => $total_pengajuan
         ];
      
-        return view('reviewer/tampilan/anggaran', $data);
+        return view('dosen/tampilan/anggaran', $data);
     }
 
     public function penelitian()

@@ -43,9 +43,7 @@ class Pdfgenerator extends BaseController
         $dompdf->setPaper($paper, $orientation);
         $dompdf->render();
         // if(!file_exists($direktori . "/".$filename.".pdf"))
-
-        file_put_contents($direktori.'/'. $filename . '.pdf', $dompdf->output());       
-
-
+        // dd($direktori);
+        file_put_contents($direktori . '/' . $filename . '.pdf', $dompdf->output());
     }
 }

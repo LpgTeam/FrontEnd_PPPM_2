@@ -90,6 +90,7 @@
                 <div class="swiper-pagination"></div>
             </div>
 
+
             <!-- <div class="row gy-4 justify-content-md-center" data-aos="fade-up">
                 <div class="col-lg-8">
                     <div class="card">
@@ -115,8 +116,8 @@
                             document.addEventListener("DOMContentLoaded", () => {
                                 echarts.init(document.querySelector("#pieChart")).setOption({
                                     title: {
-                                        text: 'Data Anggaran',
-                                        subtext: 'Grafik Mengenai Anggaran',
+                                        text: '',
+                                        subtext: '',
                                         left: 'center'
                                     },
                                     tooltip: {

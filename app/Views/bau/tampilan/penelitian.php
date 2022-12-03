@@ -4,7 +4,7 @@
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -52,36 +52,39 @@
                         </div> -->
                         <!-- Table with stripped rows -->
                         <div class="content">
-                            <div class="row mb-3 justify-content-md-start">
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Jenis Penelitian</div>
-                                </div>
-                                <select class="form-control status-dropdown col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="Mandiri">Mandiri</option>
-                                    <option value="Semi Mandiri">Semi Mandiri</option>
-                                    <option value="Di Danai Institusi">Di Danai Institusi</option>
-                                    <option value="Institusi">Institusi</option>
-                                    <option value="Kerjasama">Kerjasama</option>
-                                </select>
+                            <div class="row">
 
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Status Penelitian</div>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian</label>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="form-select  status-dropdown col-md-8 col-lg-4">
+                                        <option value="">Semua</option>
+                                        <option value="Mandiri">Mandiri</option>
+                                        <option value="Semi Mandiri">Semi Mandiri</option>
+                                        <option value="Di Danai Institusi">Di Danai Institusi</option>
+                                        <option value="Institusi">Institusi</option>
+                                        <option value="Kerjasama">Kerjasama</option>
+                                    </select>
                                 </div>
 
-                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
-                                    <option value="">Semua</option>
-                                    <option value="Proposal diajukan">Proposal diajukan</option>
-                                    <option value="Proposal disetujui oleh Reviewer">Proposal disetujui oleh Reviewer</option>
-                                    <option value="Proposal disetujui oleh Kepala PPPM">Proposal disetujui oleh Kepala PPPM</option>
-                                    <option value="Proposal disetujui oleh Direktur">Proposal disetujui oleh Direktur</option>
-                                    <option value="Pendanaan">Pendanaan</option>
-                                    <option value="Kontrak">Kontrak</option>
-                                    <option value="Laporan">Laporan</option>
-                                    <option value="Selesai">Selesai</option>
-                                </select>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Penelitian</label>
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="form-select  status-dropdown2 col-md-8 col-lg-4">
+                                        <option value="">Semua</option>
+                                        <option value="Diajukan oleh Dosen">Diajukan oleh Dosen </option>
+                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
+                                        <option value="Disetujui oleh Reviewer">Disetujui oleh Reviewer</option>
+                                        <option value="Disetujui oleh Kepala PPPM">Disetujui oleh Kepala PPPM</option>
+                                        <option value="Disetujui oleh Direktur">Disetujui oleh Direktur</option>
+                                        <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
+                                        <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
+                                    </select>
+                                </div>
+
                             </div>
-
+                        </div>
+                        <br>
+                        <div class="table-responsive">
                             <table id="example" class="table">
                                 <thead>
                                     <tr class="table-primary">
@@ -115,33 +118,34 @@
                                 </tbody>
                             </table>
                         </div>
-
-
-                        <script>
-                            $(document).ready(function() {
-                                dataTable = $("#example").DataTable({});
-
-                                $('.status-dropdown').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(1).search(status).draw();
-                                })
-
-                                $('.status-dropdown2').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown2').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(4).search(status).draw();
-                                })
-                            });
-                        </script>
-
                     </div>
+
+
+                    <script>
+                        $(document).ready(function() {
+                            dataTable = $("#example").DataTable({});
+
+                            $('.status-dropdown').on('change', function(e) {
+                                var status = $(this).val();
+                                $('.status-dropdown').val(status)
+                                console.log(status)
+                                //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                dataTable.column(1).search(status).draw();
+                            })
+
+                            $('.status-dropdown2').on('change', function(e) {
+                                var status = $(this).val();
+                                $('.status-dropdown2').val(status)
+                                console.log(status)
+                                //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                dataTable.column(4).search(status).draw();
+                            })
+                        });
+                    </script>
+
                 </div>
             </div>
+        </div>
         </div>
 
         </div>

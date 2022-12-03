@@ -172,7 +172,9 @@ class Penelitian extends BaseController
             'judul_penelitian' => $this->request->getVar('judul_penelitian'),
             'bidang' => $this->request->getVar('bidang'),
             'jumlah_anggota' => $this->request->getVar('anggota'),
-            'tanggal_pengajuan' => Time::now('Asia/jakarta'),
+            'tanggal_pengajuan' => Time::now(
+                'Asia/jakarta'
+            ),
             'id_status' => '1',
             'status_pengajuan' => 'Diajukan oleh Dosen',
             'file_proposal' => $namaProposal,
@@ -268,7 +270,7 @@ class Penelitian extends BaseController
     public function printKontrak()
     {
         return $this->response->download('kontrak/[PENELITIAN] Kontrak.docx', null)->setFileName("Kontrak_penelitian.docx"); //download file
-    
+
     }
     public function printLaporan()
     {
