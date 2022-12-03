@@ -83,7 +83,7 @@ class Kepala extends BaseController
             }
         }
 
-     
+
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -169,7 +169,8 @@ class Kepala extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 9,
-            'status_pengajuan'  => 'Ditolak Kepala PPPM'
+            'status_pengajuan'  => 'Ditolak Kepala PPPM',
+            'alasan'            => $this->request->getVar('alasan')
         ]);
 
         $this->statusPenelitianModel->save([
