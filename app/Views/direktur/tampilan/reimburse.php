@@ -28,29 +28,6 @@
                 <div class="card">
                     <h5>&nbsp;</h5>
                     <div class="card-body">
-                        <!-- <div class="d-flex justify-content-center">
-                            <div class="search-bar col-lg-8 d-flex justify-content-end">
-                                <form class="search-form d-flex align-items-center" method="POST" action="#">
-                                    <input type="text" id="myInput" name="query" placeholder="Search" title="Enter search keyword">
-                                    <button type="button" title="Search"><i class="bi bi-search"></i></button>
-                                </form>
-
-                            </div>
-                        </div> -->
-                        <!-- End Search Bar -->
-
-                        <!-- <div class="filter d-flex justify-content-end">
-                            <label class="judul col-md-2 col-lg-2 col-form-label" for="pilihKegiatan">Filter Bidang <i class="bi bi-funnel"></i></label>
-                            <div class="col-md-2 col-lg-2">
-                                <select class="form-select" id="pilihKegiatan">
-                                    <option selected>Tidak ada</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div> -->
-
                         <!-- Table with stripped rows -->
                         <div class="content">
                             <div class="row mb-3 justify-content-md-start">
@@ -83,7 +60,6 @@
                                     <thead>
                                         <tr class="table-primary">
                                             <th scope="col">Nomor</th>
-                                            <th scope="col">Id Penelitian/PKM</th>
                                             <th scope="col">Jenis Penelitian/PKM</th>
                                             <th scope="col">Tanggal Pengajuan</th>
                                             <th scope="col">Judul Penelitian</th>

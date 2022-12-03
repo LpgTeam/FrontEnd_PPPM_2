@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Reimburse <?= $reimburse['jenis']; ?></h2>
+                <h2>Reimbursemen</h2>
                 <hr>
                 <p>Bagian Administrasi Umum Politeknik Statistika STIS</p>
             </header>
