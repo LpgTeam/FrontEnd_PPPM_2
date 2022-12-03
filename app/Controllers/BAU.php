@@ -29,6 +29,7 @@ class BAU extends BaseController
         $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
         $this->pkmModel = new PKMModel();
+        $this->statusPkmModel = new statusPkmModel();
     }
 
     public function index()

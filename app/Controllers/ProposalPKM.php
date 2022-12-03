@@ -58,8 +58,8 @@ class ProposalPKM extends BaseController
             // 'peneliti' => $this->timpkmModel->get_data_timpkm($id_pkm),
             // 'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
         ];
-        // dd($dataPkm['peneliti']);   
 
+        
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
         // . $dataPkm['penelitian']['judul_penelitian'];
         $paper = 'A4';
