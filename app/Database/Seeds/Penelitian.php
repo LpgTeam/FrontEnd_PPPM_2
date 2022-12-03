@@ -86,27 +86,27 @@ class Penelitian extends Seeder
 
 
             if (($data['id_status'] == 6) || ($data['id_status'] == 10)) {
-            $file_kontrak = null;
-            $file_laporan_dana = null;
-            if ($data['jenis_penelitian'] == 'Semi Mandiri') {
-                $file_laporan_dana = 'default_laporan_dana.pdf';
-            } else {
-                $file_kontrak = 'default_kontrak.pdf';
-            }
+                $file_kontrak = null;
+                $file_laporan_dana = null;
+                if ($data['jenis_penelitian'] == 'Semi Mandiri') {
+                    $file_laporan_dana = 'default_laporan_dana.pdf';
+                } else {
+                    $file_kontrak = 'default_kontrak.pdf';
+                }
 
-            $file_laporan_luaran = null;
-            if ($data['id_status'] == 10) {
-                $file_laporan_luaran = 'default_laporan_luaran.pdf';
-            }
+                $file_laporan_luaran = null;
+                if ($data['id_status'] == 10) {
+                    $file_laporan_luaran = 'default_laporan_luaran.pdf';
+                }
 
-            $data_laporan_penelitian = [
-                'id_penelitian'     =>  $data['id_penelitian'],
-                'kontrak'           =>  $file_kontrak,
-                'laporan_luaran'    =>  $file_laporan_luaran,
-                'laporan_dana'      =>  $file_laporan_dana,
-                'status_penelitian' =>  $data['id_status'],
-            ];
-            $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
+                $data_laporan_penelitian = [
+                    'id_penelitian'     =>  $data['id_penelitian'],
+                    'kontrak'           =>  $file_kontrak,
+                    'laporan_luaran'    =>  $file_laporan_luaran,
+                    'laporan_dana'      =>  $file_laporan_dana,
+                    'status_penelitian' =>  $data['id_status'],
+                ];
+                $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
             }
 
             $data_target_penelitian = [
