@@ -12,6 +12,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\ReimburseModel;
 use CodeIgniter\API\ResponseTrait;
 use App\Libraries\SendEmail;
 
@@ -28,6 +29,7 @@ class Kepala extends BaseController
         $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->pkmModel = new PkmModel();
         $this->statusPkmModel = new StatusPkmModel();
+        $this->reimburseModel = new ReimburseModel();
     }
 
     public function index()
@@ -234,25 +236,37 @@ class Kepala extends BaseController
 
     public function reimburse()
     {
+
+        //mengambil data user yang sedang login
+        $user = auth()->user();
+
         $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS'
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->findAll(),
+            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
+            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
+
         ];
+
         return view('kepala/tampilan/reimburse', $data);
     }
 
-    public function detailReimburse()
+    public function detailReimburse($id_reimburse)
     {
         $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS'
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
         ];
         return view('kepala/tampilan/detailReimburse', $data);
     }
 
-
-    public function detailReimburse2()
+    public function detailReimburse2($id_reimburse)
     {
         $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS'
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
         ];
         return view('kepala/tampilan/detailReimburse2', $data);
     }

@@ -43,30 +43,64 @@ foreach ($peneliti as $key => $anggota) : ?>
                 width: 100%;
                 text-align: center;
             }
+
+
+            body {
+                text-align: justify;
+                line-height: 32px;
+                font-size: 16px;
+                margin: 40px;
+            }
+
+            .ttd1 td,
+            .ttd2 td,
+            .ttd1 th,
+            .ttd2 th {
+                text-align: center;
+                line-height: 32px1
+            }
+
+
+            .ttd1 td:nth-child(1),
+            .ttd1 td:nth-child(2),
+            .ttd2 td:nth-child(1),
+            .ttd2 td:nth-child(3) {
+                color: white;
+            }
+
+            .ttd1 tr:nth-child(1),
+            .ttd2 tr:nth-child(1),
+            .ttd1 tr:nth-child(4),
+            .ttd2 tr:nth-child(4),
+            .ttd1 tr:nth-child(5) {
+                color: white;
+            }
+
+            table {
+                width: 100%;
+            }
         </style>
     </head>
 
     <body>
         <!-- KOP Surat -->
         <div>
+            <table>
+                <tr>
+                    <td width="20%"> <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100"></td>
+                    <td><b> POLITEKNIK STATISTIKA STIS<br>
+                            Jl. Otto Iskandardinata No. 64C, Jakarta 13330<br>
+                            Telp. (021) 8508812, 8191437, Fax. 8197577<br>
+                            Website: www.stis.ac.id, Email: info@stis.ac.id</b></td>
+                </tr>
+            </table>
             <!-- <span class="logo"> -->
-            <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="80">
-            <!-- <img src="assets/img/STIS.png" alt="dfsd" /> -->
-            <!-- <img src="<? //= base_url("assets/img/STIS.png"); 
-                            ?>" alt="stis" /> -->
-            <!-- </span> -->
-            <b>
-                POLITEKNIK STATISTIKA STIS<br>
-                Jl. Otto Iskandardinata No. 64C, Jakarta 13330<br>
-                Telp. (021) 8508812, 8191437, Fax. 8197577<br>
-                Website: www.stis.ac.id, Email: info@stis.ac.id
-            </b>
             <hr>
 
         </div>
         <div class="text-center">
             <u>
-                <h4>USULAN PENELITIAN</h4>
+                <h4>SURAT KETERANGAN</h4>
             </u>
             <p>Nomor : PKM/<?= $pkm['ID_pkm'] . '/' . $i;
                             $i++; ?> </p>
@@ -80,40 +114,85 @@ foreach ($peneliti as $key => $anggota) : ?>
 
         <table>
             <tr>
-                <td>Nama</td>
+                <td width="40%">Nama</td>
                 <td>: <?= $anggota['nama'] ?></td>
             </tr>
             <tr>
-                <td>NIP</td>
+                <td width="40%">NIP</td>
                 <td>: <?= $anggota['nip'] ?></td>
             </tr>
             <tr>
-                <td>Jabatan</td>
-                <td>: <?php if($anggota['jabatan_dosen'] != null){
-                    echo $anggota['jabatan_dosen']; 
-                    } else{ echo 'Mahaisiswa';} ?></td>
+                <td width="40%">Jabatan</td>
+                <td>: <?php if ($anggota['jabatan_dosen'] != null) {
+                            echo $anggota['jabatan_dosen'];
+                        } else {
+                            echo 'Mahaisiswa';
+                        } ?></td>
+            </tr>
+            <tr>
+                <td width="40%">Telah Melaksanakan </td>
+                <td>: <b>Pengabdian Kepada Masyarakat</b></td>
+            </tr>
+
+            <tr>
+                <td width="40%"></td>
+                <td>Narasumber pada kegiatan ………………………………….</td>
+            </tr>
+
+
+            <tr>
+                <td width="40%"></td>
+                <td>Kegiatan ini diselenggarakan oleh ...................... dalam rangka ......................</td>
+            </tr>
+
+            <tr>
+                <td width="40%">Waktu Pelaksanaan</td>
+                <td>: <?= $pkm['waktu_kegiatan']; ?> </td>
             </tr>
         </table>
 
 
-
-        <p>
-            <span>Telah Melaksanakan : </span><span> <b>Pengabdian Kepada Masyarakat</b>
-                <p>Narasumber pada kegiatan ………………………………….</p>
-                <p> Kegiatan ini diselenggarakan oleh ...................... dalam rangka ......................
-                </p>
-            </span>
-        </p>
-        <p>
-            Waktu Pelaksanaan : <?= $pkm['waktu_kegiatan']; ?>
-        </p>
-        <div class="text-center">
-            Jakarta, ....................... <br>
-            Politeknik Statistika STIS<br>
-            Kepala Pusat Penelitian dan Pengabdian Masyarakat
-            
-            <p><u>Dr. Eng. Arie Wahyu Wijayanto, M.T.</u></p>
-            <u>NIP. 198512222009021002</u>
+        <div class="text-center" style="page-break-before: always;">
+            <table class="ttd1">
+                <tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td>Jakarta, ...............</td>
+                </tr>
+                <tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td>Politeknik Statistika STIS</td>
+                </tr>
+                <tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td>Kepala Pusat Penelitian dan Pengabdian Masyarakat</td>
+                </tr>
+                <tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td>
+                        <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100">
+                        <!-- <img src="<//?= base_url("") ?>/assets/img/<//?= $penelitian['tanda_tangan'];?>" alt="stis" width="120" /> -->
+                    </td>
+                </tr>
+                <tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>
+                </tr>
+                <tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td>NIP. 198512222009021002</tdt>
+                </tr>
+            </table>
 
         </div>
         <!-- </div> -->
