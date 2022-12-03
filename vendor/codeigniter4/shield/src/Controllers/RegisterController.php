@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CodeIgniter\Shield\Controllers;
 
+use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use CodeIgniter\Events\Events;
 use CodeIgniter\HTTP\RedirectResponse;
@@ -11,6 +12,8 @@ use CodeIgniter\Shield\Authentication\Authenticators\Session;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Exceptions\ValidationException;
 use CodeIgniter\Shield\Models\UserModel;
+use App\Models\DosenModel;
+use App\Models\TimPenelitiModel;
 
 /**
  * Class RegisterController
@@ -20,6 +23,14 @@ use CodeIgniter\Shield\Models\UserModel;
  */
 class RegisterController extends BaseController
 {
+    use ResponseTrait;
+    protected $dosenModel;
+
+    public function __construct()
+    {
+        $this->dosenModel = new DosenModel();
+    }
+
     protected $helpers = ['setting'];
 
     /**
@@ -34,7 +45,7 @@ class RegisterController extends BaseController
         }
 
         // Check if registration is allowed
-        if (! setting('Auth.allowRegistration')) {
+        if (!setting('Auth.allowRegistration')) {
             return redirect()->back()->withInput()
                 ->with('error', lang('Auth.registerDisabled'));
         }
@@ -60,7 +71,7 @@ class RegisterController extends BaseController
         }
 
         // Check if registration is allowed
-        if (! setting('Auth.allowRegistration')) {
+        if (!setting('Auth.allowRegistration')) {
             return redirect()->back()->withInput()
                 ->with('error', lang('Auth.registerDisabled'));
         }
@@ -71,7 +82,7 @@ class RegisterController extends BaseController
         // like the password, can only be validated properly here.
         $rules = $this->getValidationRules();
 
-        if (! $this->validate($rules)) {
+        if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
@@ -83,7 +94,6 @@ class RegisterController extends BaseController
         );
         $user = $this->getUserEntity();
         $user->fill($this->request->getPost($allowedPostFields));
-
         // Workaround for email only registration/login
         if ($user->username === null) {
             $user->username = null;
@@ -119,6 +129,36 @@ class RegisterController extends BaseController
 
         $authenticator->completeLogin($user);
 
+        //---tambah manual user di tabel database dosen
+        $user = auth()->user();
+        // dd($user->nip);
+        // dd($this->request->getVar('nama'));
+        $dosenModel = new DosenModel();
+        // dd($this->request->getVar('username'));
+
+        $this->dosenModel->insert([
+            'NIP_dosen'     => $user->nip,
+            // 'username'      => $this->request->getVar('username'),
+            'username'      => $user->username,
+            'email_dosen'   => $user->email,
+            'jabatan_dosen' => $this->request->getVar('jabatan'),
+            // 'jabatan_dosen' => 'jabatan dosen 1',
+            'nama_dosen'    => $this->request->getVar('nama'),
+            // 'nama_dosen'    => 'nama dosen 1',
+            'program_studi' => "-",
+            'no_hp' => "-",
+            'NIDN_dosen' => "-",
+            'foto_dosen'  => "user.png",
+            'minat_penelitian'  => "-",
+            'google_scholar' => "-",
+            'link_sinta'     => "-",
+            'link_orcid'     => "-",
+            'link_wos'     => "-",
+            'link_scopus' => "-",
+        ]);        //---
+        $_SESSION['group'] = "dosen";
+
+        // dd($user->nip);
         // Success!
         return redirect()->to(config('Auth')->registerRedirect())
             ->with('message', lang('Auth.registerSuccess'));
@@ -151,6 +191,10 @@ class RegisterController extends BaseController
      */
     protected function getValidationRules(): array
     {
+        $registrationNamaRules = array_merge(
+            config('AuthSession')->namaValidationRules,
+            // ['is_unique[users.nama]']
+        );
         $registrationUsernameRules = array_merge(
             config('AuthSession')->usernameValidationRules,
             ['is_unique[users.username]']
@@ -159,8 +203,23 @@ class RegisterController extends BaseController
             config('AuthSession')->emailValidationRules,
             ['is_unique[auth_identities.secret]']
         );
+        $registrationNipRules = array_merge(
+            config('AuthSession')->nipValidationRules,
+            ['is_unique[auth_identities.secret]']
+        );
 
         return setting('Validation.registration') ?? [
+            'nama' => [
+                'label' => 'Auth.nama',
+                'rules' => $registrationNamaRules,
+            ],
+            'jabatan' => [
+                // 'label' => 'Auth.jabatan',
+            ],
+            'nip' => [
+                'label' => 'Auth.nip',
+                'rules' => $registrationNipRules,
+            ],
             'username' => [
                 'label' => 'Auth.username',
                 'rules' => $registrationUsernameRules,

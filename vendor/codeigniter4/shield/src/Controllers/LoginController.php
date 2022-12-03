@@ -43,7 +43,7 @@ class LoginController extends BaseController
         // like the password, can only be validated properly here.
         $rules = $this->getValidationRules();
 
-        if (! $this->validate($rules)) {
+        if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
@@ -57,7 +57,8 @@ class LoginController extends BaseController
 
         // Attempt to login
         $result = $authenticator->remember($remember)->attempt($credentials);
-        if (! $result->isOK()) {
+
+        if (!$result->isOK()) {
             return redirect()->route('login')->withInput()->with('error', $result->reason());
         }
 

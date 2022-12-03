@@ -11,6 +11,7 @@ use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
 use CodeIgniter\API\ResponseTrait;
+use App\Libraries\SendEmail;
 
 class Kepala extends BaseController
 {
@@ -144,6 +145,8 @@ class Kepala extends BaseController
             'status_pengajuan'  => 'Disetujui oleh Kepala PPPM'
         ]);
 
+        $sendEmail = new SendEmail();
+        $sendEmail->send_email_persetujuan('Kepala PPPM');
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
         return redirect()->to('/penelitianKepala');

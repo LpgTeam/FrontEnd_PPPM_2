@@ -25,7 +25,9 @@ return [
     'password'        => 'Password',
     'passwordConfirm' => 'Password (again)',
     'haveAccount'     => 'Already have an account?',
-
+    'nip'             => 'Nomor Induk Pegawai (NIP)',
+    'nama'            => 'Nama Dosen',
+    'jabatan'         => 'Jabatan Dosen',
     // Buttons
     'confirm' => 'Confirm',
     'send'    => 'Send',
