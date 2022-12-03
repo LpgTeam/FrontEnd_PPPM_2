@@ -12,19 +12,20 @@ class StatusPenelitian extends Migration
             'id_status' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false,
+                'auto_increment' => true
             ],
 
             'id_penelitian' => [
                 'type' => 'int',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false
             ],
 
             'status' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ]
         ]);
         $this->forge->addKey('id_status', true);

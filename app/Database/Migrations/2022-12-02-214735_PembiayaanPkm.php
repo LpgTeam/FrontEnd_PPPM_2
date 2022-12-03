@@ -12,26 +12,26 @@ class PembiayaanPkm extends Migration
             'id_biaya' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false,
+                'null' => false,
                 'auto_increment' => true
             ],
 
             'id_pkm' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false,
+                'null' => false,
             ],
 
             'pembiayaan_diajukan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ],
 
             'jumlah_biaya' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ],
         ]);
         $this->forge->addKey('id_biaya', true);
