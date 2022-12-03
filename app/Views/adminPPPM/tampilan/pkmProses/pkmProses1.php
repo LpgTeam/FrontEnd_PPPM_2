@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>PKM (----)</h2>
+                <h2>PKM <?= $pkm['jenis_pkm'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -68,6 +68,35 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
+
+                            <?php if ($status != null) { ?>
+                                <table id="example" class="table">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                        <?php
+                                        $i = 1;
+                                        foreach ($status as $key => $post) :  ?>
+
+                                            <tr>
+                                                
+                                                <td><?php echo $post['status'] ?></td>
+                                                <!-- <td>
+                                                <a href="/removeStatus/<? //= $post['id_status']; 
+                                                                        ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                            </td> -->
+                                            </tr>
+                                            <?php $i++; ?>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <?php if($i > 2){ ?>
+                                    <a href="/removeStatusPkm/<?= $post['id_pkm']; ?>/<?= $statusTerbaru['id_status']; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                            <?php }
+                            } ?>
                             <!-- Section: Timeline
                             <ul class="timeline-with-icons">
                                 <li class="timeline-item mb-5">

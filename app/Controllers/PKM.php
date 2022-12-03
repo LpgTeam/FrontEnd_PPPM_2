@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\pkmModel;
+use App\Models\PkmModel;
+use App\Models\StatusPkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPKMModel;
 use App\Models\RincianPKMModel;
@@ -12,6 +13,7 @@ use DateTime;
 
 class PKM extends BaseController
 {
+    protected $statusPkmModel;
     protected $pkmModel;
     protected $timModel;
     protected $ketuaTimModel;
@@ -20,7 +22,8 @@ class PKM extends BaseController
 
     public function __construct()
     {
-        $this->pkmModel = new pkmModel();
+        $this->statusPkmModel = new StatusPkmModel();
+        $this->pkmModel = new PkmModel();
         $this->timModel = new TimPKMModel();
         $this->ketuaTimModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
@@ -92,11 +95,17 @@ class PKM extends BaseController
             'tanggal_pengajuan' => Time::now('Asia/jakarta')
         ]);
 
+        $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
+        
+        $this->statusPkmModel->save([
+            'id_pkm' => $idpkm['ID_pkm'],
+            'status' => $status
+        ]);
+
         // dd($waktu);
 
 
         // dd($this->request->getVar('topik'));
-        $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
         // dd($idpkm);
         // dd($idpkm['ID_pkm']+$this->request->getVar('target'));
         // dd($this->request->getVar('hasil'));
