@@ -58,7 +58,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Laporan</h3>
                             <p>
-                                Pelaporan hasil kegiatan penelitain yang dilakukan oleh dosen
+                                Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
                             </p>
                         </div>
                     </div>

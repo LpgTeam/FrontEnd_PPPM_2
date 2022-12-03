@@ -22,7 +22,7 @@ class Penelitian extends Seeder
 
 
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 1; $i < 5; $i++) {
+        for ($i = 1; $i < 25; $i++) {
             $data = [
                 'id_penelitian' => $i + $datapenelitian[0]['id_penelitian'],
                 'jenis_penelitian' => $faker->randomElement($array = array('Mandiri', 'Semi Mandiri', 'Di Danai Institusi', 'Institusi', 'Kerjasama')),
