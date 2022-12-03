@@ -13,6 +13,11 @@
             </header>
 
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $pkm['alasan'];
+                                    } ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
@@ -108,24 +113,27 @@
 </div>
 
 <!-- Tidak Setuju -->
-<div class="modal fade" id="tidak" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tidakLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tidakLabel">Tidak Setujui Form PKM</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="alasan" class="col-form-label">Alasan menolak :</label>
-                    <textarea class="form-control" id="alasan" name="alasan"></textarea>
+<form action="<?= base_url('/pkmrjc-BAU/' . $pkm['ID_pkm']) ?>">
+    <div class="modal fade" id="tidak" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tidakLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="tidakLabel">Tidak Setujui Proposal</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/pkmrjc-BAU/<?= $pkm['ID_pkm']; ?>'">Selesai</button>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="alasan" class="col-form-label">Alasan menolak :</label>
+                        <textarea class="form-control" id="alasan" name="alasan"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <!-- <button type="button" class="btn btn-primary" onclick="location.href='/rjc-BAU/<//?= $penelitian['id_penelitian']; ?>'">Selesai</button> -->
+                    <button type="submit" class="btn btn-primary">Selesai</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 <?= $this->endSection(); ?>

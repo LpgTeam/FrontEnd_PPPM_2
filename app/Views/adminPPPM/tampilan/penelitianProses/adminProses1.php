@@ -9,9 +9,15 @@
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
+
             <!-- ======= Proses Section ======= -->
             <p hidden id="status"><?= $penelitian['id_status']; ?></p>
             <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
+            <p hidden id="alasan"><?php if ($penelitian['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $penelitian['alasan'];
+                                    } ?></p>
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 d-flex justify-content-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
@@ -78,16 +84,13 @@
                                 <li>Jenis Penelitian &nbsp;&nbsp; : <?= $penelitian['jenis_penelitian']; ?></li>
                             </ol>
                             <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Proposal </button>
-                                <button class="btn btn-primary">Download Proposal </button>
-                            </div>
                             <hr>
                             <?= $this->include('proposal/download_per_proposal'); ?>
 
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-6">
                     <div class="card">
@@ -101,13 +104,13 @@
                                         </tr>
                                     </thead>
                                     <tbody id="myTable">
-                                        <?php 
+                                        <?php
                                         $i = 1;
                                         foreach ($status as $key => $post) :  ?>
 
                                             <tr>
                                                 <td><?php echo $post['status'] ?></td>
-                                                
+
                                             </tr>
                                             <?php $i++;    ?>
                                         <?php endforeach; ?>
@@ -117,63 +120,6 @@
                                     <a href="/removeStatus/<?= $post['id_penelitian']; ?>/<?= $statusTerbaru['id_status']; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                             <?php }
                             } ?>
-                            <!-- Section: Timeline
-                            <ul class="timeline-with-icons">
-                                <li class="timeline-item mb-5">
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-rocket text-primary fa-sm fa-fw"></i>
-                                    </span>
-
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal sedang direview oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-hand-holding-usd text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal telah disetujui oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-users text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal sedang ditinjau oleh reviewer
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal disetujui oleh Kepala PPPM
-                                    </p>
-                                </li>
-
-                                <li class="timeline-item mb-5">
-
-                                    <span class="timeline-icon">
-                                        <i class="fas fa-money-bill-wave text-primary fa-sm fa-fw"></i>
-                                    </span>
-                                    <h5 class="fw-bold">Proposal</h5>
-                                    <p class="text-muted">
-                                        Proposal ditandatangani oleh Direktur Polstat STIS
-                                    </p>
-                                </li>
-                            </ul> -->
                         </div>
                     </div>
                 </div>
