@@ -77,6 +77,7 @@ class Kepala extends BaseController
             }
         }
 
+     
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',

@@ -13,7 +13,7 @@ function tambah(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Proposal telah di submit oleh dosen dan menunggu persetujuan BAU"+
             "</p>"+
         "</li>";
@@ -24,7 +24,7 @@ function tambah(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Proposal telah disetujui oleh BAU dan menunggu persetujuan Reviewer"+
             "</p>"+
         "</li>"; 
@@ -36,7 +36,7 @@ function tambah(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Proposal telah disetujui oleh reviewer dan menunggu persetujuan dari Kepala PPPM"+
             "</p>"+
         "</li>"; 
@@ -47,7 +47,7 @@ function tambah(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Proposal disetujui oleh Kepala PPPM dan menunggu penanda tanganan oleh Direktur Polstat STIS"+
             "</p>"+
         "</li>"; 
@@ -58,7 +58,7 @@ function tambah(){
                 "<i class='bi bi-card-list'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Proposal ditandatangani oleh Direktur Polstat STIS"+
             "</p>"+
         "</li>"; 
@@ -66,10 +66,10 @@ function tambah(){
     var status6 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
-                "<i class='bi bi-card-list'></i>"+
+                "<i class='bi bi-cash-coin'></i></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Pendanaan</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Melampirkan bukti pendanaan untuk kegiatan publikasi hasil dari penelitian"+
             "</p>"+
         "</li>";    
@@ -77,10 +77,10 @@ function tambah(){
     var status61 = innerHTML = 
     "<li class='timeline-item mb-5'>"+
     "<span class='timeline-icon'>"+
-        "<i class='bi bi-card-list'></i>"+
+        "<i class='bi bi-bookmark-check'></i>"+
     "</span>"+
     "<h5 class='fw-bold'>Kontrak</h5>"+
-    "<p class='text-muted'>"+
+    "<p>"+
         "Proses Persetujuan Kontrak Penelitian"+
     "</p>"+
 "</li>";  
@@ -88,10 +88,10 @@ function tambah(){
     var status7 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
-                "<i class='bi bi-card-list'></i>"+
+                "<i class='bi bi-card-checklist'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Melaporkan hasil penelitian yang dilakukan oleh Dosen Polstat STIS"+
             "</p>"+
         "</li>";   
@@ -99,10 +99,10 @@ function tambah(){
     var status8 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
-                "<i class='bi bi-card-list'></i>"+
+                "<i class='bi bi-check2-square'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Selesai</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Kegiatan Penelitian Telah Selesai dilsanakan"+
             "</p>"+
         "</li>";
@@ -117,7 +117,7 @@ function tambah(){
                 "<i class='bi bi-file-earmark-excel'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Gagal</h5>"+
-            "<p class='text-muted'>"+
+            "<p>"+
                 "Gagal melewati Proses"+
             "</p>"+
         "</li>";

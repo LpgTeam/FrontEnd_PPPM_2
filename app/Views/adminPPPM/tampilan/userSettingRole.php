@@ -31,33 +31,35 @@
                         </div>
                         <p>&nbsp</p>
                         <!-- Table with stripped rows -->
-                        <table class=" table table-advance table-hover align-middle ">
-                            <thead>
-                                <tr class=" table-primary">
-                                    <th scope="col">Nomor</th>
-                                    <th scope="col">Role</th>
+                        <div class="table-responsive">
+                            <table class=" table table-advance table-hover align-middle ">
+                                <thead>
+                                    <tr class=" table-primary">
+                                        <th scope="col">Nomor</th>
+                                        <th scope="col">Role</th>
 
-                                    <th scope="col">Hapus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($userRole as $key => $post) :  ?>
+                                        <th scope="col">Hapus</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($userRole as $key => $post) :  ?>
 
-                                    <tr>
-                                        <td><?= $i; ?></td>
-                                        <td><?= $post['group']; ?>
-                                        <td>
-                                            <!-- <a class="btn btn-danger" id="deleteButton" data-bs-toggle="modal" data-bs-target="#delete"><i class="bi bi-trash"></i></i></a> -->
-                                            <a class="btn btn-danger" id="deleteButton" href="/deleteRoleUser/<?= $post['id']; ?>"><i class="bi bi-trash"></i></i></a>
+                                        <tr>
+                                            <td><?= $i; ?></td>
+                                            <td><?= $post['group']; ?>
+                                            <td>
+                                                <!-- <a class="btn btn-danger" id="deleteButton" data-bs-toggle="modal" data-bs-target="#delete"><i class="bi bi-trash"></i></i></a> -->
+                                                <a class="btn btn-danger" id="deleteButton" href="/deleteRoleUser/<?= $post['id']; ?>"><i class="bi bi-trash"></i></i></a>
+                                            </td>
+                                        </tr>
                                         </td>
-                                    </tr>
-                                    </td>
-                                    </tr>
-                                    <?php $i++;    ?>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                                        </tr>
+                                        <?php $i++;    ?>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
                         <!-- End Table with stripped rows -->
 
                     </div>
