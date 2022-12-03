@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>PKM <?=$pkm['jenis_pkm'] ;?> Selesai</h2>
+                <h2>PKM <?= $pkm['jenis_pkm']; ?> Selesai</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -66,7 +66,7 @@
                                 surat keterangan telah melaksanakan kegiatan PKM </p>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <!-- <button class="btn btn-secondary">Lihat</button> -->
+                                <!-- <button class="btn btn-success">Lihat</button> -->
                                 <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Surat Keterangan </a>
                             </div>
 

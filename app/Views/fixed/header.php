@@ -69,7 +69,7 @@
                 if ($_SESSION['group'] == "dosen") {
                 ?>
                     <li>
-                        <a class="nav-link scrollto" href="/indexDosen">Home</a>
+                        <a class="nav-link scrollto" href="/indexDosen">Beranda</a>
                     </li>
                     <li><a class="nav-link scrollto" href="/anggaranDosen">Anggaran</a></li>
                     <li class="dropdown">
@@ -79,7 +79,7 @@
                             <li><a href="/pkmDosen">PKM</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="reimburseDosen">Reimburse</a></li>
+                    <li><a class="nav-link scrollto" href="reimburseDosen">Reimbursemen</a></li>
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
                         <ul>
@@ -92,7 +92,7 @@
                         if ($_SESSION['group'] == "admin") {
                         ?>
                             <li>
-                                <a class="nav-link scrollto" href="/indexAdmin">Home</a>
+                                <a class="nav-link scrollto" href="/indexAdmin">Beranda</a>
                             </li>
                             <li><a class="nav-link scrollto" href="/anggaranAdmin">Anggaran</a></li>
                             <li class="dropdown">
@@ -102,7 +102,7 @@
                                     <li><a href="/pkmAdmin">PKM</a></li>
                                 </ul>
                             </li>
-                            <li><a class="nav-link scrollto" href="#">Reimburse</a></li>
+                            <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
                             <li class="dropdown">
                                 <a class="username scrollto" href="#"><span>Admin</span></a>
                                 <ul>
@@ -119,7 +119,7 @@
                                 if ($_SESSION['group'] == "reviewer") {
                                 ?>
                                     <li>
-                                        <a class="nav-link scrollto" href="/indexReviewer">Home</a>
+                                        <a class="nav-link scrollto" href="/indexReviewer">Beranda</a>
                                     </li>
                                     <li><a class="nav-link scrollto" href="/anggaranReviewer">Anggaran</a></li>
                                     <li class="dropdown">
@@ -128,7 +128,7 @@
                                             <li><a href="/penelitianReviewer">Penelitian</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="nav-link scrollto" href="#">Reimburse</a></li>
+                                    <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
                                     <li class="dropdown">
                                         <a class="username scrollto" href="#"><span>Reviewer</span></a>
                                         <ul>
@@ -143,7 +143,7 @@
                                         if ($_SESSION['group'] == "kepalapppm") {
                                         ?>
                                             <li>
-                                                <a class="nav-link scrollto" href="/indexKepala">Home</a>
+                                                <a class="nav-link scrollto" href="/indexKepala">Beranda</a>
                                             </li>
                                             <li><a class="nav-link scrollto" href="/anggaranKepala">Anggaran</a></li>
                                             <li class="dropdown">
@@ -153,7 +153,7 @@
                                                     <li><a href="/pkmKepala">PKM</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a class="nav-link scrollto" href="/reimburseKepala">Reimburse</a></li>
+                                            <li><a class="nav-link scrollto" href="/reimburseKepala">Reimbursemen</a></li>
                                             <li class="dropdown">
                                                 <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
                                                 <ul>
@@ -168,7 +168,7 @@
                                                 if ($_SESSION['group'] == "direktur") {
                                                 ?>
                                                     <li>
-                                                        <a class="nav-link scrollto" href="/indexDirektur">Home</a>
+                                                        <a class="nav-link scrollto" href="/indexDirektur">Beranda</a>
                                                     </li>
                                                     <li><a class="nav-link scrollto" href="/anggaranDirektur">Anggaran</a></li>
                                                     <li class="dropdown">
@@ -177,7 +177,7 @@
                                                             <li><a href="/penelitianDirektur">Penelitian</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a class="nav-link scrollto" href="/reimburseDirektur">Reimburse</a></li>
+                                                    <li><a class="nav-link scrollto" href="/reimburseDirektur">Reimbursemen</a></li>
                                                     <li class="dropdown">
                                                         <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                         <ul>
@@ -193,7 +193,7 @@
                                                         if ($_SESSION['group'] == "bau") {
                                                         ?>
                                                             <li>
-                                                                <a class="nav-link scrollto" href="/indexBAU">Home</a>
+                                                                <a class="nav-link scrollto" href="/indexBAU">Beranda</a>
                                                             </li>
                                                             <li><a class="nav-link scrollto" href="/anggaranBAU">Anggaran</a></li>
                                                             <li class="dropdown">
@@ -203,7 +203,7 @@
                                                                     <li><a href="/pkmBAU">PKM</a></li>
                                                                 </ul>
                                                             </li>
-                                                            <li><a class="nav-link scrollto" href="#">Reimburse</a></li>
+                                                            <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
                                                             <li class="dropdown">
                                                                 <a class="username scrollto" href="#"><span>BAU</span></a>
                                                                 <ul>
