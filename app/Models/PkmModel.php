@@ -97,4 +97,8 @@ class PkmModel extends Model
         // ->select('laporan_penelitian.*')
         ->where(['nip' => $nip])->where(['id_status' => $id_status])->findAll();
     }
+
+    public function get_pkm_reimburse_diajukan($status_reimburse){
+        return $this->where(['id_status_reimburse' => $status_reimburse])->findAll();
+    }
 }

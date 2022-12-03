@@ -67,7 +67,6 @@ $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 // $routes->get('/pkmKelompok', 'Dosen::pkmKelompok');
 // $routes->get('/pkmTerstruktur', 'Dosen::pkmTerstruktur');
 $routes->get('/pkmForm/(:any)', 'Dosen::pkmForm/$1');
-$routes->get('/reimburseDosen', 'Dosen::reimburse');
 
 $routes->get('/reimburseDosen', 'Dosen::reimburse');
 $routes->get('/detailReimburseDosen/(:any)', 'Dosen::detailReimburse/$1');
@@ -249,10 +248,17 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmBAU', 'BAU::pkm');
         $routes->get('/pkmPersetujuanBAU/(:any)', 'BAU::pkmPersetujuan/$1');
         $routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
+        $routes->get('/persetujuanBAU/(:any)', 'BAU::persetujuan/$1');
         $routes->get('/acc-BAU/(:any)', 'BAU::acc_penelitian_BAU/$1');
         $routes->get('/rjc-BAU/(:any)', 'BAU::rjc_penelitian_BAU/$1');
         $routes->get('/pkmacc-BAU/(:any)', 'BAU::acc_pkm_BAU/$1');
         $routes->get('/pkmrjc-BAU/(:any)', 'BAU::rjc_pkm_BAU/$1');
+
+        $routes->get('/reimburseBAU', 'BAU::reimburse');
+        $routes->get('/detailReimburseBAU/(:any)', 'BAU::detailReimburse/$1');
+        $routes->get('/acc-reimburseBAU/(:any)', 'BAU::acc_reimburse/$1');
+        $routes->get('/acc-reimbursePKMBAU/(:any)', 'BAU::acc_reimburse_pkm/$1');
+        $routes->get('/detailReimburse2BAU/(:any)', 'BAU::detailReimburse2/$1');
 
         $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
     }

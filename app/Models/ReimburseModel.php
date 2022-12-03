@@ -61,7 +61,15 @@ class ReimburseModel extends Model
 
     public function get_reimburse($id_reimburse)
     {
-        return $this->where(['id_reimburse' => $id_reimburse])->first();
+        return $this->where(['id_reimburse' => $id_reimburse])->findAll();
+    }
+
+    public function get_id_penelitian_done($id_reimburse){
+        return $this->select(['id_reimburse','id_penelitian'])->where('id_reimburse', $id_reimburse)->first();
+    }
+
+    public function get_id_pkm_done($id_reimburse){
+        return $this->select(['id_reimburse','id_pkm'])->where('id_reimburse', $id_reimburse)->first();
     }
 
     public function get_id_penelitian($id_penelitian)

@@ -92,4 +92,9 @@ class PenelitianModel extends Model
         //     ->where(['auth_groups_users.id' => $id])->first();
         return $this->join('penelitian', 'penelitian.id_penelitian = laporan_penelitian.id_penelitian')->select('laporan_penelitian.*')->select('penelitian.*')->findAll();
     }
+
+
+    public function get_penelitian_reimburse_diajukan($status_reimburse){
+        return $this->where(['id_status_reimburse' => $status_reimburse])->findAll();
+    }
 }
