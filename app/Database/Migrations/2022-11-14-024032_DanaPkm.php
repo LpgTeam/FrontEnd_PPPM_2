@@ -32,7 +32,7 @@ class DanaPkm extends Migration
             'dana_tidak_terserap' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => true
+                'null' => true
             ]
         ]);
         $this->forge->addKey('id_dana', true);

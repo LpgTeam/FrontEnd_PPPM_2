@@ -5,13 +5,19 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Database\Migrations\AnggaranAwal;
 use App\Models\PenelitianModel;
+use App\Models\StatusPenelitianModel;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+<<<<<<< HEAD
 use App\Models\PKMModel;
 use App\Models\ReimburseModel;
+=======
+use App\Models\PkmModel;
+use App\Models\StatusPkmModel;
+>>>>>>> 80e247aa8913b9cfb821244ce24cabfafd487606
 use CodeIgniter\API\ResponseTrait;
 
 
@@ -19,12 +25,20 @@ class BAU extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $statusPenelitianModel;
     protected $pkmModel;
+    protected $statusPkmModel;
     public function __construct()
     {
+        $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
+<<<<<<< HEAD
         $this->pkmModel = new PKMModel();
         $this->reimburseModel = new ReimburseModel();
+=======
+        $this->pkmModel = new PkmModel();
+        $this->statusPkmModel = new StatusPkmModel();
+>>>>>>> 80e247aa8913b9cfb821244ce24cabfafd487606
     }
 
     public function index()
@@ -137,6 +151,11 @@ class BAU extends BaseController
             'status_pengajuan'  => 'Disetujui oleh BAU'
         ]);
 
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $id_penelitian,
+            'status'        => 'Disetujui oleh BAU'
+        ]);
+
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
         return redirect()->to('/penelitianBAU');
@@ -144,10 +163,16 @@ class BAU extends BaseController
 
     public function rjc_penelitian_bau($id_penelitian)
     {
+        
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 5,
-            'status_pengajuan'  => 'Ditolak'
+            'id_status'         => 7,
+            'status_pengajuan'  => 'Ditolak oleh BAU',
+            'alasan'            => $this->request->getVar('alasan')
+        ]);
+        $this->statusPenelitianModel->save([
+            'id_penelitian' => $id_penelitian,
+            'status'        => 'Ditolak oleh BAU'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
@@ -183,6 +208,11 @@ class BAU extends BaseController
             'status'            => 'Disetujui oleh BAU'
         ]);
 
+        $this->statusPkmModel->save([
+            'id_pkm' => $id_pkm,
+            'status' => 'Disetujui oleh BAU'
+        ]);
+
         session()->setFlashdata('pesan', 'PKM berhasil disetujui');
 
         return redirect()->to('/pkmBAU');
@@ -196,6 +226,11 @@ class BAU extends BaseController
             'status'            => 'Ditolak oleh BAU'
         ]);
 
+        $this->statusPkmModel->save([
+            'id_pkm' => $id_pkm,
+            'status' => 'Ditolak oleh BAU'
+        ]);
+        
         session()->setFlashdata('pesan', 'PKM telah ditolak');
 
         return redirect()->to('/pkmBAU');

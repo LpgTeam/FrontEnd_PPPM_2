@@ -12,32 +12,32 @@ class TargetPenelitian extends Migration
             'id_luaran' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false,
+                'null' => false,
                 'auto_increment' => true
             ],
 
             'id_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false
             ],
 
             'jenis_luaran' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ],
 
             'target-capaian' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ],
 
             'jurnal_tujuan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ]
         ]);
         $this->forge->addKey('id_luaran', true);

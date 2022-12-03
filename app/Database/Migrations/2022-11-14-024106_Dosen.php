@@ -14,12 +14,6 @@ class Dosen extends Migration
                 'constraint' => 20
             ],
 
-            'user_id' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true,
-            ],
-
             'username' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50
@@ -28,6 +22,11 @@ class Dosen extends Migration
             'nama_dosen' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50
+            ],
+
+            'NIDN_dosen' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20
             ],
 
             'jabatan_dosen' => [
@@ -40,6 +39,11 @@ class Dosen extends Migration
                 'constraint' => 30
             ],
 
+            'golongan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 15
+            ],
+
             'no_hp' => [
                 'type' => 'VARCHAR',
                 'constraint' => 15
@@ -50,38 +54,43 @@ class Dosen extends Migration
                 'constraint' => 50
             ],
 
+            'foto_dosen' => [
+                'type' => 'VARCHAR',
+                'constraint' => 15
+            ],
+            
             'minat_penelitian' => [
                 'type' => 'TEXT',
-                'nullable' => true
+                'null' => true
             ],
 
             'google_scholar' => [
                 'type' => 'TEXT',
-                'nullable' => true
+                'null' => true
             ],
 
             'link_sinta' => [
                 'type' => 'TEXT',
-                'nullable' => true
+                'null' => true
             ],
 
             'link_orcid' => [
                 'type' => 'TEXT',
-                'nullable' => true
+                'null' => true
             ],
 
             'link_wos' => [
                 'type' => 'TEXT',
-                'nullable' => true
+                'null' => true
             ],
 
             'link_scopus' => [
                 'type' => 'TEXT',
-                'nullable' => true
+                'null' => true
             ]
         ]);
         $this->forge->addKey('NIP_dosen', true);
-        $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('dosen');
     }
 

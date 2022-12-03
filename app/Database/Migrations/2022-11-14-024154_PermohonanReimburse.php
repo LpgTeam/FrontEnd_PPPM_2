@@ -12,25 +12,25 @@ class PermohonanReimburse extends Migration
             'ID_permohonan_reimburse' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false
             ],
 
             'ID_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false
             ],
 
             'berkas' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'nullable' => false
+                'null' => false
             ],
 
             'status_reimburse' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ]
         ]);
         $this->forge->addKey('ID_permohonan_reimburse', true);

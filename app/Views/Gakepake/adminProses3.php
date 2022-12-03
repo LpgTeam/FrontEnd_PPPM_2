@@ -28,10 +28,9 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="service-box orange">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Pendanaan</h3>
+                            <h3>Kontrak</h3>
                             <p>
-                                Pendanaan untuk kegiatan publikasi dari penelitian yang
-                                dilakukan oleh dosen
+                                Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>

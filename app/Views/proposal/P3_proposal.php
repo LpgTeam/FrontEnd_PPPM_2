@@ -1,3 +1,6 @@
+<?php
+setlocale(LC_TIME,'INDONESIA'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +48,7 @@
         }
 
         .ttd3 tr:nth-child(1),
-        .ttd3 tr:nth-child(4),
-        .ttd3 tr:nth-child(5) {
+        .ttd3 tr:nth-child(4) {
             color: white;
         }
 
@@ -93,7 +95,7 @@
             <td>........................</td>
         </tr>
         <tr>
-            <td>Jakarta, <?= $penelitian['tanggal_pengajuan']; ?></td>
+            <td>Jakarta, <?= date("d F  Y", strtotime($penelitian['tanggal_pengajuan'])); ?></td>
             <td>Jakarta, ...............</td>
             <td>Jakarta, ...............</td>
         </tr>
@@ -103,12 +105,10 @@
             <td>Ketua Peneliti</td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td>a</td>
-        </tr>
-        <tr>
-            <td></td>
+            <td>
+                <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100">
+                <!-- <img src="<//?= base_url("") ?>/assets/img/<//?= $penelitian['tanda_tangan']; ?>" alt="stis" width="120" /> -->
+            </td>
             <td></td>
             <td>a</td>
         </tr>

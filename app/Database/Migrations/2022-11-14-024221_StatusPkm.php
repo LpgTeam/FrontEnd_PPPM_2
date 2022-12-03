@@ -12,19 +12,20 @@ class StatusPkm extends Migration
             'id_status' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false
+                'null' => false,
+                'auto_increment' => true
             ],
 
             'id_pkm' => [
                 'type' => 'int',
                 'constraint' => 15,
-                'nullable' => false
+                'null' => false
             ],
 
             'status' => [
                 'type' => 'text',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ]
         ]);
         $this->forge->addKey('id_status', true);

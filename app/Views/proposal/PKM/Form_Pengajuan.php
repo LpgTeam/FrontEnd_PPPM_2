@@ -175,14 +175,18 @@
                 <td>a</td>
             </tr>
             <tr>
-                <td></td>
+                <td>
+                    <?php if ($pkm['id_status'] == 3 || $pkm['id_status'] == 4 || $pkm['id_status'] == 7) { ?>
+                        <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="80">
+                    <?php } ?>
+                </td>
                 <td></td>
                 <td>a</td>
             </tr>
             <tr>
                 <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>
                 <td>(Nama Lengkap)</td>
-                <td>Nama Dosen Pengaju</td>
+                <td><?= $timpkm[0]["nama"];?></td>
             </tr>
             <tr>
                 <td>NIDN : .................</td>

@@ -5,7 +5,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Penelitian Semi Mandiri</h2>
+                <h2>Penelitian (----)</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -28,10 +28,9 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="service-box orange">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Pendanaan</h3>
+                            <h3>Kontrak</h3>
                             <p>
-                                Pendanaan untuk kegiatan publikasi dari penelitian yang
-                                dilakukan oleh dosen
+                                Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>
@@ -68,8 +67,6 @@
                                 <button class="btn btn-secondary">Lihat Proposal </button>
                                 <button class="btn btn-primary">Download Proposal </button>
                             </div>
-                            <hr>
-                            <?= $this->include('proposal/download_per_proposal'); ?>
 
                         </div>
                     </div>
