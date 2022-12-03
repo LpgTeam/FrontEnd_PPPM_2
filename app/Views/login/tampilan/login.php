@@ -103,7 +103,6 @@
                     </div>
                 <?php endif; ?>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success rounded-3 text-white">Masuk</button>
                 </div>
 
@@ -155,7 +154,6 @@
                     </div>
                 <?php endif; ?>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success rounded-3 text-white">Masuk</button>
                 </div>
 
