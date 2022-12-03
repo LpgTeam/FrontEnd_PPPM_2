@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <? //= $this->extend('bau/fixed/templateReimburse') 
+=======
+<?php //= $this->extend('bau/fixed/templateReimburse') 
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
 ?>
 <?= $this->extend('fixed/templateReimburse') ?>
 
@@ -7,10 +11,18 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
+<<<<<<< HEAD
                 <h2>Reimbursemen</h2>
                 <hr>
                 <p>Bagian Administrasi Umum Politeknik Statistika STIS</p>
             </header>
+=======
+                <h2>Reimbursemen Penelitian <?= $reimburse['jenis_penelitian'] ?></h2>
+                <hr>
+                <p>Dosen Politeknik Statistika STIS</p>
+            </header>
+
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
@@ -35,6 +47,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
                         <hr>
+<<<<<<< HEAD
                         <p>Proposal reimburse penelitian yang diajukan dosen
                             oleh Direktur Politeknik Statistika STIS
                         </p>
@@ -68,6 +81,50 @@
                         </div>
                     </div>
                 </div>
+=======
+                        <ol>
+                            <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
+                            <li>Jenis Penelitian &nbsp;&nbsp; : <?= $reimburse['jenis_penelitian']; ?></li>
+                        </ol>
+                        <hr>
+                        <?= $this->include('bau/tampilan/download_reimburse'); ?>
+                    </div>
+                </div>
+                <?php
+
+                if ($reimburse['id_status'] == 1) {
+
+                ?>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
+                            <hr>
+                            <p>Pencairan dana reimburse yang diajukan dosen
+                                oleh Bagian Administrasi Umum Politeknik Statistika STIS
+                            </p>
+                            <div class="d-flex justify-content-end">
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Cairkan Dana</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                } else if ($reimburse['id_status'] == 2) {
+                ?>
+                    <div class="main-timeline">
+                        <div class="timeline">
+                            <a href="#" class="timeline-content">
+                                <div class="timeline-year">Reimburse</div>
+                                <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                <h3 class="title">Dana Reimburse Sudah Dicairkan</h3>
+                            </a>
+                        </div>
+                    <?php
+                }
+                    ?>
+                    </div>
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
             </div>
     </section>
 
@@ -84,6 +141,10 @@
             <div class="modal-body">
                 Apakah anda yakin akan mencairkan dana reimburse proposal ini?
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                 <button type="button" class="btn btn-danger" onclick="location.href='/acc-reimburseBAU/<?= $reimburse['id_reimburse']; ?>'">Ya</button>
@@ -91,4 +152,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
 <?= $this->endSection(); ?>

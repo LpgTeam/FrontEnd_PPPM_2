@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Penelitian <?= $penelitian['jenis_penelitian'];?></h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -55,7 +55,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Laporan</h3>
                             <p>
-                                Pelaporan hasil kegiatan penelitain yang dilakukan oleh dosen
+                                Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
                             </p>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                                     yaitu dosen dengan pihak Politeknik Statistika STIS</p>
                                 <hr>
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn btn-secondary">Lihat Kontrak Penelitian </button>
+                                    <button class="btn btn-success">Lihat Kontrak Penelitian </button>
                                     <button class="btn btn-primary">Download Kontrak Penelitian </button>
                                 </div>
 
@@ -97,7 +97,7 @@
                                     hasil penelitian yang dilakukan oleh dosen Politeknik Statistika STIS </p>
                                 <hr>
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn btn-secondary">Lihat Bukti Pendanaan </button>
+                                    <button class="btn btn-success">Lihat Bukti Pendanaan </button>
                                     <button class="btn btn-primary">Download Bukti Pendanaan </button>
                                 </div>
 

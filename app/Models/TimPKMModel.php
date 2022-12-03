@@ -74,8 +74,9 @@ class TimPKMModel extends Model
 
     public function get_timpkm_byid($id_pkm)
     {
-        $builder = $this->db->table('tim_pkm');
+        $builder = $this->db->table('tim_pkm')->join('dosen', 'dosen.NIP_dosen = tim_pkm.nip', 'left');
         $query = $builder->getWhere(['ID_pkm' => $id_pkm]);
+
         return $query->getResultArray();
     }
     public function get_anggota_timpkm($id_pkm)

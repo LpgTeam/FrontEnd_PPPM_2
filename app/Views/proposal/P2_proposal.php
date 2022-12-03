@@ -263,7 +263,7 @@
                 <td></td>
                 <td>
                     <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100">    
-                    <!-- <img src="<?= base_url("") ?>/assets/img/<?= $penelitian['tanda_tangan'];?>" alt="stis" width="120" /> -->
+                    <!-- <img src="<//?= base_url("") ?>/assets/img/<//?= $penelitian['tanda_tangan'];?>" alt="stis" width="120" /> -->
                 </td>
             </tr>
             <tr>

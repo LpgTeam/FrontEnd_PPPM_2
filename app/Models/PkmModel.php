@@ -18,18 +18,19 @@ class PkmModel extends Model
         'ID_pkm',
         'jenis_pkm',
         'topik_kegiatan',
-    	'bentuk_kegiatan',
-    	'waktu_kegiatan',
+        'bentuk_kegiatan',
+        'waktu_kegiatan',
         'tempat_kegiatan',
-    	'sasaran',
+        'sasaran',
         'target_peserta',
         'hasil',
-    	'pembiayaan_diajukan',
+        'pembiayaan_diajukan',
         'diajukan_lainnya',
-        'tanggal_pengajuan',	
-        'status',	
-        'id_status'	,
-        'id_status_reimburse'
+        'tanggal_pengajuan',
+        'status',
+        'id_status',
+        'id_status_reimburse',
+        'alasan'
     ];
 
     // Dates
@@ -71,7 +72,7 @@ class PkmModel extends Model
         return $this->where(['ID_pkm' => $id_pkm])->first();
     }
 
-    public function get_pkm_by_status2($id_status,$id_status2)
+    public function get_pkm_by_status2($id_status, $id_status2)
     {
         $builder = $this->db->table('pengajuan_pkm');
         $query = $builder->getWhere(['id_status >=' => $id_status, 'id_status <=' => $id_status2]);
@@ -91,10 +92,16 @@ class PkmModel extends Model
         return $query->getResultArray();
     }
 
-    public function get_pkm_done($nip, $id_status){
+    public function get_pkm_done($nip, $id_status)
+    {
         return $this->join('tim_pkm', 'pengajuan_pkm.ID_pkm = tim_pkm.id_pkm')
-        ->select('tim_pkm.nip')->select('pengajuan_pkm.*')
-        // ->select('laporan_penelitian.*')
-        ->where(['nip' => $nip])->where(['id_status' => $id_status])->findAll();
+            ->select('tim_pkm.nip')->select('pengajuan_pkm.*')
+            // ->select('laporan_penelitian.*')
+            ->where(['nip' => $nip])->where(['id_status' => $id_status])->findAll();
+    }
+
+    public function get_pkm_reimburse_diajukan($status_reimburse)
+    {
+        return $this->where(['id_status_reimburse' => $status_reimburse])->findAll();
     }
 }

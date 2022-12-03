@@ -72,13 +72,13 @@ class Reviewer extends BaseController
         //ambil dana pengajuan 
         $ambil_pengajuan = $dana_pengajuan->findAll();
         $total_pengajuan = null;
-        foreach($ambil_pengajuan as $data_pengajuan){
-            if(($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)){
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
 
-     
+
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
@@ -86,7 +86,7 @@ class Reviewer extends BaseController
             'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
             'anggaranDiajukan'    => $total_pengajuan
         ];
-     
+
         return view('dosen/tampilan/anggaran', $data);
     }
 
@@ -134,7 +134,8 @@ class Reviewer extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 8,
-            'status_pengajuan'  => 'Ditolak oleh Reviewer'
+            'status_pengajuan'  => 'Ditolak oleh Reviewer',
+            'alasan'            => $this->request->getVar('alasan')
         ]);
 
         $this->statusPenelitianModel->save([

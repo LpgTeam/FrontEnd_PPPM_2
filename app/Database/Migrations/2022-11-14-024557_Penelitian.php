@@ -12,67 +12,67 @@ class Penelitian extends Migration
             'id_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'nullable' => false,
+                'null' => false,
                 'auto_increment' => true
             ],
 
             'jenis_penelitian' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ],
 
             'judul_penelitian' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'nullable' => false
+                'null' => false
             ],
 
             'bidang' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => false
             ],
 
             'tanggal_pengajuan' => [
                 'type' => 'DATE',
-                'nullable' => false
+                'null' => false
             ],
 
             'jumlah_anggota' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false
+                'null' => false
             ],
 
             'id_status' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false
+                'null' => false
             ],
 
             'status_pengajuan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'nullable' => false
+                'null' => true
             ],
 
             'file_proposal' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'nullable' => false
+                'null' => true
             ],
 
             'surat_pernyataan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'nullable' => false
+                'null' => true
             ],
 
             'biaya' => [
                 'type' => 'VARCHAR',
                 'constraint' => 20,
-                'nullable' => false
+                'null' => true
             ]
         ]);
         $this->forge->addKey('id_penelitian', true);

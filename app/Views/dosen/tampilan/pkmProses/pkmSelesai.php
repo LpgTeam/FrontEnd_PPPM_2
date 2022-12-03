@@ -11,6 +11,12 @@
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
+            <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $pkm['alasan'];
+                                    } ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
@@ -24,7 +30,7 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <?php if ($pkm['jenis_pkm'] != 'Mandiri') { ?>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="service-box green">
@@ -51,36 +57,41 @@
 
                 </div>
             </div>
-            </div>
-            <br>
-            <br>
-            <!-- End Proses -->
+        </div>
+        <br>
+        <br>
+        <!-- End Proses -->
 
-            <div class="row" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Surat Keterangan</h5>
-                            <hr>
-                            <p>Kegiatan PKM selesai dilakukan. Anda dapat melihat atau mendownload
-                                surat keterangan telah melaksanakan kegiatan PKM </p>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <!-- <button class="btn btn-success">Lihat</button> -->
-                                <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Surat Keterangan </a>
-                            </div>
-
+        <div class="row" data-aos="fade-up">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Surat Keterangan</h5>
+                        <hr>
+                        <p>Kegiatan PKM selesai dilakukan. Anda dapat melihat atau mendownload
+                            surat keterangan telah melaksanakan kegiatan PKM </p>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <!-- <button class="btn btn-success">Lihat</button> -->
+                            <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Surat Keterangan </a>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Section: Timeline -->
+                        <ul class="timeline-with-icons" id="listPKM">
+                        </ul>
+                        <ul class="timeline-with-icons" id="keteranganPKM">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 </main>

@@ -9,7 +9,7 @@
             <header class="section-header2">
                 <h2>REIMBURSEMEN</h2>
                 <hr>
-                <p>Dosen Politeknik Statistika STIS</p>
+                <p>Direktur Politeknik Statistika STIS</p>
             </header>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
@@ -19,8 +19,8 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen PKM yang diajukan oleh dosen
-                                oleh Direktur Politeknik Statistika STIS
+                                Reimbursemen PKM yang diajukan oleh Dosen
+                                Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>
@@ -31,18 +31,16 @@
             <!-- End Proses -->
 
             <div class="row" data-aos="fade-up">
-
-
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
                         <hr>
-                        <p>Proposal reimburse PKM yang diajukan dosen
-                            oleh Direktur Politeknik Statistika STIS
+                        <p>Proposal Reimbursemen PKM yang diajukan Dosen
+                            Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
                             <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button>
                             </div>
                         </div>
                     </div>

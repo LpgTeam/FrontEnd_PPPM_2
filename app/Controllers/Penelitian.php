@@ -134,7 +134,7 @@ class Penelitian extends BaseController
                     'rules' => 'uploaded[uploadSign]|is_image[uploadSign]|mime_in[uploadSign,image/jpg,image/jpeg,image/png]|max_size[uploadSign,10000]',
                     'errors' => [
                         'uploaded' => "File tidak boleh kosong",
-                        'mime_in','is_image' => "Format file harus image/jpg,image/jpeg,image/png",
+                        'mime_in', 'is_image' => "Format file harus image/jpg,image/jpeg,image/png",
                         'max_size' => "Ukuran File terlalu besar (Max 100kb)"
                     ]
                 ]
@@ -172,9 +172,7 @@ class Penelitian extends BaseController
             'judul_penelitian' => $this->request->getVar('judul_penelitian'),
             'bidang' => $this->request->getVar('bidang'),
             'jumlah_anggota' => $this->request->getVar('anggota'),
-            'tanggal_pengajuan' => Time::now(
-                'Asia/jakarta'
-            ),
+            'tanggal_pengajuan' => Time::now('Asia/jakarta'),
             'id_status' => '1',
             'status_pengajuan' => 'Diajukan oleh Dosen',
             'file_proposal' => $namaProposal,
@@ -182,21 +180,22 @@ class Penelitian extends BaseController
             'biaya'  => $biaya,
             'bukti_luaran' => $namaBukti
         ]);
-        
+
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
-       
+        // dd($this->request->getVar('judul_penelitian'));
+        // dd($idpenelitian);
         //Status 
         $this->statusPenelitianModel->save([
             'id_penelitian' => $idpenelitian['id_penelitian'],
             'status'        => 'Diajukan oleh Dosen'
         ]);
-        
+
         // dd($idpenelitian );
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
         $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         // dd($nipdosen);
 
-        
+
 
         $this->ketuatimpenelitiModel->save([
             'id_penelitian' => $idpenelitian['id_penelitian'],

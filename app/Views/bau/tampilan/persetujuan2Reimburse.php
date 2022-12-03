@@ -46,6 +46,14 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
+=======
+<?php
+
+                    if ($reimburse['id_status'] == 1) {
+                            
+                ?>
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
@@ -59,6 +67,23 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
+=======
+                        <?php
+                        } else if($reimburse['id_status'] == 2){
+                        ?>
+                             <div class="main-timeline">
+                                <div class="timeline">
+                                    <a href="#" class="timeline-content">
+                                        <div class="timeline-year">Reimburse</div>
+                                        <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                        <h3 class="title">Dana Reimburse Sudah Dicairkan</h3>
+                                    </a>
+                                </div>
+                            <?php
+                        }
+                            ?>
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
                     </div>
             </div>
     </section>
@@ -78,7 +103,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+<<<<<<< HEAD
                 <button type="button" class="btn btn-danger" onclick="location.href='/acc-reimburseBAU/<?= $reimburse['id_reimburse']; ?>'">Ya</button>
+=======
+                <button type="button" class="btn btn-danger" onclick="location.href='/acc-reimbursePKMBAU/<?= $reimburse['id_reimburse']; ?>'">Ya</button>
+>>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
             </div>
         </div>
     </div>

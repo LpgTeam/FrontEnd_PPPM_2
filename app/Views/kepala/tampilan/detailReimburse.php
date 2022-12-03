@@ -31,33 +31,19 @@
             <!-- End Proses -->
 
             <div class="row" data-aos="fade-up">
-
-
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
                         <hr>
-                        <p>Proposal reimburse penelitian yang diajukan dosen
-                            oleh Direktur Politeknik Statistika STIS
-                        </p>
-                        <div class="d-flex justify-content-start">
-                            <div class="row mb-4">
-                                <div class="text-end col-md-4 col-lg-3 col-form-label">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
-                                </div>
-                                <div class="text-end col-md-4 col-lg-3 col-form-label">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
-                                </div>
-                                <div class="text-end col-md-4 col-lg-3 col-form-label">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
-                                </div>
-                                <div class="text-end col-md-4 col-lg-3 col-form-label">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tombol 1</button>
-                                </div>
-                            </div>
-                        </div>
+                        <ol>
+                            <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
+                            <li>Jenis Penelitian &nbsp;&nbsp; : <?= $reimburse['jenis_penelitian']; ?></li>
+                        </ol>
+                        <hr>
+                        <?= $this->include('bau/tampilan/download_reimburse'); ?>
                     </div>
                 </div>
+            </div>
 
 
     </section>

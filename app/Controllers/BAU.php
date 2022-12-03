@@ -12,8 +12,8 @@ use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
-use App\Models\StatusPkmModel;
 use App\Models\ReimburseModel;
+use App\Models\StatusPkmModel;
 use CodeIgniter\API\ResponseTrait;
 
 
@@ -28,8 +28,9 @@ class BAU extends BaseController
     {
         $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
-        $this->pkmModel = new PKMModel();
-        $this->statusPkmModel = new statusPkmModel();
+        $this->pkmModel = new PkmModel();
+        $this->statusPkmModel = new StatusPkmModel();
+        $this->reimburseModel = new ReimburseModel();
     }
 
     public function index()
@@ -154,7 +155,7 @@ class BAU extends BaseController
 
     public function rjc_penelitian_bau($id_penelitian)
     {
-        
+
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 5,
@@ -209,65 +210,19 @@ class BAU extends BaseController
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
             'id_status'         => 5,
-            'status'            => 'Ditolak oleh BAU'
+            'status'            => 'Ditolak oleh BAU',
+            'alasan'            => $this->request->getVar('alasan')
         ]);
+
+        dd($this->request->getVar('alasan'));
 
         $this->statusPkmModel->save([
             'id_pkm' => $id_pkm,
             'status' => 'Ditolak oleh BAU'
         ]);
-        
+
         session()->setFlashdata('pesan', 'PKM telah ditolak');
 
         return redirect()->to('/pkmBAU');
-    }
-
-    //=======================Reimbursemen================================
-    public function reimburse()
-    {
-        $reimburse = $this->reimburseModel->findAll();
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'reimburse' => $this->reimburseModel->get_reimburse_by_id_status(1)
-        ];
-        // dd($reimburse);
-        return view('bau/tampilan/reimburse', $data);
-    }
-
-    public function persetujuanReimburse($kegiatan, $id_reimburse)
-    {
-        $reimburse = $reimburseModel->findAll();
-        if($kegiatan == 'penelitian'){
-            $data = [
-                'title' => 'PPPM Politeknik Statistika STIS',
-                'reimburse' => $this->reimburseModel->find($id_reimburse),
-                'kegiatan' => $kegiatan,
-                'validation' => \Config\Services::validation()
-            ];
-            return view('bau/tampilan/persetujuanReimburse', $data);
-
-        } else if ($kegiatan == 'pkm') {
-            $data = [
-                'title' => 'PPPM Politeknik Statistika STIS',
-                'kegiatan' => $kegiatan,
-                'reimburse' => $this->reimburseModel->find($id_reimburse),
-                'validation' => \Config\Services::validation()
-            ];
-            // dd($reimburse);
-            return view('bau/tampilan/persetujuan2Reimburse', $data);
-        }
-    }
-
-    public function acc_reimburse($id_reimburse)
-    {
-        $this->reimburseModel->save([
-            'id_reimburse'     => $id_reimburse,
-            'id_status'         => 2,
-            'status_reimburse'  => 'Dana Reimburse berhasil dicairkan'
-        ]);
-
-        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
-
-        return redirect()->to('/reimburseBAU');
     }
 }

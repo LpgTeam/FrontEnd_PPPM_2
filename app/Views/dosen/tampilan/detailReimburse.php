@@ -44,7 +44,8 @@
                         <hr>
 
                         <div class="d-flex justify-content-end">
-                            <a href="/penelitian/view_proposal/<?= $penelitian['id_penelitian']; ?>/<?= $penelitian['judul_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a>
+                            <!-- <a href="/penelitian/view_proposal/<?= $penelitian['id_penelitian']; ?>/<?= $penelitian['judul_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a> -->
+                            <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
                         </div>
                         <hr>
                         <?php

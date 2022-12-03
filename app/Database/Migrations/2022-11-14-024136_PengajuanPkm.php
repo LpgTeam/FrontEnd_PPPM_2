@@ -12,82 +12,82 @@ class PengajuanPkm extends Migration
             'ID_pkm' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false,
+                'null' => false,
                 'auto_increment' => true
             ],
 
             'jenis_pkm' => [
                 'type' => 'VARCHAR',
                 'constraint' => 25,
-                'nullable' => false
+                'null' => false
             ],
 
             'topik_kegiatan' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => false
             ],
 
             'bentuk_kegiatan' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => false
             ],
 
             'waktu_kegiatan' => [
                 'type' => 'date',
-                'nullable' => false
+                'null' => false
             ],
 
             'tempat_kegiatan' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => false
             ],
 
             'sasaran' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => false
             ],
 
             'target_peserta' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false
+                'null' => false
             ],
 
             'hasil' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => false
             ],
 
             'pembiayaan_diajukan' => [
                 'type' => 'text',
-                'nullable' => true
+                'null' => true
             ],
 
             'diajukan_lainnya' => [
                 'type' => 'text',
-                'nullable' => true
+                'null' => true
             ],
 
             'tanggal_pengajuan' => [
                 'type' => 'date',
-                'nullable' => false
+                'null' => false
             ],
 
             'status' => [
                 'type' => 'text',
-                'nullable' => false
+                'null' => true
             ],
 
             'id_status' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false
+                'null' => false
             ],
 
             'jumlah_anggota' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'nullable' => false
+                'null' => false
             ]
         ]);
 

@@ -110,6 +110,9 @@ function tambah(){
 
     var status9 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
+        "<span class='timeline-icon2'>"+
+            "<i class='bi bi-x-lg'></i>"+
+        "</span>"+
             "<h5 class='fw-bold'>Ditolak BAU</h5>"+
             "<p>"+
                 alasan+
@@ -118,6 +121,9 @@ function tambah(){
 
     var status10 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
+        "<span class='timeline-icon2'>"+
+            "<i class='bi bi-x-lg'></i>"+
+        "</span>"+
             "<h5 class='fw-bold'>Ditolak Reviewer</h5>"+
             "<p>"+
                 alasan+
@@ -126,6 +132,9 @@ function tambah(){
 
     var status11 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
+        "<span class='timeline-icon2'>"+
+            "<i class='bi bi-x-lg'></i>"+
+        "</span>"+
             "<h5 class='fw-bold'>Ditolak Kepala PPPM</h5>"+
             "<p>"+
                 alasan+
@@ -167,10 +176,10 @@ if (jenis == "Semi Mandiri") {
         list.innerHTML += status9;
     }
     else if (status == 8){
-        list.innerHTML += status9;
+        list.innerHTML += status10;
     }
     else if (status == 9){
-        list.innerHTML += status9;
+        list.innerHTML += status11;
     }
     
 } else if (jenis == "Di Danai Institusi" || jenis == "Institusi"){
@@ -201,21 +210,20 @@ if (jenis == "Semi Mandiri") {
         list.innerHTML += status9;
     }
     else if (status == 8){
-        list.innerHTML += status9;
+        list.innerHTML += status10;
     }
     else if (status == 9){
-        list.innerHTML += status9;
+        list.innerHTML += status11;
     }
 }
     
-
-
 
     if (status == 7 || status == 8 || status == 9){
         keterangan.innerHTML += tanda2 ;}
     else {
         list.innerHTML += tanda ;
     }
+
 
 }
 

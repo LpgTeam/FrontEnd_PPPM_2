@@ -2,6 +2,7 @@
 // Proses PKM
 function tambahPKM(){
     var statusPKM = document.getElementById("statusPKM").innerHTML ;
+    var alasan = document.getElementById("alasan").innerHTML ;
     var ketPKM = "";
     var listPKM = document.getElementById("listPKM");
     var keteranganPKM = document.getElementById("keteranganPKM");
@@ -49,46 +50,50 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
             "<p>"+
-                "Proses persetujuan surat pernyataan oleh dosen"+
-            "</p>"+
-        "</li>";  
-
-    var status5 = innerHTML = 
-        "<li class='timeline-item mb-5'>"+
-            "<span class='timeline-icon'>"+
-                "<i class='bi bi-card-checklist'></i>"+
-            "</span>"+
-            "<h5 class='fw-bold'>Laporan</h5>"+
-            "<p>"+
                 "Melaporkan hasil PKM yang dilakukan oleh Dosen Polstat STIS"+
             "</p>"+
         "</li>";    
     
-    var status6 = innerHTML = 
+    var status5 = innerHTML = 
         "<li class='timeline-item mb-5'>"+
             "<span class='timeline-icon'>"+
                 "<i class='bi bi-check2-square'></i>"+
             "</span>"+
             "<h5 class='fw-bold'>Selesai</h5>"+
             "<p>"+
-                "Kegiatan PKM Telah Selesai dilsanakan"+
+                "Kegiatan PKM Telah Selesai dilaksanakan"+
             "</p>"+
         "</li>";
+
+        
+    var status6 = innerHTML = 
+        "<li class='timeline-item mb-5'>"+
+        "<span class='timeline-icon2'>"+
+            "<i class='bi bi-x-lg'></i>"+
+        "</span>"+
+            "<h5 class='fw-bold'>Ditolak BAU</h5>"+
+            "<p>"+
+            alasan
+            "</p>"+
+        "</li>";
+
+    var status7 = innerHTML = 
+        "<li class='timeline-item mb-5'>"+
+        "<span class='timeline-icon2'>"+
+            "<i class='bi bi-x-lg'></i>"+
+        "</span>"+
+            "<h5 class='fw-bold'>Ditolak Kepala PPPM</h5>"+
+            "<p>"+
+            alasan
+            "</p>"+
+        "</li>";
+
     
     var tanda = innerHTML = 
         "<h6 style='background : #38E54D; font-size : 5px;'>&nbsp</h6>";
 
     var tanda2 = innerHTML = 
-        "<h6 style='background : red; font-size : 5px;'>&nbsp</h6>"+
-        "<li class='timeline-item mb-5'>"+
-            "<span class='timeline-icon' style='border-color: red'>"+
-                "<i class='bi bi-file-earmark-excel'></i>"+
-            "</span>"+
-            "<h5 class='fw-bold'>Gagal</h5>"+
-            "<p>"+
-                "Gagal melewati Proses"+
-            "</p>"+
-        "</li>";
+        "<h6 style='background : #CF0A0A; font-size : 5px;'>&nbsp</h6>";
 
         
     if (statusPKM == 1){
@@ -100,14 +105,19 @@ function tambahPKM(){
         listPKM.innerHTML += status1 + status2 + status3 + status4;
     }
     else if (statusPKM == 4){
-        listPKM.innerHTML += status1 + status2 + status3 + status4 + status5;
+        listPKM.innerHTML += status1 + status2 + status3 + status4 ;
+    }
+    else if (statusPKM == 5){
+        listPKM.innerHTML += status6;
+    }
+    else if (statusPKM == 6){
+        listPKM.innerHTML += status7;
     }
     else if (statusPKM == 7){
-        listPKM.innerHTML += status1 + status2 + status3 + status4 + status5 +status6;
-    }
-    
+        listPKM.innerHTML += status1 + status2 + status3 + status4 + status5;
+    }     
 
-    if (ketPKM == "gagal"){
+    if (statusPKM == 5 || statusPKM == 6){
         keteranganPKM.innerHTML += tanda2 ;}
     else{
         listPKM.innerHTML += tanda ;
