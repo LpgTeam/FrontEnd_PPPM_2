@@ -86,48 +86,142 @@ class Penelitian extends Seeder
 
 
             // if (($data['id_status'] == 6) || ($data['id_status'] == 10)) {
-            // $file_kontrak = null;
-            // $file_laporan_dana = null;
-            // if ($data['jenis_penelitian'] == 'Semi Mandiri') {
-            //     $file_laporan_dana = 'default_laporan_dana.pdf';
-            // } else {
-            //     $file_kontrak = 'default_kontrak.pdf';
+            $file_kontrak = null;
+            $file_laporan_dana = null;
+            if ($data['jenis_penelitian'] == 'Semi Mandiri') {
+                $file_laporan_dana = 'default_laporan_dana.pdf';
+            } else {
+                $file_kontrak = 'default_kontrak.pdf';
+            }
+
+            $file_laporan_luaran = null;
+            if ($data['id_status'] == 10) {
+                $file_laporan_luaran = 'default_laporan_luaran.pdf';
+            }
+
+            $data_laporan_penelitian = [
+                'id_penelitian'     =>  $data['id_penelitian'],
+                'kontrak'           =>  $file_kontrak,
+                'laporan_luaran'    =>  $file_laporan_luaran,
+                'laporan_dana'      =>  $file_laporan_dana,
+                'status_penelitian' =>  $data['id_status'],
+            ];
+            $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
             // }
 
-            // $file_laporan_luaran = null;
-            // if ($data['id_status'] == 10) {
-            //     $file_laporan_luaran = 'default_laporan_luaran.pdf';
-            // }
-
-            // $data_laporan_penelitian = [
-            //     'id_penelitian'     =>  $data['id_penelitian'],
-            //     'kontrak'           =>  $file_kontrak,
-            //     'laporan_luaran'    =>  $file_laporan_luaran,
-            //     'laporan_dana'      =>  $file_laporan_dana,
-            //     'status_penelitian' =>  $data['id_status'],
-            // ];
-            // $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
-            // }
-
-            // $data_target_penelitian = [
-            //     'id_penelitian'     =>  $data['id_penelitian'],
-            //     'jenis_luaran'      =>  $faker->randomElement($array = array('Artikel pada jurnal nasional terakreditasi', 'Artikel pada prosiding terindeks scopus', 'Buku Cetak Hasil Penelitian ', 'Buku Elektronik Hasil Penelitian ')),
-            //     'target-capaian'    =>  $faker->randomElement($array = array('accepted', 'published')),
-            //     'jurnal_tujuan'     =>  $faker->randomElement($array = array('Media Statistika (Terakreditasi Sinta 2)', 'INDONESIAN JOURNAL OF SCIENCE AND TECHNOLOGY', 'INDONESIAN JOURNAL OF ELECTRICAL ENGINEERING AND COMPUTER SCIENCE', 'GADJAH MADA INTERNATIONAL JOURNAL OF BUSINESS (GAMAIJB)', 'JOURNAL ON MATHEMATICS EDUCATION', 'Indonesian Journal of Science and Technology', 'Journal of Mathematical and Fundamental Sciences', 'Asian Journal of Information Technology', 'Research Journal of Applied Sciences', 'International Journal of Computer Applications in Technology')),
-            // ];
-            // $this->db->table('target_penelitian')->insert($data_target_penelitian);
+            $data_target_penelitian = [
+                'id_penelitian'     =>  $data['id_penelitian'],
+                'jenis_luaran'      =>  $faker->randomElement($array = array('Artikel pada jurnal nasional terakreditasi', 'Artikel pada prosiding terindeks scopus', 'Buku Cetak Hasil Penelitian ', 'Buku Elektronik Hasil Penelitian ')),
+                'target-capaian'    =>  $faker->randomElement($array = array('accepted', 'published')),
+                'jurnal_tujuan'     =>  $faker->randomElement($array = array('Media Statistika (Terakreditasi Sinta 2)', 'INDONESIAN JOURNAL OF SCIENCE AND TECHNOLOGY', 'INDONESIAN JOURNAL OF ELECTRICAL ENGINEERING AND COMPUTER SCIENCE', 'GADJAH MADA INTERNATIONAL JOURNAL OF BUSINESS (GAMAIJB)', 'JOURNAL ON MATHEMATICS EDUCATION', 'Indonesian Journal of Science and Technology', 'Journal of Mathematical and Fundamental Sciences', 'Asian Journal of Information Technology', 'Research Journal of Applied Sciences', 'International Journal of Computer Applications in Technology')),
+            ];
+            $this->db->table('target_penelitian')->insert($data_target_penelitian);
 
 
-            // // $db      = \Config\Database::connect();
+            // $db      = \Config\Database::connect();
 
-            // // $db      = \Config\Database::connect();
-            // $builder = $db->table('detailstatus_penelitian');
-            // $query = $builder->get();
-            // $datastatus = $query->getResultArray();
+            // $db      = \Config\Database::connect();
+            $builder = $db->table('detailstatus_penelitian');
+            $query = $builder->get();
+            $datastatus = $query->getResultArray();
+    
 
+            $id_status = $data['id_status'];
 
-            // $id_status = $data['id_status'];
+            if ($id_status <= 6) {
+                for ($i = 1; $i <= $data['id_status']; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
 
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+            } elseif ($id_status == 7) {
+                for ($i = 1; $i <= 1; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[6]['deskripsi'],
+                    // 'status'            =>      $deskripsi[7],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            } elseif ($id_status == 8) {
+                for ($i = 1; $i <= 2; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[7]['deskripsi'],
+                    // 'status'            =>      $deskripsi[8],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            } elseif ($id_status == 9) {
+                for ($i = 1; $i <= 3; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[8]['deskripsi'],
+                    // 'status'            =>      $deskripsi[9],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            } elseif ($id_status == 10) {
+                for ($i = 1; $i <= 6; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[9]['deskripsi'],
+                    // 'status'            =>      $deskripsi[10],
+                    // 'status'            =>      $deskripsi[10],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            }
 
             $this->db->table('penelitian')->insert($data);
         }

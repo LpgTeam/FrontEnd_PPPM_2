@@ -75,7 +75,7 @@ class PengajuanPkm extends Migration
 
             'status' => [
                 'type' => 'text',
-                'null' => false
+                'null' => true
             ],
 
             'id_status' => [

@@ -49,7 +49,7 @@ class UserSeed extends Seeder
         $user = new User([
             'username' => 'bau',
             'email'    => 'bau@stis.ac.id',
-            'password' => 'reviewer123',
+            'password' => 'bau123',
             'nip'      => '',
         ]);
         $users->save($user);
