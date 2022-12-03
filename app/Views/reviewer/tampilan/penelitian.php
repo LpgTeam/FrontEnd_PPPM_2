@@ -57,7 +57,7 @@
                             <div class="row mb-3">
 
                                 <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian</label>
-                                <div class="col-md-8 col-lg-4">
+                                <div class="col-md-8 col-lg-2">
                                     <select class="form-select status-dropdown ">
                                         <option value="">Semua</option>
                                         <option value="1">Mandiri</option>
@@ -69,10 +69,22 @@
                                 </div>
 
                                 <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Penelitian</label>
-                                <div class="col-md-8 col-lg-4">
+                                <div class="col-md-8 col-lg-2">
                                     <select class="form-select status-dropdown2">
                                         <option value="">Semua</option>
                                         <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
+                                    </select>
+                                </div>
+
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Bidang Penelitian</label>
+                                <div class="col-md-8 col-lg-2">
+                                    <select class="form-select status-dropdown3">
+                                        <option value="">Semua</option>
+                                        <option value="Small Area Estimation">Small Area Estimation </option>
+                                        <option value="SDG's">SDG's </option>
+                                        <option value="Metodologi Survei dan Sensus">Metodologi Survei dan Sensus </option>
+                                        <option value="Sistem Informasi Statistik">Sistem Informasi Statistik </option>
+                                        <option value="Lainnya">Lainnya </option>
                                     </select>
                                 </div>
 
@@ -82,7 +94,7 @@
                                 <table id="example" class="table">
                                     <thead>
                                         <tr class="table-primary">
-                                            <th scope="col">Nomor</th>
+                                            <th scope="col">Bidang</th>
                                             <th scope="col">Jenis Penelitian</th>
                                             <th scope="col">Tanggal Pengajuan</th>
                                             <th scope="col">Judul Penelitian</th>
@@ -97,7 +109,7 @@
                                             <tr>
                                                 <!-- <td><?php //echo $post['id_penelitian'] 
                                                             ?></td> -->
-                                                <td><?php echo $i ?></td>
+                                                <td><?php echo $post['bidang'] ?></td>
                                                 <td>
                                                     <?php if ($post['jenis_penelitian'] == "Mandiri") {
                                                         echo "<p hidden >1</p>", $post['jenis_penelitian'];
@@ -145,6 +157,14 @@
                                     console.log(status)
                                     //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
                                     dataTable.column(4).search(status).draw();
+                                })
+
+                                $('.status-dropdown3').on('change', function(e) {
+                                    var status = $(this).val();
+                                    $('.status-dropdown2').val(status)
+                                    console.log(status)
+                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                    dataTable.column(0).search(status).draw();
                                 })
                             });
                         </script>
