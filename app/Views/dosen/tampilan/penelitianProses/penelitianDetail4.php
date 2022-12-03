@@ -13,6 +13,11 @@
             </header>
             <p hidden id="status"><?= $penelitian['id_status']; ?></p>
             <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
+            <p hidden id="alasan"><?php if ($penelitian['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $penelitian['alasan'];
+                                    } ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">

@@ -157,8 +157,8 @@ class Kepala extends BaseController
             'status'        => 'Disetujui oleh Kepala PPPM'
         ]);
 
-        $sendEmail = new SendEmail();
-        $sendEmail->send_email_persetujuan('Kepala PPPM');
+        // $sendEmail = new SendEmail();
+        // $sendEmail->send_email_persetujuan('Kepala PPPM');
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
         return redirect()->to('/penelitianKepala');

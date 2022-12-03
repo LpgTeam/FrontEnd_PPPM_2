@@ -14,11 +14,11 @@
             <!-- ======= Proses Section ======= -->
             <p hidden id="status"><?= $penelitian['id_status']; ?></p>
             <p hidden id="jenis"><?= $penelitian['jenis_penelitian']; ?></p>
-            <p hidden id="alasan"><?php if($penelitian['alasan']== null){
-                echo 'kosong';
-            }else{
-                echo $penelitian['alasan'];
-            } ?></p>
+            <p hidden id="alasan"><?php if ($penelitian['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $penelitian['alasan'];
+                                    } ?></p>
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
