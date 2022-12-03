@@ -59,7 +59,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Laporan</h3>
                             <p>
-                                Pelaporan hasil kegiatan penelitain yang dilakukan oleh dosen
+                                Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
                             </p>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Laporan </a>
-                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporam </a>
+                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download laporan </a>
                             </div>
 
                         </div>
