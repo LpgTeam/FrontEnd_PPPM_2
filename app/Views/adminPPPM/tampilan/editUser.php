@@ -33,6 +33,7 @@
                                 <select class="form-select" id="role" name="role">
                                     <option selected readonly>Pilih</option>
                                     <option value="dosen">Dosen</option>
+                                    <option value="bau">BAU</option>
                                     <option value="admin">Admin PPPM</option>
                                     <option value="kepalaPPPM">Kepala PPPM</option>
                                     <option value="reviewer">Reviewer </option>
