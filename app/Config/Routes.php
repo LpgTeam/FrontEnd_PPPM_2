@@ -263,8 +263,8 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmrjc-BAU/(:any)', 'BAU::rjc_pkm_BAU/$1');
 
         $routes->get('/reimburseBAU', 'BAU::reimburse');
-        $routes->get('/detailReimburseBAU/(:any)', 'BAU::detailReimburse/$1');
-        $routes->get('/acc-reimburseBAU/(:any)', 'BAU::acc_reimburse/$1');
+        $routes->get('/detailReimburse/(:any)', 'BAU::detailReimburse/$1');
+        $routes->post('/acc-reimburseBAU/(:any)', 'BAU::acc_reimburse/$1');
         $routes->get('/acc-reimbursePKMBAU/(:any)', 'BAU::acc_reimburse_pkm/$1');
         $routes->get('/detailReimburse2BAU/(:any)', 'BAU::detailReimburse2/$1');
 

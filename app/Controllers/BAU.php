@@ -31,6 +31,8 @@ class BAU extends BaseController
         $this->pkmModel = new PkmModel();
         $this->statusPkmModel = new StatusPkmModel();
         $this->reimburseModel = new ReimburseModel();
+        $this->anggaranTotalModel = new AnggaranTotalModel();
+        $this->anggaranAwalModel = new AnggaranAwalModel();
     }
 
     public function index()
@@ -46,6 +48,9 @@ class BAU extends BaseController
         $dana_pkm = new DanaPKMModel();
         $dana_terealisasi = new AnggaranTotalModel();
         $dana_pengajuan = new PenelitianModel();
+        $dana_awal = new AnggaranAwalModel();
+        $dana_penelitian = new DanaPenelitianModel();
+        $dana_pkm = new DanaPKMModel();
 
         //ambil dana penelitian
         $ambil_penelitian = $dana_penelitian->findAll();
@@ -249,8 +254,10 @@ class BAU extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
+            // 'total_biaya' => 
             'validation' => \Config\Services::validation()
         ];
+
         return view('bau/tampilan/persetujuanReimburse', $data);
      }
 
@@ -265,15 +272,27 @@ class BAU extends BaseController
 
     public function acc_reimburse($id_reimburse)
     {
+        //current year
+        $year = date("Y");
+        $biayaDicairkan = $this->request->getVar('biayaDicairkan');
+        // $penelitian_diajukan = $this->penelitianModel->get_total_diajukan($year);
+        $anggaranTotalModel = $this->anggaranTotalModel->get_sisa_terakhir();
+        $sisa_anggaran = $anggaranTotalModel['sisa_anggaran'] - $biayaDicairkan;
+       
         $this->reimburseModel->save([
             'id_reimburse'     => $id_reimburse,
+            'total_biaya'       => $biayaDicairkan,
             'id_status'         => 2,
-            'status_reimburse'  => 'Dana Reimburse berhasil dicairkan'
+            'status_reimburse'  => 'Reimbursement telah dicairkan'
+        ]);
+
+        $this->anggaranTotalModel->save([
+            'tahun'         => $year,
+            'dana_keluar'   => $biayaDicairkan,
+            'sisa_anggaran' => $sisa_anggaran
         ]);
 
         $id_penelitian = $this->reimburseModel->get_id_penelitian_done($id_reimburse);
-        // $Pen = $this->penelitianModel->get_penelitian($id_penelitian);
-      
 
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
@@ -287,10 +306,23 @@ class BAU extends BaseController
 
     public function acc_reimburse_pkm($id_reimburse)
     {
+        $year = date("Y");
+        $biayaDicairkan = $this->request->getVar('biayaDicairkan');
+        $anggaranTotalModel = $this->anggaranTotalModel->get_sisa_terakhir();
+        // $pkm_diajukan = $this->pkmModel->get_total_diajukan($year);
+        $sisa_anggaran = $anggaranTotalModel['sisa_anggaran'] - $biayaDicairkan;
+
         $this->reimburseModel->save([
             'id_reimburse'     => $id_reimburse,
+            'total_biaya'       => $biayaDicairkan,
             'id_status'         => 2,
-            'status_reimburse'  => 'Dana Reimburse berhasil dicairkan'
+            'status_reimburse'  => 'Reimbursement telah dicairkan'
+        ]);
+
+        $this->anggaranTotalModel->save([
+            'tahun'         => $year,
+            'dana_keluar'   => $biayaDicairkan,
+            'sisa_anggaran' => $sisa_anggaran
         ]);
 
         $id_pkm = $this->reimburseModel->get_id_pkm_done($id_reimburse);
@@ -306,4 +338,3 @@ class BAU extends BaseController
     }
 
 }
-

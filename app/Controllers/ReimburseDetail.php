@@ -67,13 +67,14 @@ class ReimburseDetail extends BaseController
 
         $fileInvoice = $this->request->getFile('uploadInvoice');
         $namaInvoice = $fileInvoice->getName();
-        $fileInvoice->move('na', $namaNaskah);
+        $fileInvoice->move('invoice', $namaInvoice);
 
 
         $Pen = $this->penelitianModel->get_penelitian($idpenelitian);
         $Loa = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
         $naskah = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
         $invoice = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
+        $total_biaya = $this->request->getVar('totalBiaya');
 
         $this->reimburseModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
@@ -84,7 +85,8 @@ class ReimburseDetail extends BaseController
             'naskah_artikel'    => $namaNaskah,
             'bukti_pembayaran'  => $namaInvoice,
             'id_status'         => "1",
-            'status_reimburse'  => "Reimbursement diajukan"
+            'status_reimburse'  => "Reimbursement diajukan",
+            'biaya_diajukan'    => $total_biaya
         ]);
         
         $this->penelitianModel->save([

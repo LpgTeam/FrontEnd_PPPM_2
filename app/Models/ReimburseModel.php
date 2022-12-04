@@ -28,7 +28,9 @@ class ReimburseModel extends Model
         'naskah_artikel',
         'bukti_pembayaran',
         'id_status',
-        'status_reimburse'
+        'status_reimburse',
+        'biaya_diajukan',
+        'total_biaya'
     ];
     public function getData()
     {
