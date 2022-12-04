@@ -85,7 +85,7 @@
                                                     ?>
                                             </td>
                                             <td>
-                                                <a href="/detailReimburseBAU/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="/detailReimburseAdmin/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 
 
 
@@ -113,7 +113,7 @@
                                             ?>
                                     </td>
                                     <td>
-                                        <a href="/detailReimburse2BAU/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="/detailReimburse2Admin/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                         
 
 

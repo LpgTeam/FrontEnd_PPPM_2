@@ -81,7 +81,32 @@
                                             <div class="invalid-feedback" id="uploadValid">
                                                 <?= $validation->getError('uploadInvoice'); ?>
                                             </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="row mb-3">
+                                        <label class="col-md-4 col-lg-3 col-form-label ">Form Usulan Publikasi</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <a href="<?= base_url('form_publikasi/printFormPublikasi') ?>" class="btn btn-primary">
+                                                Download Form Usulan Publikasi
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="uploadForm" class="col-md-4 col-lg-3 col-form-label ">Upload Form Usulan Publikasi</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadForm" class="form-control  <?= ($validation->hasError('uploadForm')) ? 'is-invalid' : ''; ?>" type="file" id="uploadForm">
+                                            <div class="invalid-feedback" id="uploadValid2">
+                                                <?= $validation->getError('uploadForm'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Total Biaya</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-end">
