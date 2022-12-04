@@ -95,7 +95,7 @@
                                                         echo "<p hidden >1</p>", $post['jenis_penelitian'];
                                                     } else if ($post['jenis_penelitian'] == "Semi Mandiri") {
                                                         echo "<p hidden >2</p>", $post['jenis_penelitian'];
-                                                    } else if ($post['jenis_penelitian'] == "Di Danai Institusi") {
+                                                    } else if ($post['jenis_penelitian'] == "Didanai Institusi") {
                                                         echo "<p hidden >3</p>", $post['jenis_penelitian'];
                                                     } else if ($post['jenis_penelitian'] == "Institusi") {
                                                         echo "<p hidden >4</p>", $post['jenis_penelitian'];

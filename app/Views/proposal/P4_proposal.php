@@ -40,7 +40,7 @@
 
 <body>
 
-    <u><b><?= $jenis; ?>4. Tugas Tim Peneliti</b></u>
+    <!-- <u><b><//?= $jenis; ?>4. Tugas Tim Peneliti</b></u> -->
     <div class="text-center">
         <h3>TUGAS/PERAN TIM PENELITI</h3>
     </div>

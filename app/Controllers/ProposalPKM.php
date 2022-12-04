@@ -7,6 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\PkmModel;
+use App\Models\PembiayaanPkmModel;
 use App\Models\RincianPKMModel;
 use App\Models\TimPKMModel;
 use App\Models\LuaranTargetModel;
@@ -23,6 +24,7 @@ class ProposalPKM extends BaseController
     protected $luaranModel;
     protected $pkmModel;
     protected $rincianModel;
+    protected $biayaModel;
 
     public function __construct()
     {
@@ -30,6 +32,7 @@ class ProposalPKM extends BaseController
         $this->dosenModel = new DosenModel();
         $this->pkmModel = new PkmModel();
         $this->rincianModel = new RincianPKMModel();
+        $this->biayaModel = new PembiayaanPkmModel;
     }
 
     public function download_proposal($id_pkm)
@@ -40,6 +43,7 @@ class ProposalPKM extends BaseController
             'pkm'    => $this->pkmModel->find($id_pkm),
             'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($id_pkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
+            'biaya' => $this->biayaModel->find_by_idpkm($id_pkm)
         ];
 
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
