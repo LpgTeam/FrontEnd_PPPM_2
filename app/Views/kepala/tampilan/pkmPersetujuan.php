@@ -64,11 +64,10 @@
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-secondary">Lihat Form </button>
-                                <button class="btn btn-primary">Download Form </button>
+                                <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
                             </div>
                         </div>
                     </div>
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Persetujuan Form</h5>

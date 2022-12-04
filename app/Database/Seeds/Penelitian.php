@@ -20,11 +20,15 @@ class Penelitian extends Seeder
         //     8 => 'Ditolak oleh Reviewer', 9 => 'Ditolak oleh Kepala PPPM', 10 => 'Kegiatan telah selesai dilaksanakan'
         // ];
 
+        $builder2 = $db->table('detailstatus_penelitian');
+        $query2 = $builder2->get();
+        $datastatus = $query2->getResultArray();
+
 
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 1; $i < 25; $i++) {
+        for ($k = 1; $k <= 125; $k++) {
             $data = [
-                'id_penelitian' => $i + $datapenelitian[0]['id_penelitian'],
+                'id_penelitian' => $k + $datapenelitian[0]['id_penelitian'],
                 'jenis_penelitian' => $faker->randomElement($array = array('Mandiri', 'Semi Mandiri', 'Di Danai Institusi', 'Institusi', 'Kerjasama')),
                 'judul_penelitian' => $faker->realText($maxNbChars = 20, $indexSize = 2),
                 'bidang'        => $faker->randomElement($array = array("Small Area Estimation", "SDG's", "Metodologi Survei dan Sensus", "Sistem Indormasi Statistik", "Lainnya")),
@@ -71,7 +75,7 @@ class Penelitian extends Seeder
             ];
             $this->db->table('tim_peneliti')->insert($dataketua);
 
-            for ($j = 0; $j < $data['jumlah_anggota'] - 1; $j++) {
+            for ($j = 0; $j <= ($data['jumlah_anggota'] - 1); $j++) {
                 $dosen = $faker->randomElement($array = $datadosen);
                 $dataanggota = [
                     'id_penelitian' => $data['id_penelitian'],
@@ -85,7 +89,8 @@ class Penelitian extends Seeder
             }
 
 
-            if (($data['id_status'] == 6) || ($data['id_status'] == 10)) {
+            // if (($data['id_status'] == 6) || ($data['id_status'] == 10)) {
+            if (($data['jenis_penelitian'] == 'Semi Mandiri') || ($data['jenis_penelitian'] == 'Di Danai Institusi') || ($data['jenis_penelitian'] == 'Institusi')) {
                 $file_kontrak = null;
                 $file_laporan_dana = null;
                 if ($data['jenis_penelitian'] == 'Semi Mandiri') {
@@ -104,10 +109,35 @@ class Penelitian extends Seeder
                     'kontrak'           =>  $file_kontrak,
                     'laporan_luaran'    =>  $file_laporan_luaran,
                     'laporan_dana'      =>  $file_laporan_dana,
-                    'status_penelitian' =>  $data['id_status'],
+                    'status_penelitian' =>  strval($data['id_status']),
                 ];
                 $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
+                // }
             }
+
+            // if (($data['id_status'] == 6) || ($data['id_status'] == 10)) {
+            //     $file_kontrak = null;
+            //     $file_laporan_dana = null;
+            //     if ($data['jenis_penelitian'] == 'Semi Mandiri') {
+            //         $file_laporan_dana = 'default_laporan_dana.pdf';
+            //     } else {
+            //         $file_kontrak = 'default_kontrak.pdf';
+            //     }
+
+            //     $file_laporan_luaran = null;
+            //     if ($data['id_status'] == 10) {
+            //         $file_laporan_luaran = 'default_laporan_luaran.pdf';
+            //     }
+
+            //     $data_laporan_penelitian = [
+            //         'id_penelitian'     =>  $data['id_penelitian'],
+            //         'kontrak'           =>  $file_kontrak,
+            //         'laporan_luaran'    =>  $file_laporan_luaran,
+            //         'laporan_dana'      =>  $file_laporan_dana,
+            //         'status_penelitian' =>  $data['id_status'],
+            //     ];
+            //     $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
+            // }
 
             $data_target_penelitian = [
                 'id_penelitian'     =>  $data['id_penelitian'],
@@ -118,17 +148,107 @@ class Penelitian extends Seeder
             $this->db->table('target_penelitian')->insert($data_target_penelitian);
 
 
-            // // $db      = \Config\Database::connect();
+            // $db      = \Config\Database::connect();
 
-            // // $db      = \Config\Database::connect();
-            // $builder = $db->table('detailstatus_penelitian');
-            // $query = $builder->get();
-            // $datastatus = $query->getResultArray();
+            // $db      = \Config\Database::connect();
 
 
-            // $id_status = $data['id_status'];
+            $id_status = $data['id_status'];
 
+            if ($id_status <= 6) {
+                for ($i = 0; $i < $data['id_status']; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
 
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+            } else if ($id_status == 7) {
+                // for ($i = 1; $i <= 1; $i++) {
+                // $query = $builder->getWhere(['id_detail' => $i]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[0]['deskripsi'],
+                    // 'status'            =>      $deskripsi[$i],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                // }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[6]['deskripsi'],
+                    // 'status'            =>      $deskripsi[7],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            } elseif ($id_status == 8) {
+                for ($i = 0; $i <= 1; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[7]['deskripsi'],
+                    // 'status'            =>      $deskripsi[8],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            } elseif ($id_status == 9) {
+                for ($i = 0; $i <= 2; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[8]['deskripsi'],
+                    // 'status'            =>      $deskripsi[9],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            } elseif ($id_status == 10) {
+                for ($i = 0; $i <= 5; $i++) {
+                    // $query = $builder->getWhere(['id_detail' => $i]);
+                    // $datastatus = $query->getResultArray();
+                    $data_status_penelitian = [
+                        'id_penelitian'     =>      $data['id_penelitian'],
+                        'status'            =>      $datastatus[$i]['deskripsi'],
+                        // 'status'            =>      $deskripsi[$i],
+                    ];
+                    $this->db->table('status_penelitian')->insert($data_status_penelitian);
+                }
+
+                // $query = $builder->getWhere(['id_detail' => $id_status]);
+                // $datastatus = $query->getResultArray();
+                $data_status_penelitian = [
+                    'id_penelitian'     =>      $data['id_penelitian'],
+                    'status'            =>      $datastatus[9]['deskripsi'],
+                    // 'status'            =>      $deskripsi[10],
+                    // 'status'            =>      $deskripsi[10],
+                ];
+                $this->db->table('status_penelitian')->insert($data_status_penelitian);
+            }
             $this->db->table('penelitian')->insert($data);
         }
 
