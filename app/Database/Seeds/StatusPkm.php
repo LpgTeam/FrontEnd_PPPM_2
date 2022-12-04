@@ -40,9 +40,9 @@ class StatusPkm extends Seeder
                 'deskripsi'     => 'Ditolak oleh Kepala PPPM',
             ],
             [
-                'id_detail'     => '1',
-                'status'        => 'Diajukan',
-                'deskripsi'     => 'Diajukan oleh Dosen',
+                'id_detail'     => '7',
+                'status'        => 'Selesai',
+                'deskripsi'     => 'Kegiatan telah selesai dilaksanakan',
             ],
         ];
         $this->db->table('detailstatus_pkm')->insertBatch($data);

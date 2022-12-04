@@ -28,7 +28,7 @@ class TargetPenelitian extends Migration
                 'null' => false
             ],
 
-            'target-capaian' => [
+            'target_capaian' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
                 'null' => false
