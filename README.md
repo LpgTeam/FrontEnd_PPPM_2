@@ -1,57 +1,62 @@
 buat database baru project_rpl (atau bebas sesuain env)
+
 php spark shield:setup
+
 php spark db:seed SeederNama (nama sendiri/role)
 
 mis : 
-php spark db:seed SeederDosen
-php spark db:seed SeederDirektur
-php spark db:seed SeederKepalaPPPM
-php spark db:seed SeederBAU
-php spark db:seed SeederReviewer
-php spark db:seed SeederAfnan
-php spark db:seed SeederOkta
-php spark db:seed SeederTaufiq
-php spark db:seed SeederIntan
-php spark db:seed SeederFatya
-php spark db:seed SeederAtikah
+
+php spark db:seed SeederDosen ||
+php spark db:seed SeederDirektur ||
+php spark db:seed SeederKepalaPPPM ||
+php spark db:seed SeederBAU ||
+php spark db:seed SeederReviewer ||
+php spark db:seed SeederAfnan ||
+php spark db:seed SeederOkta ||
+php spark db:seed SeederTaufiq ||
+php spark db:seed SeederIntan ||
+php spark db:seed SeederFatya ||
+php spark db:seed SeederAtikah ||
 
 nb : 
 akun user uda di seed sekalian di dalam itu
 
+setelah di seed, bisa login dengan akun : 
 
 account : 
+
 email : dosen@stis.ac.id 
-Pass  : dosen123
+|| Pass  : dosen123
 
 email : direktur@stis.ac.id 
-Pass  : direktur123
+|| Pass  : direktur123
 
 email : kepalapppm@stis.ac.id
-Pass  : kepalapppm123
+|| Pass  : kepalapppm123
 
 email : bau@stis.ac.id
-Pass  : bau123
+|| Pass  : bau123
 
 email : reviewer@stis.ac.id
-Pass  : reviewer123
+|| Pass  : reviewer123
 
 email : 222011494@stis.ac.id
-Pass  : afnan123
+|| Pass  : afnan123
 
 email : 222011596@stis.ac.id
-Pass  : okta123
+|| Pass  : okta123
 
 email : 222011361@stis.ac.id
-Pass  : taufiq123
+|| Pass  : taufiq123
 
 email : 222011537@stis.ac.id
-Pass  : intan123
+|| Pass  : intan123
 
 email : 222011295@stis.ac.id
-Pass  : fatya123
+|| Pass  : fatya123
 
 email : 222011453@stis.ac.id
-Pass  : atikah123
+|| Pass  : atikah123
 
 
 
