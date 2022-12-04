@@ -219,8 +219,6 @@ class BAU extends BaseController
             'alasan'            => $this->request->getVar('alasan')
         ]);
 
-        dd($this->request->getVar('alasan'));
-
         $this->statusPkmModel->save([
             'id_pkm' => $id_pkm,
             'status' => 'Ditolak oleh BAU'
