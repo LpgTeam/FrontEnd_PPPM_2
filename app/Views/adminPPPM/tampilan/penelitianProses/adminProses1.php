@@ -95,27 +95,32 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-
                             <?php if ($status != null) { ?>
-                                <table id="example" class="table">
-                                    <thead>
-                                        <tr class="table-primary">
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="myTable">
-                                        <?php
-                                        $i = 1;
-                                        foreach ($status as $key => $post) :  ?>
-
+                                <div class="statAdmin">
+                                    <table id="example">
+                                        <thead>
                                             <tr>
-                                                <td><?php echo $post['status'] ?></td>
-
+                                                <th scope="col" class="title" colspan="2">Status Penelitian</th>
                                             </tr>
-                                            <?php $i++;    ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody id="myTable">
+                                            <?php
+                                            $i = 1;
+                                            foreach ($status as $key => $post) :  ?>
+
+                                                <tr>
+                                                    <td style="text-align:center" width="20%" class="icon"><i class="bi bi-check-circle-fill">
+                                                        </i>
+                                                        <div class="vertical-line"></div>
+                                                    </td>
+                                                    <td class="stat card">&nbsp; <?php echo $post['status'] ?></td>
+                                                </tr>
+                                                <?php $i++;    ?>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
                                 <?php if ($i > 2) { ?>
                                     <a href="/removeStatus/<?= $post['id_penelitian']; ?>/<?= $statusTerbaru['id_status']; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                             <?php }

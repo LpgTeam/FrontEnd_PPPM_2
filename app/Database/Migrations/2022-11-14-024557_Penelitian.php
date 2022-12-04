@@ -63,7 +63,7 @@ class Penelitian extends Migration
                 'null' => true
             ],
 
-            'surat_pernyataan' => [
+            'tanda_tangan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
                 'null' => true
@@ -72,6 +72,12 @@ class Penelitian extends Migration
             'biaya' => [
                 'type' => 'VARCHAR',
                 'constraint' => 20,
+                'null' => true
+            ],
+
+            'alasan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
                 'null' => true
             ]
         ]);

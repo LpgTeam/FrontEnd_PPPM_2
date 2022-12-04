@@ -97,10 +97,12 @@
 <<<<<<< HEAD
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Laporan </a>
                                 <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download laporan </a>
+                                <!-- <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
+                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporam </a> -->
 =======
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
                                 <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporam </a>
->>>>>>> 80e247aa8913b9cfb821244ce24cabfafd487606
+>>>>>>> 5e0aa43c171764a41244f1729fcc878f1c268cc4
                             </div>
 
                         </div>

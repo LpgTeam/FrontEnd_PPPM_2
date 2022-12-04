@@ -142,9 +142,10 @@ class Admin extends BaseController
     public function adminProses2($idPenelitian)
     {
         $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($idPenelitian),
-            'status'        => $this->statusPenelitianModel->get_status_by_id_penelitian($idPenelitian)
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'penelitian'    => $this->penelitianModel->find($idPenelitian),
+            'status'        => $this->statusPenelitianModel->get_status_by_id_penelitian($idPenelitian),
+            'statusTerbaru' => $this->statusPenelitianModel->get_status_by_id_penelitian_last($idPenelitian)
         ];
         return view('adminPPPM/tampilan/penelitianProses/adminProses2', $data);
     }
@@ -152,9 +153,10 @@ class Admin extends BaseController
     public function adminProses3($idPenelitian)
     {
         $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($idPenelitian),
-            'status'        => $this->statusPenelitianModel->get_status_by_id_penelitian($idPenelitian)
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'penelitian'    => $this->penelitianModel->find($idPenelitian),
+            'status'        => $this->statusPenelitianModel->get_status_by_id_penelitian($idPenelitian),
+            'statusTerbaru' => $this->statusPenelitianModel->get_status_by_id_penelitian_last($idPenelitian)
         ];
         return view('adminPPPM/tampilan/penelitianProses/adminProses3', $data);
     }
@@ -174,13 +176,14 @@ class Admin extends BaseController
     public function pkmAdminProses2($idpkm)
     {
         $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm'   => $this->pkmModel->find($idpkm),
-            'status' => $this->statusPkmModel->get_status_by_id_pkm($idpkm)
+            'title'         => 'PPPM Politeknik Statistika STIS',
+            'pkm'           => $this->pkmModel->find($idpkm),
+            'status'        => $this->statusPkmModel->get_status_by_id_pkm($idpkm),
+            'statusTerbaru' => $this->statusPkmModel->get_status_by_id_pkm_last($idpkm)
         ];
         return view('adminPPPM/tampilan/pkmProses/pkmProses2', $data);
     }
-//=========================Remove Status===============================================
+    //=========================Remove Status===============================================
     //penelitian
     public function removeStatus($id_penelitian, $id_status)
     {
@@ -222,7 +225,7 @@ class Admin extends BaseController
 
         return redirect()->to(site_url('pkmAdmin'));
     }
-//=================================================================================
+    //=================================================================================
 
     // public function userSetting()
     // {
