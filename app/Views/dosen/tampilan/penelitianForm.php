@@ -124,9 +124,6 @@
                             <div class="row mb-3">
                                 <label class="col-md-4 col-lg-3 col-form-label ">Template Proposal</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <!-- <button onclick ="" class="btn btn-primary">
-                                    Download Template Proposal</i>
-                                </button> -->
                                     <a href="<?= base_url('penelitian/printProposal') ?>" class="btn btn-primary">
                                         Download Template Proposal
                                     </a>
