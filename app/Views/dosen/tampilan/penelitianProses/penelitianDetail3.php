@@ -97,8 +97,7 @@
                             <h5 class="card-title text-center">Laporan</h5>
                             <hr>
                             <p>Upload laporan penelitian dan pengisian tabel
-                                luaran dan capaian yang telah dilakukan oleh
-                                Dosen Politeknik Statistika STIS
+                                luaran serta capaian yang telah dilakukan oleh dosen
                             </p>
                             <hr>
                             <?php
@@ -139,6 +138,12 @@
                                         }
                                     </script>
 
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="" class="btn btn-primary">Download Template Bukti Luaran</a>
+                                    </div>
+                                    <hr>
+
                                     <div class="row mb-4">
                                         <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Upload Bukti Luaran</label>
                                         <div class="col-md-3 col-lg-8">
@@ -150,7 +155,7 @@
 
                                     </div>
                                     <div class="text-end">
-                                        <input type="submit" class="btn btn-success" name="btn" value="Submit" id="submitBtn"/>
+                                        <input type="submit" class="btn btn-success" name="btn" value="Submit" id="submitBtn" />
                                     </div>
 
 
@@ -171,8 +176,8 @@
                             <script>
                                 function submitForm(form) {
                                     swal({
-                                            title: "Are you sure?",
-                                            text: "This form will be submitted",
+                                            title: "Apakah Anda Yakin?",
+                                            text: "Dokumen ini akan di upload",
                                             buttons: true,
                                         })
                                         .then(function(isOkay) {

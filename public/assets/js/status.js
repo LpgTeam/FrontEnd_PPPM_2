@@ -15,7 +15,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah di submit oleh dosen dan sedang diajukan ke Reviewer"+
+                "Proposal telah di submit oleh dosen dan menunggu persetujuan Reviewer"+
             "</p>"+
         "</li>";
 
@@ -26,7 +26,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah diterima oleh Reviewer dan menunggu persetujuan Reviewer"+
+                "Proposal telah disetujui oleh Reviewer dan menunggu persetujuan BAU"+
             "</p>"+
         "</li>"; 
         
@@ -38,7 +38,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah disetujui oleh reviewer dan menunggu persetujuan dari Kepala PPPM"+
+                "Proposal telah disetujui oleh BAU dan menunggu persetujuan dari Kepala PPPM"+
             "</p>"+
         "</li>"; 
         
@@ -49,7 +49,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal disetujui oleh Kepala PPPM dan menunggu penanda tanganan oleh Direktur Polstat STIS"+
+                "Proposal telah disetujui oleh Kepala PPPM dan menunggu proposal ditandatangani oleh Direktur Polstat STIS"+
             "</p>"+
         "</li>"; 
 
@@ -93,7 +93,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
             "<p>"+
-                "Melaporkan hasil penelitian yang dilakukan oleh Dosen Polstat STIS"+
+                "Melaporkan hasil penelitian yang dilakukan oleh dosen"+
             "</p>"+
         "</li>";   
     
@@ -113,7 +113,7 @@ function tambah(){
         "<span class='timeline-icon2'>"+
             "<i class='bi bi-x-lg'></i>"+
         "</span>"+
-            "<h5 class='fw-bold'>Ditolak BAU</h5>"+
+            "<h5 class='fw-bold'>Ditolak Reviewer</h5>"+
             "<p>"+
                 alasan+
             "</p>"+
@@ -124,7 +124,7 @@ function tambah(){
         "<span class='timeline-icon2'>"+
             "<i class='bi bi-x-lg'></i>"+
         "</span>"+
-            "<h5 class='fw-bold'>Ditolak Reviewer</h5>"+
+            "<h5 class='fw-bold'>Ditolak BAU</h5>"+
             "<p>"+
                 alasan+
             "</p>"+

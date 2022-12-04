@@ -163,6 +163,13 @@
 
                         <?php if ($jenis == "Mandiri" || $jenis == "Kerjasama") : ?>
                             <div class="row mb-3">
+                                <label for="templateLuaran" class="col-md-4 col-lg-3 col-form-label ">Template Bukti Luaran Publikasi</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <a href="" class="btn btn-primary">Download Template Bukti Luaran Publikasi</a>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="uploadBukti" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="uploadBukti" class="form-control <?= ($validation->hasError('uploadBukti')) ? 'is-invalid' : ''; ?>" type="file" id="uploadBukti" aria-describedby="uploadValid ">
@@ -339,11 +346,12 @@
                         <div class="row justify-content-md-center" data-aos="fade-up">
                             <div class="surat row gy-4 justify-content-md-center col-md-9">
                                 <h2>Surat Pernyataan</h2>
-                                <p>Dengan inimenyatakan bahwa hasil penelitian kami bersifat original dan bebas
+                                <p>Dengan ini kami menyatakan bahwa hasil penelitian kami bersifat original dan bebas
                                     dari unsur plagiarisme. Jika dikemudian hari ditemukan ketidaksesuaian dengan
                                     pernyataan ini, saya bersedia dituntut dan diproses sesuai dengan ketentuan yang
                                     berlaku dan mengembalikan seluruh biaya yang sudah saya terima. </p>
-                                <p>Dengan anda meyetujui maka tanda tangan yang anda upload akan otomatis tergenerate
+                                <hr>
+                                <p>Dengan anda meyetujui, maka tanda tangan yang anda upload akan otomatis tergenerate
                                     ke file surat pernyataan pada proposal</p>
                                 <div class="input-group mb-3">
                                     <div class="input-group-text">
@@ -400,8 +408,8 @@
 <script>
     function submitForm(form) {
         swal({
-                title: "Are you sure?",
-                text: "This form will be submitted",
+                title: "Apakah Anda Yakin?",
+                text: "",
                 buttons: true,
             })
             .then(function(isOkay) {

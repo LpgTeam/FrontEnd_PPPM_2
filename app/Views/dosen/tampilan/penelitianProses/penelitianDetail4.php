@@ -91,7 +91,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Penelitian Selesai</h5>
                             <hr>
-                            <p>Kegiatan penelitian selesai dilakukan. Anda dapat melakukan download laporan jika diperlukan</p>
+                            <p>Kegiatan penelitian selesai dilakukan. Anda dapat melakukan download laporan dan memo Kepala PPPM jika diperlukan</p>
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
