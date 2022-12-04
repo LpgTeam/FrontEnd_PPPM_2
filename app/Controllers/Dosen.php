@@ -41,6 +41,8 @@ class Dosen extends BaseController
         $this->rincianModel = new RincianPKMModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->reimburseModel = new ReimburseModel();
+        $this->anggaranAwalModel = new AnggaranAwalModel();
+        $this->anggaranTotalModel = new AnggaranTotalModel();
     }
 
     public function index()
@@ -134,10 +136,6 @@ class Dosen extends BaseController
         return view('dosen/tampilan/index', $data);
     }
 
-    // public function hitungAnggaran($coba2){
-    //     dd($coba2['dana_keluar']);
-    // }
-
     public function anggaran()
     {
         $dana_awal = new AnggaranAwalModel();
@@ -184,18 +182,39 @@ class Dosen extends BaseController
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
-
-
+       // dd($dana_terealisasi->orderBy('id_total', 'DESC')->first());
+        $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
+        $anggaranTerealisasi = $dana_terealisasi->orderBy('id_total', 'DESC')->first();
+        $danaTersedia = $anggaranAwal['jumlah'] - $anggaranTerealisasi['dana_keluar'] - $total_pengajuan;
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
-            'anggaranAwal'        => $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first(),
-            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
-            'anggaranDiajukan'    => $total_pengajuan
+            'anggaranAwal'        => $anggaranAwal,
+            'anggaranTerealisasi' =>  $anggaranTerealisasi,
+            'anggaranDiajukan'    => $total_pengajuan,
+            'danaTersedia'        => $danaTersedia
         ];
 
         return view('dosen/tampilan/anggaran', $data);
     }
+    // public function anggaran(){
+    //     //current year
+    //     $year = date("Y");
+    //     $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
+    //     $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
+    //     $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
+    //     $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
+        
+    //    $data = [
+    //         'title'             => 'PPPM Politeknik Statistika STIS',
+    //         'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
+    //         'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
+    //         'danaDiajukan'      => $danaDiajukan,
+    //         'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+    //    ];
+    //    return view('dosen/tampilan/anggaran', $data);
+
+    // }
 
     public function penelitian()
     {

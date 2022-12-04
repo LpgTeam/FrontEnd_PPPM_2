@@ -40,7 +40,7 @@
                                         <option value="">Semua</option>
                                         <option value="1">Mandiri</option>
                                         <option value="2">Semi Mandiri</option>
-                                        <option value="3">Di Danai Institusi</option>
+                                        <option value="3">Didanai Institusi</option>
                                         <option value="4">Institusi</option>
                                         <option value="5">Kerjasama</option>
                                     </select>
@@ -51,8 +51,8 @@
                                     <select class="form-select status-dropdown2">
                                         <option value="">Semua</option>
                                         <option value="Diajukan oleh Dosen">Diajukan oleh Dosen </option>
-                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
                                         <option value="Disetujui oleh Reviewer">Disetujui oleh Reviewer</option>
+                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
                                         <option value="Disetujui oleh Kepala PPPM">Disetujui oleh Kepala PPPM</option>
                                         <option value="Disetujui oleh Direktur">Disetujui oleh Direktur</option>
                                         <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
@@ -85,10 +85,10 @@
                                         <?php foreach ($penelitian as $key => $post) :  ?>
 
                                             <tr>
-                                                <!-- <td><?//php echo $post['id_penelitian']
-                                                    ?></td> -->
-                                                <td><?php echo $i 
-                                                            ?></td>
+                                                <!-- <td><? //php echo $post['id_penelitian']
+                                                            ?></td> -->
+                                                <td><?php echo $i
+                                                    ?></td>
 
                                                 <td>
                                                     <?php if ($post['jenis_penelitian'] == "Mandiri") {
@@ -149,7 +149,9 @@
                         <script>
                             $(document).ready(function() {
                                 dataTable = $("#example").DataTable({
-                                    order: [[2, 'desc']],
+                                    order: [
+                                        [2, 'desc']
+                                    ],
                                 });
 
                                 $('.status-dropdown').on('change', function(e) {

@@ -72,6 +72,15 @@
                                     <select class="form-select status-dropdown2">
                                         <option value="">Semua</option>
                                         <option value="Diajukan oleh Dosen">Diajukan oleh Dosen </option>
+                                        <option value="Disetujui oleh Reviewer">Disetujui oleh Reviewer</option>
+                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
+                                        <option value="Disetujui oleh Kepala PPPM">Disetujui oleh Kepala PPPM</option>
+                                        <option value="Disetujui oleh Direktur">Disetujui oleh Direktur</option>
+                                        <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
+                                        <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
+                                        <option value="Ditolak oleh BAU">Ditolak oleh BAU</option>
+                                        <option value="Ditolak oleh Reviewer">Ditolak oleh Reviewer</option>
+                                        <option value="Ditolak Kepala PPPM">Ditolak Kepala PPPM</option>
                                     </select>
                                 </div>
 
@@ -128,7 +137,9 @@
                     <script>
                         $(document).ready(function() {
                             dataTable = $("#example").DataTable({
-                                order: [[2, 'desc']],
+                                order: [
+                                    [2, 'desc']
+                                ],
                             });
 
                             $('.status-dropdown').on('change', function(e) {

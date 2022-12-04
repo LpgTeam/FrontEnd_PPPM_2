@@ -7,7 +7,7 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>User Setting </h2>
+                <h2>User Setting</h2>
                 <hr>
                 <p><?= $user1->username; ?></p>
             </header>
@@ -35,7 +35,7 @@
                             <table class=" table table-advance table-hover align-middle ">
                                 <thead>
                                     <tr class=" table-primary">
-                                        <th scope="col">Nomor</th>
+                                        <th scope="col">Noomor</th>
                                         <th scope="col">Role</th>
 
                                         <th scope="col">Hapus</th>

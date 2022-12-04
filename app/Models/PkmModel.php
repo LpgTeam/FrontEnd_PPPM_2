@@ -109,4 +109,15 @@ class PkmModel extends Model
     {
         return $this->where(['id_status_reimburse' => $status_reimburse])->findAll();
     }
+
+    public function get_total_diajukan($tahun){
+        $where2 = "id_status='3' OR id_status='4' OR id_status='7' AND id_status_reimburse='0'";
+        $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->findAll();
+       
+        $total_pengajuan = 0;
+        foreach($pengajuan as $data_pengajuan){
+            $total_pengajuan = $total_pengajuan + $data_pengajuan['pembiayaan_diajukan'];
+        }
+        return $total_pengajuan;
+    }
 }

@@ -61,7 +61,7 @@
                             <hr>
                             <?php if ($pkm['id_status'] < 2) { ?>
                                 <p>Persetujuan formulir PKM yang diajukan dosen
-                                    oleh Kepala PPPM
+                                    oleh BAU
                                 </p>
                                 <div class="d-flex justify-content-end">
                                     <div class="text-end">

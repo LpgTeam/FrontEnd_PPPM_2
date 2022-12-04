@@ -19,8 +19,8 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen penlitian yang diajukan oleh dosen
-                                oleh Direktur Politeknik Statistika STIS
+                                Reimbursemen penelitian yang diajukan dosen
+                                Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>
@@ -37,8 +37,8 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
                         <hr>
-                        <p>Proposal reimburse penelitian yang diajukan dosen
-                            oleh Direktur Politeknik Statistika STIS
+                        <p>Proposal reimbursemen penelitian yang diajukan dosen
+                            Politeknik Statistika STIS
                         </p>
 
                         <hr>
@@ -95,7 +95,7 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="uploadFormPublikasi" class="col-md-4 col-lg-3 col-form-label ">Form Usulan Pulikasi</label>
+                                    <label for="uploadFormPublikasi" class="col-md-4 col-lg-3 col-form-label ">Form Usulan Publikasi</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="uploadFormPublikasi" class="form-control <?= ($validation->hasError('uploadFormPublikasi')) ? 'is-invalid' : ''; ?>" type="file" id="uploadFormPublikasi">
                                         <div class="invalid-feedback" id="uploadValid">

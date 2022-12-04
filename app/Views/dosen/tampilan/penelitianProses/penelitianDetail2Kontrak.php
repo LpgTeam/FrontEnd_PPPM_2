@@ -84,7 +84,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Kontrak</h5>
                             <hr>
-                            <p>Penandatanganan Kontrak Penelitian untuk memberikan kepastian tentang hak dan kewajiban
+                            <p>Penandatanganan kontrak penelitian untuk memberikan kepastian tentang hak dan kewajiban
                                 baik bagi dosen/peneliti maupun bagi Polstat STIS.
                             </p>
                             <div class="d-flex justify-content-between">
@@ -134,8 +134,8 @@
                 <script>
                     function submitForm(form) {
                         swal({
-                                title: "Are you sure?",
-                                text: "This form will be submitted",
+                                title: "Apakah Anda Yakin??",
+                                text: "Dokumen ini akan di upload",
                                 buttons: true,
                             })
                             .then(function(isOkay) {
