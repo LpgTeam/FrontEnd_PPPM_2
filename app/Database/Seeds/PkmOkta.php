@@ -5,7 +5,7 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\I18n\Time;
 
-class Pkm extends Seeder
+class PkmOkta extends Seeder
 {
     public function run()
     {
@@ -56,8 +56,8 @@ class Pkm extends Seeder
 
             //fill tabel timpkm
             //ketua
-            $dosen = $faker->randomElement($array = $datadosen);
-            // $dosen = $datadosen_ketuapkm[0];
+            // $dosen = $faker->randomElement($array = $datadosen);
+            $dosen = $datadosen_ketuapkm[0];
             $dataketua = [
                 'id_pkm'            => $data['ID_pkm'],
                 'nip'               => $dosen['NIP_dosen'],
