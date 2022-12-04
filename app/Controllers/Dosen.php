@@ -42,8 +42,11 @@ class Dosen extends BaseController
 
     public function index()
     {
-
-
+        // $db      = \Config\Database::connect();
+        // $builder4 = $db->table('dosen');
+        // $query = $builder4->getWhere(['NIP_dosen' => nipOkta]);
+        // $datadosen_ketuapkm = $query->getResultArray();
+        // dd($datadosen_ketuapkm);
         // $db      = \Config\Database::connect();
         // $builder2 = $db->table('detailstatus_penelitian');
         // $query2 = $builder2->get();

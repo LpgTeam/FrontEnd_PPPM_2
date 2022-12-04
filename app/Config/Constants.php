@@ -1,5 +1,18 @@
 <?php
 
+define('nipDosen', '196805031991011001');
+define('nipDirektur', '196710221990032002');
+define('nipKepalaPPPM', '198512222009021002');
+define('nipBAU', '198804052010122001');
+define('nipReviewer', '198601202008011002');
+
+define('nipOkta', '197205261991121001');
+define('nipAfnan', '197006161988121001');
+define('nipTaufiq', '198106042003121001');
+define('nipIntan', '199004052012112001');
+define('nipFatya', '199001102012112001');
+define('nipAtikah', '198902072010122001');
+
 /*
  | --------------------------------------------------------------------
  | App Namespace
