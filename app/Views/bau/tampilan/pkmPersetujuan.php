@@ -59,23 +59,35 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Persetujuan Form</h5>
                             <hr>
-                            <p>Persetujuan formulir PKM yang diajukan dosen
-                                oleh Kepala PPPM
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
+                            <?php if ($pkm['id_status'] < 2) { ?>
+                                <p>Persetujuan formulir PKM yang diajukan dosen
+                                    oleh Kepala PPPM
+                                </p>
+                                <div class="d-flex justify-content-end">
+                                    <div class="text-end">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
+                                    </div>
+                                    <div class="text-end">
+                                        <p>&nbsp&nbsp&nbsp</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
+                                    </div>
                                 </div>
-                                <div class="text-end">
-                                    <p>&nbsp&nbsp&nbsp</p>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
-                                </div>
-                            </div>
+                                <?php } else {
+                                if ($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6) { ?>
+                                    <hr>
+                                    <h6 class="card-title text-center">PKM Tidak Disetujui!!</h6>
+                                <?php } else { ?>
+                                    <hr>
+                                    <h6 class="card-title text-center">Kegiatan PKM Sudah Disetujui!!</h6>
+                            <?php
+                                }
+                            } ?>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-6">
                     <div class="card">
@@ -129,7 +141,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                    <!-- <button type="button" class="btn btn-primary" onclick="location.href='/rjc-BAU/<//?= $penelitian['id_penelitian']; ?>'">Selesai</button> -->
+                    <!-- <button type="button" class="btn btn-primary" onclick="location.href='/rjc-BAU/<//?= $pkm['id_pkm']; ?>'">Selesai</button> -->
                     <button type="submit" class="btn btn-primary">Selesai</button>
                 </div>
             </div>

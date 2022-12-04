@@ -124,7 +124,8 @@ class Kepala extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm'   => $this->pkmModel->get_pkm_by_status2(2, 4),
+            // 'pkm'   => $this->pkmModel->get_pkm_by_status2(2, 4),
+            'pkm'   => $this->pkmModel->getData(),
         ];
         return view('kepala/tampilan/pkm', $data);
     }

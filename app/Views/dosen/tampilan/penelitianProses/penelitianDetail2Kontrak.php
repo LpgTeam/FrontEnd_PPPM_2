@@ -122,9 +122,9 @@
                             } else {
                     ?>
 
-                        <h5 class="card-title text-center">Upload Kontrak</h5>
-                        <hr>
-                        <p class="text-center">Anda Sudah Upload Kontrak!!</p>
+                        <!-- <h5 class="card-title text-center">Upload Kontrak</h5>
+                        <hr> -->
+                        <h6 class="card-title text-center">Anda Sudah Upload Kontrak!!</h6>
 
                     <?php
                             }

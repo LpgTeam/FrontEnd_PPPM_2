@@ -53,19 +53,16 @@
                     <?php
                     // var_dump($penelitian['id_status']);
                     if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) { ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Persetujuan Proposal</h5>
-                            <hr>
-                            <p>Persetujuan proposal penelitian yang diajukan dosen
-                                oleh reviewer
-                            </p>
-                            <?php if ($penelitian['id_status'] < 2) { ?>
-                                    <div class="d-flex justify">
-                                        <div class="h5">
-                                            Menunggu Persetujuan Dari BAU
-                                        </div>
-                                    </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Persetujuan Proposal</h5>
+                                <hr>
+                                <p>Persetujuan proposal penelitian yang diajukan dosen
+                                    oleh reviewer
+                                </p>
+                                <?php if ($penelitian['id_status'] < 2) { ?>
+                                    <hr>
+                                    <h6 class="card-title text-center">Menunggu Persetujuan dari BAU</h6>
                                     <?php } else {
                                     if ($penelitian['id_status'] == 2) { ?>
                                         <div class="d-flex justify-content-end">
@@ -81,17 +78,11 @@
                                         </div>
                                         <?php } else {
                                         if ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
-                                            <div class="d-flex justify">
-                                                <div class="h5">
-                                                    Penelitian Tidak diSetujui!
-                                                </div>
-                                            </div>
+                                            <hr>
+                                            <h6 class="card-title text-center">Penelitian Tidak Disetujui!</h6>
                                         <?php } else { ?>
-                                            <div class="d-flex justify">
-                                                <div class="h5">
-                                                    Penelitian ini sudah di Setujui!
-                                                </div>
-                                            </div>
+                                            <hr>
+                                            <h6 class="card-title text-center">Penelitian Sudah Disetujui!</h6>
                                 <?php
                                         }
                                     }

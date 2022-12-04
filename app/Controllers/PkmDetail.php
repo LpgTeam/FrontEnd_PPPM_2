@@ -32,7 +32,6 @@ class PkmDetail extends BaseController
     }
 
     public function saveSurat($idpkm){
-
         if (!$this->validate([
             'suratPernyataan' => [
                 'rules' => 'uploaded[suratPernyataan]|ext_in[suratPernyataan,pdf]|max_size[suratPernyataan,10000]',
@@ -50,9 +49,12 @@ class PkmDetail extends BaseController
         $fileSurat = $this->request->getFile('suratPernyataan');
         $namaSurat = $fileSurat->getName();
         $fileSurat->move('surat_pernyataan/pkm', $namaSurat);
+
+        $rincian = $this->rincianModel->find_by_idpkm($idpkm);
         
-        // dd($idpkm);
+        // dd($rincian);
         $this->rincianModel->save([
+            'id'                => $rincian['id'],
             'id_pkm'            => $idpkm,
             'surat_pernyataan'  => $namaSurat,
         ]);
@@ -80,6 +82,7 @@ class PkmDetail extends BaseController
                 ]
             ]
         ])) {
+            // dd($this->request->getVar('narasumber'),$this->request->getVar('penyelenggara'));
             session()->setFlashdata('error', 'Terjadi Kesalahan!!');
             return redirect()->to('/pkmProses3/' . $idpkm)->withInput();
         }
@@ -95,6 +98,8 @@ class PkmDetail extends BaseController
             'id'        => $rincian['id'],
             'id_pkm'    => $idpkm,
             'bukti_kegiatan' => $namaBukti,
+            'narasumber' => $this->request->getVar('narasumber'),
+            'penyelenggara' => $this->request->getVar('penyelenggara'),
         ]);
 
 

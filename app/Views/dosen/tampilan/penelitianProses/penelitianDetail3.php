@@ -140,7 +140,7 @@
                                     </script>
 
                                     <div class="row mb-4">
-                                        <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Bukti Luaran</label>
+                                        <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Upload Bukti Luaran</label>
                                         <div class="col-md-3 col-lg-8">
                                             <input class="form-control <?= ($validation->hasError('uploadLaporan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLaporan" name="uploadLaporan">
                                             <div class="invalid-feedback" id="uploadValid">
@@ -159,9 +159,9 @@
                             <?php
                             } else {
                             ?>
-                                <h5 class="card-title text-center">Upload Bukti Luaran</h5>
-                                <hr>
-                                <p class="text-center">Anda Sudah Upload Bukti Luaran!!</p>
+                                <!-- <h5 class="card-title text-center">Upload Bukti Luaran</h5>
+                                <hr> -->
+                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Luaran!!</h6>
                             <?php
                             }
                             ?>

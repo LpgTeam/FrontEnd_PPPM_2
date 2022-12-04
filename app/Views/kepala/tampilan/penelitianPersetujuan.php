@@ -64,11 +64,8 @@
                                 </p>
 
                                 <?php if ($penelitian['id_status'] < 3) { ?>
-                                    <div class="d-flex justify">
-                                        <div class="h5">
-                                            Menunggu Persetujuan Dari Reviewer
-                                        </div>
-                                    </div>
+                                    <hr>
+                                    <h6 class="card-title text-center">Menunggu Persetujuan Reviewer</h6>
                                     <?php } else {
                                     if ($penelitian['id_status'] == 3) { ?>
                                         <div class="d-flex justify-content-end">
@@ -84,17 +81,11 @@
                                         </div>
                                         <?php } else {
                                         if ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
-                                            <div class="d-flex justify">
-                                                <div class="h5">
-                                                    Penelitian Tidak diSetujui!
-                                                </div>
-                                            </div>
+                                            <hr>
+                                            <h6 class="card-title text-center">Penelitian Tidak Disetujui!</h6>
                                         <?php } else { ?>
-                                            <div class="d-flex justify">
-                                                <div class="h5">
-                                                    Penelitian ini sudah di Setujui!
-                                                </div>
-                                            </div>
+                                            <hr>
+                                            <h6 class="card-title text-center">Penelitian Sudah Disetujui!</h6>
                                 <?php
                                         }
                                     }

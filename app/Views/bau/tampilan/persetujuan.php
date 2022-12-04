@@ -74,18 +74,12 @@
                                         </div>
                                     </div>
                                     <?php } else {
-                                    if ($penelitian['id_status'] < 7 && $penelitian['id_status'] > 9 ) { ?>
-                                        <div class="d-flex justify">
-                                            <div class="h5">
-                                                Penelitian Tidak Disetujui!
-                                            </div>
-                                        </div>
+                                    if ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
+                                        <hr>
+                                        <h6 class="card-title text-center">Penelitian Tidak Disetujui!</h6>
                                     <?php } else { ?>
-                                        <div class="d-flex justify">
-                                            <div class="h5">
-                                                Penelitian ini Sudah di Setujui
-                                            </div>
-                                        </div>
+                                        <hr>
+                                        <h6 class="card-title text-center">Penelitian Sudah Disetujui!</h6>
                                 <?php
                                     }
                                 } ?>
