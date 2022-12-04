@@ -243,7 +243,7 @@ class Dosen extends BaseController
             $jenisPenelitian = "Semi Mandiri";
         } elseif ($jenis == "kerja-sama") {
             $jenisPenelitian = "Kerjasama";
-        } elseif ($jenis == "di-    danai-institusi") {
+        } elseif ($jenis == "didanai-institusi") {
             $jenisPenelitian = "Di Danai Institusi";
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";

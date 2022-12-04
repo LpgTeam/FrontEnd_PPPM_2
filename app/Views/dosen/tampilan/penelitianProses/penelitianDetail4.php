@@ -94,15 +94,8 @@
                             <p>Kegiatan penelitian selesai dilakukan. Anda dapat melakukan download laporan jika diperlukan</p>
                             <hr>
                             <div class="d-flex justify-content-between">
-<<<<<<< HEAD
-                                <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-secondary">Lihat Laporan </a>
-                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download laporan </a>
-                                <!-- <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
-                                <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporam </a> -->
-=======
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
                                 <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporam </a>
->>>>>>> 5e0aa43c171764a41244f1729fcc878f1c268cc4
                             </div>
 
                         </div>

@@ -70,9 +70,9 @@
                              <div class="main-timeline">
                                 <div class="timeline">
                                     <a href="#" class="timeline-content">
-                                        <div class="timeline-year">Reimburse</div>
+                                        <div class="timeline-year">Reimbursemen</div>
                                         <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
-                                        <h3 class="title">Dana Reimburse Sudah Dicairkan</h3>
+                                        <h3 class="title">Dana Reimbursemen Sudah Dicairkan</h3>
                                     </a>
                                 </div>
                             <?php

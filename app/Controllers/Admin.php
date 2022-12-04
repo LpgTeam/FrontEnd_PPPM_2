@@ -35,6 +35,7 @@ class Admin extends BaseController
         $this->detailStatusPkm = new DetailStatusPkmModel();
         $this->penelitianModel = new PenelitianModel();
         $this->pkmModel = new PkmModel();
+        $this->reimburseModel = new ReimburseModel();
     }
     public function index()
     {

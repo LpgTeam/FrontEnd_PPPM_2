@@ -268,19 +268,19 @@ class BAU extends BaseController
         $this->reimburseModel->save([
             'id_reimburse'     => $id_reimburse,
             'id_status'         => 2,
-            'status_reimburse'  => 'Dana Reimburse berhasil dicairkan'
+            'status_reimburse'  => 'Dana telah dicairkan'
         ]);
 
         $id_penelitian = $this->reimburseModel->get_id_penelitian_done($id_reimburse);
-        // $Pen = $this->penelitianModel->get_penelitian($id_penelitian);
+
 
 
         $this->penelitianModel->save([
-            'id_penelitian'     => $id_penelitian,
+            'id_penelitian'     => $id_penelitian['id_penelitian'],
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana Reimbursemen telah dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }
@@ -290,17 +290,17 @@ class BAU extends BaseController
         $this->reimburseModel->save([
             'id_reimburse'     => $id_reimburse,
             'id_status'         => 2,
-            'status_reimburse'  => 'Dana Reimburse berhasil dicairkan'
+            'status_reimburse'  => 'Dana telah dicairkan'
         ]);
 
         $id_pkm = $this->reimburseModel->get_id_pkm_done($id_reimburse);
 
         $this->pkmModel->save([
-            'ID_pkm'     => $id_pkm,
+            'ID_pkm'     => $id_pkm['id_pkm'],
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana Reimbursemen telah dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }

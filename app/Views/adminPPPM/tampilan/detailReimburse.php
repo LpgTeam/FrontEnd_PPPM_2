@@ -36,7 +36,7 @@
                         <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
                         <hr>
                         <ol>
-                        <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
+                            <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
                             <li>Jenis Penelitian &nbsp;&nbsp;&nbsp;: <?= $reimburse['jenis_penelitian']; ?></li>
                             <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['total_biaya'], 0, ",", "."); ?></li>
                         </ol>

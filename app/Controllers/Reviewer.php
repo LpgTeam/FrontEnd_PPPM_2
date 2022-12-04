@@ -10,6 +10,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\ReimburseModel;
 use CodeIgniter\API\ResponseTrait;
 
 
@@ -23,6 +24,7 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel = new PenelitianModel();
         $this->statusPenelitianModel = new StatusPenelitianModel();
+        $this->reimburseModel = new ReimburseModel();
     }
 
     public function index()
