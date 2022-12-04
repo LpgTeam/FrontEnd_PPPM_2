@@ -59,18 +59,16 @@
 <body>
     <!-- KOP Surat -->
     <div>
+        <table>
+            <tr>
+                <td width="20%"> <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100"></td>
+                <td><b> POLITEKNIK STATISTIKA STIS<br>
+                        Jl. Otto Iskandardinata No. 64C, Jakarta 13330<br>
+                        Telp. (021) 8508812, 8191437, Fax. 8197577<br>
+                        Website: www.stis.ac.id, Email: info@stis.ac.id</b></td>
+            </tr>
+        </table>
         <!-- <span class="logo"> -->
-        <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="80">
-        <!-- <img src="assets/img/STIS.png" alt="dfsd" /> -->
-        <!-- <img src="<? //= base_url("assets/img/STIS.png"); 
-                        ?>" alt="stis" /> -->
-        <!-- </span> -->
-        <b>
-            POLITEKNIK STATISTIKA STIS<br>
-            Jl. Otto Iskandardinata No. 64C, Jakarta 13330<br>
-            Telp. (021) 8508812, 8191437, Fax. 8197577<br>
-            Website: www.stis.ac.id, Email: info@stis.ac.id
-        </b>
         <hr>
 
     </div>
@@ -86,7 +84,7 @@
         <p class="tebal">Ketua</p>
         <table class="isi">
             <tr>
-                <td>Nama</td>
+                <td style="width: 45%;">Nama</td>
                 <td>: <?= $timpkm[0]["nama"]; ?></td>
             </tr>
             <tr>
@@ -128,7 +126,7 @@
         <li>WAKTU, TEMPAT DAN SASARAN</li>
         <table class="isi">
             <tr>
-                <td>Waktu Pelaksanaan</td>
+                <td style="width: 45%;">Waktu Pelaksanaan</td>
                 <td>: <?= $pkm['waktu_kegiatan'] ?></td>
             </tr>
             <tr>
@@ -186,7 +184,7 @@
             <tr>
                 <td>Dr. Eng. Arie Wahyu Wijayanto, M.T.</td>
                 <td>(Nama Lengkap)</td>
-                <td><?= $timpkm[0]["nama"];?></td>
+                <td><?= $timpkm[0]["nama"]; ?></td>
             </tr>
             <tr>
                 <td>NIDN : .................</td>
