@@ -116,7 +116,6 @@ class PenelitianModel extends Model
         }
         return $total_pengajuan;
       
-
     }
 
 }

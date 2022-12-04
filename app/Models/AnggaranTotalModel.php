@@ -49,4 +49,13 @@ class AnggaranTotalModel extends Model
     public function get_sisa_terakhir(){
         return $this->orderBy('id_total', 'DESC')->first();
     }
+
+    public function get_total($year){
+        $dana = $this->where(['tahun' => $year])->findAll();
+        $total = 0; 
+        foreach($dana as $dana){
+            $total = $total + $dana['dana_keluar'];
+        }
+        return $total;
+    }
 }

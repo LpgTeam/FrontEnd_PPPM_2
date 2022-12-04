@@ -102,6 +102,7 @@ class ReimburseDetail extends BaseController
     public function savePKM($id_pkm)
     {
         $pkm = $this->pkmModel->get_pkm($id_pkm);
+        $total_biaya = $this->request->getVar('totalBiaya');
 
         $this->reimburseModel->save([
             'id_pkm'     => $pkm['ID_pkm'],
@@ -109,7 +110,8 @@ class ReimburseDetail extends BaseController
             'judul_pkm'  => $pkm['topik_kegiatan'],
             'tanggal_pengajuan' => Time::now('Asia/jakarta'),
             'id_status'         => "1",
-            'status_reimburse'  => "Reimbursement diajukan"
+            'status_reimburse'  => "Reimbursement diajukan",
+            'biaya_diajukan'    => $total_biaya
         ]);
 
         $this->pkmModel->save([
