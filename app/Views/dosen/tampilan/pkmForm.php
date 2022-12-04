@@ -120,6 +120,19 @@
                         <?php if (!($jenis == "Kelompok" || $jenis == "Terstruktur")) : ?>
                             <hr>
                             <div class="row mb-3">
+                                <label for="narasumber" class="col-md-4 col-lg-3 col-form-label">Narasumber</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="narasumber" type="text" class="form-control" id="narasumber" value="<?= old("narasumber") ?>" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="penyelenggara" class="col-md-4 col-lg-3 col-form-label">Penyelenggara</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="penyelenggara" type="text" class="form-control" id="penyelenggara" value="<?= old("penyelenggara") ?>" required>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
                                 <label for="uploadBukti" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Kegiatan</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="uploadBukti" class="form-control <?= ($validation->hasError('uploadBukti')) ? 'is-invalid' : ''; ?>" type="file" id="uploadBukti">
@@ -168,9 +181,6 @@
                             </div>
 
                             <div class="col-md-4 col-lg-6">
-                                <!-- <button onclick='add()' class="btn btn-warning">
-                                    Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                </button> -->
                                 <a onclick="add()" class="btn btn-warning" id="btn">
                                     Tambah Anggota <i class=" bi bi-plus-square"></i>
                                 </a>
@@ -179,10 +189,10 @@
                             </div>
                         </div>
                         <?php if (($jenis == "Kelompok" || $jenis == "Terstruktur")) : ?>
+                            <input name="jumlahrow" id="jumlahrow" value="" type="hidden">
                             <div class="row mb-3">
                                 <label class="col-md-4 col-lg-3 col-form-label ">Pembiayaan/Lainnya Yang Diajukan</label>
                             </div>
-
                             <div class="row mb-3">
                                 <div class="table-responsive">
                                     <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID2">
@@ -228,9 +238,11 @@
                             }
 
                             function add2() {
+                                var m = document.getElementById('jumlahrow');
                                 var rowCount2 = document.getElementById('myTableID2').rows.length;
                                 $(".table2").append("<tr><td><input name='pembiayaan" + rowCount2 + "' class='form-control' type='text' id='pembiayaan" + rowCount2 + "' required></td><td><input name='jumlahBiaya" + rowCount2 + "' class='form-control' type='text' id='jumlahBiaya" + rowCount2 + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
                                 console.log(rowCount2);
+                                m.value = rowCount2;
                             }
                         </script>
                         <!-- 
