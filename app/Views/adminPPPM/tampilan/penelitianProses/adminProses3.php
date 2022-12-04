@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Penelitian <?= $penelitian['jenis_penelitian'];?></h2>
+                <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -76,7 +76,7 @@
                             <p>Laporan hasil kegiatan penelitian yang dilakukan oleh dosen Politeknik Statistika STIS </p>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Laporan</button>
+                                <button class="btn btn-success">Lihat Laporan</button>
                                 <button class="btn btn-primary">Download Laporan </button>
                             </div>
 
@@ -88,11 +88,36 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <!-- Section: Timeline -->
-                            <ul class="timeline-with-icons" id="list">
-                            </ul>
-                            <ul class="timeline-with-icons" id="keterangan">
-                            </ul>
+                            <?php if ($status != null) { ?>
+                                <div class="statAdmin">
+                                    <table id="example">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="title" colspan="2">Status Penelitian</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="myTable">
+                                            <?php
+                                            $i = 1;
+                                            foreach ($status as $key => $post) :  ?>
+
+                                                <tr>
+                                                    <td style="text-align:center" width="20%" class="icon"><i class="bi bi-check-circle-fill">
+                                                        </i>
+                                                        <div class="vertical-line"></div>
+                                                    </td>
+                                                    <td class="stat card">&nbsp; <?php echo $post['status'] ?></td>
+                                                </tr>
+                                                <?php $i++;    ?>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <?php if ($i > 2) { ?>
+                                    <a href="/removeStatus/<?= $post['id_penelitian']; ?>/<?= $statusTerbaru['id_status']; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                            <?php }
+                            } ?>
                         </div>
                     </div>
                 </div>

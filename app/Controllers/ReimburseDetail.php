@@ -17,8 +17,6 @@ class ReimburseDetail extends BaseController
         $this->penelitianModel = new PenelitianModel();
         $this->reimburseModel = new ReimburseModel();
         $this->pkmModel = new PkmModel();
-
-      
     }
     public function index()
     {
@@ -27,7 +25,7 @@ class ReimburseDetail extends BaseController
 
     public function savePenelitian($idpenelitian)
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'uploadLoa' => [
                 'rules' => 'uploaded[uploadLoa]|ext_in[uploadLoa,pdf]|max_size[uploadLoa,10000]',
                 'errors' => [
@@ -35,24 +33,24 @@ class ReimburseDetail extends BaseController
                     'ext_in' => "Format file harus pdf",
                     'max_size' => "Ukuran File terlalu besar"
                 ]
-                ],
-                'uploadNaskah' =>  [
-                    'rules' => 'uploaded[uploadNaskah]|ext_in[uploadNaskah,pdf]|max_size[uploadNaskah,10000]',
-                    'errors' => [
-                        'uploaded' => "{field} file tidak boleh kosong",
-                        'ext_in' => "Format file harus pdf",
-                        'max_size' => "Ukuran File terlalu besar"
+            ],
+            'uploadNaskah' =>  [
+                'rules' => 'uploaded[uploadNaskah]|ext_in[uploadNaskah,pdf]|max_size[uploadNaskah,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar"
                 ]
-                ],
-                'uploadInvoice' =>  [
-                    'rules' => 'uploaded[uploadInvoice]|ext_in[uploadInvoice,pdf]|max_size[uploadInvoice,10000]',
-                    'errors' => [
-                        'uploaded' => "{field} file tidak boleh kosong",
-                        'ext_in' => "Format file harus pdf",
-                        'max_size' => "Ukuran File terlalu besar"
+            ],
+            'uploadInvoice' =>  [
+                'rules' => 'uploaded[uploadInvoice]|ext_in[uploadInvoice,pdf]|max_size[uploadInvoice,10000]',
+                'errors' => [
+                    'uploaded' => "{field} file tidak boleh kosong",
+                    'ext_in' => "Format file harus pdf",
+                    'max_size' => "Ukuran File terlalu besar"
                 ]
-                ],
-        ])){
+            ],
+        ])) {
             session()->setFlashdata('error', 'Terjadi Kesalahan!');
             return redirect()->to('/detailReimburseDosen/penelitian/' . $idpenelitian)->withInput();
         }
@@ -88,12 +86,12 @@ class ReimburseDetail extends BaseController
             'status_reimburse'  => "Reimbursement diajukan",
             'biaya_diajukan'    => $total_biaya
         ]);
-        
+
         $this->penelitianModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
             'id_status_reimburse' => 1
         ]);
-    
+
 
         session()->setFlashdata('pesan', 'Reimbursement berhasil diajukan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
@@ -104,7 +102,7 @@ class ReimburseDetail extends BaseController
     public function savePKM($id_pkm)
     {
         $pkm = $this->pkmModel->get_pkm($id_pkm);
-       
+
         $this->reimburseModel->save([
             'id_pkm'     => $pkm['ID_pkm'],
             'jenis_pkm'  => $pkm['jenis_pkm'],
@@ -125,4 +123,28 @@ class ReimburseDetail extends BaseController
         return redirect()->to('/reimburseDosen');
     }
 
+    //======================== Reimburse Download
+
+    public function download_loa($id_reimburse)
+    {
+
+        $reimburse = $this->reimburseModel->get_reimburse($id_reimburse);
+        // dd($reimburse);
+        return $this->response->download('loa/' . $reimburse[0]['loa'], null);
+        // return view('proposal/ViewLaporanProposal', $data);
+    }
+
+    public function download_naskah_artikel($id_reimburse)
+    {
+        $reimburse = $this->reimburseModel->get_reimburse($id_reimburse);
+        return $this->response->download('naskah_artikel/' . $reimburse[0]['naskah_artikel'], null);
+        // return view('proposal/ViewLaporanProposal', $data);
+    }
+
+    public function download_na($id_reimburse)
+    {
+        $reimburse = $this->reimburseModel->get_reimburse($id_reimburse);
+        return $this->response->download('na/' . $reimburse[0]['bukti_pembayaran'], null);
+        // return view('proposal/ViewLaporanProposal', $data);
+    }
 }

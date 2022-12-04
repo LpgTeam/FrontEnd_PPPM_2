@@ -100,7 +100,7 @@
                                     <option value="Small Area Estimation">Small Area Estimation</option>
                                     <option value="SDG's">SDG's</option>
                                     <option value="Metodologi Survei dan Sensus">Metodologi Survei dan Sensus</option>
-                                    <option value="Sistem Indormasi Statistik">Sistem Informasi Statistik </option>
+                                    <option value="Sistem Informasi Statistik">Sistem Informasi Statistik </option>
                                     <option value="Lainnya">Lainnya </option>
                                 </select>
                             </div>

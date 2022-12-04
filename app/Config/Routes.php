@@ -164,17 +164,17 @@ if (auth()->loggedIn()) {
         $routes->get('/deleteRoleUser/(:any)', 'AdminUserSetting::deleteRole/$1');
 
 
-//penelitian
+        //penelitian
         $routes->get('/adminProses1/(:any)', 'Admin::adminProses1/$1');
         $routes->get('/adminProses2/(:any)', 'Admin::adminProses2/$1');
         $routes->get('/adminProses3/(:any)', 'Admin::adminProses3/$1');
 
-//pkm
+        //pkm
         $routes->get('/adminPkmProses1/(:any)', 'Admin::pkmAdminProses1/$1');
         $routes->get('/adminPkmProses2/(:any)', 'Admin::pkmAdminProses2/$1');
         $routes->get('/adminPkmProses3/(:any)', 'Admin::pkmAdminProses3/$1');
-        
-//delete Status
+
+        //delete Status
         $routes->get('/removeStatus/(:any)/(:any)', 'Admin::removeStatus/$1/$2');
         $routes->get('/removeStatusPkm/(:any)/(:any)', 'Admin::removeStatusPkm/$1/$2');
 
@@ -207,6 +207,9 @@ if (auth()->loggedIn()) {
         $routes->get('/persetujuanReviewer/(:any)', 'Reviewer::persetujuan/$1');
         $routes->get('/acc-reviewer/(:any)', 'Reviewer::acc_penelitian_reviewer/$1');
         $routes->get('/rjc-reviewer/(:any)', 'Reviewer::rjc_penelitian_reviewer/$1');
+        $routes->get('/reimburseReviewer', 'Reviewer::reimburse');
+        $routes->get('/detailReimburseReviewer/(:any)', 'Reviewer::detailReimburse/$1');
+        $routes->get('/detailReimburse2Reviewer/(:any)', 'Reviewer::detailReimburse2/$1');
     }
 
     // ================================================================
@@ -218,8 +221,8 @@ if (auth()->loggedIn()) {
         $routes->get('/anggaranDirektur', 'Direktur::anggaran');
         $routes->get('/penelitianDirektur', 'Direktur::penelitian');
         $routes->get('/reimburseDirektur', 'Direktur::reimburse');
-        $routes->get('/detailReimburseDirektur', 'Direktur::detailReimburse');
-        $routes->get('/detailReimburse2Direktur', 'Direktur::detailReimburse2');
+        $routes->get('/detailReimburseDirektur/(:any)', 'Direktur::detailReimburse/$1');
+        $routes->get('/detailReimburse2Direktur/(:any)', 'Direktur::detailReimburse2/$1');
         $routes->get('/persetujuanDirektur/(:any)', 'Direktur::persetujuan/$1');
         $routes->get('/acc-direktur/(:any)', 'Direktur::acc_penelitian_direktur/$1');
     }
@@ -242,8 +245,8 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmaccAkhir-kepala/(:any)', 'Kepala::accAkhir_pkm_kepala/$1');
         $routes->get('/pkmrjc-kepala/(:any)', 'Kepala::rjc_pkm_kepala/$1');
         $routes->get('/reimburseKepala', 'Kepala::reimburse');
-        $routes->get('/detailReimburseKepala', 'Kepala::detailReimburse');
-        $routes->get('/detailReimburse2Kepala', 'Kepala::detailReimburse2');
+        $routes->get('/detailReimburseKepala/(:any)', 'Kepala::detailReimburse/$1');
+        $routes->get('/detailReimburse2Kepala/(:any)', 'Kepala::detailReimburse2/$1');
     }
 
     // ================================================================
@@ -311,6 +314,15 @@ $routes->get('/pkm/printSurat', 'PKM::printSurat');
 
 //error page routes
 $routes->get('/backurl', 'Error::index');
+
+
+
+
+//===================== Download Reimburse ========================
+$routes->get('/download_loa/(:any)', 'ReimburseDetail::download_loa/$1');
+$routes->get('/download_naskah_artikel/(:any)', 'ReimburseDetail::download_naskah_artikel/$1');
+$routes->get('/download_na/(:any)', 'ReimburseDetail::download_na/$1');
+
 
 //cek except login
 service('auth')->routes($routes, ['except' => ['login', 'logout']]);

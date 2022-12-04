@@ -65,8 +65,8 @@
                 </div>
                 <?php
 
-                    if ($reimburse['id_status'] == 1) {
-                            
+                if ($reimburse['id_status'] == 1) {
+
                 ?>
                 <div class="card">
                     <div class="card-body">
@@ -100,23 +100,22 @@
                             </div>
                         </form>
                     </div>
-                </div>
-                <?php
-                        } else if($reimburse['id_status'] == 2){
-                        ?>
-                <div class="main-timeline">
-                    <div class="timeline">
-                        <a href="#" class="timeline-content">
-                            <div class="timeline-year">Reimburse</div>
-                            <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
-                            <h3 class="title">Dana Reimburse Sudah Dicairkan</h3>
-                        </a>
-                    </div>
                     <?php
-                        }
-                            ?>
+                } else if ($reimburse['id_status'] == 2) {
+                ?>
+                    <div class="main-timeline">
+                        <div class="timeline">
+                            <a href="#" class="timeline-content">
+                                <div class="timeline-year">Reimburse</div>
+                                <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                <h3 class="title">Dana Reimburse Sudah Dicairkan</h3>
+                            </a>
+                        </div>
+                        <?php
+                }
+                    ?>
+                    </div>
                 </div>
-            </div>
     </section>
 
 </main>

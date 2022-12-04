@@ -18,15 +18,15 @@ class Pkm extends Seeder
         $faker = \Faker\Factory::create('id_ID');
         for ($i = 0; $i < 10; $i++) {
             $data = [
-                'id_pkm'                => $i + $datapenelitian[0]['ID_pkm'],
+                'ID_pkm'                => $i + $datapenelitian[0]['ID_pkm'],
                 'jenis_pkm'             => $faker->randomElement($array = array("Mandiri", "Kelompok", "Terstruktur")),
                 'topik_kegiatan'        => $faker->realText($maxNbChars = 200, $indexSize = 2),
-                'tempat_kegiatan'       => $faker->address,
                 'bentuk_kegiatan'       => $faker->randomElement($array = array("Seminar", "Webinar", "Sosialisasi")),
+                'waktu_kegiatan'        => Time::createFromTimestamp($faker->unixTime()),
+                'tempat_kegiatan'       => $faker->address,
                 'sasaran'               => $faker->randomElement($array = array('Masyarakat umum', 'Mahasiswa')),
                 'target_peserta'        => $faker->numberBetween($min = 10, $max = 250),
                 'hasil'                 => $faker->randomElement($array = array("Berhasil", "Sukses")),
-                'waktu_kegiatan'        => Time::createFromTimestamp($faker->unixTime()),
                 'tanggal_pengajuan'     => Time::createFromTimestamp($faker->unixTime()),
                 'id_status'             => $faker->numberBetween($min = 1, $max = 7),
                 'jumlah_anggota'        => $faker->randomElement($array = array(1, 2, 3)),
@@ -44,8 +44,8 @@ class Pkm extends Seeder
 
             $dosen = $faker->randomElement($array = $datadosen);
             $dataketua = [
-                'id_pkm'            => $data['id_pkm'],
-                'NIP'               => $dosen['NIP_dosen'],
+                'id_pkm'            => $data['ID_pkm'],
+                'nip'               => $dosen['NIP_dosen'],
                 'nama'              => $dosen['nama_dosen'],
                 'peran'             => 'Ketua PKM',
                 'bidang_keahlian'   => $faker->randomElement($array = array('IT', 'Metodologi', 'Machine Learning', 'Data Science', 'Statistika', 'Data Mining')),
@@ -56,8 +56,8 @@ class Pkm extends Seeder
             for ($j = 0; $j < $data['jumlah_anggota'] - 1; $j++) {
                 $dosen = $faker->randomElement($array = $datadosen);
                 $dataanggota = [
-                    'id_pkm'            => $data['id_pkm'],
-                    'NIP'               => $dosen['NIP_dosen'],
+                    'id_pkm'            => $data['ID_pkm'],
+                    'nip'               => $dosen['NIP_dosen'],
                     'nama'              => $dosen['nama_dosen'],
                     'peran'             => 'Anggota PKM',
                     'bidang_keahlian'   => $faker->randomElement($array = array('IT', 'Metodologi', 'Machine Learning', 'Data Science', 'Statistika', 'Data Mining')),

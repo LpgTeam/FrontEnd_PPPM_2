@@ -79,74 +79,74 @@
                                             $i = 1; ?>
                                             <?php foreach ($pkm as $key => $post) :  ?>
 
-                                            <tr>
-                                                <!-- <td><?php //echo $post['id_penelitian'] 
-                                                            ?></td> -->
-                                                <td><?php echo $post['ID_pkm'] ?></td>
-                                                <td><?php echo $post['jenis_pkm'] ?></td>
-                                                <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                <td><?php echo $post['topik_kegiatan'] ?></td>
-                                                <td><?php echo $post['status'] ?></td>
-                                                <td>
-                                                    <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
-                                                    <?php
-                                                    // if ($post['jenis_pkm'] == 'Mandiri') {
-                                                    //     echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
-                                                    // } else {
-                                                    //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
-                                                    // }
-                                                    if ($post['id_status'] == 1 || $post['id_status'] == 2 ||  $post['id_status'] == 5 || $post['id_status'] == 6) { ?>
-                                                        <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <tr>
+                                                    <!-- <td><?php //echo $post['id_penelitian'] 
+                                                                ?></td> -->
+                                                    <td><?php echo $post['ID_pkm'] ?></td>
+                                                    <td><?php echo $post['jenis_pkm'] ?></td>
+                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                    <td><?php echo $post['topik_kegiatan'] ?></td>
+                                                    <td><?php echo $post['status'] ?></td>
+                                                    <td>
+                                                        <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
                                                         <?php
-                                                    } else if ($post['id_status'] == 3) {
-                                                        if ($post['jenis_pkm'] == 'Mandiri') { ?>
+                                                        // if ($post['jenis_pkm'] == 'Mandiri') {
+                                                        //     echo "<button type='button' class='btn btn-secondary' disabled><i class='bi bi-pencil-square'></i></button>";
+                                                        // } else {
+                                                        //     echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>";
+                                                        // }
+                                                        if ($post['id_status'] == 1 || $post['id_status'] == 2 ||  $post['id_status'] == 5 || $post['id_status'] == 6) { ?>
+                                                            <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                            <?php
+                                                        } else if ($post['id_status'] == 3) {
+                                                            if ($post['jenis_pkm'] == 'Mandiri') { ?>
+                                                                <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                            <?php } else { ?>
+                                                                <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                            <?php   }
+                                                        } else if ($post['id_status'] == 4) { ?>
+                                                            <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <?php
+                                                        } else if ($post['id_status'] == 7) { ?>
                                                             <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                        <?php } else { ?>
-                                                            <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                        <?php   }
-                                                    } else if ($post['id_status'] == 4) { ?>
-                                                        <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php
-                                                    } else if ($post['id_status'] == 7) { ?>
-                                                        <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                    <?php } ?>
-                                                </td>
-                                            </tr>
-                                    <?php $i++;
-                                        endforeach;
-                                    } ?>
-                                </tbody>
-                            </table>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                        <?php $i++;
+                                            endforeach;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <script>
+                                $(document).ready(function() {
+                                    dataTable = $("#example").DataTable({});
+
+                                    $('.status-dropdown').on('change', function(e) {
+                                        var status = $(this).val();
+                                        $('.status-dropdown').val(status)
+                                        console.log(status)
+                                        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                        dataTable.column(1).search(status).draw();
+                                    })
+
+                                    $('.status-dropdown2').on('change', function(e) {
+                                        var status = $(this).val();
+                                        $('.status-dropdown2').val(status)
+                                        console.log(status)
+                                        //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                        dataTable.column(4).search(status).draw();
+                                    })
+                                });
+                            </script>
+
+
                         </div>
-
-
-                        <script>
-                            $(document).ready(function() {
-                                dataTable = $("#example").DataTable({});
-
-                                $('.status-dropdown').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(1).search(status).draw();
-                                })
-
-                                $('.status-dropdown2').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown2').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(4).search(status).draw();
-                                })
-                            });
-                        </script>
-
-
                     </div>
                 </div>
             </div>
-        </div>
 
         </div>
         </div>
