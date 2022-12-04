@@ -270,9 +270,9 @@ if (auth()->loggedIn()) {
         $routes->get('/pkmrjc-BAU/(:any)', 'BAU::rjc_pkm_BAU/$1');
 
         $routes->get('/reimburseBAU', 'BAU::reimburse');
-        $routes->get('/detailReimburseBAU/(:any)', 'BAU::detailReimburse/$1');
-        $routes->get('/acc-reimburseBAU/(:any)', 'BAU::acc_reimburse/$1');
-        $routes->get('/acc-reimbursePKMBAU/(:any)', 'BAU::acc_reimburse_pkm/$1');
+        $routes->get('/detailReimburse/(:any)', 'BAU::detailReimburse/$1');
+        $routes->post('/acc-reimburseBAU/(:any)', 'BAU::acc_reimburse/$1');
+        $routes->post('/acc-reimbursePKMBAU/(:any)', 'BAU::acc_reimburse_pkm/$1');
         $routes->get('/detailReimburse2BAU/(:any)', 'BAU::detailReimburse2/$1');
 
         $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
@@ -289,6 +289,8 @@ $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::do
 
 
 // $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
+//download Template Proposal penelitian
+$routes->get('/penelitian/printProposal', 'Penelitian::printProposal');
 //download surat pernyataan penelitian
 $routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
 //download Kontrak penelitian

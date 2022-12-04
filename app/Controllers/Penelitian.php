@@ -57,7 +57,8 @@ class Penelitian extends BaseController
     public function save()
     {
         // //validasi input
-
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+        // dd($nipdosen);
         $jenisPenelitian = $this->request->getVar('jenis_penelitian');
         // dd($jenisPenelitian);
 
@@ -190,21 +191,20 @@ class Penelitian extends BaseController
             'status'        => 'Diajukan oleh Dosen'
         ]);
 
-        // dd($idpenelitian );
+        // dd($idpenelitian);
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
-        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+        // $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         // dd($nipdosen);
-
-
 
         $this->ketuatimpenelitiModel->save([
             'id_penelitian' => $idpenelitian['id_penelitian'],
             'NIP' => $nipdosen['NIP_dosen'],
             'bidang_keahlian' => $this->request->getVar('bidangKeahlian'),
             'namaPeneliti' => $nipdosen['nama_dosen'],
-            'programStu  ' => $nipdosen['program_studi'],
+            'programStudi' => $nipdosen['program_studi'],
             'peran'         => "Ketua Penelitian"
         ]);
+
         $no = $this->request->getVar('anggota');
         for ($i = 1; $i <= $no; $i++) {
             $this->timpenelitiModel->save([
@@ -274,5 +274,10 @@ class Penelitian extends BaseController
     public function printLaporan()
     {
         return $this->response->download('kontrak/[PENELITIAN] Kontrak.docx', null)->setFileName("Kontrak_penelitian.docx"); //download file
+    }
+
+    public function printProposal()
+    {
+        return $this->response->download('proposal/[PENELITIAN] Kontrak.docx', null)->setFileName("[Template]proposal_penelitian.docx"); //download file
     }
 }

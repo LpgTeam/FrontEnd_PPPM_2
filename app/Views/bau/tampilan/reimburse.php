@@ -85,7 +85,7 @@
                                                     ?>
                                             </td>
                                             <td>
-                                                <a href="/detailReimburseBAU/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="/detailReimburse/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 
 
 
