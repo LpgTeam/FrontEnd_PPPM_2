@@ -116,11 +116,11 @@
         <br>
 
         <li>TOPIK</li>
-        <p>Tuliskan Topik</p>
+        <p class=""><?= $pkm['topik_kegiatan'] ?></p>
         <br>
 
         <li>BENTUK KEGIATAN</li>
-        <p>Tuliskan Bentuk Kegiatan</p>
+        <p><?= $pkm['bentuk_kegiatan'] ?></p>
         <br>
 
         <li>WAKTU, TEMPAT DAN SASARAN</li>
@@ -146,8 +146,26 @@
 
         <li>HASIL/TARGET YANG DIHARAPKAN</li>
         <?= $pkm['hasil'] ?>
-        <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN*)</li>
-        BELUM KELARR!!!
+        <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN(*)</li>
+        <table>
+            <tr>
+                <td>NO</td>
+                <td>JENIS LUARAN</td>
+                <td>TARGET CAPAIAN</td>
+            </tr>
+            <?php
+            // var_dump($biaya);
+            $i = 1;
+            foreach ($biaya as $key => $luar) : ?>
+                <tr>
+                    <td><?= $i ?></td>
+                    <td><?= $luar['pembiayaan_diajukan']; ?></td>
+                    <td>Rp<?= $luar['jumlah_biaya']; ?></td>
+                </tr>
+
+            <?php $i++;
+            endforeach ?>
+        </table>
     </ol>
 
     <div style="page-break-before: always;">

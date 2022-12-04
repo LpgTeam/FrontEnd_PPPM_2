@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PkmModel;
+use App\Models\PembiayaanPkmModel;
 use App\Models\StatusPkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPKMModel;
@@ -19,6 +20,7 @@ class PKM extends BaseController
     protected $ketuaTimModel;
     protected $dosenModel;
     protected $rincianPkm;
+    protected $pembiayaanPkm;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class PKM extends BaseController
         $this->ketuaTimModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
         $this->rincianPkm = new RincianPKMModel();
+        $this->pembiayaanPkm = new PembiayaanPkmModel();
     }
 
     public function index()
@@ -146,8 +149,8 @@ class PKM extends BaseController
                 'id_pkm' => $idpkm['ID_pkm'],
                 'surat_pernyataan' => $namaSurat,
                 'bukti_kegiatan' => $namaBukti,
-                'narasumber'    => 'Tersebut',
-                'penyelenggara' => 'Tim PKM'
+                'narasumber'    => $this->request->getVar('narasumber'),
+                'penyelenggara' => $this->request->getVar('penyelenggara')
             ]);
         } else {
             $this->rincianPkm->save([
@@ -175,6 +178,16 @@ class PKM extends BaseController
                 'peran'         => "Anggota" . $i,
             ]);
         };
+
+        $no = $this->request->getVar('jumlahrow');
+        for ($i = 1; $i <= $no; $i++) {
+            $this->pembiayaanPkm->save([
+                'id_pkm' => $idpkm['ID_pkm'],
+                'pembiayaan_diajukan' => $this->request->getVar('pembiayaan' . $i),
+                'jumlah_biaya'  =>$this->request->getVar('jumlahBiaya' . $i),
+            ]);
+        };
+
 
 
         //==========================Set Pesan Sukses===================================
