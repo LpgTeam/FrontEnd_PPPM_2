@@ -61,7 +61,7 @@
                                         <option value="">Semua</option>
                                         <option value="1">Mandiri</option>
                                         <option value="2">Semi Mandiri</option>
-                                        <option value="3">Di Danai Institusi</option>
+                                        <option value="3">Didanai Institusi</option>
                                         <option value="4">Institusi</option>
                                         <option value="5">Kerjasama</option>
                                     </select>
@@ -101,7 +101,7 @@
                                                     echo "<p hidden >1</p>", $post['jenis_penelitian'];
                                                 } else if ($post['jenis_penelitian'] == "Semi Mandiri") {
                                                     echo "<p hidden >2</p>", $post['jenis_penelitian'];
-                                                } else if ($post['jenis_penelitian'] == "Di Danai Institusi") {
+                                                } else if ($post['jenis_penelitian'] == "Didanai Institusi") {
                                                     echo "<p hidden >3</p>", $post['jenis_penelitian'];
                                                 } else if ($post['jenis_penelitian'] == "Institusi") {
                                                     echo "<p hidden >4</p>", $post['jenis_penelitian'];

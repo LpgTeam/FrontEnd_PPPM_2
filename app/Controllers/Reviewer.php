@@ -117,7 +117,7 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 3,
+            'id_status'         => 2,
             'status_pengajuan'  => 'Disetujui oleh Reviewer'
         ]);
         $this->statusPenelitianModel->save([
@@ -134,7 +134,7 @@ class Reviewer extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 8,
+            'id_status'         => 7,
             'status_pengajuan'  => 'Ditolak oleh Reviewer',
             'alasan'            => $this->request->getVar('alasan')
         ]);

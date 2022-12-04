@@ -289,6 +289,8 @@ $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::do
 
 
 // $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
+//download Template Proposal penelitian
+$routes->get('/penelitian/printProposal', 'Penelitian::printProposal');
 //download surat pernyataan penelitian
 $routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
 //download Kontrak penelitian

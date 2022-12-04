@@ -119,7 +119,7 @@ class BAU extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'penelitian' => $this->penelitianModel->get_penelitian_by_id_status(1),
-            'penelitian' => $this->penelitianModel->findAll(),
+            'penelitian' => $this->penelitianModel->getData(),
         ];
         // dd($data['penelitian']);
         return view('bau/tampilan/penelitian', $data);
@@ -140,13 +140,13 @@ class BAU extends BaseController
     {
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 2,
-            'status_pengajuan'  => 'Menunggu Persetujuan Reviewer'
+            'id_status'         => 3,
+            'status_pengajuan'  => 'Menunggu Persetujuan Kepala PPPM'
         ]);
 
         $this->statusPenelitianModel->save([
             'id_penelitian' => $id_penelitian,
-            'status'        => 'Menunggu Persetujuan Reviewer'
+            'status'        => 'Menunggu Persetujuan Kepala PPPM'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
@@ -159,7 +159,7 @@ class BAU extends BaseController
 
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
-            'id_status'         => 7,
+            'id_status'         => 8,
             'status_pengajuan'  => 'Ditolak oleh BAU',
             'alasan'            => $this->request->getVar('alasan')
         ]);
