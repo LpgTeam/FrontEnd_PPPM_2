@@ -1919,10 +1919,10 @@ section {
 .timeline-with-icons .timeline-icon {
   position: absolute;
   left: -48px;
-  background-color: #fff;
-  color: #012970;
+  background-color: #08da4e;
+  color: #fff;
   border-style: solid;
-  border-color: #0084ce;
+  border-color:#08da4e;
   border-radius: 50%;
   height: 31px;
   width: 31px;
