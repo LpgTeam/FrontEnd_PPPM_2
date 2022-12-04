@@ -196,8 +196,8 @@ if (auth()->loggedIn()) {
         // $routes->get('/pkmTerstrukturAdmin2', 'Admin::pkmAdminProses2');
 
         $routes->get('/reimburseAdmin', 'Admin::reimburse');
-        $routes->get('/persetujuanReimburseAdmin/(:any)', 'Admin::persetujuanReimburse/$1');
-        $routes->get('/acc-reimburseAdmin/(:any)', 'Admin::acc_reimburse/$1');
+        $routes->get('/detailReimburseAdmin/(:any)', 'Admin::detailReimburse/$1');
+        $routes->get('/detailReimburse2Admin/(:any)', 'Admin::detailReimburse2/$1');
     }
     // ================================================================
     //                          Reviewer
@@ -276,10 +276,6 @@ if (auth()->loggedIn()) {
         $routes->get('/detailReimburse2BAU/(:any)', 'BAU::detailReimburse2/$1');
 
         $routes->post('/updateAnggaran', 'BAU::updateAnggaran');
-        $routes->get('/reimburseBAU', 'BAU::reimburse');
-        $routes->get('/persetujuanReimburse/penelitian/(:any)', 'BAU::persetujuanReimburse/penelitian/$1');
-       $routes->get('/persetujuanReimburse/pkm/(:any)', 'BAU::persetujuanReimburse/pkm/$1');
-        $routes->get('/acc-reimburseBAU/(:any)', 'BAU::acc_reimburse/$1');
     }
 }
 //===========================================download Penelitian===============================================
@@ -329,7 +325,9 @@ $routes->get('/backurl', 'Error::index');
 //===================== Download Reimburse ========================
 $routes->get('/download_loa/(:any)', 'ReimburseDetail::download_loa/$1');
 $routes->get('/download_naskah_artikel/(:any)', 'ReimburseDetail::download_naskah_artikel/$1');
-$routes->get('/download_na/(:any)', 'ReimburseDetail::download_na/$1');
+$routes->get('/download_invoice/(:any)', 'ReimburseDetail::download_invoice/$1');
+$routes->get('/download_form/(:any)', 'ReimburseDetail::download_form_publikasi/$1');
+$routes->get('/form_publikasi/printFormPublikasi', 'ReimburseDetail::printFormPublikasi');
 
 
 //cek except login

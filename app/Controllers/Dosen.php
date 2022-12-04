@@ -668,7 +668,7 @@ class Dosen extends BaseController
         ];
 
         return view('dosen/tampilan/reimburse', $data);
-     }
+    }
 
 
     public function detailReimburse($id_kegiatan){
@@ -687,7 +687,6 @@ class Dosen extends BaseController
 
     }
 
-
     public function detailReimburse2($id_kegiatan)
     {
         $data = [
@@ -697,10 +696,5 @@ class Dosen extends BaseController
             'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/detailReimburse2', $data);
-    }
-
-    public function printFormPublikasi()
-    {
-        return $this->response->download('form_publikasi/[Penelitian] Template - Form Usulan Publikasi.docx', null)->setFileName("[Penelitian] Template - Form Usulan Publikasi.docx"); //download file
     }
 }

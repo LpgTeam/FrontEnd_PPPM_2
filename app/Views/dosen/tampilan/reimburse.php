@@ -65,7 +65,7 @@
                                             <!-- <th scope="col">Nomor</th> -->
                                             <th scope="col">Jenis Penelitian/PKM</th>
                                             <th scope="col">Tanggal Pengajuan</th>
-                                            <th scope="col">Judul/Topik</th>
+                                            <th scope="col">Judul Penelitian/Topik PKM</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Detail</th>
                                         </tr>

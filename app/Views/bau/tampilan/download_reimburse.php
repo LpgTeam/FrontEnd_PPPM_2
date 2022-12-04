@@ -12,7 +12,11 @@
         <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#naskah">Naskah Artikel</button> -->
     </div>
     <div class="text-end" style="margin-right: 10px">
-        <a href="/download_na/<?= $reimburse['id_reimburse']; ?>" class="btn btn-success">Download Invoice</a>
+        <a href="/download_invoice/<?= $reimburse['id_reimburse']; ?>" class="btn btn-success">Download Invoice</a>
+        <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#invoice">Invoice</button> -->
+    </div>
+    <div class="text-end" style="margin-right: 10px">
+        <a href="/download_form/<?= $reimburse['id_reimburse']; ?>" class="btn btn-success">Download Usulan Publikasi</a>
         <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#invoice">Invoice</button> -->
     </div>
 </div>

@@ -225,4 +225,83 @@ class BAU extends BaseController
 
         return redirect()->to('/pkmBAU');
     }
+
+    public function reimburse()
+    {
+
+        //mengambil data user yang sedang login
+        $user = auth()->user();
+
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->findAll(),
+            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
+            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
+
+        ];
+
+        return view('bau/tampilan/reimburse', $data);
+    }
+
+    public function detailReimburse($id_reimburse)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('bau/tampilan/persetujuanReimburse', $data);
+    }
+
+    public function detailReimburse2($id_reimburse)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('bau/tampilan/persetujuan2Reimburse', $data);
+    }
+
+    public function acc_reimburse($id_reimburse)
+    {
+        $this->reimburseModel->save([
+            'id_reimburse'     => $id_reimburse,
+            'id_status'         => 2,
+            'status_reimburse'  => 'Dana Reimburse berhasil dicairkan'
+        ]);
+
+        $id_penelitian = $this->reimburseModel->get_id_penelitian_done($id_reimburse);
+        // $Pen = $this->penelitianModel->get_penelitian($id_penelitian);
+
+
+        $this->penelitianModel->save([
+            'id_penelitian'     => $id_penelitian,
+            'id_status_reimburse' => 2
+        ]);
+
+        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+
+        return redirect()->to('/reimburseBAU');
+    }
+
+    public function acc_reimburse_pkm($id_reimburse)
+    {
+        $this->reimburseModel->save([
+            'id_reimburse'     => $id_reimburse,
+            'id_status'         => 2,
+            'status_reimburse'  => 'Dana Reimburse berhasil dicairkan'
+        ]);
+
+        $id_pkm = $this->reimburseModel->get_id_pkm_done($id_reimburse);
+
+        $this->pkmModel->save([
+            'ID_pkm'     => $id_pkm,
+            'id_status_reimburse' => 2
+        ]);
+
+        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+
+        return redirect()->to('/reimburseBAU');
+    }
 }

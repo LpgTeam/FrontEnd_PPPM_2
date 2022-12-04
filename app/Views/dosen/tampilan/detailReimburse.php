@@ -65,7 +65,7 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
+                                        <label for="naskah" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah">
                                             <div class="invalid-feedback" id="uploadValid">
@@ -75,7 +75,7 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
+                                        <label for="invoice" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice">
                                             <div class="invalid-feedback" id="uploadValid">
@@ -94,10 +94,10 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="uploadForm" class="col-md-4 col-lg-3 col-form-label ">Upload Form Usulan Publikasi</label>
+                                        <label for="formpublikasi" class="col-md-4 col-lg-3 col-form-label ">Upload Form Usulan Publikasi</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="uploadForm" class="form-control  <?= ($validation->hasError('uploadForm')) ? 'is-invalid' : ''; ?>" type="file" id="uploadForm">
-                                            <div class="invalid-feedback" id="uploadValid2">
+                                            <div class="invalid-feedback" id="uploadValid">
                                                 <?= $validation->getError('uploadForm'); ?>
                                             </div>
                                         </div>

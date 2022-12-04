@@ -238,36 +238,38 @@ class Admin extends BaseController
 
     public function reimburse()
     {
-        $reimburseModel = new ReimburseModel();
+
+        //mengambil data user yang sedang login
+        $user = auth()->user();
+
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'reimburse' => $reimburseModel->getData(),
+            'reimburse' => $this->reimburseModel->findAll(),
+            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
+            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
+
         ];
+
         return view('adminPPPM/tampilan/reimburse', $data);
     }
 
-    public function persetujuanReimburse($id_reimburse)
+    public function detailReimburse($id_reimburse)
     {
-        $this->reimburseModel->find($id_reimburse);
-
         $data = [
-            'title'         => 'PPPM Politeknik Statistika STIS',
-            'penelitian'    => $this->reimburseModel->find($id_reimburse)
-
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
         ];
-        return view('adminPPPM/tampilan/persetujuanReimburse', $data);
+        return view('adminPPPM/tampilan/detailReimburse', $data);
     }
 
-    public function acc_reimburse($id_reimburse)
+    public function detailReimburse2($id_reimburse)
     {
-        $this->reimburseModel->save([
-            'id_reimburse'     => $id_reimburse,
-            'id_status'         => 4,
-            'status_reimburse'  => 'Dana telah dicairkan oleh BAU'
-        ]);
-
-        session()->setFlashdata('pesan', 'Reimburse berhasil dicairkan');
-
-        return redirect()->to('/reimburseAdmin');
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('adminPPPM/tampilan/detailReimburse2', $data);
     }
 }

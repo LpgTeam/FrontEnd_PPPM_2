@@ -35,7 +35,7 @@
                                     <option value="dosen">Dosen</option>
                                     <option value="bau">BAU</option>
                                     <option value="admin">Admin PPPM</option>
-                                    <option value="kepalaPPPM">Kepala PPPM</option>
+                                    <option value="kepalapppm">Kepala PPPM</option>
                                     <option value="reviewer">Reviewer </option>
                                     <option value="direktur">Direktur </option>
                                 </select>

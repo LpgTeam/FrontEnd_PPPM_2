@@ -9,7 +9,7 @@
             <header class="section-header2">
                 <h2>REIMBURSEMEN</h2>
                 <hr>
-                <p>Admin Politeknik Statistika STIS</p>
+                <p>Admin PPPM Politeknik Statistika STIS</p>
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
@@ -54,9 +54,9 @@
                         <table class="table table-advance table-hover align-middle datatable">
                             <thead>
                                 <tr class="table-primary">
-                                    <th scope="col">Jenis Penelitian</th>
+                                    <th scope="col">Jenis Penelitian/PKM</th>
                                     <th scope="col">Tanggal Pengajuan</th>
-                                    <th scope="col">Judul Penelitian</th>
+                                    <th scope="col">Judul Penelitian/Topik PKM</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Detail</th>
                                 </tr>

@@ -102,7 +102,7 @@
                                     <li><a href="/pkmAdmin">PKM</a></li>
                                 </ul>
                             </li>
-                            <li><a class="nav-link scrollto" href="/reimburseAdmin">Reimburse</a></li>
+                            <li><a class="nav-link scrollto" href="/reimburseAdmin">Reimbursemen</a></li>
                             <li class="dropdown">
                                 <a class="username scrollto" href="#"><span>Admin</span></a>
                                 <ul>
@@ -128,7 +128,7 @@
                                             <li><a href="/penelitianReviewer">Penelitian</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="nav-link scrollto" href="#">Reimburse</a></li>
+                                    <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
                                     <li class="dropdown">
                                         <a class="username scrollto" href="#"><span>Reviewer</span></a>
                                         <ul>
@@ -203,7 +203,7 @@
                                                                     <li><a href="/pkmBAU">PKM</a></li>
                                                                 </ul>
                                                             </li>
-                                                            <li><a class="nav-link scrollto" href="reimburseBAU">Reimburse</a></li>
+                                                            <li><a class="nav-link scrollto" href="reimburseBAU">Reimbursemen</a></li>
                                                             <li class="dropdown">
                                                                 <a class="username scrollto" href="#"><span>BAU</span></a>
                                                                 <ul>

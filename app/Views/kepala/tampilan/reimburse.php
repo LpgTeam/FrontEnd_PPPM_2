@@ -13,9 +13,9 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSE</h2>
+                <h2>REIMBURSEMEN</h2>
                 <hr>
-                <p>Dosen Politeknik Statistika STIS</p>
+                <p>Kepala PPPM Politeknik Statistika STIS</p>
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
@@ -68,27 +68,30 @@
                                     </select>
                                 </div>
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursemen</label>
-
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown2 ">
-                                        <option value="">Semua</option>
-                                        <option value="Reimburse diajukan">Reimburse diajukan</option>
-                                        <option value="Dana berhasil dicairkan">Dana berhasil dicairkan</option>
-                                    </select>
+                                <div class="input-group-prepend col-md-4 col-lg-2">
+                                    <div class=" btn btn-primary">Status Reimbursemen</div>
                                 </div>
+
+                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
+                                <option value="">Semua</option>
+                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
+                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
+                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
+                                </select>
                             </div>
 
-                            <table class="table table-advance table-hover align-middle datatable">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Jenis Penelitian</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul Penelitian</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table table-advance table-hover align-middle datatable">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th scope="col">Jenis Penelitian/PKM</th>
+                                    <th scope="col">Tanggal Pengajuan</th>
+                                    <th scope="col">Judul Penelitian/Topik PKM</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Detail</th>
+                                </tr>
+                            </thead>
                                 <tbody>
                                     <?php
                                     if (!$reimburse == null) {

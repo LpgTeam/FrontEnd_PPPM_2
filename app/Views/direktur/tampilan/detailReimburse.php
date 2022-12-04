@@ -9,7 +9,7 @@
             <header class="section-header2">
                 <h2>REIMBURSEMEN</h2>
                 <hr>
-                <p>Dosen Politeknik Statistika STIS</p>
+                <p>Direktur Politeknik Statistika STIS</p>
             </header>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
@@ -36,8 +36,9 @@
                         <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
                         <hr>
                         <ol>
-                            <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
-                            <li>Jenis Penelitian &nbsp;&nbsp; : <?= $reimburse['jenis_penelitian']; ?></li>
+                        <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
+                            <li>Jenis Penelitian &nbsp;&nbsp;&nbsp;: <?= $reimburse['jenis_penelitian']; ?></li>
+                            <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['total_biaya'], 0, ",", "."); ?></li>
                         </ol>
                         <hr>
                         <?= $this->include('bau/tampilan/download_reimburse'); ?>

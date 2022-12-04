@@ -45,67 +45,30 @@
                                     </select>
                                 </div>
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursemen</label>
-
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown2 ">
-                                        <option value="">Semua</option>
-                                        <option value="Reimburse diajukan">Reimburse diajukan</option>
-                                        <option value="Dana berhasil dicairkan">Dana berhasil dicairkan</option>
-                                    </select>
+                                <div class="input-group-prepend col-md-4 col-lg-2">
+                                    <div class=" btn btn-primary">Status Reimbursemen</div>
                                 </div>
+
+                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
+                                <option value="">Semua</option>
+                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
+                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
+                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
+                                </select>
                             </div>
 
-<<<<<<< HEAD
-                            <div class="table-responsive">
-                                <table id="example" class="table">
-                                    <thead>
-                                        <tr class="table-primary">
-                                            <th scope="col">Nomor</th>
-                                            <th scope="col">Jenis Penelitian/PKM</th>
-                                            <th scope="col">Tanggal Pengajuan</th>
-                                            <th scope="col">Judul Penelitian</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Detail</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="myTable">
-                                        <tr>
-                                            <th scope="row">5</th>
-                                            <td>3</td>
-                                            <td>Semi Mandiri</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>
-                                                <a href="/detailReimburseDirektur" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">5</th>
-                                            <td>3</td>
-                                            <td>Terstruktur</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>
-                                                <a href="/detailReimburse2Direktur" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-=======
-                            <table class="table table-advance table-hover align-middle datatable">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Jenis Penelitian</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul Penelitian</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table table-advance table-hover align-middle datatable">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th scope="col">Jenis Penelitian/PKM</th>
+                                    <th scope="col">Tanggal Pengajuan</th>
+                                    <th scope="col">Judul Penelitian/Topik PKM</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Detail</th>
+                                </tr>
+                            </thead>
                                 <tbody>
                                     <?php
                                     if (!$reimburse == null) {
@@ -174,7 +137,6 @@
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
->>>>>>> cabe1f7c7218459083ec3708cc336327dc628e56
                         </div>
 
 
