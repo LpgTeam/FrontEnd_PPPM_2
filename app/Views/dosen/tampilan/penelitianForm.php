@@ -121,6 +121,13 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Template Proposal</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <a class="btn btn-primary">Download Template Proposal</a>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Proposal</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload">
