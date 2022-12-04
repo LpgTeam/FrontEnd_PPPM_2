@@ -19,8 +19,8 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen penlitian yang diajukan oleh dosen
-                                oleh Direktur Politeknik Statistika STIS
+                                Reimbursemen penelitian yang diajukan oleh Dosen
+                                Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>

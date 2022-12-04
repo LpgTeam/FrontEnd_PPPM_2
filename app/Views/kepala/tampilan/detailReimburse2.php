@@ -19,7 +19,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen PKM yang diajukan oleh Dosen
+                                Reimbursemen penelitian yang diajukan oleh Dosen
                                 Politeknik Statistika STIS
                             </p>
                         </div>

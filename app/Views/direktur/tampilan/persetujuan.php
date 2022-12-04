@@ -114,7 +114,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/acc-direktur/<?= $penelitian['id_penelitian']; ?>'">Ya</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/acc-direktur/<?= $penelitian['id_penelitian']; ?>'">Ya</button>
             </div>
         </div>
     </div>
