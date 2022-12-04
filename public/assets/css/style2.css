@@ -2060,6 +2060,44 @@ section {
 
 
 /*--------------------------------------------------------------
+# Status Admin
+--------------------------------------------------------------*/
+.statAdmin .title{
+  color: #012970;
+  font-weight: 600;
+  text-align: center;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+
+.statAdmin .stat{
+  color : #000000;
+  text-align: left;
+  border-radius: 10px;
+  margin-top: 5px;
+  /* border-color: #000000; */
+}
+
+.statAdmin table{
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 2;
+  margin-top: 10px;
+}
+
+.statAdmin .icon{
+  color: #08da4e;
+  font-size: 22px;
+}
+
+.vertical-line {
+  width: 2px;
+  height: 30px;
+  background: #2ecc71;
+  margin: 0px auto 0 auto;
+}
+/*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
 .team {
