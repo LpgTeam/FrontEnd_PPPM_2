@@ -27,9 +27,11 @@ class ReimburseModel extends Model
         'loa',
         'naskah_artikel',
         'bukti_pembayaran',
+        'usulan_publikasi',
         'id_status',
         'status_reimburse'
     ];
+    
     public function getData()
     {
         return $this->findAll();

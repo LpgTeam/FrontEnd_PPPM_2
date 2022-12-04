@@ -36,6 +36,8 @@
     <link href="<?= base_url() ?>/assets/css/style2.css" rel="stylesheet" />
     <script src="<?= base_url() ?>/assets/js/jquery-3.5.1.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/status.js"></script>
+    <script src="<?= base_url() ?>/assets/js/status.js"></script>
+    <script src="<?= base_url() ?>/assets/js/sweetalert.js"></script>
     <?= $this->include('dosen/tampilan/scriptAutoComplete') ?>
 </head>
 

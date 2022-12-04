@@ -52,6 +52,9 @@ class PenelitianDetail extends BaseController
             return redirect()->to('/penelitianProses3/' . $idpenelitian)->withInput();
         }
 
+        //delete luaran sebelumnya
+        $this->luaranModel->delete_by_idpenelitian($idpenelitian);
+
         $fileLaporan = $this->request->getFile('uploadLaporan');
         $namaLaporan = $fileLaporan->getName();
         $fileLaporan->move('laporan_penelitian', $namaLaporan);
@@ -59,11 +62,14 @@ class PenelitianDetail extends BaseController
         $Pen = $this->penelitianModel->get_penelitian($idpenelitian);
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idpenelitian);
         
+       
+
         $this->penelitianModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
             'id_status'         => "10",
             'status_pengajuan'  => "Kegiatan telah selesai dilaksanakan"
         ]);
+        
 
         $this->statusPenelitianModel->save([
             'id_penelitian' => $Pen['id_penelitian'],
@@ -76,6 +82,7 @@ class PenelitianDetail extends BaseController
             'laporan_luaran'    => $namaLaporan,
         ]);
 
+        
 
         for ($i = 1; $i <= $nLuaran; $i++) {
             $this->luaranModel->save([
@@ -163,8 +170,8 @@ class PenelitianDetail extends BaseController
             // $validation = \Config\Services::validation();
             // dd($validation);
             session()->setFlashdata('error', 'Terjadi Kesalahan!');
-            // return redirect()->to('/penelitianProses2/' . $idPenelitian)->withInput();
-            return redirect()->to('/penelitianDosen');
+            return redirect()->to('/penelitianProses2/' . $idPenelitian)->withInput();
+            // return redirect()->to('/penelitianDosen')->withInput();
         }
 
         $filePendanaan = $this->request->getFile('uploadPendanaan');

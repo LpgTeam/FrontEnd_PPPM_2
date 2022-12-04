@@ -57,9 +57,14 @@ class PkmModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function getData_bau()
+    {
+        return $this->where(['jenis_pkm !=' => 'Mandiri'])->orderBy('tanggal_pengajuan', 'DESC')->findAll();
+    }
+
     public function getData()
     {
-        return $this->findAll();
+        return $this->orderBy('tanggal_pengajuan', 'DESC')->findAll();
     }
 
     public function get_id_pkm($judul_pkm)

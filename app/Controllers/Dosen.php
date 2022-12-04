@@ -10,6 +10,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\PenelitianModel;
+use App\Models\RincianPKMModel;
 use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DanaPKMModel;
@@ -28,6 +29,7 @@ class Dosen extends BaseController
     protected $timPenelitiModel;
     protected $timPKMModel;
     protected $pkmModel;
+    protected $rincianModel;
 
     public function __construct()
     {
@@ -36,6 +38,7 @@ class Dosen extends BaseController
         $this->timPenelitiModel = new TimPenelitiModel();
         $this->timPKMModel = new TimPKMModel();
         $this->pkmModel = new PkmModel();
+        $this->rincianModel = new RincianPKMModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->reimburseModel = new ReimburseModel();
     }
@@ -203,7 +206,9 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+            'validation' => \Config\Services::validation(),
         ];
+        // dd($data['validation']);
         // dd($data['penelitian']);
         return view('dosen/tampilan/penelitian', $data);
     }
@@ -216,6 +221,7 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->timPKMModel->get_pkm_by_nip_user($user->nip),
+            
 
         ];
         // dd($data['pkm']);
@@ -243,7 +249,7 @@ class Dosen extends BaseController
             $jenisPenelitian = "Semi Mandiri";
         } elseif ($jenis == "kerja-sama") {
             $jenisPenelitian = "Kerjasama";
-        } elseif ($jenis == "di-    danai-institusi") {
+        } elseif ($jenis == "didanai-institusi") {
             $jenisPenelitian = "Di Danai Institusi";
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";
@@ -451,7 +457,8 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses1', $data);
     }
@@ -461,6 +468,7 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->pkmModel->find($idPKM),
+            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
             'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses2', $data);
@@ -470,7 +478,9 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
+            'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses3', $data);
     }

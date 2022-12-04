@@ -102,7 +102,8 @@ class Kepala extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->get_penelitian_by_id_status(3),
+            // 'penelitian' => $penelitianModel->get_penelitian_by_id_status(3),
+            'penelitian' => $penelitianModel->getData(),
         ];
         return view('kepala/tampilan/penelitian', $data);
     }
@@ -123,7 +124,8 @@ class Kepala extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm'   => $this->pkmModel->get_pkm_by_status2(2, 4),
+            // 'pkm'   => $this->pkmModel->get_pkm_by_status2(2, 4),
+            'pkm'   => $this->pkmModel->getData(),
         ];
         return view('kepala/tampilan/pkm', $data);
     }
