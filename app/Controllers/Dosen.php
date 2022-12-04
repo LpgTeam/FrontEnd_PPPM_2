@@ -196,7 +196,9 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+            'validation' => \Config\Services::validation(),
         ];
+        // dd($data['validation']);
         // dd($data['penelitian']);
         return view('dosen/tampilan/penelitian', $data);
     }
@@ -236,7 +238,7 @@ class Dosen extends BaseController
             $jenisPenelitian = "Semi Mandiri";
         } elseif ($jenis == "kerja-sama") {
             $jenisPenelitian = "Kerjasama";
-        } elseif ($jenis == "di-    danai-institusi") {
+        } elseif ($jenis == "didanai-institusi") {
             $jenisPenelitian = "Di Danai Institusi";
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";

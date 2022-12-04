@@ -74,6 +74,10 @@ $routes->get('/reimburseDetail/savePenelitian/(:any)', 'ReimburseDetail::savePen
 
 $routes->get('/detailReimburse2Dosen/(:any)', 'Dosen::detailReimburse2/$1');
 
+//Download FOrm Publikasi
+$routes->get('/reimburseDetail/printFormPublikasi', 'ReimburseDetail::printFormPublikasi');
+
+
 //=====================PKM Detail======================
 $routes->get('/pkmProses1/(:any)', 'Dosen::pkmDetail1/$1');
 $routes->get('/pkmProses2/(:any)', 'Dosen::pkmDetail2/$1');

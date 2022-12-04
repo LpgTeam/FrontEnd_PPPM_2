@@ -17,7 +17,7 @@ class StatusPkm extends Seeder
             [
                 'id_detail'     => '2',
                 'status'        => 'Diajukan',
-                'deskripsi'     => 'Disetujui oleh BAU',
+                'deskripsi'     => 'Menunggu Persetujuan Kepala PPPM',
             ],
             [
                 'id_detail'     => '3',
