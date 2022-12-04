@@ -84,6 +84,7 @@
                                         <option value="SDG's">SDG's </option>
                                         <option value="Metodologi Survei dan Sensus">Metodologi Survei dan Sensus </option>
                                         <option value="Sistem Informasi Statistik">Sistem Informasi Statistik </option>
+                                        <option value="Sains Data">Sains Data </option>
                                         <option value="Lainnya">Lainnya </option>
                                     </select>
                                 </div>

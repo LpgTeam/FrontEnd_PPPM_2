@@ -7,6 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pkm['topik_kegiatan']; ?></title>
     <style>
+        .tabel table,
+        .tabel tr,
+        .tabel td {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+
+        .tabel tr,
+        .tabel td {
+            padding: 10px
+        }
+
         .text-center {
             text-align: center;
         }
@@ -147,25 +160,27 @@
         <li>HASIL/TARGET YANG DIHARAPKAN</li>
         <?= $pkm['hasil'] ?>
         <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN(*)</li>
-        <table>
-            <tr>
-                <td>NO</td>
-                <td>JENIS LUARAN</td>
-                <td>TARGET CAPAIAN</td>
-            </tr>
-            <?php
-            // var_dump($biaya);
-            $i = 1;
-            foreach ($biaya as $key => $luar) : ?>
+        <div class="tabel">
+            <table>
                 <tr>
-                    <td><?= $i ?></td>
-                    <td><?= $luar['pembiayaan_diajukan']; ?></td>
-                    <td>Rp<?= $luar['jumlah_biaya']; ?></td>
+                    <td>NO</td>
+                    <td>JENIS LUARAN</td>
+                    <td>TARGET CAPAIAN</td>
                 </tr>
+                <?php
+                // var_dump($biaya);
+                $i = 1;
+                foreach ($biaya as $key => $luar) : ?>
+                    <tr>
+                        <td><?= $i ?></td>
+                        <td><?= $luar['pembiayaan_diajukan']; ?></td>
+                        <td>Rp<?= $luar['jumlah_biaya']; ?></td>
+                    </tr>
 
-            <?php $i++;
-            endforeach ?>
-        </table>
+                <?php $i++;
+                endforeach ?>
+            </table>
+        </div>
     </ol>
 
     <div style="page-break-before: always;">
