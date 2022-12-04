@@ -122,9 +122,9 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Template Proposal</label>
+                                <label for="template" class="col-md-4 col-lg-3 col-form-label ">Template Proposal</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <a class="btn btn-primary">Download Template Proposal</a>
+                                    <a href="" class="btn btn-primary">Download Template Proposal</a>
                                 </div>
                             </div>
 
