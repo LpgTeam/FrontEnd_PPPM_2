@@ -44,11 +44,11 @@ class Dosen extends BaseController
     {
 
 
-        $db      = \Config\Database::connect();
-        $builder2 = $db->table('detailstatus_penelitian');
-        $query2 = $builder2->get();
-        $datastatus = $query2->getResultArray();
-        dd($datastatus[0]['deskripsi']);
+        // $db      = \Config\Database::connect();
+        // $builder2 = $db->table('detailstatus_penelitian');
+        // $query2 = $builder2->get();
+        // $datastatus = $query2->getResultArray();
+        // dd($datastatus[0]['deskripsi']);
         // $builder = $db->table('detailstatus_penelitian');
 
         // $query = $builder->getWhere(['id_detail' => 1]);
