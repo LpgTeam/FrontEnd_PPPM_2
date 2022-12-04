@@ -105,9 +105,9 @@
                             <?php
                             } else {
                             ?>
-                                <h5 class="card-title text-center">Upload Pendanaan</h5>
-                                <hr>
-                                <p class="text-center">Anda Sudah Upload Pendanaan!!</p>
+                                <!-- <h5 class="card-title text-center">Upload Pendanaan</h5>
+                                <hr> -->
+                                <h6 class="card-title text-center">Anda Sudah Upload Pendanaan!!</h6>
                             <?php
                             }
                             ?>

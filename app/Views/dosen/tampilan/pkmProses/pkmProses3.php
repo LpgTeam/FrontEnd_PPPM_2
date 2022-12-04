@@ -6,6 +6,11 @@
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
+            <?php if (session()->getFlashdata('error')) : ?>
+                <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
             <header class="section-header2">
                 <h2>PKM <?= $pkm['jenis_pkm'] ?></h2>
                 <hr>
@@ -64,7 +69,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Bukti Kegiatan dan Tugas/Peran Tim PKM</h5>
+                            <h5 class="card-title text-center">Upload Bukti Kegiatan dan Tugas/Peran Tim PKM</h5>
                             <hr>
                             <p>
                                 Hal yang perlu disertakan dalam bukti kegiatan
@@ -90,53 +95,50 @@
                             </ul>
                             </p>
                             <hr>
-                            <form action="<?= base_url('/pkmDetail/saveBukti/' . $pkm['ID_pkm']); ?>" method="post" enctype="multipart/form-data">
-                                <div class="row mb-4">
-                                    <div class="row mb-3">
-                                        <!-- <table class="table table2 table-advance table-hover align-middle anggota" id="myTableID">
-                                            <tr class="table-primary">
-                                                <th scope="col">Nama Anggota</th>
-                                                <th scope="col">Bidang Keahlian</th>
-                                                <th scope="col">Tugas/Peran</th>
-                                                <th scope="col">Aksi</th>
-                                            </tr>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-
-                                        <div class="col-md-4 col-lg-6">
-                                            <button onclick='add2()' class="btn btn-warning">
-                                                Tambah Anggota <i class=" bi bi-plus-square"></i>
-                                            </button>
-                                        </div>-->
+                            <?php
+                            // var_dump($rincian);
+                            if ($rincian['bukti_kegiatan'] == null) {
+                            ?>
+                                <form action="<?= base_url('/pkmDetail/saveBukti/' . $pkm['ID_pkm']); ?>" method="post" enctype="multipart/form-data">
+                                    <div class="row mb-4">
+                                        <label for="bukti" class="col-md-3 col-lg-4 col-form-label ">Bukti Kegiatan</label>
+                                        <div class="col-md-3 col-lg-8">
+                                            <input class="form-control <?= ($validation->hasError('uploadBukti')) ? 'is-invalid' : ''; ?>" type="file" id="uplodBukti" name="uploadBukti">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadBukti'); ?>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <script>
-                                        function rm2() {
-                                            $(event.target).closest("tr").remove();
-                                        }
-
-                                        function add2() {
-                                            var rowCount = document.getElementById('myTableID').rows.length;
-                                            $(".table2").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='bidangAnggota" + rowCount + "' class='form-control' type='text' id='bidangAnggota" + rowCount + "' required></td><td><input name='tugasAnggota" + rowCount + "' class='form-control' type='text' id='tugasAnggota" + rowCount + "' required></td><td><button onclick='rm2()' class='btn btn-danger'>Hapus</button></td></tr>");
-                                            console.log(rowCount);
-                                        }
-                                    </script>
-
-                                    <label for="bukti" class="col-md-3 col-lg-4 col-form-label ">Bukti Kegiatan</label>
-                                    <div class="col-md-3 col-lg-8">
-                                        <input class="form-control" type="file" id="uplodBukti" name="uploadBukti" required>
+                                    <hr>
+                                    <div class="row ">
+                                        <label for="bukti" class="col-md-3 col-lg-4 col-form-label ">Narasumber Kegiatan</label>
+                                        <div class="col-md-3 col-lg-8">
+                                            <input class="form-control" type="text" id="narasumber" name="narasumber" required>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <label for="bukti" class="col-md-3 col-lg-4 col-form-label ">Penyelenggara Kegiatan</label>
+                                        <div class="col-md-3 col-lg-8">
+                                            <input class="form-control" type="text" id="penyelenggara" name="penyelenggara" required>
+                                        </div>
                                     </div>
 
                                     <div class="col-md-3 col-lg-8">&nbsp</div>
 
-                                    <hr>
 
                                     <div class="text-end">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            <?php
+                            } else {
+                            ?>
+                                <!-- <h5 class="card-title text-center">Bukti Kegiatan</h5> -->
+                                <!-- <hr> -->
+                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Kegiatan!!</h6>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
 

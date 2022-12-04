@@ -7,6 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\PkmModel;
+use App\Models\RincianPKMModel;
 use App\Models\TimPKMModel;
 use App\Models\LuaranTargetModel;
 use CodeIgniter\I18n\Time;
@@ -21,12 +22,14 @@ class ProposalPKM extends BaseController
     protected $dosenModel;
     protected $luaranModel;
     protected $pkmModel;
+    protected $rincianModel;
 
     public function __construct()
     {
         $this->timpkmModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
         $this->pkmModel = new PkmModel();
+        $this->rincianModel = new RincianPKMModel();
     }
 
     public function download_proposal($id_pkm)
@@ -57,6 +60,7 @@ class ProposalPKM extends BaseController
 
             // 'peneliti' => $this->timpkmModel->get_data_timpkm($id_pkm),
             'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
+            'rincian'  => $this->rincianModel->find_by_idpkm($id_pkm)
         ];
         // dd($dataPkm['peneliti']);
 

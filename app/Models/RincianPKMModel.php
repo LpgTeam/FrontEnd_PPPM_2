@@ -15,7 +15,7 @@ class RincianPKMModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id', 'id_pkm',    'surat_pernyataan',    'bukti_kegiatan'
+        'id', 'id_pkm',    'surat_pernyataan',    'bukti_kegiatan' , 'narasumber', 'penyelenggara'
     ];
 
     // Dates

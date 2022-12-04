@@ -96,7 +96,7 @@ class PKM extends BaseController
         ]);
 
         $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
-        
+
         $this->statusPkmModel->save([
             'id_pkm' => $idpkm['ID_pkm'],
             'status' => $status
@@ -146,6 +146,12 @@ class PKM extends BaseController
                 'id_pkm' => $idpkm['ID_pkm'],
                 'surat_pernyataan' => $namaSurat,
                 'bukti_kegiatan' => $namaBukti,
+                'narasumber'    => 'Tersebut',
+                'penyelenggara' => 'Tim PKM'
+            ]);
+        } else {
+            $this->rincianPkm->save([
+                'id_pkm' => $idpkm['ID_pkm']
             ]);
         }
 
