@@ -42,8 +42,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranTerealisasi)) {
-                                echo '<h2>Rp ', number_format($anggaranTerealisasi['dana_keluar'], 0, ",", "."), '</h2>';
+                            if (isset($danaTerealisasi)) {
+                                echo '<h2>Rp ', number_format($danaTerealisasi, 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -60,8 +60,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranTerealisasi)) {
-                                echo '<h2>Rp ', number_format($anggaranDiajukan, 0, ",", "."), '</h2>';
+                            if (isset($danaDiajukan)) {
+                                echo '<h2>Rp ', number_format($danaDiajukan, 0, ",", "."), '</h2>';
                             }
                             ?>
                         </div>
@@ -77,8 +77,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranTerealisasi)) {
-                                echo '<h2>Rp ', number_format($anggaranTerealisasi['sisa_anggaran'], 0, ",", "."), '</h2>';
+                            if (isset($danaTersedia)) {
+                                echo '<h2>Rp ', number_format($danaTersedia, 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -130,26 +130,31 @@
                                         type: 'pie',
                                         radius: '50%',
                                         data: [{
-                                                <?php
-                                                if (isset($anggaranAwal)) {
-                                                    echo 'value: ', $anggaranTerealisasi['dana_keluar'];
+                                            <?php
+                                                if (isset($danaTerealisasi)) {
+                                                    echo 'value: ', $danaTerealisasi;
                                                 }
                                                 ?>,
-                                                name: 'Dana Terealisasi'
+                                            name: 'Dana Terealisasi'
 
-                                            },
-                                            {
-                                                value: 1000000,
-                                                name: 'Dana Pengajuan'
-                                            },
-                                            {
-                                                <?php
-                                                if (isset($anggaranAwal)) {
-                                                    echo 'value: ', $anggaranTerealisasi['sisa_anggaran'];
+                                        },
+                                        {
+                                            <?php
+                                                if (isset($danaDiajukan)) {
+                                                    echo 'value: ', $danaDiajukan;
                                                 }
                                                 ?>,
-                                                name: 'Dana Tersedia'
-                                            }
+                                            name: 'Dana Pengajuan'
+                                        },
+                                        {
+                                            <?php
+                                                if (isset($danaTersedia)) {
+                                                    // echo 'value: ', $danaTersedia;
+                                                    echo 'value: 100000000';
+                                                }
+                                                ?>,
+                                            name: 'Dana Tersedia'
+                                        }
                                         ],
                                         emphasis: {
                                             itemStyle: {

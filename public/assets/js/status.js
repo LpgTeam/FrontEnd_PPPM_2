@@ -15,7 +15,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah di submit oleh dosen dan menunggu persetujuan BAU"+
+                "Proposal telah di submit oleh dosen dan sedang diajukan ke Reviewer"+
             "</p>"+
         "</li>";
 
@@ -26,7 +26,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah disetujui oleh BAU dan menunggu persetujuan Reviewer"+
+                "Proposal telah diterima oleh Reviewer dan menunggu persetujuan Reviewer"+
             "</p>"+
         "</li>"; 
         

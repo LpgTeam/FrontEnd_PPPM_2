@@ -42,8 +42,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($danaTerealisasi)) {
-                                echo '<h2>Rp ', number_format($danaTerealisasi, 0, ",", "."), '</h2>';
+                            if (isset($anggaranTerealisasi)) {
+                                echo '<h2>Rp ', number_format($anggaranTerealisasi['dana_keluar'], 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -60,8 +60,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($danaDiajukan)) {
-                                echo '<h2>Rp ', number_format($danaDiajukan, 0, ",", "."), '</h2>';
+                            if (isset($anggaranDiajukan)) {
+                                echo '<h2>Rp ', number_format($anggaranDiajukan, 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -120,8 +120,8 @@
                                     radius: '50%',
                                     data: [{
                                             <?php
-                                                if (isset($danaTerealisasi)) {
-                                                    echo 'value: ', $danaTerealisasi;
+                                                if (isset($anggaranTerealisasi)) {
+                                                    echo 'value: ', $anggaranTerealisasi['dana_keluar'];
                                                 }
                                                 ?>,
                                             name: 'Dana Terealisasi'
@@ -129,8 +129,8 @@
                                         },
                                         {
                                             <?php
-                                                if (isset($danaDiajukan)) {
-                                                    echo 'value: ', $danaDiajukan;
+                                                if (isset($anggaranDiajukan)) {
+                                                    echo 'value: ', $anggaranDiajukan;
                                                 }
                                                 ?>,
                                             name: 'Dana Pengajuan'

@@ -133,82 +133,85 @@ class Dosen extends BaseController
         return view('dosen/tampilan/index', $data);
     }
 
-    // public function anggaran()
-    // {
-    //     $dana_awal = new AnggaranAwalModel();
-    //     $dana_penelitian = new DanaPenelitianModel();
-    //     $dana_pkm = new DanaPKMModel();
-    //     $dana_terealisasi = new AnggaranTotalModel();
-    //     $dana_pengajuan = new PenelitianModel();
+    public function anggaran()
+    {
+        $dana_awal = new AnggaranAwalModel();
+        $dana_penelitian = new DanaPenelitianModel();
+        $dana_pkm = new DanaPKMModel();
+        $dana_terealisasi = new AnggaranTotalModel();
+        $dana_pengajuan = new PenelitianModel();
 
-    //     //ambil dana penelitian
-    //     $ambil_penelitian = $dana_penelitian->findAll();
-    //     $ambil_pkm = $dana_pkm->findAll();
+        //ambil dana penelitian
+        $ambil_penelitian = $dana_penelitian->findAll();
+        $ambil_pkm = $dana_pkm->findAll();
 
-    //     //ambil dana terealisasi
-    //     $total = null;
-    //     foreach ($ambil_penelitian as $data) {
-    //         $total = $total + $data['dana_keluar'];
-    //     };
+        //ambil dana terealisasi
+        $total = null;
+        foreach ($ambil_penelitian as $data) {
+            $total = $total + $data['dana_keluar'];
+        };
 
-    //     foreach ($ambil_pkm as $data) {
-    //         $total = $total + $data['dana_keluar'];
-    //     }
+        foreach ($ambil_pkm as $data) {
+            $total = $total + $data['dana_keluar'];
+        }
 
-    //     //ambil dana total 
-    //     $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
+        //ambil dana total 
+        $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
 
-    //     //current year
-    //     $year = date("Y");
-
-    //     $input_terealisasi = [
-    //         'tahun' => $year,
-    //         'dana_keluar' => $total,
-    //         'sisa_anggaran' => $anggaranAwal['jumlah'] - $total
-    //     ];
-
-    //     // update data tabel anggaran_total
-    //     //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
-    //     $total_saved = $dana_terealisasi->save($input_terealisasi);
-
-    //     //ambil dana pengajuan 
-    //     $ambil_pengajuan = $dana_pengajuan->findAll();
-    //     $total_pengajuan = 0;
-    //     foreach ($ambil_pengajuan as $data_pengajuan) {
-    //         if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
-    //             $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
-    //         }
-    //     }
-
-
-    //     //semua dana
-    //     $data = [
-    //         'title'               => 'PPPM Politeknik Statistika STIS',
-    //         'anggaranAwal'        => $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first(),
-    //         'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
-    //         'anggaranDiajukan'    => $total_pengajuan
-    //     ];
-
-    //     return view('dosen/tampilan/anggaran', $data);
-    // }
-    public function anggaran(){
         //current year
         $year = date("Y");
-        $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
-        $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
-        $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
-        $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-        
-       $data = [
-            'title'             => 'PPPM Politeknik Statistika STIS',
-            'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
-            'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
-            'danaDiajukan'      => $danaDiajukan,
-            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-       ];
-       return view('dosen/tampilan/anggaran', $data);
 
+        $input_terealisasi = [
+            'tahun' => $year,
+            'dana_keluar' => $total,
+            'sisa_anggaran' => $anggaranAwal['jumlah'] - $total
+        ];
+
+        // update data tabel anggaran_total
+        //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
+        $total_saved = $dana_terealisasi->save($input_terealisasi);
+
+        //ambil dana pengajuan 
+        $ambil_pengajuan = $dana_pengajuan->findAll();
+        $total_pengajuan = 0;
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
+                $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+            }
+        }
+       // dd($dana_terealisasi->orderBy('id_total', 'DESC')->first());
+        $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
+        $anggaranTerealisasi = $dana_terealisasi->orderBy('id_total', 'DESC')->first();
+        $danaTersedia = $anggaranAwal['jumlah'] - $anggaranTerealisasi['dana_keluar'] - $total_pengajuan;
+        //semua dana
+        $data = [
+            'title'               => 'PPPM Politeknik Statistika STIS',
+            'anggaranAwal'        => $anggaranAwal,
+            'anggaranTerealisasi' =>  $anggaranTerealisasi,
+            'anggaranDiajukan'    => $total_pengajuan,
+            'danaTersedia'        => $danaTersedia
+        ];
+
+        return view('dosen/tampilan/anggaran', $data);
     }
+    // public function anggaran(){
+    //     //current year
+    //     $year = date("Y");
+    //     $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
+    //     $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
+    //     $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
+    //     $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
+        
+    //    $data = [
+    //         'title'             => 'PPPM Politeknik Statistika STIS',
+    //         'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
+    //         'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
+    //         'danaDiajukan'      => $danaDiajukan,
+    //         'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+    //    ];
+    //    return view('dosen/tampilan/anggaran', $data);
+
+    // }
 
     public function penelitian()
     {
@@ -219,7 +222,9 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+            'validation' => \Config\Services::validation(),
         ];
+        // dd($data['validation']);
         // dd($data['penelitian']);
         return view('dosen/tampilan/penelitian', $data);
     }
@@ -259,7 +264,7 @@ class Dosen extends BaseController
             $jenisPenelitian = "Semi Mandiri";
         } elseif ($jenis == "kerja-sama") {
             $jenisPenelitian = "Kerjasama";
-        } elseif ($jenis == "di-    danai-institusi") {
+        } elseif ($jenis == "didanai-institusi") {
             $jenisPenelitian = "Di Danai Institusi";
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";

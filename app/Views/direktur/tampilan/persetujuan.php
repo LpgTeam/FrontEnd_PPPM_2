@@ -53,18 +53,44 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Penandatanganan Proposal</h5>
-                            <hr>
-                            <p>Penandatanganan proposal yang diajukan dosen
-                                oleh Direktur Politeknik Statistika STIS
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tanda Tangani</button>
-                                </div>
+                        <?php
+                        // var_dump($penelitian['id_status']);
+                        if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) { ?>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Penandatanganan Proposal</h5>
+                                <hr>
+                                <?php if ($penelitian['id_status'] < 4) { ?>
+                                    <div class="d-flex justify">
+                                        <div class="h5">
+                                            Menunggu Persetujuan dari Kepala PPPM!
+                                        </div>
+                                    </div>
+                                    <?php } else {
+                                    if ($penelitian['id_status'] == 4) { ?>
+                                        <p>Penandatanganan proposal yang diajukan dosen
+                                            oleh Direktur Politeknik Statistika STIS
+                                        </p>
+                                        <div class="d-flex justify-content-end">
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Tanda Tangani</button>
+                                            </div>
+                                        </div>
+                                    <?php } elseif ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
+                                        <div class="d-flex justify">
+                                            <div class="h5">
+                                                Penelitian Tidak Disetujui!
+                                            </div>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="d-flex justify">
+                                            <div class="h5">
+                                                Penelitian ini Sudah ditandatangani!
+                                            </div>
+                                        </div>
+                                <?php }
+                                } ?>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
 

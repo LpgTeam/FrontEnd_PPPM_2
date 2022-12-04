@@ -95,30 +95,31 @@
                             </div>
                         </div>
                     </div>
-                    <?php
-                    if ($laporan['kontrak'] == null) {
-                    ?>
+                    <div class="card">
                         <div class="card-body mt-3">
                             <h5 class="card-title text-center">Upload Kontrak</h5>
                             <hr>
-                            <form action="<?= base_url('/penelitianDetail/saveKontrak/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="confirm('Apakah Anda Setuju')" enctype="multipart/form-data">
-                                <div class="row mb-3">
-                                    <label for="uploadKontrak" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="uploadKontrak" class="form-control <?= ($validation->hasError('uploadKontrak')) ? 'is-invalid' : ''; ?>" type="file" id="uploadKontrak" aria-describedby="uploadValid">
-                                        <div class="invalid-feedback" id="uploadValid">
-                                            <?= $validation->getError('uploadKontrak'); ?>
+                            <?php
+                            if ($laporan['kontrak'] == null) {
+                            ?>
+                                <form action="<?= base_url('/penelitianDetail/saveKontrak/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
+                                    <div class="row mb-3">
+                                        <label for="uploadKontrak" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadKontrak" class="form-control <?= ($validation->hasError('uploadKontrak')) ? 'is-invalid' : ''; ?>" type="file" id="uploadKontrak" aria-describedby="uploadValid">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadKontrak'); ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-success">Submit Kontrak</button>
-                                    <!-- <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Submit Kontrak</button> -->
-                                </div>
-                            </form><!-- Form End -->
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-success">Submit Kontrak</button>
+                                        <!-- <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Submit Kontrak</button> -->
+                                    </div>
+                                </form><!-- Form End -->
                         </div>
                     <?php
-                    } else {
+                            } else {
                     ?>
 
                         <h5 class="card-title text-center">Upload Kontrak</h5>
@@ -126,9 +127,25 @@
                         <p class="text-center">Anda Sudah Upload Kontrak!!</p>
 
                     <?php
-                    }
+                            }
                     ?>
+                    </div>
                 </div>
+                <script>
+                    function submitForm(form) {
+                        swal({
+                                title: "Are you sure?",
+                                text: "This form will be submitted",
+                                buttons: true,
+                            })
+                            .then(function(isOkay) {
+                                if (isOkay) {
+                                    form.submit();
+                                }
+                            });
+                        return false;
+                    }
+                </script>
 
                 <div class="col-lg-6">
                     <div class="card">
@@ -143,25 +160,6 @@
                 </div>
             </div>
 
-            <!-- <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Perjanjian Kontak Penelitan</h5>
-                            <hr>
-
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
-                                </div>
-                                <div class="text-end">
-                                    <p>&nbsp&nbsp&nbsp</p>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
 
 
         </div>
@@ -169,7 +167,7 @@
 
 </main>
 <!-- End #main -->
-<!-- Submit -->
+Submit
 <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

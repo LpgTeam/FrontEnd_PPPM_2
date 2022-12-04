@@ -86,33 +86,30 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="totalBiaya" class="col-md-4 col-lg-3 col-form-label">Total Biaya</label>
+                                    <label class="col-md-4 col-lg-3 col-form-label ">Tamplate Form Usulan Publikasi</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
+                                        <a href="<?= base_url('reimburseDetail/printFormPublikasi') ?>" class="btn btn-warning">
+                                            Download Form
+                                        </a>
                                     </div>
                                 </div>
+
+                                <div class="row mb-3">
+                                    <label for="uploadFormPublikasi" class="col-md-4 col-lg-3 col-form-label ">Form Usulan Pulikasi</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="uploadFormPublikasi" class="form-control <?= ($validation->hasError('uploadFormPublikasi')) ? 'is-invalid' : ''; ?>" type="file" id="uploadFormPublikasi">
+                                        <div class="invalid-feedback" id="uploadValid">
+                                            <?= $validation->getError('uploadFormPublikasi'); ?>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
 
                                 </div>
-
-                                <!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="submitLabel">Submit Pengajuan Reimburse</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Apakah anda yakin mengajukan reimburse
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                                <a button type="submit" class="btn btn-primary" onclick="location.href='<?= base_url('/reimburseDetail/save/' . $penelitian['id_penelitian']); ?>">Ya</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </form>
 
 

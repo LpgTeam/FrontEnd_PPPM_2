@@ -17,7 +17,7 @@ class StatusPenelitian extends Seeder
             [
                 'id_detail'     => 2,
                 'status'        => 'Disetujui',
-                'deskripsi'     => 'Disetujui oleh BAU',
+                'deskripsi'     => 'Menunggu Persetujuan Reviewer',
             ],
             [
                 'id_detail'     => 3,

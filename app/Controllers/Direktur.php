@@ -110,7 +110,8 @@ class Direktur extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->get_penelitian_by_id_status(4),
+            // 'penelitian' => $penelitianModel->get_penelitian_by_id_status(4),
+            'penelitian' => $penelitianModel->getData(),
         ];
         return view('direktur/tampilan/penelitian', $data);
     }

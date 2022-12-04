@@ -113,7 +113,8 @@ class Reviewer extends BaseController
         $penelitianModel = new PenelitianModel();
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $penelitianModel->get_penelitian_by_id_status(2)
+            // 'penelitian' => $penelitianModel->get_penelitian_by_id_status(2)
+            'penelitian' => $penelitianModel->getData()
         ];
         // dd($data['penelitian']);
         return view('reviewer/tampilan/penelitian', $data);
