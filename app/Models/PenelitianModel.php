@@ -31,7 +31,8 @@ class PenelitianModel extends Model
     ];
     public function getData()
     {
-        return $this->findAll();
+        return $this->orderBy('tanggal_pengajuan','DESC')->findAll();
+        // return $this->findAll();
     }
 
     // Dates

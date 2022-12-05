@@ -46,4 +46,11 @@ class LuaranTargetModel extends Model
         $query = $builder->getWhere(['id_penelitian' => $id_penelitian]);
         return $query->getResultArray();
     }
+
+    public function delete_by_idpenelitian($id_penelitian)
+    {
+        $builder = $this->db->table('target_penelitian');
+        $builder->where('id_penelitian', $id_penelitian);
+        $builder->delete();
+    }
 }

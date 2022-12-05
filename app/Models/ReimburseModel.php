@@ -32,6 +32,7 @@ class ReimburseModel extends Model
         'id_status',
         'status_reimburse'
     ];
+    
     public function getData()
     {
         return $this->findAll();

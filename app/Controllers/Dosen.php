@@ -203,7 +203,9 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->timPenelitiModel->get_penelitian_by_nip_user($user->nip),
+            'validation' => \Config\Services::validation(),
         ];
+        // dd($data['validation']);
         // dd($data['penelitian']);
         return view('dosen/tampilan/penelitian', $data);
     }

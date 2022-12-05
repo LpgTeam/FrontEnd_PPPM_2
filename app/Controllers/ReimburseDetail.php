@@ -51,7 +51,7 @@ class ReimburseDetail extends BaseController
                 ]
             ],
             'uploadForm' =>  [
-                'rules' => 'uploaded[uploadInvoice]|ext_in[uploadInvoice,pdf]|max_size[uploadInvoice,10000]',
+                'rules' => 'uploaded[uploadInvoice]|ext_in[uploadFormPublikasi,pdf]|max_size[uploadInvoice,10000]',
                 'errors' => [
                     'uploaded' => "{field} file tidak boleh kosong",
                     'ext_in' => "Format file harus pdf",

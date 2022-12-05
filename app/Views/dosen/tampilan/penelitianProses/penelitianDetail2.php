@@ -6,11 +6,6 @@
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
-            <?php if (session()->getFlashdata('pesan')) : ?>
-                <div class="alert alert-success" role="alert" data-aos="zoom-in">
-                    <?= session()->getFlashdata('pesan'); ?>
-                </div>
-            <?php endif; ?>
             <?php if (session()->getFlashdata('error')) : ?>
                 <div class="alert alert-danger" role="alert" data-aos="zoom-in">
                     <?= session()->getFlashdata('error'); ?>
@@ -91,7 +86,7 @@
                             <?php
                             if ($laporan['laporan_dana'] == null) {
                             ?>
-                                <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="confirm('Apakah Anda Setuju')" enctype="multipart/form-data">
+                                <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="return submitForm(this);"enctype="multipart/form-data">
                                     <div class="d-flex justify-content-between">
                                         <div class="row mb-4">
                                             <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
@@ -122,7 +117,21 @@
 
                 </div>
 
-
+                <script>
+                    function submitForm(form) {
+                        swal({
+                                title: "Apakah Anda Yakin?",
+                                text: "Dokumen ini akan di upload",
+                                buttons: true,
+                            })
+                            .then(function(isOkay) {
+                                if (isOkay) {
+                                    form.submit();
+                                }
+                            });
+                        return false;
+                    }
+                </script>
 
                 <div class="col-lg-6">
                     <div class="card">

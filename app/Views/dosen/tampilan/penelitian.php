@@ -85,10 +85,10 @@
                                         <?php foreach ($penelitian as $key => $post) :  ?>
 
                                             <tr>
-                                                <td><?php echo $post['id_penelitian']
-                                                    ?></td>
-                                                <!-- <td><?php //echo $i 
-                                                            ?></td> -->
+                                                <!-- <td><?//php echo $post['id_penelitian']
+                                                    ?></td> -->
+                                                <td><?php echo $i 
+                                                            ?></td>
 
                                                 <td>
                                                     <?php if ($post['jenis_penelitian'] == "Mandiri") {
@@ -148,7 +148,9 @@
 
                         <script>
                             $(document).ready(function() {
-                                dataTable = $("#example").DataTable({});
+                                dataTable = $("#example").DataTable({
+                                    order: [[2, 'desc']],
+                                });
 
                                 $('.status-dropdown').on('change', function(e) {
                                     var status = $(this).val();

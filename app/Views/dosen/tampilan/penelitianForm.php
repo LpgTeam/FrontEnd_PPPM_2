@@ -20,7 +20,7 @@
                 <div class="form-body pt-3 col-md-14">
                     <!-- Bordered Tabs -->
                     <!-- Form -->
-                    <form action="<?= base_url('/penelitian/save'); ?>" method="post" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Anda Harus Menyetujui Surat Pernyataan terlebih dahulu!'); return false; }" enctype="multipart/form-data">
+                    <form action="<?= base_url('/penelitian/save'); ?>" method="post" onsubmit="if(document.getElementById('agree').checked){ return submitForm(this); } else { return alertForm(this); return false; }" enctype="multipart/form-data">
                         <input name="jenis_penelitian" type="text" class="form-control" id="jenis_penelitian" value="<?= $jenis ?>" hidden>
 
                         <div class="row mb-3">
@@ -389,22 +389,28 @@
     </div>
 </div> -->
 
-<!-- Submit Form -->
-<!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Submit</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah anda yakin akan submit formulir?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/penelitianDosen'">Ya</button>
-            </div>
-        </div>
-    </div>
-</div> -->
+<script>
+    function submitForm(form) {
+        swal({
+                title: "Are you sure?",
+                text: "This form will be submitted",
+                buttons: true,
+            })
+            .then(function(isOkay) {
+                if (isOkay) {
+                    form.submit();
+                }
+            });
+        return false;
+    }
+
+    function alertForm(form) {
+        swal({
+            title: "Gagal Submit",
+            icon: "error",
+            text: "Anda harus menyetujui persyaratan terlebih dahulu!",
+        })
+        return false;
+    }
+</script>
 <?= $this->endSection(); ?>

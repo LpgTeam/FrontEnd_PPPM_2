@@ -53,26 +53,55 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Persetujuan Proposal</h5>
-                            <hr>
-                            <p>Persetujuan proposal penelitian yang diajukan dosen
-                                oleh Kepala PPPM
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
-                                </div>
-                                <div class="text-end">
-                                    <p>&nbsp&nbsp&nbsp</p>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
-                                </div>
+
+                    <?php if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) { ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Persetujuan Proposal</h5>
+                                <hr>
+                                <p>Persetujuan proposal penelitian yang diajukan dosen
+                                    oleh Kepala PPPM
+                                </p>
+
+                                <?php if ($penelitian['id_status'] < 3) { ?>
+                                    <div class="d-flex justify">
+                                        <div class="h5">
+                                            Menunggu Persetujuan Dari Reviewer
+                                        </div>
+                                    </div>
+                                    <?php } else {
+                                    if ($penelitian['id_status'] == 3) { ?>
+                                        <div class="d-flex justify-content-end">
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
+                                            </div>
+                                            <div class="text-end">
+                                                <p>&nbsp&nbsp&nbsp</p>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
+                                            </div>
+                                        </div>
+                                        <?php } else {
+                                        if ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
+                                            <div class="d-flex justify">
+                                                <div class="h5">
+                                                    Penelitian Tidak diSetujui!
+                                                </div>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="d-flex justify">
+                                                <div class="h5">
+                                                    Penelitian ini sudah di Setujui!
+                                                </div>
+                                            </div>
+                                <?php
+                                        }
+                                    }
+                                } ?>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
 
                 <div class="col-lg-6">
