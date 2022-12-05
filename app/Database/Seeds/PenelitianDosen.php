@@ -33,7 +33,8 @@ class PenelitianDosen extends Seeder
         for ($k = 1; $k <= 25; $k++) {
             $data = [
                 'id_penelitian' => $k + $datapenelitian[0]['id_penelitian'],
-                'jenis_penelitian' => $faker->randomElement($array = array('Mandiri', 'Semi Mandiri', 'Di Danai Institusi', 'Institusi', 'Kerjasama')),
+                'jenis_penelitian' => $faker->randomElement($array = array('Mandiri', 'Semi Mandiri', 'Didanai Institusi', 'Institusi', 'Kerjasama')),
+                // 'jenis_penelitian' => $faker->randomElement($array = array('Semi Mandiri')),
                 'judul_penelitian' => $faker->realText($maxNbChars = 20, $indexSize = 2),
                 'bidang'        => $faker->randomElement($array = array("Small Area Estimation", "SDG's", "Metodologi Survei dan Sensus", "Sistem Indormasi Statistik", "Lainnya")),
                 'tanggal_pengajuan' => Time::createFromTimestamp($faker->unixTime()),
@@ -41,7 +42,7 @@ class PenelitianDosen extends Seeder
                 'id_status' => $faker->numberBetween($min = 1, $max = 10),
                 'file_proposal' => $faker->randomElement($array = array('default_penelitian.pdf')),
                 'tanda_tangan' => $faker->randomElement($array = array('default_ttd.jpg')),
-                'biaya' => $faker->numberBetween($min = 1000000, $max = 30000000),
+                'biaya' => ($faker->numberBetween($min = 300, $max = 1000)) . '000',
                 'alasan' => $faker->randomElement($array = array('-')),
                 'id_status_reimburse' => $faker->numberBetween($min = 0, $max = 2),
             ];
@@ -89,14 +90,16 @@ class PenelitianDosen extends Seeder
             }
 
             // fill table laporan penelitian
-            if (($data['jenis_penelitian'] == 'Semi Mandiri') || ($data['jenis_penelitian'] == 'Di Danai Institusi') || ($data['jenis_penelitian'] == 'Institusi')) {
+            if (($data['jenis_penelitian'] == 'Semi Mandiri') || ($data['jenis_penelitian'] == 'Didanai Institusi') || ($data['jenis_penelitian'] == 'Institusi')) {
                 $file_kontrak = null;
                 $file_laporan_dana = null;
 
-                if ($data['jenis_penelitian'] == 'Semi Mandiri') {
-                    $file_laporan_dana = 'default_laporan_dana.pdf';
-                } else {
-                    $file_kontrak = 'default_kontrak.pdf';
+                if ($data['id_status'] == 6) {
+                    if ($data['jenis_penelitian'] == 'Semi Mandiri') {
+                        $file_laporan_dana = 'default_laporan_dana.pdf';
+                    } else {
+                        $file_kontrak = 'default_kontrak.pdf';
+                    }
                 }
 
                 $file_laporan_luaran = null;
@@ -123,6 +126,17 @@ class PenelitianDosen extends Seeder
                 'index_jurnal_tujuan'     =>  'Sinta ' . $faker->randomElement($array = array('1', '2', '3', '4', '5', '6')),
             ];
             $this->db->table('target_penelitian')->insert($data_target_penelitian);
+
+
+            // fill table dana penelitian
+            if (($data['jenis_penelitian'] == 'Semi Mandiri') && (($data['id_status'] == 6) || ($data['id_status'] == 10))) {
+                $datadana = [
+                    'id_penelitian' => $data['id_penelitian'],
+                    'tanggal' => Time::createFromTimestamp($faker->unixTime()),
+                    'dana_keluar' => ($faker->numberBetween($min = 300, $max = 1000)) . '000',
+                ];
+                $this->db->table('dana_penelitian')->insert($datadana);
+            }
 
 
             // fill table status penelitian

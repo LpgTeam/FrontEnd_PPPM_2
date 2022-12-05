@@ -17,12 +17,12 @@ class Pkm extends Migration
 
             'surat_pernyataan' => [
                 'type' => 'text',
-                'null' => false
+                'null' => true
             ],
 
             'bukti_kegiatan' => [
                 'type' => 'text',
-                'null' => false
+                'null' => true
             ],
 
             'narasumber' => [

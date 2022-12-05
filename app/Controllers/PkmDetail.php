@@ -5,18 +5,20 @@ namespace App\Controllers;
 use App\Models\PkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPKMModel;
+use App\Models\DanaPKMModel;
 use App\Models\RincianPKMModel;
-
+use CodeIgniter\I18n\Time;
 use App\Controllers\BaseController;
 
 class PkmDetail extends BaseController
 {
-    protected $pkmModel ;
-    protected $timModel ;
-    protected $ketuaTimModel ;
-    protected $dosenModel ;
-    protected $rincianModel ;
-    
+    protected $pkmModel;
+    protected $timModel;
+    protected $ketuaTimModel;
+    protected $dosenModel;
+    protected $rincianModel;
+    protected $danapkmModel;
+
     public function __construct()
     {
         $this->pkmModel = new PkmModel();
@@ -24,6 +26,7 @@ class PkmDetail extends BaseController
         $this->ketuaTimModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
         $this->rincianModel = new RincianPKMModel();
+        $this->danapkmModel = new DanaPKMModel();
     }
 
     public function index()
@@ -31,7 +34,8 @@ class PkmDetail extends BaseController
         //
     }
 
-    public function saveSurat($idpkm){
+    public function saveSurat($idpkm)
+    {
         if (!$this->validate([
             'suratPernyataan' => [
                 'rules' => 'uploaded[suratPernyataan]|ext_in[suratPernyataan,pdf]|max_size[suratPernyataan,10000]',
@@ -40,7 +44,7 @@ class PkmDetail extends BaseController
                     'ext_in' => "Format file harus pdf",
                     'max_size' => "Ukuran File terlalu besar"
                 ]
-                ]
+            ]
         ])) {
             session()->setFlashdata('error', 'Terjadi Kesalahan!!');
             return redirect()->to('/pkmProses2/' . $idpkm)->withInput();
@@ -51,10 +55,10 @@ class PkmDetail extends BaseController
         $fileSurat->move('surat_pernyataan/pkm', $namaSurat);
 
         $rincian = $this->rincianModel->find_by_idpkm($idpkm);
-        
+
         // dd($rincian);
         $this->rincianModel->save([
-            'id'                => $rincian['id'],
+            // 'id'                => $rincian['id'],
             'id_pkm'            => $idpkm,
             'surat_pernyataan'  => $namaSurat,
         ]);
@@ -65,13 +69,20 @@ class PkmDetail extends BaseController
             'status'  => 'Kegiatan sedang berlangsung'
         ]);
 
+        $this->danapkmModel->save([
+            'id_pkm'             => $idpkm,
+            'tanggal'            => Time::now('Asia/jakarta'),
+            'dana_keluar'        => $this->request->getVar('totalDana'),
+        ]);
+
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
         return redirect()->to('/pkmDosen');
     }
 
-    public function saveBukti($idpkm){
+    public function saveBukti($idpkm)
+    {
         if (!$this->validate([
             'uploadBukti' => [
                 'rules' => 'uploaded[uploadBukti]|ext_in[uploadBukti,pdf]|max_size[uploadBukti,10000]',
@@ -90,7 +101,7 @@ class PkmDetail extends BaseController
         //save bukti kegiatan
         $fileBukti = $this->request->getFile('uploadBukti');
         $namaBukti = $fileBukti->getName();
-        $fileBukti->move('bukti_kegiatan/pkm', $namaBukti);  
+        $fileBukti->move('bukti_kegiatan/pkm', $namaBukti);
 
         $rincian = $this->rincianModel->find_by_idpkm($idpkm);
 
@@ -114,6 +125,4 @@ class PkmDetail extends BaseController
 
         return redirect()->to('/pkmDosen');
     }
-
-    
 }
