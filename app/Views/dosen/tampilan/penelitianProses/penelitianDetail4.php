@@ -46,14 +46,14 @@
                             </div>
                         </div>
                     <?php  }
-                    if ($penelitian['jenis_penelitian'] == 'Di Danai Institusi' || $penelitian['jenis_penelitian'] == 'Institusi') {
+                    if ($penelitian['jenis_penelitian'] == 'Didanai Institusi' || $penelitian['jenis_penelitian'] == 'Institusi') {
                     ?>
                         <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="service-box orange ">
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Kontrak</h3>
                                 <p>
-                                    Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
+                                    Persetujuan kontrak antara pihak dosen dengan pihak Politeknik Statistika STIS
                                 </p>
                             </div>
                         </div>
@@ -95,8 +95,10 @@
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
-                                <a href="" class="btn btn-warning">Download Memo Kepala PPPM</a>
                                 <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporan </a>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning">Download Memo Kepala PPPM</a>
                             </div>
                         </div>
                     </div>

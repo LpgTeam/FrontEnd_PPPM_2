@@ -96,10 +96,10 @@
                                     <?php } else {
                                     if ($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6) { ?>
                                         <hr>
-                                        <h6 class="card-title text-center">Kegiatan PKM Tidak Disetujui!</h6>
+                                        <h6 class="card-title text-center">Kegiatan PKM Tidak Disetujui</h6>
                                     <?php } else { ?>
                                         <hr>
-                                        <h6 class="card-title text-center">Keiatan PKM Sudah Disetujui!</h6>
+                                        <h6 class="card-title text-center">Kegiatan PKM Sudah Disetujui</h6>
                             <?php
                                     }
                                 }

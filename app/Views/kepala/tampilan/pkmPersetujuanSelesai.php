@@ -12,6 +12,12 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <!-- ======= Proses Section ======= -->
+            <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
+                                        echo 'kosong';
+                                    } else {
+                                        echo $pkm['alasan'];
+                                    } ?></p>
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
@@ -53,8 +59,7 @@
                             <p> Laporan kegiatan PKM yang dilakukan oleh Dosen Politeknik Statitika STIS</p>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Laporan </button>
-                                <button class="btn btn-primary">Download Laporan </button>
+                                <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
                             </div>
                         </div>
                     </div>
@@ -72,7 +77,7 @@
                             if ($pkm['id_status'] < 4) { ?>
                                 <!-- <div class="d-flex justify"> -->
                                 <hr>
-                                <h6 class="card-title text-center">Kegiatan PKM belum terlaksana!!</h6>
+                                <h6 class="card-title text-center">Kegiatan PKM belum terlaksana</h6>
                                 <!-- </div> -->
                                 <?php } else {
                                 if ($pkm['id_status'] == 4) { ?>
@@ -91,10 +96,10 @@
                                     <?php } else {
                                     if ($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6) { ?>
                                         <hr>
-                                        <h6 class="card-title text-center">PKM Tidak Disetujui!!</h6>
+                                        <h6 class="card-title text-center">PKM Tidak Disetujui</h6>
                                     <?php } else { ?>
                                         <hr>
-                                        <h6 class="card-title text-center">PKM ini Sudah di Setujui!!</h6>
+                                        <h6 class="card-title text-center">PKM ini Sudah di Setujui</h6>
 
                             <?php
                                     }
@@ -107,6 +112,11 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="listPKM">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keteranganPKM">
+                            </ul>
                         </div>
                     </div>
                 </div>

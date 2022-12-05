@@ -33,7 +33,7 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
+                        <h5 class="card-title text-center">Reimbursemen Penelitian</h5>
                         <hr>
                         <ol>
                         <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>

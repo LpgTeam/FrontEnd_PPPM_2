@@ -73,6 +73,14 @@ class TimPKMModel extends Model
         // $query = $builder->getWhere(['ID_pkm' => $idpkm]);
         // return $query->getResultArray();
     }
+    public function get_row_timpkm_byId_Pkm($idpkm)
+    {
+        return $this->where(['id_pkm' => $idpkm])->countAllResults();
+        // $builder = $this->db->table('tim_pkm');
+        // $builder->join('dosen', 'dosen.NIP_dosen = tim_pkm.nip');
+        // $query = $builder->getWhere(['ID_pkm' => $idpkm]);
+        // return $query->getResultArray();
+    }
 
     public function get_timpkm_byid($id_pkm)
     {

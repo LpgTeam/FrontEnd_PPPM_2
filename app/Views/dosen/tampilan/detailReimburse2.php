@@ -35,10 +35,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
+                        <h5 class="card-title text-center">Reimbursemen PKM</h5>
                         <hr>
-                        <p>Proposal reimburse PKM yang diajukan dosen
-                            oleh Direktur Politeknik Statistika STIS
+                        <p>Reimbursemen PKM yang diajukan dosen
+                            Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
                             <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat

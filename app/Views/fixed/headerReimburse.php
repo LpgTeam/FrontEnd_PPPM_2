@@ -114,7 +114,7 @@
                                         ?>
                                             <li><a class="nav-link scrollto" href="/reimburseKepala">Kembali</a></li>
                                             <li class="dropdown">
-                                                <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                                <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                 <ul>
                                                     <!-- <li><a href="/login">Logout</a></li>
                         </ul>
@@ -130,9 +130,9 @@
                                                     <li class="dropdown">
                                                         <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                         <ul>
-                                                            <!-- <li><a href="/login">Logout</a></li>
-                        </ul>
-                    </li> -->
+                                                            <li><a href="/logout">Logout</a></li>
+                                                        </ul>
+                                                    </li>
                                                         <?php
                                                     }
                                                         ?>

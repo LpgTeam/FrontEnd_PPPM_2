@@ -6,15 +6,18 @@ use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
 use App\Models\StatusPenelitianModel;
 use App\Models\PkmModel;
+use App\Models\SuratKeteranganPkmModel;
+use App\Models\TimPKMModel;
 use App\Models\StatusPkmModel;
 use App\Models\AnggaranAwalModel;
 use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
-use App\Models\ReimburseModel;
+use App\Models\ReimburseModel;  
 use CodeIgniter\API\ResponseTrait;
 // use App\Libraries\SendEmail;
+
 
 class Kepala extends BaseController
 {
@@ -22,14 +25,18 @@ class Kepala extends BaseController
     protected $penelitianModel;
     protected $statusPenelitianModel;
     protected $pkmModel;
+    protected $timpkmModel;
     protected $statusPkmModel;
+    protected $suratPkmModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
         $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->pkmModel = new PkmModel();
+        $this->timpkmModel = new TimPKMModel();
         $this->statusPkmModel = new StatusPkmModel();
         $this->reimburseModel = new ReimburseModel();
+        $this->suratPkmModel = new SuratKeteranganPkmModel();
     }
 
     public function index()
@@ -163,6 +170,7 @@ class Kepala extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->pkmModel->find($id_pkm)
         ];
+        
         return view('kepala/tampilan/pkmPersetujuanSelesai', $data);
     }
 
@@ -243,7 +251,21 @@ class Kepala extends BaseController
     }
 
     public function accAkhir_pkm_kepala($id_pkm)
-    {
+    {   
+        // save no surat
+        $nSurat = $this->timpkmModel->get_row_timpkm_byId_Pkm($id_pkm);
+        // dd();
+        for ($i=0; $i < $nSurat; $i++) { 
+            # code...
+            $nomor = 'PKM/'.date('Y').'/'.$id_pkm.'/'.$i+1;
+            // echo $nomor;
+            $this->suratPkmModel->save([
+                'no_surat'  => $nomor,
+                'id_pkm'    => $id_pkm
+            ]);
+        }
+        //============endNoSurat=======================
+
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
             'id_status'         => 7,

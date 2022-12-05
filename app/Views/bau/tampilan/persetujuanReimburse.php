@@ -45,10 +45,6 @@
 
                         <div class="d-flex justify-content-end">
                             <div class="text-end" style="margin-right: 10px">
-                                <a href="/penelitian/download-proposal-akhir/<?= $reimburse['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
-                                <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button> -->
-                            </div>
-                            <div class="text-end" style="margin-right: 10px">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loa">LOA</button>
                             </div>
                             <div class="text-end" style="margin-right: 10px">
@@ -56,6 +52,13 @@
                             </div>
                             <div class="text-end" style="margin-right: 10px">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#invoice">Invoice</button>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end mt-3">
+                            <div class="text-end" style="margin-right: 10px">
+                                <a href="/penelitian/download-proposal-akhir/<?= $reimburse['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
+                                <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button> -->
                             </div>
                         </div>
                     </div>

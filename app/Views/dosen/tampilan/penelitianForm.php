@@ -171,18 +171,20 @@
                         <?php endif; ?>
 
                         <div class="row mb-3">
-                            <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
-                                <tr class="table-primary">
-                                    <th scope="col">Nama Anggota</th>
-                                    <th scope="col">NIP/NIM</th>
-                                    <th scope="col">Program Studi</th>
-                                    <th scope="col">Bidang Keahlian</th>
-                                    <th scope="col">Tugas/Peran</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
+                                    <tr class="table-primary">
+                                        <th scope="col">Nama Anggota</th>
+                                        <th scope="col">NIP/NIM</th>
+                                        <th scope="col">Program Studi</th>
+                                        <th scope="col">Bidang Keahlian</th>
+                                        <th scope="col">Tugas/Peran</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
 
                             <div class="col-md-4 col-lg-6">
                                 <a onclick="add()" class="btn btn-warning" id="btn">

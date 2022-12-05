@@ -7,6 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\PkmModel;
+use App\Models\SuratKeteranganPkmModel;
 use App\Models\PembiayaanPkmModel;
 use App\Models\RincianPKMModel;
 use App\Models\TimPKMModel;
@@ -31,6 +32,7 @@ class ProposalPKM extends BaseController
         $this->timpkmModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
         $this->pkmModel = new PkmModel();
+        $this->suratPkmModel = new SuratKeteranganPkmModel();
         $this->rincianModel = new RincianPKMModel();
         $this->biayaModel = new PembiayaanPkmModel;
     }
@@ -64,7 +66,8 @@ class ProposalPKM extends BaseController
 
             // 'peneliti' => $this->timpkmModel->get_data_timpkm($id_pkm),
             'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
-            'rincian'  => $this->rincianModel->find_by_idpkm($id_pkm)
+            'rincian'  => $this->rincianModel->find_by_idpkm($id_pkm),
+            'no_surat'  => $this->suratPkmModel->get_by_id_pkm($id_pkm)
         ];
 
         
@@ -87,7 +90,7 @@ class ProposalPKM extends BaseController
             'timpkm'   => $timpkm,
             'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($idpkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($idpkm),
-            'biaya' => $this->biayaModel->find_by_idpkm($idpkm)
+            'biaya' => $this->biayaModel->find_by_idpkm($idpkm),
         ];
         // dd($dataPenelitian);
         // dd($dataPenelitian['timpeneliti']);

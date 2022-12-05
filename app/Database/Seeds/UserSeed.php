@@ -124,7 +124,7 @@ class UserSeed extends Seeder
 
         $user = new User([
             'username' => 'atikah',
-            'email'    => '222011@stis.ac.id',
+            'email'    => '222011453@stis.ac.id',
             'password' => 'atikah123',
             'nip'      => nipAtikah,
         ]);

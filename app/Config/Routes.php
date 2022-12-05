@@ -291,6 +291,9 @@ $routes->get('/penelitian/download-p4-proposal/(:any)', 'ProposalPenelitian::dow
 $routes->get('/penelitian/download-p5-proposal/(:any)', 'ProposalPenelitian::download_p5_proposal/$1');
 $routes->get('/penelitian/download-all-proposal/(:any)', 'ProposalPenelitian::download_all_proposal/$1');
 
+$routes->get('/penelitian/download-memo-penelitian/(:any)', 'ProposalPenelitian::download_memo_penelitian/$1');
+$routes->get('/pkm/download-memo-pkm/(:any)', 'ProposalPKM::download_memo_pkm/$1');
+
 
 // $routes->get('/lihat_pdf/(:any)', 'ProposalPenelitian::lihat_pdf/$1');
 //download Template Proposal penelitian
