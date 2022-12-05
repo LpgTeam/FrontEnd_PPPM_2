@@ -82,10 +82,10 @@
                                         <?php } else {
                                         if ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
                                             <hr>
-                                            <h6 class="card-title text-center">Penelitian Tidak Disetujui!</h6>
+                                            <h6 class="card-title text-center">Penelitian Tidak Disetujui</h6>
                                         <?php } else { ?>
                                             <hr>
-                                            <h6 class="card-title text-center">Penelitian Sudah Disetujui!</h6>
+                                            <h6 class="card-title text-center">Penelitian Sudah Disetujui</h6>
                                 <?php
                                         }
                                     }
@@ -116,7 +116,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Setujui Proposal Penlitian</h1>
+                <h1 class="modal-title fs-5" id="submitLabel">Setujui Proposal Penelitian</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

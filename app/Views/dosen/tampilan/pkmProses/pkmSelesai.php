@@ -68,7 +68,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Surat Keterangan</h5>
                         <hr>
-                        <p>Kegiatan PKM selesai dilakukan. Anda mendownload
+                        <p>Kegiatan PKM selesai dilakukan. Anda dapat mendownload
                             surat keterangan telah melaksanakan kegiatan PKM dan memo Kepala PPPM </p>
                         <hr>
                         <div class="d-flex justify-content-between">
