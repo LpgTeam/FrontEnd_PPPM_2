@@ -88,6 +88,18 @@ class PengajuanPkm extends Migration
                 'type' => 'INT',
                 'constraint' => 11,
                 'null' => false
+            ],
+
+            'alasan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 25,
+                'null' => true
+            ],
+
+            'id_status_reimburse' => [
+                'type' => 'INT',
+                'constraint' => 15,
+                'null' => true
             ]
         ]);
 
