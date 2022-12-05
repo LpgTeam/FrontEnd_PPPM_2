@@ -357,6 +357,7 @@ class Dosen extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             'jenis' => $jenis,
             'user' => $nipdosen,
+            'validation' => \Config\Services::validation(),
         ];
         // dd($data['jenis']);
         return view('dosen/tampilan/pkmForm', $data);
