@@ -79,6 +79,12 @@ class Penelitian extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true
+            ],
+
+            'id_status_reimburse' => [
+                'type' => 'INT',
+                'constraint' => 15,
+                'null' => true
             ]
         ]);
         $this->forge->addKey('id_penelitian', true);

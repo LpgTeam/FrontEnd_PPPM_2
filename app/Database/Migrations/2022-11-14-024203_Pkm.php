@@ -23,6 +23,18 @@ class Pkm extends Migration
             'bukti_kegiatan' => [
                 'type' => 'text',
                 'null' => false
+            ],
+
+            'narasumber' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true
+            ],
+
+            'penyelenggara' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true
             ]
         ]);    
         $this->forge->createTable('pkm');

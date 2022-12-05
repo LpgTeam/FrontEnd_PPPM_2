@@ -223,9 +223,24 @@ class ProposalPenelitian extends BaseController
         // return view('proposal/ViewLaporanProposal', $data);
     }
 
+    public function download_memo_penelitian($id_penelitian)
+    {
+        $Pdfgenerator = new Pdfgenerator();
+        $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
 
+        $dataPenelitian = [
+            'penelitian'    => $this->penelitianModel->find($id_penelitian),
+            'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
+            'targetpenelitian'  => $this->luaranModel->get_luaran_byid($id_penelitian),
+        ];
 
-
+        // dd($dataPenelitian['timpeneliti']);
+        $file_pdf = 'Memo Pembiayaan Publikasi - ' . $dataPenelitian['penelitian']['judul_penelitian'];
+        $paper = 'A4';
+        $orientation = "portrait";
+        $html = view('proposal/memo_penelitian', $dataPenelitian);
+        $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
 
 
 

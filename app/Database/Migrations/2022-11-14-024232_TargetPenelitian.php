@@ -38,7 +38,14 @@ class TargetPenelitian extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 50,
                 'null' => false
+            ],
+
+            'index_jurnal_tujuan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true
             ]
+
         ]);
         $this->forge->addKey('id_luaran', true);
         $this->forge->createTable('target_penelitian');
