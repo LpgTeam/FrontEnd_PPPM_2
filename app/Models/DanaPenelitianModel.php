@@ -15,6 +15,7 @@ class DanaPenelitianModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id_dana',
         'id_penelitian',
         'tanggal_pencairan',
         'dana_keluar',
@@ -46,7 +47,12 @@ class DanaPenelitianModel extends Model
     protected $afterDelete    = [];
 
 
-    // public function get_dana_by_year($tahun){
-    //     return $this->where([])
-    // }
+    public function get_dana_by_year($tahun){
+        return $this->where('year(tanggal_pengajuan)', $tahun)->findAll();
+    }
+
+    public function get_dana_by_id ($id_penelitian){
+        
+    }
+
 }

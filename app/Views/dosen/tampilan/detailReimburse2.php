@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSEMEN</h2>
+                <h2>REIMBURSEMENT</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -17,9 +17,9 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Reimbursemen</h3>
+                            <h3>Reimbursement</h3>
                             <p>
-                                Reimbursemen penelitian yang diajukan oleh Dosen
+                                Reimbursement penelitian yang diajukan oleh Dosen
                                 Politeknik Statistika STIS
                             </p>
                         </div>
@@ -33,9 +33,10 @@
             <div class="row" data-aos="fade-up">
 
 
+        
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
+                        <h5 class="card-title text-center">Proposal Reimbursement PKM</h5>
                         <hr>
                         <p>Proposal reimburse PKM yang diajukan dosen
                             oleh Direktur Politeknik Statistika STIS
@@ -50,12 +51,22 @@
                         if ($pkm['id_status_reimburse'] == 0) {
                         ?>
                             <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
-                                <div class="row mb-3">
-                                    <label for="totalBiaya" class="col-md-4 col-lg-3 col-form-label">Total Biaya</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">Pengajuan Reimbursement</h5>
+                                            <hr>
+                                            <ul>
+                                                <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
+                                                <li>Bentuk Kegiatan &nbsp; : <?= $pkm['bentuk_kegiatan']; ?></li>
+                                                <li>Waktu Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['waktu_kegiatan']; ?></li>
+                                                <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm, 0, ",", "."); ?></li>
+                                
+                                            </ul>
+                                            <hr>
+                                            
+                                        </div>
                                     </div>
-                                </div>
+                               
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
                                 </div>

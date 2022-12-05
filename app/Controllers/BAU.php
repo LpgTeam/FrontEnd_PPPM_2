@@ -33,6 +33,7 @@ class BAU extends BaseController
         $this->reimburseModel = new ReimburseModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
+        $this->danaPKMModel = new DanaPKMModel();
     }
 
     public function index()
@@ -284,9 +285,11 @@ class BAU extends BaseController
 
     public function detailReimburse2($id_reimburse)
     {
+        $kegiatan_pkm = $this->danaPKMModel->get_dana_by_reimburse($id_reimburse);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
         return view('bau/tampilan/persetujuan2Reimburse', $data);
@@ -305,7 +308,7 @@ class BAU extends BaseController
             'id_reimburse'     => $id_reimburse,
             'total_biaya'       => $biayaDicairkan,
             'id_status'         => 2,
-            'status_reimburse'  => 'Reimbursement telah dicairkan'
+            'status_reimburse'  => 'reimbursementt telah dicairkan'
         ]);
 
         $this->anggaranTotalModel->save([
@@ -323,7 +326,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana reimbursementberhasil dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }
@@ -338,7 +341,7 @@ class BAU extends BaseController
 
         $this->reimburseModel->save([
             'id_reimburse'     => $id_reimburse,
-            'total_biaya'       => $biayaDicairkan,
+            'biaya_dicairkan'       => $biayaDicairkan,
             'id_status'         => 2,
             'status_reimburse'  => 'Reimbursement telah dicairkan'
         ]);
@@ -357,7 +360,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana reimbursementberhasil dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }

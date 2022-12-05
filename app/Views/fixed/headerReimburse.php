@@ -122,7 +122,7 @@
                                                 ?>
                                                     <li><a class="nav-link scrollto" href="/reimburseBAU">Kembali</a></li>
                                                     <li class="dropdown">
-                                                        <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                                        <a class="username scrollto" href="#"><span>BAU</span></a>
                                                         <ul>
                                                         <?php
                                                     }

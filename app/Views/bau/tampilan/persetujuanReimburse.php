@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Reimbursemen Penelitian <?= $reimburse['jenis_penelitian'] ?></h2>
+                <h2>reimbursementPenelitian <?= $reimburse['jenis_penelitian'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -20,7 +20,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Proses pencairan dana reimbursemen yang diajukan dosen
+                                Proses pencairan dana reimbursementyang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
                         </div>
@@ -34,7 +34,7 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
+                        <h5 class="card-title text-center">Proposal reimbursementPenelitian</h5>
                         <hr>
                         <ol>
                             <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>

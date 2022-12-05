@@ -43,6 +43,8 @@ class Dosen extends BaseController
         $this->reimburseModel = new ReimburseModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
+        $this->danaPKMModel = new DanaPKMModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
 
     public function index()
@@ -726,10 +728,13 @@ class Dosen extends BaseController
 
     public function detailReimburse2($id_kegiatan)
     {
+        $kegiatan_pkm = $this->danaPKMModel->get_dana_by_id($id_kegiatan);
+       // dd($kegiatan_pkm[0]['dana_keluar']);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,
             'pkm' => $this->pkmModel->find($id_kegiatan),
+            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
         return view('dosen/tampilan/detailReimburse2', $data);
