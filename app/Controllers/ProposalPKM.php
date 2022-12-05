@@ -42,6 +42,7 @@ class ProposalPKM extends BaseController
             'pkm'    => $this->pkmModel->find($id_pkm),
             'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($id_pkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
+            'biaya'    
         ];
 
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
