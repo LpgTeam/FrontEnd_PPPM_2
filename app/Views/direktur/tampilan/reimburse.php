@@ -13,7 +13,7 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSE</h2>
+                <h2>REIMBURSEMEN</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -36,25 +36,24 @@
                                 <div class="col-md-8 col-lg-4">
                                     <select class="form-select status-dropdown ">
                                         <option value="">Semua</option>
-                                        <option value="Semi Mandiri">Penelitian Semi Mandiri</option>
-                                        <option value="Di Danai Institusi">Penelitian Di Danai Institusi</option>
-                                        <option value="Institusi">Penelitian Institusi</option>
-                                        <option value="Kerjasama">Penlitian Kerjasama</option>
-                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
-                                        <option value="Terstruktur">PKM Terstruktur</option>
+                                        <option value="2">Semi Mandiri</option>
+                                        <option value="3">Didanai Institusi</option>
+                                        <option value="4">Institusi</option>
+                                        <option value="5">Kerjasama</option>
                                     </select>
                                 </div>
 
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Status Reimbursemen</div>
-                                </div>
 
-                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
-                                <option value="">Semua</option>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursemen</label>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <select class="status-dropdown2 form-select">
+                                        <option value="">Semua</option>
                                         <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
                                         <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
                                         <option value="Dana telah dicairkan">Dana telah dicairkan</option>
-                                </select>
+                                    </select>
+                                </div>
                             </div>
 
 

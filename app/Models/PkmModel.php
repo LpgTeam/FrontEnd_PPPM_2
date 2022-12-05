@@ -57,9 +57,14 @@ class PkmModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function getData_bau()
+    {
+        return $this->where(['jenis_pkm !=' => 'Mandiri'])->orderBy('tanggal_pengajuan', 'DESC')->findAll();
+    }
+
     public function getData()
     {
-        return $this->findAll();
+        return $this->orderBy('tanggal_pengajuan', 'DESC')->findAll();
     }
 
     public function get_id_pkm($judul_pkm)
@@ -103,5 +108,16 @@ class PkmModel extends Model
     public function get_pkm_reimburse_diajukan($status_reimburse)
     {
         return $this->where(['id_status_reimburse' => $status_reimburse])->findAll();
+    }
+
+    public function get_total_diajukan($tahun){
+        $where2 = "id_status='3' OR id_status='4' OR id_status='7' AND id_status_reimburse='0'";
+        $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->findAll();
+       
+        $total_pengajuan = 0;
+        foreach($pengajuan as $data_pengajuan){
+            $total_pengajuan = $total_pengajuan + $data_pengajuan['pembiayaan_diajukan'];
+        }
+        return $total_pengajuan;
     }
 }

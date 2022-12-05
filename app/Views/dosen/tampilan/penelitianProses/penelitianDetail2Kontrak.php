@@ -84,7 +84,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Kontrak</h5>
                             <hr>
-                            <p>Penandatanganan Kontrak Penelitian untuk memberikan kepastian tentang hak dan kewajiban
+                            <p>Penandatanganan kontrak penelitian untuk memberikan kepastian tentang hak dan kewajiban
                                 baik bagi dosen/peneliti maupun bagi Polstat STIS.
                             </p>
                             <div class="d-flex justify-content-between">
@@ -122,9 +122,9 @@
                             } else {
                     ?>
 
-                        <h5 class="card-title text-center">Upload Kontrak</h5>
-                        <hr>
-                        <p class="text-center">Anda Sudah Upload Kontrak!!</p>
+                        <!-- <h5 class="card-title text-center">Upload Kontrak</h5>
+                        <hr> -->
+                        <h6 class="card-title text-center">Anda Sudah Upload Kontrak!!</h6>
 
                     <?php
                             }
@@ -134,8 +134,8 @@
                 <script>
                     function submitForm(form) {
                         swal({
-                                title: "Are you sure?",
-                                text: "This form will be submitted",
+                                title: "Apakah Anda Yakin??",
+                                text: "Dokumen ini akan di upload",
                                 buttons: true,
                             })
                             .then(function(isOkay) {
@@ -147,20 +147,20 @@
                     }
                 </script>
 
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Section: Timeline -->
-                            <ul class="timeline-with-icons" id="list">
-                            </ul>
-                            <ul class="timeline-with-icons" id="keterangan">
-                            </ul>
-                        </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Section: Timeline -->
+                        <ul class="timeline-with-icons" id="list">
+                        </ul>
+                        <ul class="timeline-with-icons" id="keterangan">
+                        </ul>
                     </div>
                 </div>
             </div>
-
-
 
         </div>
     </section>

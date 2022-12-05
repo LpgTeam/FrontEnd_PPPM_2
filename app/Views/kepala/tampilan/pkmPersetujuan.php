@@ -75,17 +75,35 @@
                             <p>Persetujuan formulir PKM yang diajukan dosen
                                 oleh Kepala PPPM
                             </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
-                                </div>
-                                <div class="text-end">
-                                    <p>&nbsp&nbsp&nbsp</p>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
-                                </div>
-                            </div>
+                            <?php
+                            // var_dump($pkm['id_status']);
+                            if ($pkm['id_status'] < 2) { ?>
+                                <hr>
+                                <h6 class="card-title text-center">Menunggu Persetujuan BAU</h6>
+                                <?php } else {
+                                if ($pkm['id_status'] == 2) { ?>
+                                    <div class="d-flex justify-content-end">
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
+                                        </div>
+                                        <div class="text-end">
+                                            <p>&nbsp&nbsp&nbsp</p>
+                                        </div>
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
+                                        </div>
+                                    </div>
+                                    <?php } else {
+                                    if ($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6) { ?>
+                                        <hr>
+                                        <h6 class="card-title text-center">Kegiatan PKM Tidak Disetujui!</h6>
+                                    <?php } else { ?>
+                                        <hr>
+                                        <h6 class="card-title text-center">Keiatan PKM Sudah Disetujui!</h6>
+                            <?php
+                                    }
+                                }
+                            } ?>
                         </div>
                     </div>
                 </div>

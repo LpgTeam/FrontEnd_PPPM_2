@@ -31,40 +31,59 @@
             <!-- End Proses -->
 
             <div class="row" data-aos="fade-up">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
-                            <hr>
-                            <p>Proposal Reimbursemen PKM yang diajukan dosen
-                                oleh Direktur Politeknik Statistika STIS
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end" style="margin-right: 10px">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button>
-                                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
+                        <hr>
+                        <p>Proposal Reimbursemen PKM yang diajukan dosen
+                            oleh Direktur Politeknik Statistika STIS
+                        </p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#proposal">Proposal</button>
                             </div>
                         </div>
                     </div>
+                </div>
 
-<?php
+                <?php
 
                     if ($reimburse['id_status'] == 1) {
                             
                 ?>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
-                            <hr>
-                            <p>Pencairan dana reimburse yang diajukan dosen
-                                oleh Bagian Administrasi Umum Politeknik Statistika STIS
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Cairkan Dana</button>
-                                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
+                        <hr>
+                        <p>Pencairan dana reimburse yang diajukan dosen
+                            oleh Bagian Administrasi Umum Politeknik Statistika STIS
+                        </p>
+
+                        <div class="row mb-3">
+                            <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
+                            </label>
+                            <div class="col-md-8 col-lg-9">
+                                <?php echo 'Rp ',  number_format($reimburse['biaya_diajukan'], 0, ",", "."); ?>
                             </div>
                         </div>
-                        <?php
+                        <form action="<?= base_url('/acc-reimbursePKMBAU/' . $reimburse['id_reimburse']); ?>"
+                            method="post">
+                            <div class="row mb-3">
+                                <label for="biayaDicairkan" class="col-md-4 col-lg-3 col-form-label">Biaya yang
+                                    dicairkan :</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="biayaDicairkan" type="number" class="form-control" id="biayaDicairkan">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#submit">Cairkan Dana</button>
+                                </div>
+                            </div>
+                    </div>
+                    <?php
                         } else if($reimburse['id_status'] == 2){
                         ?>
                              <div class="main-timeline">
@@ -79,13 +98,14 @@
                         }
                             ?>
                     </div>
-            </div>
+                </div>
     </section>
 
 </main>
 <!-- End #main -->
 <!-- Submit -->
-<div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="submitLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,9 +117,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/acc-reimbursePKMBAU/<?= $reimburse['id_reimburse']; ?>'">Ya</button>
+                <button type="button" class="btn btn-danger"
+                    onclick="location.href='/acc-reimbursePKMBAU/<?= $reimburse['id_reimburse']; ?>'">Ya</button>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <?= $this->endSection(); ?>

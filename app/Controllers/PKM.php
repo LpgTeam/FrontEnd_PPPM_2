@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PkmModel;
+use App\Models\PembiayaanPkmModel;
 use App\Models\StatusPkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPKMModel;
@@ -19,6 +20,7 @@ class PKM extends BaseController
     protected $ketuaTimModel;
     protected $dosenModel;
     protected $rincianPkm;
+    protected $pembiayaanPkm;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class PKM extends BaseController
         $this->ketuaTimModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
         $this->rincianPkm = new RincianPKMModel();
+        $this->pembiayaanPkm = new PembiayaanPkmModel();
     }
 
     public function index()
@@ -50,6 +53,7 @@ class PKM extends BaseController
 
     public function save()
     {
+        // dd($this->request->getVar('hasil'));
         $jenisPKM = $this->request->getVar('jenis_pkm');
         //================================save PKM=================================    
         ///=====================Waktu========================
@@ -96,7 +100,7 @@ class PKM extends BaseController
         ]);
 
         $idpkm = $this->pkmModel->get_id_pkm($this->request->getVar('topik'));
-        
+
         $this->statusPkmModel->save([
             'id_pkm' => $idpkm['ID_pkm'],
             'status' => $status
@@ -146,6 +150,12 @@ class PKM extends BaseController
                 'id_pkm' => $idpkm['ID_pkm'],
                 'surat_pernyataan' => $namaSurat,
                 'bukti_kegiatan' => $namaBukti,
+                'narasumber'    => $this->request->getVar('narasumber'),
+                'penyelenggara' => $this->request->getVar('penyelenggara')
+            ]);
+        } else {
+            $this->rincianPkm->save([
+                'id_pkm' => $idpkm['ID_pkm']
             ]);
         }
 
@@ -157,6 +167,7 @@ class PKM extends BaseController
             'nama' => $nipdosen['nama_dosen'],
             'nip' => $nipdosen['NIP_dosen'],
             'pangkat' => $this->request->getVar('pangkat'),
+            'bidang_keahlian' => $this->request->getVar('bidang'),
             'peran'         => "Ketua PKM"
         ]);
         $no = $this->request->getVar('anggota');
@@ -166,9 +177,20 @@ class PKM extends BaseController
                 'nama' => $this->request->getVar('namaAnggota' . $i),
                 'nip' => $this->request->getVar('nipAnggota' . $i),
                 'pangkat' => $this->request->getVar('pangkatAnggota' . $i),
-                'peran'         => "Anggota" . $i,
+                'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
+                'peran'         => $this->request->getVar('peranAnggota' . $i),
             ]);
         };
+
+        $no = $this->request->getVar('jumlahrow');
+        for ($i = 1; $i <= $no; $i++) {
+            $this->pembiayaanPkm->save([
+                'id_pkm' => $idpkm['ID_pkm'],
+                'pembiayaan_diajukan' => $this->request->getVar('pembiayaan' . $i),
+                'jumlah_biaya'  =>$this->request->getVar('jumlahBiaya' . $i),
+            ]);
+        };
+
 
 
         //==========================Set Pesan Sukses===================================

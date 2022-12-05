@@ -10,6 +10,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\PenelitianModel;
+use App\Models\RincianPKMModel;
 use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\DanaPKMModel;
@@ -28,6 +29,7 @@ class Dosen extends BaseController
     protected $timPenelitiModel;
     protected $timPKMModel;
     protected $pkmModel;
+    protected $rincianModel;
 
     public function __construct()
     {
@@ -36,8 +38,11 @@ class Dosen extends BaseController
         $this->timPenelitiModel = new TimPenelitiModel();
         $this->timPKMModel = new TimPKMModel();
         $this->pkmModel = new PkmModel();
+        $this->rincianModel = new RincianPKMModel();
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->reimburseModel = new ReimburseModel();
+        $this->anggaranAwalModel = new AnggaranAwalModel();
+        $this->anggaranTotalModel = new AnggaranTotalModel();
     }
 
     public function index()
@@ -131,10 +136,6 @@ class Dosen extends BaseController
         return view('dosen/tampilan/index', $data);
     }
 
-    // public function hitungAnggaran($coba2){
-    //     dd($coba2['dana_keluar']);
-    // }
-
     public function anggaran()
     {
         $dana_awal = new AnggaranAwalModel();
@@ -181,18 +182,39 @@ class Dosen extends BaseController
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
         }
-
-
+       // dd($dana_terealisasi->orderBy('id_total', 'DESC')->first());
+        $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
+        $anggaranTerealisasi = $dana_terealisasi->orderBy('id_total', 'DESC')->first();
+        $danaTersedia = $anggaranAwal['jumlah'] - $anggaranTerealisasi['dana_keluar'] - $total_pengajuan;
         //semua dana
         $data = [
             'title'               => 'PPPM Politeknik Statistika STIS',
-            'anggaranAwal'        => $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first(),
-            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
-            'anggaranDiajukan'    => $total_pengajuan
+            'anggaranAwal'        => $anggaranAwal,
+            'anggaranTerealisasi' =>  $anggaranTerealisasi,
+            'anggaranDiajukan'    => $total_pengajuan,
+            'danaTersedia'        => $danaTersedia
         ];
 
         return view('dosen/tampilan/anggaran', $data);
     }
+    // public function anggaran(){
+    //     //current year
+    //     $year = date("Y");
+    //     $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
+    //     $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
+    //     $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
+    //     $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
+        
+    //    $data = [
+    //         'title'             => 'PPPM Politeknik Statistika STIS',
+    //         'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
+    //         'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
+    //         'danaDiajukan'      => $danaDiajukan,
+    //         'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+    //    ];
+    //    return view('dosen/tampilan/anggaran', $data);
+
+    // }
 
     public function penelitian()
     {
@@ -218,6 +240,7 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->timPKMModel->get_pkm_by_nip_user($user->nip),
+            
 
         ];
         // dd($data['pkm']);
@@ -246,7 +269,7 @@ class Dosen extends BaseController
         } elseif ($jenis == "kerja-sama") {
             $jenisPenelitian = "Kerjasama";
         } elseif ($jenis == "didanai-institusi") {
-            $jenisPenelitian = "Di Danai Institusi";
+            $jenisPenelitian = "Didanai Institusi";
         } elseif ($jenis == "institusi") {
             $jenisPenelitian = "Institusi";
         }
@@ -454,7 +477,8 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses1', $data);
     }
@@ -464,6 +488,7 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->pkmModel->find($idPKM),
+            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
             'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses2', $data);
@@ -473,7 +498,9 @@ class Dosen extends BaseController
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
+            'pkm' => $this->pkmModel->find($idPKM),
+            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
+            'validation' => \Config\Services::validation(),
         ];
         return view('dosen/tampilan/pkmProses/pkmProses3', $data);
     }

@@ -81,12 +81,12 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Pendanaan</h5>
                             <hr>
-                            <p>Melampirkan bukti pendanaan untuk kegiatan publikasi hasil dari penelitian</p>
+                            <p>Melampirkan bukti pendanaan untuk kegiatan publikasi hasil penelitian dosen</p>
                             <hr>
                             <?php
                             if ($laporan['laporan_dana'] == null) {
                             ?>
-                                <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="return submitForm(this);"enctype="multipart/form-data">
+                                <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
                                     <div class="d-flex justify-content-between">
                                         <div class="row mb-4">
                                             <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
@@ -105,9 +105,9 @@
                             <?php
                             } else {
                             ?>
-                                <h5 class="card-title text-center">Upload Pendanaan</h5>
-                                <hr>
-                                <p class="text-center">Anda Sudah Upload Pendanaan!!</p>
+                                <!-- <h5 class="card-title text-center">Upload Pendanaan</h5>
+                                <hr> -->
+                                <h6 class="card-title text-center">Anda Sudah Upload Pendanaan!!</h6>
                             <?php
                             }
                             ?>

@@ -96,7 +96,7 @@
                                     <br>
                             </div>
                             <?php if ($i > 2) { ?>
-                                <a href="/removeStatusPkm/<?= $post['id_pkm']; ?>/<?= $statusTerbaru['id_status']; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                <a href="" class="btn btn-danger"data-bs-toggle="modal" data-bs-target="#submit"><i class="bi bi-trash"></i></a>
                         <?php }
                                 } ?>
                         </div>
@@ -104,6 +104,25 @@
                 </div>
             </div>
     </section>
+
+    <!-- modal -->
+    <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="submitLabel">Undo Status</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin akan undo status PKM?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/removeStatusPkm/<?= $post['id_pkm']; ?>/<?= $statusTerbaru['id_status']; ?>'">Ya</button>
+                </div>
+            </div>
+        </div>
+        <!-- END modal -->
 
 </main>
 <!-- End #main -->

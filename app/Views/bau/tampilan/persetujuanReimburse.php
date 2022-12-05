@@ -18,9 +18,9 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Proposal</h3>
+                            <h3>Reimbursemen</h3>
                             <p>
-                                Proses pencairan dana reimburse yang diajukan dosen
+                                Proses pencairan dana reimbursemen yang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
                         </div>
@@ -42,7 +42,22 @@
                             <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['total_biaya'], 0, ",", "."); ?></li>
                         </ol>
                         <hr>
-                        <?= $this->include('bau/tampilan/download_reimburse'); ?>
+
+                        <div class="d-flex justify-content-end">
+                            <div class="text-end" style="margin-right: 10px">
+                                <a href="/penelitian/download-proposal-akhir/<?= $reimburse['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
+                                <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button> -->
+                            </div>
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loa">LOA</button>
+                            </div>
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#naskah">Naskah Artikel</button>
+                            </div>
+                            <div class="text-end" style="margin-right: 10px">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#invoice">Invoice</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <?php
@@ -57,14 +72,30 @@
                             <p>Pencairan dana reimburse yang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Cairkan Dana</button>
+
+                            <div class="row mb-3">
+                                <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
+                                </label>
+                                <div class="col-md-8 col-lg-9">
+                                    <?php echo 'Rp ',  number_format($reimburse['biaya_diajukan'], 0, ",", "."); ?>
                                 </div>
                             </div>
+                            <form action="<?= base_url('/acc-reimburseBAU/' . $reimburse['id_reimburse']); ?>" method="post">
+                                <div class="row mb-3">
+                                    <label for="biayaDicairkan" class="col-md-4 col-lg-3 col-form-label">Biaya yang
+                                        dicairkan :</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="biayaDicairkan" type="number" class="form-control" id="biayaDicairkan">
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Cairkan Dana</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </div>
-                <?php
+                    <?php
                 } else if ($reimburse['id_status'] == 2) {
                 ?>
                     <div class="main-timeline">
@@ -75,11 +106,8 @@
                                 <h3 class="title">Dana Reimbursemen Sudah Dicairkan</h3>
                             </a>
                         </div>
-                    <?php
-                }
-                    ?>
                     </div>
-            </div>
+                <?php } ?>
     </section>
 
 </main>

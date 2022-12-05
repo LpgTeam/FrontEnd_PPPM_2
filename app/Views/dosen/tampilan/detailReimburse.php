@@ -19,8 +19,8 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen penlitian yang diajukan oleh dosen
-                                oleh Direktur Politeknik Statistika STIS
+                                Reimbursemen penelitian yang diajukan dosen
+                                Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>
@@ -37,8 +37,8 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
                         <hr>
-                        <p>Proposal reimburse penelitian yang diajukan dosen
-                            oleh Direktur Politeknik Statistika STIS
+                        <p>Proposal reimbursemen penelitian yang diajukan dosen
+                            Politeknik Statistika STIS
                         </p>
 
                         <hr>

@@ -99,7 +99,9 @@
 
                             <script>
                                 $(document).ready(function() {
-                                    dataTable = $("#example").DataTable({});
+                                    dataTable = $("#example").DataTable({
+                                         order: [[2, 'desc']],
+                                    });
 
                                     $('.status-dropdown').on('change', function(e) {
                                         var status = $(this).val();

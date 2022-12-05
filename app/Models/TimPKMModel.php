@@ -8,6 +8,7 @@ class TimPKMModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'tim_pkm';
+    protected $primaryKey       = 'id_timpkm';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -18,7 +19,8 @@ class TimPKMModel extends Model
         'nip',
         'nama',
         'peran',
-        'pangkat'
+        'pangkat',
+        'bidang'
     ];
 
     // Dates
@@ -47,10 +49,10 @@ class TimPKMModel extends Model
 
     public function get_pkm_by_nip_user($nip)
     {
-        //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
+    //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
         //     ->where(['auth_groups_users.id' => $id])->first();
         return $this->join('pengajuan_pkm', 'pengajuan_pkm.ID_pkm = tim_pkm.id_pkm')->select('tim_pkm.nip')->select('pengajuan_pkm.*')
-            ->where(['nip' => $nip])->findAll();
+            ->where(['nip' => $nip])->orderBy('pengajuan_pkm.tanggal_pengajuan', 'DESC')->findAll();
     }
 
     public function get_data_timpkm($idpkm)

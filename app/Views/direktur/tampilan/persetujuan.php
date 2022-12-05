@@ -60,11 +60,8 @@
                                 <h5 class="card-title text-center">Penandatanganan Proposal</h5>
                                 <hr>
                                 <?php if ($penelitian['id_status'] < 4) { ?>
-                                    <div class="d-flex justify">
-                                        <div class="h5">
-                                            Menunggu Persetujuan dari Kepala PPPM!
-                                        </div>
-                                    </div>
+                                    <hr>
+                                    <h6 class="card-title text-center">Menunggu Persetujuan dari Kepala PPPM</h6>
                                     <?php } else {
                                     if ($penelitian['id_status'] == 4) { ?>
                                         <p>Penandatanganan proposal yang diajukan dosen
@@ -76,17 +73,11 @@
                                             </div>
                                         </div>
                                     <?php } elseif ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
-                                        <div class="d-flex justify">
-                                            <div class="h5">
-                                                Penelitian Tidak Disetujui!
-                                            </div>
-                                        </div>
+                                        <hr>
+                                        <h6 class="card-title text-center">Penelitian Tidak Disetujui!</h6>
                                     <?php } else { ?>
-                                        <div class="d-flex justify">
-                                            <div class="h5">
-                                                Penelitian ini Sudah ditandatangani!
-                                            </div>
-                                        </div>
+                                        <hr>
+                                        <h6 class="card-title text-center">Penelitian Sudah Disetujui!</h6>
                                 <?php }
                                 } ?>
                             </div>
@@ -123,7 +114,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='/acc-direktur/<?= $penelitian['id_penelitian']; ?>'">Ya</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/acc-direktur/<?= $penelitian['id_penelitian']; ?>'">Ya</button>
             </div>
         </div>
     </div>

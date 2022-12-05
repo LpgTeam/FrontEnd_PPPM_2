@@ -30,7 +30,9 @@ class ReimburseModel extends Model
         'usulan_publikasi',
         'total_biaya',
         'id_status',
-        'status_reimburse'
+        'status_reimburse',
+        'biaya_diajukan',
+        'total_biaya'
     ];
     
     public function getData()
