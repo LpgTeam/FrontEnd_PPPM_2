@@ -8,11 +8,13 @@ use App\Models\PenelitianModel;
 use App\Models\DosenModel;
 use App\Models\PkmModel;
 use App\Models\PembiayaanPkmModel;
+use App\Models\SuratKeteranganPkmModel;
 use App\Models\RincianPKMModel;
 use App\Models\TimPKMModel;
 use App\Models\LuaranTargetModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
+use DateTime;
 
 class ProposalPKM extends BaseController
 {
@@ -31,6 +33,7 @@ class ProposalPKM extends BaseController
         $this->timpkmModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
         $this->pkmModel = new PkmModel();
+        $this->suratPkmModel = new SuratKeteranganPkmModel();
         $this->rincianModel = new RincianPKMModel();
         $this->biayaModel = new PembiayaanPkmModel;
     }
@@ -61,12 +64,12 @@ class ProposalPKM extends BaseController
         $dataPkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
             // 'peneliti' => $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm),
-
+            'no_surat'  => $this->suratPkmModel->findAll(),
             // 'peneliti' => $this->timpkmModel->get_data_timpkm($id_pkm),
             'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
-            'rincian'  => $this->rincianModel->find_by_idpkm($id_pkm)
+            'rincian'  => $this->rincianModel->find_by_idpkm($id_pkm),
         ];
-        // dd($dataPkm['peneliti']);
+        // dd($dataPkm['no_surat'][0]['no_surat']);
 
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
         // . $dataPkm['penelitian']['judul_penelitian'];

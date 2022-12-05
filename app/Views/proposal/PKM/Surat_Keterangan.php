@@ -1,5 +1,5 @@
 <?php
-$i = 1;
+$i = 0;
 foreach ($peneliti as $key => $anggota) : ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -70,8 +70,8 @@ foreach ($peneliti as $key => $anggota) : ?>
 
             .ttd1 tr:nth-child(1),
             .ttd2 tr:nth-child(1),
-            .ttd1 tr:nth-child(4),
             .ttd2 tr:nth-child(4),
+            .ttd1 tr:nth-child(4),
             .ttd1 tr:nth-child(5) {
                 color: white;
             }
@@ -82,9 +82,9 @@ foreach ($peneliti as $key => $anggota) : ?>
         </style>
     </head>
 
-    <body>
+    <body style="margin-top: 0;">
         <!-- KOP Surat -->
-        <div>
+        <div >
             <table>
                 <tr>
                     <td width="20%"> <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100"></td>
@@ -96,23 +96,20 @@ foreach ($peneliti as $key => $anggota) : ?>
             </table>
             <!-- <span class="logo"> -->
             <hr>
-
         </div>
         <div class="text-center">
             <u>
-                <h4>SURAT KETERANGAN</h4>
+                SURAT KETERANGAN
             </u>
-            <p>Nomor : PKM/<?= $pkm['ID_pkm'] . '/' . $i;
-                            $i++; ?> </p>
+            <p style="margin-top : 0; ">Nomor : <?= $no_surat[$i]['no_surat'];
+                        $i++; ?> </p>
         </div>
 
         <p>Yang bertanda tangan di bawah ini : </p>
         <p class="text-center"><b>KEPALA PUSAT PENELITIAN DAN PENGABDIAN MASYARAKAT
                 POLITEKNIK STATISTIKA STIS</b></p>
-
-        <p>Memberikan keterangan bahwa : </p>
-
-        <table>
+        <p style="margin-bottom : 0; margin-top:0;">Memberikan keterangan bahwa : </p>
+        <table >
             <tr>
                 <td width="40%">Nama</td>
                 <td>: <?= $anggota['nama'] ?></td>
@@ -136,21 +133,20 @@ foreach ($peneliti as $key => $anggota) : ?>
 
             <tr>
                 <td width="40%"></td>
-                <td>Narasumber pada kegiatan <?= $rincian['narasumber']?></td>
+                <td>Narasumber pada kegiatan <b><?= $rincian['narasumber'] ?></b></td>
             </tr>
             <tr>
                 <td width="40%"></td>
-                <td>Kegiatan ini diselenggarakan oleh <?= $rincian['penyelenggara']?> dalam rangka <b>Kegiatan PKM</b></td>
+                <td>Kegiatan ini diselenggarakan oleh <b><?= $rincian['penyelenggara'] ?></b> dalam rangka <b>Kegiatan PKM</b></td>
             </tr>
 
             <tr>
                 <td width="40%">Waktu Pelaksanaan</td>
-                <td>: <?= $pkm['waktu_kegiatan']; ?> </td>
+                <td>: <?= date('d F Y',strtotime($pkm['waktu_kegiatan'])); ?> </td>
             </tr>
         </table>
-
-
-        <div class="text-center" style="page-break-before: always;">
+        <br>
+        <div class="text-center" >
             <table class="ttd1">
                 <tr>
                     <td width="25%"></td>
@@ -160,7 +156,7 @@ foreach ($peneliti as $key => $anggota) : ?>
                 <tr>
                     <td width="25%"></td>
                     <td width="25%"></td>
-                    <td>Jakarta, ...............</td>
+                    <td>Jakarta, <?= date("d F Y", strtotime($no_surat[0]['created_at'])); ?></td>
                 </tr>
                 <tr>
                     <td width="25%"></td>
@@ -170,7 +166,7 @@ foreach ($peneliti as $key => $anggota) : ?>
                 <tr>
                     <td width="25%"></td>
                     <td width="25%"></td>
-                    <td>Kepala Pusat Penelitian dan Pengabdian Masyarakat</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td width="25%"></td>
