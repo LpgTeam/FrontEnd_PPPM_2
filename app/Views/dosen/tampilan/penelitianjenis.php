@@ -70,7 +70,7 @@
                                 Penelitian yang dalam proses penyelesaian maupun publikasinya
                                 didanai oleh Politeknik Statistika STIS. Penelitian yang dimaksud
                                 termasuk dalam jenis penelitian dasar dan penelitian terapan
-                                yang pelaksanaan penelitiannya dalam satu tahun anggaran.
+                                yang pelaksanaan penelitiannya dalam satu tahun anggaran
                             </p>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                                 Penelitian Institusi adalah penelitian yang dilakukan oleh
                                 institusi di dalam lingkungan Politeknik Statistika STIS,
                                 diantaranya penelitian yang dilaksanakan oleh Unit Kajian atau
-                                unit lain yang ditunjuk.
+                                unit lain yang ditunjuk
                             </p>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                             <h4>Penelitian Kerjasama</h4>
                             <p>
                                 Penelitian yang dalam proses penyelesaian serta publikasinya
-                                didanai melalui mekanisme kerjasama.
+                                didanai melalui mekanisme kerjasama
                             </p>
                         </div>
                     </div>

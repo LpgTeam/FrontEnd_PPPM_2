@@ -82,7 +82,7 @@
                                                 <tr>
                                                     <!-- <td><?php //echo $post['id_penelitian'] 
                                                                 ?></td> -->
-                                                    <td><?php echo $post['ID_pkm'] ?></td>
+                                                    <td><?php echo $i ?></td>
                                                     <td><?php echo $post['jenis_pkm'] ?></td>
                                                     <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                     <td><?php echo $post['topik_kegiatan'] ?></td>
@@ -122,7 +122,9 @@
 
                             <script>
                                 $(document).ready(function() {
-                                    dataTable = $("#example").DataTable({});
+                                    dataTable = $("#example").DataTable({
+                                        order: [[2, 'desc']],
+                                    });
 
                                     $('.status-dropdown').on('change', function(e) {
                                         var status = $(this).val();

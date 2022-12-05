@@ -136,13 +136,11 @@ foreach ($peneliti as $key => $anggota) : ?>
 
             <tr>
                 <td width="40%"></td>
-                <td>Narasumber pada kegiatan ………………………………….</td>
+                <td>Narasumber pada kegiatan <?= $rincian['narasumber']?></td>
             </tr>
-
-
             <tr>
                 <td width="40%"></td>
-                <td>Kegiatan ini diselenggarakan oleh ...................... dalam rangka ......................</td>
+                <td>Kegiatan ini diselenggarakan oleh <?= $rincian['penyelenggara']?> dalam rangka <b>Kegiatan PKM</b></td>
             </tr>
 
             <tr>

@@ -20,7 +20,7 @@
                 <div class="form-body pt-3 col-md-14">
                     <!-- Bordered Tabs -->
                     <!-- Form -->
-                    <form action="<?= base_url('/penelitian/save'); ?>" method="post" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Anda Harus Menyetujui Surat Pernyataan terlebih dahulu!'); return false; }" enctype="multipart/form-data">
+                    <form action="<?= base_url('/penelitian/save'); ?>" method="post" onsubmit="if(document.getElementById('agree').checked){ return submitForm(this); } else { return alertForm(this); return false; }" enctype="multipart/form-data">
                         <input name="jenis_penelitian" type="text" class="form-control" id="jenis_penelitian" value="<?= $jenis ?>" hidden>
 
                         <div class="row mb-3">
@@ -101,6 +101,7 @@
                                     <option value="SDG's">SDG's</option>
                                     <option value="Metodologi Survei dan Sensus">Metodologi Survei dan Sensus</option>
                                     <option value="Sistem Informasi Statistik">Sistem Informasi Statistik </option>
+                                    <option value="Sains Data">Sains Data</option>
                                     <option value="Lainnya">Lainnya </option>
                                 </select>
                             </div>
@@ -121,6 +122,14 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label class="col-md-4 col-lg-3 col-form-label ">Template Proposal</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <a href="<?= base_url('penelitian/printProposal') ?>" class="btn btn-primary">
+                                        Download Template Proposal
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Proposal</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload">
@@ -129,18 +138,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="row mb-3">
-                                <label class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <button onclick ="" class="btn btn-primary">
-                                    Download Surat Pernyataan</i>
-                                </button>
-                                    <a href="<? //= base_url('penelitian/printSurat') 
-                                                ?>" class="btn btn-primary">
-                                          Download Surat Pernyataan
-                                    </a>
-                                </div>
-                            </div> -->
 
                             <div class="row mb-3">
                                 <label for="uploadSign" class="col-md-4 col-lg-3 col-form-label ">Upload Tanda Tangan Anda (Ketua Tim)</label>
@@ -154,6 +151,13 @@
                         <?php endif; ?>
 
                         <?php if ($jenis == "Mandiri" || $jenis == "Kerjasama") : ?>
+                            <div class="row mb-3">
+                                <label for="templateLuaran" class="col-md-4 col-lg-3 col-form-label ">Template Bukti Luaran Publikasi</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <a href="" class="btn btn-primary">Download Template Bukti Luaran Publikasi</a>
+                                </div>
+                            </div>
+
                             <div class="row mb-3">
                                 <label for="uploadBukti" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
                                 <div class="col-md-8 col-lg-9">
@@ -331,16 +335,17 @@
                         <div class="row justify-content-md-center" data-aos="fade-up">
                             <div class="surat row gy-4 justify-content-md-center col-md-9">
                                 <h2>Surat Pernyataan</h2>
-                                <p>Dengan inimenyatakan bahwa hasil penelitian kami bersifat original dan bebas
+                                <p>Dengan ini kami menyatakan bahwa hasil penelitian kami bersifat original dan bebas
                                     dari unsur plagiarisme. Jika dikemudian hari ditemukan ketidaksesuaian dengan
                                     pernyataan ini, saya bersedia dituntut dan diproses sesuai dengan ketentuan yang
                                     berlaku dan mengembalikan seluruh biaya yang sudah saya terima. </p>
-                                <p>Dengan anda meyetujui maka tanda tangan yang anda upload akan otomatis tergenerate
+                                <hr>
+                                <p>Dengan anda meyetujui, maka tanda tangan yang anda upload akan otomatis tergenerate
                                     ke file surat pernyataan pada proposal</p>
                                 <div class="input-group mb-3">
                                     <div class="input-group-text">
-                                        <input id="agree" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-                                        <label>&nbspSetuju</label>
+                                        <input id="agree" name="agree" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                        <label for="agree">&nbspSetuju</label>
                                     </div>
                                 </div>
                             </div>
@@ -389,22 +394,28 @@
     </div>
 </div> -->
 
-<!-- Submit Form -->
-<!-- <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Submit</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah anda yakin akan submit formulir?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/penelitianDosen'">Ya</button>
-            </div>
-        </div>
-    </div>
-</div> -->
+<script>
+    function submitForm(form) {
+        swal({
+                title: "Apakah Anda Yakin?",
+                text: "",
+                buttons: true,
+            })
+            .then(function(isOkay) {
+                if (isOkay) {
+                    form.submit();
+                }
+            });
+        return false;
+    }
+
+    function alertForm(form) {
+        swal({
+            title: "Gagal Submit",
+            icon: "error",
+            text: "Anda harus menyetujui persyaratan terlebih dahulu!",
+        })
+        return false;
+    }
+</script>
 <?= $this->endSection(); ?>

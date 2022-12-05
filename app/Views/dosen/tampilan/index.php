@@ -72,7 +72,7 @@
                                 </button>
                             </li>
                             <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profil</button>
                             </li>
                         </ul>
                         <div class="tab-content pt-2">

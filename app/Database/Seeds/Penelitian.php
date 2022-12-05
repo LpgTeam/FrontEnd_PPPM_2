@@ -53,6 +53,7 @@ class Penelitian extends Seeder
                 // 'password_hash' => $faker->password,
                 // 'created_at'    => Time::createFromTimestamp($faker->unixTime()),
                 // 'updated_at'    => Time::now()
+                'id_status_reimburse'   => $faker->numberBetween($min = 0, $max = 2),
             ];
             if ($data['id_status'] == 1) $data['status_pengajuan'] = $datastatus[0]['deskripsi'];
             elseif ($data['id_status'] == 2) $data['status_pengajuan'] = $datastatus[1]['deskripsi'];
@@ -155,7 +156,7 @@ class Penelitian extends Seeder
             $data_target_penelitian = [
                 'id_penelitian'     =>  $data['id_penelitian'],
                 'jenis_luaran'      =>  $faker->randomElement($array = array('Artikel pada jurnal nasional terakreditasi', 'Artikel pada prosiding terindeks scopus', 'Buku Cetak Hasil Penelitian ', 'Buku Elektronik Hasil Penelitian ')),
-                'target-capaian'    =>  $faker->randomElement($array = array('accepted', 'published')),
+                'target_capaian'    =>  $faker->randomElement($array = array('accepted', 'published')),
                 'jurnal_tujuan'     =>  $faker->randomElement($array = array('Media Statistika (Terakreditasi Sinta 2)', 'INDONESIAN JOURNAL OF SCIENCE AND TECHNOLOGY', 'INDONESIAN JOURNAL OF ELECTRICAL ENGINEERING AND COMPUTER SCIENCE', 'GADJAH MADA INTERNATIONAL JOURNAL OF BUSINESS (GAMAIJB)', 'JOURNAL ON MATHEMATICS EDUCATION', 'Indonesian Journal of Science and Technology', 'Journal of Mathematical and Fundamental Sciences', 'Asian Journal of Information Technology', 'Research Journal of Applied Sciences', 'International Journal of Computer Applications in Technology')),
             ];
             $this->db->table('target_penelitian')->insert($data_target_penelitian);

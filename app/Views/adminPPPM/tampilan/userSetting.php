@@ -36,12 +36,12 @@
                             <table class="table table-advance table-hover align-middle ">
                                 <thead>
                                     <tr class="table-primary">
-                                        <th scope="col">Nomor</th>
+                                        <th scope="col">No.</th>
                                         <th scope="col">Username</th>
                                         <!-- <th scope="col">Role</th> -->
                                         <th scope="col">NIP</th>
                                         <th scope="col">Role Setting</th>
-                                        <th scope="col">Hapus User</th>
+                                        <th scope="col">Delete User</th>
                                     </tr>
                                 </thead>
                                 <tbody>

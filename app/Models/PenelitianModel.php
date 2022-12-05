@@ -31,7 +31,8 @@ class PenelitianModel extends Model
     ];
     public function getData()
     {
-        return $this->findAll();
+        return $this->orderBy('tanggal_pengajuan','DESC')->findAll();
+        // return $this->findAll();
     }
 
     // Dates
@@ -99,4 +100,24 @@ class PenelitianModel extends Model
     public function get_penelitian_reimburse_diajukan($status_reimburse){
         return $this->where(['id_status_reimburse' => $status_reimburse])->findAll();
     }
+
+    public function get_penelitian_by_year($tahun)
+    {
+        // $this->db->where('EXTRACT(YEAR_MONTH FROM P.payscale_date)',date('Ym'));
+        return $this->where('year(tanggal_pengajuan)',$tahun)->findAll();
+    }  
+
+    public function get_total_diajukan($tahun){
+        $where2 = "id_status='5' OR id_status='6' OR id_status='10'";
+       
+        $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
+       
+        $total_pengajuan = 0;
+        foreach($pengajuan as $data_pengajuan){
+            $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+        }
+        return $total_pengajuan;
+      
+    }
+
 }

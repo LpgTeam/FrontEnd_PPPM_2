@@ -27,7 +27,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
             "<p>"+
-                "Form PKM telah disetujui oleh BAU dan menunggu persetujuan Kepala PPPM"+
+                "Form PKM telah disetujui olej BAU dan menunggu persetujuan Kepala PPPM"+
             "</p>"+
         "</li>";        
 
@@ -39,7 +39,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
             "<p>"+
-                "Proposal disetujui oleh Kepala PPPM"+
+                "Form PKM disetujui oleh Kepala PPPM"+
             "</p>"+
         "</li>"; 
 

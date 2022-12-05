@@ -84,7 +84,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Kontrak</h5>
                             <hr>
-                            <p>Penandatanganan Kontrak Penelitian untuk memberikan kepastian tentang hak dan kewajiban
+                            <p>Penandatanganan kontrak penelitian untuk memberikan kepastian tentang hak dan kewajiban
                                 baik bagi dosen/peneliti maupun bagi Polstat STIS.
                             </p>
                             <div class="d-flex justify-content-between">
@@ -95,81 +95,79 @@
                             </div>
                         </div>
                     </div>
-                    <?php
-                    if ($laporan['kontrak'] == null) {
-                    ?>
+                    <div class="card">
                         <div class="card-body mt-3">
                             <h5 class="card-title text-center">Upload Kontrak</h5>
                             <hr>
-                            <form action="<?= base_url('/penelitianDetail/saveKontrak/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="confirm('Apakah Anda Setuju')" enctype="multipart/form-data">
-                                <div class="row mb-3">
-                                    <label for="uploadKontrak" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="uploadKontrak" class="form-control <?= ($validation->hasError('uploadKontrak')) ? 'is-invalid' : ''; ?>" type="file" id="uploadKontrak" aria-describedby="uploadValid">
-                                        <div class="invalid-feedback" id="uploadValid">
-                                            <?= $validation->getError('uploadKontrak'); ?>
+                            <?php
+                            if ($laporan['kontrak'] == null) {
+                            ?>
+                                <form action="<?= base_url('/penelitianDetail/saveKontrak/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
+                                    <div class="row mb-3">
+                                        <label for="uploadKontrak" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadKontrak" class="form-control <?= ($validation->hasError('uploadKontrak')) ? 'is-invalid' : ''; ?>" type="file" id="uploadKontrak" aria-describedby="uploadValid">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadKontrak'); ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-success">Submit Kontrak</button>
-                                    <!-- <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Submit Kontrak</button> -->
-                                </div>
-                            </form><!-- Form End -->
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-success">Submit Kontrak</button>
+                                        <!-- <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Submit Kontrak</button> -->
+                                    </div>
+                                </form><!-- Form End -->
                         </div>
                     <?php
-                    } else {
+                            } else {
                     ?>
 
-                        <h5 class="card-title text-center">Upload Kontrak</h5>
-                        <hr>
-                        <p class="text-center">Anda Sudah Upload Kontrak!!</p>
+                        <!-- <h5 class="card-title text-center">Upload Kontrak</h5>
+                        <hr> -->
+                        <h6 class="card-title text-center">Anda Sudah Upload Kontrak!!</h6>
 
                     <?php
-                    }
+                            }
                     ?>
+                    </div>
                 </div>
+                <script>
+                    function submitForm(form) {
+                        swal({
+                                title: "Apakah Anda Yakin??",
+                                text: "Dokumen ini akan di upload",
+                                buttons: true,
+                            })
+                            .then(function(isOkay) {
+                                if (isOkay) {
+                                    form.submit();
+                                }
+                            });
+                        return false;
+                    }
+                </script>
 
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Section: Timeline -->
-                            <ul class="timeline-with-icons" id="list">
-                            </ul>
-                            <ul class="timeline-with-icons" id="keterangan">
-                            </ul>
-                        </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Section: Timeline -->
+                        <ul class="timeline-with-icons" id="list">
+                        </ul>
+                        <ul class="timeline-with-icons" id="keterangan">
+                        </ul>
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Perjanjian Kontak Penelitan</h5>
-                            <hr>
-
-                            <div class="d-flex justify-content-end">
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
-                                </div>
-                                <div class="text-end">
-                                    <p>&nbsp&nbsp&nbsp</p>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-
 
         </div>
     </section>
 
 </main>
 <!-- End #main -->
-<!-- Submit -->
+Submit
 <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -5,6 +5,11 @@
 <?= $this->section('content'); ?>
 <main id="main" class="main">
     <section id="services" class="services">
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
                 <h2>Penelitian <?= $penelitian['jenis_penelitian']; ?></h2>
@@ -46,7 +51,7 @@
                             </div>
                         </div>
                     <?php  }
-                    if ($penelitian['jenis_penelitian'] == 'Di Danai Institusi' || $penelitian['jenis_penelitian'] == 'Institusi') {
+                    if ($penelitian['jenis_penelitian'] == 'Didanai Institusi' || $penelitian['jenis_penelitian'] == 'Institusi') {
                     ?>
                         <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="service-box orange ">
@@ -92,14 +97,13 @@
                             <h5 class="card-title text-center">Laporan</h5>
                             <hr>
                             <p>Upload laporan penelitian dan pengisian tabel
-                                luaran dan capaian yang telah dilakukan oleh
-                                Dosen Politeknik Statistika STIS
+                                luaran serta capaian yang telah dilakukan oleh dosen
                             </p>
                             <hr>
                             <?php
                             if ($laporan['laporan_luaran'] == null) {
                             ?>
-                                <form action="<?= base_url('/penelitianDetail/saveLaporan/' . $penelitian['id_penelitian']); ?>" method="post" enctype="multipart/form-data">
+                                <form action="<?= base_url('/penelitianDetail/saveLaporan/' . $penelitian['id_penelitian']); ?>" onsubmit="return submitForm(this)" method="post" enctype="multipart/form-data">
                                     <div class="row mb-3">
                                         <table class="table table1 table-advance table-hover align-middle anggota" id="myTableID">
                                             <tr class="table-primary">
@@ -134,8 +138,14 @@
                                         }
                                     </script>
 
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="" class="btn btn-primary">Download Template Bukti Luaran</a>
+                                    </div>
+                                    <hr>
+
                                     <div class="row mb-4">
-                                        <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Bukti Luaran</label>
+                                        <label for="laporan" class="col-md-3 col-lg-4 col-form-label ">Upload Bukti Luaran</label>
                                         <div class="col-md-3 col-lg-8">
                                             <input class="form-control <?= ($validation->hasError('uploadLaporan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLaporan" name="uploadLaporan">
                                             <div class="invalid-feedback" id="uploadValid">
@@ -145,19 +155,40 @@
 
                                     </div>
                                     <div class="text-end">
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <input type="submit" class="btn btn-success" name="btn" value="Submit" id="submitBtn" />
                                     </div>
+
+
                                 </form>
 
                             <?php
                             } else {
                             ?>
-                                <h5 class="card-title text-center">Upload Bukti Luaran</h5>
-                                <hr>
-                                <p class="text-center">Anda Sudah Upload Bukti Luaran!!</p>
+                                <!-- <h5 class="card-title text-center">Upload Bukti Luaran</h5>
+                                <hr> -->
+                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Luaran!!</h6>
                             <?php
                             }
                             ?>
+
+
+
+                            <script>
+                                function submitForm(form) {
+                                    swal({
+                                            title: "Apakah Anda Yakin?",
+                                            text: "Dokumen ini akan di upload",
+                                            buttons: true,
+                                        })
+                                        .then(function(isOkay) {
+                                            if (isOkay) {
+                                                form.submit();
+                                            }
+                                        });
+                                    return false;
+                                }
+                            </script>
+
 
                         </div>
                     </div>

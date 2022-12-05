@@ -8,12 +8,14 @@ class TimPenelitiModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'tim_peneliti';
+    protected $primaryKey       = 'id_timpeneliti';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id_timpeneliti',
         'id_penelitian',
         'NIP',
         'peran',
@@ -49,9 +51,10 @@ class TimPenelitiModel extends Model
     public function get_timpeneliti_byid($id_penelitian)
     {
         $builder = $this->db->table('tim_peneliti');
-        $query = $builder->getWhere(['id_penelitian' => $id_penelitian]);
+        $query = $builder->getWhere(['id_penelitian' => $id_penelitian]); 
         return $query->getResultArray();
     }
+
     public function get_anggota_timpeneliti($id_penelitian)
     {
         $builder = $this->db->table('tim_peneliti');
@@ -67,14 +70,14 @@ class TimPenelitiModel extends Model
             // ->join('laporan_penelitian', 'laporan_penelitian.id_penelitian = tim_peneliti.id_penelitian')
             ->select('tim_peneliti.nip')->select('penelitian.*')
             // ->select('laporan_penelitian.*')
-            ->where(['nip' => $nip])->findAll();
+            ->where(['nip' => $nip])->orderBy('tanggal_pengajuan', 'DESC')->findAll();
     }
 
-    public function get_penelitian_by_nip_user_done($nip,$id_status){
+    public function get_penelitian_by_nip_user_done($nip, $id_status)
+    {
         return $this->join('penelitian', 'penelitian.id_penelitian = tim_peneliti.id_penelitian')
-        ->select('tim_peneliti.nip')->select('penelitian.*')
-        // ->select('laporan_penelitian.*')
-        ->where(['nip' => $nip] and ['id_status' => $id_status])->findAll();
+            ->select('tim_peneliti.nip')->select('penelitian.*')
+            // ->select('laporan_penelitian.*')
+            ->where(['nip' => $nip] and ['id_status' => $id_status])->findAll();
     }
-
 }

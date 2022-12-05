@@ -39,7 +39,7 @@
 
 <body>
 
-    <u><b><?= $jenis; ?>5. Luaran dan Target Capaian</b></u>
+    <!-- <u><b><//?= $jenis; ?>5. Luaran dan Target Capaian</b></u> -->
     <div class="text-center">
         <h3>LUARAN DAN TARGET CAPAIAN</h3>
     </div>
@@ -49,7 +49,7 @@
                 <td>NO</td>
                 <td>JENIS LUARAN</td>
                 <td>TARGET CAPAIAN</td>
-                <td>JURNAL/KONFERENS YANG DITUJU*)</td>
+                <td>JURNAL/KONFERENS <?=$tujuan ?></td>
             </tr>
             <?php $i = 1;
             foreach ($luaran as $key => $luar) : ?>
@@ -64,8 +64,8 @@
             endforeach ?>
         </table>
     </div>
-
-    <p>*) tentative</p>
+    
+    <p><?=$jenis ?></p>
 
 
 </body>
