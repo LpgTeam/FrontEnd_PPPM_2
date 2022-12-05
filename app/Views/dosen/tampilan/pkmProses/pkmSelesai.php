@@ -83,6 +83,9 @@
                         <div class="d-flex justify-content-between mt-3">
                             <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
                         </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
+                        </div>
 
                     </div>
                 </div>
