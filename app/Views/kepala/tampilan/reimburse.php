@@ -117,7 +117,7 @@
                                                         } else if ($post['id_status'] == 1) {
                                                             echo 'Reimbursement dalam proses';
                                                         } else if ($post['id_status'] == 2) {
-                                                            echo 'Dana telah dicairkan';
+                                                            echo 'Reimbursement telah dicairkan';
                                                         }
                                                         ?>
                                                     </td>

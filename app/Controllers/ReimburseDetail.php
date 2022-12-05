@@ -25,6 +25,7 @@ class ReimburseDetail extends BaseController
 
     public function savePenelitian($idpenelitian)
     {
+        // dd($idpenelitian);
         if (!$this->validate([
             'uploadLoa' => [
                 'rules' => 'uploaded[uploadLoa]|ext_in[uploadLoa,pdf]|max_size[uploadLoa,10000]',
@@ -84,7 +85,7 @@ class ReimburseDetail extends BaseController
         $naskah = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
         $invoice = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
         $formpublikasi = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
-        $total_biaya = $this->request->getVar('totalBiaya');
+        // $total_biaya = $this->request->getVar($dana_keluar);
 
         $this->reimburseModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
@@ -97,8 +98,7 @@ class ReimburseDetail extends BaseController
             'usulan_publikasi'  => $namaForm,
             'total_biaya'       => $this->request->getVar('totalBiaya'),
             'id_status'         => "1",
-            'status_reimburse'  => "Reimbursement diajukan",
-            'biaya_diajukan'    => $total_biaya
+            'status_reimburse'  => "Reimbursement diajukan"
         ]);
 
         $this->penelitianModel->save([
@@ -126,7 +126,7 @@ class ReimburseDetail extends BaseController
             'total_biaya'       => $this->request->getVar('totalBiaya'),
             'id_status'         => "1",
             'status_reimburse'  => "Reimbursement diajukan",
-            'biaya_diajukan'    => $total_biaya
+            // 'biaya_diajukan'    => $total_biaya
         ]);
 
         $this->pkmModel->save([

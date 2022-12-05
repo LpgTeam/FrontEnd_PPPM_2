@@ -354,7 +354,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen telah dicairkan');
+        session()->setFlashdata('pesan', 'Dana Reimbursement telah dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }
@@ -388,7 +388,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen telah dicairkan');
+        session()->setFlashdata('pesan', 'Dana Reimbursement telah dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }

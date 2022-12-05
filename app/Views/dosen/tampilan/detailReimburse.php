@@ -42,15 +42,13 @@
                         </p>
 
                         <hr>
-
+                        
                         <div class="d-flex justify-content-end">
-                            <!-- <a href="/penelitian/view_proposal/<?= $penelitian['id_penelitian']; ?>/<?= $penelitian['judul_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a> -->
-                            <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
+                           <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
                         </div>
                         <hr>
                         <?php
-
-                        if ($penelitian['id_status_reimburse'] == 0) {
+                            if ($penelitian['id_status_reimburse'] == 0) {
 
                         ?>
                             <form action="<?= base_url('/reimburseDetail/savePenelitian/' . $penelitian['id_penelitian']); ?>" method="post" enctype="multipart/form-data">
@@ -64,58 +62,54 @@
                                     </div>
                                 </div>
 
-                                    <div class="row mb-3">
-                                        <label for="naskah" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah">
-                                            <div class="invalid-feedback" id="uploadValid">
-                                                <?= $validation->getError('uploadNaskah'); ?>
-                                            </div>
+                                <div class="row mb-3">
+                                    <label for="naskah" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah">
+                                        <div class="invalid-feedback" id="uploadValid">
+                                            <?= $validation->getError('uploadNaskah'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="invoice" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice">
+                                        <div class="invalid-feedback" id="uploadValid">
+                                            <?= $validation->getError('uploadInvoice'); ?>
                                         </div>
                                     </div>
                                 </div>
 
-                                    <div class="row mb-3">
-                                        <label for="invoice" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice">
-                                            <div class="invalid-feedback" id="uploadValid">
-                                                <?= $validation->getError('uploadInvoice'); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label class="col-md-4 col-lg-3 col-form-label ">Form Usulan Publikasi</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <a href="<?= base_url('form_publikasi/printFormPublikasi') ?>" class="btn btn-primary">
-                                                Download Form Usulan Publikasi
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="formpublikasi" class="col-md-4 col-lg-3 col-form-label ">Upload Form Usulan Publikasi</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="uploadForm" class="form-control  <?= ($validation->hasError('uploadForm')) ? 'is-invalid' : ''; ?>" type="file" id="uploadForm">
-                                            <div class="invalid-feedback" id="uploadValid">
-                                                <?= $validation->getError('uploadForm'); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Total Biaya</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
-                                        </div>
-
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-3 col-form-label ">Template Usulan Publikasi</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <a href="<?= base_url('form_publikasi/printFormPublikasi') ?>" class="btn btn-primary">
+                                            Download Template Usulan Publikasi
+                                        </a>
                                     </div>
                                 </div>
+
+                                <div class="row mb-3">
+                                    <label for="formpublikasi" class="col-md-4 col-lg-3 col-form-label ">Upload Usulan Publikasi</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="uploadForm" class="form-control  <?= ($validation->hasError('uploadForm')) ? 'is-invalid' : ''; ?>" type="file" id="uploadForm">
+                                        <div class="invalid-feedback" id="uploadValid">
+                                            <?= $validation->getError('uploadForm'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="formpublikasi" class="col-md-4 col-lg-3 col-form-label ">Total Biaya</label>
+                                    <div class="col-md-8 col-lg-9">
+                                    <p>Rp <?= number_format($dana_keluar[0]['dana_keluar'], 0, ",", "."); ?></p>
+                                    </div>
+                                </div>
+                                <p>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_keluar[0]['dana_keluar'], 0, ",", "."); ?></p>
 
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
-
                                 </div>
                             </form>
 

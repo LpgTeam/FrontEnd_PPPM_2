@@ -30,6 +30,7 @@ class Dosen extends BaseController
     protected $timPKMModel;
     protected $pkmModel;
     protected $rincianModel;
+    // protected $danaPenelitianModel;
 
     public function __construct()
     {
@@ -43,6 +44,7 @@ class Dosen extends BaseController
         $this->reimburseModel = new ReimburseModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
 
     public function index()
@@ -699,27 +701,28 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
-            'pkm' => $this->pkmModel->get_pkm_done($user->nip, 7),
-
+            'pkm' => $this->pkmModel->get_pkm_done($user->nip, 7)
         ];
-
+        // dd($data);
         return view('dosen/tampilan/reimburse', $data);
     }
 
 
     public function detailReimburse($id_kegiatan)
     {
-
+        $id_penelitian = $this->penelitianModel->find($id_kegiatan);
+      // dd($id_penelitian['id_penelitian']);
         $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
+        'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_kegiatan),
+            'dana_keluar' => $this->danaPenelitianModel->get_dana_penelitian_by_idpenelitian($id_kegiatan),
             // 'kegiatan' => $kegiatan,
-            //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
+        //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
             // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
             // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
             'validation' => \Config\Services::validation()
         ];
-
+        // dd($data);
         return view('dosen/tampilan/detailReimburse', $data);
     }
 
@@ -731,6 +734,7 @@ class Dosen extends BaseController
             'pkm' => $this->pkmModel->find($id_kegiatan),
             'validation' => \Config\Services::validation()
         ];
+        // dd($data);
         return view('dosen/tampilan/detailReimburse2', $data);
     }
 }
