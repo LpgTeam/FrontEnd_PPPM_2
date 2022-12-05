@@ -7,7 +7,7 @@ use CodeIgniter\I18n\Time;
 
 class PenelitianDosen extends Seeder
 {
-    public function run() 
+    public function run()
     {
         $db      = \Config\Database::connect();
 
@@ -43,6 +43,7 @@ class PenelitianDosen extends Seeder
                 'tanda_tangan' => $faker->randomElement($array = array('default_ttd.jpg')),
                 'biaya' => $faker->numberBetween($min = 1000000, $max = 30000000),
                 'alasan' => $faker->randomElement($array = array('-')),
+                'id_status_reimburse' => $faker->numberBetween($min = 0, $max = 2),
             ];
 
             //fill desc by id status (table penelitian)
@@ -122,6 +123,7 @@ class PenelitianDosen extends Seeder
                 'jenis_luaran'      =>  $faker->randomElement($array = array('Artikel pada jurnal nasional terakreditasi', 'Artikel pada prosiding terindeks scopus', 'Buku Cetak Hasil Penelitian ', 'Buku Elektronik Hasil Penelitian ')),
                 'target_capaian'    =>  $faker->randomElement($array = array('accepted', 'published')),
                 'jurnal_tujuan'     =>  $faker->randomElement($array = array('Media Statistika (Terakreditasi Sinta 2)', 'INDONESIAN JOURNAL OF SCIENCE AND TECHNOLOGY', 'INDONESIAN JOURNAL OF ELECTRICAL ENGINEERING AND COMPUTER SCIENCE', 'GADJAH MADA INTERNATIONAL JOURNAL OF BUSINESS (GAMAIJB)', 'JOURNAL ON MATHEMATICS EDUCATION', 'Indonesian Journal of Science and Technology', 'Journal of Mathematical and Fundamental Sciences', 'Asian Journal of Information Technology', 'Research Journal of Applied Sciences', 'International Journal of Computer Applications in Technology')),
+                'index_jurnal_tujuan'     =>  'Sinta ' . $faker->randomElement($array = array('1', '2', '3', '4', '5', '6')),
             ];
             $this->db->table('target_penelitian')->insert($data_target_penelitian);
 

@@ -36,7 +36,7 @@ class TimPeneliti extends Migration
 
             'programStudi' => [
                 'type' => 'VARCHAR',
-                'constraint' => 10,
+                'constraint' => 100,
                 'null' => false
             ],
 
