@@ -115,9 +115,14 @@ class PkmModel extends Model
         $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->findAll();
        
         $total_pengajuan = 0;
-        foreach($pengajuan as $data_pengajuan){
-            $total_pengajuan = $total_pengajuan + $data_pengajuan['pembiayaan_diajukan'];
+        if(!$pengajuan==null){
+            foreach($pengajuan as $data_pengajuan){
+                $total_pengajuan = $total_pengajuan + $data_pengajuan['pembiayaan_diajukan'];
+            }
         }
+        // foreach($pengajuan as $data_pengajuan){
+        //     $total_pengajuan = $total_pengajuan + $data_pengajuan['pembiayaan_diajukan'];
+        // }
         return $total_pengajuan;
     }
     //Jumlah Data PKM

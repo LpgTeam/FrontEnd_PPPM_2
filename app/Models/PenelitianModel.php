@@ -111,12 +111,19 @@ class PenelitianModel extends Model
         $where2 = "id_status='5' OR id_status='6' OR id_status='10'";
        
         $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
-       
         $total_pengajuan = 0;
-        foreach($pengajuan as $data_pengajuan){
-            $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
-        }
-        return $total_pengajuan;
+        if (!$pengajuan == null){
+            $total_pengajuan = 0;
+            foreach($pengajuan as $data_pengajuan){
+                $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+            }
+       } 
+       return $total_pengajuan;
+        // $total_pengajuan = 0;
+        // foreach($pengajuan as $data_pengajuan){
+        //     $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+        // }
+        // return $total_pengajuan;
       
     }
 
