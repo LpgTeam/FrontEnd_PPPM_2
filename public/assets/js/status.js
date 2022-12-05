@@ -182,7 +182,7 @@ if (jenis == "Semi Mandiri") {
         list.innerHTML += status11;
     }
     
-} else if (jenis == "Di Danai Institusi" || jenis == "Institusi"){
+} else if (jenis == "Didanai Institusi" || jenis == "Institusi"){
     if (status == 1){
         list.innerHTML += status1 ;}
     else if (status == 2){
@@ -224,6 +224,7 @@ if (jenis == "Semi Mandiri") {
         list.innerHTML += tanda ;
     }
 
+console.log(status);
 
 }
 
