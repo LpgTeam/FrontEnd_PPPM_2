@@ -229,7 +229,7 @@ class Dosen extends BaseController
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
-            'danaTersedia'      => $sisaAnggaran - $danaDiajukan
+            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
        ];
     
        return view('dosen/tampilan/anggaran', $data);
@@ -747,7 +747,7 @@ class Dosen extends BaseController
     public function detailReimburse2($id_kegiatan)
     {
         $kegiatan_pkm = $this->danaPKMModel->get_dana_by_id($id_kegiatan);
-       // dd($kegiatan_pkm[0]['dana_keluar']);
+
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,

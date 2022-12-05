@@ -15,7 +15,7 @@ class SuratKeteranganPkmModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id','no_surat','id_pkm' , 'created_at'
+        'id', 'no_surat', 'id_pkm', 'created_at'
     ];
 
     // Dates
@@ -41,4 +41,9 @@ class SuratKeteranganPkmModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_by_id_pkm($idpkm)
+    {
+        return $this->where(['id_pkm' => $idpkm])->findAll();
+    }
 }

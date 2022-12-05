@@ -111,7 +111,7 @@
                                         ?>
                                             <li><a class="nav-link scrollto" href="/reimburseDirektur">Kembali</a></li>
                                             <li class="dropdown">
-                                                <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                                <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                 <ul>
                                                 <?php
                                             }

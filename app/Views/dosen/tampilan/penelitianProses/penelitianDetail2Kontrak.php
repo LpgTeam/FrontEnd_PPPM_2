@@ -47,7 +47,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Kontrak</h3>
                             <p>
-                                Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
+                                Persetujuan kontrak antara pihak dosen dengan pihak Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>
@@ -80,6 +80,7 @@
 
             <div class="row" data-aos="fade-up">
                 <div class="col-lg-6">
+
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Kontrak</h5>
@@ -124,40 +125,41 @@
 
                         <!-- <h5 class="card-title text-center">Upload Kontrak</h5>
                         <hr> -->
-                        <h6 class="card-title text-center">Anda Sudah Upload Kontrak!!</h6>
+                        <h6 class="card-title text-center">Anda Sudah Upload Kontrak</h6>
 
                     <?php
                             }
                     ?>
                     </div>
                 </div>
-                <script>
-                    function submitForm(form) {
-                        swal({
-                                title: "Apakah Anda Yakin??",
-                                text: "Dokumen ini akan di upload",
-                                buttons: true,
-                            })
-                            .then(function(isOkay) {
-                                if (isOkay) {
-                                    form.submit();
-                                }
-                            });
-                        return false;
-                    }
-                </script>
+            </div>
+            <script>
+                function submitForm(form) {
+                    swal({
+                            title: "Apakah Anda Yakin??",
+                            text: "Dokumen ini akan di upload",
+                            buttons: true,
+                        })
+                        .then(function(isOkay) {
+                            if (isOkay) {
+                                form.submit();
+                            }
+                        });
+                    return false;
+                }
+            </script>
 
 
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Section: Timeline -->
-                            <ul class="timeline-with-icons" id="list">
-                            </ul>
-                            <ul class="timeline-with-icons" id="keterangan">
-                            </ul>
-                        </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Section: Timeline -->
+                        <ul class="timeline-with-icons" id="list">
+                        </ul>
+                        <ul class="timeline-with-icons" id="keterangan">
+                        </ul>
                     </div>
+                </div>
             </div>
 
         </div>

@@ -34,6 +34,7 @@ class BAU extends BaseController
         $this->anggaranTotalModel = new AnggaranTotalModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
         $this->danaPKMModel = new DanaPKMModel();
+        
     }
 
     public function index()
@@ -112,6 +113,7 @@ class BAU extends BaseController
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
+      
        // dd($sisaAnggaran['sisa_anggaran']);
         
         // if($penelitianDiajukan || $pkmDiajukan || $danaDiajukan || $sisaAnggaran != null){
@@ -136,7 +138,7 @@ class BAU extends BaseController
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
-            'danaTersedia'      => $sisaAnggaran - $danaDiajukan
+            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
        ];
       
        return view('bau/tampilan/anggaran', $data);
@@ -145,17 +147,30 @@ class BAU extends BaseController
 
     public function updateAnggaran()
     {
-        $dana_awal = new AnggaranAwalModel();
 
         //current year
         $year = date("Y");
 
-        $update_dana = [
+        $this->anggaranAwalModel->save([
             'tahun_anggaran'  => $year,
             'jumlah'          => $this->request->getVar('danaBaru')
-        ];
+        ]);
 
-        $update = $dana_awal->save($update_dana);
+        $anggaranTotalTerakhir = $this->anggaranTotalModel->get_sisa_terakhir();
+        if($anggaranTotalTerakhir == 0){
+            $this->anggaranTotalModel->save([
+                'tahun'         => $year,
+                'dana_keluar'   => 0,
+                'sisa_anggaran' => $this->request->getVar('danaBaru')
+            ]);
+        } else {
+            $this->anggaranTotalModel->save([
+                'tahun'         => $year,
+                'dana_keluar'   => $this->anggaranTotalModel->get_dana_keluar_terakhir($year),
+                'sisa_anggaran' => $this->request->getVar('danaBaru') - $anggaranTotalTerakhir['sisa_anggaran']
+            ]);
+        }
+
         return redirect()->to('/anggaranBAU');
     }
     //=======================Penelitian================================

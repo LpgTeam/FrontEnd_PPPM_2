@@ -74,10 +74,10 @@
                                         </div>
                                     <?php } elseif ($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9) { ?>
                                         <hr>
-                                        <h6 class="card-title text-center">Penelitian Tidak Disetujui!</h6>
+                                        <h6 class="card-title text-center">Penelitian Tidak Disetujui</h6>
                                     <?php } else { ?>
                                         <hr>
-                                        <h6 class="card-title text-center">Penelitian Sudah Disetujui!</h6>
+                                        <h6 class="card-title text-center">Penelitian Sudah Disetujui</h6>
                                 <?php }
                                 } ?>
                             </div>

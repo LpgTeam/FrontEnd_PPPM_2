@@ -63,4 +63,9 @@ class AnggaranTotalModel extends Model
         }
         return $total;
     }
+
+    public function get_dana_keluar_terakhir($year){
+        $anggaran = $this->orderBy('id_total', 'DESC')->first();
+        return $anggaran['dana_keluar'];
+    }
 }

@@ -18,12 +18,6 @@ foreach ($peneliti as $key => $anggota) : ?>
                 margin: 8em;
             }
 
-            body {
-                text-align: justify;
-                line-height: 16px;
-                margin: 40px;
-            }
-
             body h2 {
                 font-size: 20px;
                 font-weight: 700;
@@ -50,6 +44,9 @@ foreach ($peneliti as $key => $anggota) : ?>
                 line-height: 32px;
                 font-size: 16px;
                 margin: 40px;
+
+                counter-increment: pageplus1, page;
+                counter-reset: pageplus1 1;
             }
 
             .ttd1 td,
@@ -79,12 +76,27 @@ foreach ($peneliti as $key => $anggota) : ?>
             table {
                 width: 100%;
             }
+
+            #footer {
+                position: fixed;
+                left: 20px;
+                bottom: 0;
+                text-align: center;
+            }
+
+            #footer .page:after {
+                content: counter(page);
+            }
+
+            #footer .pageplus1:after {
+                content: counter(pageplus1);
+            }
         </style>
     </head>
 
     <body style="margin-top: 0;">
         <!-- KOP Surat -->
-        <div >
+        <div>
             <table>
                 <tr>
                     <td width="20%"> <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100"></td>
@@ -102,14 +114,14 @@ foreach ($peneliti as $key => $anggota) : ?>
                 SURAT KETERANGAN
             </u>
             <p style="margin-top : 0; ">Nomor : <?= $no_surat[$i]['no_surat'];
-                        $i++; ?> </p>
+                                                $i++; ?> </p>
         </div>
 
         <p>Yang bertanda tangan di bawah ini : </p>
         <p class="text-center"><b>KEPALA PUSAT PENELITIAN DAN PENGABDIAN MASYARAKAT
                 POLITEKNIK STATISTIKA STIS</b></p>
         <p style="margin-bottom : 0; margin-top:0;">Memberikan keterangan bahwa : </p>
-        <table >
+        <table>
             <tr>
                 <td width="40%">Nama</td>
                 <td>: <?= $anggota['nama'] ?></td>
@@ -142,11 +154,11 @@ foreach ($peneliti as $key => $anggota) : ?>
 
             <tr>
                 <td width="40%">Waktu Pelaksanaan</td>
-                <td>: <?= date('d F Y',strtotime($pkm['waktu_kegiatan'])); ?> </td>
+                <td>: <?= date('d F Y', strtotime($pkm['waktu_kegiatan'])); ?> </td>
             </tr>
         </table>
         <br>
-        <div class="text-center" >
+        <div class="text-center">
             <table class="ttd1">
                 <tr>
                     <td width="25%"></td>
@@ -188,6 +200,9 @@ foreach ($peneliti as $key => $anggota) : ?>
                 </tr>
             </table>
 
+        </div>
+        <div id="footer">
+            <p class="page"></p>
         </div>
         <!-- </div> -->
     </body>

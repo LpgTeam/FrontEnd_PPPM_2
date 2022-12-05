@@ -33,7 +33,7 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
+                        <h5 class="card-title text-center">Reimbursemen PKM</h5>
                         <hr>
                         <p>Proposal reimbursement PKM yang diajukan Dosen
                             Politeknik Statistika STIS
