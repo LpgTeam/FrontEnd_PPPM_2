@@ -135,7 +135,7 @@
                             ?>
                                 <!-- <h5 class="card-title text-center">Bukti Kegiatan</h5> -->
                                 <!-- <hr> -->
-                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Kegiatan!!</h6>
+                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Kegiatan</h6>
                             <?php
                             }
                             ?>

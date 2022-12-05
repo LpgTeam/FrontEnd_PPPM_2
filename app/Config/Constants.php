@@ -1,6 +1,7 @@
 <?php
 
 define('nipDosen', '196805031991011001');
+// define('nipDosen', '197907312000122001');
 define('nipDirektur', '196710221990032002');
 define('nipKepalaPPPM', '198512222009021002');
 define('nipBAU', '198804052010122001');

@@ -53,7 +53,7 @@
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Kontrak</h3>
                                 <p>
-                                    Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
+                                    Persetujuan kontrak antara pihak dosen dengan pihak Politeknik Statistika STIS
                                 </p>
                             </div>
                         </div>

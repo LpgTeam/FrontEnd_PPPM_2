@@ -35,9 +35,9 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
+                        <h5 class="card-title text-center">Reimbursemen Penelitian</h5>
                         <hr>
-                        <p>Proposal reimbursemen penelitian yang diajukan dosen
+                        <p>Reimbursemen penelitian yang diajukan dosen
                             Politeknik Statistika STIS
                         </p>
 
@@ -86,7 +86,7 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-md-4 col-lg-3 col-form-label ">Tamplate Form Usulan Publikasi</label>
+                                    <label class="col-md-4 col-lg-3 col-form-label ">Template Form Usulan Publikasi</label>
                                     <div class="col-md-8 col-lg-9">
                                         <a href="<?= base_url('reimburseDetail/printFormPublikasi') ?>" class="btn btn-warning">
                                             Download Form

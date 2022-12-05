@@ -92,6 +92,7 @@ class PenelitianDosen extends Seeder
             // fill table laporan penelitian
             if (($data['jenis_penelitian'] == 'Semi Mandiri') || ($data['jenis_penelitian'] == 'Didanai Institusi') || ($data['jenis_penelitian'] == 'Institusi')) {
                 $file_kontrak = null;
+                // $file_publikasi = null;
                 $file_laporan_dana = null;
 
                 if ($data['id_status'] == 6) {
@@ -105,14 +106,16 @@ class PenelitianDosen extends Seeder
                 $file_laporan_luaran = null;
                 if ($data['id_status'] == 10) {
                     $file_laporan_luaran = 'default_laporan_luaran.pdf';
+                    // $file_publikasi = 'default_publikasi.pdf';
                 }
 
                 $data_laporan_penelitian = [
                     'id_penelitian'     =>  $data['id_penelitian'],
                     'kontrak'           =>  $file_kontrak,
                     'laporan_luaran'    =>  $file_laporan_luaran,
-                    'laporan_dana'      =>  $file_laporan_dana,
-                    'status_penelitian' =>  strval($data['id_status']),
+                    'laporan_dana'              =>  $file_laporan_dana,
+                    // 'form_usulan_publikasi'     =>  $file_publikasi,
+                    'status_penelitian'         =>  strval($data['id_status']),
                 ];
                 $this->db->table('laporan_penelitian')->insert($data_laporan_penelitian);
             }

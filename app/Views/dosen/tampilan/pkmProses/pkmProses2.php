@@ -109,7 +109,7 @@
                             ?>
                                 <!-- <h5 class="card-title text-center">Surat Pernyataan</h5>
                                 <hr> -->
-                                <h6 class="card-title text-center">Anda Sudah Upload Surat Pernyataan!!</h6>
+                                <h6 class="card-title text-center">Anda Sudah Upload Surat Pernyataan</h6>
                             <?php
                             }
                             ?>

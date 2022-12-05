@@ -120,4 +120,9 @@ class PkmModel extends Model
         }
         return $total_pengajuan;
     }
+    //Jumlah Data PKM
+    public function get_row(){
+        $builder = $this->db->table('pengajuan_pkm');
+        return $builder->countAll();
+    }
 }

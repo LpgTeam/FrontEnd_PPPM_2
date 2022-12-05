@@ -58,7 +58,7 @@
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Kontrak</h3>
                                 <p>
-                                    Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
+                                    Persetujuan kontrak antara pihak dosen dengan pihak Politeknik Statistika STIS
                                 </p>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                             </p>
                             <hr>
                             <?php
-                            if ($laporan['laporan_luaran'] == null) {
+                            if (!$laporan['laporan_luaran'] == null) {
                             ?>
                                 <form action="<?= base_url('/penelitianDetail/saveLaporan/' . $penelitian['id_penelitian']); ?>" onsubmit="return submitForm(this)" method="post" enctype="multipart/form-data">
                                     <div class="row mb-3">
@@ -166,7 +166,7 @@
                             ?>
                                 <!-- <h5 class="card-title text-center">Upload Bukti Luaran</h5>
                                 <hr> -->
-                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Luaran!!</h6>
+                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Luaran</h6>
                             <?php
                             }
                             ?>

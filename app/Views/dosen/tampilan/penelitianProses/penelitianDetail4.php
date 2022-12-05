@@ -53,7 +53,7 @@
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Kontrak</h3>
                                 <p>
-                                    Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
+                                    Persetujuan kontrak antara pihak dosen dengan pihak Politeknik Statistika STIS
                                 </p>
                             </div>
                         </div>
@@ -99,6 +99,9 @@
                                     <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning">Download Memo Kepala PPPM</a>
                                 <?php endif; ?>
                                 <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporan </a>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning">Download Memo Kepala PPPM</a>
                             </div>
                         </div>
                     </div>
