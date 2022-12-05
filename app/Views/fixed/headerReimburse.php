@@ -71,10 +71,10 @@
                     <li><a class="nav-link scrollto" href="/reimburseDosen">Kembali</a></li>
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
-                        <ul>
+                        <!-- <ul>
                             <li><a href="/logout">Logout</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                         <?php
                     }
                         ?>
@@ -87,9 +87,9 @@
                             <li class="dropdown">
                                 <a class="username scrollto" href="#"><span>Admin</span></a>
                                 <ul>
-                                    <li><a href="/logout">Logout</a></li>
+                                    <!-- <li><a href="/logout">Logout</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                                 <?php
                             }
                                 ?>
@@ -102,9 +102,9 @@
                                     <li class="dropdown">
                                         <a class="username scrollto" href="#"><span>Reviewer</span></a>
                                         <ul>
-                                            <li><a href="/logout">Logout</a></li>
+                                            <!-- <li><a href="/logout">Logout</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                         <?php
                                     }
                                         ?>
@@ -116,9 +116,9 @@
                                             <li class="dropdown">
                                                 <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
                                                 <ul>
-                                                    <li><a href="/logout">Logout</a></li>
+                                                    <!-- <li><a href="/logout">Logout</a></li>
                                                 </ul>
-                                            </li>
+                                            </li> -->
                                                 <?php
                                             }
                                                 ?>
@@ -130,9 +130,9 @@
                                                     <li class="dropdown">
                                                         <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                         <ul>
-                                                            <li><a href="/logout">Logout</a></li>
+                                                            <!-- <li><a href="/logout">Logout</a></li>
                                                         </ul>
-                                                    </li>
+                                                    </li> -->
                                                         <?php
                                                     }
                                                         ?>
