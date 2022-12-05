@@ -314,6 +314,7 @@ $routes->get('/penelitian/download_laporan_proposal/(:any)/(:any)', 'ProposalPen
 //============================download pkm===================================
 //form pengajuan
 $routes->get('/pkm/download-proposal/(:any)', 'ProposalPKM::download_proposal/$1');
+$routes->get('/pkm/download-laporan/(:any)', 'ProposalPKM::download_laporan/$1');
 $routes->get('/pkm/download-surat-keterangan/(:any)', 'ProposalPKM::download_surat_keterangan/$1');
 //surat pernyataan pkm
 $routes->get('/pkm/printSurat', 'PKM::printSurat');

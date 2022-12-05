@@ -58,8 +58,12 @@
 
                                 <div class="col-md-8 col-lg-4">
                                     <select class="form-select status-dropdown2 ">
-                                        <option value="">Semua</option>=
+                                        <option value="">Semua</option>
+                                        <option value="Diajukan oleh Dosen">Diajukan oleh Dosen</option>
                                         <option value="Disetujui oleh BAU">Disetujui oleh BAU</option>
+                                        <option value="Disetujui Oleh Kepala PPPM">Disetujui Oleh Kepala PPPM</option>
+                                        <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
+                                        <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
                                     </select>
                                 </div>
                             </div>
@@ -108,7 +112,9 @@
                         <script>
                             $(document).ready(function() {
                                 dataTable = $("#example").DataTable({
-                                    order: [[2, 'desc']],
+                                    order: [
+                                        [2, 'desc']
+                                    ],
                                 });
 
                                 $('.status-dropdown').on('change', function(e) {

@@ -19,8 +19,8 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen PKM yang diajukan oleh dosen
-                                oleh Direktur Politeknik Statistika STIS
+                                Reimbursemen penelitian yang diajukan oleh Dosen
+                                Politeknik Statistika STIS
                             </p>
                         </div>
                     </div>
@@ -46,32 +46,31 @@
                         </div>
                         <hr>
 
-                        <?php 
-                            if($pkm['id_status_reimburse'] == 0){
-                        ?>
-                        <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
-                            <div class="row mb-3">
-                                <label for="totalBiaya" class="col-md-4 col-lg-3 col-form-label">Total Biaya</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#submit">Ajukan Reimburse </button>
-                            </div>
-                        </form>
                         <?php
-                        } else if($pkm['id_status_reimburse'] == 1){
+                        if ($pkm['id_status_reimburse'] == 0) {
                         ?>
-                        <h5 class="card-title text-center">Pengajuan Reimburse Anda Sedang dalam Proses</h5>
+                            <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
+                                <div class="row mb-3">
+                                    <label for="totalBiaya" class="col-md-4 col-lg-3 col-form-label">Total Biaya</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
+                                </div>
+                            </form>
+                        <?php
+                        } else if ($pkm['id_status_reimburse'] == 1) {
+                        ?>
+                            <h5 class="card-title text-center">Pengajuan Reimburse Anda Sedang dalam Proses</h5>
 
                         <?php
-                        } else if($pkm['id_status_reimburse'] == 2){
+                        } else if ($pkm['id_status_reimburse'] == 2) {
                         ?>
-                        <h5 class="card-title text-center">Dana Reimburse Anda Sudah Dicairkan</h5>
-                        <hr>
-                        <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
+                            <h5 class="card-title text-center">Dana Reimburse Anda Sudah Dicairkan</h5>
+                            <hr>
+                            <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
                         <?php
                         }
                         ?>

@@ -65,7 +65,7 @@
 
                                 <?php if ($penelitian['id_status'] < 3) { ?>
                                     <hr>
-                                    <h6 class="card-title text-center">Menunggu Persetujuan Reviewer</h6>
+                                    <h6 class="card-title text-center">Menunggu Persetujuan BAU</h6>
                                     <?php } else {
                                     if ($penelitian['id_status'] == 3) { ?>
                                         <div class="d-flex justify-content-end">

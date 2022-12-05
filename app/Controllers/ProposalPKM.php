@@ -75,4 +75,28 @@ class ProposalPKM extends BaseController
         $html = view('proposal/PKM/Surat_Keterangan', $dataPkm);
         $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
+
+    public function download_laporan($idpkm)
+    {
+        $Pdfgenerator = new Pdfgenerator();
+
+        $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($idpkm);
+        // dd($timpkm);
+        $dataPenelitian = [
+            'pkm'    => $this->pkmModel->find($idpkm),
+            'timpkm'   => $timpkm,
+            'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($idpkm),
+            'timpkm'   => $this->timpkmModel->get_timpkm_byid($idpkm),
+            'biaya' => $this->biayaModel->find_by_idpkm($idpkm)
+        ];
+        // dd($dataPenelitian);
+        // dd($dataPenelitian['timpeneliti']);
+
+        $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['pkm']['topik_kegiatan'];
+        $paper = 'A4';
+        $orientation = "portrait";
+        $html = view('proposal/pkm/all_pkm_proposal', $dataPenelitian);
+        // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
+        $hasil = $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
 }

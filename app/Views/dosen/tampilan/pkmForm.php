@@ -55,6 +55,12 @@
                                 <input name="pangkat" type="text" class="form-control" id="pangkat" value="<?= old("pangkat") ?>" required>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="bidang" class="col-md-4 col-lg-3 col-form-label">Bidang Keahlian</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="bidang" type="text" class="form-control" id="bidang" value="<?= old("bidang") ?>" required>
+                            </div>
+                        </div>
 
                         <hr>
                         <div class="row mb-3">
@@ -162,8 +168,6 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php else : ?>
-                            <input class="form-control" id="hasil" name="hasil" rows="3" value="-" hidden></input>
                         <?php endif; ?>
 
                         <div class="row mb-3">
@@ -173,6 +177,8 @@
                                         <th scope="col">Nama Anggota</th>
                                         <th scope="col">NIP</th>
                                         <th scope="col">Pangkat/Golongan</th>
+                                        <th scope="col">Bidang Keahlian</th>
+                                        <th scope="col">Tugas/Peran</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                     <tbody>
@@ -225,7 +231,7 @@
                                 var rowCount = document.getElementById('myTableID').rows.length;
                                 if (x > rowCount - 1) {
                                     m.style.display = 'none';
-                                    $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nipAnggota" + rowCount + "' class='form-control' type='text' id='nipAnggota" + rowCount + "' required></td><td><input name='pangkatAnggota" + rowCount + "' class='form-control' type='text' id='pangkatAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
+                                    $(".table1").append("<tr><td><input name='namaAnggota" + rowCount + "' class='form-control' type='text' id='namaAnggota" + rowCount + "' required></td><td><input name='nipAnggota" + rowCount + "' class='form-control' type='text' id='nipAnggota" + rowCount + "' required></td><td><input name='pangkatAnggota" + rowCount + "' class='form-control' type='text' id='pangkatAnggota" + rowCount + "' required></td><td><input name='bidangAnggota" + rowCount + "' class='form-control' type='text' id='bidangAnggota" + rowCount + "' required></td><td><input name='peranAnggota" + rowCount + "' class='form-control' type='text' id='peranAnggota" + rowCount + "' required></td><td><button onclick='rm()' class='btn btn-danger'>Hapus</button></td></tr>");
                                     console.log(rowCount);
                                 } else {
                                     m.style.display = "block";
