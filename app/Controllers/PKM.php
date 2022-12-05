@@ -53,6 +53,7 @@ class PKM extends BaseController
 
     public function save()
     {
+        // dd($this->request->getVar('hasil'));
         $jenisPKM = $this->request->getVar('jenis_pkm');
         //================================save PKM=================================    
         ///=====================Waktu========================
@@ -166,6 +167,7 @@ class PKM extends BaseController
             'nama' => $nipdosen['nama_dosen'],
             'nip' => $nipdosen['NIP_dosen'],
             'pangkat' => $this->request->getVar('pangkat'),
+            'bidang_keahlian' => $this->request->getVar('bidang'),
             'peran'         => "Ketua PKM"
         ]);
         $no = $this->request->getVar('anggota');
@@ -175,7 +177,8 @@ class PKM extends BaseController
                 'nama' => $this->request->getVar('namaAnggota' . $i),
                 'nip' => $this->request->getVar('nipAnggota' . $i),
                 'pangkat' => $this->request->getVar('pangkatAnggota' . $i),
-                'peran'         => "Anggota" . $i,
+                'bidang_keahlian' => $this->request->getVar('bidangAnggota' . $i),
+                'peran'         => $this->request->getVar('peranAnggota' . $i),
             ]);
         };
 

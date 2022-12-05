@@ -57,7 +57,7 @@ class Penelitian extends BaseController
     public function save()
     {
         // //validasi input
-        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+        
         // dd($nipdosen);
         $jenisPenelitian = $this->request->getVar('jenis_penelitian');
         // dd($jenisPenelitian);
@@ -183,7 +183,7 @@ class Penelitian extends BaseController
         ]);
 
         $idpenelitian = $this->penelitianModel->get_id_penelitian($this->request->getVar('judul_penelitian'));
-        // dd($this->request->getVar('judul_penelitian'));
+        // dd($jenisPenelitian);
         // dd($idpenelitian);
         //Status 
         $this->statusPenelitianModel->save([
@@ -193,7 +193,7 @@ class Penelitian extends BaseController
 
         // dd($idpenelitian);
         // $nipdosen = $this->dosenModel->get_nip_peneliti($this->request->getVar('nip'));
-        // $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
         // dd($nipdosen);
 
         $this->ketuatimpenelitiModel->save([

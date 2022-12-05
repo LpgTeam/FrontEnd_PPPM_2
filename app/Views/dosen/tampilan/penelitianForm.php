@@ -344,8 +344,8 @@
                                     ke file surat pernyataan pada proposal</p>
                                 <div class="input-group mb-3">
                                     <div class="input-group-text">
-                                        <input id="agree" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-                                        <label>&nbspSetuju</label>
+                                        <input id="agree" name="agree" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                        <label for="agree">&nbspSetuju</label>
                                     </div>
                                 </div>
                             </div>
