@@ -41,37 +41,22 @@
                             Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
-                            <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat
-                                Formulir Pengajuan </a>
+                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat
+                                Laporan Pengajuan </a>
                         </div>
                         <hr>
-
-                        <div class="row mb-3">
-                            <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Total Biaya</label>
-                            <div class="col-md-8 col-lg-9">
-                                <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
-                            </div>
-                        </div>
                         <?php 
-                            if($pkm['id_status_reimburse'] == 0){
-                        ?>
-                        <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
-                            </div>
-                        </form>
-                        <?php
-                        } if ($pkm['id_status_reimburse'] == 0) {
+                            if ($pkm['id_status_reimburse'] == 0) {
                         ?>
                             <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
                                 <div class="row mb-3">
-                                    <label for="totalBiaya" class="col-md-4 col-lg-3 col-form-label">Total Biaya</label>
+                                    <label for="biaya" class="col-md-4 col-lg-3 col-form-label ">Total Biaya</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="totalBiaya" type="text" class="form-control" id="totalBiaya">
+                                        <p>Rp <?= number_format($dana_keluar[0]['dana_keluar'], 0, ",", "."); ?></p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
+                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimbursement </button>
                                 </div>
                             </form>
                         <?php

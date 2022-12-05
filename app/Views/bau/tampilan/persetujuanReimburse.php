@@ -42,25 +42,7 @@
                             <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['total_biaya'], 0, ",", "."); ?></li>
                         </ol>
                         <hr>
-
-                        <div class="d-flex justify-content-end">
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loa">LOA</button>
-                            </div>
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#naskah">Naskah Artikel</button>
-                            </div>
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#invoice">Invoice</button>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end mt-3">
-                            <div class="text-end" style="margin-right: 10px">
-                                <a href="/penelitian/download-proposal-akhir/<?= $reimburse['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
-                                <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button> -->
-                            </div>
-                        </div>
+                        <?= $this->include('bau/tampilan/download_reimburse'); ?>
                     </div>
                 </div>
                 <?php
@@ -80,7 +62,7 @@
                                 <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
                                 </label>
                                 <div class="col-md-8 col-lg-9">
-                                    <?php echo 'Rp ',  number_format($reimburse['biaya_diajukan'], 0, ",", "."); ?>
+                                    <?php echo 'Rp ',  number_format($reimburse['total_biaya'], 0, ",", "."); ?>
                                 </div>
                             </div>
                             <form action="<?= base_url('/acc-reimburseBAU/' . $reimburse['id_reimburse']); ?>" method="post">
@@ -104,9 +86,9 @@
                     <div class="main-timeline">
                         <div class="timeline">
                             <a href="#" class="timeline-content">
-                                <div class="timeline-year">Reimbursemen</div>
+                                <div class="timeline-year">Reimbursement</div>
                                 <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
-                                <h3 class="title">Dana Reimbursemen Sudah Dicairkan</h3>
+                                <h3 class="title">Dana Reimbursement Sudah Dicairkan</h3>
                             </a>
                         </div>
                     </div>
@@ -120,7 +102,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Pencairan Dana Reimburse</h1>
+                <h1 class="modal-title fs-5" id="submitLabel">Pencairan Dana Reimbursement</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

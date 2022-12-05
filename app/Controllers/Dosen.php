@@ -30,7 +30,8 @@ class Dosen extends BaseController
     protected $timPKMModel;
     protected $pkmModel;
     protected $rincianModel;
-    // protected $danaPenelitianModel;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
 
     public function __construct()
     {
@@ -45,6 +46,7 @@ class Dosen extends BaseController
         $this->anggaranAwalModel = new AnggaranAwalModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
         $this->danaPenelitianModel = new DanaPenelitianModel();
+        $this->danaPKMModel = new DanaPKMModel();
     }
 
     public function index()
@@ -710,16 +712,11 @@ class Dosen extends BaseController
 
     public function detailReimburse($id_kegiatan)
     {
-        $id_penelitian = $this->penelitianModel->find($id_kegiatan);
-      // dd($id_penelitian['id_penelitian']);
         $data = [
-        'title' => 'PPPM Politeknik Statistika STIS',
+            'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_kegiatan),
             'dana_keluar' => $this->danaPenelitianModel->get_dana_penelitian_by_idpenelitian($id_kegiatan),
             // 'kegiatan' => $kegiatan,
-        //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
-            // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-            // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
             'validation' => \Config\Services::validation()
         ];
         // dd($data);
@@ -732,6 +729,7 @@ class Dosen extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,
             'pkm' => $this->pkmModel->find($id_kegiatan),
+            'dana_keluar' => $this->danaPKMModel->get_dana_pkm_by_idpkm($id_kegiatan),
             'validation' => \Config\Services::validation()
         ];
         // dd($data);

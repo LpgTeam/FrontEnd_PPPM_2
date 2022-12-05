@@ -1,6 +1,6 @@
-<!-- ======= Header Penelitian ======= -->
+<!-- ======= Header Reimburse ======= -->
 <header id="header" class="header fixed-top">
-    <!-- Header Dosen Penelitian -->
+    <!-- Header Dosen Reimburse -->
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <!-- Logo Dosen -->
         <a href="/indexDosen" class="logo d-flex align-items-center">
@@ -62,6 +62,7 @@
                 </div>
             </span>
         </a> -->
+
         <nav id="navbar" class="navbar">
             <ul>
                 <!-- Dosen -->
@@ -71,8 +72,8 @@
                     <li><a class="nav-link scrollto" href="/reimburseDosen">Kembali</a></li>
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
-                        <!-- <ul>
-                            <li><a href="/logout">Logout</a></li>
+                        <ul>
+                            <!-- <li><a href="/login">Logout</a></li>
                         </ul>
                     </li> -->
                         <?php
@@ -87,9 +88,9 @@
                             <li class="dropdown">
                                 <a class="username scrollto" href="#"><span>Admin</span></a>
                                 <ul>
-                                    <!-- <li><a href="/logout">Logout</a></li>
-                                </ul>
-                            </li> -->
+                                    <!-- <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li> -->
                                 <?php
                             }
                                 ?>
@@ -102,9 +103,9 @@
                                     <li class="dropdown">
                                         <a class="username scrollto" href="#"><span>Reviewer</span></a>
                                         <ul>
-                                            <!-- <li><a href="/logout">Logout</a></li>
-                                        </ul>
-                                    </li> -->
+                                            <!-- <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li> -->
                                         <?php
                                     }
                                         ?>
@@ -112,13 +113,13 @@
                                         <?php
                                         if ($_SESSION['group'] == "kepalapppm") {
                                         ?>
-                                            <li><a class="nav-link scrollto" href="/reimburseKepala">Kembali</a></li>
+                                            <li><a class="nav-link scrollto" href="/reimbursenKepala">Kembali</a></li>
                                             <li class="dropdown">
                                                 <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
                                                 <ul>
-                                                    <!-- <li><a href="/logout">Logout</a></li>
-                                                </ul>
-                                            </li> -->
+                                                    <!-- <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li> -->
                                                 <?php
                                             }
                                                 ?>
@@ -130,9 +131,9 @@
                                                     <li class="dropdown">
                                                         <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                         <ul>
-                                                            <!-- <li><a href="/logout">Logout</a></li>
-                                                        </ul>
-                                                    </li> -->
+                                                            <!-- <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li> -->
                                                         <?php
                                                     }
                                                         ?>
