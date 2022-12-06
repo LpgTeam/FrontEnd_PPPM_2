@@ -25,7 +25,11 @@
                             <img src="" class="testimonial-img" alt="" />
                             <?php
                             if (isset($anggaranAwal)) {
-                                echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
+                                if($anggaranAwal == 0){
+                                    echo '<h2>Rp ', number_format($anggaranAwal, 0, ",", "."), '</h2>';
+                                } else {
+                                    echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
+                                }
                             }
                             ?>
 
@@ -42,8 +46,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranTerealisasi)) {
-                                echo '<h2>Rp ', number_format($anggaranTerealisasi['dana_keluar'], 0, ",", "."), '</h2>';
+                            if (isset($danaTerealisasi)) {
+                                echo '<h2>Rp ', number_format($danaTerealisasi, 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -60,10 +64,11 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranTerealisasi)) {
-                                echo '<h2>Rp ', number_format($anggaranDiajukan, 0, ",", "."), '</h2>';
+                            if (isset($danaDiajukan)) {
+                                echo '<h2>Rp ', number_format($danaDiajukan, 0, ",", "."), '</h2>';
                             }
                             ?>
+
                         </div>
                     </div>
                     <!-- End testimonial item -->
@@ -77,8 +82,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranTerealisasi)) {
-                                echo '<h2>Rp ', number_format($anggaranTerealisasi['sisa_anggaran'], 0, ",", "."), '</h2>';
+                            if (isset($danaTersedia)) {
+                                echo '<h2>Rp ', number_format($danaTersedia, 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -99,56 +104,60 @@
                         <div id="pieChart" style="min-height: 400px;" class="echart"></div>
 
                         <script>
-                            document.addEventListener("DOMContentLoaded", () => {
-                                echarts.init(document.querySelector("#pieChart")).setOption({
-                                    title: {
-                                        text: '',
-                                        subtext: '',
-                                        left: 'center'
-                                    },
-                                    tooltip: {
-                                        trigger: 'item'
-                                    },
-                                    legend: {
-                                        orient: 'vertical',
-                                        left: 'left'
-                                    },
-                                    series: [{
-                                        name: 'Access From',
-                                        type: 'pie',
-                                        radius: '50%',
-                                        data: [{
-                                                <?php
-                                                if (isset($anggaranAwal)) {
-                                                    echo 'value: ', $anggaranTerealisasi['dana_keluar'];
+                        document.addEventListener("DOMContentLoaded", () => {
+                            echarts.init(document.querySelector("#pieChart")).setOption({
+                                title: {
+                                    text: '',
+                                    subtext: '',
+                                    left: 'center'
+                                },
+                                tooltip: {
+                                    trigger: 'item'
+                                },
+                                legend: {
+                                    orient: 'vertical',
+                                    left: 'left'
+                                },
+                                series: [{
+                                    name: 'Access From',
+                                    type: 'pie',
+                                    radius: '50%',
+                                    data: [{
+                                            <?php
+                                                if (isset($danaTerealisasi)) {
+                                                    echo 'value: ', $danaTerealisasi;
                                                 }
                                                 ?>,
-                                                name: 'Dana Terealisasi'
+                                            name: 'Dana Terealisasi'
 
-                                            },
-                                            {
-                                                value: 1000000,
-                                                name: 'Dana Pengajuan'
-                                            },
-                                            {
-                                                <?php
-                                                if (isset($anggaranAwal)) {
-                                                    echo 'value: ', $anggaranTerealisasi['sisa_anggaran'];
+                                        },
+                                        {
+                                            <?php
+                                                if (isset($danaDiajukan)) {
+                                                    echo 'value: ', $danaDiajukan;
                                                 }
                                                 ?>,
-                                                name: 'Dana Tersedia'
-                                            }
-                                        ],
-                                        emphasis: {
-                                            itemStyle: {
-                                                shadowBlur: 10,
-                                                shadowOffsetX: 0,
-                                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                            }
+                                            name: 'Dana Pengajuan'
+                                        },
+                                        {
+                                            <?php
+                                                if (isset($danaTersedia)) {
+                                                    echo 'value: ', $danaTersedia;
+                                                }
+                                                ?>,
+                                            name: 'Dana Tersedia'
                                         }
-                                    }]
-                                });
+                                    ],
+                                    emphasis: {
+                                        itemStyle: {
+                                            shadowBlur: 10,
+                                            shadowOffsetX: 0,
+                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                        }
+                                    }
+                                }]
                             });
+                        });
                         </script>
                         <!-- End Pie Chart -->
 

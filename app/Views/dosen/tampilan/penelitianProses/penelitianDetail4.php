@@ -95,6 +95,9 @@
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
+                                <?php if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') : ?>
+                                    <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning">Download Memo Kepala PPPM</a>
+                                <?php endif; ?>
                                 <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporan </a>
                             </div>
                             <div class="d-flex justify-content-between mt-3">

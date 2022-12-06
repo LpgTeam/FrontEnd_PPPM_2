@@ -17,7 +17,7 @@ class DanaPKMModel extends Model
     protected $allowedFields    = [
         'id_dana',
         'id_pkm',
-        'tanggal_pencairan', 
+        'tanggal', 
         'dana_keluar',
         'dana_tidak_terserap'
 

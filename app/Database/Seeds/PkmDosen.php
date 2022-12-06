@@ -29,7 +29,7 @@ class PkmDosen extends Seeder
 
         //fill tabel pkm
         $faker = \Faker\Factory::create('id_ID');
-        for ($k = 1; $k <= 100; $k++) {
+        for ($k = 1; $k <= 50; $k++) {
             $data = [
                 'ID_pkm'                => $k + $datapkm[0]['ID_pkm'],
                 'jenis_pkm'             => $faker->randomElement($array = array("Mandiri", "Kelompok", "Terstruktur")),
@@ -89,11 +89,10 @@ class PkmDosen extends Seeder
             $file_surat_pernyataan = null;
             $file_bukti_kegiatan = null;
 
-            // if ($data['jenis_pkm'] == 'Semi Mandiri') {
-            $file_surat_pernyataan = 'default_surat_pernyataan.pdf';
-            // } else {
-            $file_bukti_kegiatan = 'default_bukti_kegiatan.pdf';
-            // }
+            if (($data['id_status'] == 4)||($data['id_status'] == 7)) {
+                $file_surat_pernyataan = 'default_surat_pernyataan.pdf';
+                $file_bukti_kegiatan = 'default_bukti_kegiatan.pdf';
+            }
 
             $data_pkm = [
                 'id_pkm'            =>  $data['ID_pkm'],
@@ -102,6 +101,15 @@ class PkmDosen extends Seeder
             ];
             $this->db->table('pkm')->insert($data_pkm);
 
+            // fill table dana pkm
+            if (($data['id_status'] == 4) || ($data['id_status'] == 7)) {
+                $datadana = [
+                    'id_pkm' => $data['ID_pkm'],
+                    'tanggal' => Time::createFromTimestamp($faker->unixTime()),
+                    'dana_keluar' => ($faker->numberBetween($min = 300, $max = 1000)) . '000',
+                ];
+                $this->db->table('dana_pkm')->insert($datadana);
+            }
 
             // fill table status pkm
             $id_status = $data['id_status'];

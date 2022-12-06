@@ -17,7 +17,7 @@ class DanaPenelitianModel extends Model
     protected $allowedFields    = [
         'id_dana',
         'id_penelitian',
-        'tanggal_pencairan',
+        'tanggal',
         'dana_keluar',
         'dana_tidak_terserap'
     ];

@@ -24,19 +24,19 @@ class TargetPenelitian extends Migration
 
             'jenis_luaran' => [
                 'type' => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 255,
                 'null' => false
             ],
 
             'target_capaian' => [
                 'type' => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 255,
                 'null' => false
             ],
 
             'jurnal_tujuan' => [
                 'type' => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 255,
                 'null' => false
             ],
 
