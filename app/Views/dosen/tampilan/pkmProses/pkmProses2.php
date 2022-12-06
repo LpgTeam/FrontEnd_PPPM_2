@@ -24,39 +24,57 @@
                                     } ?></p>
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
-                <div class="row gy-4">
+                <div class="row gy-4 justify-content-md-center">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-box blue ">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Form</h3>
-                            <p>
-                                Proses peninjauan form PKM yang telah diisi oleh dosen
-                                Politeknik Statistika STIS
-                            </p>
-                        </div>
+                        <a href="<?= base_url('pkmProses1') . "/" . $pkm["ID_pkm"]; ?>">
+                            <div class="service-box blue ">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Form</h3>
+                                <p>
+                                    Proses peninjauan form PKM yang telah diisi oleh dosen
+                                    Politeknik Statistika STIS
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
-
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-box green service-box3">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Laporan</h3>
-                            <p>
-                                Pelaporan kegiatan PKM yang dilakukan oleh dosen
-                                Politeknik Statistika STIS
-                            </p>
-                        </div>
+                        <?php if ($pkm['id_status'] > 2 && !($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6)) { ?>
+                            <a href="<?= base_url('pkmProses2') . "/" . $pkm["ID_pkm"]; ?>">
+                                <div class="service-box green service-box3">
+                                <?php } else { ?>
+                                    <div class="service-box secondary">
+                                    <?php }  ?>
+
+                                    <i class="ri-discuss-line icon"></i>
+                                    <h3>Laporan</h3>
+                                    <p>
+                                        Pelaporan kegiatan PKM yang dilakukan oleh dosen
+                                        Politeknik Statistika STIS
+                                    </p>
+                                    </div>
+                                    <?php if ($pkm['id_status'] > 2 && !($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6)) { ?>
+                            </a>
+                        <?php } ?>
                     </div>
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-box purple">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Selesai</h3>
-                            <p>
-                                Proses PKM selesai dilaksanakan oleh dosen
-                                Politeknik Statistika STIS
-                            </p>
-                        </div>
+                        <?php if (($pkm['id_status'] == 7)) { ?>
+                            <a href="<?= base_url('pkmProses4') . "/" . $pkm["ID_pkm"]; ?>">
+                                <div class="service-box purple">
+                                <?php } else { ?>
+                                    <div class="service-box secondary">
+                                    <?php }  ?>
+                                    <i class="ri-discuss-line icon"></i>
+                                    <h3>Selesai</h3>
+                                    <p>
+                                        Proses PKM selesai dilaksanakan oleh dosen
+                                        Politeknik Statistika STIS
+                                    </p>
+                                    </div>
+                                    <?php if ($pkm['id_status'] == 7) { ?>
+                            </a>
+                        <?php } ?>
                     </div>
 
                 </div>
@@ -79,7 +97,7 @@
                             </div>
                             <hr>
                             <?php
-                            // var_dump($rincian);
+                            // var_dump($pkm['id_status'] );
                             if ($pkm['id_status'] < 4) {
                                 if (($ttd['ttd_manual'] == null && $ttd['ttd_digital'] == null)) {
                             ?>
@@ -120,8 +138,7 @@
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
                                     </div>
                                 <?php }
-                            } else {
-                                ?>
+                            } else { ?>
                                 <!-- <h5 class="card-title text-center">Surat Pernyataan</h5>
                                 <hr> -->
                                 <h6 class="card-title text-center">Anda Sudah Menyetujui Surat Pernyataan!!</h6>
