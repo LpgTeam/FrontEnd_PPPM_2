@@ -33,6 +33,8 @@ class BAU extends BaseController
         $this->reimburseModel = new ReimburseModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
+        $this->danaPKMModel = new DanaPKMModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
 
     public function index()
@@ -105,11 +107,32 @@ class BAU extends BaseController
     public function anggaran(){
         //current year
         $year = date("Y");
+
+        //dana
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
+      
+       // dd($sisaAnggaran['sisa_anggaran']);
         
+        // if($penelitianDiajukan || $pkmDiajukan || $danaDiajukan || $sisaAnggaran != null){
+        //     $data = [
+        //         'title'             => 'PPPM Politeknik Statistika STIS',
+        //         'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
+        //         'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
+        //         'danaDiajukan'      => $danaDiajukan,
+        //         'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+        //    ];
+        // } else{
+        //     $data = [
+        //         'title'             => 'PPPM Politeknik Statistika STIS',
+        //         'anggaranAwal'      =>  0,
+        //         'danaTerealisasi'   =>  0,
+        //         'danaDiajukan'      =>  0,
+        //         'danaTersedia'      =>  0,
+        //    ];
+        // }
        $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
@@ -117,23 +140,37 @@ class BAU extends BaseController
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
        ];
+      
        return view('bau/tampilan/anggaran', $data);
 
     }
 
     public function updateAnggaran()
     {
-        $dana_awal = new AnggaranAwalModel();
 
         //current year
         $year = date("Y");
 
-        $update_dana = [
+        $this->anggaranAwalModel->save([
             'tahun_anggaran'  => $year,
             'jumlah'          => $this->request->getVar('danaBaru')
-        ];
+        ]);
 
-        $update = $dana_awal->save($update_dana);
+        $anggaranTotalTerakhir = $this->anggaranTotalModel->get_sisa_terakhir();
+        if($anggaranTotalTerakhir == 0){
+            $this->anggaranTotalModel->save([
+                'tahun'         => $year,
+                'dana_keluar'   => 0,
+                'sisa_anggaran' => $this->request->getVar('danaBaru')
+            ]);
+        } else {
+            $this->anggaranTotalModel->save([
+                'tahun'         => $year,
+                'dana_keluar'   => $this->anggaranTotalModel->get_dana_keluar_terakhir($year),
+                'sisa_anggaran' => $this->request->getVar('danaBaru') - $anggaranTotalTerakhir['sisa_anggaran']
+            ]);
+        }
+
         return redirect()->to('/anggaranBAU');
     }
     //=======================Penelitian================================
@@ -273,9 +310,11 @@ class BAU extends BaseController
 
     public function detailReimburse($id_reimburse)
     {
+        $kegiatan_penelitian = $this->danaPenelitianModel->get_dana_by_reimburse($id_reimburse);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'dana_penelitian' => $kegiatan_penelitian[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
 
@@ -284,9 +323,11 @@ class BAU extends BaseController
 
     public function detailReimburse2($id_reimburse)
     {
+        $kegiatan_pkm = $this->danaPKMModel->get_dana_by_reimburse($id_reimburse);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
         return view('bau/tampilan/persetujuan2Reimburse', $data);
@@ -305,7 +346,7 @@ class BAU extends BaseController
             'id_reimburse'     => $id_reimburse,
             'total_biaya'       => $biayaDicairkan,
             'id_status'         => 2,
-            'status_reimburse'  => 'Reimbursement telah dicairkan'
+            'status_reimburse'  => 'reimbursementt telah dicairkan'
         ]);
 
         $this->anggaranTotalModel->save([
@@ -323,7 +364,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana reimbursementberhasil dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }
@@ -338,7 +379,7 @@ class BAU extends BaseController
 
         $this->reimburseModel->save([
             'id_reimburse'     => $id_reimburse,
-            'total_biaya'       => $biayaDicairkan,
+            'biaya_dicairkan'       => $biayaDicairkan,
             'id_status'         => 2,
             'status_reimburse'  => 'Reimbursement telah dicairkan'
         ]);
@@ -357,7 +398,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana Reimbursemen berhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana reimbursementberhasil dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }

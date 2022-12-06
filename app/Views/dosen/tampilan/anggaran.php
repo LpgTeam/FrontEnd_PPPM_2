@@ -25,7 +25,11 @@
                             <img src="" class="testimonial-img" alt="" />
                             <?php
                             if (isset($anggaranAwal)) {
-                                echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
+                                if($anggaranAwal == 0){
+                                    echo '<h2>Rp ', number_format($anggaranAwal, 0, ",", "."), '</h2>';
+                                } else {
+                                    echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
+                                }
                             }
                             ?>
 
@@ -42,8 +46,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranTerealisasi)) {
-                                echo '<h2>Rp ', number_format($anggaranTerealisasi['dana_keluar'], 0, ",", "."), '</h2>';
+                            if (isset($danaTerealisasi)) {
+                                echo '<h2>Rp ', number_format($danaTerealisasi, 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -60,8 +64,8 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranDiajukan)) {
-                                echo '<h2>Rp ', number_format($anggaranDiajukan, 0, ",", "."), '</h2>';
+                            if (isset($danaDiajukan)) {
+                                echo '<h2>Rp ', number_format($danaDiajukan, 0, ",", "."), '</h2>';
                             }
                             ?>
 
@@ -120,8 +124,8 @@
                                     radius: '50%',
                                     data: [{
                                             <?php
-                                                if (isset($anggaranTerealisasi)) {
-                                                    echo 'value: ', $anggaranTerealisasi['dana_keluar'];
+                                                if (isset($danaTerealisasi)) {
+                                                    echo 'value: ', $danaTerealisasi;
                                                 }
                                                 ?>,
                                             name: 'Dana Terealisasi'
@@ -129,8 +133,8 @@
                                         },
                                         {
                                             <?php
-                                                if (isset($anggaranDiajukan)) {
-                                                    echo 'value: ', $anggaranDiajukan;
+                                                if (isset($danaDiajukan)) {
+                                                    echo 'value: ', $danaDiajukan;
                                                 }
                                                 ?>,
                                             name: 'Dana Pengajuan'
