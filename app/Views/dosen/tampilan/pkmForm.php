@@ -1,4 +1,4 @@
-<?= $this->extend('dosen/fixed/templatePKM') ?>
+<?= $this->extend('fixed/templatePKM') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
@@ -18,7 +18,7 @@
                 <div class="form-body pt-3 col-md-14">
                     <!-- Bordered Tabs -->
                     <!-- Form -->
-                    <form action="<?= base_url('/pkm/save'); ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('/pkm/save'); ?>" method="post" onsubmit="if(document.getElementById('agree').checked){ return submitForm(this); } else { return alertForm(this); return false; }" enctype="multipart/form-data">
 
                         <input name="jenis_pkm" type="text" class="form-control" id="jenis_pkm" value="<?= $jenis ?>" hidden>
 
@@ -147,12 +147,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <label class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <!-- <button onclick ="" class="btn btn-primary">
-                                    Download Surat Pernyataan</i>
-                                </button> -->
                                     <a href="<?= base_url('pkm/printSurat') ?>" class="btn btn-primary">
                                         Download Surat Pernyataan
                                     </a>
@@ -167,7 +164,7 @@
                                         <?= $validation->getError('uploadSurat'); ?>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         <?php endif; ?>
 
                         <div class="row mb-3">
@@ -219,6 +216,29 @@
                                 </div>
                             </div>
                         <?php endif; ?>
+                        <?//php if (!($jenis == "Kelompok" || $jenis == "Terstruktur")) : 
+                        ?>
+                        <hr>
+                        <div class="row justify-content-md-center" data-aos="fade-up">
+                            <div class="surat row gy-4 justify-content-md-center col-md-9">
+                                <h2>Surat Pernyataan</h2>
+                                <p>Dengan ini kami menyatakan bahwa hasil penelitian kami bersifat original dan bebas
+                                    dari unsur plagiarisme. Jika dikemudian hari ditemukan ketidaksesuaian dengan
+                                    pernyataan ini, saya bersedia dituntut dan diproses sesuai dengan ketentuan yang
+                                    berlaku dan mengembalikan seluruh biaya yang sudah saya terima. </p>
+                                <hr>
+                                <p>Dengan anda meyetujui, maka tanda tangan yang anda upload akan otomatis tergenerate
+                                    ke file surat pernyataan pada proposal</p>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-text">
+                                        <input id="agree" name="agree" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                        <label for="agree">&nbspSetuju</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?//php endif; 
+                        ?>
                         <script>
                             function rm() {
                                 $(event.target).closest("tr").remove();
@@ -322,6 +342,30 @@
                             <button type="submit" class="btn btn-success">Submit Form</button>
                         </div>
                     </form><!-- Form End -->
+                    <script>
+                        function submitForm(form) {
+                            swal({
+                                    title: "Apakah Anda Yakin?",
+                                    text: "",
+                                    buttons: true,
+                                })
+                                .then(function(isOkay) {
+                                    if (isOkay) {
+                                        form.submit();
+                                    }
+                                });
+                            return false;
+                        }
+
+                        function alertForm(form) {
+                            swal({
+                                title: "Gagal Submit",
+                                icon: "error",
+                                text: "Anda harus menyetujui persyaratan terlebih dahulu!",
+                            })
+                            return false;
+                        }
+                    </script>
 
                 </div>
 
@@ -361,8 +405,8 @@
         </div>
     </div>
 </div>
-
-<!-- Tambah Pembiayaan -->
+                        -->
+<!-- Tambah Pembiayaan 
 <div class="modal fade" id="add2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add2Label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

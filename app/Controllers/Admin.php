@@ -14,6 +14,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\GlobalSettingModel;
 
 use function PHPUnit\Framework\isNull;
 
@@ -25,6 +26,7 @@ class Admin extends BaseController
     protected $statusPkmModel;
     protected $detailStatus;
     protected $detailStatusPkm;
+    protected $settingGlobal;
 
     public function __construct()
     {
@@ -34,6 +36,7 @@ class Admin extends BaseController
         $this->detailStatusPkm = new DetailStatusPkmModel();
         $this->penelitianModel = new PenelitianModel();
         $this->pkmModel = new PkmModel();
+        $this->settingGlobal = new GlobalSettingModel();
     }
     public function index()
     {
@@ -43,11 +46,40 @@ class Admin extends BaseController
         $query = $builder->get();
         $datapenelitian = $query->getResultArray();
 
-        dd($datapenelitian);
+        // dd($datapenelitian);
 
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         // return view('adminPPPM/tampilan/index', $data);
     }
+    public function setting()
+    {
+
+        // dd($datapenelitian);
+        $user = auth()->user();
+        // dd(auth()->user()->getGroups());
+        $nip = $user->nip;
+        // dd($nip);
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            // 'loginUser' => $this->dosenModel->get_nip_peneliti($nip),
+            'ttd'       => $this->settingGlobal->find(1)
+        ];
+        // dd($data['ttd']);
+        return view('adminPPPM/tampilan/setting', $data);
+    }
+
+    public function save()
+    {
+        // dd($this->settingGlobal->findAll());
+        // dd($this->request->getVar('setting'));
+        $this->settingGlobal->kosongkan();
+        $this->settingGlobal->save([
+            'id_setting'    => $this->request->getVar('setting')
+        ]);
+        return redirect()->to('/Setting');
+        // return $this->respondCreated($response);
+    }
+    
 
     // public function anggaran()
     // {
@@ -108,23 +140,23 @@ class Admin extends BaseController
     //     return view('adminPPPM/tampilan/anggaran', $data);
     // }
 
-    public function anggaran(){
+    public function anggaran()
+    {
         //current year
         $year = date("Y");
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-        
-       $data = [
+
+        $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-       ];
-       return view('adminPPPM/tampilan/anggaran', $data);
-
+        ];
+        return view('adminPPPM/tampilan/anggaran', $data);
     }
 
     public function penelitian()

@@ -13,6 +13,7 @@ use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Exceptions\ValidationException;
 use CodeIgniter\Shield\Models\UserModel;
 use App\Models\DosenModel;
+use App\Models\TandaTanganDosenModel;
 use App\Models\TimPenelitiModel;
 
 /**
@@ -25,10 +26,12 @@ class RegisterController extends BaseController
 {
     use ResponseTrait;
     protected $dosenModel;
+    protected $ttdDosen;
 
     public function __construct()
     {
         $this->dosenModel = new DosenModel();
+        $this->ttdDosen = new TandaTanganDosenModel();
     }
 
     protected $helpers = ['setting'];
@@ -155,6 +158,10 @@ class RegisterController extends BaseController
             'link_orcid'     => "-",
             'link_wos'     => "-",
             'link_scopus' => "-",
+        ]);        //---
+        $this->ttdDosen->insert([
+            'nip_dosen'     => $user->nip,
+        
         ]);        //---
         $_SESSION['group'] = "dosen";
 

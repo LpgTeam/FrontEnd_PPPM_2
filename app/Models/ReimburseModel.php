@@ -23,15 +23,13 @@ class ReimburseModel extends Model
         'judul_penelitian',
         'judul_pkm',
         'tanggal_pengajuan',
-        'laporan',
         'loa',
         'naskah_artikel',
         'bukti_pembayaran',
         'usulan_publikasi',
         'id_status',
         'status_reimburse',
-        'biaya_diajukan',
-        'total_biaya'
+        'biaya_dicairkan'
     ];
     
     public function getData()

@@ -19,7 +19,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen PKM yang diajukan oleh Dosen
+                                reimbursement PKM yang diajukan oleh Dosen
                                 Politeknik Statistika STIS
                             </p>
                         </div>
@@ -33,9 +33,9 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
+                        <h5 class="card-title text-center">Proposal reimbursementPKM</h5>
                         <hr>
-                        <p>Proposal Reimbursemen PKM yang diajukan Dosen
+                        <p>Proposal reimbursement PKM yang diajukan Dosen
                             Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">

@@ -27,45 +27,90 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-box blue">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Proposal</h3>
-                            <p>
-                                Proses peninjauan dan persetujuan proposal penelitian
-                                yang diajukan oleh dosen
-                            </p>
-                        </div>
+                        <a href="<?= base_url('penelitianProses1') . "/" . $penelitian["id_penelitian"]; ?>">
+                            <div class="service-box blue ">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Proposal</h3>
+                                <p>
+                                    Proses peninjauan dan persetujuan proposal penelitian
+                                    yang diajukan oleh dosen
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-box orange service-box2">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Pendanaan</h3>
-                            <p>
-                                Pendanaan untuk kegiatan publikasi dari penelitian yang
-                                dilakukan oleh dosen
-                            </p>
-                        </div>
-                    </div>
+                    <?php
+                    if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
+                    ?>
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <?php if ($penelitian['id_status'] > 4 && !($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9)) { ?>
+                                <a href="<?= base_url('penelitianProses2') . "/" . $penelitian["id_penelitian"]; ?>">
+                                    <div class="service-box orange service-box2">
+                                    <?php } else { ?>
+                                        <div class="service-box secondary">
+                                        <?php } ?>
 
+                                        <i class="ri-discuss-line icon"></i>
+                                        <h3>Pendanaan</h3>
+                                        <p>
+                                            Pendanaan untuk kegiatan publikasi dari penelitian yang
+                                            dilakukan oleh dosen
+                                        </p>
+                                        </div>
+                                        <?php if ($penelitian['id_status'] > 4 && !($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9)) { ?>
+                                </a>
+                            <?php } ?>
+                        </div>
+                    <?php  }
+                    if ($penelitian['jenis_penelitian'] == 'Didanai Institusi' || $penelitian['jenis_penelitian'] == 'Institusi') {
+                    ?>
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <?php if ($penelitian['id_status'] > 4 && !($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9)) { ?>
+                                <a href="<?= base_url('penelitianProses2') . "/" . $penelitian["id_penelitian"]; ?>">
+                                    <div class="service-box orange">
+                                    <?php } else { ?>
+                                        <div class="service-box secondary   "> <?php } ?>
+                                        <i class="ri-discuss-line icon"></i>
+                                        <h3>Kontrak</h3>
+                                        <p>
+                                            Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
+                                        </p>
+                                        </div>
+                                        <?php if ($penelitian['id_status'] > 4 && !($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9)) { ?>
+                                </a>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-box green">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Laporan</h3>
-                            <p>
-                                Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
-                            </p>
-                        </div>
+                        <?php if ($penelitian['id_status'] == 6 || $penelitian['id_status'] == 10) { ?>
+                            <a href="<?= base_url('penelitianProses3') . "/" . $penelitian["id_penelitian"]; ?>">
+                                <div class="service-box green">
+                                <?php } else { ?>
+                                    <div class="service-box secondary"> <?php } ?>
+                                    <i class="ri-discuss-line icon"></i>
+                                    <h3>Laporan</h3>
+                                    <p>
+                                        Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
+                                    </p>
+                                    </div>
+                                    <?php if ($penelitian['id_status'] == 6 || $penelitian['id_status'] == 10) { ?>
+                            </a>
+                        <?php } ?>
                     </div>
 
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-box purple">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Selesai</h3>
-                            <p>
-                                Proses penelitian selesai dilaksanakan oleh dosen
-                            </p>
-                        </div>
+                        <?php if ($penelitian['id_status'] == 10) { ?>
+                            <a href="<?= base_url('penelitianProses4') . "/" . $penelitian["id_penelitian"]; ?>">
+                                <div class="service-box purple">
+                                <?php } else { ?>
+                                    <div class="service-box secondary   "> <?php } ?>
+                                    <i class="ri-discuss-line icon"></i>
+                                    <h3>Selesai</h3>
+                                    <p>
+                                        Proses penelitian selesai dilaksanakan oleh dosen
+                                    </p>
+                                    </div>
+                            </a>
                     </div>
 
                 </div>

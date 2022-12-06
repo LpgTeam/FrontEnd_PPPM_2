@@ -19,7 +19,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Proses pencairan dana reimbursemen yang diajukan dosen
+                                Proses pencairan dana reimbursementyang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
                         </div>
@@ -33,9 +33,9 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
+                        <h5 class="card-title text-center">Proposal reimbursementPKM</h5>
                         <hr>
-                        <p>Proposal Reimbursemen PKM yang diajukan dosen
+                        <p>Proposal reimbursementPKM yang diajukan dosen
                             oleh Direktur Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
@@ -64,7 +64,7 @@
                             <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
                             </label>
                             <div class="col-md-8 col-lg-9">
-                                <?php echo 'Rp ',  number_format($reimburse['biaya_diajukan'], 0, ",", "."); ?>
+                                <?php echo 'Rp ',  number_format($dana_pkm, 0, ",", "."); ?>
                             </div>
                         </div>
                         <form action="<?= base_url('/acc-reimbursePKMBAU/' . $reimburse['id_reimburse']); ?>"

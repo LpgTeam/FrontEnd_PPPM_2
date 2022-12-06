@@ -118,14 +118,14 @@ class PKM extends BaseController
         // =================Save Rincian PKM==========================
         if ($jenisPKM == "Mandiri") {
             if (!$this->validate([
-                'uploadSurat' => [
-                    'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
-                    'errors' => [
-                        'uploaded' => "{field} file tidak boleh kosong",
-                        'ext_in' => "Format file harus pdf",
-                        'max_size' => "Ukuran File terlalu besar"
-                    ]
-                ],
+                // 'uploadSurat' => [
+                //     'rules' => 'uploaded[uploadSurat]|ext_in[uploadSurat,pdf]|max_size[uploadSurat,10000]',
+                //     'errors' => [
+                //         'uploaded' => "{field} file tidak boleh kosong",
+                //         'ext_in' => "Format file harus pdf",
+                //         'max_size' => "Ukuran File terlalu besar"
+                //     ]
+                // ],
                 'uploadBukti' => [
                     'rules' => 'uploaded[uploadBukti]|ext_in[uploadBukti,pdf]|max_size[uploadBukti,10000]',
                     'errors' => [
@@ -139,16 +139,16 @@ class PKM extends BaseController
                 return redirect()->to('/pkmForm/' . str_replace(' ', '', $jenisPKM))->withInput();
             }
             //Save surat pernyataan
-            $fileSurat = $this->request->getFile('uploadSurat');
-            $namaSurat = $fileSurat->getName();
-            $fileSurat->move('surat_pernyataan/pkm', $namaSurat);
+            // $fileSurat = $this->request->getFile('uploadSurat');
+            // $namaSurat = $fileSurat->getName();
+            // $fileSurat->move('surat_pernyataan/pkm', $namaSurat);
             //save bukti kegiatan
             $fileBukti = $this->request->getFile('uploadBukti');
             $namaBukti = $fileBukti->getName();
             $fileBukti->move('bukti_kegiatan/pkm', $namaBukti);
             $this->rincianPkm->save([
                 'id_pkm' => $idpkm['ID_pkm'],
-                'surat_pernyataan' => $namaSurat,
+                // 'surat_pernyataan' => $namaSurat,
                 'bukti_kegiatan' => $namaBukti,
                 'narasumber'    => $this->request->getVar('narasumber'),
                 'penyelenggara' => $this->request->getVar('penyelenggara')

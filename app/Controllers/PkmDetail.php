@@ -7,6 +7,8 @@ use App\Models\DosenModel;
 use App\Models\TimPKMModel;
 use App\Models\DanaPKMModel;
 use App\Models\RincianPKMModel;
+use App\Models\StatusPkmModel;
+
 use CodeIgniter\I18n\Time;
 use App\Controllers\BaseController;
 
@@ -17,6 +19,7 @@ class PkmDetail extends BaseController
     protected $ketuaTimModel;
     protected $dosenModel;
     protected $rincianModel;
+    protected $statusPkmModel;
     protected $danapkmModel;
 
     public function __construct()
@@ -26,6 +29,7 @@ class PkmDetail extends BaseController
         $this->ketuaTimModel = new TimPKMModel();
         $this->dosenModel = new DosenModel();
         $this->rincianModel = new RincianPKMModel();
+        $this->statusPkmModel = new StatusPkmModel();
         $this->danapkmModel = new DanaPKMModel();
     }
 
@@ -123,6 +127,20 @@ class PkmDetail extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
 
+        return redirect()->to('/pkmDosen');
+    }
+
+    public function setujuiSurat($idpkm)
+    {
+        $this->pkmModel->save([
+            'ID_pkm'            => $idpkm,
+            'id_status'         => 4,
+            'status'  => 'Kegiatan sedang berlangsung'
+        ]);
+        $this->statusPkmModel->save([
+            'id_pkm' => $idpkm,
+            'status' => 'Kegiatan sedang berlangsung'
+        ]);
         return redirect()->to('/pkmDosen');
     }
 }

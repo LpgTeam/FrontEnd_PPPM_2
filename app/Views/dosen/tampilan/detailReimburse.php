@@ -19,7 +19,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursemen</h3>
                             <p>
-                                Reimbursemen penelitian yang diajukan dosen
+                                Reimbursement penelitian yang diajukan dosen
                                 Politeknik Statistika STIS
                             </p>
                         </div>
@@ -35,17 +35,16 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Reimbursemen Penelitian</h5>
+                        <h5 class="card-title text-center">Proposal reimbursement Penelitian</h5>
                         <hr>
-                        <p>Reimbursemen penelitian yang diajukan dosen
+                        <p>Proposal reimbursement penelitian yang diajukan dosen
                             Politeknik Statistika STIS
                         </p>
 
                         <hr>
 
                         <div class="d-flex justify-content-end">
-                            <!-- <a href="/penelitian/view_proposal/<?= $penelitian['id_penelitian']; ?>/<?= $penelitian['judul_penelitian']; ?>" class="btn btn-secondary">Lihat Proposal </a> -->
-                            <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
+                          <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
                         </div>
                         <hr>
                         <?php
@@ -57,7 +56,7 @@
                                 <div class="row mb-3">
                                     <label for="loa" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (LOA)</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="uploadLoa" class="form-control  <?= ($validation->hasError('uploadLoa')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLoa">
+                                        <input name="uploadLoa" class="form-control  <?= ($validation->hasError('uploadLoa')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLoa" required>
                                         <div class="invalid-feedback" id="uploadValid">
                                             <?= $validation->getError('uploadLoa'); ?>
                                         </div>
@@ -67,7 +66,7 @@
                                 <div class="row mb-3">
                                     <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah">
+                                        <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah" required>
                                         <div class="invalid-feedback" id="uploadValid">
                                             <?= $validation->getError('uploadNaskah'); ?>
                                         </div>
@@ -77,7 +76,7 @@
                                 <div class="row mb-3">
                                     <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice">
+                                        <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice" required>
                                         <div class="invalid-feedback" id="uploadValid">
                                             <?= $validation->getError('uploadInvoice'); ?>
                                         </div>
@@ -97,7 +96,7 @@
                                 <div class="row mb-3">
                                     <label for="uploadFormPublikasi" class="col-md-4 col-lg-3 col-form-label ">Form Usulan Publikasi</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="uploadFormPublikasi" class="form-control <?= ($validation->hasError('uploadFormPublikasi')) ? 'is-invalid' : ''; ?>" type="file" id="uploadFormPublikasi">
+                                        <input name="uploadFormPublikasi" class="form-control <?= ($validation->hasError('uploadFormPublikasi')) ? 'is-invalid' : ''; ?>" type="file" id="uploadFormPublikasi" required>
                                         <div class="invalid-feedback" id="uploadValid">
                                             <?= $validation->getError('uploadFormPublikasi'); ?>
                                         </div>

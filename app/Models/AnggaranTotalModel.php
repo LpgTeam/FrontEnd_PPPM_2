@@ -47,7 +47,12 @@ class AnggaranTotalModel extends Model
 
 
     public function get_sisa_terakhir(){
-        return $this->orderBy('id_total', 'DESC')->first();
+        $anggaran = $this->orderBy('id_total', 'DESC')->first();
+        if($anggaran == null){
+            return 0;
+        } else {
+            return $anggaran;
+        }
     }
 
     public function get_total($year){
@@ -57,5 +62,10 @@ class AnggaranTotalModel extends Model
             $total = $total + $dana['dana_keluar'];
         }
         return $total;
+    }
+
+    public function get_dana_keluar_terakhir($year){
+        $anggaran = $this->orderBy('id_total', 'DESC')->first();
+        return $anggaran['dana_keluar'];
     }
 }

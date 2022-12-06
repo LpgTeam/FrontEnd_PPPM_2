@@ -20,7 +20,7 @@ class TimPKMModel extends Model
         'nama',
         'peran',
         'pangkat',
-        'bidang'
+        'bidang_keahlian'
     ];
 
     // Dates

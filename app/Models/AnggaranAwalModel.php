@@ -44,6 +44,11 @@ class AnggaranAwalModel extends Model
     protected $afterDelete    = [];
 
     public function get_dana(){
-        return $this->orderBy('id_tahunAnggaran', 'DESC')->first();
+        $anggaran = $this->orderBy('id_tahunAnggaran', 'DESC')->first();
+        if($anggaran == null){
+            return 0;
+        } else {
+            return $anggaran;
+        }
     }
 }
