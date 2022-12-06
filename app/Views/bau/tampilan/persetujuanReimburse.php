@@ -7,9 +7,9 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Reimbursemen Penelitian <?= $reimburse['jenis_penelitian'] ?></h2>
+                <h2>Reimbursement Penelitian <?= $reimburse['jenis_penelitian'] ?></h2>
                 <hr>
-                <p>Dosen Politeknik Statistika STIS</p>
+                <p>Bagian Administrasi Umum Politeknik Statistika STIS</p>
             </header>
 
             <!-- ======= Proses Section ======= -->
@@ -18,9 +18,9 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Reimbursemen</h3>
+                            <h3>Reimbursement</h3>
                             <p>
-                                Proses pencairan dana reimbursemen yang diajukan dosen
+                                Proses pencairan dana reimbursement yang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
                         </div>
@@ -34,7 +34,7 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen Penelitian</h5>
+                        <h5 class="card-title text-center">Proposal Reimbursement Penelitian</h5>
                         <hr>
                         <ol>
                             <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
@@ -52,9 +52,9 @@
                 ?>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
+                            <h5 class="card-title text-center">Pencairan Dana Reimbursement</h5>
                             <hr>
-                            <p>Pencairan dana reimburse yang diajukan dosen
+                            <p>Pencairan dana reimbursement yang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
 
@@ -62,7 +62,7 @@
                                 <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
                                 </label>
                                 <div class="col-md-8 col-lg-9">
-                                    <?php echo 'Rp ',  number_format($reimburse['total_biaya'], 0, ",", "."); ?>
+                                    <?php echo 'Rp ',  number_format($reimburse['biaya_dicairkan'], 0, ",", "."); ?>
                                 </div>
                             </div>
                             <form action="<?= base_url('/acc-reimburseBAU/' . $reimburse['id_reimburse']); ?>" method="post">

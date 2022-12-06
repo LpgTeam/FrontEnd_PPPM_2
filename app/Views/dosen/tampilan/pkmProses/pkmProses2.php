@@ -80,20 +80,26 @@
                             <hr>
                             <?php
                             // var_dump($rincian);
-                            if ($rincian['surat_pernyataan'] == null) {
+                        if ($rincian['surat_pernyataan'] == null) {
                             ?>
                                 <form action="<?= base_url('/pkmDetail/saveSurat/' . $pkm['ID_pkm']); ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="row mb-4">
-                                            <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input id="suratPernyataan" name="suratPernyataan" class="form-control <?= ($validation->hasError('suratPernyataan')) ? 'is-invalid' : ''; ?>" type="file" aria-describedby="uploadValid">
-                                                <div class="invalid-feedback" id="uploadValid">
-                                                    <?= $validation->getError('suratPernyataan'); ?>
-                                                </div>
+                                    <!-- <div class="d-flex justify-content-between"> -->
+                                    <div class="row mb-4">
+                                        <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input id="suratPernyataan" name="suratPernyataan" class="form-control <?= ($validation->hasError('suratPernyataan')) ? 'is-invalid' : ''; ?>" type="file" aria-describedby="uploadValid">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('suratPernyataan'); ?>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row mb-4">
+                                        <label for="totalDana" class="col-md-4 col-lg-3 col-form-label">Total dana</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="totalDana" type="text" class="form-control" id="totalDana">
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>

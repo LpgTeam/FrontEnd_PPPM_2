@@ -9,6 +9,14 @@ class Pkm extends Migration
     public function up()
     {
         $this->forge->addField([
+            'id' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => false,
+                'auto_increment' => true
+
+            ],
+
             'id_pkm' => [
                 'type' => 'INT',
                 'constraint' => 11,
@@ -17,12 +25,12 @@ class Pkm extends Migration
 
             'surat_pernyataan' => [
                 'type' => 'text',
-                'null' => false
+                'null' => true
             ],
 
             'bukti_kegiatan' => [
                 'type' => 'text',
-                'null' => false
+                'null' => true
             ],
 
             'narasumber' => [

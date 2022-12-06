@@ -78,7 +78,7 @@ setlocale(LC_TIME, 'INDONESIA');
 
     <p class="isi">Mohon diberikan bantuan pembiayaan publikasi artikel jurnal a.n. <?= $timpeneliti[0]['namaPeneliti']; ?> dengan judul <?= $penelitian['judul_penelitian']; ?> yang dipublikasikan pada <?= $targetpenelitian[0]['jurnal_tujuan'] ?> yang terindeks <?= $targetpenelitian[0]['index_jurnal_tujuan'] ?>.</p>
 
-    <p>Kuitansi pembayaran sebesar </ /?=$dana['dana_keluar']; ?> dan dokumen pendamping terlampir bersama memo ini.</p>
+    <p>Kuitansi pembayaran sebesar <?= $dana[0]['dana_keluar']; ?> dan dokumen pendamping terlampir bersama memo ini.</p>
 
     <table class="ttd3">
         <tr>
@@ -87,7 +87,7 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>........................</td>
         </tr>
         <tr>
-            <td>Jakarta, <?= date("d F  Y", strtotime($penelitian['tanggal_pengajuan'])); ?></td>
+            <td>Jakarta, <?= date("d F  Y", strtotime($dana[0]['tanggal'])); ?></td>
             <td>Jakarta, ...............</td>
             <td>Jakarta, ...............</td>
         </tr>

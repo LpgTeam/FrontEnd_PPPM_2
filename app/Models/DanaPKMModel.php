@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Models;
+
 use CodeIgniter\Model;
+
 class DanaPKMModel extends Model
 {
     protected $table            = 'dana_pkm';
@@ -13,7 +16,7 @@ class DanaPKMModel extends Model
     protected $allowedFields    = [
         'id_dana',
         'id_pkm',
-        'tanggal_pencairan',
+        'tanggal',
         'dana_keluar',
         'dana_tidak_terserap'
     ];
@@ -46,5 +49,12 @@ class DanaPKMModel extends Model
     public function get_dana_pkm_by_idpkm($id_pkm)
     {
         return $this->where(['id_pkm' => $id_pkm])->findAll();
+    }
+    
+    public function get_dana_byid($id_pkm)
+    {
+        $builder = $this->db->table('dana_pkm');
+        $query = $builder->getWhere(['id_pkm' => $id_pkm]);
+        return $query->getResultArray();
     }
 }
