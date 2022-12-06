@@ -39,7 +39,7 @@
                             Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Proposal</a>
+                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Proposal Pengajuan</a>
                         </div>
                     </div>
                 </div>
