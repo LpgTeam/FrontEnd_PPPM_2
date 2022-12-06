@@ -9,6 +9,7 @@ use App\Models\DosenModel;
 use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
 use App\Models\LuaranTargetModel;
+use App\Models\DanaPenelitianModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
 use App\Models\GlobalSettingModel;
@@ -25,6 +26,7 @@ class ProposalPenelitian extends BaseController
     protected $dosenModel;
     protected $luaranModel;
     protected $settingTTD;
+    protected $danaPenelitianModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
@@ -34,6 +36,7 @@ class ProposalPenelitian extends BaseController
         $this->dosenModel = new DosenModel();
         $this->luaranModel = new LuaranTargetModel();
         $this->settingTTD = new GlobalSettingModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
 
     public function download_all_proposal($id_penelitian)
@@ -242,6 +245,7 @@ class ProposalPenelitian extends BaseController
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
             'targetpenelitian'  => $this->luaranModel->get_luaran_byid($id_penelitian),
+            'dana'              => $this->danaPenelitianModel->get_dana_byid($id_penelitian),
         ];
 
         // dd($dataPenelitian['timpeneliti']);

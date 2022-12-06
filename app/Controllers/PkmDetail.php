@@ -5,9 +5,11 @@ namespace App\Controllers;
 use App\Models\PkmModel;
 use App\Models\DosenModel;
 use App\Models\TimPKMModel;
+use App\Models\DanaPKMModel;
 use App\Models\RincianPKMModel;
 use App\Models\StatusPkmModel;
 
+use CodeIgniter\I18n\Time;
 use App\Controllers\BaseController;
 
 class PkmDetail extends BaseController
@@ -18,6 +20,7 @@ class PkmDetail extends BaseController
     protected $dosenModel;
     protected $rincianModel;
     protected $statusPkmModel;
+    protected $danapkmModel;
 
     public function __construct()
     {
@@ -27,6 +30,7 @@ class PkmDetail extends BaseController
         $this->dosenModel = new DosenModel();
         $this->rincianModel = new RincianPKMModel();
         $this->statusPkmModel = new StatusPkmModel();
+        $this->danapkmModel = new DanaPKMModel();
     }
 
     public function index()
@@ -58,7 +62,7 @@ class PkmDetail extends BaseController
 
         // dd($rincian);
         $this->rincianModel->save([
-            'id'                => $rincian['id'],
+            // 'id'                => $rincian['id'],
             'id_pkm'            => $idpkm,
             'surat_pernyataan'  => $namaSurat,
         ]);
@@ -67,6 +71,12 @@ class PkmDetail extends BaseController
             'ID_pkm'            => $idpkm,
             'id_status'         => 4,
             'status'  => 'Kegiatan sedang berlangsung'
+        ]);
+
+        $this->danapkmModel->save([
+            'id_pkm'             => $idpkm,
+            'tanggal'            => Time::now('Asia/jakarta'),
+            'dana_keluar'        => $this->request->getVar('totalDana'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');

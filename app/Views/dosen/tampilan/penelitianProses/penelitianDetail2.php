@@ -132,17 +132,24 @@
                             if ($laporan['laporan_dana'] == null) {
                             ?>
                                 <form action="<?= base_url('/penelitianDetail/savePendanaan/' . $penelitian['id_penelitian']); ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="row mb-4">
-                                            <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="uploadPendanaan" class="form-control <?= ($validation->hasError('uploadPendanaan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadPendanaan" aria-describedby="uploadValid">
-                                                <div class="invalid-feedback" id="uploadValid">
-                                                    <?= $validation->getError('uploadPendanaan'); ?>
-                                                </div>
+                                    <!-- <div class="d-flex justify-content-between"> -->
+                                    <div class="row mb-4">
+                                        <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Upload</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="uploadPendanaan" class="form-control <?= ($validation->hasError('uploadPendanaan')) ? 'is-invalid' : ''; ?>" type="file" id="uploadPendanaan" aria-describedby="uploadValid">
+                                            <div class="invalid-feedback" id="uploadValid">
+                                                <?= $validation->getError('uploadPendanaan'); ?>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- </div> -->
+                                    <div class="row mb-4">
+                                        <label for="totalDana" class="col-md-4 col-lg-3 col-form-label">Total dana</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="totalDana" type="text" class="form-control" id="totalDana">
+                                        </div>
+                                    </div>
+
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-success">Submit Bukti </button>
                                     </div>
@@ -152,7 +159,7 @@
                             ?>
                                 <!-- <h5 class="card-title text-center">Upload Pendanaan</h5>
                                 <hr> -->
-                                <h6 class="card-title text-center">Anda Sudah Upload Pendanaan!!</h6>
+                                <h6 class="card-title text-center">Anda Sudah Upload Pendanaan</h6>
                             <?php
                             }
                             ?>

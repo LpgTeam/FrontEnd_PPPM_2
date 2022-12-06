@@ -10,6 +10,21 @@ setlocale(LC_TIME, 'INDONESIA');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pkm['topik_kegiatan']; ?></title>
     <style>
+        @page {
+            margin: 5px 5px 10px;
+        }
+
+        #footer {
+            position: fixed;
+            right: 20px;
+            bottom: 0;
+            text-align: center;
+        }
+
+        #footer .page:after {
+            content: 'Halaman 'counter(page);
+        }
+
         .text-center {
             text-align: center;
         }
@@ -59,6 +74,9 @@ setlocale(LC_TIME, 'INDONESIA');
 </head>
 
 <body>
+    <div id="footer">
+        <p class="page"></p>
+    </div>
 
     <!-- <u><b><//?= $jenis; ?>3. Surat Pernyataan:</b></u> -->
     <div class="text-center">
@@ -70,8 +88,8 @@ setlocale(LC_TIME, 'INDONESIA');
     <p>Kabag Administrasi Umum</p>
     <p>Polstat STIS</p>
 
-    <p class="isi">Mohon diberikan bantuan pembiayaan untuk pelaksanaan pengabdian kepada masyarakat a.n. .......[Nama Dosen]..... yang dilakukan di ..[Nama tempat].... pada tanggal ...[Waktu pelaksanaan].. dengan tema ..[Tema kegiatan].. dan peserta dari ...[Asal peserta secara umum]..dengan jumlah biaya sebesar ...[Biaya]...
-        Dokumen pendukung terlampir bersama memo ini..</p>
+    <p class="isi">Mohon diberikan bantuan pembiayaan untuk pelaksanaan pengabdian kepada masyarakat <?= $timpkm[0]['nama'] ?> yang dilakukan di <?= $pkm['tempat_kegiatan'] ?> pada tanggal <?= date("d F  Y", strtotime($pkm['waktu_kegiatan'])); ?> dengan tema <?= $pkm['topik_kegiatan'] ?> dan peserta dari <?= $pkm['sasaran'] ?> dengan jumlah biaya sebesar <?= $dana[0]['dana_keluar']; ?>
+        Dokumen pendukung terlampir bersama memo ini.</p>
 
 
     <table class="ttd3">
@@ -81,12 +99,12 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>........................</td>
         </tr>
         <tr>
-            <td>Jakarta, <?= date("d F  Y", strtotime($pkm['tanggal_pengajuan'])); ?></td>
+            <td>Jakarta, <?= date("d F  Y", strtotime($dana[0]['tanggal'])); ?></td>
             <td>Jakarta, ...............</td>
             <td>Jakarta, ...............</td>
         </tr>
         <tr>
-            <td>Ketua Peneliti</td>
+            <td>Kepala PPPM</td>
             <td>Ketua Peneliti</td>
             <td>Ketua Peneliti</td>
         </tr>
@@ -99,12 +117,12 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>a</td>
         </tr>
         <tr>
-            <td></td>
+            <td>Arie Wahyu Wijayanto</td>
             <td>(Nama Lengkap)</td>
             <td>(Nama Lengkap)</td>
         </tr>
         <tr>
-            <td></td>
+            <td>3312128501</td>
             <td>NIDN : .................</td>
             <td>NIDN : .................</td>
         </tr>

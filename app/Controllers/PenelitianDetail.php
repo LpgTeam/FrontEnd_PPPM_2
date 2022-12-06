@@ -8,6 +8,8 @@ use App\Models\LaporanPenelitianModel;
 use App\Models\PenelitianModel;
 use App\Models\StatusPenelitianModel;
 use App\Models\LuaranTargetModel;
+use App\Models\DanaPenelitianModel;
+use CodeIgniter\I18n\Time;
 
 class PenelitianDetail extends BaseController
 {
@@ -18,7 +20,7 @@ class PenelitianDetail extends BaseController
     protected $timpenelitiModel;
     protected $dosenModel;
     protected $luaranModel;
-
+    protected $danaPenelitianModel;
     protected $laporanPenelitianModel;
 
     public function __construct()
@@ -27,6 +29,7 @@ class PenelitianDetail extends BaseController
         $this->laporanPenelitianModel = new LaporanPenelitianModel();
         $this->penelitianModel = new PenelitianModel();
         $this->statusPenelitianModel = new StatusPenelitianModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
     
     public function index()
@@ -195,6 +198,12 @@ class PenelitianDetail extends BaseController
             'status'        => 'Kegiatan sedang berlangsung'
         ]);
 
+        $this->danaPenelitianModel->save([
+            'id_penelitian'  => $Pen['id_penelitian'],
+            'tanggal'        => Time::now('Asia/jakarta'),
+            'dana_keluar'    => $this->request->getVar('totalDana'),
+        ]);
+        
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
             "laporan_dana" => $namaPendanaan,

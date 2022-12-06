@@ -101,6 +101,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row mb-4">
+                                        <label for="totalDana" class="col-md-4 col-lg-3 col-form-label">Total dana</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="totalDana" type="text" class="form-control" id="totalDana">
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
