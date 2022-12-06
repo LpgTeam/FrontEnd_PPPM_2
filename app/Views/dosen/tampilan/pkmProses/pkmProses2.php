@@ -107,7 +107,7 @@
                                             <input name="totalDana" type="text" class="form-control" id="totalDana">
                                         </div>
                                     </div>
-                                    <!-- </div> -->
+                                    </div> 
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>

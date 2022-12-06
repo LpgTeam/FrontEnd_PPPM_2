@@ -75,7 +75,7 @@
                             <hr>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <a class="btn btn-success">Lihat Form </a>
+                                <!-- <a class="btn btn-success">Lihat Form </a> -->
                                 <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
                             </div>
                             <!-- <div class="d-flex justify-content-between">

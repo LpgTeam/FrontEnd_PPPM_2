@@ -336,34 +336,37 @@
                                     <form action="<?= base_url('/dosen/uploadTTD'); ?>" method="post" enctype="multipart/form-data">
                                         <div class="row mb-3">
                                             <label for="ttdManual" class="col-md-4 col-lg-3 col-form-label">Manual</label>
-                                            <?php if ($ttd['ttd_manual'] != null) { ?>
+                                            <!-- <?//php if ($ttd['ttd_manual'] != null) { ?>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="ttdManual" type="file" class="form-control" id="ttdManual" hidden>
                                                     Anda sudah upload tanda tangan, hubungi Admin jika ingin menganti!
                                                 </div>
-                                            <?php } else { ?>
+                                            <?//php } else { ?> -->
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="ttdManual" type="file" class="form-control" id="ttdManual" required>
                                                     <small>*file harus bertipe png</small>
                                                 </div>
-                                            <?php } ?>
+                                            <?//php } ?>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="ttdDigital" class="col-md-4 col-lg-3 col-form-label">Digital (*jika ada)</label>
-                                            <?php if ($ttd['ttd_digital'] != null) { ?>
-                                                <div class="col-md-8 col-lg-9">
+                                            <label for="ttdDigital" class="col-md-4 col-lg-3 col-form-label">Digital *)</label>
+                                            <?//php if ($ttd['ttd_digital'] != null) { ?>
+                                                <!-- <div class="col-md-8 col-lg-9">
                                                     Anda sudah upload tanda tangan, hubungi Admin jika ingin menganti!
                                                     <input name="ttdDigital" type="file" class="form-control" hidden id="ttdDigital">
-                                                </div>
-                                            <?php } else { ?>
+                                                </div> -->
+                                            <?//php } else { ?>
                                                 <div class="col-md-8 col-lg-9">
-                                                    <input name="ttdDigital" type="file" class="form-control" id="ttdDigital">
+                                                    <input name="ttdDigital" type="file" class="form-control" id="ttdDigital" required>
                                                     <small>*file harus bertipe png</small>
                                                 </div>
-                                            <?php } ?>
-                                        </div>
+                                            <?//php } ?>
 
-                                        <div class="text-center">
+                                        </div>
+                                        <div>
+                                            <small>*) jika tidak ada upload file tanda tangan manual anda </small>
+                                        </div>
+                                        <div class="text-center mt-3">
                                             <button type="submit" class="btn btn-primary">Upload</button>
                                         </div>
                                     </form>

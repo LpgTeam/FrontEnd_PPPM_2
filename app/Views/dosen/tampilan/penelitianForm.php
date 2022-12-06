@@ -139,7 +139,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <label for="uploadSign" class="col-md-4 col-lg-3 col-form-label ">Upload Tanda Tangan Anda (Ketua Tim)</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="uploadSign" class="form-control  <?= ($validation->hasError('uploadSign')) ? 'is-invalid' : ''; ?>" type="file" id="uploadSign">
@@ -147,7 +147,7 @@
                                         <?= $validation->getError('uploadSign'); ?>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         <?php endif; ?>
 
                         <?php if ($jenis == "Mandiri" || $jenis == "Kerjasama") : ?>

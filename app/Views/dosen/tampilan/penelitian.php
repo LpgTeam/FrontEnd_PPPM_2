@@ -13,17 +13,22 @@
 
     <section class="section">
         <div class="container" data-aos="fade-up">
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('error')) : ?>
+                <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
             <header class="section-header2">
                 <h2>Penelitian</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
         </div>
-        <?php if (session()->getFlashdata('pesan')) : ?>
-            <div class="alert alert-success" role="alert" data-aos="zoom-in">
-                <?= session()->getFlashdata('pesan'); ?>
-            </div>
-        <?php endif; ?>
         <div class="row" data-aos="fade-up">
             <div class="">
                 <div class="card">

@@ -265,31 +265,39 @@ class Dosen extends BaseController
 
     public function penelitianForm($jenis)
     {
-        session();
-        if ($jenis == "mandiri") {
-            $jenisPenelitian = "Mandiri";
-        } elseif ($jenis == "semi-mandiri") {
-            $jenisPenelitian = "Semi Mandiri";
-        } elseif ($jenis == "kerja-sama") {
-            $jenisPenelitian = "Kerjasama";
-        } elseif ($jenis == "didanai-institusi") {
-            $jenisPenelitian = "Didanai Institusi";
-        } elseif ($jenis == "institusi") {
-            $jenisPenelitian = "Institusi";
+        $ttdDosen = $this->ttdDosen->get_ttd_by_nip(auth()->user()->nip);
+        // dd($ttdDosen);
+        if ($ttdDosen['ttd_manual'] == null && $ttdDosen['ttd_digital'] == null) {
+
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, silahkan upload terlebih dahulu di Beranda');
+            return redirect()->to('/penelitianDosen');
+        } else {
+            session();
+            if ($jenis == "mandiri") {
+                $jenisPenelitian = "Mandiri";
+            } elseif ($jenis == "semi-mandiri") {
+                $jenisPenelitian = "Semi Mandiri";
+            } elseif ($jenis == "kerja-sama") {
+                $jenisPenelitian = "Kerjasama";
+            } elseif ($jenis == "didanai-institusi") {
+                $jenisPenelitian = "Didanai Institusi";
+            } elseif ($jenis == "institusi") {
+                $jenisPenelitian = "Institusi";
+            }
+            // dd($jenisPenelitian);
+            // dd($jenisPenelitian)198512122008011004
+
+            $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'jenis' => $jenisPenelitian,
+                'user' => $nipdosen,
+                'validation' => \Config\Services::validation()
+            ];
+            // return view('dosen/tampilan/penelitianForm1', $data);
+            return view('dosen/tampilan/penelitianForm', $data);
         }
-        // dd($jenisPenelitian);
-        // dd($jenisPenelitian)198512122008011004
-
-        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
-
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => $jenisPenelitian,
-            'user' => $nipdosen,
-            'validation' => \Config\Services::validation()
-        ];
-        // return view('dosen/tampilan/penelitianForm1', $data);
-        return view('dosen/tampilan/penelitianForm', $data);
     }
 
     // public function penelitianMandiri()
@@ -356,15 +364,23 @@ class Dosen extends BaseController
 
     public function pkmForm($jenis)
     {
-        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => $jenis,
-            'user' => $nipdosen,
-            'validation' => \Config\Services::validation()
-        ];
-        // dd($data['jenis']);
-        return view('dosen/tampilan/pkmForm', $data);
+        $ttdDosen = $this->ttdDosen->get_ttd_by_nip(auth()->user()->nip);
+        // dd($ttdDosen);
+        if (($ttdDosen['ttd_manual'] == null && $ttdDosen['ttd_digital'] == null)) {
+
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, silahkan upload terlebih dahulu di Beranda');
+            return redirect()->to('/pkmDosen');
+        } else {
+            $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'jenis' => $jenis,
+                'user' => $nipdosen,
+                'validation' => \Config\Services::validation()
+            ];
+            // dd($data['jenis']);
+            return view('dosen/tampilan/pkmForm', $data);
+        }
     }
 
     // public function pkmMandiri()
@@ -786,30 +802,30 @@ class Dosen extends BaseController
             $namaDigital = $fileDigital->getName();
             //Cek
             // dd($namaManual);
-            if ($namaDigital == null) {
-                $fileManual->move('ttd_dosen/manual', $namaManual);
-                $this->ttdDosen->save([
-                    'id'          => $id['id'],
-                    'nip_dosen'   => auth()->user()->nip,
-                    'ttd_manual'  => $namaManual
-                ]);
-            } elseif ($namaManual == null) {
-                $fileDigital->move('ttd_dosen/manual', $namaDigital);
-                $this->ttdDosen->save([
-                    'id'          => $id['id'],
-                    'nip_dosen'   => auth()->user()->nip,
-                    'ttd_digital'  => $namaDigital
-                ]);
-            } else {
-                $fileManual->move('ttd_dosen/manual', $namaManual);
-                $fileDigital->move('ttd_dosen/digital', $namaDigital);
-                $this->ttdDosen->save([
-                    'id'          => $id['id'],
-                    'nip_dosen'   => auth()->user()->nip,
-                    'ttd_manual'  => $namaManual,
-                    'ttd_digital'  => $namaDigital
-                ]);
-            }
+            // if ($namaDigital == null) {
+            //     $fileManual->move('ttd_dosen/manual', $namaManual);
+            //     $this->ttdDosen->save([
+            //         'id'          => $id['id'],
+            //         'nip_dosen'   => auth()->user()->nip,
+            //         'ttd_manual'  => $namaManual
+            //     ]);
+            // } elseif ($namaManual == null) {
+            //     $fileDigital->move('ttd_dosen/manual', $namaDigital);
+            //     $this->ttdDosen->save([
+            //         'id'          => $id['id'],
+            //         'nip_dosen'   => auth()->user()->nip,
+            //         'ttd_digital'  => $namaDigital
+            //     ]);
+            // } else {
+            $fileManual->move('ttd_dosen/manual', $namaManual);
+            $fileDigital->move('ttd_dosen/digital', $namaDigital);
+            $this->ttdDosen->save([
+                'id'          => $id['id'],
+                'nip_dosen'   => auth()->user()->nip,
+                'ttd_manual'  => $namaManual,
+                'ttd_digital'  => $namaDigital
+            ]);
+            // }
         }
         session()->setFlashdata('pesan', 'Data berhasil di tambahkan');
         // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];

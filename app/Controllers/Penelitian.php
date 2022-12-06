@@ -57,7 +57,6 @@ class Penelitian extends BaseController
     public function save()
     {
         // //validasi input
-        
         // dd($nipdosen);
         $jenisPenelitian = $this->request->getVar('jenis_penelitian');
         // dd($jenisPenelitian);
@@ -101,7 +100,7 @@ class Penelitian extends BaseController
                 //     return redirect()->to('/penelitianSemiMandiri')->withInput();
                 // }
             }
-            $namaSign = "-";
+            // $namaSign = "-";
             $biaya = "0";
             $namaProposal = "-";
             $fileBukti = $this->request->getFile('uploadBukti');
@@ -131,14 +130,14 @@ class Penelitian extends BaseController
                         'max_size' => "Ukuran File terlalu besar"
                     ]
                 ],
-                'uploadSign' => [
-                    'rules' => 'uploaded[uploadSign]|is_image[uploadSign]|mime_in[uploadSign,image/jpg,image/jpeg,image/png]|max_size[uploadSign,10000]',
-                    'errors' => [
-                        'uploaded' => "File tidak boleh kosong",
-                        'mime_in', 'is_image' => "Format file harus image/jpg,image/jpeg,image/png",
-                        'max_size' => "Ukuran File terlalu besar (Max 100kb)"
-                    ]
-                ]
+                // 'uploadSign' => [
+                //     'rules' => 'uploaded[uploadSign]|is_image[uploadSign]|mime_in[uploadSign,image/jpg,image/jpeg,image/png]|max_size[uploadSign,10000]',
+                //     'errors' => [
+                //         'uploaded' => "File tidak boleh kosong",
+                //         'mime_in', 'is_image' => "Format file harus image/jpg,image/jpeg,image/png",
+                //         'max_size' => "Ukuran File terlalu besar (Max 100kb)"
+                //     ]
+                // ]
             ])) {
                 // $validation = \Config\Services::validation();
                 // dd($validation);
@@ -157,10 +156,10 @@ class Penelitian extends BaseController
             $fileProposal = $this->request->getFile('upload');
             // $fileSurat = $this->request->getFile('uploadSign');
             // $namaSurat = $fileSurat->getName();
-            $fileSign = $this->request->getFile('uploadSign');
-            $namaSign = $fileSign->getName();
+            // $fileSign = $this->request->getFile('uploadSign');
+            // $namaSign = $fileSign->getName();
             $namaProposal = $fileProposal->getName();
-            $fileSign->move('sign/penelitian', $namaSign);
+            // $fileSign->move('sign/penelitian', $namaSign);
             $fileProposal->move('proposal', $namaProposal);
             $biaya = $this->request->getVar('biaya');
             $namaBukti = "-";
@@ -177,7 +176,7 @@ class Penelitian extends BaseController
             'id_status' => '1',
             'status_pengajuan' => 'Diajukan oleh Dosen',
             'file_proposal' => $namaProposal,
-            'tanda_tangan' => $namaSign,
+            // 'tanda_tangan' => $namaSign,
             'biaya'  => $biaya,
             'bukti_luaran' => $namaBukti
         ]);

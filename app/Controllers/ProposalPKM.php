@@ -145,6 +145,9 @@ class ProposalPKM extends BaseController
             'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($id_pkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
             'biaya' => $this->biayaModel->find_by_idpkm($id_pkm),
+            'ketuapkm' => $this->dosenModel->get_nip_peneliti($timpkm[0]['nip']),
+            'settingTTD' => $this->settingTTD->find(1)
+
         ];
 
         $file_pdf = 'Laporan PKM - ' . $datapkm['pkm']['topik_kegiatan'];
