@@ -34,7 +34,7 @@ class BAU extends BaseController
         $this->anggaranTotalModel = new AnggaranTotalModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
         $this->danaPKMModel = new DanaPKMModel();
-        
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
 
     public function index()
@@ -310,9 +310,11 @@ class BAU extends BaseController
 
     public function detailReimburse($id_reimburse)
     {
+        $kegiatan_penelitian = $this->danaPenelitianModel->get_dana_by_reimburse($id_reimburse);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'dana_penelitian' => $kegiatan_penelitian[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
 

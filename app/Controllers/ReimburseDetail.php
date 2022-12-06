@@ -97,7 +97,7 @@ class ReimburseDetail extends BaseController
             'usulan_publikasi'  => $namaPublikasi,
             'id_status'         => "1",
             'status_reimburse'  => "Reimbursement diajukan",
-            'biaya_diajukan'    => $total_biaya
+            
         ]);
 
         $this->penelitianModel->save([

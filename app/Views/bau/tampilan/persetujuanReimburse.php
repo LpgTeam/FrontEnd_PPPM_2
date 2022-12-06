@@ -79,7 +79,7 @@
                                 <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
                                 </label>
                                 <div class="col-md-8 col-lg-9">
-                                    <?php echo 'Rp ',  number_format($reimburse['biaya_diajukan'], 0, ",", "."); ?>
+                                    <?php echo 'Rp ',  number_format($dana_penelitian, 0, ",", "."); ?>
                                 </div>
                             </div>
                             <form action="<?= base_url('/acc-reimburseBAU/' . $reimburse['id_reimburse']); ?>" method="post">

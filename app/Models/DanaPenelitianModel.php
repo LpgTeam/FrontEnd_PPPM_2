@@ -55,4 +55,11 @@ class DanaPenelitianModel extends Model
         
     }
 
+    public function get_dana_by_reimburse($id_reimburse){
+        return $this->join('permohonan_reimburse', 'permohonan_reimburse.id_penelitian = dana_penelitian.id_penelitian')
+        ->select('permohonan_reimburse.id_reimburse')->select('dana_penelitian.*')
+        // ->select('laporan_penelitian.*')
+        ->where(['id_reimburse' => $id_reimburse])->findAll();
+    }
+
 }

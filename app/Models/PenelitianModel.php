@@ -107,22 +107,22 @@ class PenelitianModel extends Model
         return $this->where('year(tanggal_pengajuan)',$tahun)->findAll();
     }  
 
+    //total dana keluar setelah laporan
     public function get_dana_keluar($tahun){
         $keluar =  $this->join('dana_penelitian', 'dana_penelitian.id_penelitian = penelitian.id_penelitian')
         ->select('dana_penelitian.dana_keluar')->select('penelitian.*')
-        ->where('year(tanggal_pengajuan)', $tahun)-> findAll();
+        ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
         $total_keluar = 0;
         if (!$keluar == null){
             foreach($keluar as $data_keluar){
-                $total_keluar = $total_keluar + $total_keluar['dana_keluar'];
+                $total_keluar = $total_keluar + $data_keluar['dana_keluar'];
             }
        } 
        return $total_keluar;
     }
 
+    //total dana diajukan
     public function get_total_diajukan($tahun){
-        // $where2 = "id_status='2' OR id_status='3' id_status='4' OR  OR id_status='5' OR id_status='6' OR id_status='10'";
-        
         $where2 = "id_status='2' OR id_status='3' OR id_status='4' OR id_status='5' OR id_status='6'";
         $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
         
@@ -135,11 +135,6 @@ class PenelitianModel extends Model
       
        $total_pengajuan = $total_pengajuan + $this->get_dana_keluar($tahun);
        return $total_pengajuan;
-        $total_pengajuan = 0;
-        foreach($pengajuan as $data_pengajuan){
-            $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
-        }
-        return $total_pengajuan;
       
     }
 
