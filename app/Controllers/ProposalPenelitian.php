@@ -246,6 +246,7 @@ class ProposalPenelitian extends BaseController
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
             'targetpenelitian'  => $this->luaranModel->get_luaran_byid($id_penelitian),
             'dana'              => $this->danaPenelitianModel->get_dana_byid($id_penelitian),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
 
         // dd($dataPenelitian['dana']);

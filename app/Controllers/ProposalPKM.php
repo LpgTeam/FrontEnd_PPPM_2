@@ -96,6 +96,7 @@ class ProposalPKM extends BaseController
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
             // 'targetpkm'  => $this->luaranModel->get_luaran_byid($id_pkm),
             'dana'              => $this->danapkmModel->get_dana_byid($id_pkm),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
 
         $file_pdf = 'Memo Pembiayaan Publikasi - ' . $datapkm['pkm']['topik_kegiatan'];
