@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-end">
 
     <div class="text-end" style="margin-right: 10px">
         <a href="/download_loa/<?= $reimburse['id_reimburse']; ?>" class="btn btn-success">Download LOA</a>
@@ -13,7 +13,7 @@
         <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#invoice">Invoice</button> -->
     </div>
 </div>
-<div class="d-flex justify-content-center mt-3">
+<div class="d-flex justify-content-end mt-3">
     <div class="text-end" style="margin-right: 10px">
         <a href="/penelitian/download-proposal-akhir/<?= $reimburse['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
         <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#proposal">Proposal</button> -->

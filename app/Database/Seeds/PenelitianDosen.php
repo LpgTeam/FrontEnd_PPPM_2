@@ -141,6 +141,32 @@ class PenelitianDosen extends Seeder
                 $this->db->table('dana_penelitian')->insert($datadana);
             }
 
+            // fill table permohonan reimburse
+            if (($data['jenis_penelitian'] == 'Semi Mandiri') || ($data['jenis_penelitian'] == 'Didanai Institusi') || ($data['jenis_penelitian'] == 'Institusi')) {
+                if ($data['id_status'] == 10) {
+                    if (($data['id_status_reimburse'] == 1) || ($data['id_status_reimburse'] == 2)) {
+
+                        $datareimburse = [
+                            'id_penelitian' => $data['id_penelitian'],
+                            'jenis_penelitian' => $data['jenis_penelitian'],
+                            'judul_penelitian' => $data['judul_penelitian'],
+                            'tanggal_pengajuan' => Time::createFromTimestamp($faker->unixTime()),
+                            'laporan'    =>  "Laporan Penelitian - ".$data['judul_penelitian'],
+                            'loa'    =>  "default_loa.pdf",
+                            'naskah_artikel'    =>  "default_naskah_artikel.pdf",
+                            'bukti_pembayaran'    =>  "default_bukti_pembayaran.pdf",
+                            'usulan_publikasi'    =>  "default_usulan_publikas.pdf",
+                            'id_status' => $data['id_status_reimburse'],
+                            'biaya_diajukan' => ($faker->numberBetween($min = 300, $max = 1000)) . '000',
+                            'total_biaya' => ($faker->numberBetween($min = 400, $max = 1000)) . '000',
+                        ];
+                        if ($data['id_status_reimburse'] == 0) $datareimburse['status_reimburse'] = "Reimbursement belum diajukan";
+                        elseif ($data['id_status_reimburse'] == 1) $datareimburse['status_reimburse'] = "Reimbursement dalam proses";
+                        elseif ($data['id_status_reimburse'] == 2) $datareimburse['status_reimburse'] = "Dana telah dicairkan";
+                        $this->db->table('permohonan_reimburse')->insert($datareimburse);
+                    }
+                }
+            }
 
             // fill table status penelitian
             $id_status = $data['id_status'];
