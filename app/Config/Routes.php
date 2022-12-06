@@ -85,6 +85,10 @@ $routes->get('/pkmProses3/(:any)', 'Dosen::pkmDetail3/$1');
 $routes->get('/pkmProses4/(:any)', 'Dosen::pkmDetail4/$1');
 
 $routes->get('/pkm/saveSurat/(:any)', 'PkmDetail::saveSurat/$1');
+//SetujuiSurat
+$routes->get('/pkm/setujuiSurat/(:any)', 'PkmDetail::setujuiSurat/$1');
+
+
 $routes->get('/pkm/saveBukti/(:any)', 'PkmDetail::saveBukti/$1');
 // $routes->get('/penelitianSemiMandiri1/(:any)', 'Dosen::penelitianSemiMandiri1/$1');
 // $routes->get('/penelitianSemiMandiri2', 'Dosen::penelitianSemiMandiri2');
@@ -142,6 +146,11 @@ $routes->get('/dosen/editProfil', 'Dosen::editProfil');
 //menampilkan foto 
 $routes->get('/foto_profil/(:any)', 'Dosen::editProfil');
 
+// Upload TTD
+$routes->get('/dosen/uploadTTD', 'Dosen::uploadTTD');
+
+
+
 $routes->get('/pkm/save', 'PKM::save');
 
 // ================================================================
@@ -166,8 +175,12 @@ if (auth()->loggedIn()) {
         $routes->get('/deleteUser/(:any)', 'AdminUserSetting::deleteUser/$1');
         // delete role
         $routes->get('/deleteRoleUser/(:any)', 'AdminUserSetting::deleteRole/$1');
-
-
+        
+        //Setting GLobal
+        $routes->get('/Setting', 'Admin::setting');
+        // $routes->get('/saveSetting', 'Admin::pkm');
+        // $routes->get('/setting/save', 'Admin::save');
+        
         //penelitian
         $routes->get('/adminProses1/(:any)', 'Admin::adminProses1/$1');
         $routes->get('/adminProses2/(:any)', 'Admin::adminProses2/$1');
@@ -298,6 +311,8 @@ $routes->get('/penelitian/printProposal', 'Penelitian::printProposal');
 $routes->get('/penelitian/printSurat', 'Penelitian::printSurat');
 //download Kontrak penelitian
 $routes->get('/penelitian/printKontrak', 'Penelitian::printKontrak');
+//download BUkti luaran penelitian
+$routes->get('/penelitian/printBuktiLuaran', 'Penelitian::printBuktiLuaran');
 
 //viewproposal
 $routes->get('/penelitian/view_proposal_savelocal/(:any)/(:any)', 'ProposalPenelitian::view_proposal_savelocal/$1/$2');

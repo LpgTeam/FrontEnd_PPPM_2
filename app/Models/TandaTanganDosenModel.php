@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SuratKeteranganPkmModel extends Model
+class TandaTanganDosenModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'surat_keterangan_pkm';
+    protected $table            = 'tanda_tangan_dosen';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,7 +15,7 @@ class SuratKeteranganPkmModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id', 'no_surat', 'id_pkm', 'created_at'
+        'id', 'nip_dosen', 'ttd_manual', 'ttd_digital'
     ];
 
     // Dates
@@ -42,8 +42,8 @@ class SuratKeteranganPkmModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-public function get_by_id_pkm($idpkm)
+    public function get_ttd_by_nip($nip)
     {
-        return $this->where(['id_pkm' => $idpkm])->findAll();
+        return $this->where(['nip_dosen' => $nip])->first();
     }
 }

@@ -4,19 +4,25 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SuratKeteranganPkmModel extends Model
+class GlobalSettingModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'surat_keterangan_pkm';
-    protected $primaryKey       = 'id';
+    protected $table            = 'global_setting_ttd';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id', 'no_surat', 'id_pkm', 'created_at'
+        'id', 'id_setting'
     ];
+
+    //kosongkan Tabel
+    public function kosongkan()
+    {
+        $builder = $this->db->table('global_setting_ttd');
+        return $builder->truncate();
+    }
 
     // Dates
     protected $useTimestamps = false;
@@ -41,9 +47,4 @@ class SuratKeteranganPkmModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-public function get_by_id_pkm($idpkm)
-    {
-        return $this->where(['id_pkm' => $idpkm])->findAll();
-    }
 }

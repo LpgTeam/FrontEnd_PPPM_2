@@ -280,4 +280,9 @@ class Penelitian extends BaseController
     {
         return $this->response->download('proposal/[PENELITIAN] Kontrak.docx', null)->setFileName("[Template]proposal_penelitian.docx"); //download file
     }
+
+    public function printBuktiLuaran()
+    {
+        return $this->response->download('bukti_luaran/[PENELITIAN] Kontrak.docx', null)->setFileName("[Template]bukti_luaran_penelitian.docx"); //download file
+    }
 }

@@ -14,6 +14,7 @@ use App\Models\TimPKMModel;
 use App\Models\LuaranTargetModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
+use App\Models\GlobalSettingModel;
 
 class ProposalPKM extends BaseController
 {
@@ -26,6 +27,7 @@ class ProposalPKM extends BaseController
     protected $pkmModel;
     protected $rincianModel;
     protected $biayaModel;
+    protected $settingTTD;
 
     public function __construct()
     {
@@ -35,6 +37,7 @@ class ProposalPKM extends BaseController
         $this->suratPkmModel = new SuratKeteranganPkmModel();
         $this->rincianModel = new RincianPKMModel();
         $this->biayaModel = new PembiayaanPkmModel;
+        $this->settingTTD = new GlobalSettingModel();
     }
 
     public function download_proposal($id_pkm)
@@ -45,9 +48,10 @@ class ProposalPKM extends BaseController
             'pkm'    => $this->pkmModel->find($id_pkm),
             'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($id_pkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
-            'biaya' => $this->biayaModel->find_by_idpkm($id_pkm)
+            'biaya' => $this->biayaModel->find_by_idpkm($id_pkm),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
-
+        // dd($dataPkm['settingTTD']);
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
         // . $dataPkm['penelitian']['judul_penelitian'];
         $paper = 'A4';
@@ -67,9 +71,10 @@ class ProposalPKM extends BaseController
             // 'peneliti' => $this->timpkmModel->get_data_timpkm($id_pkm),
             'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
             'rincian'  => $this->rincianModel->find_by_idpkm($id_pkm),
-            'no_surat'  => $this->suratPkmModel->get_by_id_pkm($id_pkm)
+            'no_surat'  => $this->suratPkmModel->get_by_id_pkm($id_pkm),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
-        // dd($dataPkm['peneliti']);
+        // dd($dataPkm['no_surat']);
 
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
         // . $dataPkm['penelitian']['judul_penelitian'];
@@ -90,7 +95,9 @@ class ProposalPKM extends BaseController
             'timpkm'   => $timpkm,
             'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($idpkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($idpkm),
+            'ketuapkm' => $this->dosenModel->get_nip_peneliti($timpkm[0]['nip']),
             'biaya' => $this->biayaModel->find_by_idpkm($idpkm),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
         // dd($dataPenelitian);
         // dd($dataPenelitian['timpeneliti']);

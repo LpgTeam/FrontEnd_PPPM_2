@@ -107,6 +107,7 @@
                             <a class="username scrollto" href="#"><span>Admin</span></a>
                             <ul>
                                 <li><a href="/userSetting">User Setting</a></li>
+                                <li><a href="/Setting">Setting</a></li>
                                 <!-- <li><a href="/login">Logout</a></li> -->
                                 <!-- </ul>
                         </li> -->

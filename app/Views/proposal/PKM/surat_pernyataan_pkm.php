@@ -8,7 +8,7 @@ setlocale(LC_TIME, 'INDONESIA');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $penelitian['judul_penelitian']; ?></title>
+    <title>Surat Pernyataan PKM </title>
     <style>
         .text-center {
             text-align: center;
@@ -70,22 +70,27 @@ setlocale(LC_TIME, 'INDONESIA');
     <table>
         <tr>
             <td>Nama</td>
-            <td>: <?= $ketuapeneliti['nama_dosen'] ?></td>
+            <td>: <?= $ketuapkm['nama_dosen'] ?></td>
         </tr>
         <tr>
             <td>NIDN</td>
-            <td>: <?= $ketuapeneliti['NIP_dosen'] ?></td>
+            <td>: <?= $ketuapkm['NIP_dosen'] ?></td>
         </tr>
         <tr>
             <td>Jabatan Fungsional</td>
-            <td>: <?= $ketuapeneliti['jabatan_dosen'] ?></td>
+            <td>: <?= $ketuapkm['jabatan_dosen'] ?></td>
         </tr>
     </table>
 
-    <p class="isi">Dengan ini menyatakan bahwa proposal penelitian saya yang berjudul: <?= $penelitian['judul_penelitian']; ?>
-        yang diusulkan dengan skema penelitian dosen tahun <?= date("Y"); ?> bersifat original dan belum pernah mendapatkan
-        biaya/dibiayai oleh lembaga atau sumber biaya lainnya. Jika dikemudian hari ditemukan ketidaksesuaian dengan pernyataan ini,
-        saya bersedia dituntut dan diproses sesuai dengan ketentuan yang berlaku dan mengembalikan seluruh biaya yang sudah saya terima.</p>
+    <p class="isi">
+        dengan ini menyatakan bahwa kami <b>benar-benar melakukan kegiatan
+            pengabdian kepada masyarakat</b> sebagaimana yang dimaksud dalam laporan ini,
+        dalam rangka pelaksanaan Tri Dharma Perguruan Tinggi.
+        <br>
+        Jika dikemudian hari ditemukan ketidaksesuaian dengan pernyataan ini,
+        saya bersedia dituntut dan diproses sesuai dengan ketentuan yang berlaku dan
+        mengembalikan seluruh biaya yang sudah saya terima.
+    </p>
 
 
     <table class="ttd3">
@@ -95,7 +100,7 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>........................</td>
         </tr>
         <tr>
-            <td>Jakarta, <?= date("d F  Y", strtotime($penelitian['tanggal_pengajuan'])); ?></td>
+            <td>Jakarta, <?= date("d F  Y", strtotime($pkm['tanggal_pengajuan'])); ?></td>
             <td>Jakarta, ...............</td>
             <td>Jakarta, ...............</td>
         </tr>
@@ -117,12 +122,12 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>a</td>
         </tr>
         <tr>
-            <td><?= $ketuapeneliti['nama_dosen']; ?></td>
+            <td><?= $ketuapkm['nama_dosen']; ?></td>
             <td>(Nama Lengkap)</td>
             <td>(Nama Lengkap)</td>
         </tr>
         <tr>
-            <td>NIDN : <?= $ketuapeneliti['NIP_dosen']; ?></tdt>
+            <td>NIDN : <?= $ketuapkm['NIP_dosen']; ?></tdt>
             <td>NIDN : .................</td>
             <td>NIDN : .................</td>
         </tr>

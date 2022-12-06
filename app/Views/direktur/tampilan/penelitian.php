@@ -19,7 +19,7 @@
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success" data-aos="zoom-in-right" role="alert">
                 <?= session()->getFlashdata('pesan'); ?>
             </div>
         <?php endif; ?>

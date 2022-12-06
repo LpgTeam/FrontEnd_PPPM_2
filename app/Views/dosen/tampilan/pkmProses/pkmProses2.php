@@ -80,9 +80,16 @@
                             <hr>
                             <?php
                             // var_dump($rincian);
-                            if ($rincian['surat_pernyataan'] == null) {
+                            if ($pkm['id_status'] < 4) {
+                                if (($ttd['ttd_manual'] == null && $ttd['ttd_digital'] == null)) {
                             ?>
-                                <form action="<?= base_url('/pkmDetail/saveSurat/' . $pkm['ID_pkm']); ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
+                                    <div class="text-center">
+                                        <h6>Anda belum upload tanda tangan di halaman Beranda, upload terlebih dahulu!</h6>
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+                                    <!-- <form action="<?= base_url('/pkmDetail/saveSurat/' . $pkm['ID_pkm']); ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
                                     <div class="d-flex justify-content-between">
                                         <div class="row mb-4">
                                             <label for="uploadPendanaan" class="col-md-4 col-lg-3 col-form-label ">Surat Pernyataan</label>
@@ -97,13 +104,20 @@
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
-                                </form>
-                            <?php
+                                </form> -->
+                                    <div>
+                                        dengan menyetujui artinya anda setuju dengan seluruh pernyataan yang ada di
+                                        surat pernyataan dan tanda tangan anda akan otomatis tergenerate ke surat pernyataan
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
+                                    </div>
+                                <?php }
                             } else {
-                            ?>
+                                ?>
                                 <!-- <h5 class="card-title text-center">Surat Pernyataan</h5>
                                 <hr> -->
-                                <h6 class="card-title text-center">Anda Sudah Upload Surat Pernyataan!!</h6>
+                                <h6 class="card-title text-center">Anda Sudah Menyetujui Surat Pernyataan!!</h6>
                             <?php
                             }
                             ?>
@@ -125,6 +139,25 @@
                 </div>
             </div>
     </section>
+    <!-- Setujui modal -->
+    <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="submitLabel">Setujui Surat Pernyataan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin menyetujui Surat Pernyataan ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/pkm/setujuiSurat/<?= $pkm['ID_pkm'] ?>'">Ya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endModal -->
 
     <script>
         function submitForm(form) {
@@ -141,6 +174,7 @@
             return false;
         }
     </script>
+
 </main>
 <!-- End #main -->
 

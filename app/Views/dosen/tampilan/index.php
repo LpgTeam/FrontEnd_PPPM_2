@@ -4,16 +4,24 @@
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
-
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero d-flex align-items-center">
         <div class="container">
+            <?php if (session()->getFlashdata('error')) : ?>
+                <div class="alert alert-danger" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </div>
+            <?php endif; ?>
             <div class="row justify-content-center">
                 <div class="col-lg-6 hero-img " data-aos="zoom-out" data-aos-delay="200">
                     <img src="assets/img/STIS.png" class="img-fluid" alt="" />
                 </div>
             </div>
-
             <div class="row justify-content-center">
                 <div class="text-center">
                     <h1 data-aos="fade-up">
@@ -31,6 +39,7 @@
 
     <section class="section profile">
         <div class="row" data-aos="fade-up">
+
             <header class="section-header2">
                 <h2>Profil</h2>
                 <hr>
@@ -74,6 +83,10 @@
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profil</button>
                             </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-ttd">Tanda Tangan</button>
+                            </li>
+
                         </ul>
                         <div class="tab-content pt-2">
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -317,7 +330,56 @@
                                 </form><!-- End Profile Edit Form -->
 
                             </div>
+
+                            <div class="tab-pane fade profile-ttd pt-4" id="profile-ttd">
+                                <?php if ($ttd['ttd_manual'] == null && $ttd['ttd_digital'] == null) { ?>
+                                    <form action="<?= base_url('/dosen/uploadTTD'); ?>" method="post" enctype="multipart/form-data">
+                                        <div class="row mb-3">
+                                            <label for="ttdManual" class="col-md-4 col-lg-3 col-form-label">Manual</label>
+                                            <?php if ($ttd['ttd_manual'] != null) { ?>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="ttdManual" type="file" class="form-control" id="ttdManual" hidden>
+                                                    Anda sudah upload tanda tangan, hubungi Admin jika ingin menganti!
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="ttdManual" type="file" class="form-control" id="ttdManual" required>
+                                                    <small>*file harus bertipe png</small>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="ttdDigital" class="col-md-4 col-lg-3 col-form-label">Digital (*jika ada)</label>
+                                            <?php if ($ttd['ttd_digital'] != null) { ?>
+                                                <div class="col-md-8 col-lg-9">
+                                                    Anda sudah upload tanda tangan, hubungi Admin jika ingin menganti!
+                                                    <input name="ttdDigital" type="file" class="form-control" hidden id="ttdDigital">
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="ttdDigital" type="file" class="form-control" id="ttdDigital">
+                                                    <small>*file harus bertipe png</small>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Upload</button>
+                                        </div>
+                                    </form>
+                                <?php } else { ?>
+                                    <div class="text-center">
+                                        <h5>Anda sudah upload tanda tangan! </h5>
+                                        <h6>hubungi admin untuk mengganti</h6>
+                                    </div>
+                                <?php } ?>
+
+                            </div>
+
+
+
                         </div>
+
 
                         <!-- End Bordered Tabs -->
                     </div>
