@@ -51,6 +51,10 @@ class Admin extends BaseController
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         // return view('adminPPPM/tampilan/index', $data);
     }
+    public function registerView()
+    {
+         return view('register');
+    }
     public function setting()
     {
 

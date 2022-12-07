@@ -44,6 +44,9 @@ $routes->get('/login', 'Login::loginView');
 $routes->post('/login', 'Login::loginAction');
 $routes->post('/loginAdmin', 'Login::loginActionAdmin');
 $routes->get('/logout', 'Login::logoutAction');
+//Ubah Password
+$routes->get('/user/ubahPaswword', 'User::ganti_password');
+$routes->get('/user/act_ganti_password/(:any)', 'User::act_ganti_password/$1');
 
 // ================================================================
 //                              Dosen
@@ -149,8 +152,6 @@ $routes->get('/foto_profil/(:any)', 'Dosen::editProfil');
 // Upload TTD
 $routes->get('/dosen/uploadTTD', 'Dosen::uploadTTD');
 
-
-
 $routes->get('/pkm/save', 'PKM::save');
 
 // ================================================================
@@ -158,6 +159,10 @@ $routes->get('/pkm/save', 'PKM::save');
 // ================================================================
 if (auth()->loggedIn()) {
     if (auth()->user()->inGroup('admin')) {
+        //register
+        $routes->get('/register', 'Register::registerView');
+        $routes->post('/register', 'Register::registerAction');
+
         $routes->get('/indexAdmin', 'Dosen::index');
         $routes->get('/anggaranAdmin', 'Admin::anggaran');
         $routes->get('/penelitianAdmin', 'Admin::penelitian');

@@ -277,7 +277,7 @@ class Penelitian extends BaseController
 
     public function printProposal()
     {
-        return $this->response->download('proposal/[PENELITIAN] Kontrak.docx', null)->setFileName("[Template]proposal_penelitian.docx"); //download file
+        return $this->response->download('proposal/[PENELITIAN] Template proposal P6.docx', null)->setFileName("[Template]proposal_penelitian.docx"); //download file
     }
 
     public function printBuktiLuaran()

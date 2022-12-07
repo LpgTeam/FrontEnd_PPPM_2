@@ -64,6 +64,7 @@ class Login extends ShieldLoginController
 
     public function loginActionAdmin(): RedirectResponse
     {
+        // dd($this->request->getPost('password'));
         $rules = $this->getValidationRules();
 
         if (!$this->validate($rules)) {
