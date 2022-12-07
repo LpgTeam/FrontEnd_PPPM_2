@@ -1,5 +1,6 @@
-<!-- ======= Header ======= -->
+<!-- ======= Header Reimburse ======= -->
 <header id="header" class="header fixed-top">
+    <!-- Header Dosen Reimburse -->
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <!-- Logo Dosen -->
         <a href="/indexDosen" class="logo d-flex align-items-center">
@@ -61,6 +62,7 @@
                 </div>
             </span>
         </a> -->
+
         <nav id="navbar" class="navbar">
             <ul>
                 <!-- Dosen -->
@@ -93,47 +95,67 @@
                             }
                                 ?>
 
-                                <!-- Kepala PPPM -->
+                                <!-- Reviewer -->
                                 <?php
-                                if ($_SESSION['group'] == "kepalapppm") {
+                                if ($_SESSION['group'] == "reviewer") {
                                 ?>
-                                    <li><a class="nav-link scrollto" href="/reimburseKepala">Kembali</a></li>
+                                    <li><a class="nav-link scrollto" href="/reimburseReviewer">Kembali</a></li>
                                     <li class="dropdown">
-                                        <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                        <a class="username scrollto" href="#"><span>Reviewer</span></a>
                                         <ul>
+                                            <!-- <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li> -->
                                         <?php
                                     }
                                         ?>
-
-                                        <!-- Direktur -->
+                                        <!-- Kepala PPPM -->
                                         <?php
-                                        if ($_SESSION['group'] == "direktur") {
+                                        if ($_SESSION['group'] == "kepalapppm") {
                                         ?>
-                                            <li><a class="nav-link scrollto" href="/reimburseDirektur">Kembali</a></li>
+                                            <li><a class="nav-link scrollto" href="/reimbursenKepala">Kembali</a></li>
                                             <li class="dropdown">
-                                                <a class="username scrollto" href="#"><span>Direktur</span></a>
+                                                <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
                                                 <ul>
+                                                    <!-- <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li> -->
                                                 <?php
                                             }
                                                 ?>
-                                                <!-- BAU -->
+                                                <!-- Direktur -->
                                                 <?php
-                                                if ($_SESSION['group'] == "bau") {
+                                                if ($_SESSION['group'] == "direktur") {
                                                 ?>
-                                                    <li><a class="nav-link scrollto" href="/reimburseBAU">Kembali</a></li>
+                                                    <li><a class="nav-link scrollto" href="/reimburseDirektur">Kembali</a></li>
                                                     <li class="dropdown">
-                                                        <a class="username scrollto" href="#"><span>BAU</span></a>
+                                                        <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                         <ul>
+                                                            <!-- <li><a href="/login">Logout</a></li>
+                        </ul>
+                    </li> -->
                                                         <?php
                                                     }
                                                         ?>
-                                                        <li><a href="/logout">Logout</a></li>
+
+                                                        <!-- BAU -->
+                                                        <?php
+                                                        if ($_SESSION['group'] == "bau") {
+                                                        ?>
+                                                            <li><a class="nav-link scrollto" href="/reimburseBAU">Kembali</a></li>
+                                                            <li class="dropdown">
+                                                                <a class="username scrollto" href="#"><span>BAU</span></a>
+                                                                <ul>
+                                                                <?php
+                                                            }
+                                                                ?>
+                                                                <li><a href="/logout">Logout</a></li>
+                                                                </ul>
+                                                            </li>
                                                         </ul>
-                                                    </li>
-                                                </ul>
-                                                <i class="bi bi-list mobile-nav-toggle"></i>
+                                                        <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
     </div>
-    <!-- End Header Dosen PKM-->
+    <!-- End Header Penelitian-->
 </header>

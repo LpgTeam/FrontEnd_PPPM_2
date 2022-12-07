@@ -32,6 +32,8 @@ class Dosen extends BaseController
     protected $pkmModel;
     protected $rincianModel;
     protected $ttdDosen;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
 
     public function __construct()
     {
@@ -727,30 +729,25 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->get_penelitian_done($user->nip, 10),
-            'pkm' => $this->pkmModel->get_pkm_done($user->nip, 7),
-
+            'pkm' => $this->pkmModel->get_pkm_done($user->nip, 7)
         ];
-
+        // dd($data);
         return view('dosen/tampilan/reimburse', $data);
     }
 
 
     public function detailReimburse($id_kegiatan)
     {
-        
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'penelitian' => $this->penelitianModel->find($id_kegiatan),
+            'dana_keluar' => $this->danaPenelitianModel->get_dana_penelitian_by_idpenelitian($id_kegiatan),
             // 'kegiatan' => $kegiatan,
-            //'loa' => $this->penelitianModel->get_penelitian($id_kegiatan),
-            // 'naskah_artikel' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
-            // 'bukti_pembayaran' => $this->reimburseModel->get_id_penelitian($id_kegiatan),
             'validation' => \Config\Services::validation()
         ];
-
+        // dd($data);
         return view('dosen/tampilan/detailReimburse', $data);
     }
-
 
     public function detailReimburse2($id_kegiatan)
     {
@@ -763,6 +760,7 @@ class Dosen extends BaseController
             'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
+        // dd($data);
         return view('dosen/tampilan/detailReimburse2', $data);
     }
 

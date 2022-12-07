@@ -27,9 +27,9 @@ class ReimburseModel extends Model
         'naskah_artikel',
         'bukti_pembayaran',
         'usulan_publikasi',
+        'biaya_dicairkan',
         'id_status',
-        'status_reimburse',
-        'biaya_dicairkan'
+        'status_reimburse'
     ];
     
     public function getData()
@@ -92,4 +92,8 @@ class ReimburseModel extends Model
         return $this->where(['id_penelitian' => $id_penelitian])->first();
     }
 
+    public function get_reimburse_by_id_status($id_status)
+    {
+        return $this->where(['id_status' => $id_status])->findAll();
+    }
 }

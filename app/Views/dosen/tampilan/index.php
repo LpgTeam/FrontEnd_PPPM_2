@@ -364,7 +364,7 @@
 
                                         </div>
                                         <div>
-                                            <small>*) jika tidak ada upload file tanda tangan manual anda </small>
+                                            <small>*) jika tidak ada tanda tangan digital, upload file tanda tangan manual anda di kolom digital juga</small>
                                         </div>
                                         <div class="text-center mt-3">
                                             <button type="submit" class="btn btn-primary">Upload</button>

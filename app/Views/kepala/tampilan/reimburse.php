@@ -15,7 +15,7 @@
             <header class="section-header2">
                 <h2>REIMBURSEMEN</h2>
                 <hr>
-                <p>Dosen Politeknik Statistika STIS</p>
+                <p>Kepala PPPM Politeknik Statistika STIS</p>
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
@@ -77,29 +77,33 @@
                                         <option value="Dana telah dicairkan">Dana telah dicairkan</option>
                                     </select>
                                 </div>
+
+                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
+                                <option value="">Semua</option>
+                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
+                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
+                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
+                                </select>
                             </div>
 
-                            <div class="table-responsive">
-                                <table id="example" class="table table-responsive">
-                                    <thead>
-                                        <tr class="table-primary">
-                                            <th scope="col">Jenis Penelitian</th>
-                                            <th scope="col">Tanggal Pengajuan</th>
-                                            <th scope="col">Judul Penelitian</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Detail</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        if (!$reimburse == null) {
-                                            $i = 1; ?>
-                                            <?php foreach ($reimburse as $key => $post) :
-                                                if ($post['id_penelitian'] != NULL) {
-
+                            <table class="table table-advance table-hover align-middle datatable">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">Jenis Penelitian</th>
+                                        <th scope="col">Tanggal Pengajuan</th>
+                                        <th scope="col">Judul Penelitian</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if (!$reimburse == null) {
+                                        $i = 1; ?>
+                                        <?php foreach ($reimburse as $key => $post) :
+                                            if ($post['id_penelitian'] != NULL) {
                                             ?>
                                                     <tr>
-
                                                         <td><?php echo 'Penelitian ', $post['jenis_penelitian'] ?></td>
                                                         <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                         <td><?php echo $post['judul_penelitian'] ?></td>
@@ -109,7 +113,7 @@
                                                             } else if ($post['id_status'] == 1) {
                                                                 echo 'Reimbursement dalam proses';
                                                             } else if ($post['id_status'] == 2) {
-                                                                echo 'Dana telah dicairkan';
+                                                                echo 'Reimbursement telah dicairkan';
                                                             }
                                                             ?>
                                                         </td>

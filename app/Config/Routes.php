@@ -44,6 +44,9 @@ $routes->get('/login', 'Login::loginView');
 $routes->post('/login', 'Login::loginAction');
 $routes->post('/loginAdmin', 'Login::loginActionAdmin');
 $routes->get('/logout', 'Login::logoutAction');
+//Ubah Password
+$routes->get('/user/ubahPaswword', 'User::ganti_password');
+$routes->get('/user/act_ganti_password/(:any)', 'User::act_ganti_password/$1');
 
 // ================================================================
 //                              Dosen
@@ -116,6 +119,10 @@ $routes->post('/pkm/save', 'PKM::save');
 // ================================================================
 if (auth()->loggedIn()) {
     if (auth()->user()->inGroup('admin')) {
+        //register
+        $routes->get('/register', 'Register::registerView');
+        $routes->post('/register', 'Register::registerAction');
+
         $routes->get('/indexAdmin', 'Dosen::index');
         $routes->get('/anggaranAdmin', 'Admin::anggaran');
         $routes->get('/penelitianAdmin', 'Admin::penelitian');
@@ -292,7 +299,9 @@ $routes->get('/backurl', 'Error::index');
 //===================== Download Reimburse ========================
 $routes->get('/download_loa/(:any)', 'ReimburseDetail::download_loa/$1');
 $routes->get('/download_naskah_artikel/(:any)', 'ReimburseDetail::download_naskah_artikel/$1');
-$routes->get('/download_na/(:any)', 'ReimburseDetail::download_na/$1');
+$routes->get('/download_invoice/(:any)', 'ReimburseDetail::download_invoice/$1');
+$routes->get('/download_form/(:any)', 'ReimburseDetail::download_form_publikasi/$1');
+$routes->get('/form_publikasi/printFormPublikasi', 'ReimburseDetail::printFormPublikasi');
 
 
 //cek except login
