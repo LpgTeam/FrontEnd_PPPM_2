@@ -334,6 +334,10 @@
         </table>
     </div>
 
+    <div id="footer_page">
+        <p class="page"></p>
+    </div>
+
 </body>
 
 </html>

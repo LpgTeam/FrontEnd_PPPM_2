@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pkm['topik_kegiatan']; ?></title>
     <style>
-        .text-center {
-            text-align: center;
-        }
 
         .logo {
             margin: 8em;
