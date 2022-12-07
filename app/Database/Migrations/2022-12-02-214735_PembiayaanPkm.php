@@ -35,7 +35,7 @@ class PembiayaanPkm extends Migration
             ],
         ]);
         $this->forge->addKey('id_biaya', true);
-        $this->forge->createTable('penelitian');
+        $this->forge->createTable('pembiayaan_pkm');
     }
 
     public function down()

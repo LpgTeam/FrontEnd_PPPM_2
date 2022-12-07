@@ -93,7 +93,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="col-form-label">Password :</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <div class="input-group-append" style="display: flex; align-items: center;">
+                            <input type="password" class="form-control" id="password" name="password">
+                            <span class="input-group-text" onclick="password_show_hide();">
+                                <i class="bi bi-eye" id="show_eye"></i>
+                                <i class="bi bi-eye-slash d-none" id="hide_eye"></i>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <?php if (setting('Auth.sessionConfig')['allowRemembering']) : ?>
@@ -144,7 +150,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="col-form-label">Password :</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <div class="input-group-append " style="display: flex; align-items: center;">
+                            <input type="password" class="form-control" id="password1" name="password">
+                            <span class="input-group-text" onclick="password_show_hide2();">
+                                <i class="bi bi-eye" id="show_eye1"></i>
+                                <i class="bi bi-eye-slash d-none" id="hide_eye1"></i>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <?php if (setting('Auth.sessionConfig')['allowRemembering']) : ?>
@@ -167,4 +179,40 @@
         </div>
     </div>
 </div>
+<script>
+    function password_show_hide() {
+        var x = document.getElementById("password");
+        // var x = document.getElementsByClassName('password');
+        var show_eye = document.getElementById("show_eye");
+        var hide_eye = document.getElementById("hide_eye");
+        hide_eye.classList.remove("d-none");
+        if (x.type === "password") {
+            x.type = "text";
+            show_eye.style.display = "none";
+            hide_eye.style.display = "block";
+        } else {
+            x.type = "password";
+            show_eye.style.display = "block";
+            hide_eye.style.display = "none";
+        }
+    }
+
+    function password_show_hide2() {
+        var x = document.getElementById("password1");
+        // var x = document.getElementsByClassName('password1');
+        // console.log(x.value);
+        var show_eye = document.getElementById("show_eye1");
+        var hide_eye = document.getElementById("hide_eye1");
+        hide_eye.classList.remove("d-none");
+        if (x.type === "password") {
+            x.type = "text";
+            show_eye.style.display = "none";
+            hide_eye.style.display = "block";
+        } else {
+            x.type = "password";
+            show_eye.style.display = "block";
+            hide_eye.style.display = "none";
+        }
+    }
+</script>
 <?= $this->endSection(); ?>

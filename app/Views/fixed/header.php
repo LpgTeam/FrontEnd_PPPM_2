@@ -79,7 +79,7 @@
                         <li><a href="/pkmDosen">PKM</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="reimburseDosen">Reimbursemen</a></li>
+                <li><a class="nav-link scrollto" href="reimburseDosen">Reimbursement</a></li>
                 <li class="dropdown">
                     <a class="username scrollto" href="#"><span>Dosen</span></a>
                     <ul>
@@ -119,20 +119,20 @@
                                 <?php
                                 if ($_SESSION['group'] == "reviewer") {
                                 ?>
-                                <li>
-                                    <a class="nav-link scrollto" href="/indexReviewer">Beranda</a>
-                                </li>
-                                <li><a class="nav-link scrollto" href="/anggaranReviewer">Anggaran</a></li>
-                                <li class="dropdown">
-                                    <a href="#"><span>Pengajuan</span> <i class="bi bi-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="/penelitianReviewer">Penelitian</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
-                                <li class="dropdown">
-                                    <a class="username scrollto" href="#"><span>Reviewer</span></a>
-                                    <ul>
+                                    <li>
+                                        <a class="nav-link scrollto" href="/indexReviewer">Beranda</a>
+                                    </li>
+                                    <li><a class="nav-link scrollto" href="/anggaranReviewer">Anggaran</a></li>
+                                    <li class="dropdown">
+                                        <a href="#"><span>Pengajuan</span> <i class="bi bi-chevron-down"></i></a>
+                                        <ul>
+                                            <li><a href="/penelitianReviewer">Penelitian</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="nav-link scrollto" href="#">Reimbursement</a></li>
+                                    <li class="dropdown">
+                                        <a class="username scrollto" href="#"><span>Reviewer</span></a>
+                                        <ul>
                                         <?php } ?>
                                         <!-- <li><a href="/login">Logout</a></li>
                             </ul>
@@ -154,7 +154,7 @@
                                                 <li><a href="/pkmKepala">PKM</a></li>
                                             </ul>
                                         </li>
-                                        <li><a class="nav-link scrollto" href="/reimburseKepala">Reimbursemen</a></li>
+                                        <li><a class="nav-link scrollto" href="/reimburseKepala">Reimbursement</a></li>
                                         <li class="dropdown">
                                             <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
                                             <ul>
@@ -181,7 +181,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><a class="nav-link scrollto"
-                                                        href="/reimburseDirektur">Reimbursemen</a></li>
+                                                        href="/reimburseDirektur">Reimbursement</a></li>
                                                 <li class="dropdown">
                                                     <a class="username scrollto" href="#"><span>Direktur</span></a>
                                                     <ul>
@@ -210,7 +210,7 @@
                                                             </ul>
                                                         </li>
                                                         <li><a class="nav-link scrollto"
-                                                                href="reimburseBAU">Reimbursemen</a></li>
+                                                                href="reimburseBAU">Reimbursement</a></li>
                                                         <li class="dropdown">
                                                             <a class="username scrollto" href="#"><span>BAU</span></a>
                                                             <ul>
@@ -218,6 +218,7 @@
                                     </ul>
                                 </li> -->
                                                                 <?php } ?>
+                                                                <li><a href="/user/ubahPaswword">Ubah Password</a></li>
                                                                 <li><a href="/logout">Logout</a></li>
                                                             </ul>
                                                         </li>

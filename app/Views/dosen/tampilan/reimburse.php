@@ -36,10 +36,12 @@
                                 <div class="col-md-8 col-lg-4">
                                     <select class="form-select status-dropdown ">
                                         <option value="">Semua</option>
-                                        <option value="2">Semi Mandiri</option>
-                                        <option value="3">Didanai Institusi</option>
-                                        <option value="4">Institusi</option>
-                                        <option value="5">Kerjasama</option>
+                                        <option value="2">Penelitian Semi Mandiri</option>
+                                        <option value="3">Penelitian Didanai Institusi</option>
+                                        <option value="4">Penelitian Institusi</option>
+                                        <option value="5">Penelitian Kerjasama</option>
+                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
+                                        <option value="Terstruktur">PKM Terstruktur</option>
                                     </select>
                                 </div>
 
@@ -51,7 +53,7 @@
                                         <option value="">Semua</option>
                                         <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
                                         <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
-                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
+                                        <option value="Reimbursement telah dicairkan">Reimbursement telah dicairkan</option>
                                     </select>
                                 </div>
                             </div>
@@ -63,7 +65,7 @@
                                             <!-- <th scope="col">Nomor</th> -->
                                             <th scope="col">Jenis Penelitian/PKM</th>
                                             <th scope="col">Tanggal Pengajuan</th>
-                                            <th scope="col">Judul/Topik</th>
+                                            <th scope="col">Judul Penelitian/Topik PKM</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Detail</th>
                                         </tr>
@@ -96,23 +98,13 @@
                                                         } else if ($post['id_status_reimburse'] == 1) {
                                                             echo 'Reimbursement dalam proses';
                                                         } else if ($post['id_status_reimburse'] == 2) {
-                                                            echo 'Dana telah dicairkan';
+                                                            echo 'Reimbursement telah dicairkan';
                                                         }
                                                         ?>
                                                     </td>
-
-
                                                     <td>
                                                         <a href="/detailReimburseDosen/<?= $post['id_penelitian']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-
-
-
-
-                                                        <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
-                                                        <!-- </td>
-                                        <td>
-                                            <a href="/detailReimburseDosen" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                        </td> -->
+                                                    </td>
                                                 </tr>
                                                 <?php
                                                 $i++;    ?>
@@ -136,14 +128,13 @@
                                                         } else if ($post['id_status_reimburse'] == 1) {
                                                             echo 'Reimbursement dalam proses';
                                                         } else if ($post['id_status_reimburse'] == 2) {
-                                                            echo 'Dana telah dicairkan';
+                                                            echo 'Reimbursemen telah dicairkan';
                                                         }
                                                         ?>
                                                     </td>
                                                     <td>
                                                         <!-- <a class="btn btn-primary" onclick="location.href='/penelitianSemiMandiri1'"><i class="bi bi-pencil-square"></i></a> -->
                                                         <a href="detailReimburse2Dosen/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-
                                                     </td>
                                                 </tr>
                                         <?php $i++;

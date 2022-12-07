@@ -9,21 +9,83 @@ class PermohonanReimburse extends Migration
     public function up()
     {
         $this->forge->addField([
-            'ID_permohonan_reimburse' => [
+            'id_reimburse' => [
                 'type' => 'INT',
-                'constraint' => 15,
-                'null' => false
+                'constraint' => 11,
+                'null' => false,
+                'auto_increment' => true
             ],
 
-            'ID_penelitian' => [
+            'id_penelitian' => [
                 'type' => 'INT',
                 'constraint' => 15,
-                'null' => false
+                'null' => true
             ],
 
-            'berkas' => [
+            'id_pkm' => [
+                'type' => 'INT',
+                'constraint' => 15,
+                'null' => true
+            ],
+
+            'jenis_penelitian' => [
                 'type' => 'VARCHAR',
-                'constraint' => 100,
+                'constraint' => 50,
+                'null' => true
+            ],
+
+            'jenis_pkm' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+                'null' => true
+            ],
+
+            'judul_penelitian' => [
+                'type' => 'VARCHAR',
+                'constraint' => 250,
+                'null' => true
+            ],
+
+            'judul_pkm' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+                'null' => true
+            ],
+
+            'tanggal_pengajuan' => [
+                'type' => 'DATE',
+                'null' => false
+            ],
+
+            'loa' => [
+                'type' => 'TEXT',
+                'null' => true
+            ],
+
+            'naskah_artikel' => [
+                'type' => 'TEXT',
+                'null' => true
+            ],
+
+            'bukti_pembayaran' => [
+                'type' => 'TEXT',
+                'null' => true
+            ],
+
+            'usulan_publikasi' => [
+                'type' => 'TEXT',
+                'null' => true
+            ],
+
+            'biaya_dicairkan' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => true
+            ],
+
+            'id_status' => [
+                'type' => 'INT',
+                'constraint' => 11,
                 'null' => false
             ],
 
@@ -33,7 +95,7 @@ class PermohonanReimburse extends Migration
                 'null' => false
             ]
         ]);
-        $this->forge->addKey('ID_permohonan_reimburse', true);
+        $this->forge->addKey('id_reimburse', true);
         $this->forge->createTable('permohonan_reimburse');
     }
 

@@ -14,6 +14,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\ReimburseModel;
 use App\Models\GlobalSettingModel;
 
 use function PHPUnit\Framework\isNull;
@@ -36,6 +37,7 @@ class Admin extends BaseController
         $this->detailStatusPkm = new DetailStatusPkmModel();
         $this->penelitianModel = new PenelitianModel();
         $this->pkmModel = new PkmModel();
+        $this->reimburseModel = new ReimburseModel();
         $this->settingGlobal = new GlobalSettingModel();
     }
     public function index()
@@ -50,6 +52,10 @@ class Admin extends BaseController
 
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         // return view('adminPPPM/tampilan/index', $data);
+    }
+    public function registerView()
+    {
+         return view('register');
     }
     public function setting()
     {
@@ -288,4 +294,41 @@ class Admin extends BaseController
     //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
     //     return view('adminPPPM/tampilan/editUser', $data);
     // }
+
+    public function reimburse()
+    {
+
+        //mengambil data user yang sedang login
+        $user = auth()->user();
+
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->findAll(),
+            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
+            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
+
+        ];
+
+        return view('adminPPPM/tampilan/reimburse', $data);
+    }
+
+    public function detailReimburse($id_reimburse)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('adminPPPM/tampilan/detailReimburse', $data);
+    }
+
+    public function detailReimburse2($id_reimburse)
+    {
+        $data = [
+            'title' => 'PPPM Politeknik Statistika STIS',
+            'reimburse' => $this->reimburseModel->find($id_reimburse),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('adminPPPM/tampilan/detailReimburse2', $data);
+    }
 }

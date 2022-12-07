@@ -143,6 +143,35 @@ class BAU extends BaseController
       
        return view('bau/tampilan/anggaran', $data);
 
+        $input_terealisasi = [
+            'tahun' => $year,
+            'dana_keluar' => $total,
+            'sisa_anggaran' => $anggaranAwal['jumlah'] - $total
+        ];
+
+        // update data tabel anggaran_total
+        //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
+        $total_saved = $dana_terealisasi->save($input_terealisasi);
+
+        //ambil dana pengajuan 
+        $ambil_pengajuan = $dana_pengajuan->findAll();
+        $total_pengajuan = 0;
+        foreach ($ambil_pengajuan as $data_pengajuan) {
+            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
+                $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+                // dd($total_pengajuan);
+            }
+        }
+        // dd($ambil_pengajuan);
+        //semua dana
+        $data = [
+            'title'               => 'PPPM Politeknik Statistika STIS',
+            'anggaranAwal'        => $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first(),
+            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
+            'anggaranDiajukan'    => $total_pengajuan
+        ];
+        // dd($data);
+        return view('bau/tampilan/anggaran', $data);
     }
 
     public function updateAnggaran()
@@ -232,7 +261,7 @@ class BAU extends BaseController
 
         return redirect()->to('/penelitianBAU');
     }
-
+    
     //========================PKM===========================
     public function pkm()
     {
@@ -349,6 +378,8 @@ class BAU extends BaseController
             'status_reimburse'  => 'reimbursementt telah dicairkan'
         ]);
 
+        $id_penelitian = $this->reimburseModel->get_id_penelitian_done($id_reimburse);
+
         $this->anggaranTotalModel->save([
             'tahun'         => $year,
             'dana_keluar'   => $biayaDicairkan,
@@ -364,7 +395,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana reimbursementberhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana Reimbursement berhasil dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }
@@ -398,7 +429,7 @@ class BAU extends BaseController
             'id_status_reimburse' => 2
         ]);
 
-        session()->setFlashdata('pesan', 'Dana reimbursementberhasil dicairkan');
+        session()->setFlashdata('pesan', 'Dana Reimbursement berhasil dicairkan');
 
         return redirect()->to('/reimburseBAU');
     }

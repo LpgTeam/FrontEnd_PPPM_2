@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Reimbursemen</h2>
+                <h2>Reimbursement PKM <?= $reimburse['jenis_pkm'] ?></h2>
                 <hr>
                 <p>Bagian Administrasi Umum Politeknik Statistika STIS</p>
             </header>
@@ -17,9 +17,9 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Reimbursemen</h3>
+                            <h3>Reimbursement</h3>
                             <p>
-                                Proses pencairan dana reimbursementyang diajukan dosen
+                                Proses pencairan dana reimbursemen yang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
                         </div>
@@ -33,16 +33,13 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal reimbursementPKM</h5>
+                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
                         <hr>
-                        <p>Proposal reimbursementPKM yang diajukan dosen
+                        <p>Proposal Reimbursemen PKM yang diajukan dosen
                             oleh Direktur Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
-                            <div class="text-end" style="margin-right: 10px">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#proposal">Proposal</button>
-                            </div>
+                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Proposal Pengajuan</a>
                         </div>
                     </div>
                 </div>
@@ -54,9 +51,9 @@
                 ?>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Pencairan Dana Reimburse</h5>
+                        <h5 class="card-title text-center">Pencairan Dana Reimbursement</h5>
                         <hr>
-                        <p>Pencairan dana reimburse yang diajukan dosen
+                        <p>Pencairan dana reimbursement yang diajukan dosen
                             oleh Bagian Administrasi Umum Politeknik Statistika STIS
                         </p>
 
@@ -64,7 +61,7 @@
                             <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
                             </label>
                             <div class="col-md-8 col-lg-9">
-                                <?php echo 'Rp ',  number_format($dana_pkm, 0, ",", "."); ?>
+                                <?php echo 'Rp ',  number_format($reimburse['biaya_diajukan'], 0, ",", "."); ?>
                             </div>
                         </div>
                         <form action="<?= base_url('/acc-reimbursePKMBAU/' . $reimburse['id_reimburse']); ?>"
@@ -86,15 +83,15 @@
                     <?php
                         } else if($reimburse['id_status'] == 2){
                         ?>
-                    <div class="main-timeline">
-                        <div class="timeline">
-                            <a href="#" class="timeline-content">
-                                <div class="timeline-year">Reimburse</div>
-                                <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
-                                <h3 class="title">Dana Reimburse Sudah Dicairkan</h3>
-                            </a>
-                        </div>
-                        <?php
+                             <div class="main-timeline">
+                                <div class="timeline">
+                                    <a href="#" class="timeline-content">
+                                        <div class="timeline-year">Reimbursement</div>
+                                        <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                        <h3 class="title">Dana Reimbursement Sudah Dicairkan</h3>
+                                    </a>
+                                </div>
+                            <?php
                         }
                             ?>
                     </div>

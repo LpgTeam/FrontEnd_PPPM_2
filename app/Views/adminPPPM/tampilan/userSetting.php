@@ -31,6 +31,7 @@
                             </div><!-- End Search Bar -->
                         </div>
                         <p>&nbsp</p>
+                        <a href="/register" class="btn-pilih">Tambah User <i class="bi bi-plus-square"></i></a>
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
                             <table class="table table-advance table-hover align-middle ">
