@@ -10,6 +10,25 @@ setlocale(LC_TIME, 'INDONESIA');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Pernyataan PKM </title>
     <style>
+        @page {
+            margin: 5px 5px 10px;
+        }
+
+        #footer_page {
+            position: fixed;
+            right: 20px;
+            bottom: 0;
+            text-align: center;
+        }
+
+        #footer_page .page:after {
+            content: 'Halaman 'counter(page)+1;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
         .text-center {
             text-align: center;
         }
@@ -134,6 +153,9 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>NIDN : .................</td>
         </tr>
     </table>
+    <div id="footer_page">
+        <p class="page"></p>
+    </div>
 </body>
 
 </html>

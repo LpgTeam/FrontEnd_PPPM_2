@@ -128,6 +128,9 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>NIDN : .................</td>
         </tr>
     </table>
+    <div id="footer_page">
+        <p class="page"></p>
+    </div>
 
 </body>
 
