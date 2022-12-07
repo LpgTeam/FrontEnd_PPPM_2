@@ -120,7 +120,7 @@ class ReimburseDetail extends BaseController
     public function savePKM($id_pkm)
     {
         $pkm = $this->pkmModel->get_pkm($id_pkm);
-        $total_biaya = $this->danaPenelitianModel->get_dana_penelitian_by_idpkm($id_pkm);
+        $total_biaya = $this->danaPKMModel->get_dana_by_id($id_pkm);
 
         $this->reimburseModel->save([
             'id_pkm'     => $pkm['ID_pkm'],
@@ -176,6 +176,6 @@ class ReimburseDetail extends BaseController
 
     public function printFormPublikasi()
     {
-        return $this->response->download('form_publikasi/[Penelitian] Template - Form Usulan Publikasi.docx', null)->setFileName("[Penelitian] Template - Form Usulan Publikasi.docx"); //download file
+        return $this->response->download('form_publikasi/[PENELITIAN] Form Usulan Publikasi Jurnal Seminar.docx', null)->setFileName("[Penelitian] Template - Form Usulan Publikasi.docx"); //download file
     }
 }
