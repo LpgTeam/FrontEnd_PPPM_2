@@ -23,8 +23,7 @@ class Penelitian extends Migration
             ],
 
             'judul_penelitian' => [
-                'type' => 'VARCHAR',
-                'constraint' => 100,
+                'type' => 'TEXT',
                 'null' => false
             ],
 
@@ -54,19 +53,19 @@ class Penelitian extends Migration
             'status_pengajuan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'null' => true
+                'null' => false
             ],
 
             'file_proposal' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'null' => true
+                'null' => false
             ],
 
             'tanda_tangan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-                'null' => true
+                'null' => false
             ],
 
             'biaya' => [
@@ -75,7 +74,7 @@ class Penelitian extends Migration
                 'null' => true
             ],
 
-            'alasan' => [
+            'bukti_luaran' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true
@@ -84,6 +83,12 @@ class Penelitian extends Migration
             'id_status_reimburse' => [
                 'type' => 'INT',
                 'constraint' => 15,
+                'null' => true
+            ],
+
+            'alasan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
                 'null' => true
             ]
         ]);

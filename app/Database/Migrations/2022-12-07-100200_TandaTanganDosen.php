@@ -4,38 +4,37 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class PembiayaanPkm extends Migration
+class TandaTanganDosen extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_biaya' => [
+            'id' => [
                 'type' => 'INT',
-                'constraint' => 15,
+                'constraint' => 11,
                 'null' => false,
                 'auto_increment' => true
             ],
 
-            'id_pkm' => [
-                'type' => 'INT',
-                'constraint' => 15,
-                'null' => false,
-            ],
-
-            'pembiayaan_diajukan' => [
+            'nip_dosen' => [
                 'type' => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 20,
                 'null' => false
             ],
 
-            'jumlah_biaya' => [
+            'ttd_manual' => [
                 'type' => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 64,
                 'null' => false
             ],
+
+            'ttd_digital' => [
+                'type' => 'VARCHAR',
+                'null' => false
+            ]
         ]);
-        $this->forge->addKey('id_biaya', true);
-        $this->forge->createTable('pembiayaan_pkm');
+        $this->forge->addKey('id', true);
+        $this->forge->createTable('tanda_tangan_dosen');
     }
 
     public function down()
