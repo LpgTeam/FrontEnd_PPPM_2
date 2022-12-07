@@ -10,7 +10,11 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\StatusPkmModel;
+use App\Models\PkmModel;
+use App\Models\SuratKeteranganPkmModel;
 use App\Models\ReimburseModel;
+use App\Models\TimPKMModel;
 use CodeIgniter\API\ResponseTrait;
 
 class Direktur extends BaseController
@@ -22,7 +26,14 @@ class Direktur extends BaseController
     {
         $this->penelitianModel = new PenelitianModel();
         $this->statusPenelitianModel = new StatusPenelitianModel();
+        $this->pkmModel = new PkmModel();
+        $this->timpkmModel = new TimPKMModel();
+        $this->statusPkmModel = new StatusPkmModel();
         $this->reimburseModel = new ReimburseModel();
+        $this->suratPkmModel = new SuratKeteranganPkmModel();
+        $this->anggaranTotalModel = new AnggaranTotalModel();
+        $this->anggaranAwalModel = new AnggaranAwalModel();
+        
     }
 
     public function index()

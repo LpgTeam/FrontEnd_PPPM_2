@@ -42,7 +42,7 @@ class SuratKeteranganPkmModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function get_by_id_pkm($idpkm)
+public function get_by_id_pkm($idpkm)
     {
         return $this->where(['id_pkm' => $idpkm])->findAll();
     }

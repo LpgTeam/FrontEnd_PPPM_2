@@ -91,24 +91,25 @@
                         <?php
                         if ($_SESSION['group'] == "admin") {
                         ?>
-                            <li>
-                                <a class="nav-link scrollto" href="/indexAdmin">Beranda</a>
-                            </li>
-                            <li><a class="nav-link scrollto" href="/anggaranAdmin">Anggaran</a></li>
-                            <li class="dropdown">
-                                <a href="#"><span>Pengajuan</span> <i class="bi bi-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="/penelitianAdmin">Penelitian</a></li>
-                                    <li><a href="/pkmAdmin">PKM</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="nav-link scrollto" href="/reimburseAdmin">Reimbursement</a></li>
-                            <li class="dropdown">
-                                <a class="username scrollto" href="#"><span>Admin</span></a>
-                                <ul>
-                                    <li><a href="/userSetting">User Setting</a></li>
-                                    <!-- <li><a href="/login">Logout</a></li> -->
-                                    <!-- </ul>
+                        <li>
+                            <a class="nav-link scrollto" href="/indexAdmin">Beranda</a>
+                        </li>
+                        <li><a class="nav-link scrollto" href="/anggaranAdmin">Anggaran</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Pengajuan</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/penelitianAdmin">Penelitian</a></li>
+                                <li><a href="/pkmAdmin">PKM</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
+                        <li class="dropdown">
+                            <a class="username scrollto" href="#"><span>Admin</span></a>
+                            <ul>
+                                <li><a href="/userSetting">User Setting</a></li>
+                                <li><a href="/Setting">Setting</a></li>
+                                <!-- <li><a href="/login">Logout</a></li> -->
+                                <!-- </ul>
                         </li> -->
                                 <?php } ?>
 

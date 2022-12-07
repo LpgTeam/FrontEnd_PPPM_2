@@ -17,7 +17,6 @@ class DanaPenelitianModel extends Model
     protected $allowedFields    = [
         'id_dana',
         'id_penelitian',
-        'tanggal_pencairan',
         'tanggal',
         'dana_keluar',
         'dana_tidak_terserap'
@@ -52,14 +51,19 @@ class DanaPenelitianModel extends Model
         return $this->where(['id_penelitian' => $id_penelitian])->findAll();
     }
 
-    // public function get_dana_by_year($tahun){
-    //     return $this->where([])
-    // }
-
-    public function get_dana_byid($id_penelitian)
-    {
-        $builder = $this->db->table('dana_penelitian');
-        $query = $builder->getWhere(['id_penelitian' => $id_penelitian]);
-        return $query->getResultArray();
+    public function get_dana_by_year($tahun){
+        return $this->where('year(tanggal_pengajuan)', $tahun)->findAll();
     }
+
+    public function get_dana_by_id ($id_penelitian){
+        
+    }
+
+    public function get_dana_by_reimburse($id_reimburse){
+        return $this->join('permohonan_reimburse', 'permohonan_reimburse.id_penelitian = dana_penelitian.id_penelitian')
+        ->select('permohonan_reimburse.id_reimburse')->select('dana_penelitian.*')
+        // ->select('laporan_penelitian.*')
+        ->where(['id_reimburse' => $id_reimburse])->findAll();
+    }
+
 }

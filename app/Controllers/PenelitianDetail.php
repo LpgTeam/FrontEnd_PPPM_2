@@ -83,6 +83,7 @@ class PenelitianDetail extends BaseController
             'id_laporan'        => $laporan['id_laporan'],
             'id_penelitian'     => $idpenelitian,
             'laporan_luaran'    => $namaLaporan,
+            'status_penelitian' => "Kegiatan telah selesai dilaksanakan"
         ]);
 
         
@@ -123,7 +124,7 @@ class PenelitianDetail extends BaseController
             return redirect()->to('/penelitianProses2Kontrak/' . $idPenelitian)->withInput();
         }
 
-        $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
+        // $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
 
         $fileKontrak = $this->request->getFile('uploadKontrak');
         $namaKontrak = $fileKontrak->getName();
@@ -146,7 +147,7 @@ class PenelitianDetail extends BaseController
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
             "kontrak" => $namaKontrak,
-            "status_penelitian" => $penelitian['status_pengajuan']
+            "status_penelitian" => 'Kegiatan sedang berlangsung'
         ]);
         $fileKontrak->move('kontrak', $namaKontrak);
 
@@ -178,7 +179,7 @@ class PenelitianDetail extends BaseController
         }
 
         $filePendanaan = $this->request->getFile('uploadPendanaan');
-        $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
+        // $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
         // dd($penelitian);
         $namaPendanaan = $filePendanaan->getName();
         
@@ -206,7 +207,7 @@ class PenelitianDetail extends BaseController
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
             "laporan_dana" => $namaPendanaan,
-            "status_penelitian" => $penelitian['status_pengajuan']
+            "status_penelitian" => "Kegiatan sedang berlangsung"
         ]);
         $filePendanaan->move('bukti_pendanaan', $namaPendanaan);
 

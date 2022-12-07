@@ -27,7 +27,7 @@ class ReimburseModel extends Model
         'naskah_artikel',
         'bukti_pembayaran',
         'usulan_publikasi',
-        'total_biaya',
+        'biaya_dicairkan',
         'id_status',
         'status_reimburse'
     ];

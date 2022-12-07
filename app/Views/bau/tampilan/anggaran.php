@@ -24,8 +24,12 @@
                             <hr>
                             <img src="" class="testimonial-img" alt="" />
                             <?php
-                            if (isset($anggaranAwal)) {
-                                echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
+                           if (isset($anggaranAwal)) {
+                                if($anggaranAwal == 0){
+                                    echo '<h2>Rp ', number_format($anggaranAwal, 0, ",", "."), '</h2>';
+                                } else {
+                                    echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
+                                }
                             }
                             ?>
 
@@ -149,8 +153,7 @@
                                         {
                                             <?php
                                                 if (isset($danaTersedia)) {
-                                                    // echo 'value: ', $danaTersedia;
-                                                    echo 'value: 100000000';
+                                                    echo 'value: ', $danaTersedia;
                                                 }
                                                 ?>,
                                             name: 'Dana Tersedia'
@@ -192,8 +195,15 @@
                     <div class="mb-3">
                         <label for="danaAwal" class="col-form-label">Dana awal saat ini :</label>
                         <?php
-                        echo '<input type="text" class="form-control" id="danaAwal" name="danaAwal" value= "', number_format($anggaranAwal['jumlah'], 0, ",", "."), '" disabled>'
-                        ?>
+                            if (isset($anggaranAwal)) {
+                                if($anggaranAwal == 0){
+                                    echo '<input type="text" class="form-control" id="danaAwal" name="danaAwal" value= "', number_format($anggaranAwal, 0, ",", "."), '" disabled>';
+                                } else {
+                                    echo '<input type="text" class="form-control" id="danaAwal" name="danaAwal" value= "', number_format($anggaranAwal['jumlah'], 0, ",", "."), '" disabled>';
+                                }
+                            }
+                            ?>
+                        
                     </div>
                     <div class="mb-3">
                         <label for="danaBaru" class="col-form-label">Dana Awal terbaru :</label>

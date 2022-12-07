@@ -26,7 +26,8 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah disetujui oleh Reviewer dan menunggu persetujuan BAU"+
+                // "Proposal telah disetujui oleh Reviewer dan menunggu persetujuan BAU"+
+                "Proposal telah disetujui oleh Reviewer dan akan diajukan ke kepala PPPM"+
             "</p>"+
         "</li>"; 
         
@@ -38,7 +39,8 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah disetujui oleh BAU dan menunggu persetujuan dari Kepala PPPM"+
+                // "Proposal telah disetujui oleh BAU dan menunggu persetujuan dari Kepala PPPM"+
+                "Proposal telah diajukan ke kepala PPPM dan menunggu persetujuan dari Kepala PPPM"+
             "</p>"+
         "</li>"; 
         

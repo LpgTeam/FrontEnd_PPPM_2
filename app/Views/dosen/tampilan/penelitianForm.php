@@ -116,8 +116,9 @@
                         <?php if (!($jenis == "Mandiri" || $jenis == "Kerjasama")) : ?>
                             <div class="row mb-3">
                                 <label for="biaya" class="col-md-4 col-lg-3 col-form-label">Biaya</label>
+                                
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="biaya" type="number" min="1" step="any" class="form-control" id="biaya" value="<?= old('biaya'); ?>" required>
+                                    <input name="biaya" type="number" min="1" step="any" class="form-control" id="biaya" value="<?= old('biaya'); ?>" required placeholder="Masukkan 0 jika tidak ada biaya yang dikeluarkan">
                                 </div>
                             </div>
 
@@ -130,24 +131,26 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Proposal</label>
+                                <label for="upload" class="col-md-4 col-lg-3 col-form-label ">Upload Proposal (.pdf)</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload">
+                                    <input name="upload" class="form-control <?= ($validation->hasError('upload')) ? 'is-invalid' : ''; ?>" type="file" id="upload" required>
                                     <div class="invalid-feedback" id="uploadValid">
                                         <?= $validation->getError('upload'); ?>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <label for="uploadSign" class="col-md-4 col-lg-3 col-form-label ">Upload Tanda Tangan Anda (Ketua Tim)</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="uploadSign" class="form-control  <?= ($validation->hasError('uploadSign')) ? 'is-invalid' : ''; ?>" type="file" id="uploadSign">
+                                    <input name="uploadSign" class="form-control  <?= ($validation->hasError('uploadSign')) ? 'is-invalid' : ''; ?>" type="file" id="uploadSign" required placeholder="Tanda tangan dalam format gambar (JPEG/JPG/PNG)">
                                     <div class="invalid-feedback" id="uploadValid2">
                                         <?= $validation->getError('uploadSign'); ?>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+                                <!-- <label>Tanda tangan dalam format gambar (JPEG/JPG/PNG)</label>
+                            </div> -->
                         <?php endif; ?>
 
                         <?php if ($jenis == "Mandiri" || $jenis == "Kerjasama") : ?>

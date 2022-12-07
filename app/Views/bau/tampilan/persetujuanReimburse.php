@@ -39,7 +39,7 @@
                         <ol>
                             <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_penelitian']; ?></li>
                             <li>Jenis Penelitian &nbsp;&nbsp;&nbsp;: <?= $reimburse['jenis_penelitian']; ?></li>
-                            <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['total_biaya'], 0, ",", "."); ?></li>
+                            <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['biaya_dicairkan'], 0, ",", "."); ?></li>
                         </ol>
                         <hr>
                         <?= $this->include('bau/tampilan/download_reimburse'); ?>
@@ -62,7 +62,7 @@
                                 <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
                                 </label>
                                 <div class="col-md-8 col-lg-9">
-                                    <?php echo 'Rp ',  number_format($reimburse['biaya_dicairkan'], 0, ",", "."); ?>
+                                    <?php echo 'Rp ',  number_format($dana_penelitian, 0, ",", "."); ?>
                                 </div>
                             </div>
                             <form action="<?= base_url('/acc-reimburseBAU/' . $reimburse['id_reimburse']); ?>" method="post">

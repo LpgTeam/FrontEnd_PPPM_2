@@ -33,9 +33,10 @@
             <div class="row" data-aos="fade-up">
 
 
+        
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Reimbursement PKM</h5>
+                        <h5 class="card-title text-center">Formulir Reimbursement PKM</h5>
                         <hr>
                         <p>Reimbursement PKM yang diajukan dosen
                             Politeknik Statistika STIS
@@ -48,12 +49,22 @@
                             if ($pkm['id_status_reimburse'] == 0) {
                         ?>
                             <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
-                                <div class="row mb-3">
-                                    <label for="biaya" class="col-md-4 col-lg-3 col-form-label ">Total Biaya</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <p>Rp <?= number_format($dana_keluar[0]['dana_keluar'], 0, ",", "."); ?></p>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">Pengajuan Reimbursement</h5>
+                                            <hr>
+                                            <ul>
+                                                <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
+                                                <li>Bentuk Kegiatan &nbsp; : <?= $pkm['bentuk_kegiatan']; ?></li>
+                                                <li>Waktu Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['waktu_kegiatan']; ?></li>
+                                                <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm, 0, ",", "."); ?></li>
+                                
+                                            </ul>
+                                            <hr>
+                                            
+                                        </div>
                                     </div>
-                                </div>
+                               
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimbursement </button>
                                 </div>

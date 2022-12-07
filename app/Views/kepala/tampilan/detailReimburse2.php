@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursement PKM</h5>
                         <hr>
-                        <p>Proposal Reimbursement PKM yang diajukan Dosen
+                        <p>Reimbursemen PKM yang diajukan Dosen
                             Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">

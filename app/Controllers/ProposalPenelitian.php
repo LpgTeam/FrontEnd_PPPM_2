@@ -12,6 +12,8 @@ use App\Models\LuaranTargetModel;
 use App\Models\DanaPenelitianModel;
 use CodeIgniter\I18n\Time;
 use App\Libraries\Pdfgenerator;
+use App\Models\GlobalSettingModel;
+
 // use App\Libraries\Pdfgenerator\Option;
 
 class ProposalPenelitian extends BaseController
@@ -23,6 +25,7 @@ class ProposalPenelitian extends BaseController
     protected $timpenelitiModel;
     protected $dosenModel;
     protected $luaranModel;
+    protected $settingTTD;
     protected $danaPenelitianModel;
     public function __construct()
     {
@@ -32,6 +35,7 @@ class ProposalPenelitian extends BaseController
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
         $this->dosenModel = new DosenModel();
         $this->luaranModel = new LuaranTargetModel();
+        $this->settingTTD = new GlobalSettingModel();
         $this->danaPenelitianModel = new DanaPenelitianModel();
     }
 
@@ -47,6 +51,7 @@ class ProposalPenelitian extends BaseController
             'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
         // dd($dataPenelitian['timpeneliti']);
 
@@ -73,9 +78,10 @@ class ProposalPenelitian extends BaseController
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
             'jenis'         => '*) tentative',
-            'tujuan'        => 'YANG DITUJU*)'
+            'tujuan'        => 'YANG DITUJU*)',
+            'settingTTD' => $this->settingTTD->find(1)
         ];
-        // dd($dataPenelitian['ketuapeneliti']);
+        // dd($dataPenelitian['settingTTD']);
 
         $file_pdf = 'Proposal Penelitian - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
@@ -145,6 +151,7 @@ class ProposalPenelitian extends BaseController
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
         // $dataPenelitian = [
         //     'jenis_penelitian' => 'Mandiri',
@@ -175,7 +182,8 @@ class ProposalPenelitian extends BaseController
             'ketuapeneliti'     => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'            => $this->luaranModel->get_luaran_byid($id_penelitian),
             'jenis'             => ' ',
-            'tujuan'            => ' '
+            'tujuan'            => ' ',
+            'settingTTD' => $this->settingTTD->find(1)
             // 'addProses2'        => $tambahanFile,
         ];
         // dd($dataPenelitian['timpeneliti']);
@@ -207,8 +215,9 @@ class ProposalPenelitian extends BaseController
         $data = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'judul_penelitian' => $judul_penelitian,
+            // 'settingTTD' => $this->settingTTD->find(1)
         ];
-        // dd($data['judul_penelitian']);
+        // dd($data['settingTTD']);
 
         // return $this->response->download('laporan_akhir_penelitian/'.$judul_penelitian, null);
         return view('proposal/ViewLaporanProposal', $data);
@@ -219,6 +228,7 @@ class ProposalPenelitian extends BaseController
         $data = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'judul_penelitian' => $judul_penelitian,
+            'settingTTD' => $this->settingTTD->find(1)
         ];
         // dd($data['judul_penelitian']);
 
@@ -236,9 +246,10 @@ class ProposalPenelitian extends BaseController
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
             'targetpenelitian'  => $this->luaranModel->get_luaran_byid($id_penelitian),
             'dana'              => $this->danaPenelitianModel->get_dana_byid($id_penelitian),
+            'settingTTD' => $this->settingTTD->find(1)
         ];
 
-        // dd($dataPenelitian['timpeneliti']);
+        // dd($dataPenelitian['dana']);
         $file_pdf = 'Memo Pembiayaan Publikasi - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
         $orientation = "portrait";

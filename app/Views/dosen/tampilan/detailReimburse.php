@@ -44,8 +44,7 @@
                         <hr>
                         
                         <div class="d-flex justify-content-end">
-                           <!-- <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success" >Lihat Proposal </a> -->
-                           <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
+                          <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
                         </div>
                         <hr>
                         <?php

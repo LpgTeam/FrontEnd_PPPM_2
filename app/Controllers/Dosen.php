@@ -13,6 +13,7 @@ use App\Models\PenelitianModel;
 use App\Models\RincianPKMModel;
 use App\Models\TimPenelitiModel;
 use App\Models\LaporanPenelitianModel;
+use App\Models\TandaTanganDosenModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
 use App\Models\TimPkmModel;
@@ -30,6 +31,7 @@ class Dosen extends BaseController
     protected $timPKMModel;
     protected $pkmModel;
     protected $rincianModel;
+    protected $ttdDosen;
     protected $danaPenelitianModel;
     protected $danaPKMModel;
 
@@ -37,6 +39,7 @@ class Dosen extends BaseController
     {
         $this->penelitianModel = new PenelitianModel();
         $this->dosenModel = new DosenModel();
+        $this->ttdDosen = new TandaTanganDosenModel();
         $this->timPenelitiModel = new TimPenelitiModel();
         $this->timPKMModel = new TimPKMModel();
         $this->pkmModel = new PkmModel();
@@ -45,8 +48,8 @@ class Dosen extends BaseController
         $this->reimburseModel = new ReimburseModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
-        $this->danaPenelitianModel = new DanaPenelitianModel();
         $this->danaPKMModel = new DanaPKMModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
 
     public function index()
@@ -134,91 +137,93 @@ class Dosen extends BaseController
         // dd($nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
-            'loginUser' => $this->dosenModel->get_nip_peneliti($nip)
+            'loginUser' => $this->dosenModel->get_nip_peneliti($nip),
+            'ttd'       => $this->ttdDosen->get_ttd_by_nip($nip)
         ];
-        // dd($data['loginUser']);
+        // dd($data['ttd']);
         return view('dosen/tampilan/index', $data);
     }
 
-    public function anggaran()
-    {
-        $dana_awal = new AnggaranAwalModel();
-        $dana_penelitian = new DanaPenelitianModel();
-        $dana_pkm = new DanaPKMModel();
-        $dana_terealisasi = new AnggaranTotalModel();
-        $dana_pengajuan = new PenelitianModel();
+    // public function anggaran()
+    // {
+    //     $dana_awal = new AnggaranAwalModel();
+    //     $dana_penelitian = new DanaPenelitianModel();
+    //     $dana_pkm = new DanaPKMModel();
+    //     $dana_terealisasi = new AnggaranTotalModel();
+    //     $dana_pengajuan = new PenelitianModel();
 
-        //ambil dana penelitian
-        $ambil_penelitian = $dana_penelitian->findAll();
-        $ambil_pkm = $dana_pkm->findAll();
+    //     //ambil dana penelitian
+    //     $ambil_penelitian = $dana_penelitian->findAll();
+    //     $ambil_pkm = $dana_pkm->findAll();
 
-        //ambil dana terealisasi
-        $total = null;
-        foreach ($ambil_penelitian as $data) {
-            $total = $total + $data['dana_keluar'];
-        };
+    //     //ambil dana terealisasi
+    //     $total = null;
+    //     foreach ($ambil_penelitian as $data) {
+    //         $total = $total + $data['dana_keluar'];
+    //     };
 
-        foreach ($ambil_pkm as $data) {
-            $total = $total + $data['dana_keluar'];
-        }
+    //     foreach ($ambil_pkm as $data) {
+    //         $total = $total + $data['dana_keluar'];
+    //     }
 
-        //ambil dana total 
-        $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
+    //     //ambil dana total 
+    //     $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
 
-        //current year
-        $year = date("Y");
-
-        $input_terealisasi = [
-            'tahun' => $year,
-            'dana_keluar' => $total,
-            'sisa_anggaran' => $anggaranAwal['jumlah'] - $total
-        ];
-
-        // update data tabel anggaran_total
-        //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
-        $total_saved = $dana_terealisasi->save($input_terealisasi);
-
-        //ambil dana pengajuan 
-        $ambil_pengajuan = $dana_pengajuan->findAll();
-        $total_pengajuan = 0;
-        foreach ($ambil_pengajuan as $data_pengajuan) {
-            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
-                $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
-            }
-        }
-       // dd($dana_terealisasi->orderBy('id_total', 'DESC')->first());
-        $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
-        $anggaranTerealisasi = $dana_terealisasi->orderBy('id_total', 'DESC')->first();
-        $danaTersedia = $anggaranAwal['jumlah'] - $anggaranTerealisasi['dana_keluar'] - $total_pengajuan;
-        //semua dana
-        $data = [
-            'title'               => 'PPPM Politeknik Statistika STIS',
-            'anggaranAwal'        => $anggaranAwal,
-            'anggaranTerealisasi' =>  $anggaranTerealisasi,
-            'anggaranDiajukan'    => $total_pengajuan,
-            'danaTersedia'        => $danaTersedia
-        ];
-
-        return view('dosen/tampilan/anggaran', $data);
-    }
-    // public function anggaran(){
     //     //current year
     //     $year = date("Y");
-    //     $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
-    //     $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
-    //     $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
-    //     $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-        
-    //    $data = [
-    //         'title'             => 'PPPM Politeknik Statistika STIS',
-    //         'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
-    //         'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
-    //         'danaDiajukan'      => $danaDiajukan,
-    //         'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-    //    ];
-    //    return view('dosen/tampilan/anggaran', $data);
 
+    //     $input_terealisasi = [
+    //         'tahun' => $year,
+    //         'dana_keluar' => $total,
+    //         'sisa_anggaran' => $anggaranAwal['jumlah'] - $total
+    //     ];
+
+    //     // update data tabel anggaran_total
+    //     //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
+    //     $total_saved = $dana_terealisasi->save($input_terealisasi);
+
+    //     //ambil dana pengajuan 
+    //     $ambil_pengajuan = $dana_pengajuan->findAll();
+    //     $total_pengajuan = 0;
+    //     foreach ($ambil_pengajuan as $data_pengajuan) {
+    //         if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
+    //             $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
+    //         }
+    //     }
+    //    // dd($dana_terealisasi->orderBy('id_total', 'DESC')->first());
+    //     $anggaranAwal = $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first();
+    //     $anggaranTerealisasi = $dana_terealisasi->orderBy('id_total', 'DESC')->first();
+    //     $danaTersedia = $anggaranAwal['jumlah'] - $anggaranTerealisasi['dana_keluar'] - $total_pengajuan;
+    //     //semua dana
+    //     $data = [
+    //         'title'               => 'PPPM Politeknik Statistika STIS',
+    //         'anggaranAwal'        => $anggaranAwal,
+    //         'anggaranTerealisasi' =>  $anggaranTerealisasi,
+    //         'anggaranDiajukan'    => $total_pengajuan,
+    //         'danaTersedia'        => $danaTersedia
+    //     ];
+
+    //     return view('dosen/tampilan/anggaran', $data);
     // }
+    public function anggaran(){
+        //current year
+        $year = date("Y");
+        $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
+        $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
+        $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
+        $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
+       
+       $data = [
+            'title'             => 'PPPM Politeknik Statistika STIS',
+            'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
+            'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
+            'danaDiajukan'      => $danaDiajukan,
+            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+       ];
+    
+       return view('dosen/tampilan/anggaran', $data);
+
+    }
 
     public function penelitian()
     {
@@ -244,7 +249,7 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->timPKMModel->get_pkm_by_nip_user($user->nip),
-            
+
 
         ];
         // dd($data['pkm']);
@@ -265,31 +270,39 @@ class Dosen extends BaseController
 
     public function penelitianForm($jenis)
     {
-        session();
-        if ($jenis == "mandiri") {
-            $jenisPenelitian = "Mandiri";
-        } elseif ($jenis == "semi-mandiri") {
-            $jenisPenelitian = "Semi Mandiri";
-        } elseif ($jenis == "kerja-sama") {
-            $jenisPenelitian = "Kerjasama";
-        } elseif ($jenis == "didanai-institusi") {
-            $jenisPenelitian = "Didanai Institusi";
-        } elseif ($jenis == "institusi") {
-            $jenisPenelitian = "Institusi";
+        $ttdDosen = $this->ttdDosen->get_ttd_by_nip(auth()->user()->nip);
+        // dd($ttdDosen);
+        if ($ttdDosen['ttd_manual'] == null && $ttdDosen['ttd_digital'] == null) {
+
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, silahkan upload terlebih dahulu di Beranda');
+            return redirect()->to('/penelitianDosen');
+        } else {
+            session();
+            if ($jenis == "mandiri") {
+                $jenisPenelitian = "Mandiri";
+            } elseif ($jenis == "semi-mandiri") {
+                $jenisPenelitian = "Semi Mandiri";
+            } elseif ($jenis == "kerja-sama") {
+                $jenisPenelitian = "Kerjasama";
+            } elseif ($jenis == "didanai-institusi") {
+                $jenisPenelitian = "Didanai Institusi";
+            } elseif ($jenis == "institusi") {
+                $jenisPenelitian = "Institusi";
+            }
+            // dd($jenisPenelitian);
+            // dd($jenisPenelitian)198512122008011004
+
+            $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'jenis' => $jenisPenelitian,
+                'user' => $nipdosen,
+                'validation' => \Config\Services::validation()
+            ];
+            // return view('dosen/tampilan/penelitianForm1', $data);
+            return view('dosen/tampilan/penelitianForm', $data);
         }
-        // dd($jenisPenelitian);
-        // dd($jenisPenelitian)198512122008011004
-
-        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
-
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => $jenisPenelitian,
-            'user' => $nipdosen,
-            'validation' => \Config\Services::validation()
-        ];
-        // return view('dosen/tampilan/penelitianForm1', $data);
-        return view('dosen/tampilan/penelitianForm', $data);
     }
 
     // public function penelitianMandiri()
@@ -356,15 +369,23 @@ class Dosen extends BaseController
 
     public function pkmForm($jenis)
     {
-        $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'jenis' => $jenis,
-            'user' => $nipdosen,
-            'validation' => \Config\Services::validation()
-        ];
-        // dd($data['jenis']);
-        return view('dosen/tampilan/pkmForm', $data);
+        $ttdDosen = $this->ttdDosen->get_ttd_by_nip(auth()->user()->nip);
+        // dd($ttdDosen);
+        if (($ttdDosen['ttd_manual'] == null && $ttdDosen['ttd_digital'] == null)) {
+
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, silahkan upload terlebih dahulu di Beranda');
+            return redirect()->to('/pkmDosen');
+        } else {
+            $nipdosen = $this->dosenModel->get_nip_peneliti(auth()->user()->nip);
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'jenis' => $jenis,
+                'user' => $nipdosen,
+                'validation' => \Config\Services::validation()
+            ];
+            // dd($data['jenis']);
+            return view('dosen/tampilan/pkmForm', $data);
+        }
     }
 
     // public function pkmMandiri()
@@ -489,12 +510,16 @@ class Dosen extends BaseController
 
     public function pkmDetail2($idPKM)
     {
+        $nip = auth()->user()->nip;
+        // dd($nip);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->pkmModel->find($idPKM),
             'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
+            'ttd'   => $this->ttdDosen->get_ttd_by_nip($nip),
             'validation' => \Config\Services::validation(),
         ];
+        // dd($data['ttd']);
         return view('dosen/tampilan/pkmProses/pkmProses2', $data);
     }
 
@@ -591,7 +616,7 @@ class Dosen extends BaseController
     //     $data = ['title' => 'PPPM Politeknik Statistika STIS'];
     //     return view('dosen/tampilan/pkmProses/pkmSelesai', $data);
     // }
-    //===========================new===========================================
+    //===========================Penelitian Proses===========================================
     public function penelitianProses1($id_penelitian)
     {
         $data = [
@@ -623,6 +648,7 @@ class Dosen extends BaseController
             'validation' => \Config\Services::validation(),
             'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
         ];
+        // dd($data['laporan']);
         return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
     }
     public function penelitianProses3($id_penelitian)
@@ -725,14 +751,95 @@ class Dosen extends BaseController
 
     public function detailReimburse2($id_kegiatan)
     {
+        $kegiatan_pkm = $this->danaPKMModel->get_dana_by_id($id_kegiatan);
+
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,
             'pkm' => $this->pkmModel->find($id_kegiatan),
-            'dana_keluar' => $this->danaPKMModel->get_dana_pkm_by_idpkm($id_kegiatan),
+            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
         // dd($data);
         return view('dosen/tampilan/detailReimburse2', $data);
     }
+
+
+
+    //===========================================upload ttd===================================
+
+    public function uploadTTD()
+    {
+        // dd($this->ttdDosen->get_ttd_by_nip(auth()->user()->nip));
+        $id = $this->ttdDosen->get_ttd_by_nip(auth()->user()->nip);
+        // dd($id['id']);
+        if (!$this->validate([
+            'ttdManual' => [
+                'rules' => 'is_image[ttdManual]|mime_in[ttdManual,image/jpg,image/jpeg,image/png]|max_size[ttdManual,10000]',
+                'errors' => [
+                    'mime_in', 'is_image' => "Format file harus image/jpg,image/jpeg,image/png",
+                    'max_size' => "Ukuran File terlalu besar (Max 100kb)"
+                ]
+            ],
+            'ttdDigital' => [
+                'rules' => 'is_image[ttdDigital]|mime_in[ttdDigital,image/jpg,image/jpeg,image/png]|max_size[ttdDigital,10000]',
+                'errors' => [
+                    'mime_in', 'is_image' => "Format file harus image/jpg,image/jpeg,image/png",
+                    'max_size' => "Ukuran File terlalu besar (Max 100kb)"
+                ]
+            ]
+        ])) {
+
+            // dd($this->request->getFile('ttdManual')->getName());
+            session()->setFlashdata('error', 'File yang anda upload tidak sesuai!!');
+            return redirect()->to('/indexDosen')->withInput();
+        } else {
+            // dd($this->request->getFile('ttdManual')->getName() == null);
+
+
+
+            //GetFile
+            $fileManual = $this->request->getFile('ttdManual');
+            $fileDigital = $this->request->getFile('ttdDigital');
+            //GetNama
+            $namaManual = $fileManual->getName();
+            $namaDigital = $fileDigital->getName();
+            //Cek
+            // dd($namaManual);
+            // if ($namaDigital == null) {
+            //     $fileManual->move('ttd_dosen/manual', $namaManual);
+            //     $this->ttdDosen->save([
+            //         'id'          => $id['id'],
+            //         'nip_dosen'   => auth()->user()->nip,
+            //         'ttd_manual'  => $namaManual
+            //     ]);
+            // } elseif ($namaManual == null) {
+            //     $fileDigital->move('ttd_dosen/manual', $namaDigital);
+            //     $this->ttdDosen->save([
+            //         'id'          => $id['id'],
+            //         'nip_dosen'   => auth()->user()->nip,
+            //         'ttd_digital'  => $namaDigital
+            //     ]);
+            // } else {
+            $fileManual->move('ttd_dosen/manual', $namaManual);
+            $fileDigital->move('ttd_dosen/digital', $namaDigital);
+            $this->ttdDosen->save([
+                'id'          => $id['id'],
+                'nip_dosen'   => auth()->user()->nip,
+                'ttd_manual'  => $namaManual,
+                'ttd_digital'  => $namaDigital
+            ]);
+            // }
+        }
+        session()->setFlashdata('pesan', 'Data berhasil di tambahkan');
+        // $response = ['status' => 200, 'error' => null, 'messages' => ['success' => 'Data produk berhasil ditambah.']];
+
+        return redirect()->to('/indexDosen');
+    }
+
+
+
+
+    //===========================================end-upload-ttd===============================
+
 }

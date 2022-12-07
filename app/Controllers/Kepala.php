@@ -37,6 +37,8 @@ class Kepala extends BaseController
         $this->statusPkmModel = new StatusPkmModel();
         $this->reimburseModel = new ReimburseModel();
         $this->suratPkmModel = new SuratKeteranganPkmModel();
+        $this->anggaranTotalModel = new AnggaranTotalModel();
+        $this->anggaranAwalModel = new AnggaranAwalModel();
     }
 
     public function index()
