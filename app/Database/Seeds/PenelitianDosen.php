@@ -95,7 +95,7 @@ class PenelitianDosen extends Seeder
                 // $file_publikasi = null;
                 $file_laporan_dana = null;
 
-                if ($data['id_status'] == 6) {
+                if (($data['id_status'] == 6) || ($data['id_status'] == 10)) {
                     if ($data['jenis_penelitian'] == 'Semi Mandiri') {
                         $file_laporan_dana = 'default_laporan_dana.pdf';
                     } else {

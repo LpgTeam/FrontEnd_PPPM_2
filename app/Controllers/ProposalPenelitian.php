@@ -249,7 +249,6 @@ class ProposalPenelitian extends BaseController
             'settingTTD' => $this->settingTTD->find(1)
         ];
 
-        // dd($dataPenelitian['dana']);
         $file_pdf = 'Memo Pembiayaan Publikasi - ' . $dataPenelitian['penelitian']['judul_penelitian'];
         $paper = 'A4';
         $orientation = "portrait";

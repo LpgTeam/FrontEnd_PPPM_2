@@ -12,6 +12,18 @@ class UserSeed extends Seeder
 
     public function run()
     {
+        // default account direktur
+        $users = model('UserModel');
+        $user = new User([
+            'username' => 'admin',
+            'email'    => 'admin@stis.ac.id',
+            'password' => 'admin123',
+            'nip'      => nipAdmin,
+        ]);
+        $users->save($user);
+        $user = $users->findById($users->getInsertID());
+        $user->addGroup('dosen', 'admin');
+
         // default account dosen
         $users = model('UserModel');
         $user = new User([

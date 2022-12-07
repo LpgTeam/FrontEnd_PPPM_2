@@ -128,6 +128,7 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>NIDN : .................</td>
         </tr>
     </table>
+
 </body>
 
 </html>
