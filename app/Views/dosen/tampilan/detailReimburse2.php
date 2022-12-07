@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSEMENT</h2>
+                <h2>Reimbursement PKM <?= $reimburse['jenis_pkm'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -19,7 +19,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursement</h3>
                             <p>
-                                Reimbursement penelitian yang diajukan oleh Dosen
+                                Reimbursement PKM yang diajukan oleh Dosen
                                 Politeknik Statistika STIS
                             </p>
                         </div>
@@ -38,17 +38,15 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Formulir Reimbursement PKM</h5>
                         <hr>
-                        <p>Reimbursemen PKM yang diajukan dosen
+                        <p>Reimbursement PKM yang diajukan dosen
                             Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
-                            <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat
-                                Formulir Pengajuan </a>
+                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Proposal Pengajuan</a>
                         </div>
                         <hr>
-
-                        <?php
-                        if ($pkm['id_status_reimburse'] == 0) {
+                        <?php 
+                            if ($pkm['id_status_reimburse'] == 0) {
                         ?>
                             <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
                                     <div class="card">
@@ -68,18 +66,18 @@
                                     </div>
                                
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimburse </button>
+                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimbursement </button>
                                 </div>
                             </form>
                         <?php
                         } else if ($pkm['id_status_reimburse'] == 1) {
                         ?>
-                            <h5 class="card-title text-center">Pengajuan Reimburse Anda Sedang dalam Proses</h5>
+                            <h5 class="card-title text-center">Pengajuan Reimbursement Anda Sedang dalam Proses</h5>
 
                         <?php
                         } else if ($pkm['id_status_reimburse'] == 2) {
                         ?>
-                            <h5 class="card-title text-center">Dana Reimburse Anda Sudah Dicairkan</h5>
+                            <h5 class="card-title text-center">Dana Reimbursement Anda Sudah Dicairkan</h5>
                             <hr>
                             <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
                         <?php

@@ -9,7 +9,7 @@
             <header class="section-header2">
                 <h2>REIMBURSEMEN</h2>
                 <hr>
-                <p>Admin Politeknik Statistika STIS</p>
+                <p>Admin PPPM Politeknik Statistika STIS</p>
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
@@ -50,31 +50,31 @@
                             </div>
 
 
-                            <!-- Table with stripped rows -->
-                            <table class="table table-advance table-hover align-middle datatable">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">Jenis Penelitian</th>
-                                        <th scope="col">Tanggal Pengajuan</th>
-                                        <th scope="col">Judul Penelitian</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if (!$reimburse == null) {
-                                        $i = 1; ?>
-                                        <?php foreach ($reimburse as $key => $post) :
-                                            if ($post['id_penelitian'] != NULL) {
-
-                                        ?>
-                                                <tr>
-
-                                                    <td><?php echo 'Penelitian ', $post['jenis_penelitian'] ?></td>
-                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                    <td><?php echo $post['judul_penelitian'] ?></td>
-                                                    <td>
+                        <!-- Table with stripped rows -->
+                        <table class="table table-advance table-hover align-middle datatable">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th scope="col">Jenis Penelitian/PKM</th>
+                                    <th scope="col">Tanggal Pengajuan</th>
+                                    <th scope="col">Judul Penelitian/Topik PKM</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Detail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (!$reimburse == null) {
+                                    $i = 1; ?>
+                                    <?php foreach ($reimburse as $key => $post) :
+                                        if($post['id_penelitian'] != NULL) {
+                                           
+                                    ?>
+                                        <tr>
+                                    
+                                            <td><?php echo 'Penelitian ', $post['jenis_penelitian'] ?></td>
+                                            <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                            <td><?php echo $post['judul_penelitian'] ?></td>
+                                            <td>
                                                         <?php if ($post['id_status'] == 0) {
                                                             echo 'Reimbursement belum diajukan';
                                                         } else if ($post['id_status'] == 1) {
@@ -82,10 +82,11 @@
                                                         } else if ($post['id_status'] == 2) {
                                                             echo 'Dana telah dicairkan';
                                                         }
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <a href="/detailReimburseBAU/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    ?>
+                                            </td>
+                                            <td>
+                                                <a href="/detailReimburseAdmin/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                
 
 
 
@@ -108,12 +109,12 @@
                                                         } else if ($post['id_status'] == 1) {
                                                             echo 'Reimbursement dalam proses';
                                                         } else if ($post['id_status'] == 2) {
-                                                            echo 'Dana telah dicairkan';
+                                                            echo 'Reimbursement telah dicairkan';
                                                         }
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <a href="/detailReimburse2BAU/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <a href="/detailReimburse2Admin/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
 
 
 

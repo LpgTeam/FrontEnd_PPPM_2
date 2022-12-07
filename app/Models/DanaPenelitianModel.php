@@ -46,6 +46,10 @@ class DanaPenelitianModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function get_dana_penelitian_by_idpenelitian($id_penelitian)
+    {
+        return $this->where(['id_penelitian' => $id_penelitian])->findAll();
+    }
 
     public function get_dana_by_year($tahun){
         return $this->where('year(tanggal_pengajuan)', $tahun)->findAll();

@@ -9,7 +9,7 @@ class TargetPenelitian extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id_luaran' => [
+            'id_target' => [
                 'type' => 'INT',
                 'constraint' => 15,
                 'null' => false,

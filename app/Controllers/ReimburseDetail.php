@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\PenelitianModel;
 use App\Models\PkmModel;
+use App\Models\DanaPenelitianModel;
+use App\Models\DanaPKMModel;
 use App\Models\ReimburseModel;
 use CodeIgniter\I18n\Time;
 use DateTime;
@@ -17,6 +19,8 @@ class ReimburseDetail extends BaseController
         $this->penelitianModel = new PenelitianModel();
         $this->reimburseModel = new ReimburseModel();
         $this->pkmModel = new PkmModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
+        $this->danaPKMModel = new DanaPKMModel();
     }
     public function index()
     {
@@ -25,6 +29,7 @@ class ReimburseDetail extends BaseController
 
     public function savePenelitian($idpenelitian)
     {
+        // dd($idpenelitian);
         if (!$this->validate([
             'uploadLoa' => [
                 'rules' => 'uploaded[uploadLoa]|ext_in[uploadLoa,pdf]|max_size[uploadLoa,10000]',
@@ -50,8 +55,8 @@ class ReimburseDetail extends BaseController
                     'max_size' => "Ukuran File terlalu besar"
                 ]
             ],
-            'uploadFormPublikasi' =>  [
-                'rules' => 'uploaded[uploadFormPublikasi]|ext_in[uploadFormPublikasi,pdf]|max_size[uploadFormPublikasi,10000]',
+            'uploadForm' =>  [
+                'rules' => 'uploaded[uploadForm]|ext_in[uploadForm,pdf]|max_size[uploadForm,10000]',
                 'errors' => [
                     'uploaded' => "{field} file tidak boleh kosong",
                     'ext_in' => "Format file harus pdf",
@@ -73,18 +78,18 @@ class ReimburseDetail extends BaseController
 
         $fileInvoice = $this->request->getFile('uploadInvoice');
         $namaInvoice = $fileInvoice->getName();
-        $fileInvoice->move('na', $namaInvoice);
+        $fileInvoice->move('invoice', $namaInvoice);
 
-        $filePublikasi = $this->request->getFile('uploadFormPublikasi');
-        $namaPublikasi = $filePublikasi->getName();
-        $filePublikasi->move('form_publikasi_reimburse', $namaPublikasi);
-        
+        $fileForm = $this->request->getFile('uploadForm');
+        $namaForm = $fileForm->getName();
+        $fileForm->move('form_publikasi', $namaForm);
 
         $Pen = $this->penelitianModel->get_penelitian($idpenelitian);
         $Loa = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
         $naskah = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
         $invoice = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
-        $total_biaya = $this->request->getVar('totalBiaya');
+        $formpublikasi = $this->reimburseModel->find_by_idpenelitian($idpenelitian);
+        $total_biaya = $this->danaPenelitianModel->get_dana_penelitian_by_idpenelitian($idpenelitian);
 
         $this->reimburseModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
@@ -94,10 +99,10 @@ class ReimburseDetail extends BaseController
             'loa'               => $namaLoa,
             'naskah_artikel'    => $namaNaskah,
             'bukti_pembayaran'  => $namaInvoice,
-            'usulan_publikasi'  => $namaPublikasi,
+            'usulan_publikasi'  => $namaForm,
+            'biaya_diajukan'    => $total_biaya[0]['dana_keluar'],
             'id_status'         => "1",
-            'status_reimburse'  => "Reimbursement diajukan",
-            
+            'status_reimburse'  => "Reimbursement dalam proses"
         ]);
 
         $this->penelitianModel->save([
@@ -115,16 +120,16 @@ class ReimburseDetail extends BaseController
     public function savePKM($id_pkm)
     {
         $pkm = $this->pkmModel->get_pkm($id_pkm);
-        $total_biaya = $this->request->getVar('totalBiaya');
+        $total_biaya = $this->danaPenelitianModel->get_dana_penelitian_by_idpkm($id_pkm);
 
         $this->reimburseModel->save([
             'id_pkm'     => $pkm['ID_pkm'],
             'jenis_pkm'  => $pkm['jenis_pkm'],
             'judul_pkm'  => $pkm['topik_kegiatan'],
             'tanggal_pengajuan' => Time::now('Asia/jakarta'),
+            'biaya_diajukan'       => $total_biaya[0]['dana_keluar'],
             'id_status'         => "1",
-            'status_reimburse'  => "Reimbursement diajukan",
-            'biaya_diajukan'    => $total_biaya
+            'status_reimburse'  => "Reimbursement dalam proses",
         ]);
 
         $this->pkmModel->save([
@@ -144,7 +149,6 @@ class ReimburseDetail extends BaseController
     {
 
         $reimburse = $this->reimburseModel->get_reimburse($id_reimburse);
-        // dd($reimburse);
         return $this->response->download('loa/' . $reimburse[0]['loa'], null);
         // return view('proposal/ViewLaporanProposal', $data);
     }
@@ -156,16 +160,22 @@ class ReimburseDetail extends BaseController
         // return view('proposal/ViewLaporanProposal', $data);
     }
 
-    public function download_na($id_reimburse)
+    public function download_invoice($id_reimburse)
     {
         $reimburse = $this->reimburseModel->get_reimburse($id_reimburse);
-        return $this->response->download('na/' . $reimburse[0]['bukti_pembayaran'], null);
+        return $this->response->download('invoice/' . $reimburse[0]['bukti_pembayaran'], null);
+        // return view('proposal/ViewLaporanProposal', $data);
+    }
+
+    public function download_form_publikasi($id_reimburse)
+    {
+        $reimburse = $this->reimburseModel->get_reimburse($id_reimburse);
+        return $this->response->download('form_publikasi/' . $reimburse[0]['usulan_publikasi'], null);
         // return view('proposal/ViewLaporanProposal', $data);
     }
 
     public function printFormPublikasi()
     {
-        return $this->response->download('form_publikasi_reimburse/Form Reimbursement Jurnal Seminar.docx', null)->setFileName("[TAMPLATE]_Form_Usulan_Publikasi.docx"); //download file
-
+        return $this->response->download('form_publikasi/[Penelitian] Template - Form Usulan Publikasi.docx', null)->setFileName("[Penelitian] Template - Form Usulan Publikasi.docx"); //download file
     }
 }
