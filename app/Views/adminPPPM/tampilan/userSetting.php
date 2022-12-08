@@ -4,6 +4,11 @@
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <section class="section">
         <div class="container" data-aos="fade-up">
             <?php if (session()->getFlashdata('pesan')) : ?>
@@ -20,21 +25,20 @@
         <div class="row" data-aos="fade-up">
             <div class="">
                 <div class="card">
-                    <h5>&nbsp;</h5>
                     <div class="card-body">
-                        <div class="d-flex justify-content-center">
+                        <!-- <div class="d-flex justify-content-center">
                             <div class="search-bar col-lg-8 d-flex justify-content-end">
                                 <form class="search-form d-flex align-items-center" method="POST" action="#">
                                     <input type="text" name="query" placeholder="Search" title="Enter search keyword">
                                     <button type="button" title="Search"><i class="bi bi-search"></i></button>
                                 </form>
-                            </div><!-- End Search Bar -->
-                        </div>
+                            </div> End Search Bar
+                        </div> -->
                         <p>&nbsp</p>
                         <a href="/register" class="btn-pilih">Tambah User <i class="bi bi-plus-square"></i></a>
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
-                            <table class="table table-advance table-hover align-middle ">
+                            <table class="table" id="example">
                                 <thead>
                                     <tr class="table-primary">
                                         <th scope="col">No.</th>
@@ -74,6 +78,12 @@
                             </table>
                         </div>
                         <!-- End Table with stripped rows -->
+                        <script>
+                            $(document).ready(function() {
+                                dataTable = $("#example").DataTable({});
+
+                            });
+                        </script>
 
                     </div>
                 </div>
