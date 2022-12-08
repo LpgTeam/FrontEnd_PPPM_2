@@ -140,7 +140,13 @@
                                             <input class="form-control" type="text" id="penyelenggara" name="penyelenggara" required>
                                         </div>
                                     </div>
-
+                                    <hr>
+                                    <div class="row mb-4">
+                                        <label for="totalDana" class="col-md-3 col-lg-4 col-form-label">Total dana</label>
+                                        <div class="col-md-3 col-lg-8">
+                                            <input name="totalDana" type="text" class="form-control" id="totalDana">
+                                        </div>
+                                    </div>
                                     <div class="col-md-3 col-lg-8">&nbsp</div>
 
 

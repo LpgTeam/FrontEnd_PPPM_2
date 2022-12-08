@@ -19,7 +19,6 @@ class DanaPKMModel extends Model
         'id_pkm',
         'tanggal', 
         'dana_keluar',
-        'dana_tidak_terserap'
 
     ];
 

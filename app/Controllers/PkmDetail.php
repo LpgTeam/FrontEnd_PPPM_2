@@ -87,6 +87,7 @@ class PkmDetail extends BaseController
 
     public function saveBukti($idpkm)
     {
+        // dd($this->request->getVar('totalDana'));
         if (!$this->validate([
             'uploadBukti' => [
                 'rules' => 'uploaded[uploadBukti]|ext_in[uploadBukti,pdf]|max_size[uploadBukti,10000]',
@@ -117,6 +118,12 @@ class PkmDetail extends BaseController
             'penyelenggara' => $this->request->getVar('penyelenggara'),
         ]);
 
+        $this->danapkmModel->save([
+            'id_pkm'  => $idpkm,
+            'tanggal'        => Time::now('Asia/jakarta'),
+            'dana_keluar'    => $this->request->getVar('totalDana'),
+        ]);
+        
 
         // $this->pkmModel->save([
         //     'ID_pkm'            => $idpkm,
