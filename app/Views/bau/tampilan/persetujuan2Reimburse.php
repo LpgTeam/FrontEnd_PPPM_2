@@ -39,7 +39,8 @@
                             oleh Direktur Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Proposal Pengajuan</a>
+                            <a href="/pkm/download-memo-pkm/<?= $reimburse['id_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
+                            <a href="/pkm/download-laporan/<?= $reimburse['id_pkm']; ?>" class="btn btn-success">Download Laporan</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
                             <label for="biayaDiajukan" class="col-md-4 col-lg-3 col-form-label">Biaya yang diajukan :
                             </label>
                             <div class="col-md-8 col-lg-9">
-                                <?php echo 'Rp ',  number_format($reimburse['biaya_diajukan'], 0, ",", "."); ?>
+                                <?php echo 'Rp ',  number_format($dana_pkm, 0, ",", "."); ?>
                             </div>
                         </div>
                         <form action="<?= base_url('/acc-reimbursePKMBAU/' . $reimburse['id_reimburse']); ?>"

@@ -142,36 +142,6 @@ class BAU extends BaseController
        ];
       
        return view('bau/tampilan/anggaran', $data);
-
-        $input_terealisasi = [
-            'tahun' => $year,
-            'dana_keluar' => $total,
-            'sisa_anggaran' => $anggaranAwal['jumlah'] - $total
-        ];
-
-        // update data tabel anggaran_total
-        //update data table anggaran_total harusnya ketika BAU klik "cairkan dana"
-        $total_saved = $dana_terealisasi->save($input_terealisasi);
-
-        //ambil dana pengajuan 
-        $ambil_pengajuan = $dana_pengajuan->findAll();
-        $total_pengajuan = 0;
-        foreach ($ambil_pengajuan as $data_pengajuan) {
-            if (($data_pengajuan['id_status'] == 5) or ($data_pengajuan['id_status'] == 4)) {
-                $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
-                // dd($total_pengajuan);
-            }
-        }
-        // dd($ambil_pengajuan);
-        //semua dana
-        $data = [
-            'title'               => 'PPPM Politeknik Statistika STIS',
-            'anggaranAwal'        => $dana_awal->orderBy('id_tahunAnggaran', 'DESC')->first(),
-            'anggaranTerealisasi' =>  $dana_terealisasi->orderBy('id_total', 'DESC')->first(),
-            'anggaranDiajukan'    => $total_pengajuan
-        ];
-        // dd($data);
-        return view('bau/tampilan/anggaran', $data);
     }
 
     public function updateAnggaran()
@@ -333,7 +303,6 @@ class BAU extends BaseController
             // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
 
         ];
-
         return view('bau/tampilan/reimburse', $data);
     }
 
@@ -356,9 +325,11 @@ class BAU extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
+         //   'pkm' => $this->pkmModel->find($id_kegiatan),
             'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
             'validation' => \Config\Services::validation()
         ];
+        // dd($data);
         return view('bau/tampilan/persetujuan2Reimburse', $data);
     }
 

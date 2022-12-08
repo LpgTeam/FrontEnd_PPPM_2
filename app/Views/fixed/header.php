@@ -218,6 +218,7 @@
                                     </ul>
                                 </li> -->
                                                                 <?php } ?>
+                                                                <li><a href="/user/ubahPaswword">Ubah Password</a></li>
                                                                 <li><a href="/logout">Logout</a></li>
                                                             </ul>
                                                         </li>

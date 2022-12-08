@@ -92,8 +92,26 @@ class PermohonanReimburse extends Migration
             'status_reimburse' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
-                'null' => false
-            ]
+                'null' => true,
+            ],
+
+            'usulan_publikasi' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true
+            ],
+
+            'biaya_diajukan' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => true,
+            ],
+
+            'total_biaya' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => true,
+            ],
         ]);
         $this->forge->addKey('id_reimburse', true);
         $this->forge->createTable('permohonan_reimburse');

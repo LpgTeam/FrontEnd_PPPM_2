@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Reimbursement PKM <?= $reimburse['jenis_pkm'] ?></h2>
+                <h2>Reimbursement PKM <?= $pkm['jenis_pkm'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -42,7 +42,8 @@
                             Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Proposal Pengajuan</a>
+                            <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
+                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
                         </div>
                         <hr>
                         <?php 

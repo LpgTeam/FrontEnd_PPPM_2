@@ -99,7 +99,7 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>........................</td>
         </tr>
         <tr>
-            <td>Jakarta, <?= date("d F  Y", strtotime($dana[0]['tanggal'])); ?></td>
+            <td>Jakarta, <?= date("d F  Y", strtotime($pkm['waktu_kegiatan'])); ?></td>
             <td>Jakarta, ...............</td>
             <td>Jakarta, ...............</td>
         </tr>

@@ -30,6 +30,7 @@ class ProposalPKM extends BaseController
     protected $rincianModel;
     protected $biayaModel;
     protected $settingTTD;
+    protected $suratPkmModel;
 
     public function __construct()
     {
@@ -96,7 +97,7 @@ class ProposalPKM extends BaseController
             'pkm'    => $this->pkmModel->find($id_pkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
             // 'targetpkm'  => $this->luaranModel->get_luaran_byid($id_pkm),
-            'dana'              => $this->danapkmModel->get_dana_byid($id_pkm),
+            'dana'              => $this->danapkmModel->get_dana_by_id($id_pkm),
             'settingTTD' => $this->settingTTD->find(1)
         ];
 

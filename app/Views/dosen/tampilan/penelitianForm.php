@@ -157,7 +157,7 @@
                             <div class="row mb-3">
                                 <label for="templateLuaran" class="col-md-4 col-lg-3 col-form-label ">Template Bukti Luaran Publikasi</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <a href="" class="btn btn-primary">Download Template Bukti Luaran Publikasi</a>
+                                    <a href="/penelitian/printBuktiLuaran" class="btn btn-primary">Download Template Bukti Luaran Publikasi</a>
                                 </div>
                             </div>
 
