@@ -14,11 +14,13 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto" href="/userSetting">Kembali</a></li>
+                <li><a class="nav-link scrollto" href="/indexAdmin">Kembali</a></li>
                 <li class="dropdown">
                     <a class="username scrollto" href="#"><span>Admin</span></a>
                     <ul>
                         <li><a href="/userSetting">User Setting</a></li>
+                        <li><a href="/Setting">Setting</a></li>
+                        <li><a href="/user/ubahPaswword">Ubah Password</a></li>
                         <li><a href="/logout">Logout</a></li>
                     </ul>
                 </li>
