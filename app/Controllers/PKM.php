@@ -54,7 +54,7 @@ class PKM extends BaseController
     public function save()
     {
         // dd(date('Y-m-d', strtotime($this->request->getVar('waktu'))),);
-        
+
         $jenisPKM = $this->request->getVar('jenis_pkm');
         //================================save PKM=================================    
         ///=====================Waktu========================
@@ -75,12 +75,12 @@ class PKM extends BaseController
         //===================================================
         if ($jenisPKM == "Mandiri") {
             $hasil = "-";
-            $idStatus = "2";
+            $idStatus = "1";
             $status = "Menunggu Persetujuan Kepala PPPM";
         } else {
             $hasil = $this->request->getVar('hasil');
-            $idStatus = "1";
             $status = "Diajukan oleh Dosen";
+            $idStatus = "1";
         }
         $this->pkmModel->save([
             'jenis_pkm' => $jenisPKM,
@@ -188,7 +188,7 @@ class PKM extends BaseController
             $this->pembiayaanPkm->save([
                 'id_pkm' => $idpkm['ID_pkm'],
                 'pembiayaan_diajukan' => $this->request->getVar('pembiayaan' . $i),
-                'jumlah_biaya'  =>$this->request->getVar('jumlahBiaya' . $i),
+                'jumlah_biaya'  => $this->request->getVar('jumlahBiaya' . $i),
             ]);
         };
 

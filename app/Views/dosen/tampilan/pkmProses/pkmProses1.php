@@ -86,7 +86,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Form</h5>
-                            <?= var_dump($pkm['id_status']);?>
+                            <? //= var_dump($pkm['id_status']); 
+                            ?>
                             <hr>
                             <ol>
                                 <li>Topik PKM &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
