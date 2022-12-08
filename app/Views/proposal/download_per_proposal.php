@@ -1,10 +1,16 @@
 <div class="d-flex justify-content-between">
-    <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
-    <a href="/penelitian/download-proposal-akhir/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
-    <!-- <div class="btn btn-sm btn-primary mr-2 text-center proposal" style="cursor:pointer" data-nama="file test" data-file="<?= $penelitian["judul_penelitian"]; ?>"><i class="fa fa-eye mx-auto"></i>dsdf</div> -->
+    <?php if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) { ?>
+        <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
+        <a href="/penelitian/download-proposal-akhir/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Proposal </a>
+        <!-- <div class="btn btn-sm btn-primary mr-2 text-center proposal" style="cursor:pointer" data-nama="file test" data-file="<?= $penelitian["judul_penelitian"]; ?>"><i class="fa fa-eye mx-auto"></i>dsdf</div> -->
+    <?php } else { ?>
+        <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
 
-    <!-- <a href="/penelitian/view_proposal_savelocal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-success">Lihat Proposal </a> -->
-    <!-- <a href="/penelitian/download-all-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Proposal </a> -->
+        <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporan </a>
+<!-- 
+        <a href="/penelitian/view_laporan/<?= $penelitian['id_penelitian']; ?>" class="btn btn-success">Lihat Proposal </a>
+        <a href="/penelitian/download-all-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Hasil Penelitian </a> -->
+    <?php } ?>
 </div>
 
 <div id="modal-proposal" class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">

@@ -32,18 +32,20 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <a href="<?= base_url('pkmPersetujuanKepalaSelesai') . "/" . $pkm["ID_pkm"]; ?>">
-                            <div class="service-box 2 orange">
-                                <i class="ri-discuss-line icon"></i>
-                                <h3>Surat Keterangan</h3>
-                                <p>
-                                    Proses peninjauan SK PKM yang telah diisi oleh dosen
-                                    Politeknik Statistika STIS
-                                </p>
-                            </div>
-                        </a>
-                    </div>
+                    <?php if ($pkm['jenis_pkm'] != 'Mandiri') { ?>
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <a href="<?= base_url('pkmPersetujuanKepalaSelesai') . "/" . $pkm["ID_pkm"]; ?>">
+                                <div class="service-box 2 orange">
+                                    <i class="ri-discuss-line icon"></i>
+                                    <h3>Surat Keterangan</h3>
+                                    <p>
+                                        Proses peninjauan SK PKM yang telah diisi oleh dosen
+                                        Politeknik Statistika STIS
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -63,7 +65,7 @@
                             </ol>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Form </button>
+                                <!-- <button class="btn btn-secondary">Lihat Form </button> -->
                                 <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
                             </div>
                         </div>
@@ -76,32 +78,31 @@
                                 oleh Kepala PPPM
                             </p>
                             <?php
-                            // var_dump($pkm['id_status']);
+                            var_dump($pkm['id_status']);
                             if ($pkm['id_status'] < 2) { ?>
-                                <hr>
-                                <h6 class="card-title text-center">Menunggu Persetujuan BAU</h6>
-                                <?php } else {
-                                if ($pkm['id_status'] == 2) { ?>
-                                    <div class="d-flex justify-content-end">
-                                        <div class="text-end">
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
-                                        </div>
-                                        <div class="text-end">
-                                            <p>&nbsp&nbsp&nbsp</p>
-                                        </div>
-                                        <div class="text-end">
-                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
-                                        </div>
+                                <div class="d-flex justify-content-end">
+                                    <div class="text-end">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tidak">Tidak</button>
                                     </div>
-                                    <?php } else {
-                                    if ($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6) { ?>
-                                        <hr>
-                                        <h6 class="card-title text-center">Kegiatan PKM Tidak Disetujui</h6>
-                                    <?php } else { ?>
-                                        <hr>
-                                        <h6 class="card-title text-center">Kegiatan PKM Sudah Disetujui</h6>
+                                    <div class="text-end">
+                                        <p>&nbsp&nbsp&nbsp</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <?php if ($pkm['jenis_pkm'] == 'Mandiri') { ?>
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setujui </button>
+                                        <?php } else { ?>
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submit">Setuju</button>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                                <?php } else {
+                                if ($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6) { ?>
+                                    <hr>
+                                    <h6 class="card-title text-center">Kegiatan PKM Tidak Disetujui</h6>
+                                <?php } else { ?>
+                                    <hr>
+                                    <h6 class="card-title text-center">Kegiatan PKM Sudah Disetujui</h6>
                             <?php
-                                    }
                                 }
                             } ?>
                         </div>
@@ -137,7 +138,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/pkmacc-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
+                <?php if ($pkm['jenis_pkm'] == 'Mandiri') { ?>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/pkmaccAkhir-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
+                <?php } else { ?>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/pkmacc-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
+                <?php } ?>
             </div>
         </div>
     </div>

@@ -60,8 +60,8 @@
                                     <select class="form-select status-dropdown2 ">
                                         <option value="">Semua</option>
                                         <option value="Diajukan oleh Dosen">Diajukan oleh Dosen</option>
-                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU</option>
                                         <option value="Disetujui Oleh Kepala PPPM">Disetujui Oleh Kepala PPPM</option>
+                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU</option>
                                         <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
                                         <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
                                     </select>
@@ -93,7 +93,9 @@
                                                     <td><?php echo $post['topik_kegiatan'] ?></td>
                                                     <td><?php echo $post['status'] ?></td>
                                                     <td>
-                                                        <?php if ($post['id_status'] != 4) { ?>
+                                                        <?php if ($post['id_status'] !=  4) { ?>
+                                                            <a href="/pkmPersetujuanKepala/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <?php } elseif ($post['id_status'] ==  4 && $post['jenis_pkm'] == 'Mandiri') { ?>
                                                             <a href="/pkmPersetujuanKepala/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php } else { ?>
                                                             <a href="/pkmPersetujuanKepalaSelesai/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>

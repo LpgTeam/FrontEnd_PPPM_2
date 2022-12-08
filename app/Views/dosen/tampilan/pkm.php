@@ -58,8 +58,8 @@
                                     <select class="form-select status-dropdown2 ">
                                         <option value="">Semua</option>
                                         <option value="Diajukan oleh Dosen">Diajukan oleh Dosen</option>
-                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU</option>
                                         <option value="Disetujui Oleh Kepala PPPM">Disetujui Oleh Kepala PPPM</option>
+                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU</option>
                                         <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
                                         <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
                                     </select>
@@ -109,9 +109,12 @@
                                                             <?php } else { ?>
                                                                 <a href="/pkmProses2/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                             <?php   }
-                                                        } else if ($post['id_status'] == 4) { ?>
-                                                            <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                                        <?php
+                                                        } else if ($post['id_status'] == 4) {
+                                                            if ($post['jenis_pkm'] == 'Mandiri') { ?>
+                                                                <a href="/pkmProses1/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                            <?php } else { ?>
+                                                                <a href="/pkmProses3/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                            <?php }
                                                         } else if ($post['id_status'] == 7) { ?>
                                                             <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php } ?>
@@ -128,7 +131,9 @@
                             <script>
                                 $(document).ready(function() {
                                     dataTable = $("#example").DataTable({
-                                        order: [[2, 'desc']],
+                                        order: [
+                                            [2, 'desc']
+                                        ],
                                     });
 
                                     $('.status-dropdown').on('change', function(e) {

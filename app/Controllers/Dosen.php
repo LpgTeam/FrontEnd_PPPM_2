@@ -142,7 +142,7 @@ class Dosen extends BaseController
             'loginUser' => $this->dosenModel->get_nip_peneliti($nip),
             'ttd'       => $this->ttdDosen->get_ttd_by_nip($nip)
         ];
-        
+
         return view('dosen/tampilan/index', $data);
     }
 
