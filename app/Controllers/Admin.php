@@ -39,6 +39,11 @@ class Admin extends BaseController
         $this->pkmModel = new PkmModel();
         $this->reimburseModel = new ReimburseModel();
         $this->settingGlobal = new GlobalSettingModel();
+        $this->anggaranAwalModel = new AnggaranAwalModel();
+        $this->anggaranTotalModel = new AnggaranTotalModel();
+        $this->danaPKMModel = new DanaPKMModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
+
     }
     public function index()
     {
@@ -153,13 +158,16 @@ class Admin extends BaseController
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-
+        // $anggaranAwal = $this->anggaranAwalModel->get_dana();
+    //     $danaTerealisasi = $this->anggaranTotalModel->get_total($year);
+    // //     $coba = $sisaAnggaran - $danaDiajukan;
+    //     dd($danaTerealisasi);
         $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
-            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+            'danaTersedia'      => $sisaAnggaran - $danaDiajukan
         ];
         return view('adminPPPM/tampilan/anggaran', $data);
     }

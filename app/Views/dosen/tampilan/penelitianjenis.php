@@ -90,7 +90,7 @@
                             <a href="/penelitianForm/institusi" class="btn-pilih">PILIH</a>
                             <h4>Penelitian Institusi</h4>
                             <p>
-                                Penelitian Institusi adalah penelitian yang dilakukan oleh
+                                Penelitian yang dilakukan oleh
                                 institusi di dalam lingkungan Politeknik Statistika STIS,
                                 diantaranya penelitian yang dilaksanakan oleh Unit Kajian atau
                                 unit lain yang ditunjuk

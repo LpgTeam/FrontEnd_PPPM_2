@@ -160,6 +160,10 @@ if (auth()->loggedIn()) {
         $routes->get('/removeStatus/(:any)/(:any)', 'Admin::removeStatus/$1/$2');
         $routes->get('/removeStatusPkm/(:any)/(:any)', 'Admin::removeStatusPkm/$1/$2');
 
+        //reimbursement
+        $routes->get('/reimburseAdmin', 'Admin::reimburse');
+        $routes->get('/detailReimburseAdmin/(:any)', 'Admin::detailReimburse/$1');
+        $routes->get('/detailReimburse2Admin/(:any)', 'Admin::detailReimburse2/$1');
     }
     // ================================================================
     //                          Reviewer

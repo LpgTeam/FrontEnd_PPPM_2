@@ -221,7 +221,7 @@ class Dosen extends BaseController
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
-            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+            'danaTersedia'      => $sisaAnggaran - $danaDiajukan
         ];
 
         return view('dosen/tampilan/anggaran', $data);
