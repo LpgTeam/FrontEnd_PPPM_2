@@ -85,7 +85,6 @@ class Admin extends BaseController
         return redirect()->to('/Setting');
         // return $this->respondCreated($response);
     }
-    
 
     // public function anggaran()
     // {

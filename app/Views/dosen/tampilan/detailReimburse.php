@@ -7,7 +7,7 @@
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>Reimbursement Penelitian <?= $reimburse['jenis_penelitian'] ?></h2>
+                <h2>Reimbursement Penelitian <?= $penelitian['jenis_penelitian'] ?></h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -43,8 +43,10 @@
 
                         <hr>
                         
-                        <div class="d-flex justify-content-end">
-                          <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
+                    
+                        <div class="d-flex justify-content-end ms-1">
+                            <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning">Download Memo Kepala PPPM</a>
+                            <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
                         </div>
                         <hr>
                         <?php

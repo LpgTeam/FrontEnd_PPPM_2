@@ -123,6 +123,7 @@ class PkmModel extends Model
        } 
        return $total_keluar;
     }
+
     //total dana diajukan 
     public function get_total_diajukan($tahun){
         $where2 = "id_status='3' OR id_status='4'"; 
@@ -135,6 +136,7 @@ class PkmModel extends Model
             }
         }
        
+        $total_pengajuan = $total_pengajuan + $this->get_dana_keluar($tahun);
         return $total_pengajuan;
     }
 

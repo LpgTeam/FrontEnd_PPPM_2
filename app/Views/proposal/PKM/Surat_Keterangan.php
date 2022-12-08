@@ -10,6 +10,22 @@ foreach ($peneliti as $key => $anggota) : ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $pkm['topik_kegiatan']; ?></title>
         <style>
+            @page {
+                margin: 5px 5px 10px;
+            }
+
+            #footer_page {
+                position: fixed;
+                right: 20px;
+                bottom: 0;
+                text-align: center;
+            }
+
+            #footer_page .page:after {
+                content: 'Halaman 'counter(page)+1;
+            }
+
+
             .text-center {
                 text-align: center;
             }
@@ -77,7 +93,7 @@ foreach ($peneliti as $key => $anggota) : ?>
                 width: 100%;
             }
 
-            #footer {
+            /* #footer {
                 position: fixed;
                 left: 20px;
                 bottom: 0;
@@ -90,12 +106,16 @@ foreach ($peneliti as $key => $anggota) : ?>
 
             #footer .pageplus1:after {
                 content: counter(pageplus1);
-            }
+            } */
         </style>
     </head>
 
     <body style="margin-top: 0;">
         <!-- KOP Surat -->
+        <div id="footer_page">
+            <p class="page"></p>
+        </div>
+
         <div>
             <table>
                 <tr>
@@ -206,10 +226,10 @@ foreach ($peneliti as $key => $anggota) : ?>
             </table>
 
         </div>
-        <div id="footer">
-            <p class="page"></p>
-        </div>
         <!-- </div> -->
+        <!-- <div id="footer_page">
+        <p class="page"></p> -->
+        </div>
     </body>
 
     </html>
