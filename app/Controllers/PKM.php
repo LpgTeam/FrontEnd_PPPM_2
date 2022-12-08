@@ -53,7 +53,8 @@ class PKM extends BaseController
 
     public function save()
     {
-        // dd($this->request->getVar('hasil'));
+        // dd(date('Y-m-d', strtotime($this->request->getVar('waktu'))),);
+        
         $jenisPKM = $this->request->getVar('jenis_pkm');
         //================================save PKM=================================    
         ///=====================Waktu========================
@@ -87,7 +88,7 @@ class PKM extends BaseController
             // 'bidang' => $this->request->getVar('bidang'),
             'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
             // 'bentuk_kegiatan' => $this->request->getVar('pilihKegiatan'),
-            'waktu_kegiatan' => $this->request->getVar('waktu'),
+            'waktu_kegiatan' => date('Y-m-d', strtotime($this->request->getVar('waktu'))),
             'tempat_kegiatan' => $this->request->getVar('tempat'),
             'sasaran' => $this->request->getVar('sasaran'),
             'target_peserta' => $this->request->getVar('target'),
