@@ -32,43 +32,24 @@
                         <div class="content">
                             <div class="row mb-3">
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian/PKM</label>
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown ">
-                                        <option value="">Semua</option>
-                                        <option value="Semi Mandiri">Penelitian Semi Mandiri</option>
-                                        <option value="Di Danai Institusi">Penelitian Di Danai Institusi</option>
-                                        <option value="Institusi">Penelitian Institusi</option>
-                                        <option value="Kerjasama">Penlitian Kerjasama</option>
-                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
-                                        <option value="Terstruktur">PKM Terstruktur</option>
-                                    </select>
-                                </div>
+                                <?= $this->include('filter/reimburse'); ?>
 
-                                <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Status Reimbursement</div>
-                                </div>
+                                <?= $this->include('filter/prosesReimburse'); ?>
 
-                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
-                                <option value="">Semua</option>
-                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
-                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
-                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
-                                </select>
                             </div>
 
 
-                        <!-- Table with stripped rows -->
-                        <table class="table table-advance table-hover align-middle datatable">
-                            <thead>
-                                <tr class="table-primary">
-                                    <th scope="col">Jenis Penelitian/PKM</th>
-                                    <th scope="col">Tanggal Pengajuan</th>
-                                    <th scope="col">Judul Penelitian/Topik PKM</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Detail</th>
-                                </tr>
-                            </thead>
+                            <!-- Table with stripped rows -->
+                            <table class="table table-advance table-hover align-middle datatable">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">Jenis Penelitian/PKM</th>
+                                        <th scope="col">Tanggal Pengajuan</th>
+                                        <th scope="col">Judul Penelitian/Topik PKM</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Detail</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <?php
                                     if (!$reimburse == null) {
@@ -79,7 +60,7 @@
                                         ?>
                                                 <tr>
 
-                                                <td>
+                                                    <td>
                                                         <?php if ($post['jenis_penelitian'] == "Mandiri") {
                                                             echo "<p hidden >1</p>", $post['jenis_penelitian'];
                                                         } else if ($post['jenis_penelitian'] == "Semi Mandiri") {

@@ -25,53 +25,34 @@
                         <div class="content">
                             <div class="row mb-3">
 
-                            <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian/PKM</label>
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown ">
-                                        <option value="">Semua</option>
-                                        <option value="2">Penelitian Semi Mandiri</option>
-                                        <option value="3">Penelitian Didanai Institusi</option>
-                                        <option value="4">Penelitian Institusi</option>
-                                        <option value="5">Penelitian Kerjasama</option>
-                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
-                                        <option value="Terstruktur">PKM Terstruktur</option>
-                                    </select>
-                                </div>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian/PKM</label>
+                                <?= $this->include('filter/reimburse'); ?>
 
+                                <?= $this->include('filter/prosesReimburse'); ?>
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursement</label>
-
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="status-dropdown2 form-select">
-                                        <option value="">Semua</option>
-                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
-                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
-                                        <option value="Reimbursement telah dicairkan">Reimbursement telah dicairkan</option>
-                                    </select>
-                                </div>
                             </div>
 
 
-                        <!-- Table with stripped rows -->
-                        <table class="table table-advance table-hover align-middle datatable">
-                            <thead>
-                                <tr class="table-primary">
-                                    <th scope="col">Jenis Penelitian/PKM</th>
-                                    <th scope="col">Tanggal Pengajuan</th>
-                                    <th scope="col">Judul Penelitian/Topik PKM</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Detail</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                if (!$reimburse == null) {
-                                    $i = 1; ?>
-                                    <?php foreach ($reimburse as $key => $post) :
-                                        if($post['id_penelitian'] != NULL) {
-                                           
-                                    ?>
-                                        <tr>
+                            <!-- Table with stripped rows -->
+                            <table class="table table-advance table-hover align-middle datatable">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">Jenis Penelitian/PKM</th>
+                                        <th scope="col">Tanggal Pengajuan</th>
+                                        <th scope="col">Judul Penelitian/Topik PKM</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if (!$reimburse == null) {
+                                        $i = 1; ?>
+                                        <?php foreach ($reimburse as $key => $post) :
+                                            if ($post['id_penelitian'] != NULL) {
+
+                                        ?>
+                                                <tr>
                                                     <td>
                                                         <?php if ($post['jenis_penelitian'] == "Mandiri") {
                                                             echo "<p hidden >1</p>", $post['jenis_penelitian'];

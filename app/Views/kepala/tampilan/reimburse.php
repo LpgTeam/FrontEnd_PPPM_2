@@ -55,37 +55,10 @@
                         <div class="content">
                             <div class="row mb-3">
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian/PKM</label>
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown ">
-                                        <option value="">Semua</option>
-                                        <option value="2">Penelitian Semi Mandiri</option>
-                                        <option value="3">Penelitian Didanai Institusi</option>
-                                        <option value="4">Penelitian Institusi</option>
-                                        <option value="5">Penelitian Kerjasama</option>
-                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
-                                        <option value="Terstruktur">PKM Terstruktur</option>
-                                    </select>
-                                </div>
+                                <?= $this->include('filter/reimburse'); ?>
 
+                                <?= $this->include('filter/prosesReimburse'); ?>
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursement</label>
-
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="status-dropdown2 form-select">
-                                        <option value="">Semua</option>
-                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
-                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
-                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
-                                    </select>
-                                </div>
-
-                                <select class="form-control status-dropdown2 col-md-8 col-lg-4">
-                                <option value="">Semua</option>
-                                        <option value="Reimbursement belum diajukan">Reimbursement belum diajukan</option>
-                                        <option value="Reimbursement dalam proses">Reimbursement dalam proses</option>
-                                        <option value="Dana telah dicairkan">Dana telah dicairkan</option>
-                                </select>
                             </div>
 
                             <table class="table table-advance table-hover align-middle datatable">
@@ -104,8 +77,8 @@
                                         $i = 1; ?>
                                         <?php foreach ($reimburse as $key => $post) :
                                             if ($post['id_penelitian'] != NULL) {
-                                            ?>
-                                                    <tr>
+                                        ?>
+                                                <tr>
                                                     <td>
                                                         <?php if ($post['jenis_penelitian'] == "Mandiri") {
                                                             echo "<p hidden >1</p>", $post['jenis_penelitian'];
@@ -119,91 +92,91 @@
                                                             echo "<p hidden >5</p>", $post['jenis_penelitian'];
                                                         } ?></p>
                                                     </td>
-                                                        <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                        <td><?php echo $post['judul_penelitian'] ?></td>
-                                                        <td>
-                                                            <?php if ($post['id_status'] == 0) {
-                                                                echo 'Reimbursement belum diajukan';
-                                                            } else if ($post['id_status'] == 1) {
-                                                                echo 'Reimbursement dalam proses';
-                                                            } else if ($post['id_status'] == 2) {
-                                                                echo 'Reimbursement telah dicairkan';
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <a href="/detailReimburseKepala/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                    <td><?php echo $post['judul_penelitian'] ?></td>
+                                                    <td>
+                                                        <?php if ($post['id_status'] == 0) {
+                                                            echo 'Reimbursement belum diajukan';
+                                                        } else if ($post['id_status'] == 1) {
+                                                            echo 'Reimbursement dalam proses';
+                                                        } else if ($post['id_status'] == 2) {
+                                                            echo 'Reimbursement telah dicairkan';
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/detailReimburseKepala/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
 
 
 
 
-                                                            <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
-                                                        </td>
-                                                    </tr>
-                                                    <?php $i++;    ?>
-                                                <?php } else if ($post['id_pkm'] != NULL) {
+                                                        <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
+                                                    </td>
+                                                </tr>
+                                                <?php $i++;    ?>
+                                            <?php } else if ($post['id_pkm'] != NULL) {
 
-                                                ?>
-                                                    <tr>
+                                            ?>
+                                                <tr>
 
-                                                        <td><?php echo 'PKM ', $post['jenis_pkm'] ?></td>
-                                                        <td><?php echo $post['tanggal_pengajuan'] ?></td>
-                                                        <td><?php echo $post['judul_pkm'] ?></td>
-                                                        <td>
-                                                            <?php if ($post['id_status'] == 0) {
-                                                                echo 'Reimbursement belum diajukan';
-                                                            } else if ($post['id_status'] == 1) {
-                                                                echo 'Reimbursement dalam proses';
-                                                            } else if ($post['id_status'] == 2) {
-                                                                echo 'Dana telah dicairkan';
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <a href="/detailReimburse2Kepala/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-
-
+                                                    <td><?php echo 'PKM ', $post['jenis_pkm'] ?></td>
+                                                    <td><?php echo $post['tanggal_pengajuan'] ?></td>
+                                                    <td><?php echo $post['judul_pkm'] ?></td>
+                                                    <td>
+                                                        <?php if ($post['id_status'] == 0) {
+                                                            echo 'Reimbursement belum diajukan';
+                                                        } else if ($post['id_status'] == 1) {
+                                                            echo 'Reimbursement dalam proses';
+                                                        } else if ($post['id_status'] == 2) {
+                                                            echo 'Dana telah dicairkan';
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/detailReimburse2Kepala/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
 
 
-                                                            <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
-                                                        </td>
-                                                    </tr>
-                                        <?php $i++;
-                                                }
-                                            endforeach;
-                                        } ?>
 
-                                    </tbody>
-                                </table>
-                                <!-- End Table with stripped rows -->
-                            </div>
+
+                                                        <!-- echo "<a class='btn btn-primary' href='/penelitianSemiMandiri1'><i class='bi bi-pencil-square'></i></a>"; -->
+                                                    </td>
+                                                </tr>
+                                    <?php $i++;
+                                            }
+                                        endforeach;
+                                    } ?>
+
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
                         </div>
-
-
-                        <script>
-                            $(document).ready(function() {
-                                dataTable = $("#example").DataTable({});
-
-                                $('.status-dropdown').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(0).search(status).draw();
-                                })
-
-                                $('.status-dropdown2').on('change', function(e) {
-                                    var status = $(this).val();
-                                    $('.status-dropdown2').val(status)
-                                    console.log(status)
-                                    //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
-                                    dataTable.column(3).search(status).draw();
-                                })
-                            });
-                        </script>
                     </div>
+
+
+                    <script>
+                        $(document).ready(function() {
+                            dataTable = $("#example").DataTable({});
+
+                            $('.status-dropdown').on('change', function(e) {
+                                var status = $(this).val();
+                                $('.status-dropdown').val(status)
+                                console.log(status)
+                                //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                dataTable.column(0).search(status).draw();
+                            })
+
+                            $('.status-dropdown2').on('change', function(e) {
+                                var status = $(this).val();
+                                $('.status-dropdown2').val(status)
+                                console.log(status)
+                                //dataTable.column(6).search('\\s' + status + '\\s', true, false, true).draw();
+                                dataTable.column(3).search(status).draw();
+                            })
+                        });
+                    </script>
                 </div>
             </div>
+        </div>
         </div>
 
         </div>
