@@ -16,7 +16,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
             "<p>"+
-                "Form PKM telah di submit oleh dosen dan menunggu persetujuan BAU"+
+                "Form PKM telah disubmit oleh dosen dan menunggu persetujuan BAU"+
             "</p>"+
         "</li>";
 
