@@ -8,7 +8,7 @@
     <title><?= $pkm['topik_kegiatan']; ?></title>
     <style>
         @page {
-            margin: 5px 5px 10px;
+            /* margin: 5px 5px 10px; */
         }
 
         #footer_page {
@@ -180,30 +180,32 @@
         </table>
         <br>
 
-        <li>HASIL/TARGET YANG DIHARAPKAN</li>
-        <?= $pkm['hasil'] ?>
-        <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN(*)</li>
-        <div class="tabel">
-            <table>
-                <tr>
-                    <td>NO</td>
-                    <td>JENIS LUARAN</td>
-                    <td>TARGET CAPAIAN</td>
-                </tr>
-                <?php
-                // var_dump($biaya);
-                $i = 1;
-                foreach ($biaya as $key => $luar) : ?>
+        <?php if ($pkm['jenis_pkm'] != 'Mandiri') { ?>
+            <li>HASIL/TARGET YANG DIHARAPKAN</li>
+            <?= $pkm['hasil'] ?>
+            <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN(*)</li>
+            <div class="tabel">
+                <table>
                     <tr>
-                        <td><?= $i ?></td>
-                        <td><?= $luar['pembiayaan_diajukan']; ?></td>
-                        <td>Rp<?= $luar['jumlah_biaya']; ?></td>
+                        <td>NO</td>
+                        <td>RINCIAN</td>
+                        <td>JUMLAH BIAYA</td>
                     </tr>
+                    <?php
+                    // var_dump($biaya);
+                    $i = 1;
+                    foreach ($biaya as $key => $luar) : ?>
+                        <tr>
+                            <td><?= $i ?></td>
+                            <td><?= $luar['pembiayaan_diajukan']; ?></td>
+                            <td>Rp<?= '<h2>Rp ', number_format($luar['jumlah_biaya'], 0, ",", "."), '</h2>'; ?></td>
+                        </tr>
 
-                <?php $i++;
-                endforeach ?>
-            </table>
-        </div>
+                    <?php $i++;
+                    endforeach ?>
+                </table>
+            </div>
+        <?php } ?>
     </ol>
     <div id="footer_page">
         <p class="page"></p>

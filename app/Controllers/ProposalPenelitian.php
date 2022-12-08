@@ -51,7 +51,9 @@ class ProposalPenelitian extends BaseController
             'anggotapeneliti'   => $this->timpenelitiModel->get_anggota_timpeneliti($id_penelitian),
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
-            'settingTTD' => $this->settingTTD->find(1)
+            'settingTTD' => $this->settingTTD->find(1),
+            'jenis'             => ' ',
+            'tujuan'            => ' ',
         ];
         // dd($dataPenelitian['timpeneliti']);
 
@@ -103,9 +105,9 @@ class ProposalPenelitian extends BaseController
         $pdf = new \Jurosh\PDFMerge\PDFMerger;
         $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
             ->addPDF($tambahanFile, 'all');
-        $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
+        $pdf->merge('file', $direktori . '/' . $file_pdf . '.pdf');
 
-        $judul_penelitian = $file_pdf . " - Akhir.pdf";
+        $judul_penelitian = $file_pdf . ".pdf";
         // dd($btn);
         if ($btn == 1) {
             return redirect()->to('/penelitian/view_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
@@ -171,8 +173,10 @@ class ProposalPenelitian extends BaseController
         // dd($laporan);
         if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
             $tambahanFile = 'bukti_pendanaan/' . $laporan['laporan_dana'];
-        } else {
+        } elseif (($penelitian['jenis_penelitian'] == 'Didanani Institusi')||($penelitian['jenis_penelitian'] == 'Institusi')){
             $tambahanFile = 'kontrak/' . $laporan['kontrak'];
+        } else{
+            $tambahanFile = 'bukti_luaran/' . $laporan['laporan_luaran'];
         }
 
         $dataPenelitian = [
@@ -228,7 +232,8 @@ class ProposalPenelitian extends BaseController
         $data = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
             'judul_penelitian' => $judul_penelitian,
-            'settingTTD' => $this->settingTTD->find(1)
+            'settingTTD' => $this->settingTTD->find(1),
+            'tujuan'            => ' ',
         ];
         // dd($data['judul_penelitian']);
 

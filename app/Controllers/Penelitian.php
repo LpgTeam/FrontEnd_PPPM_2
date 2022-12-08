@@ -228,7 +228,8 @@ class Penelitian extends BaseController
             ]);
         };
         $this->laporanPenelitianModel->save([
-            'id_penelitian' => $idpenelitian['id_penelitian']
+            'id_penelitian' => $idpenelitian['id_penelitian'],
+            'laporan_luaran' => $namaBukti
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
