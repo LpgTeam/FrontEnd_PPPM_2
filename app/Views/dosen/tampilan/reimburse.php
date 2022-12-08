@@ -13,7 +13,7 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSEMEN</h2>
+                <h2>REIMBURSEMENT</h2>
                 <hr>
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
@@ -46,7 +46,7 @@
                                 </div>
 
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursemen</label>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursement</label>
 
                                 <div class="col-md-8 col-lg-4">
                                     <select class="status-dropdown2 form-select">

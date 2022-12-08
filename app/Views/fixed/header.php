@@ -102,7 +102,7 @@
                                 <li><a href="/pkmAdmin">PKM</a></li>
                             </ul>
                         </li>
-                        <li><a class="nav-link scrollto" href="#">Reimbursemen</a></li>
+                        <li><a class="nav-link scrollto" href="reimburseAdmin">Reimbursement</a></li>
                         <li class="dropdown">
                             <a class="username scrollto" href="#"><span>Admin</span></a>
                             <ul>

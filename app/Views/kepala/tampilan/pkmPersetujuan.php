@@ -63,7 +63,7 @@
                             </ol>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Form </button>
+                                <!-- <button class="btn btn-secondary">Lihat Form </button> -->
                                 <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
                             </div>
                         </div>

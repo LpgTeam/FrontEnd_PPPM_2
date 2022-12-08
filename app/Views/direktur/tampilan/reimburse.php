@@ -13,9 +13,9 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSEMEN</h2>
+                <h2>REIMBURSEMENTT</h2>
                 <hr>
-                <p>Dosen Politeknik Statistika STIS</p>
+                <p>Direktur Politeknik Statistika STIS</p>
             </header>
         </div>
         <?php if (session()->getFlashdata('pesan')) : ?>
@@ -36,15 +36,17 @@
                                 <div class="col-md-8 col-lg-4">
                                     <select class="form-select status-dropdown ">
                                         <option value="">Semua</option>
-                                        <option value="2">Semi Mandiri</option>
-                                        <option value="3">Didanai Institusi</option>
-                                        <option value="4">Institusi</option>
-                                        <option value="5">Kerjasama</option>
+                                        <option value="2">Penelitian Semi Mandiri</option>
+                                        <option value="3">Penelitian Didanai Institusi</option>
+                                        <option value="4">Penelitian Institusi</option>
+                                        <option value="5">Penelitian Kerjasama</option>
+                                        <option value="Kelompok">PKM Kelompok/Dosen</option>
+                                        <option value="Terstruktur">PKM Terstruktur</option>
                                     </select>
                                 </div>
 
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursemen</label>
+                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Reimbursement</label>
 
                                 <div class="col-md-8 col-lg-4">
                                     <select class="status-dropdown2 form-select">
@@ -78,7 +80,19 @@
                                         ?>
                                                 <tr>
 
-                                                    <td><?php echo 'Penelitian ', $post['jenis_penelitian'] ?></td>
+                                                <td>
+                                                        <?php if ($post['jenis_penelitian'] == "Mandiri") {
+                                                            echo "<p hidden >1</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Semi Mandiri") {
+                                                            echo "<p hidden >2</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Didanai Institusi") {
+                                                            echo "<p hidden >3</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Institusi") {
+                                                            echo "<p hidden >4</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Kerjasama") {
+                                                            echo "<p hidden >5</p>", $post['jenis_penelitian'];
+                                                        } ?></p>
+                                                    </td>
                                                     <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                     <td><?php echo $post['judul_penelitian'] ?></td>
                                                     <td>

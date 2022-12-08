@@ -13,7 +13,7 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSEMEN</h2>
+                <h2>REIMBURSEMENTT</h2>
                 <hr>
                 <p>Reviewer Politeknik Statistika STIS</p>
             </header>
@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div class="input-group-prepend col-md-4 col-lg-2">
-                                    <div class=" btn btn-primary">Status Reimbursemen</div>
+                                    <div class=" btn btn-primary">Status Reimbursement</div>
                                 </div>
 
                                 <select class="form-control status-dropdown2 col-md-8 col-lg-4">
@@ -79,7 +79,19 @@
                                         ?>
                                                 <tr>
 
-                                                    <td><?php echo 'Penelitian ', $post['jenis_penelitian'] ?></td>
+                                                <td>
+                                                        <?php if ($post['jenis_penelitian'] == "Mandiri") {
+                                                            echo "<p hidden >1</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Semi Mandiri") {
+                                                            echo "<p hidden >2</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Didanai Institusi") {
+                                                            echo "<p hidden >3</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Institusi") {
+                                                            echo "<p hidden >4</p>", $post['jenis_penelitian'];
+                                                        } else if ($post['jenis_penelitian'] == "Kerjasama") {
+                                                            echo "<p hidden >5</p>", $post['jenis_penelitian'];
+                                                        } ?></p>
+                                                    </td>
                                                     <td><?php echo $post['tanggal_pengajuan'] ?></td>
                                                     <td><?php echo $post['judul_penelitian'] ?></td>
                                                     <td>

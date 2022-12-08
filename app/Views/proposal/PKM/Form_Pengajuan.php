@@ -8,7 +8,7 @@
     <title><?= $pkm['topik_kegiatan']; ?></title>
     <style>
         @page {
-            margin: 5px 5px 10px;
+            /* margin: 5px 5px 10px; */
         }
 
         #footer_page {
@@ -98,10 +98,10 @@
         <table>
             <tr>
                 <td width="20%"> <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="100"></td>
-                <td><b> POLITEKNIK STATISTIKA STIS<br>
-                        Jl. Otto Iskandardinata No. 64C, Jakarta 13330<br>
-                        Telp. (021) 8508812, 8191437, Fax. 8197577<br>
-                        Website: www.stis.ac.id, Email: info@stis.ac.id</b></td>
+                <td><b> POLITEKNIK STATISTIKA STIS</b><br>
+                    Jl. Otto Iskandardinata No. 64C, Jakarta 13330<br>
+                    Telp.(021) 8508812, 8191437, fax. (021) 81917577<br>
+                    Homepage : <u>http://www.stis.ac.id</u> </td>
             </tr>
         </table>
         <!-- <span class="logo"> -->
@@ -180,30 +180,35 @@
         </table>
         <br>
 
-        <li>HASIL/TARGET YANG DIHARAPKAN</li>
-        <?= $pkm['hasil'] ?>
-        <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN(*)</li>
-        <div class="tabel">
-            <table>
-                <tr>
-                    <td>NO</td>
-                    <td>JENIS LUARAN</td>
-                    <td>TARGET CAPAIAN</td>
-                </tr>
-                <?php
-                // var_dump($biaya);
-                $i = 1;
-                foreach ($biaya as $key => $luar) : ?>
-                    <tr>
-                        <td><?= $i ?></td>
-                        <td><?= $luar['pembiayaan_diajukan']; ?></td>
-                        <td>Rp<?= $luar['jumlah_biaya']; ?></td>
-                    </tr>
+        <?php if ($pkm['jenis_pkm'] != 'Mandiri') { ?>
 
-                <?php $i++;
-                endforeach ?>
-            </table>
-        </div>
+            <li>HASIL/TARGET YANG DIHARAPKAN</li>
+            <?= $pkm['hasil'] ?>
+            <p>&nbsp;</p>
+            <li>PEMBIAYAAN/LAINYA YANG DIAJUKAN(*)</li>
+            <div class="tabel">
+                <table>
+                    <tr>
+                        <td width="10%">NO</td>
+                        <td>RINCIAN</td>
+                        <td>JUMLAH BIAYA</td>
+                    </tr>
+                    <?php
+                    // var_dump($biaya);
+                    $i = 1;
+                    foreach ($biaya as $key => $luar) : ?>
+                        <tr>
+                            <td><?= $i ?></td>
+                            <td><?= $luar['pembiayaan_diajukan']; ?></td>
+                            <td>Rp<?= number_format($luar['jumlah_biaya'], 0, ",", "."); ?></td>
+                        </tr>
+
+
+                    <?php $i++;
+                    endforeach ?>
+                </table>
+            </div>
+        <?php } ?>
     </ol>
     <div id="footer_page">
         <p class="page"></p>
