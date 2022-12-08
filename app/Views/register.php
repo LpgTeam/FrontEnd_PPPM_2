@@ -60,8 +60,7 @@
                     <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>
                 </div>
 
-                <p class="text-center"><?= lang('Auth.haveAccount') ?> <a href="<?= url_to('login') ?>"><?= lang('Auth.login') ?></a></p>
-
+               
             </form>
         </div>
     </div>
