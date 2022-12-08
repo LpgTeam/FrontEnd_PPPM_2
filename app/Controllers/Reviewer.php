@@ -44,23 +44,23 @@ class Reviewer extends BaseController
     }
 
 
-    public function anggaran(){
+    public function anggaran()
+    {
         //current year
         $year = date("Y");
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-        
-       $data = [
+
+        $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-       ];
-       return view('reviewer/tampilan/anggaran', $data);
-
+        ];
+        return view('reviewer/tampilan/anggaran', $data);
     }
 
     public function penelitian()
@@ -91,11 +91,11 @@ class Reviewer extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 2,
-            'status_pengajuan'  => 'Disetujui oleh Reviewer'
+            'status_pengajuan'  => 'Menunggu Persetujuan Reviewer'
         ]);
         $this->statusPenelitianModel->save([
             'id_penelitian' => $id_penelitian,
-            'status'        => 'Disetujui oleh Reviewer'
+            'status'        => 'Menunggu Persetujuan Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');

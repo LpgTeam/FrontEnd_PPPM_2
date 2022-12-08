@@ -130,7 +130,7 @@
                             </p>
                             <hr>
                             <?php
-                            if (!$laporan['laporan_luaran'] == null) {
+                            if ($laporan['laporan_luaran'] == null) {
                             ?>
                                 <form action="<?= base_url('/penelitianDetail/saveLaporan/' . $penelitian['id_penelitian']); ?>" onsubmit="return submitForm(this)" method="post" enctype="multipart/form-data">
                                     <div class="row mb-3">

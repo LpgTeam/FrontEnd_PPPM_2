@@ -31,7 +31,7 @@ class PenelitianDetail extends BaseController
         $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->danaPenelitianModel = new DanaPenelitianModel();
     }
-    
+
     public function index()
     {
         //
@@ -64,29 +64,29 @@ class PenelitianDetail extends BaseController
 
         $Pen = $this->penelitianModel->get_penelitian($idpenelitian);
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idpenelitian);
-        
-       
+
+
 
         $this->penelitianModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
             'id_status'         => "10",
-            'status_pengajuan'  => "Kegiatan telah selesai dilaksanakan"
+            'status_pengajuan'  => "Rangkaian penelitian selesai dilaksanakan"
         ]);
-        
+
 
         $this->statusPenelitianModel->save([
             'id_penelitian' => $Pen['id_penelitian'],
-            'status'        => 'Kegiatan telah selesai dilaksanakan'
+            'status'        => 'Rangkaian penelitian selesai dilaksanakan'
         ]);
 
         $this->laporanPenelitianModel->save([
             'id_laporan'        => $laporan['id_laporan'],
             'id_penelitian'     => $idpenelitian,
             'laporan_luaran'    => $namaLaporan,
-            'status_penelitian' => "Kegiatan telah selesai dilaksanakan"
+            'status_penelitian' => "Rangkaian penelitian selesai dilaksanakan"
         ]);
 
-        
+
 
         for ($i = 1; $i <= $nLuaran; $i++) {
             $this->luaranModel->save([
@@ -136,18 +136,18 @@ class PenelitianDetail extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
             'id_status'         => "6",
-            'status_pengajuan'  => "Kegiatan sedang berlangsung"
+            'status_pengajuan'  => "Kegiatan selesai dilaksanakan"
         ]);
 
         $this->statusPenelitianModel->save([
             'id_penelitian' => $Pen['id_penelitian'],
-            'status'        => 'Kegiatan sedang berlangsung'
+            'status'        => 'Kegiatan selesai dilaksanakan'
         ]);
 
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
             "kontrak" => $namaKontrak,
-            "status_penelitian" => 'Kegiatan sedang berlangsung'
+            "status_penelitian" => 'Kegiatan selesai dilaksanakan'
         ]);
         $fileKontrak->move('kontrak', $namaKontrak);
 
@@ -182,7 +182,7 @@ class PenelitianDetail extends BaseController
         // $penelitian = $this->penelitianModel->get_penelitian($idPenelitian);
         // dd($penelitian);
         $namaPendanaan = $filePendanaan->getName();
-        
+
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idPenelitian);
 
         $Pen = $this->penelitianModel->get_penelitian($idPenelitian);
@@ -190,12 +190,12 @@ class PenelitianDetail extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $Pen['id_penelitian'],
             'id_status'         => "6",
-            'status_pengajuan'  => "Kegiatan sedang berlangsung"
+            'status_pengajuan'  => "Kegiatan selesai dilaksanakan"
         ]);
 
         $this->statusPenelitianModel->save([
             'id_penelitian' => $Pen['id_penelitian'],
-            'status'        => 'Kegiatan sedang berlangsung'
+            'status'        => 'Kegiatan selesai dilaksanakan'
         ]);
 
         $this->danaPenelitianModel->save([
@@ -203,11 +203,11 @@ class PenelitianDetail extends BaseController
             'tanggal'        => Time::now('Asia/jakarta'),
             'dana_keluar'    => $this->request->getVar('totalDana'),
         ]);
-        
+
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],
             "laporan_dana" => $namaPendanaan,
-            "status_penelitian" => "Kegiatan sedang berlangsung"
+            "status_penelitian" => "Kegiatan selesai dilaksanakan"
         ]);
         $filePendanaan->move('bukti_pendanaan', $namaPendanaan);
 

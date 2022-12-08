@@ -59,7 +59,7 @@
                                 <h5 class="card-title text-center">Persetujuan Proposal</h5>
                                 <hr>
                                 <p>Persetujuan proposal penelitian yang diajukan dosen
-                                    oleh reviewer
+                                    oleh BAU
                                 </p>
                                 <?php if ($penelitian['id_status'] < 2) { ?>
                                     <hr>
