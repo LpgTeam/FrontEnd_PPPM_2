@@ -148,6 +148,7 @@ class PkmDetail extends BaseController
             'id_pkm' => $idpkm,
             'status' => 'Kegiatan sedang berlangsung'
         ]);
+        session()->setFlashdata('pesan', 'Surat pernyataan berhasil disetujui');
         return redirect()->to('/pkmDosen');
     }
 }
