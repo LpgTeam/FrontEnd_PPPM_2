@@ -80,7 +80,10 @@ class ProposalPenelitian extends BaseController
             'ketuapeneliti' => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'        => $this->luaranModel->get_luaran_byid($id_penelitian),
             'jenis'         => '*) tentative',
-            'tujuan'        => 'YANG DITUJU*)',
+            'jurnal'        => 'TARGET CAPAIAN YANG DITUJU*)',
+            'tujuan'        => 'LUARAN DAN TARGET CAPAIAN',
+            'target'        => 'TARGET',
+            'judul'        => 'USULAN',
             'settingTTD' => $this->settingTTD->find(1)
         ];
         // dd($dataPenelitian['settingTTD']);
@@ -178,7 +181,7 @@ class ProposalPenelitian extends BaseController
         } else{
             $tambahanFile = 'bukti_luaran/' . $laporan['laporan_luaran'];
         }
-
+            $bukti = 'bukti_luaran/' . $laporan['laporan_luaran'];
         $dataPenelitian = [
             'penelitian'        => $penelitian,
             'timpeneliti'       => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
@@ -186,7 +189,10 @@ class ProposalPenelitian extends BaseController
             'ketuapeneliti'     => $this->dosenModel->get_nip_peneliti($timpeneliti[0]['NIP']),
             'luaran'            => $this->luaranModel->get_luaran_byid($id_penelitian),
             'jenis'             => ' ',
-            'tujuan'            => ' ',
+            'jurnal'            => ' ',
+            'target'            => '',
+            'tujuan'            => 'LUARAN DAN CAPAIAN',
+            'judul'             => 'LAPORAN',
             'settingTTD' => $this->settingTTD->find(1)
             // 'addProses2'        => $tambahanFile,
         ];
@@ -202,7 +208,8 @@ class ProposalPenelitian extends BaseController
 
         $pdf = new \Jurosh\PDFMerge\PDFMerger;
         $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-            ->addPDF($tambahanFile, 'all');
+            ->addPDF($tambahanFile, 'all')
+            ->addPDF($bukti, 'all');
         $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
 
         $judul_penelitian = $file_pdf . " - Akhir.pdf";

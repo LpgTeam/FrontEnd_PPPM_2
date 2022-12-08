@@ -22,13 +22,21 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-box blue service-box1">
+                    <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Proposal</h3>
-                            <p>
-                                Proses peninjauan dan persetujuan proposal penelitian
-                                yang diajukan oleh dosen
-                            </p>
+                            <?php if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) { ?>
+                                <h3>Proposal</h3>
+                                <p>
+                                    Proses peninjauan dan persetujuan proposal penelitian
+                                    yang diajukan oleh dosen
+                                </p>
+                            <?php } else { ?>
+                                <h3>Laporan</h3>
+                                <p>
+                                    Proses peninjauan hasil penelitian yang diajukan oleh dosen
+                                </p>
+
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

@@ -93,7 +93,7 @@
                             <!-- <button class="btn btn-success">Lihat</button> -->
                             <!-- <a href="" class="btn btn-success">Download Memo Kepala PPPM </a> -->
                             <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Surat Keterangan </a>
-                            <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
+                            <!-- <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a> -->
                             <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
                         </div>
                         <?php if($pkm['jenis_pkm']!='Mandiri'): ?>

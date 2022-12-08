@@ -76,10 +76,10 @@ setlocale(LC_TIME, 'INDONESIA');
         <p>Polstat STIS</p>
     </div>
 
-    <p class="isi">Mohon diberikan bantuan pembiayaan publikasi artikel jurnal a.n. <?= $timpeneliti[0]['namaPeneliti']; ?> dengan judul <?= $penelitian['judul_penelitian']; ?> yang dipublikasikan pada <?= $targetpenelitian[0]['jurnal_tujuan'] ?> yang terindeks <?= $targetpenelitian[0]['index_jurnal_tujuan'] ?>.</p>
+    <p class="isi">Mohon diberikan bantuan pembiayaan publikasi artikel jurnal a.n. <?= $timpeneliti[0]['namaPeneliti']; ?> dengan judul <?= $penelitian['judul_penelitian']; ?> yang dipublikasikan pada <?= $targetpenelitian[0]['jurnal_tujuan'] ?> yang terindeks <?= $targetpenelitian[0]['jurnal_tujuan'] ?>.</p>
 
-    <p>Kuitansi pembayaran sebesar <?= $dana['dana_keluar']; ?> dan dokumen pendamping terlampir bersama memo ini.</p>
-
+    <p>Kuitansi pembayaran sebesar Rp<?= number_format($dana['dana_keluar'], 0, ",", "."); ?> dan dokumen pendamping terlampir bersama memo ini.</p>
+    
     <table class="ttd3">
         <tr>
             <td>........................</td>
