@@ -123,6 +123,13 @@ class PkmModel extends Model
        } 
        return $total_keluar;
     }
+    
+    //total dana keluar setelah laporan
+    public function get_total_diajukan_pembiayaan($tahun){
+        $keluar =  $this->join('pembiayaan_pkm', 'pembiayaan_pkm.id_pkm = pengajuan_pkm.ID_pkm')
+        ->select('pembiayaan_model.jumlah_biaya')->select('pengajuan_pkm.*')
+        ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
+    }
 
     //total dana diajukan 
     public function get_total_diajukan($tahun){
@@ -139,6 +146,7 @@ class PkmModel extends Model
         $total_pengajuan = $total_pengajuan + $this->get_dana_keluar($tahun);
         return $total_pengajuan;
     }
+
 
     //Jumlah Data PKM
     public function get_row(){

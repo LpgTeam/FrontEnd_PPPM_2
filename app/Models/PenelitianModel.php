@@ -123,7 +123,7 @@ class PenelitianModel extends Model
 
     //total dana diajukan
     public function get_total_diajukan($tahun){
-        $where2 = "id_status='2' OR id_status='3' OR id_status='4' OR id_status='5' OR id_status='6'";
+        $where2 = "id_status='3' OR id_status='4' OR id_status='5' OR id_status='6'";
         $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
         
         $total_pengajuan = 0;

@@ -211,6 +211,7 @@ class Dosen extends BaseController
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
+
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
        
        $data = [
