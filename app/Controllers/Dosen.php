@@ -54,7 +54,7 @@ class Dosen extends BaseController
 
     public function index()
     {
-        dd($this->timPKMModel->get_pkm_by_nip_user(auth()->user()->nip));
+        // dd($this->timPKMModel->get_pkm_by_nip_user(auth()->user()->nip));
         // dd($this->timPenelitiModel->get_penelitian_by_nipb   _user(auth()->user()->nip));
         // $db      = \Config\Database::connect();
         // $builder4 = $db->table('dosen');
