@@ -17,6 +17,7 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -87,7 +88,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Upload Surat Pernyataan</h5>
+                            <h5 class="card-title text-center">Surat Pernyataan</h5>
                             <hr>
                             <p>Surat pernyataan PKM Dosen Politeknik Statistika STIS</p>
                             <div class="d-flex justify-content-between">
