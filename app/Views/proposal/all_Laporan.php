@@ -1,6 +1,6 @@
 <style>
     @page {
-        margin: 5px 5px 10px;
+        /* margin: 5px 5px 10px; */
     }
 
     #footer_page {

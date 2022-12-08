@@ -73,7 +73,9 @@
                                                     <td><?php echo $post['topik_kegiatan'] ?></td>
                                                     <td><?php echo $post['status'] ?></td>
                                                     <td>
-                                                        <?php if ($post['id_status'] != 4) { ?>
+                                                        <?php if ($post['id_status'] !=  4) { ?>
+                                                            <a href="/pkmPersetujuanKepala/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                        <?php } elseif ($post['id_status'] ==  4 && $post['jenis_pkm'] == 'Mandiri') { ?>
                                                             <a href="/pkmPersetujuanKepala/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php } else { ?>
                                                             <a href="/pkmPersetujuanKepalaSelesai/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>

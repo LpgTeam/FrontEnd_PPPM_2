@@ -257,13 +257,13 @@ class BAU extends BaseController
     {
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
-            'id_status'         => 2,
-            'status'            => 'Menunggu Persetujuan Kepala PPPM'
+            'id_status'         => 3,
+            'status'            => 'Pengajuan Disetujui'
         ]);
 
         $this->statusPkmModel->save([
             'id_pkm' => $id_pkm,
-            'status' => 'Menunggu Persetujuan Kepala PPPM'
+            'status' => 'Pengajuan Disetujui'
         ]);
 
         session()->setFlashdata('pesan', 'PKM berhasil disetujui');
@@ -275,7 +275,7 @@ class BAU extends BaseController
     {
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
-            'id_status'         => 5,
+            'id_status'         => 6,
             'status'            => 'Ditolak oleh BAU',
             'alasan'            => $this->request->getVar('alasan')
         ]);
