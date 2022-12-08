@@ -99,6 +99,8 @@ $routes->get('/pkm/saveBukti/(:any)', 'PkmDetail::saveBukti/$1');
 // $routes->get('/penelitianSemiMandiri4', 'Dosen::penelitianSemiMandiri4');
 
 //===========================New============================================
+// $idPenelitian = $penelitian->get_penelitian_by_nip_user(auth()->user()->nip);
+// if($idPenelitian)
 $routes->get('/penelitianProses1/(:any)', 'Dosen::penelitianProses1/$1');
 $routes->get('/penelitianProses2/(:any)', 'Dosen::penelitianProses2/$1');
 $routes->get('/penelitianProses2Kontrak/(:any)', 'Dosen::penelitianProses2Kontrak/$1');

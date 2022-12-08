@@ -83,13 +83,13 @@
         <h1>404 - File Not Found</h1>
 
         <p>
-            <?php if (ENVIRONMENT !== 'production') : ?>
-                <?= nl2br(esc($message)) ?>
-            <?php else : ?>
+            <?php //if (ENVIRONMENT !== 'production') : ?>
+                <?//= nl2br(esc($message)) ?>
+            <?php //else : ?>
                 Sorry! Cannot seem to find the page you were looking for.
-            <?php endif ?>
+            <?php //endif ?>
         </p>
-        <a href="<?= base_url('/backurl'); ?>">Kembali ke halaman sebelumnya</a>
+        <a href="<?= base_url('/logout'); ?>">Login Ulang</a>
     </div>
 </body>
 

@@ -140,7 +140,7 @@
         <table class="isi">
             <tr>
                 <td style="width: 45%;">Waktu Pelaksanaan</td>
-                <td>: <?= $pkm['waktu_kegiatan'] ?></td>
+                <td>: <?= date("d F Y", strtotime($pkm['waktu_kegiatan'])); ?></td>
             </tr>
             <tr>
                 <td>Tempat</td>
