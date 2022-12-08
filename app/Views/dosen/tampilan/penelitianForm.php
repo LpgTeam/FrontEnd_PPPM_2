@@ -155,14 +155,14 @@
 
                         <?php if ($jenis == "Mandiri" || $jenis == "Kerjasama") : ?>
                             <div class="row mb-3">
-                                <label for="templateLuaran" class="col-md-4 col-lg-3 col-form-label ">Template Bukti Luaran Publikasi</label>
+                                <label for="templateLuaran" class="col-md-4 col-lg-3 col-form-label ">Contoh Bukti Luaran Publikasi</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <a href="/penelitian/printBuktiLuaran" class="btn btn-primary">Download Template Bukti Luaran Publikasi</a>
+                                    <a href="/penelitian/printBuktiLuaran" class="btn btn-primary">Download Contoh Bukti Luaran Publikasi</a>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="uploadBukti" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran</label>
+                                <label for="uploadBukti" class="col-md-4 col-lg-3 col-form-label ">Upload Bukti Luaran (.pdf)</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="uploadBukti" class="form-control <?= ($validation->hasError('uploadBukti')) ? 'is-invalid' : ''; ?>" type="file" id="uploadBukti" aria-describedby="uploadValid ">
                                     <div class="invalid-feedback" id="uploadValid">

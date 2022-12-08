@@ -1,6 +1,6 @@
 <? //= $this->extend('adminPPPM/fixed/template') 
 ?>
-<?= $this->extend('fixed/template') ?>
+<?= $this->extend('fixed/templateUserSetting') ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
@@ -32,7 +32,7 @@
 
                         <form action="<?= base_url('/user/act_ganti_password') ?>" method="post" onsubmit="return submitForm(this);" id="formGantiPass" >
                             <div class="text-center mb-4">
-                                <h1><?= $title  ?></h1>
+                                <h3><?= $title  ?></h3>
                             </div>
                             <div class="input-group mb-2">
                                 <input type="password" class="form-control rounded" id="passwordLama" placeholder="Password Lama" name="passwordLama" required>
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="input-group mb-2">
-                                <input type="password" class="form-control rounded" id="passwordBaru" placeholder="Password Baru" name="passwordBaru" onkeyup="validate()" required>
+                                <input type="password" class="form-control rounded" id="passwordBaru" placeholder="Password Baru" name="passwordBaru" onkeyup="validate()" minlength="8" required>
                                 <div class="input-group-append ml-1" style="display: flex; align-items: center;">
                                     <span class="input-group-text" onclick="password_show_hide_2();">
                                         <i class="bi bi-eye" id="show_eye_2"></i>
@@ -88,12 +88,12 @@
                 } else if (x.value == y.value) {
                     console.log("Password OK");
                     key.innerHTML = "Password OK";
-                    key.className = "alert alert-success";
+                    key.className = "text text-success";
                     btn.disabled = false;
                 } else {
                     console.log("Password tidak cocok");
                     key.innerHTML = "Password tidak cocok";
-                    key.className = "alert alert-danger";
+                    key.className = "text text-danger";
                     btn.disabled = true;
                     // return
                 }

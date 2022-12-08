@@ -7,8 +7,8 @@
 <div class="container d-flex justify-content-center p-5">
     <div class="card col-12 col-md-5 shadow-sm">
         <div class="card-body">
-            <h5 class="card-title mb-5"><?= lang('Auth.register') ?></h5>
-
+            
+            <h4 class="card-title mb-4 text-center mt-3">Tambah Akun Dosen</h4>
             <?php if (session('error') !== null) : ?>
                 <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
             <?php elseif (session('errors') !== null) : ?>
@@ -56,8 +56,8 @@
                     <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required />
                 </div>
 
-                <div class="d-grid col-12 col-md-8 mx-auto m-3">
-                    <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>
+                <div class="d-grid col-12 col-md-6 mx-auto m-3">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
 
                
