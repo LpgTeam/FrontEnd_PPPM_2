@@ -49,7 +49,8 @@ class AnggaranTotalModel extends Model
     public function get_sisa_terakhir(){
         $anggaran = $this->orderBy('id_total', 'DESC')->first();
         if($anggaran == null){
-            return 0;
+            $anggaran =0;
+            return $anggaran;
         } else {
             return $anggaran;
         }
