@@ -48,7 +48,7 @@
     <!-- <u><b>
         <//?= $jenis; ?>1. Halaman Sampul:</b></u> -->
     <div class="text-center">
-        <h2><?= $judul;?> PENELITIAN</h2>
+        <h2>USULAN PENELITIAN</h2>
 
         <h2><?= $penelitian['judul_penelitian'] ?></h2>
 

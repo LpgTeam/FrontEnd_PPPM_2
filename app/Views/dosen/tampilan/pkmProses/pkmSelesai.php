@@ -12,6 +12,7 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -78,7 +79,7 @@
             </div>
             <br>
             <br>
-        <!-- End Proses -->
+            <!-- End Proses -->
 
         <div class="row" data-aos="fade-up">
             <div class="col-lg-6">
@@ -110,22 +111,22 @@
                         </div> -->
 
 
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <!-- Section: Timeline -->
-                        <ul class="timeline-with-icons" id="listPKM">
-                        </ul>
-                        <ul class="timeline-with-icons" id="keteranganPKM">
-                        </ul>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="listPKM">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keteranganPKM">
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 </main>

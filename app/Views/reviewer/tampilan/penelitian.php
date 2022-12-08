@@ -73,8 +73,8 @@
                                     <select class="form-select status-dropdown2">
                                         <option value="">Semua</option>
                                         <option value="Diajukan oleh Dosen">Diajukan oleh Dosen </option>
+                                        <option value="Menunggu Persetujuan Reviewer">Menunggu Persetujuan Reviewer</option>
                                         <option value="Disetujui oleh Reviewer">Disetujui oleh Reviewer</option>
-                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
                                         <option value="Disetujui oleh Kepala PPPM">Disetujui oleh Kepala PPPM</option>
                                         <option value="Disetujui oleh Direktur">Disetujui oleh Direktur</option>
                                         <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>

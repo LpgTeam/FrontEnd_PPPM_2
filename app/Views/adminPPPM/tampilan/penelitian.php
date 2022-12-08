@@ -55,34 +55,9 @@
                         <div class="content">
                             <div class="row mb-3">
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis Penelitian</label>
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown ">
-                                        <option value="">Semua</option>
-                                        <option value="1">Mandiri</option>
-                                        <option value="2">Semi Mandiri</option>
-                                        <option value="3">Didanai Institusi</option>
-                                        <option value="4">Institusi</option>
-                                        <option value="5">Kerjasama</option>
-                                    </select>
-                                </div>
+                                <?= $this->include('filter/jenisPenelitian'); ?>
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status Penelitian</label>
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown2">
-                                        <option value="">Semua</option>
-                                        <option value="Diajukan oleh Dosen">Diajukan oleh Dosen </option>
-                                        <option value="Disetujui oleh Reviewer">Disetujui oleh Reviewer</option>
-                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU </option>
-                                        <option value="Disetujui oleh Kepala PPPM">Disetujui oleh Kepala PPPM</option>
-                                        <option value="Disetujui oleh Direktur">Disetujui oleh Direktur</option>
-                                        <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
-                                        <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
-                                        <option value="Ditolak oleh Reviewer">Ditolak oleh Reviewer</option>
-                                        <option value="Ditolak oleh BAU">Ditolak oleh BAU</option>
-                                        <option value="Ditolak Kepala PPPM">Ditolak Kepala PPPM</option>
-                                    </select>
-                                </div>
+                                <?= $this->include('filter/prosesPenelitian'); ?>
 
                             </div>
 
@@ -138,7 +113,9 @@
                         <script>
                             $(document).ready(function() {
                                 dataTable = $("#example").DataTable({
-                                    order: [[2, 'desc']],
+                                    order: [
+                                        [2, 'desc']
+                                    ],
                                 });
 
                                 $('.status-dropdown').on('change', function(e) {

@@ -15,7 +15,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah disubmit oleh dosen dan menunggu persetujuan Reviewer"+
+                "Proposal telah diajukan oleh Dosen"+
             "</p>"+
         "</li>";
 
@@ -26,8 +26,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                // "Proposal telah disetujui oleh Reviewer dan menunggu persetujuan BAU"+
-                "Proposal telah disetujui oleh Reviewer dan akan diajukan ke kepala PPPM"+
+                "Menunggu persetujuan proposal oleh Reviewer"+
             "</p>"+
         "</li>"; 
         
@@ -39,8 +38,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                // "Proposal telah disetujui oleh BAU dan menunggu persetujuan dari Kepala PPPM"+
-                "Proposal telah diajukan ke kepala PPPM dan menunggu persetujuan dari Kepala PPPM"+
+                "Proposal yang diajukan telah disetujui oleh Reviewer"+
             "</p>"+
         "</li>"; 
         
@@ -51,7 +49,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal telah disetujui oleh Kepala PPPM dan menunggu proposal ditandatangani oleh Direktur Polstat STIS"+
+                "Proposal yang diajukan telah disetujui oleh Kepala PPPM"+
             "</p>"+
         "</li>"; 
 
@@ -62,7 +60,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Proposal</h5>"+
             "<p>"+
-                "Proposal ditandatangani oleh Direktur Polstat STIS"+
+                "Proposal yang diajukan telah disetujui oleh Direktur. Dosen dipersilahkan untuk melakukan kegiatan penelitian"+
             "</p>"+
         "</li>"; 
 
@@ -95,7 +93,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
             "<p>"+
-                "Melaporkan hasil penelitian yang dilakukan oleh dosen"+
+                "Kegiatan selesai dilakukan dan Dosen dapat melaporkan hasil penelitian yang dilakukan"+
             "</p>"+
         "</li>";   
     
@@ -106,7 +104,7 @@ function tambah(){
             "</span>"+
             "<h5 class='fw-bold'>Selesai</h5>"+
             "<p>"+
-                "Kegiatan Penelitian Telah Selesai dilsanakan"+
+                "Rangkaian kegiatan penelitian telah selesai dilaksanakan"+
             "</p>"+
         "</li>";
 

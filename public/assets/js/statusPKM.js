@@ -4,6 +4,7 @@ function tambahPKM(){
     var statusPKM = document.getElementById("statusPKM").innerHTML ;
     var alasan = document.getElementById("alasan").innerHTML ;
     var ketPKM = "";
+    var jenis = document.getElementById("jenis").innerHTML ;
     var listPKM = document.getElementById("listPKM");
     var keteranganPKM = document.getElementById("keteranganPKM");
     keteranganPKM.innerHTML = "";
@@ -16,7 +17,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
             "<p>"+
-                "Form PKM telah disubmit oleh dosen dan menunggu persetujuan BAU"+
+                "Form PKM telah diajukan oleh Dosen"+
             "</p>"+
         "</li>";
 
@@ -27,7 +28,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
             "<p>"+
-                "Form PKM telah disetujui oleh BAU dan menunggu persetujuan Kepala PPPM"+
+                "Pengajuan Form PKM sedang dalam proses"+
             "</p>"+
         "</li>";        
 
@@ -39,7 +40,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Form</h5>"+
             "<p>"+
-                "Form PKM disetujui oleh Kepala PPPM"+
+                "Pengajuan Form PKM telah disetujui dan Dosen dipersilahkan untuk menyetujui surat pernyataan PKM"+
             "</p>"+
         "</li>"; 
 
@@ -50,7 +51,7 @@ function tambahPKM(){
             "</span>"+
             "<h5 class='fw-bold'>Laporan</h5>"+
             "<p>"+
-                "Melaporkan hasil PKM yang dilakukan oleh Dosen Polstat STIS"+
+                "Melaporkan hasil kegiatan PKM yang dilakukan oleh Dosen Politeknik Statitika STIS"+
             "</p>"+
         "</li>";    
     
@@ -71,7 +72,7 @@ function tambahPKM(){
         "<span class='timeline-icon2'>"+
             "<i class='bi bi-x-lg'></i>"+
         "</span>"+
-            "<h5 class='fw-bold'>Ditolak BAU</h5>"+
+            "<h5 class='fw-bold'>Ditolak Kepala PPPM</h5>"+
             "<p>"+
             alasan
             "</p>"+
@@ -82,27 +83,57 @@ function tambahPKM(){
         "<span class='timeline-icon2'>"+
             "<i class='bi bi-x-lg'></i>"+
         "</span>"+
-            "<h5 class='fw-bold'>Ditolak Kepala PPPM</h5>"+
+            "<h5 class='fw-bold'>PKM Ditolak</h5>"+
             "<p>"+
-            alasan
+                "Alokasi dana tidak disetujui"+
             "</p>"+
         "</li>";
 
+
+    var status8 = innerHTML = 
+        "<li class='timeline-item mb-5'>"+
+            "<span class='timeline-icon'>"+
+                "<i class='bi bi-card-list'></i>"+
+            "</span>"+
+            "<h5 class='fw-bold'>Form</h5>"+
+            "<p>"+
+                "Menunggu form PKM disetujui oleh Kepala PPPM"+
+            "</p>"+
+        "</li>";
     
+    var status9 = innerHTML = 
+        "<li class='timeline-item mb-5'>"+
+            "<span class='timeline-icon'>"+
+                "<i class='bi bi-check2-square'></i>"+
+            "</span>"+
+            "<h5 class='fw-bold'>Selesai</h5>"+
+            "<p>"+
+                "Rangkaian kegiatan PKM telah selesai dilaksanakan"+
+            "</p>"+
+        "</li>";
+
     var tanda = innerHTML = 
         "<h6 style='background : #38E54D; font-size : 5px;'>&nbsp</h6>";
 
     var tanda2 = innerHTML = 
         "<h6 style='background : #CF0A0A; font-size : 5px;'>&nbsp</h6>";
 
-        
+
+
+if (jenis == "Mandiri") {   
+    if (statusPKM == 1){
+        listPKM.innerHTML += status8 ;}
+    else if (statusPKM == 7){
+        listPKM.innerHTML += status8 + status9 ;
+    }
+} else {
     if (statusPKM == 1){
         listPKM.innerHTML += status1 ;}
     else if (statusPKM == 2){
         listPKM.innerHTML += status1 + status2 ;
     }
     else if (statusPKM ==  3){
-        listPKM.innerHTML += status1 + status2 + status3 + status4;
+        listPKM.innerHTML += status1 + status2 + status3 ;
     }
     else if (statusPKM == 4){
         listPKM.innerHTML += status1 + status2 + status3 + status4 ;
@@ -122,8 +153,9 @@ function tambahPKM(){
     else{
         listPKM.innerHTML += tanda ;
     }
+}
 
-    console.log("satu");
+    console.log(jenis);
 }
 
 tambahPKM()

@@ -42,30 +42,10 @@
                         <div class="content">
                             <div class="row mb-3">
 
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Jenis PKM</label>
+                                <?= $this->include('filter/jenisPKM'); ?>
 
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown">
-                                        <option value="">Semua</option>
-                                        <option value="Mandiri">Mandiri</option>
-                                        <option value="Kelompok">Dosen/Kelompok</option>
-                                        <option value="Terstruktur">Terstruktur</option>
-                                    </select>
-                                </div>
+                                <?= $this->include('filter/prosesPKM'); ?>
 
-
-                                <label class="col-md-4 col-lg-2 col-form-label btn btn-primary">Status PKM</label>
-
-                                <div class="col-md-8 col-lg-4">
-                                    <select class="form-select status-dropdown2 ">
-                                        <option value="">Semua</option>
-                                        <option value="Diajukan oleh Dosen">Diajukan oleh Dosen</option>
-                                        <option value="Disetujui Oleh Kepala PPPM">Disetujui Oleh Kepala PPPM</option>
-                                        <option value="Disetujui oleh BAU">Disetujui oleh BAU</option>
-                                        <option value="Kegiatan sedang berlangsung">Kegiatan sedang berlangsung</option>
-                                        <option value="Kegiatan telah selesai dilaksanakan">Kegiatan telah selesai dilaksanakan</option>
-                                    </select>
-                                </div>
                             </div>
 
                             <div class="table-responsive">
