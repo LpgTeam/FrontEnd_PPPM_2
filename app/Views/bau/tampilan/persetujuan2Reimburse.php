@@ -19,7 +19,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursement</h3>
                             <p>
-                                Proses pencairan dana reimbursemen yang diajukan dosen
+                                Proses pencairan dana reimbursement yang diajukan dosen
                                 oleh Bagian Administrasi Umum Politeknik Statistika STIS
                             </p>
                         </div>
@@ -31,6 +31,9 @@
             <!-- End Proses -->
 
             <div class="row" data-aos="fade-up">
+            <?php
+                if ($reimburse['id_status'] == 1) {
+            ?>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursement PKM</h5>
@@ -45,11 +48,6 @@
                     </div>
                 </div>
 
-                <?php
-
-                    if ($reimburse['id_status'] == 1) {
-                            
-                ?>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Pencairan Dana Reimbursement</h5>
@@ -84,6 +82,21 @@
                     <?php
                         } else if($reimburse['id_status'] == 2){
                         ?>
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title text-center">Proposal Reimbursement PKM</h5>
+                                <hr>
+                                <ol>
+                            <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_pkm']; ?></li>
+                            <li>Jenis PKM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['jenis_pkm']; ?></li>
+                            <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['biaya_dicairkan'], 0, ",", "."); ?></li>
+                        </ol>
+                                <div class="d-flex justify-content-end ms-1">
+                                    <a href="/pkm/download-memo-pkm/<?= $reimburse['id_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
+                                    <a href="/pkm/download-laporan/<?= $reimburse['id_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
+                                </div>
+                            </div>
+                        </div>
                              <div class="main-timeline">
                                 <div class="timeline">
                                     <a href="#" class="timeline-content">

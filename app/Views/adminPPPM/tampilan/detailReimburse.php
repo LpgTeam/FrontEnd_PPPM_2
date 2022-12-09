@@ -19,7 +19,7 @@
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursement</h3>
                             <p>
-                                Reimbursement penlitian yang diajukan oleh dosen
+                                Reimbursement penelitian yang diajukan oleh dosen
                                 oleh Direktur Politeknik Statistika STIS
                             </p>
                         </div>

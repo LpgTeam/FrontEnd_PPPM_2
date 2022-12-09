@@ -35,9 +35,11 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Proposal Reimbursement PKM</h5>
                         <hr>
-                        <p>Reimbursemen PKM yang diajukan Dosen
-                            Politeknik Statistika STIS
-                        </p>
+                        <ol>
+                            <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['judul_pkm']; ?></li>
+                            <li>Jenis PKM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $reimburse['jenis_pkm']; ?></li>
+                            <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($reimburse['biaya_dicairkan'], 0, ",", "."); ?></li>
+                        </ol>
                         <div class="d-flex justify-content-end ms-1">
                             <a href="/pkm/download-memo-pkm/<?= $reimburse['id_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
                             <a href="/pkm/download-laporan/<?= $reimburse['id_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
