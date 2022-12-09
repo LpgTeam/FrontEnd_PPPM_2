@@ -219,13 +219,13 @@ class Kepala extends BaseController
     {
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
-            'id_status'         => 3,
-            'status'            => 'Disetujui Oleh Kepala PPPM'
+            'id_status'         => 2,
+            'status'            => 'Pengajuan dalam proses'
         ]);
 
         $this->statusPkmModel->save([
             'id_pkm' => $id_pkm,
-            'status' => 'Disetujui oleh Kepala PPPM'
+            'status' => 'Pengajuan dalam proses'
         ]);
 
         session()->setFlashdata('pesan', 'PKM berhasil disetujui');
@@ -237,7 +237,7 @@ class Kepala extends BaseController
     {
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
-            'id_status'         => 6,
+            'id_status'         => 5,
             'status'            => 'Ditolak Oleh Kepala PPPM',
             'alasan'            => $this->request->getVar('alasan')
         ]);

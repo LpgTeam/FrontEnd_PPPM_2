@@ -1,6 +1,6 @@
 <style>
     @page {
-        margin: 5px 5px 10px;
+        /* margin: 5px 5px 10px; */
     }
 
     #footer_page {
@@ -16,8 +16,10 @@
 </style>
 <?= $this->include('/proposal/P1_proposal'); ?>
 <div style="page-break-before: always;"></div>
-<?= $this->include('/proposal/P2_proposal'); ?>
-<div style="page-break-before: always;"></div>
+<?php if ($penelitian['jenis_penelitian'] != 'Mandiri' || $penelitian['jenis_penelitian'] != 'Kerjasama') { ?>
+    <?= $this->include('/proposal/P2_proposal'); ?>
+    <div style="page-break-before: always;"></div>
+<?php } ?>
 <?= $this->include('/proposal/P3_proposal'); ?>
 <div style="page-break-before: always;"></div>
 <?= $this->include('/proposal/P4_proposal'); ?>

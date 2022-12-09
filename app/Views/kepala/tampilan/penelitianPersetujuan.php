@@ -25,11 +25,19 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
-                            <h3>Proposal</h3>
-                            <p>
-                                Proses peninjauan dan persetujuan proposal penelitian
-                                yang diajukan oleh dosen
-                            </p>
+                            <?php if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) { ?>
+                                <h3>Proposal</h3>
+                                <p>
+                                    Proses peninjauan dan persetujuan proposal penelitian
+                                    yang diajukan oleh dosen
+                                </p>
+                            <?php } else { ?>
+                                <h3>Laporan</h3>
+                                <p>
+                                    Proses peninjauan hasil penelitian yang diajukan oleh dosen
+                                </p>
+
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -42,12 +50,21 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Proposal</h5>
-                            <hr>
-                            <ol>
-                                <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $penelitian['judul_penelitian']; ?></li>
-                                <li>Jenis Penelitian &nbsp;&nbsp; : <?= $penelitian['jenis_penelitian']; ?></li>
-                            </ol>
+                            <?php if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) { ?>
+                                <h5 class="card-title text-center">Proposal</h5>
+                                <hr>
+                                <ol>
+                                    <li>Judul Proposal &nbsp;&nbsp;&nbsp;&nbsp;: <?= $penelitian['judul_penelitian']; ?></li>
+                                    <li>Jenis Penelitian &nbsp;&nbsp; : <?= $penelitian['jenis_penelitian']; ?></li>
+                                </ol>
+                                <?php } else { ?>
+                                    <h5 class="card-title text-center">Hasil</h5>
+                                    <hr>
+                                    <ol>
+                                        <li>Judul Penelitian &nbsp;&nbsp;: <?= $penelitian['judul_penelitian']; ?></li>
+                                        <li>Jenis Penelitian &nbsp;&nbsp; : <?= $penelitian['jenis_penelitian']; ?></li>
+                                    </ol>
+                                <?php } ?>
                             <hr>
                             <?= $this->include('proposal/download_per_proposal'); ?>
                         </div>

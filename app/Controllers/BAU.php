@@ -104,7 +104,8 @@ class BAU extends BaseController
 
     //     return view('bau/tampilan/anggaran', $data);
     // }
-    public function anggaran(){
+    public function anggaran()
+    {
         //current year
         $year = date("Y");
 
@@ -113,9 +114,9 @@ class BAU extends BaseController
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-      
-       // dd($sisaAnggaran['sisa_anggaran']);
-        
+
+        // dd($sisaAnggaran['sisa_anggaran']);
+
         // if($penelitianDiajukan || $pkmDiajukan || $danaDiajukan || $sisaAnggaran != null){
         //     $data = [
         //         'title'             => 'PPPM Politeknik Statistika STIS',
@@ -133,15 +134,15 @@ class BAU extends BaseController
         //         'danaTersedia'      =>  0,
         //    ];
         // }
-       $data = [
+        $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-       ];
-      
-       return view('bau/tampilan/anggaran', $data);
+        ];
+
+        return view('bau/tampilan/anggaran', $data);
     }
 
     public function updateAnggaran()
@@ -156,7 +157,7 @@ class BAU extends BaseController
         ]);
 
         $anggaranTotalTerakhir = $this->anggaranTotalModel->get_sisa_terakhir();
-        if($anggaranTotalTerakhir == 0){
+        if ($anggaranTotalTerakhir == 0) {
             $this->anggaranTotalModel->save([
                 'tahun'         => $year,
                 'dana_keluar'   => 0,
@@ -200,12 +201,12 @@ class BAU extends BaseController
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian,
             'id_status'         => 3,
-            'status_pengajuan'  => 'Menunggu Persetujuan Kepala PPPM'
+            'status_pengajuan'  => 'Disetujui oleh Reviewer'
         ]);
 
         $this->statusPenelitianModel->save([
             'id_penelitian' => $id_penelitian,
-            'status'        => 'Menunggu Persetujuan Kepala PPPM'
+            'status'        => 'Disetujui oleh Reviewer'
         ]);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
@@ -231,7 +232,7 @@ class BAU extends BaseController
 
         return redirect()->to('/penelitianBAU');
     }
-    
+
     //========================PKM===========================
     public function pkm()
     {
@@ -257,13 +258,13 @@ class BAU extends BaseController
     {
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
-            'id_status'         => 2,
-            'status'            => 'Menunggu Persetujuan Kepala PPPM'
+            'id_status'         => 3,
+            'status'            => 'Pengajuan Disetujui'
         ]);
 
         $this->statusPkmModel->save([
             'id_pkm' => $id_pkm,
-            'status' => 'Menunggu Persetujuan Kepala PPPM'
+            'status' => 'Pengajuan Disetujui'
         ]);
 
         session()->setFlashdata('pesan', 'PKM berhasil disetujui');
@@ -275,7 +276,7 @@ class BAU extends BaseController
     {
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
-            'id_status'         => 5,
+            'id_status'         => 6,
             'status'            => 'Ditolak oleh BAU',
             'alasan'            => $this->request->getVar('alasan')
         ]);
@@ -312,7 +313,7 @@ class BAU extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
-            'dana_penelitian' => $kegiatan_penelitian[0]['dana_keluar'], 
+            'dana_penelitian' => $kegiatan_penelitian[0]['dana_keluar'],
             'validation' => \Config\Services::validation()
         ];
 
@@ -325,8 +326,8 @@ class BAU extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
-         //   'pkm' => $this->pkmModel->find($id_kegiatan),
-            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
+            //   'pkm' => $this->pkmModel->find($id_kegiatan),
+            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'],
             'validation' => \Config\Services::validation()
         ];
         // dd($data);
@@ -341,7 +342,7 @@ class BAU extends BaseController
         // $penelitian_diajukan = $this->penelitianModel->get_total_diajukan($year);
         $anggaranTotalModel = $this->anggaranTotalModel->get_sisa_terakhir();
         $sisa_anggaran = $anggaranTotalModel['sisa_anggaran'] - $biayaDicairkan;
-       
+
         $this->reimburseModel->save([
             'id_reimburse'     => $id_reimburse,
             'total_biaya'       => $biayaDicairkan,
@@ -359,7 +360,7 @@ class BAU extends BaseController
 
         $id_penelitian = $this->reimburseModel->get_id_penelitian_done($id_reimburse);
         // $Pen = $this->penelitianModel->get_penelitian($id_penelitian);
-      
+
 
         $this->penelitianModel->save([
             'id_penelitian'     => $id_penelitian['id_penelitian'],

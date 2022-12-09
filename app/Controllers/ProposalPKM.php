@@ -138,9 +138,9 @@ class ProposalPKM extends BaseController
         $timpkm = $this->timpkmModel->get_timpkm_byid($id_pkm);
         $pkm = $this->pkmModel->find($id_pkm);
         $rincian = $this->rincianModel->find_by_idpkm($id_pkm);
-        $suratPernyataan = 'surat_pernyataan/pkm/' . $rincian['surat_pernyataan'];
-        $buktiKegiatan = 'bukti_kegiatan/pkm/' . $rincian['bukti_kegiatan'];
-
+        // $suratPernyataan = 'surat_pernyataan/pkm/' . $rincian['surat_pernyataan'];
+        $buktiKegiatan = 'bukti_kegiatan/' . $rincian['bukti_kegiatan'];
+        dd($rincian);
         $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm);
         $datapkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
@@ -163,7 +163,7 @@ class ProposalPKM extends BaseController
 
         $pdf = new \Jurosh\PDFMerge\PDFMerger;
         $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-            ->addPDF($suratPernyataan, 'all')
+            // ->addPDF($suratPernyataan, 'all')
             ->addPDF($buktiKegiatan, 'all');
         $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
 

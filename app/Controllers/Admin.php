@@ -39,6 +39,10 @@ class Admin extends BaseController
         $this->pkmModel = new PkmModel();
         $this->reimburseModel = new ReimburseModel();
         $this->settingGlobal = new GlobalSettingModel();
+        $this->anggaranAwalModel = new AnggaranAwalModel();
+        $this->anggaranTotalModel = new AnggaranTotalModel();
+        $this->danaPKMModel = new DanaPKMModel();
+        $this->danaPenelitianModel = new DanaPenelitianModel();
     }
     public function index()
     {
@@ -55,7 +59,7 @@ class Admin extends BaseController
     }
     public function registerView()
     {
-         return view('register');
+        return view('register');
     }
     public function setting()
     {
@@ -153,13 +157,16 @@ class Admin extends BaseController
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-
+        // $anggaranAwal = $this->anggaranAwalModel->get_dana();
+        //     $danaTerealisasi = $this->anggaranTotalModel->get_total($year);
+        // //     $coba = $sisaAnggaran - $danaDiajukan;
+        //     dd($danaTerealisasi);
         $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
-            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+            'danaTersedia'      => $sisaAnggaran - $danaDiajukan
         ];
         return view('adminPPPM/tampilan/anggaran', $data);
     }
@@ -303,11 +310,11 @@ class Admin extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->findAll(),
-            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
-            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
+            'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1),
+            'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
 
         ];
-
+        // dd($data);
         return view('adminPPPM/tampilan/reimburse', $data);
     }
 

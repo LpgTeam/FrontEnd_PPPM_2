@@ -54,6 +54,8 @@ class Dosen extends BaseController
 
     public function index()
     {
+        // dd($this->timPKMModel->get_pkm_by_nip_user(auth()->user()->nip));
+        // dd($this->timPenelitiModel->get_penelitian_by_nipb   _user(auth()->user()->nip));
         // $db      = \Config\Database::connect();
         // $builder4 = $db->table('dosen');
         // $query = $builder4->getWhere(['NIP_dosen' => nipOkta]);
@@ -140,7 +142,7 @@ class Dosen extends BaseController
             'loginUser' => $this->dosenModel->get_nip_peneliti($nip),
             'ttd'       => $this->ttdDosen->get_ttd_by_nip($nip)
         ];
-        
+
         return view('dosen/tampilan/index', $data);
     }
 
@@ -205,7 +207,8 @@ class Dosen extends BaseController
 
     //     return view('dosen/tampilan/anggaran', $data);
     // }
-    public function anggaran(){
+    public function anggaran()
+    {
         //current year
         $year = date("Y");
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
@@ -213,17 +216,17 @@ class Dosen extends BaseController
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
 
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-       
-       $data = [
+
+        $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-       ];
-    
-       return view('dosen/tampilan/anggaran', $data);
+        ];
+        // dd($);
 
+        return view('dosen/tampilan/anggaran', $data);
     }
 
     public function penelitian()
@@ -501,47 +504,111 @@ class Dosen extends BaseController
     // ======================PKM Detail=========================
     public function pkmDetail1($idPKM)
     {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM),
-            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
-        ];
-        return view('dosen/tampilan/pkmProses/pkmProses1', $data);
+        $pkm = $this->timPKMModel->get_pkm_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($pkm as $key => $pen) {
+            # code...
+            if ($idPKM != $pen['ID_pkm']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'pkm' => $this->pkmModel->find($idPKM),
+                'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
+            ];
+            return view('dosen/tampilan/pkmProses/pkmProses1', $data);
+        }
     }
 
     public function pkmDetail2($idPKM)
     {
-        $nip = auth()->user()->nip;
-        // dd($nip);
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM),
-            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
-            'ttd'   => $this->ttdDosen->get_ttd_by_nip($nip),
-            'validation' => \Config\Services::validation(),
-        ];
-        // dd($data['ttd']);
-        return view('dosen/tampilan/pkmProses/pkmProses2', $data);
+        $pkm = $this->timPKMModel->get_pkm_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($pkm as $key => $pen) {
+            # code...
+            if ($idPKM != $pen['ID_pkm']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $nip = auth()->user()->nip;
+            // dd($nip);
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'pkm' => $this->pkmModel->find($idPKM),
+                'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
+                'ttd'   => $this->ttdDosen->get_ttd_by_nip($nip),
+                'validation' => \Config\Services::validation(),
+            ];
+            // dd($data['ttd']);
+            return view('dosen/tampilan/pkmProses/pkmProses2', $data);
+        }
     }
 
     public function pkmDetail3($idPKM)
     {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM),
-            'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
-            'validation' => \Config\Services::validation(),
-        ];
-        return view('dosen/tampilan/pkmProses/pkmProses3', $data);
+        $pkm = $this->timPKMModel->get_pkm_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($pkm as $key => $pen) {
+            # code...
+            if ($idPKM != $pen['ID_pkm']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'pkm' => $this->pkmModel->find($idPKM),
+                'rincian' => $this->rincianModel->find_by_idpkm($idPKM),
+                'validation' => \Config\Services::validation(),
+            ];
+            return view('dosen/tampilan/pkmProses/pkmProses3', $data);
+        }
     }
 
     public function pkmDetail4($idPKM)
     {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'pkm' => $this->pkmModel->find($idPKM)
-        ];
-        return view('dosen/tampilan/pkmProses/pkmSelesai', $data);
+        $pkm = $this->timPKMModel->get_pkm_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($pkm as $key => $pen) {
+            # code...
+            if ($idPKM != $pen['ID_pkm']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'pkm' => $this->pkmModel->find($idPKM)
+            ];
+            return view('dosen/tampilan/pkmProses/pkmSelesai', $data);
+        }
     }
 
     //======================PKM Detail=========================
@@ -620,55 +687,134 @@ class Dosen extends BaseController
     //===========================Penelitian Proses===========================================
     public function penelitianProses1($id_penelitian)
     {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_penelitian)
-        ];
-        return view('dosen/tampilan/penelitianProses/penelitianDetail1', $data);
+        $penelitian = $this->timPenelitiModel->get_penelitian_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($penelitian as $key => $pen) {
+            # code...
+            if ($id_penelitian != $pen['id_penelitian']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_penelitian)
+            ];
+            return view('dosen/tampilan/penelitianProses/penelitianDetail1', $data);
+        }
     }
     public function penelitianProses2($id_penelitian)
     {
-        //Mencari Laporan dengan id penelitian
-        $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
+        $penelitian = $this->timPenelitiModel->get_penelitian_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($penelitian as $key => $pen) {
+            # code...
+            if ($id_penelitian != $pen['id_penelitian']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else { //Mencari Laporan dengan id penelitian
+            $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
 
-        // if (($laporan['kontrak'] == null || $laporan['laporan_dana'] == null)) {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_penelitian),
-            'validation' => \Config\Services::validation(),
-            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
-        ];
-        return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
+            // if (($laporan['kontrak'] == null || $laporan['laporan_dana'] == null)) {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_penelitian),
+                'validation' => \Config\Services::validation(),
+                'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+            ];
+            return view('dosen/tampilan/penelitianProses/penelitianDetail2', $data);
+        }
     }
     public function penelitianProses2Kontrak($id_penelitian)
     {
-        $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_penelitian),
-            'validation' => \Config\Services::validation(),
-            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
-        ];
-        // dd($data['laporan']);
-        return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
+        $penelitian = $this->timPenelitiModel->get_penelitian_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($penelitian as $key => $pen) {
+            # code...
+            if ($id_penelitian != $pen['id_penelitian']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian);
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_penelitian),
+                'validation' => \Config\Services::validation(),
+                'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian)
+            ];
+            // dd($data['laporan']);
+            return view('dosen/tampilan/penelitianProses/penelitianDetail2Kontrak', $data);
+        }
     }
     public function penelitianProses3($id_penelitian)
     {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_penelitian),
-            'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian),
-            'validation' => \Config\Services::validation()
-        ];
-        return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
+        $penelitian = $this->timPenelitiModel->get_penelitian_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($penelitian as $key => $pen) {
+            # code...
+            if ($id_penelitian != $pen['id_penelitian']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_penelitian),
+                'laporan' => $this->laporanPenelitianModel->find_by_idpenelitian($id_penelitian),
+                'validation' => \Config\Services::validation()
+            ];
+            return view('dosen/tampilan/penelitianProses/penelitianDetail3', $data);
+        }
     }
     public function penelitianProses4($id_penelitian)
     {
-        $data = [
-            'title' => 'PPPM Politeknik Statistika STIS',
-            'penelitian' => $this->penelitianModel->find($id_penelitian)
-        ];
-        return view('dosen/tampilan/penelitianProses/penelitianDetail4', $data);
+        $penelitian = $this->timPenelitiModel->get_penelitian_by_nip_user(auth()->user()->nip);
+        $x = 1;
+        foreach ($penelitian as $key => $pen) {
+            # code...
+            if ($id_penelitian != $pen['id_penelitian']) {
+                $x;
+            } else {
+                $x = 2;
+            }
+        }
+        // dd($x);
+        if ($x == 1) {
+            return view('errors/html/error_404');
+            // dd($x);
+        } else {
+            $data = [
+                'title' => 'PPPM Politeknik Statistika STIS',
+                'penelitian' => $this->penelitianModel->find($id_penelitian)
+            ];
+            return view('dosen/tampilan/penelitianProses/penelitianDetail4', $data);
+        }
     }
 
 
@@ -758,7 +904,7 @@ class Dosen extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,
             'pkm' => $this->pkmModel->find($id_kegiatan),
-            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'], 
+            'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'],
             'validation' => \Config\Services::validation()
         ];
         // dd($data);

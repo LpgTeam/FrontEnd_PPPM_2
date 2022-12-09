@@ -19,7 +19,6 @@ class DanaPenelitianModel extends Model
         'id_penelitian',
         'tanggal',
         'dana_keluar',
-        'dana_tidak_terserap'
     ];
 
     // Dates

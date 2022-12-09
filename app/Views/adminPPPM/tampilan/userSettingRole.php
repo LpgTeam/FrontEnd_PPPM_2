@@ -35,7 +35,7 @@
                             <table class=" table table-advance table-hover align-middle ">
                                 <thead>
                                     <tr class=" table-primary">
-                                        <th scope="col">Noomor</th>
+                                        <th scope="col">Nomor</th>
                                         <th scope="col">Role</th>
 
                                         <th scope="col">Hapus</th>

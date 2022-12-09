@@ -17,6 +17,7 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -140,7 +141,13 @@
                                             <input class="form-control" type="text" id="penyelenggara" name="penyelenggara" required>
                                         </div>
                                     </div>
-
+                                    <hr>
+                                    <div class="row mb-4">
+                                        <label for="totalDana" class="col-md-3 col-lg-4 col-form-label">Total dana</label>
+                                        <div class="col-md-3 col-lg-8">
+                                            <input name="totalDana" type="text" class="form-control" id="totalDana">
+                                        </div>
+                                    </div>
                                     <div class="col-md-3 col-lg-8">&nbsp</div>
 
 
@@ -153,7 +160,7 @@
                             ?>
                                 <!-- <h5 class="card-title text-center">Bukti Kegiatan</h5> -->
                                 <!-- <hr> -->
-                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Kegiatan!!</h6>
+                                <h6 class="card-title text-center">Anda Sudah Upload Bukti Kegiatan dan Menunggu Surat Keterangan PKM dari Kepala PPPM</h6>
                             <?php
                             }
                             ?>

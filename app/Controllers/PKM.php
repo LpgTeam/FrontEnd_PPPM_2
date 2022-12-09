@@ -53,33 +53,22 @@ class PKM extends BaseController
 
     public function save()
     {
-        // dd($this->request->getVar('hasil'));
+        // dd(date('Y-m-d', strtotime($this->request->getVar('waktu'))),);
+     
+        // dd($total);
+
         $jenisPKM = $this->request->getVar('jenis_pkm');
         //================================save PKM=================================    
-        ///=====================Waktu========================
-        $tahun = substr($this->request->getVar('waktu'), 0, 4);
-        $bulan = substr($this->request->getVar('waktu'), 5, 2);
-        $hari = substr($this->request->getVar('waktu'), 8, 2);
-        $waktu = Time::createFromDate($tahun, $bulan, $hari, 'Asia/jakarta');
-
-        $waktu = date('Y-m-d H:i:s', strtotime($this->request->getVar('waktu')));
-        // $waktu = date_create([$this->request->getVar('waktu')]);
-        // dd(date($waktu));
-        // dd($waktu);
-
-        // dd(Time::now());
-        // dd($waktu);
-        // dd(Time::now('Asia/jakarta'));
-        // dd($this->request->getPost('waktu'));
+   
         //===================================================
         if ($jenisPKM == "Mandiri") {
             $hasil = "-";
-            $idStatus = "2";
+            $idStatus = "1";
             $status = "Menunggu Persetujuan Kepala PPPM";
         } else {
             $hasil = $this->request->getVar('hasil');
-            $idStatus = "1";
             $status = "Diajukan oleh Dosen";
+            $idStatus = "1";
         }
         $this->pkmModel->save([
             'jenis_pkm' => $jenisPKM,
@@ -87,15 +76,13 @@ class PKM extends BaseController
             // 'bidang' => $this->request->getVar('bidang'),
             'bentuk_kegiatan' => $this->request->getVar('bentukKegiatan'),
             // 'bentuk_kegiatan' => $this->request->getVar('pilihKegiatan'),
-            'waktu_kegiatan' => $this->request->getVar('waktu'),
+            'waktu_kegiatan' => date('Y-m-d', strtotime($this->request->getVar('waktu'))),
             'tempat_kegiatan' => $this->request->getVar('tempat'),
             'sasaran' => $this->request->getVar('sasaran'),
             'target_peserta' => $this->request->getVar('target'),
             'hasil' => $hasil,
             'id_status' => $idStatus,
             'status' => $status,
-            // 'file_proposal' => $this->request->getFile('upload'),
-            'biaya'  => $this->request->getVar('biaya'),
             'tanggal_pengajuan' => Time::now('Asia/jakarta')
         ]);
 
@@ -182,14 +169,25 @@ class PKM extends BaseController
             ]);
         };
 
-        $no = $this->request->getVar('jumlahrow');
-        for ($i = 1; $i <= $no; $i++) {
+        
+        $no1 = $this->request->getVar('jumlahrow');
+        $total = 0;
+        for ($i = 1; $i <= $no1; $i++) {
+            $biaya = $this->request->getVar('jumlahBiaya' . $i);
+            $total = $total +$biaya ;
             $this->pembiayaanPkm->save([
                 'id_pkm' => $idpkm['ID_pkm'],
                 'pembiayaan_diajukan' => $this->request->getVar('pembiayaan' . $i),
-                'jumlah_biaya'  =>$this->request->getVar('jumlahBiaya' . $i),
+                'jumlah_biaya'  => $this->request->getVar('jumlahBiaya' . $i),
             ]);
         };
+
+        //Update Pembiayaan
+        $this->pkmModel->save([
+            'ID_pkm'    => $idpkm['ID_pkm'],
+            'pembiayaan_diajukan' => $total
+        ]);
+
 
 
 

@@ -13,6 +13,7 @@
             </header>
 
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -86,7 +87,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">Form</h5>
-                            <?= var_dump($pkm['id_status']);?>
+                            <? //= var_dump($pkm['id_status']); 
+                            ?>
                             <hr>
                             <ol>
                                 <li>Topik PKM &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>

@@ -71,6 +71,9 @@ $routes->get('/detailReimburse2Dosen/(:any)', 'Dosen::detailReimburse2/$1');
 
 //Download Form Publikasi
 $routes->get('/reimburseDetail/printFormPublikasi', 'ReimburseDetail::printFormPublikasi');
+$routes->get('/reimburseDetail/printContohLoA', 'ReimburseDetail::printContohLoa');
+$routes->get('/reimburseDetail/printContohNaskah', 'ReimburseDetail::printContohNaskah');
+$routes->get('/reimburseDetail/printContohInvoice', 'ReimburseDetail::printContohInvoice');
 
 
 //=====================PKM Detail======================
@@ -91,6 +94,8 @@ $routes->get('/pkm/saveBukti/(:any)', 'PkmDetail::saveBukti/$1');
 // $routes->get('/penelitianSemiMandiri4', 'Dosen::penelitianSemiMandiri4');
 
 //===========================New============================================
+// $idPenelitian = $penelitian->get_penelitian_by_nip_user(auth()->user()->nip);
+// if($idPenelitian)
 $routes->get('/penelitianProses1/(:any)', 'Dosen::penelitianProses1/$1');
 $routes->get('/penelitianProses2/(:any)', 'Dosen::penelitianProses2/$1');
 $routes->get('/penelitianProses2Kontrak/(:any)', 'Dosen::penelitianProses2Kontrak/$1');
@@ -158,6 +163,10 @@ if (auth()->loggedIn()) {
         $routes->get('/removeStatus/(:any)/(:any)', 'Admin::removeStatus/$1/$2');
         $routes->get('/removeStatusPkm/(:any)/(:any)', 'Admin::removeStatusPkm/$1/$2');
 
+        //reimbursement
+        $routes->get('/reimburseAdmin', 'Admin::reimburse');
+        $routes->get('/detailReimburseAdmin/(:any)', 'Admin::detailReimburse/$1');
+        $routes->get('/detailReimburse2Admin/(:any)', 'Admin::detailReimburse2/$1');
     }
     // ================================================================
     //                          Reviewer
