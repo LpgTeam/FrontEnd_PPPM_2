@@ -160,7 +160,7 @@ class Admin extends BaseController
         // $anggaranAwal = $this->anggaranAwalModel->get_dana();
         //     $danaTerealisasi = $this->anggaranTotalModel->get_total($year);
         // //     $coba = $sisaAnggaran - $danaDiajukan;
-        //     dd($danaTerealisasi);
+        // dd($sisaAnggaran);
         $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),

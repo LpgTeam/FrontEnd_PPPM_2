@@ -1,8 +1,8 @@
-<?php if(auth()->user()->inGroup('admin')){
+<?php if (auth()->user()->inGroup('admin')) {
     $this->extend('fixed/templateUserSetting');
-}else{
+} else {
     $this->extend('fixed/template');
-}?>
+} ?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">
@@ -32,7 +32,7 @@
                 <div class="form row gy-4 justify-content-md-center col-md-8">
                     <div class="form-body pt-3 col-md-14">
 
-                        <form action="<?= base_url('/user/act_ganti_password') ?>" method="post" onsubmit="return submitForm(this);" id="formGantiPass" >
+                        <form action="<?= base_url('/user/act_ganti_password') ?>" method="post" id="formGantiPass">
                             <div class="text-center mb-4">
                                 <h3><?= $title  ?></h3>
                             </div>
@@ -150,19 +150,19 @@
                 }
             }
 
-            function submitForm(form) {
-                swal({
-                        title: "Apakah Anda Yakin?",
-                        text: "",
-                        buttons: true,
-                    })
-                    .then(function(isOkay) {
-                        if (isOkay) {
-                            form.submit();
-                        }
-                    });
-                return false;
-            }
+            // function submitForm(form) {
+            //     swal({
+            //             title: "Apakah Anda Yakin?",
+            //             text: "",
+            //             buttons: true,
+            //         })
+            //         .then(function(isOkay) {
+            //             if (isOkay) {
+            //                 form.submit();
+            //             }
+            //         });
+            //     return false;
+            // }
 
             // function alertForm(form) {
             //     swal({

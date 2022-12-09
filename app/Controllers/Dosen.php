@@ -16,7 +16,7 @@ use App\Models\LaporanPenelitianModel;
 use App\Models\TandaTanganDosenModel;
 use App\Models\DanaPKMModel;
 use App\Models\PkmModel;
-use App\Models\TimPkmModel;
+use App\Models\TimPKMModel;
 use App\Models\DosenModel;
 use App\Models\ReimburseModel;
 use CodeIgniter\I18n\Time;
@@ -215,8 +215,8 @@ class Dosen extends BaseController
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-       
-    //    dd($sisaAnggaran['sisa_anggaran']);
+
+        //    dd($sisaAnggaran['sisa_anggaran']);
         $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),

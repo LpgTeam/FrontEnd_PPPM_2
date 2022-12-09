@@ -259,11 +259,7 @@ class Kepala extends BaseController
         // dd();
         for ($i = 0; $i < $nSurat; $i++) {
             # code...
-<<<<<<< HEAD
-            $nomor = 'PKM/' . date('Y') . '/' . $id_pkm . '/' . $i + 1;
-=======
             $nomor = 'PKM/' . date('Y') . '/' . $id_pkm . '/' . ($i + 1);
->>>>>>> 1ca986a0924e3a18f23828d47417becb5757aaee
             // echo $nomor;
             $this->suratPkmModel->save([
                 'no_surat'  => $nomor,
