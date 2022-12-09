@@ -116,12 +116,19 @@ class PkmModel extends Model
         ->select('dana_pkm.dana_keluar')->select('pengajuan_pkm.*')
         ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
         $total_keluar = 0;
-        if (!$keluar == null){
+        if ($keluar){
             foreach($keluar as $data_keluar){
                 $total_keluar = $total_keluar + $data_keluar['dana_keluar'];
             }
        } 
        return $total_keluar;
+    }
+    
+    //total dana keluar setelah laporan
+    public function get_total_diajukan_pembiayaan($tahun){
+        $keluar =  $this->join('pembiayaan_pkm', 'pembiayaan_pkm.id_pkm = pengajuan_pkm.ID_pkm')
+        ->select('pembiayaan_model.jumlah_biaya')->select('pengajuan_pkm.*')
+        ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
     }
 
     //total dana diajukan 
@@ -130,7 +137,7 @@ class PkmModel extends Model
         $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
        
         $total_pengajuan = 0;
-        if($pengajuan !=null){
+        if($pengajuan){
             foreach($pengajuan as $data_pengajuan){
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['pembiayaan_diajukan'];
             }
@@ -139,6 +146,7 @@ class PkmModel extends Model
         $total_pengajuan = $total_pengajuan + $this->get_dana_keluar($tahun);
         return $total_pengajuan;
     }
+
 
     //Jumlah Data PKM
     public function get_row(){

@@ -15,6 +15,7 @@ class AnggaranAwalModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id_tahunAnggaran',
         'tahun_anggaran',
         'jumlah'
     ];
