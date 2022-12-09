@@ -25,7 +25,11 @@
                             <img src="" class="testimonial-img" alt="" />
                             <?php
                             if (isset($anggaranAwal)) {
-                                echo '<h2>Rp ', number_format($anggaranAwal, 0, ",", "."), '</h2>';
+                                if($anggaranAwal == 0){
+                                    echo '<h2>Rp ', number_format($anggaranAwal, 0, ",", "."), '</h2>';
+                                } else {
+                                    echo '<h2>Rp ', number_format($anggaranAwal['jumlah'], 0, ",", "."), '</h2>';
+                                }
                             }
                             ?>
 

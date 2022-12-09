@@ -25,7 +25,6 @@ class PkmModel extends Model
         'target_peserta',
         'hasil',
         'pembiayaan_diajukan',
-        'diajukan_lainnya',
         'tanggal_pengajuan',
         'status',
         'id_status',
@@ -111,11 +110,11 @@ class PkmModel extends Model
     }
 
     //total dana keluar setelah laporan 
-    public function get_dana_keluar($tahun)
-    {
+    public function get_dana_keluar($tahun){
+        $where3 = "id_status_reimburse='0' OR id_status_reimburse='1'";
         $keluar =  $this->join('dana_pkm', 'dana_pkm.id_pkm = pengajuan_pkm.ID_pkm')
-            ->select('dana_pkm.dana_keluar')->select('pengajuan_pkm.*')
-            ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
+        ->select('dana_pkm.dana_keluar')->select('pengajuan_pkm.*')
+        ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
         $total_keluar = 0;
         if (!$keluar == null) {
             foreach ($keluar as $data_keluar) {

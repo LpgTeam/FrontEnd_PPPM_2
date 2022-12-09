@@ -109,8 +109,9 @@ class ProposalPKM extends BaseController
     public function download_laporan($idpkm)
     {
         $Pdfgenerator = new Pdfgenerator();
-
+        
         $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($idpkm);
+        // dd($timpkm);   
         $datapkm = [
             'pkm'    => $this->pkmModel->find($idpkm),
             'timpkm'   => $timpkm,
@@ -140,8 +141,9 @@ class ProposalPKM extends BaseController
         $timpkm = $this->timpkmModel->get_timpkm_byid($id_pkm);
         $pkm = $this->pkmModel->find($id_pkm);
         $rincian = $this->rincianModel->find_by_idpkm($id_pkm);
+        // $suratPernyataan = 'surat_pernyataan/pkm/' . $rincian['surat_pernyataan'];
         $buktiKegiatan = 'bukti_kegiatan/pkm/' . $rincian['bukti_kegiatan'];
-
+        
         $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm);
         $datapkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
