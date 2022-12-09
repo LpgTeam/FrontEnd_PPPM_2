@@ -13,6 +13,7 @@
             </header>
 
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -96,14 +97,8 @@
                             <hr>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <!-- <a class="btn btn-success">Lihat Form </a> -->
-                                <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
+                                <?= $this->include('proposal/PKM/download_form_pkm'); ?>
                             </div>
-                            <!-- <div class="d-flex justify-content-between">
-                                <button class="btn btn-success">Lihat Form </button>
-                                <button class="btn btn-primary">Download Form </button>
-                            </div> -->
-
                         </div>
                     </div>
                 </div>

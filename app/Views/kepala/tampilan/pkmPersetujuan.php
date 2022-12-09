@@ -12,6 +12,7 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -66,7 +67,8 @@
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <!-- <button class="btn btn-secondary">Lihat Form </button> -->
-                                <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
+                                <!-- <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a> -->
+                                <?= $this->include('proposal/PKM/download_form_pkm'); ?>
                             </div>
                         </div>
                     </div>
@@ -78,7 +80,7 @@
                                 oleh Kepala PPPM
                             </p>
                             <?php
-                            var_dump($pkm['id_status']);
+                            // var_dump($pkm['id_status']);
                             if ($pkm['id_status'] < 2) { ?>
                                 <div class="d-flex justify-content-end">
                                     <div class="text-end">
@@ -139,7 +141,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                 <?php if ($pkm['jenis_pkm'] == 'Mandiri') { ?>
-                    <button type="button" class="btn btn-primary" onclick="location.href='/pkmaccAkhir-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/pkmaccAkhir-kepala/<?= $pkm['ID_pkm']; ?>'">Setuju</button>
                 <?php } else { ?>
                     <button type="button" class="btn btn-primary" onclick="location.href='/pkmacc-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
                 <?php } ?>

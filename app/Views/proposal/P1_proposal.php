@@ -48,11 +48,7 @@
     <!-- <u><b>
         <//?= $jenis; ?>1. Halaman Sampul:</b></u> -->
     <div class="text-center">
-        <?php if ($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama' ) { ?>
-            <h2>LAPORAN PENELITIAN</h2>
-        <?php } else { ?>
-            <h2>USULAN PENELITIAN</h2>
-        <?php } ?>
+        <h2>USULAN PENELITIAN</h2>
 
         <h2><?= $penelitian['judul_penelitian'] ?></h2>
 

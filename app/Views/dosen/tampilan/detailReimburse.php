@@ -45,8 +45,9 @@
                         
                     
                         <div class="d-flex justify-content-end ms-1">
-                            <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning">Download Memo Kepala PPPM</a>
-                            <a href="/penelitian/view_proposal_savelocal/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Proposal </a>
+        
+                        <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning m-3  ">Download Memo Kepala PPPM</a>
+                            <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary m-3">Lihat Laporan </a>
                         </div>
                         <hr>
                         <?php
@@ -54,6 +55,14 @@
 
                         ?>
                             <form action="<?= base_url('/reimburseDetail/savePenelitian/' . $penelitian['id_penelitian']); ?>" method="post" enctype="multipart/form-data">
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-3 col-form-label ">Contoh Letter of Acceptance</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <a href="<?= base_url('/reimburseDetail/printContohLoA') ?>" class="btn btn-primary">
+                                            Download Contoh
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="row mb-3">
                                     <label for="uploadLoa" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (LOA)</label>
                                     <div class="col-md-8 col-lg-9">
@@ -65,6 +74,14 @@
                                 </div>
 
                                 <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-3 col-form-label ">Contoh Naskah Artikel</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <a href="<?= base_url('/reimburseDetail/printContohNaskah') ?>" class="btn btn-primary">
+                                            Download Contoh
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
                                     <label for="uploadNaskah" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah" required>
@@ -73,8 +90,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row mb-3">
-                                    <label for="uploadInvoice" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (invoice)</label>
+                                    <label class="col-md-4 col-lg-3 col-form-label ">Contoh Bukti Pembayaran (Invoice)</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <a href="<?= base_url('/reimburseDetail/printContohInvoice'); ?>" class="btn btn-primary">
+                                            Download Contoh
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="uploadInvoice" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (Invoice)</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice" required>
                                         <div class="invalid-feedback" id="uploadValid">
@@ -86,12 +112,11 @@
                                 <div class="row mb-3">
                                     <label class="col-md-4 col-lg-3 col-form-label ">Template Form Usulan Publikasi</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <a href="<?= base_url('form_publikasi/printFormPublikasi') ?>" class="btn btn-primary">
-                                            Download Template Usulan Publikasi
+                                        <a href="<?= base_url('/reimburseDetail/printFormPublikasi') ?>" class="btn btn-primary">
+                                            Download Template
                                         </a>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3">
                                     <label for="uploadForm" class="col-md-4 col-lg-3 col-form-label ">Upload Usulan Publikasi</label>
                                     <div class="col-md-8 col-lg-9">

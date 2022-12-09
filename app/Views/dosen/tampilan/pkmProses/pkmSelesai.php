@@ -12,6 +12,7 @@
                 <p>Dosen Politeknik Statistika STIS</p>
             </header>
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -78,54 +79,34 @@
             </div>
             <br>
             <br>
-        <!-- End Proses -->
+            <!-- End Proses -->
 
-        <div class="row" data-aos="fade-up">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Surat Keterangan</h5>
-                        <hr>
-                        <p>Kegiatan PKM selesai dilakukan. Anda dapat mendownload
-                            surat keterangan telah melaksanakan kegiatan PKM dan memo Kepala PPPM </p>
-                        <hr>
-                        <div class="d-flex justify-content-between">
-                            <!-- <button class="btn btn-success">Lihat</button> -->
-                            <!-- <a href="" class="btn btn-success">Download Memo Kepala PPPM </a> -->
-                            <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Surat Keterangan </a>
-                            <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
+            <div class="row" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Surat Keterangan</h5>
+                            <hr>
+                            <p>Kegiatan PKM selesai dilakukan. Anda dapat mendownload
+                                surat keterangan telah melaksanakan kegiatan PKM dan memo Kepala PPPM </p>
+                            <hr>
+                            <?= $this->include('proposal/PKM/download_laporan_pkm'); ?>
                         </div>
-                        <?php if($pkm['jenis_pkm']!='Mandiri'): ?>
-                        <div class="d-flex justify-content-between mt-3">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Laporan dan lampiran</a>
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/2" class="btn btn-primary">Download Laporan dan lampiran </a>
-                        </div>
-                        <?php endif; ?>
-                        <!-- <div class="d-flex justify-content-between mt-3">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-                        </div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-                        </div> -->
+                    </div>
+                </div>
 
-
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Section: Timeline -->
+                            <ul class="timeline-with-icons" id="listPKM">
+                            </ul>
+                            <ul class="timeline-with-icons" id="keteranganPKM">
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <!-- Section: Timeline -->
-                        <ul class="timeline-with-icons" id="listPKM">
-                        </ul>
-                        <ul class="timeline-with-icons" id="keteranganPKM">
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
 </main>

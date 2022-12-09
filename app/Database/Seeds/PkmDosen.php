@@ -89,7 +89,7 @@ class PkmDosen extends Seeder
             $file_surat_pernyataan = null;
             $file_bukti_kegiatan = null;
 
-            if (($data['id_status'] == 4)||($data['id_status'] == 7)) {
+            if (($data['id_status'] == 4) || ($data['id_status'] == 7)) {
                 $file_surat_pernyataan = 'default_surat_pernyataan.pdf';
                 $file_bukti_kegiatan = 'default_bukti_kegiatan.pdf';
             }
@@ -110,6 +110,9 @@ class PkmDosen extends Seeder
                 ];
                 $this->db->table('dana_pkm')->insert($datadana);
             }
+
+            // fill table nomor pkm
+            
 
             // fill table status pkm
             $id_status = $data['id_status'];

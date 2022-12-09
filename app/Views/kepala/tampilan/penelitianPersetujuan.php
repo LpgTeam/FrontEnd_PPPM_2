@@ -32,7 +32,7 @@
                                     yang diajukan oleh dosen
                                 </p>
                             <?php } else { ?>
-                                <h3>Hasil</h3>
+                                <h3>Laporan</h3>
                                 <p>
                                     Proses peninjauan hasil penelitian yang diajukan oleh dosen
                                 </p>

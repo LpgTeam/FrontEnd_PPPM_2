@@ -13,6 +13,7 @@
             </header>
             <!-- ======= Proses Section ======= -->
             <p hidden id="statusPKM"><?= $pkm['id_status']; ?></p>
+            <p hidden id="jenis"><?= $pkm['jenis_pkm']; ?></p>
             <p hidden id="alasan"><?php if ($pkm['alasan'] == null) {
                                         echo 'kosong';
                                     } else {
@@ -58,18 +59,16 @@
                             <hr>
                             <p> Laporan kegiatan PKM yang dilakukan oleh Dosen Politeknik Statitika STIS</p>
                             <hr>
-                            <div class="d-flex justify-content-between">
-                                <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-                            </div>
+                            <?= $this->include('proposal/PKM/download_laporan_pkm'); ?>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Persetujuan Form</h5>
+                            <h5 class="card-title text-center">Surat Keterangan</h5>
                             <hr>
-                            <p>Persetujuan formulir PKM yang diajukan dosen
-                                oleh Kepala PPPM
+                            <p>Proses peninjauan SK PKM yang telah diisi dosen
+                                Politeknik Statistika STIS oleh Kepala PPPM
                             </p>
 
                             <?php
