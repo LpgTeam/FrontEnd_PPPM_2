@@ -31,8 +31,13 @@ class PenelitianModel extends Model
     ];
     public function getData()
     {
-        return $this->orderBy('tanggal_pengajuan','DESC')->findAll();
+        return $this->orderBy('tanggal_pengajuan', 'DESC')->findAll();
         // return $this->findAll();
+    }
+    public function getDataBau()
+    {
+        return $this->where(['jenis_penelitian !=' => 'Mandiri'])
+            ->where(['jenis_penelitian !=' => 'Kerjasama'])->findAll();
     }
 
     // Dates
@@ -67,21 +72,22 @@ class PenelitianModel extends Model
     public function get_penelitian($id_penelitian)
     {
         return $this->where(['id_penelitian' => $id_penelitian])->first();
-    }                                       
+    }
 
     public function get_penelitian_by_id_status($id_status)
     {
         return $this->where(['id_status' => $id_status])->findAll();
     }
 
-    public function get_penelitian_done($nip, $id_status){
+    public function get_penelitian_done($nip, $id_status)
+    {
         return $this->join('tim_peneliti', 'tim_peneliti.id_penelitian = penelitian.id_penelitian')
-        ->select('tim_peneliti.nip')->select('penelitian.*')
-        // ->select('laporan_penelitian.*')
-        ->where(['nip' => $nip])-> where (['id_status' => $id_status])->findAll();
+            ->select('tim_peneliti.nip')->select('penelitian.*')
+            // ->select('laporan_penelitian.*')
+            ->where(['nip' => $nip])->where(['id_status' => $id_status])->findAll();
         // return $this->where(['id_status' => $id_status])->findAll();
     }
-  
+
     // public function get_penelitian_by_nip_user($nip)
     // {
     //     //     return $this->join('users', 'users.id = auth_groups_users.user_id')->select('users.username')->select('auth_groups_users.*')
@@ -97,15 +103,16 @@ class PenelitianModel extends Model
     }
 
 
-    public function get_penelitian_reimburse_diajukan($status_reimburse){
+    public function get_penelitian_reimburse_diajukan($status_reimburse)
+    {
         return $this->where(['id_status_reimburse' => $status_reimburse])->findAll();
     }
 
     public function get_penelitian_by_year($tahun)
     {
         // $this->db->where('EXTRACT(YEAR_MONTH FROM P.payscale_date)',date('Ym'));
-        return $this->where('year(tanggal_pengajuan)',$tahun)->findAll();
-    }  
+        return $this->where('year(tanggal_pengajuan)', $tahun)->findAll();
+    }
 
     //total dana keluar setelah laporan
     public function get_dana_keluar($tahun){
@@ -114,30 +121,28 @@ class PenelitianModel extends Model
         ->select('dana_penelitian.dana_keluar')->select('penelitian.*')
         ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
         $total_keluar = 0;
-        if ($keluar){
-            foreach($keluar as $data_keluar){
+        if ($keluar) {
+            foreach ($keluar as $data_keluar) {
                 $total_keluar = $total_keluar + $data_keluar['dana_keluar'];
             }
-       } 
-       return $total_keluar;
+        }
+        return $total_keluar;
     }
 
     //total dana diajukan
-    public function get_total_diajukan($tahun){
+    public function get_total_diajukan($tahun)
+    {
         $where2 = "id_status='3' OR id_status='4' OR id_status='5' OR id_status='6'";
-        $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
-        
+        $pengajuan = $this->where('year(tanggal_pengajuan)', $tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
+
         $total_pengajuan = 0;
-        if ($pengajuan){
-            foreach($pengajuan as $data_pengajuan){
+        if ($pengajuan) {
+            foreach ($pengajuan as $data_pengajuan) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }
-       } 
-      
-       $total_pengajuan = $total_pengajuan + $this->get_dana_keluar($tahun);
-       return $total_pengajuan;
-      
+        }
+
+        $total_pengajuan = $total_pengajuan + $this->get_dana_keluar($tahun);
+        return $total_pengajuan;
     }
-
-
 }

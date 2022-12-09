@@ -87,7 +87,7 @@ class BAU extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'penelitian' => $this->penelitianModel->get_penelitian_by_id_status(1),
-            'penelitian' => $this->penelitianModel->getData(),
+            'penelitian' => $this->penelitianModel->getDataBau(),
         ];
         // dd($data['penelitian']);
         return view('bau/tampilan/penelitian', $data);

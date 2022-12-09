@@ -46,7 +46,7 @@ $routes->post('/loginAdmin', 'Login::loginActionAdmin');
 $routes->get('/logout', 'Login::logoutAction');
 //Ubah Password
 $routes->get('/user/ubahPaswword', 'User::ganti_password');
-$routes->get('/user/act_ganti_password/(:any)', 'User::act_ganti_password/$1');
+$routes->post('/user/act_ganti_password/', 'User::act_ganti_password');
 
 // ================================================================
 //                              Dosen
