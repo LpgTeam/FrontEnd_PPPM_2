@@ -1386,10 +1386,29 @@ section {
   transition: 0.3s;
   border: 1px solid #1b449c;
 }
+.btn-beranda{
+  display: inline-block;
+  padding: 8px 40px 10px 40px;
+  border-radius: 50px;
+  color: #ffffff;
+  transition: none;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+  border: 1px solid #ffffff;
+}
 
 .kotak .btn-login:hover {
   background: #1b449c;
   color: #fff;
+}
+.btn-beranda:hover {
+  background: rgb(255, 162, 0  );
+  color: #1b449c;
+  border: 2px solid rgb(255, 162, 0  );
+  font-weight: bolder;
 }
 
 .kotak .featured {
@@ -1421,7 +1440,7 @@ section {
     transition: 0.3s;
   }
 
-  .kotak .btn-login {
+  .kotak .btn-login .btn-beranda {
     font-size: 12px;
   }
 
