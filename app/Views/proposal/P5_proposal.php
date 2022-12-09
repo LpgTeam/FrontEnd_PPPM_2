@@ -41,16 +41,16 @@
 
     <!-- <u><b><//?= $jenis; ?>5. Luaran dan Target Capaian</b></u> -->
     <div class="text-center">
-        <h3>LUARAN DAN TARGET CAPAIAN</h3>
+        <h3><?= $tujuan ?></h3>
     </div>
     <div class="tabel">
         <table>
             <tr>
                 <td>NO</td>
                 <td>JENIS LUARAN</td>
-                <td>TARGET CAPAIAN</td>
-                <td>JURNAL/KONFERENS <?=$tujuan ?></td>
-            </tr>
+                <td><?=$target ?> CAPAIAN</td>
+                <td>JURNAL/KONFERENS <?=$jurnal ?></td>
+            </tr>;
             <?php $i = 1;
             foreach ($luaran as $key => $luar) : ?>
                 <tr>

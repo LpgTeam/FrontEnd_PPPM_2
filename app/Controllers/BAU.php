@@ -108,8 +108,6 @@ class BAU extends BaseController
     {
         //current year
         $year = date("Y");
-
-        //dana
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
@@ -152,12 +150,12 @@ class BAU extends BaseController
         $year = date("Y");
 
         $this->anggaranAwalModel->save([
-            'tahun_anggaran'  => $year,
+             'tahun_anggaran'  => $year,
             'jumlah'          => $this->request->getVar('danaBaru')
         ]);
-
+    
         $anggaranTotalTerakhir = $this->anggaranTotalModel->get_sisa_terakhir();
-        if ($anggaranTotalTerakhir == 0) {
+        if ($anggaranTotalTerakhir['sisa_anggaran'] == 0) {
             $this->anggaranTotalModel->save([
                 'tahun'         => $year,
                 'dana_keluar'   => 0,

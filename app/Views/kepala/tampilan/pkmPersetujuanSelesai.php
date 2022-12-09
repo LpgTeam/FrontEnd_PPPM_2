@@ -59,9 +59,7 @@
                             <hr>
                             <p> Laporan kegiatan PKM yang dilakukan oleh Dosen Politeknik Statitika STIS</p>
                             <hr>
-                            <div class="d-flex justify-content-between">
-                                <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-                            </div>
+                            <?= $this->include('proposal/PKM/download_laporan_pkm'); ?>
                         </div>
                     </div>
 

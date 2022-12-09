@@ -11,17 +11,16 @@
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
-            <header class="section-header2">
-                <h4>PKM <?= $pkm['topik_kegiatan']; ?></h4>
-            </header>
+            <!-- <header class="section-header2">
+            </header> -->
             <div class="row" data-aos="fade-up">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Proposal</h5>
+                            <h5 class="card-title text-center">Laporan Pengabdian Kepada Masyarakat</h5>
+                            <p>Judul PKM : <?= $pkm['topik_kegiatan']; ?></p>
                             <hr>
-                            <iframe class="responsive-iframe resp-container" src="/laporan_akhir_pkm/<?= $judul_pkm ?>" width="100%" height="500px"></iframe>
-
+                            <iframe class="responsive-iframe resp-container" src="/laporan_akhir_pkm/<?= $judul_pkm ?>" width="100%" height="650px"></iframe>
                         </div>
                     </div>
                 </div>
