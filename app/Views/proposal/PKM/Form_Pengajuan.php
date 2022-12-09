@@ -238,7 +238,7 @@
             </tr>
             <tr>
                 <td>
-                    <?php if ($pkm['id_status'] == 3 || $pkm['id_status'] == 4 || $pkm['id_status'] == 7) {
+                    <?php if ($pkm['id_status'] > 1 && !($pkm['id_status'] >= 5 && $pkm['id_status'] <= 6)) {
                         if ($settingTTD['id_setting'] == '1') { ?>
                             <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="80">
                             <!-- <img src="<//?= base_url("") ?>/ttd_dosen/manual/ttdKepala.png" alt="stis" width="120" /> -->
