@@ -174,8 +174,23 @@ class ReimburseDetail extends BaseController
         // return view('proposal/ViewLaporanProposal', $data);
     }
 
+    public function printContohLoa()
+    {
+        return $this->response->download('loa/Contoh Letter of Acceptance.pdf', null)->setFileName("[Penelitian] Contoh Letter of Acceptance.pdf"); //download file
+    }
+
+    public function printContohNaskah()
+    {
+        return $this->response->download('naskah_artikel/Contoh Naskah Artikel.pdf', null)->setFileName("[Penelitian] Contoh Naskah Artikel.pdf"); //download file
+    }
+
+    public function printContohInvoice()
+    {
+        return $this->response->download('invoice/Contoh Bukti Pembayaran (Invoice).pdf', null)->setFileName("[Penelitian] Contoh Bukti Pembayaran (Invoice).pdf"); //download file
+    }
+
     public function printFormPublikasi()
     {
-        return $this->response->download('form_publikasi/[PENELITIAN] Form Usulan Publikasi Jurnal Seminar.docx', null)->setFileName("[Penelitian] Template - Form Usulan Publikasi.docx"); //download file
+        return $this->response->download('form_publikasi/Form Reimbursement Jurnal Seminar.docx', null)->setFileName("[Penelitian] Template - Form Usulan Publikasi.docx"); //download file
     }
 }

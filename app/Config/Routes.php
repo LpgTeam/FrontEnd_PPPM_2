@@ -71,6 +71,9 @@ $routes->get('/detailReimburse2Dosen/(:any)', 'Dosen::detailReimburse2/$1');
 
 //Download Form Publikasi
 $routes->get('/reimburseDetail/printFormPublikasi', 'ReimburseDetail::printFormPublikasi');
+$routes->get('/reimburseDetail/printContohLoA', 'ReimburseDetail::printContohLoa');
+$routes->get('/reimburseDetail/printContohNaskah', 'ReimburseDetail::printContohNaskah');
+$routes->get('/reimburseDetail/printContohInvoice', 'ReimburseDetail::printContohInvoice');
 
 
 //=====================PKM Detail======================

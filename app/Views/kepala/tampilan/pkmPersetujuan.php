@@ -141,7 +141,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                 <?php if ($pkm['jenis_pkm'] == 'Mandiri') { ?>
-                    <button type="button" class="btn btn-primary" onclick="location.href='/pkmaccAkhir-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/pkmaccAkhir-kepala/<?= $pkm['ID_pkm']; ?>'">Setuju</button>
                 <?php } else { ?>
                     <button type="button" class="btn btn-primary" onclick="location.href='/pkmacc-kepala/<?= $pkm['ID_pkm']; ?>'">Ya</button>
                 <?php } ?>
