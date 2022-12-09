@@ -120,14 +120,14 @@ class ReimburseDetail extends BaseController
     public function savePKM($id_pkm)
     {
         $pkm = $this->pkmModel->get_pkm($id_pkm);
-        $total_biaya = $this->danaPKMModel->get_dana_by_id($id_pkm);
+        $total_biaya = $this->danaPKMModel->get_dana_pkm_by_idpkm($id_pkm);
 
         $this->reimburseModel->save([
             'id_pkm'     => $pkm['ID_pkm'],
             'jenis_pkm'  => $pkm['jenis_pkm'],
             'judul_pkm'  => $pkm['topik_kegiatan'],
             'tanggal_pengajuan' => Time::now('Asia/jakarta'),
-            'biaya_diajukan'       => $total_biaya[0]['dana_keluar'],
+            'biaya_diajukan'    => $total_biaya[0]['dana_keluar'],
             'id_status'         => "1",
             'status_reimburse'  => "Reimbursement dalam proses",
         ]);

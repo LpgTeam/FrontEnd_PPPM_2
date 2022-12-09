@@ -1,4 +1,4 @@
-z<?php
+<?php
 
 namespace App\Controllers;
 
@@ -123,16 +123,12 @@ class Reviewer extends BaseController
 
     public function reimburse()
     {
-
         //mengambil data user yang sedang login
         $user = auth()->user();
 
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->findAll(),
-            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
-            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
-
         ];
 
         return view('reviewer/tampilan/reimburse', $data);

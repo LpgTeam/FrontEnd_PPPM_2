@@ -32,7 +32,7 @@
                 <div class="form row gy-4 justify-content-md-center col-md-8">
                     <div class="form-body pt-3 col-md-14">
 
-                        <form action="<?= base_url('/user/act_ganti_password') ?>" method="post" id="formGantiPass">
+                        <form action="<?= base_url('/user/act_ganti_password') ?>" method="post" onsubmit="return submitForm(this);" id="formGantiPass" >
                             <div class="text-center mb-4">
                                 <h3><?= $title  ?></h3>
                             </div>
@@ -68,6 +68,7 @@
                             </div>
                             <div class="text-right pt-2 mr-4">
                                 <button type="submit" id="submit" class="btn btn-primary rounded">Ganti</button>
+                                <!-- <button type="submit" class="btn btn-success">Submit Bukti </button> -->
                             </div>
                         </form>
                     </div>
@@ -77,6 +78,21 @@
 
 
         <script>
+            function submitForm(form) {
+                swal({
+                        title: "Apakah Anda Yakin?",
+                        text: "",
+                        buttons: true,
+                    })
+                    .then(function(isOkay) {
+                        if(isOkay) {
+                            form.submit
+                            console.log('AAAAA');
+                        }
+                    });
+                return false;
+            }
+
             function validate() {
                 var x = document.getElementById("passwordBaru");
                 var y = document.getElementById("confPasswordBaru");
@@ -150,19 +166,19 @@
                 }
             }
 
-            // function submitForm(form) {
-            //     swal({
-            //             title: "Apakah Anda Yakin?",
-            //             text: "",
-            //             buttons: true,
-            //         })
-            //         .then(function(isOkay) {
-            //             if (isOkay) {
-            //                 form.submit();
-            //             }
-            //         });
-            //     return false;
-            // }
+            function submitForm(form) {
+                swal({
+                        title: "Apakah Anda Yakin?",
+                        text: "",
+                        buttons: true,
+                    })
+                    .then(function(isOkay) {
+                        if (isOkay) {
+                            form.submit();
+                        }
+                    });
+                return false;
+            }
 
             // function alertForm(form) {
             //     swal({

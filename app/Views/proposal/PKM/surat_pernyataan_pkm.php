@@ -92,7 +92,7 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>: <?= $ketuapkm['nama_dosen'] ?></td>
         </tr>
         <tr>
-            <td>NIDN</td>
+            <td>NIP</td>
             <td>: <?= $ketuapkm['NIP_dosen'] ?></td>
         </tr>
         <tr>
