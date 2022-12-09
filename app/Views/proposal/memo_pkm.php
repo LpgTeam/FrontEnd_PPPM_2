@@ -11,7 +11,7 @@ setlocale(LC_TIME, 'INDONESIA');
     <title><?= $pkm['topik_kegiatan']; ?></title>
     <style>
         @page {
-            margin: 5px 5px 10px;
+            /* margin: 5px 5px 10px; */
         }
 
         #footer {
