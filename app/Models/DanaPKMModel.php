@@ -51,7 +51,13 @@ class DanaPKMModel extends Model
     }
 
     public function get_dana_by_id ($id_kegiatan){
-        return $this->select('dana_keluar')->where(['id_pkm'=> $id_kegiatan])->findAll();
+        $kegiatan =  $this->where(['id_pkm'=> $id_kegiatan])->findAll();
+        return $kegiatan;
+    }
+
+    public function get_dana_pkm_by_idpkm($id_pkm)
+    {
+        return $this->where(['id_pkm' => $id_pkm])->findAll();
     }
 
     public function get_dana_by_reimburse($id_reimburse){

@@ -40,7 +40,7 @@ class User extends BaseController
         $user = $this->dosenModel->get_nip_peneliti($nip);
         // dd($user['email_dosen']);
         $credentials = [
-            'email' => '222011494@stis.ac.id',
+            'email' => $user['email_dosen'],
             'password' => $data['passwordLama'],
         ];
 

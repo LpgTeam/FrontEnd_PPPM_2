@@ -11,17 +11,16 @@
 <main id="main" class="main">
     <section id="services" class="services">
         <div class="container" data-aos="fade-up">
-            <header class="section-header2">
-                <h4>Penelitian <?= $penelitian['judul_penelitian']; ?></h4>
-            </header>
+            <!-- <header class="section-header2">
+            </header> -->
             <div class="row" data-aos="fade-up">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Proposal</h5>
+                            <h5 class="card-title text-center">Laporan Penelitian</h5>
+                            <p>Judul penelitian : <?= $penelitian['judul_penelitian']; ?></p>
                             <hr>
-                            <iframe class="responsive-iframe resp-container" src="/laporan_akhir_penelitian/<?= $judul_penelitian ?>" width="100%" height="500px"></iframe>
-
+                            <iframe class="responsive-iframe resp-container" src="/laporan_akhir_penelitian/<?= $judul_penelitian ?>" width="100%" height="650px"></iframe>
                         </div>
                     </div>
                 </div>

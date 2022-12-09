@@ -58,7 +58,7 @@
                                                 <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
                                                 <li>Bentuk Kegiatan &nbsp; : <?= $pkm['bentuk_kegiatan']; ?></li>
                                                 <li>Waktu Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['waktu_kegiatan']; ?></li>
-                                                <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm, 0, ",", "."); ?></li>
+                                                <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm[0]['dana_keluar'], 0, ",", "."); ?></li>
                                 
                                             </ul>
                                             <hr>

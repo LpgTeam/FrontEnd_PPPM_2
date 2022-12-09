@@ -109,9 +109,10 @@ class PenelitianModel extends Model
 
     //total dana keluar setelah laporan
     public function get_dana_keluar($tahun){
+        $where3 = "id_status_reimburse='0' OR id_status_reimburse='1'";
         $keluar =  $this->join('dana_penelitian', 'dana_penelitian.id_penelitian = penelitian.id_penelitian')
         ->select('dana_penelitian.dana_keluar')->select('penelitian.*')
-        ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
+        ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
         $total_keluar = 0;
         if (!$keluar == null){
             foreach($keluar as $data_keluar){
