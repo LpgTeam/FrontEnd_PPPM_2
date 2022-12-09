@@ -62,7 +62,7 @@
     <p>&nbsp</p>
     <p>&nbsp</p>
     <div class="d-flex justify-content-center mt-4" data-aos="fade-up">
-        <a href="https://www.facebook.com" class="btn-beranda">Kembali ke halaman utama </a>
+        <a href="https://www.pppm.stis.ac.id" class="btn-beranda">Kembali ke halaman utama </a>
     </div>
     <i class="mobile-nav-toggle "></i>
 </section>
