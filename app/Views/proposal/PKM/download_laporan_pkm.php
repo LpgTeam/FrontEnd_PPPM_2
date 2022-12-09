@@ -3,132 +3,32 @@
     <a href="/pkm/laporan-merge/<?= $pkm['ID_pkm']; ?>/2" class="btn btn-primary m-1">Download Laporan dan lampiran </a>
     <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning m-1">Download Memo Kepala PPPM </a>
 </div>
+<div class="btn btn-sm btn-primary mr-2 notula text-center" style="cursor:pointer" data-nama="<?= "modal-notula" ?>" data-file="<?= "889-Article Text-4562-1-10-20211101.pdf" ?>"><i class="fa fa-eye mx-auto"></i>dsiofdj</div>
+
+<!-- Button modal fullscreen -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-fullscreen">
+    Launch modal fullscreen
+</button>
 
 
+<button class="btn btn-info" id="OpenBtn">kasdnfs</button>
 
-<!-- <div class="d-flex justify-content-between">
-    <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
-    <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-</div>
-<div class="d-flex justify-content-between">
-    <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Surat Keterangan </a>
-    <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-</div> -->
-<!-- <div class="d-flex justify-content-between mt-3">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-                        </div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Laporan</a>
-                        </div> -->
-
-<!-- <a class="btn btn-success">Lihat Form </a> -->
-<!-- <div class="d-flex justify-content-between">
-    <button class="btn btn-success">Lihat Form </button>
-    <button class="btn btn-primary">Download Form </button>
-</div> -->
-
-
-<div id="modal-proposal" class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-full modal-xl mx-auto">
+<div class="modal fade" id="myModal" data-backdrop="static">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header" style="background-color:#506396;">
-                <h5 class="modal-title" id="modal-title" style="color:white;"></h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="fa fa-times" style="color:white;"></i></span>
-                </button>
+            <div class="modal-header">
+                <h2>Modal Header</h2>
+
+
             </div>
             <div class="modal-body">
-                <div class="row holds-the-iframe">
-                    <iframe id="iframe-doc" src="" style="width:100%; height: 85vh" class="my-auto"></iframe>
+                <div class="ExternalFiles">
+                    <iframe src="kdfnsldf" frameborder="0">ksdnfknsd</iframe>
                 </div>
             </div>
+
         </div>
+
     </div>
+
 </div>
-
-<script type="text/javascript">
-    $('.proposal').click(function() {
-        console.log('klik');
-        file = $(this).attr('data-file');
-        nama = $(this).attr('data-nama');
-        $("#iframe-doc").attr("src", "<?= base_url() ?>/proposal/" + file);
-        $("#modal-title").html(nama);
-        $("modal-proposal").modal('show');
-    });
-    $.fn.dataTable.moment('D-M-YYYY');
-    $('#simpletable').DataTable({
-        "aoColumns": [{
-                "bSearchable": false
-            },
-            null,
-            null,
-            null
-        ],
-        "aaSorting": [],
-        "language": {
-            "lengthMenu": "Menampilkan _MENU_ data per halaman",
-            "zeroRecords": "Tidak ada notula",
-            "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
-            "infoEmpty": "Tidak ada notula tersedia",
-            "infoFiltered": "(Disaring dari _MAX_ data total)",
-            "decimal": "",
-            "emptyTable": "Tidak ada notula tersedia",
-            "loadingRecords": "Memuat...",
-            "processing": "Memproses...",
-            "search": "Pencarian:",
-            "paginate": {
-                "first": "Pertama",
-                "last": "Terakhir",
-                "next": "Selanjutnya",
-                "previous": "Sebelumnya"
-            },
-            "aria": {
-                "sortAscending": ": klik untuk mengurutkan A-Z",
-                "sortDescending": ": klik untuk mengurutkan Z-A"
-            }
-        }
-    });
-</script>
-
-<!-- <hr>
-Download P1-P5
-<div class="d-flex justify-content-between">
-    <div class="col-md-4 col-lg-6">
-        <a href="/penelitian/download-p1-proposal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-primary m-1">
-            Download P1 Proposal
-        </a>
-    </div>
-</div>
-
-<div class="d-flex justify-content-between">
-    <div class="col-md-4 col-lg-6">
-        <a href="/penelitian/download-p2-proposal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-primary m-1">
-            Download P2 Proposal
-        </a>
-    </div>
-</div>
-
-<div class="d-flex justify-content-between">
-    <div class="col-md-4 col-lg-6">
-        <a href="/penelitian/download-p3-proposal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-primary m-1">
-            Download P3 Proposal
-        </a>
-    </div>
-</div>
-
-
-<div class="d-flex justify-content-between">
-    <div class="col-md-4 col-lg-6">
-        <a href="/penelitian/download-p4-proposal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-primary m-1">
-            Download P4 Proposal
-        </a>
-    </div>
-</div>
-
-<div class="d-flex justify-content-between">
-    <div class="col-md-4 col-lg-6">
-        <a href="/penelitian/download-p5-proposal/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-primary m-1">
-            Download P5 Proposal
-        </a>
-    </div>
-</div> -->
