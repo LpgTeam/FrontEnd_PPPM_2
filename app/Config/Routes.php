@@ -289,12 +289,13 @@ $routes->get('/pkm/download-laporan/(:any)', 'ProposalPKM::download_laporan/$1')
 $routes->get('/pkm/download-surat-keterangan/(:any)', 'ProposalPKM::download_surat_keterangan/$1');
 //surat pernyataan pkm
 $routes->get('/pkm/printSurat', 'PKM::printSurat');
+
+//save to local merge laporan + bukti kegiatan
+$routes->get('/pkm/laporan-merge/(:any)/(:any)', 'ProposalPKM::laporan_merge/$1/$2');
 //viewlaporan pkm
-$routes->get('/pkm/view-laporan/(:any)/(:any)', 'ProposalPKM::printLaporan/$1/$2');
-$routes->get('/pkm/view_laporan_proposal/(:any)/(:any)', 'ProposalPKM::view_laporan_proposal/$1/$2');
+$routes->get('/pkm/view_laporan_pkm/(:any)/(:any)', 'ProposalPKM::view_laporan_pkm/$1/$2');
 //download laporan pkm
-$routes->get('/pkm/download-laporan/(:any)/(:any)', 'ProposalPKM::printLaporan/$1/$2');
-$routes->get('/pkm/download_laporan_proposal/(:any)/(:any)', 'ProposalPKM::download_laporan_proposal/$1/$2');
+$routes->get('/pkm/download_laporan_pkm/(:any)/(:any)', 'ProposalPKM::download_laporan_pkm/$1/$2');
 
 //error page routes
 $routes->get('/backurl', 'Error::index');

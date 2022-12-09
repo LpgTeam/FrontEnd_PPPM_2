@@ -251,8 +251,6 @@ class Dosen extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->timPKMModel->get_pkm_by_nip_user($user->nip),
-
-
         ];
         // dd($data['pkm']);
         return view('dosen/tampilan/pkm', $data);

@@ -67,7 +67,8 @@
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <!-- <button class="btn btn-secondary">Lihat Form </button> -->
-                                <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a>
+                                <!-- <a href="/pkm/download-proposal/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary">Download Form </a> -->
+                                <?= $this->include('proposal/PKM/download_form_pkm'); ?>
                             </div>
                         </div>
                     </div>
@@ -79,7 +80,7 @@
                                 oleh Kepala PPPM
                             </p>
                             <?php
-                            var_dump($pkm['id_status']);
+                            // var_dump($pkm['id_status']);
                             if ($pkm['id_status'] < 2) { ?>
                                 <div class="d-flex justify-content-end">
                                     <div class="text-end">
