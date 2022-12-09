@@ -214,9 +214,9 @@ class Dosen extends BaseController
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
-
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-
+       
+    //    dd($sisaAnggaran['sisa_anggaran']);
         $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
@@ -224,8 +224,6 @@ class Dosen extends BaseController
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
         ];
-        // dd($);
-
         return view('dosen/tampilan/anggaran', $data);
     }
 
