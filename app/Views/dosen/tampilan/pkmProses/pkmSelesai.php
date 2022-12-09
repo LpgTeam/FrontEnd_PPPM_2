@@ -99,8 +99,8 @@
                         </div>
                         <?php if($pkm['jenis_pkm']!='Mandiri'): ?>
                         <div class="d-flex justify-content-between mt-3">
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Laporan dan lampiran</a>
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/2" class="btn btn-primary">Download Laporan dan lampiran </a>
+                            <a href="/pkm/download_laporan_proposal/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success">Lihat Laporan dan lampiran</a>
+                            <a href="/pkm/download_laporan_proposal/<?= $pkm['ID_pkm']; ?>/2" class="btn btn-primary">Download Laporan dan lampiran </a>
                         </div>
                         <?php endif; ?>
                         <!-- <div class="d-flex justify-content-between mt-3">
