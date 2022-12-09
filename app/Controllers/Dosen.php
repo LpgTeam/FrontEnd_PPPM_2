@@ -897,7 +897,7 @@ class Dosen extends BaseController
     public function detailReimburse2($id_kegiatan)
     {
         $kegiatan_pkm = $this->danaPKMModel->get_dana_by_id($id_kegiatan);
-
+        dd($kegiatan_pkm);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,
@@ -905,7 +905,7 @@ class Dosen extends BaseController
             'dana_pkm' => $kegiatan_pkm[0]['dana_keluar'],
             'validation' => \Config\Services::validation()
         ];
-        // dd($data);
+        dd($data);
         return view('dosen/tampilan/detailReimburse2', $data);
     }
 

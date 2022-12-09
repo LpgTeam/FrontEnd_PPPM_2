@@ -14,7 +14,7 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
-use App\Models\ReimburseModel;  
+use App\Models\ReimburseModel;
 use CodeIgniter\API\ResponseTrait;
 // use App\Libraries\SendEmail;
 
@@ -105,23 +105,23 @@ class Kepala extends BaseController
 
     //     return view('kepala/tampilan/anggaran', $data);
     // }
-    public function anggaran(){
+    public function anggaran()
+    {
         //current year
         $year = date("Y");
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-        
-       $data = [
+
+        $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-       ];
-       return view('kepala/tampilan/anggaran', $data);
-
+        ];
+        return view('kepala/tampilan/anggaran', $data);
     }
 
     public function penelitian()
@@ -172,7 +172,7 @@ class Kepala extends BaseController
             'title' => 'PPPM Politeknik Statistika STIS',
             'pkm' => $this->pkmModel->find($id_pkm)
         ];
-        
+
         return view('kepala/tampilan/pkmPersetujuanSelesai', $data);
     }
 
@@ -253,13 +253,13 @@ class Kepala extends BaseController
     }
 
     public function accAkhir_pkm_kepala($id_pkm)
-    {   
+    {
         // save no surat
         $nSurat = $this->timpkmModel->get_row_timpkm_byId_Pkm($id_pkm);
         // dd();
-        for ($i=0; $i < $nSurat; $i++) { 
+        for ($i = 0; $i < $nSurat; $i++) {
             # code...
-            $nomor = 'PKM/'.date('Y').'/'.$id_pkm.'/'.$i+1;
+            $nomor = 'PKM/' . date('Y') . '/' . $id_pkm . '/' . $i + 1;
             // echo $nomor;
             $this->suratPkmModel->save([
                 'no_surat'  => $nomor,
@@ -267,7 +267,10 @@ class Kepala extends BaseController
             ]);
         }
         //============endNoSurat=======================
-
+        $this->statusPkmModel->save([
+            'id_pkm' => $id_pkm,
+            'status' => 'Kegiatan telah selesai dilaksanakan'
+        ]);
         $this->pkmModel->save([
             'ID_pkm'            => $id_pkm,
             'id_status'         => 7,

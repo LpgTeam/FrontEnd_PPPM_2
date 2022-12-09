@@ -96,7 +96,7 @@
                                     <br>
                             </div>
                             <?php if ($i > 2) { ?>
-                                <a href="" class="btn btn-danger"data-bs-toggle="modal" data-bs-target="#submit"><i class="bi bi-trash"></i></a>
+                                <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#submit"><i class="bi bi-trash"></i></a>
                         <?php }
                                 } ?>
                         </div>
