@@ -33,14 +33,14 @@
             <div class="row" data-aos="fade-up">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Proposal Reimbursemen PKM</h5>
+                        <h5 class="card-title text-center">Proposal Reimbursement PKM</h5>
                         <hr>
-                        <p>Proposal Reimbursemen PKM yang diajukan dosen
+                        <p>Proposal Reimbursement PKM yang diajukan dosen
                             oleh Direktur Politeknik Statistika STIS
                         </p>
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end ms-1">
                             <a href="/pkm/download-memo-pkm/<?= $reimburse['id_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
-                            <a href="/pkm/download-laporan/<?= $reimburse['id_pkm']; ?>" class="btn btn-success">Download Laporan</a>
+                            <a href="/pkm/download-laporan/<?= $reimburse['id_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
                         </div>
                     </div>
                 </div>

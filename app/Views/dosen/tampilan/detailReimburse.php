@@ -45,8 +45,7 @@
                         
                     
                         <div class="d-flex justify-content-end ms-1">
-        
-                        <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning m-3  ">Download Memo Kepala PPPM</a>
+                            <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning m-3  ">Download Memo Kepala PPPM</a>
                             <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary m-3">Lihat Laporan </a>
                         </div>
                         <hr>

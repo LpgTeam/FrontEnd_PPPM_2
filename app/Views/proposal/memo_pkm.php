@@ -88,7 +88,7 @@ setlocale(LC_TIME, 'INDONESIA');
     <p>Kabag Administrasi Umum</p>
     <p>Polstat STIS</p>
 
-    <p class="isi">Mohon diberikan bantuan pembiayaan untuk pelaksanaan pengabdian kepada masyarakat <?= $timpkm[0]['nama'] ?> yang dilakukan di <?= $pkm['tempat_kegiatan'] ?> pada tanggal <?= date("d F  Y", strtotime($pkm['waktu_kegiatan'])); ?> dengan tema <?= $pkm['topik_kegiatan'] ?> dan peserta dari <?= $pkm['sasaran'] ?> dengan jumlah biaya sebesar <?= $dana[0]['dana_keluar']; ?>
+    <p class="isi">Mohon diberikan bantuan pembiayaan untuk pelaksanaan pengabdian kepada masyarakat <?= $timpkm[0]['nama'] ?> yang dilakukan di <?= $pkm['tempat_kegiatan'] ?> pada tanggal <?= date("d F  Y", strtotime($pkm['waktu_kegiatan'])); ?> dengan tema <?= $pkm['topik_kegiatan'] ?> dan peserta dari <?= $pkm['sasaran'] ?> dengan jumlah biaya sebesar Rp<?= number_format($dana['dana_keluar'], 0, ",", "."); ?>
         Dokumen pendukung terlampir bersama memo ini.</p>
 
 
