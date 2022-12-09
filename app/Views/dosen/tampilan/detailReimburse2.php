@@ -41,7 +41,7 @@
                         <p>Reimbursement PKM yang diajukan dosen
                             Politeknik Statistika STIS
                         </p>
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end ms-1">
                             <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
                             <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
                         </div>
