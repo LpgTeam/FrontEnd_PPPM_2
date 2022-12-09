@@ -13,7 +13,7 @@
     <section class="section">
         <div class="container" data-aos="fade-up">
             <header class="section-header2">
-                <h2>REIMBURSEMENTT</h2>
+                <h2>REIMBURSEMENT</h2>
                 <hr>
                 <p>Reviewer Politeknik Statistika STIS</p>
             </header>

@@ -42,8 +42,8 @@
                             Politeknik Statistika STIS
                         </p>
                         <div class="d-flex justify-content-end ms-1">
-                            <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
+                            <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning m-1">Download Memo Kepala PPPM </a>
+                            <a href="/pkm/laporan-merge/<?= $pkm['ID_pkm']; ?>/1" class="btn btn-success m-1">Lihat Formulir Pengajuan</a>
                         </div>
                         <hr>
                         <?php 
@@ -58,7 +58,7 @@
                                                 <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
                                                 <li>Bentuk Kegiatan &nbsp; : <?= $pkm['bentuk_kegiatan']; ?></li>
                                                 <li>Waktu Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['waktu_kegiatan']; ?></li>
-                                                <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm[0]['dana_keluar'], 0, ",", "."); ?></li>
+                                                <li>Biaya Dicairkan &nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm[0]['dana_keluar'], 0, ",", "."); ?></li>
                                 
                                             </ul>
                                             <hr>
@@ -70,20 +70,32 @@
                                     <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimbursement </button>
                                 </div>
                             </form>
-                        <?php
+                            <?php
                         } else if ($pkm['id_status_reimburse'] == 1) {
                         ?>
-                            <h5 class="card-title text-center">Pengajuan Reimbursement Anda Sedang dalam Proses</h5>
+                            <div class="main-timeline">
+                                <div class="timeline">
+                                    <a href="#" class="timeline-content">
+                                        <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                        <h5 class="title">Pengajuan Reimbursement Anda Sedang dalam Proses</h5>
+                                    </a>
+                                </div>
 
                         <?php
                         } else if ($pkm['id_status_reimburse'] == 2) {
                         ?>
-                            <h5 class="card-title text-center">Dana Reimbursement Anda Sudah Dicairkan</h5>
-                            <hr>
-                            <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
-                        <?php
+
+                            <div class="main-timeline">
+                                <div class="timeline">
+                                    <a href="#" class="timeline-content">
+                                        <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                        <h3 class="title">Dana Reimbursement Anda Sudah Dicairkan</h3>
+                                        <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
+                                    </a>
+                                </div>
+                            <?php
                         }
-                        ?>
+                            ?>
                     </div>
                 </div>
 

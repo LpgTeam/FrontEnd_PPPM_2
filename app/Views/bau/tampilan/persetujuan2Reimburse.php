@@ -97,14 +97,13 @@
                                 </div>
                             </div>
                         </div>
-                             <div class="main-timeline">
-                                <div class="timeline">
-                                    <a href="#" class="timeline-content">
-                                        <div class="timeline-year">Reimbursement</div>
-                                        <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
-                                        <h3 class="title">Dana Reimbursement Sudah Dicairkan</h3>
-                                    </a>
-                                </div>
+                        <div class="main-timeline">
+                        <div class="timeline">
+                            <a href="#" class="timeline-content">
+                                <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                <h3 class="title">Dana Reimbursement Sudah Dicairkan</h3>
+                            </a>
+                        </div>
                             <?php
                         }
                             ?>
