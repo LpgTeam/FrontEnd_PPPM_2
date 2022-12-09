@@ -123,7 +123,7 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>(Nama Lengkap)</td>
         </tr>
         <tr>
-            <td>NIDN : <?= $ketuapeneliti['NIP_dosen']; ?></tdt>
+            <td>NIDN : <?= $ketuapeneliti['NIDN_dosen']; ?></tdt>
             <td>NIDN : .................</td>
             <td>NIDN : .................</td>
         </tr>

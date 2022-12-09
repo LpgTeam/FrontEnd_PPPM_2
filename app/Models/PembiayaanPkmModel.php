@@ -15,7 +15,10 @@ class PembiayaanPkmModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_biaya',    'id_pkm',    'pembiayaan_diajukan',    'jumlah_biaya'
+        'id_biaya',    
+        'id_pkm',    
+        'pembiayaan_diajukan',    
+        'jumlah_biaya'
     ];
 
     // Dates
