@@ -284,7 +284,7 @@
             <tr>
                 <td>NIDN : .................</td>
                 <td>NIDN : .................</td>
-                <td>NIDN : <?= $ketuapeneliti['NIP_dosen']; ?></tdt>
+                <td>NIDN : <?= $ketuapeneliti['NIDN_dosen']; ?></tdt>
             </tr>
         </table>
 

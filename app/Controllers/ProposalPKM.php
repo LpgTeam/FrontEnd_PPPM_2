@@ -53,6 +53,7 @@ class ProposalPKM extends BaseController
             'biaya' => $this->biayaModel->find_by_idpkm($id_pkm),
             'settingTTD' => $this->settingTTD->find(1)
         ];
+        // dd($dataPkm['timpkm']);
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
         $paper = 'A4';
         $orientation = "portrait";
@@ -119,7 +120,7 @@ class ProposalPKM extends BaseController
             'biaya' => $this->biayaModel->find_by_idpkm($idpkm),
             'settingTTD' => $this->settingTTD->find(1)
         ];
-
+        
         $file_pdf = 'Proposal PKM - ' . $datapkm['pkm']['topik_kegiatan'];
         $paper = 'A4';
         $orientation = "portrait";

@@ -266,7 +266,7 @@
             <tr>
                 <td>NIDN : .................</td>
                 <td>NIDN : .................</td>
-                <td>NIDN : .................</td>
+                <td>NIDN : <?= $timpkm[0]["NIDN_dosen"]; ?></td>
             </tr>
         </table>
     </div>
