@@ -111,45 +111,49 @@ class PkmModel extends Model
     }
 
     //total dana keluar setelah laporan 
-    public function get_dana_keluar($tahun){
+    public function get_dana_keluar($tahun)
+    {
         $keluar =  $this->join('dana_pkm', 'dana_pkm.id_pkm = pengajuan_pkm.ID_pkm')
-        ->select('dana_pkm.dana_keluar')->select('pengajuan_pkm.*')
-        ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
+            ->select('dana_pkm.dana_keluar')->select('pengajuan_pkm.*')
+            ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
         $total_keluar = 0;
-        if ($keluar){
-            foreach($keluar as $data_keluar){
+        if (!$keluar == null) {
+            foreach ($keluar as $data_keluar) {
                 $total_keluar = $total_keluar + $data_keluar['dana_keluar'];
             }
-       } 
-       return $total_keluar;
+        }
+        return $total_keluar;
     }
-    
+
     //total dana keluar setelah laporan
-    public function get_total_diajukan_pembiayaan($tahun){
+    public function get_total_diajukan_pembiayaan($tahun)
+    {
         $keluar =  $this->join('pembiayaan_pkm', 'pembiayaan_pkm.id_pkm = pengajuan_pkm.ID_pkm')
-        ->select('pembiayaan_model.jumlah_biaya')->select('pengajuan_pkm.*')
-        ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
+            ->select('pembiayaan_model.jumlah_biaya')->select('pengajuan_pkm.*')
+            ->where('year(tanggal_pengajuan)', $tahun)->where(!['id_status_reimburse' => 2])->findAll();
     }
 
     //total dana diajukan 
-    public function get_total_diajukan($tahun){
-        $where2 = "id_status='3' OR id_status='4'"; 
-        $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
-       
+    public function get_total_diajukan($tahun)
+    {
+        $where2 = "id_status='3' OR id_status='4'";
+        $pengajuan = $this->where('year(tanggal_pengajuan)', $tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
+
         $total_pengajuan = 0;
-        if($pengajuan){
-            foreach($pengajuan as $data_pengajuan){
+        if ($pengajuan != null) {
+            foreach ($pengajuan as $data_pengajuan) {
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['pembiayaan_diajukan'];
             }
         }
-       
+
         $total_pengajuan = $total_pengajuan + $this->get_dana_keluar($tahun);
         return $total_pengajuan;
     }
 
 
     //Jumlah Data PKM
-    public function get_row(){
+    public function get_row()
+    {
         $builder = $this->db->table('pengajuan_pkm');
         return $builder->countAll();
     }
