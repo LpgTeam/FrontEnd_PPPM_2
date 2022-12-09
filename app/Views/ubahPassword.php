@@ -1,6 +1,8 @@
-<? //= $this->extend('adminPPPM/fixed/template') 
-?>
-<?= $this->extend('fixed/templateUserSetting') ?>
+<?php if(auth()->user()->inGroup('admin')){
+    $this->extend('fixed/templateUserSetting');
+}else{
+    $this->extend('fixed/template');
+}?>
 
 <?= $this->section('content'); ?>
 <main id="main" class="main">

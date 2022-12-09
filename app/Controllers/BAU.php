@@ -47,8 +47,6 @@ class BAU extends BaseController
     {
         //current year
         $year = date("Y");
-
-        //dana
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
@@ -67,7 +65,6 @@ class BAU extends BaseController
 
     public function updateAnggaran()
     {
-
         //current year
         $year = date("Y");
 
@@ -211,9 +208,6 @@ class BAU extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->findAll(),
-            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1), 
-            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
-
         ];
         return view('bau/tampilan/reimburse', $data);
     }
@@ -305,7 +299,6 @@ class BAU extends BaseController
         ]);
 
         $id_pkm = $this->reimburseModel->get_id_pkm_done($id_reimburse);
-
 
         $this->pkmModel->save([
             'ID_pkm'     => $id_pkm['id_pkm'],

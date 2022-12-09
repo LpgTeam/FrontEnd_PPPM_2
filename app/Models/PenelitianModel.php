@@ -114,7 +114,7 @@ class PenelitianModel extends Model
         ->select('dana_penelitian.dana_keluar')->select('penelitian.*')
         ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
         $total_keluar = 0;
-        if (!$keluar == null){
+        if ($keluar){
             foreach($keluar as $data_keluar){
                 $total_keluar = $total_keluar + $data_keluar['dana_keluar'];
             }
@@ -128,7 +128,7 @@ class PenelitianModel extends Model
         $pengajuan = $this->where('year(tanggal_pengajuan)',$tahun)->where($where2)->where(['id_status_reimburse' => 0])->findAll();
         
         $total_pengajuan = 0;
-        if ($pengajuan != null){
+        if ($pengajuan){
             foreach($pengajuan as $data_pengajuan){
                 $total_pengajuan = $total_pengajuan + $data_pengajuan['biaya'];
             }

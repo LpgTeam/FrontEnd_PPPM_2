@@ -248,8 +248,6 @@ class Admin extends BaseController
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->findAll(),
-            // 'penelitian' => $this->penelitianModel->get_penelitian_reimburse_diajukan(1),
-            // 'pkm' => $this->pkmModel->get_pkm_reimburse_diajukan(1),
         ];
         // dd($data);
         return view('adminPPPM/tampilan/reimburse', $data);

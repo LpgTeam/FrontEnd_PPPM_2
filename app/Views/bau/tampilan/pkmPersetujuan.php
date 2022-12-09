@@ -61,7 +61,7 @@
                             <h5 class="card-title text-center">Persetujuan Form</h5>
                             <hr>
                             <?php
-                            // var_dump($pkm['id_status']);
+                            var_dump($pkm['id_status']);
                             if ($pkm['id_status'] < 2) { ?>
                                 <hr>
                                 <h6 class="card-title text-center">Menunggu Persetujuan Kepala PPPM</h6>
