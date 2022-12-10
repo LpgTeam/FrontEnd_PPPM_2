@@ -111,7 +111,7 @@ class Register extends ShieldRegisterController
         // To get the complete user object with ID, we need to get from the database
         $user = $users->findById($users->getInsertID());
 
-        // Add to default group
+        // Add to default group 
         $users->addToDefaultGroup($user);
 
         Events::trigger('register', $user);

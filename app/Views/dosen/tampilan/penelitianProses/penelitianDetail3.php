@@ -131,7 +131,7 @@
                             <hr>
                             <?php
                             // var_dump($laporan);
-                            if ($laporan['laporan_luaran'] == '-') {
+                            if ($laporan['laporan_luaran'] == null) {
                             ?>
                                 <form action="<?= base_url('/penelitianDetail/saveLaporan/' . $penelitian['id_penelitian']); ?>" onsubmit="return submitForm(this)" method="post" enctype="multipart/form-data">
                                     <div class="row mb-3">

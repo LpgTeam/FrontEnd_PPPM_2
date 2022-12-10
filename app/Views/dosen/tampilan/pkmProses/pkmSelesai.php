@@ -91,6 +91,10 @@
                                 surat keterangan telah melaksanakan kegiatan PKM dan memo Kepala PPPM </p>
                             <hr>
                             <?= $this->include('proposal/PKM/download_laporan_pkm'); ?>
+                            <div class="d-flex justify-content-between mt-3">
+                                <a href="/pkm/download-surat-keterangan/<?= $pkm['ID_pkm']; ?>" class="btn btn-primary m-1">Download Surat Keterangan </a>
+
+                            </div>
 
 
 

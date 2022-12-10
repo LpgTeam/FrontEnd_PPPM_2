@@ -7,8 +7,8 @@
         <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success">Lihat Laporan </a>
 
         <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary">Download Laporan </a>
-<!-- 
-        <a href="/penelitian/view_laporan/<?= $penelitian['id_penelitian']; ?>" class="btn btn-success">Lihat Proposal </a>
+
+        <!-- <a href="/penelitian/view_laporan/<//?= $penelitian['id_penelitian']; ?>" class="btn btn-success">Lihat Proposal </a>
         <a href="/penelitian/download-all-proposal/<?= $penelitian['id_penelitian']; ?>" class="btn btn-primary">Download Hasil Penelitian </a> -->
     <?php } ?>
 </div>

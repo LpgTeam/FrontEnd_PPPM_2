@@ -81,7 +81,7 @@ class ProposalPKM extends BaseController
         $paper = 'A4';
         $orientation = "portrait";
         // $html = view('proposal/PKM/Surat_Keterangan', $dataPkm);
-        $html = view('proposal/PKM/surat_pernyataan_pkm', $dataPkm);
+        $html = view('proposal/PKM/Surat_Keterangan', $dataPkm);
         $Pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
 

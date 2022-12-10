@@ -282,9 +282,9 @@
                 <td><?= $ketuapeneliti['nama_dosen']; ?></td>
             </tr>
             <tr>
-                <td>NIDN : 3312128501</td>
-                <td>NIDN : .................</td>
-                <td>NIDN : <?= $ketuapeneliti['NIDN_dosen']; ?></tdt>
+                <td>NIP. 198512222009021002</td>
+                <td>NIP. .................</td>
+                <td>NIP. <?= $ketuapeneliti['NIP_dosen']; ?></tdt>
             </tr>
         </table>
 
@@ -328,7 +328,7 @@
             </tr>
             <tr>
                 <td>NIDN : .................</td>
-                <td>NIDN : 3322106701</td>
+                <td>NIP. 196710221990032002</td>
                 <td>NIDN : .................</td>
             </tr>
         </table>
