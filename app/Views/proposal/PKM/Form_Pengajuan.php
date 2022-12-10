@@ -271,9 +271,9 @@
                 <td><?= $timpkm[0]["nama"]; ?></td>
             </tr>
             <tr>
-                <td>NIDN : 3312128501</td>
+                <td>NIP. 198512222009021002</td>
                 <td>NIDN : .................</td>
-                <td>NIDN : <?= $timpkm[0]["NIDN_dosen"]; ?></td>
+                <td>NIDN : <?= $timpkm[0]["NIP_dosen"]; ?></td>
             </tr>
         </table>
     </div>

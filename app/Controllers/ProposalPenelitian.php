@@ -64,7 +64,7 @@ class ProposalPenelitian extends BaseController
         $Pdfgenerator = new Pdfgenerator();
         $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
         $penelitian = $this->penelitianModel->find($id_penelitian);
-        $tambahanFile = 'proposal/' . $penelitian["file_proposal"];
+
 
         $dataPenelitian = [
             'penelitian'    => $this->penelitianModel->find($id_penelitian),
@@ -87,13 +87,18 @@ class ProposalPenelitian extends BaseController
         $html = view('proposal/all_proposal', $dataPenelitian);
         $judul_penelitian = $file_pdf . ".pdf";
 
-        if (!file_exists($direktori . "/" . $file_pdf . '.pdf')) {
+        if (file_exists($direktori . "/" . $file_pdf . '.pdf')) {
             unlink($direktori . "/" . $file_pdf . '.pdf');
         }
         $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
         $pdf = new \Jurosh\PDFMerge\PDFMerger;
-        $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-            ->addPDF($tambahanFile, 'all');
+        if ($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama') {
+            $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical');
+        } else {
+            $tambahanFile = 'proposal/' . $penelitian["file_proposal"];
+            $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
+                ->addPDF($tambahanFile, 'all');
+        }
         $pdf->merge('file', $direktori . '/' . $file_pdf . '.pdf');
         $judul_penelitian = $file_pdf . ".pdf";
         // return redirect()->to('/penelitian/view_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
@@ -164,14 +169,14 @@ class ProposalPenelitian extends BaseController
         if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
             $tambahanFile = 'bukti_pendanaan/' . $laporan['laporan_dana'];
             $tambahanFile2 = 'bukti_luaran/' . $laporan['laporan_luaran'];
+            $proposal = 'proposal/' . $penelitian["file_proposal"];
         } elseif (($penelitian['jenis_penelitian'] == 'Didanani Institusi') || ($penelitian['jenis_penelitian'] == 'Institusi')) {
             $tambahanFile = 'kontrak/' . $laporan['kontrak'];
             $tambahanFile2 = 'bukti_luaran/' . $laporan['laporan_luaran'];
+            $proposal = 'proposal/' . $penelitian["file_proposal"];
         } else {
             $tambahanFile = 'bukti_luaran/' . $laporan['laporan_luaran'];
         }
-        $bukti = 'bukti_luaran/' . $laporan['laporan_luaran'];
-        $proposal = 'proposal/' . $penelitian["file_proposal"];
         // dd($proposal);
         $dataPenelitian = [
             'penelitian'        => $penelitian,
@@ -199,10 +204,11 @@ class ProposalPenelitian extends BaseController
         if (file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
             unlink($direktori . "/" . $file_pdf . ' - Akhir.pdf');
         }
-        if (!($penelitian['jenis_penelitian'] == 'Mandiri')) {
+        if (!($penelitian['jenis_penelitian'] == 'Mandiri' || $penelitian['jenis_penelitian'] == 'Kerjasama')) {
             $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
             $pdf = new \Jurosh\PDFMerge\PDFMerger;
             $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
+                ->addPDF($proposal, 'all')
                 ->addPDF($tambahanFile, 'all')
                 ->addPDF($tambahanFile2, 'all');
             $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
@@ -210,9 +216,7 @@ class ProposalPenelitian extends BaseController
             $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
             $pdf = new \Jurosh\PDFMerge\PDFMerger;
             $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-                ->addPDF($proposal, 'all')
-                ->addPDF($tambahanFile, 'all')
-                ->addPDF($bukti, 'all');
+                ->addPDF($tambahanFile, 'all');
             $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
         }
         $judul_penelitian = $file_pdf . " - Akhir.pdf";

@@ -73,8 +73,8 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>: <?= $ketuapeneliti['nama_dosen'] ?></td>
         </tr>
         <tr>
-            <td>NIDN</td>
-            <td>: <?= $ketuapeneliti['NIP_dosen'] ?></td>
+            <td>NIP.</td>
+            <td> <?= $ketuapeneliti['NIP_dosen'] ?></td>
         </tr>
         <tr>
             <td>Jabatan Fungsional</td>
@@ -123,9 +123,9 @@ setlocale(LC_TIME, 'INDONESIA');
             <td>(Nama Lengkap)</td>
         </tr>
         <tr>
-            <td>NIDN : <?= $ketuapeneliti['NIDN_dosen']; ?></tdt>
-            <td>NIDN : .................</td>
-            <td>NIDN : .................</td>
+            <td>NIP <?= $ketuapeneliti['NIP_dosen']; ?></tdt>
+            <td></td>
+            <td></td>
         </tr>
     </table>
     <div id="footer_page">

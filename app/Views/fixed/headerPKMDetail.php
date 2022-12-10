@@ -66,7 +66,7 @@
                 <!-- Dosen -->
                 <?php
                 if ($_SESSION['group'] == "dosen") {
-                    if ($penelitian['id_status'] == 7) { ?>
+                    if ($pkm['id_status'] == 7) { ?>
                         <li><a class="nav-link scrollto" href="/pkmProses4/<?= $pkm['ID_pkm']?>">Kembali</a></li>
                         <?php } else { ?>
                             <li><a class="nav-link scrollto" href="/pkmProses1/<?= $pkm['ID_pkm']?>">Kembali</a></li>
