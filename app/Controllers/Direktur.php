@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\Pemberitahuan;
 use App\Models\PenelitianModel;
 use App\Models\StatusPenelitianModel;
 use App\Models\AnggaranAwalModel;
@@ -153,6 +154,9 @@ class Direktur extends BaseController
             'id_penelitian' => $id_penelitian,
             'status'        => 'Disetujui oleh Direktur'
         ]);
+
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 

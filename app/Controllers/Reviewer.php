@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\Pemberitahuan;
 use App\Models\PenelitianModel;
 use App\Models\StatusPenelitianModel;
 use App\Models\AnggaranAwalModel;
@@ -97,6 +98,9 @@ class Reviewer extends BaseController
             'id_penelitian' => $id_penelitian,
             'status'        => 'Menunggu Persetujuan Reviewer'
         ]);
+        
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
 
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
@@ -116,6 +120,10 @@ class Reviewer extends BaseController
             'id_penelitian' => $id_penelitian,
             'status'        => 'Ditolak oleh Reviewer'
         ]);
+
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
+
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
 
         return redirect()->to('/penelitianReviewer');

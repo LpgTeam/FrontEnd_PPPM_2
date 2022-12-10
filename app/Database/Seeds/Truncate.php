@@ -31,6 +31,5 @@ class Truncate extends Seeder
         $builder->truncate();
         $builder = $this->db->table('status_pkm');
         $builder->truncate();
-
     }
 }

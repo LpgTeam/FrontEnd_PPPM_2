@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\Pemberitahuan;
 use App\Database\Migrations\AnggaranAwal;
 use App\Models\PenelitianModel;
 use App\Models\StatusPenelitianModel;
@@ -118,6 +119,9 @@ class BAU extends BaseController
             'status'        => 'Disetujui oleh Reviewer'
         ]);
 
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
+
         session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
 
         return redirect()->to('/penelitianBAU');
@@ -136,6 +140,9 @@ class BAU extends BaseController
             'id_penelitian' => $id_penelitian,
             'status'        => 'Ditolak oleh BAU'
         ]);
+
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
 
@@ -176,6 +183,9 @@ class BAU extends BaseController
             'status' => 'Pengajuan Disetujui'
         ]);
 
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_pkm($id_pkm);
+
         session()->setFlashdata('pesan', 'PKM berhasil disetujui');
 
         return redirect()->to('/pkmBAU');
@@ -194,6 +204,9 @@ class BAU extends BaseController
             'id_pkm' => $id_pkm,
             'status' => 'Ditolak oleh BAU'
         ]);
+
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_pkm($id_pkm);
 
         session()->setFlashdata('pesan', 'PKM telah ditolak');
 

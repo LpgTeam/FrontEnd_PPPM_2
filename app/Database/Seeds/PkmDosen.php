@@ -45,7 +45,6 @@ class PkmDosen extends Seeder
                 'jumlah_anggota'        => $faker->randomElement($array = array(1, 2, 3)),
                 'alasan'                => $faker->randomElement($array = array('-', '', 'tidak ada alasan')),
                 'id_status_reimburse'   => $faker->numberBetween($min = 0, $max = 2),
-                'id_status_reimburse'   => $faker->numberBetween($min = 0, $max = 2),
             ];
 
             if ($data['id_status'] == 1) $data['status'] = $datastatus[0]['Deskripsi'];
