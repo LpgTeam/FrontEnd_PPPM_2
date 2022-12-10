@@ -88,12 +88,13 @@ class ProposalPenelitian extends BaseController
         $judul_penelitian = $file_pdf . ".pdf";
 
         if (!file_exists($direktori . "/" . $file_pdf . '.pdf')) {
-            $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
-            $pdf = new \Jurosh\PDFMerge\PDFMerger;
-            $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-                ->addPDF($tambahanFile, 'all');
-            $pdf->merge('file', $direktori . '/' . $file_pdf . '.pdf');
+            unlink($direktori . "/" . $file_pdf . '.pdf');
         }
+        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
+        $pdf = new \Jurosh\PDFMerge\PDFMerger;
+        $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
+            ->addPDF($tambahanFile, 'all');
+        $pdf->merge('file', $direktori . '/' . $file_pdf . '.pdf');
         $judul_penelitian = $file_pdf . ".pdf";
         // return redirect()->to('/penelitian/view_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
 
@@ -195,7 +196,9 @@ class ProposalPenelitian extends BaseController
         $html = view('proposal/all_Laporan', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
 
-        // if (!file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
+        if (file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
+            unlink($direktori . "/" . $file_pdf . ' - Akhir.pdf');
+        }
         if (!($penelitian['jenis_penelitian'] == 'Mandiri')) {
             $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
             $pdf = new \Jurosh\PDFMerge\PDFMerger;
@@ -203,8 +206,7 @@ class ProposalPenelitian extends BaseController
                 ->addPDF($tambahanFile, 'all')
                 ->addPDF($tambahanFile2, 'all');
             $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
-        }
-        else{
+        } else {
             $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
             $pdf = new \Jurosh\PDFMerge\PDFMerger;
             $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
@@ -213,9 +215,8 @@ class ProposalPenelitian extends BaseController
                 ->addPDF($bukti, 'all');
             $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
         }
-        // }
         $judul_penelitian = $file_pdf . " - Akhir.pdf";
-        // dd($btn);
+        // // dd($btn);
         if ($btn == 1) {
             return redirect()->to('/penelitian/view_laporan_proposal/' . $id_penelitian . "/" .  $judul_penelitian);
         } elseif ($btn == 2) {

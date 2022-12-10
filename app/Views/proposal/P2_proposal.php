@@ -282,7 +282,7 @@
                 <td><?= $ketuapeneliti['nama_dosen']; ?></td>
             </tr>
             <tr>
-                <td>NIDN : .................</td>
+                <td>NIDN : 3312128501</td>
                 <td>NIDN : .................</td>
                 <td>NIDN : <?= $ketuapeneliti['NIDN_dosen']; ?></tdt>
             </tr>

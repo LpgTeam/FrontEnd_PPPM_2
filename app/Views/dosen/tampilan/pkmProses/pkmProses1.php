@@ -95,7 +95,6 @@
                                 <li>Jenis PKM &nbsp;&nbsp;&nbsp;&nbsp; : <?= $pkm['jenis_pkm']; ?></li>
                             </ol>
                             <hr>
-                            <hr>
                             <div class="d-flex justify-content-between">
                                 <?= $this->include('proposal/PKM/download_form_pkm'); ?>
                             </div>

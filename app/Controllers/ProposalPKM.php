@@ -109,7 +109,7 @@ class ProposalPKM extends BaseController
     public function download_laporan($idpkm)
     {
         $Pdfgenerator = new Pdfgenerator();
-        
+
         $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($idpkm);
         // dd($timpkm);   
         $datapkm = [
@@ -121,7 +121,7 @@ class ProposalPKM extends BaseController
             'biaya' => $this->biayaModel->find_by_idpkm($idpkm),
             'settingTTD' => $this->settingTTD->find(1)
         ];
-        
+
         $file_pdf = 'Proposal PKM - ' . $datapkm['pkm']['topik_kegiatan'];
         $paper = 'A4';
         $orientation = "portrait";
@@ -143,7 +143,7 @@ class ProposalPKM extends BaseController
         $rincian = $this->rincianModel->find_by_idpkm($id_pkm);
         // $suratPernyataan = 'surat_pernyataan/pkm/' . $rincian['surat_pernyataan'];
         $buktiKegiatan = 'bukti_kegiatan/pkm/' . $rincian['bukti_kegiatan'];
-        
+
         $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm);
         $datapkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
@@ -162,15 +162,16 @@ class ProposalPKM extends BaseController
         $direktori = 'laporan_akhir_pkm';
         $html = view('proposal/pkm/all_pkm_proposal', $datapkm);
 
-        if (!file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
-            // save to local laporan
-            $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
-            //merge laporan + bukti kegiatan dan save ke local
-            $pdf = new \Jurosh\PDFMerge\PDFMerger;
-            $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-                ->addPDF($buktiKegiatan, 'all');
-            $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
+        if (file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
+            unlink($direktori . "/" . $file_pdf . ' - Akhir.pdf');
         }
+        // save to local laporan
+        $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
+        //merge laporan + bukti kegiatan dan save ke local
+        $pdf = new \Jurosh\PDFMerge\PDFMerger;
+        $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
+            ->addPDF($buktiKegiatan, 'all');
+        $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
 
         $judul_pkm = $file_pdf . " - Akhir.pdf";
 

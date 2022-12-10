@@ -134,7 +134,11 @@
         </table>
         <p class="tebal">Anggota (boleh lebih dari satu)</p>
         <table class="isi">
-            <?php foreach ($timpkm as $key => $anggota) : ?>
+            <?php $i = 1;
+            foreach ($timpkm as $key => $anggota) : ?>
+                <tr>
+                    <td style="width: 45%;"><b>Anggota <?= $i; ?></b></td>
+                </tr>
                 <tr>
                     <td style="width: 45%;">Nama</td>
                     <td>: <?= $anggota["nama"]; ?></td>
@@ -147,7 +151,10 @@
                     <td style="width: 45%;">Pangkat/Golongan</td>
                     <td>: <?= $anggota["pangkat"] ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php
+                $i++;
+            endforeach;
+            ?>
         </table>
         <br>
 
@@ -264,7 +271,7 @@
                 <td><?= $timpkm[0]["nama"]; ?></td>
             </tr>
             <tr>
-                <td>NIDN : .................</td>
+                <td>NIDN : 3312128501</td>
                 <td>NIDN : .................</td>
                 <td>NIDN : <?= $timpkm[0]["NIDN_dosen"]; ?></td>
             </tr>
