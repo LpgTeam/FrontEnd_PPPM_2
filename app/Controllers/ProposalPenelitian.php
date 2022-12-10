@@ -167,7 +167,9 @@ class ProposalPenelitian extends BaseController
         } else {
             $tambahanFile = 'bukti_luaran/' . $laporan['laporan_luaran'];
         }
-            $bukti = 'bukti_luaran/' . $laporan['laporan_luaran'];
+        $bukti = 'bukti_luaran/' . $laporan['laporan_luaran'];
+        $proposal = 'proposal/' . $penelitian["file_proposal"];
+        // dd($proposal);
         $dataPenelitian = [
             'penelitian'        => $penelitian,
             'timpeneliti'       => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
@@ -195,7 +197,9 @@ class ProposalPenelitian extends BaseController
             $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
             $pdf = new \Jurosh\PDFMerge\PDFMerger;
             $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
-                ->addPDF($tambahanFile, 'all');
+                ->addPDF($proposal, 'all')
+                ->addPDF($tambahanFile, 'all')
+                ->addPDF($bukti, 'all');
             $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
         }
         $judul_penelitian = $file_pdf . " - Akhir.pdf";

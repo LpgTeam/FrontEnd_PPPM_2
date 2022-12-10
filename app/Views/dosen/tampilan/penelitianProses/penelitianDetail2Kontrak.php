@@ -33,7 +33,7 @@
                 <div class="row gy-4">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <a href="<?= base_url('penelitianProses1') . "/" . $penelitian["id_penelitian"]; ?>">
-                            <div class="service-box blue">
+                            <div class="service-box blue ">
                                 <i class="ri-discuss-line icon"></i>
                                 <h3>Proposal</h3>
                                 <p>
@@ -71,7 +71,7 @@
                     ?>
                         <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                             <?php if ($penelitian['id_status'] > 4 && !($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9)) { ?>
-                                <a href="<?= base_url('penelitianProses2') . "/" . $penelitian["id_penelitian"]; ?>">
+                                <a href="<?= base_url('penelitianProses2Kontrak') . "/" . $penelitian["id_penelitian"]; ?>">
                                     <div class="service-box orange service-box2">
                                     <?php } else { ?>
                                         <div class="service-box secondary   "> <?php } ?>
@@ -89,7 +89,7 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <?php if ($penelitian['id_status'] == 6 || $penelitian['id_status'] == 10) { ?>
                             <a href="<?= base_url('penelitianProses3') . "/" . $penelitian["id_penelitian"]; ?>">
-                                <div class="service-box green">
+                                <div class="service-box green ">
                                 <?php } else { ?>
                                     <div class="service-box secondary"> <?php } ?>
                                     <i class="ri-discuss-line icon"></i>
@@ -98,7 +98,7 @@
                                         Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
                                     </p>
                                     </div>
-                                    <?php if ($penelitian['id_status'] == 6 && $penelitian['id_status'] == 10) { ?>
+                                    <?php if ($penelitian['id_status'] == 6 || $penelitian['id_status'] == 10) { ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -177,23 +177,26 @@
                             }
                     ?>
                     </div>
+
+
+                    <script>
+                        function submitForm(form) {
+                            swal({
+                                    title: "Apakah Anda Yakin??",
+                                    text: "Dokumen ini akan di upload",
+                                    buttons: true,
+                                })
+                                .then(function(isOkay) {
+                                    if (isOkay) {
+                                        form.submit();
+                                    }
+                                });
+                            return false;
+                        }
+                    </script>
                 </div>
             </div>
-            <script>
-                function submitForm(form) {
-                    swal({
-                            title: "Apakah Anda Yakin??",
-                            text: "Dokumen ini akan di upload",
-                            buttons: true,
-                        })
-                        .then(function(isOkay) {
-                            if (isOkay) {
-                                form.submit();
-                            }
-                        });
-                    return false;
-                }
-            </script>
+
 
 
             <div class="col-lg-6">
@@ -208,7 +211,9 @@
                 </div>
 
             </div>
+        </div>
     </section>
+
 
 </main>
 <!-- End #main -->

@@ -42,7 +42,9 @@
                         </ol>
                         <div class="d-flex justify-content-end ms-1">
                             <a href="/pkm/download-memo-pkm/<?= $reimburse['id_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
-                            <a href="/pkm/download-laporan/<?= $reimburse['id_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
+                            <div class="d-flex justify-content-end ms-1">
+                                <a href="/pkm/download-laporan/<?= $reimburse['id_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
+                            </div>
                         </div>
                     </div>
                 </div>

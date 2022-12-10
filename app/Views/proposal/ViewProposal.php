@@ -1,4 +1,4 @@
-<?= $this->extend('fixed/templatePenelitian') ?>
+<?= $this->extend('fixed/templatePenelitianDetail') ?>
 
 <?= $this->section('content'); ?>
 <style>

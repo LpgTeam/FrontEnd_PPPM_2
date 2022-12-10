@@ -15,26 +15,30 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 d-flex justify-content-center">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-box blue ">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Form</h3>
-                            <p>
-                                Proses peninjauan form PKM yang telah diisi oleh dosen
-                                Politeknik Statistika STIS
-                            </p>
-                        </div>
+                        <a href="/adminPkmProses1/<?= $pkm['ID_pkm'] ?>">
+                            <div class="service-box blue ">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Form</h3>
+                                <p>
+                                    Proses peninjauan form PKM yang telah diisi oleh dosen
+                                    Politeknik Statistika STIS
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
 
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-box green service-box3">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Laporan</h3>
-                            <p>
-                                Pelaporan kegiatan PKM yang dilakukan oleh dosen
-                                Politeknik Statistika STIS
-                            </p>
-                        </div>
+                        <a href="/adminPkmProses2/<?= $pkm['ID_pkm'] ?>">
+                            <div class="service-box green service-box3">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Laporan</h3>
+                                <p>
+                                    Pelaporan kegiatan PKM yang dilakukan oleh dosen
+                                    Politeknik Statistika STIS
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
@@ -53,8 +57,7 @@
                                 Politeknik Statistika STIS
                             </p>
                             <div class="d-flex justify-content-between">
-                                <button class="btn btn-secondary">Lihat Bukti </button>
-                                <button class="btn btn-primary">Download Bukti </button>
+                                <?= $this->include('proposal/PKM/download_laporan_pkm'); ?>
                             </div>
 
                         </div>

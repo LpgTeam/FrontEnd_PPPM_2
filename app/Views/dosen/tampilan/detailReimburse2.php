@@ -33,7 +33,7 @@
             <div class="row" data-aos="fade-up">
 
 
-        
+
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Formulir Reimbursement PKM</h5>
@@ -43,49 +43,53 @@
                         </p>
                         <div class="d-flex justify-content-end ms-1">
                             <a href="/pkm/download-memo-pkm/<?= $pkm['ID_pkm']; ?>" class="btn btn-warning">Download Memo Kepala PPPM </a>
-                            <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>" class="btn btn-success">Download Formulir Pengajuan</a>
+                            <div class="ms-2">
+                                <a href="/pkm/download-laporan/<?= $pkm['ID_pkm']; ?>/2" class="btn btn-success">Download Laporan</a>
+                            </div>
                         </div>
-                        <hr>
-                        <?php 
-                            if ($pkm['id_status_reimburse'] == 0) {
-                        ?>
-                            <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center">Pengajuan Reimbursement</h5>
-                                            <hr>
-                                            <ul>
-                                                <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
-                                                <li>Bentuk Kegiatan &nbsp; : <?= $pkm['bentuk_kegiatan']; ?></li>
-                                                <li>Waktu Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['waktu_kegiatan']; ?></li>
-                                                <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm[0]['dana_keluar'], 0, ",", "."); ?></li>
-                                
-                                            </ul>
-                                            <hr>
-                                            
-                                        </div>
-                                    </div>
-                               
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <?php
+                    if ($pkm['id_status_reimburse'] == 0) {
+                    ?>
+                        <form action="<?= base_url('/reimburseDetail/savePkm/' . $pkm['ID_pkm']); ?>">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Pengajuan Reimbursement</h5>
+                                <hr>
+                                <ul>
+                                    <li>Topik Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= $pkm['topik_kegiatan']; ?></li>
+                                    <li>Bentuk Kegiatan &nbsp; : <?= $pkm['bentuk_kegiatan']; ?></li>
+                                    <li>Waktu Kegiatan &nbsp;&nbsp;&nbsp;&nbsp;: <?= date("d F Y", strtotime($pkm['waktu_kegiatan'])); ?></li>
+                                    <li>Total Biaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp <?= number_format($dana_pkm[0]['dana_keluar'], 0, ",", "."); ?></li>
+
+                                </ul>
+                                <hr>
+
+
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit">Ajukan Reimbursement </button>
                                 </div>
-                            </form>
-                        <?php
-                        } else if ($pkm['id_status_reimburse'] == 1) {
-                        ?>
-                            <h5 class="card-title text-center">Pengajuan Reimbursement Anda Sedang dalam Proses</h5>
-
-                        <?php
-                        } else if ($pkm['id_status_reimburse'] == 2) {
-                        ?>
-                            <h5 class="card-title text-center">Dana Reimbursement Anda Sudah Dicairkan</h5>
-                            <hr>
-                            <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
-                        <?php
-                        }
-                        ?>
-                    </div>
+                        </form>
                 </div>
+            <?php
+                    } else if ($pkm['id_status_reimburse'] == 1) {
+            ?>
+                <h5 class="card-title text-center">Pengajuan Reimbursement Anda Sedang dalam Proses</h5>
+
+            <?php
+                    } else if ($pkm['id_status_reimburse'] == 2) {
+            ?>
+                <h5 class="card-title text-center">Dana Reimbursement Anda Sudah Dicairkan</h5>
+                <hr>
+                <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>
+            <?php
+                    }
+            ?>
+            </div>
+        </div>
+        </div>
 
 
     </section>

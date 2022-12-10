@@ -101,7 +101,7 @@ class PkmModel extends Model
         return $this->join('tim_pkm', 'pengajuan_pkm.ID_pkm = tim_pkm.id_pkm')
             ->select('tim_pkm.nip')->select('pengajuan_pkm.*')
             // ->select('laporan_penelitian.*')
-            ->where(['nip' => $nip])->where(['id_status' => $id_status])->findAll();
+            ->where(['nip' => $nip])->where(['id_status' => $id_status])->where(['jenis_pkm !=' => 'Mandiri'])->findAll();
     }
 
     public function get_pkm_reimburse_diajukan($status_reimburse)

@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="uploadLoa" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (LOA)</label>
+                                    <label for="uploadLoa" class="col-md-4 col-lg-3 col-form-label ">Letter of Acceptance (.pdf)</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="uploadLoa" class="form-control  <?= ($validation->hasError('uploadLoa')) ? 'is-invalid' : ''; ?>" type="file" id="uploadLoa" required>
                                         <div class="invalid-feedback" id="uploadValid">
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="uploadNaskah" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel</label>
+                                    <label for="uploadNaskah" class="col-md-4 col-lg-3 col-form-label ">Naskah Artikel (.pdf)</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="uploadNaskah" class="form-control <?= ($validation->hasError('uploadNaskah')) ? 'is-invalid' : ''; ?>" type="file" id="uploadNaskah" required>
                                         <div class="invalid-feedback" id="uploadValid">
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="uploadInvoice" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (Invoice)</label>
+                                    <label for="uploadInvoice" class="col-md-4 col-lg-3 col-form-label ">Bukti Pembayaran (Invoice)(.pdf)</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="uploadInvoice" class="form-control <?= ($validation->hasError('uploadInvoice')) ? 'is-invalid' : ''; ?>" type="file" id="uploadInvoice" required>
                                         <div class="invalid-feedback" id="uploadValid">
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="uploadForm" class="col-md-4 col-lg-3 col-form-label ">Upload Usulan Publikasi</label>
+                                    <label for="uploadForm" class="col-md-4 col-lg-3 col-form-label ">Upload Usulan Publikasi(.pdf)</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input name="uploadForm" class="form-control  <?= ($validation->hasError('uploadForm')) ? 'is-invalid' : ''; ?>" type="file" id="uploadForm" required>
                                         <div class="invalid-feedback" id="uploadValid">

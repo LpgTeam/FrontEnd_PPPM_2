@@ -842,7 +842,7 @@ class Dosen extends BaseController
             'dana_pkm' =>$this->danaPKMModel->get_dana_pkm_by_idpkm($id_kegiatan),
             'validation' => \Config\Services::validation()
         ];
-        // dd($data);
+        // dd($data['dana_pkm']);
         return view('dosen/tampilan/detailReimburse2', $data);
     }
 

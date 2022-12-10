@@ -255,7 +255,7 @@
             </tr>
             <tr>
                 <td>
-                    <?php if (($penelitian['id_status'] >= 4 && $penelitian['id_status'] <= 6) || $penelitian['id_status'] == 10) { ?>
+                    <?php if ($penelitian['id_status'] >= 4 && !($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9)) { ?>
                         <?php if ($settingTTD['id_setting'] == '1') { ?>
                             <img src="https://kuliahdimana.id/public/beasiswa/297fcb98a506bf9e5c9f2904caf54b6e.jpg" width="80">
                             <!-- <img src="<//?= base_url("") ?>/ttd_dosen/manual/ttdKepala.png" alt="stis" width="120" /> -->

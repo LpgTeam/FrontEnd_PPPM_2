@@ -109,25 +109,25 @@ class Register extends ShieldRegisterController
         }
 
         // To get the complete user object with ID, we need to get from the database
-        // $user = $users->findById($users->getInsertID());
+        $user = $users->findById($users->getInsertID());
 
-        // // Add to default group
-        // $users->addToDefaultGroup($user);
+        // Add to default group
+        $users->addToDefaultGroup($user);
 
         Events::trigger('register', $user);
 
         // /** @var Session $authenticator */
-        // $authenticator = auth('session')->getAuthenticator();
+        $authenticator = auth('session')->getAuthenticator();
 
         // $authenticator->startLogin($user);
 
-        // // If an action has been defined for register, start it up.
+        // If an action has been defined for register, start it up.
         // $hasAction = $authenticator->startUpAction('register', $user);
         // if ($hasAction) {
         //     return redirect()->to('auth/a/show');
         // }
 
-        // // Set the user active
+        // Set the user active
         // $authenticator->activateUser($user);
 
         // $authenticator->completeLogin($user);
@@ -137,7 +137,6 @@ class Register extends ShieldRegisterController
         // $user = $users->findById($users); 
         // dd($user->nip);
         // dd($this->request->getVar('nama'));
-        $dosenModel = new DosenModel();
         // dd($this->request->getVar('nip'));
         $this->dosenModel->insert([
             'NIP_dosen'     => $this->request->getVar('nip'),
@@ -164,7 +163,7 @@ class Register extends ShieldRegisterController
             
         ]);        //---
         // dd($user);
-        $_SESSION['group'] = "dosen";
+        // $_SESSION['group'] = "dosen";
 
         // dd($user->nip);
         // Success!

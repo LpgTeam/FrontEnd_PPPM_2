@@ -87,7 +87,7 @@
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <a href="/detailReimburseDirektur/<?= $post['id_reimburse']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                                            <a href="/detailReimburseDirektur/<?= $post['id_reimburse']; ?>/<?=$post['id_penelitian'];?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
 
 
 

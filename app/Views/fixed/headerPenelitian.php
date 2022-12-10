@@ -71,7 +71,7 @@
                 ?>
                     <li><a class="nav-link scrollto" href="/penelitianDosen">Kembali</a></li>
                     <li class="dropdown">
-                        <a class="username scrollto" href="#"><span>Dosen</span></a>
+                        <a class="username scrollto" href="/indexDosen"><span>Dosen</span></a>
                         <ul>
                             <!-- <li><a href="/login">Logout</a></li>
                         </ul>
@@ -86,7 +86,7 @@
                         ?>
                             <li><a class="nav-link scrollto" href="/penelitianAdmin">Kembali</a></li>
                             <li class="dropdown">
-                                <a class="username scrollto" href="#"><span>Admin</span></a>
+                                <a class="username scrollto" href="/indexAdmin"><span>Admin</span></a>
                                 <ul>
                                     <!-- <li><a href="/login">Logout</a></li>
                         </ul>
@@ -101,7 +101,7 @@
                                 ?>
                                     <li><a class="nav-link scrollto" href="/penelitianReviewer">Kembali</a></li>
                                     <li class="dropdown">
-                                        <a class="username scrollto" href="#"><span>Reviewer</span></a>
+                                        <a class="username scrollto" href="/indexReviewer"><span>Reviewer</span></a>
                                         <ul>
                                             <!-- <li><a href="/login">Logout</a></li>
                         </ul>
@@ -115,7 +115,7 @@
                                         ?>
                                             <li><a class="nav-link scrollto" href="/penelitianKepala">Kembali</a></li>
                                             <li class="dropdown">
-                                                <a class="username scrollto" href="#"><span>Kepala PPPM</span></a>
+                                                <a class="username scrollto" href="/indexKepala"><span>Kepala PPPM</span></a>
                                                 <ul>
                                                     <!-- <li><a href="/login">Logout</a></li>
                         </ul>
@@ -129,7 +129,7 @@
                                                 ?>
                                                     <li><a class="nav-link scrollto" href="/penelitianDirektur">Kembali</a></li>
                                                     <li class="dropdown">
-                                                        <a class="username scrollto" href="#"><span>Direktur</span></a>
+                                                        <a class="username scrollto" href="/indexDirektur"><span>Direktur</span></a>
                                                         <ul>
                                                             <!-- <li><a href="/login">Logout</a></li>
                         </ul>
@@ -144,13 +144,13 @@
                                                         ?>
                                                             <li><a class="nav-link scrollto" href="/penelitianBAU">Kembali</a></li>
                                                             <li class="dropdown">
-                                                                <a class="username scrollto" href="#"><span>BAU</span></a>
+                                                                <a class="username scrollto" href="/indexBAU"><span>BAU</span></a>
                                                                 <ul>
                                                                 <?php
                                                             }
                                                                 ?>
-                                                                <li><a href="/logout">Logout</a></li>
-                                                                </ul>
+                                                                <!-- <li><a href="/logout">Logout</a></li>
+                                                                </ul> -->
                                                             </li>
                                                         </ul>
                                                         <i class="bi bi-list mobile-nav-toggle"></i>

@@ -62,7 +62,7 @@ class AdminUserSetting extends BaseController
             'user1' => $this->userModel->find($user_id),
             'userRole' => $this->authGroupModel->get_all_role_by_user_id($user_id)
         ];
-        // dd($data['user1']);
+        // dd($data['userRole']);
         return view('adminPPPM/tampilan/userSettingRole', $data);
     }
 

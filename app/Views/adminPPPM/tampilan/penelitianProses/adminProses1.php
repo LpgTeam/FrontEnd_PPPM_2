@@ -21,49 +21,29 @@
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 d-flex justify-content-center">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-box blue service-box1">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Proposal</h3>
-                            <p>
-                                Proses peninjauan dan persetujuan proposal penelitian
-                                yang diajukan oleh dosen
-                            </p>
-                        </div>
+                        <a href="/adminProses1/<?= $penelitian['id_penelitian'] ?>">
+                            <div class="service-box blue service-box1">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Proposal</h3>
+                                <p>
+                                    Proses peninjauan dan persetujuan proposal penelitian
+                                    yang diajukan oleh dosen
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <!-- Di danai Institusi & institusi -->
-                    <?php if ($penelitian['jenis_penelitian'] == 'Di Danai Institusi' || $penelitian['jenis_penelitian'] == 'Institusi') { ?>
-                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="service-box orange">
-                                <i class="ri-discuss-line icon"></i>
-                                <h3>Kontrak</h3>
-                                <p>
-                                    Persetujuan kontrak antara pihak Peneliti dengan pihak Politeknik Statistika STIS
-                                </p>
-                            </div>
-                        </div>
 
-                    <?php } else if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') { ?>
-                        <!-- Semi Mandiri                     -->
-                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="service-box orange">
-                                <i class="ri-discuss-line icon"></i>
-                                <h3>Pendanaan</h3>
-                                <p>
-                                    Pendanaan untuk kegiatan publikasi dari penelitian yang
-                                    dilakukan oleh dosen
-                                </p>
-                            </div>
-                        </div>
-                    <?php } ?>
 
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-box green">
-                            <i class="ri-discuss-line icon"></i>
-                            <h3>Laporan</h3>
-                            <p>
-                                Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
-                            </p>
-                        </div>
+                        <a href="/adminProses3/<?= $penelitian['id_penelitian'] ?>">
+                            <div class="service-box green">
+                                <i class="ri-discuss-line icon"></i>
+                                <h3>Laporan</h3>
+                                <p>
+                                    Pelaporan hasil kegiatan penelitian yang dilakukan oleh dosen
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
 
@@ -133,23 +113,23 @@
 
     <!-- modal -->
     <div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="submitLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="submitLabel">Undo Status</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah anda yakin akan undo status Penelitian?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='/removeStatus/<?= $post['id_penelitian']; ?>/<?= $statusTerbaru['id_status']; ?>'">Ya</button>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="submitLabel">Undo Status</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin akan undo status Penelitian?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/removeStatus/<?= $post['id_penelitian']; ?>/<?= $statusTerbaru['id_status']; ?>'">Ya</button>
+                </div>
             </div>
         </div>
+        <!-- END modal -->
     </div>
-    <!-- END modal -->
-</div>
 </main>
 <!-- End #main -->
 <?= $this->endSection(); ?>

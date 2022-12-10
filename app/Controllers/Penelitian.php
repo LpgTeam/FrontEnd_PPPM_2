@@ -162,7 +162,7 @@ class Penelitian extends BaseController
             // $fileSign->move('sign/penelitian', $namaSign);
             $fileProposal->move('proposal', $namaProposal);
             $biaya = $this->request->getVar('biaya');
-            $namaBukti = "-";
+            $namaBukti = null;
         }
 
         // $slug = url_title($this->request->getVar('judul_penelitian'), '-', true);

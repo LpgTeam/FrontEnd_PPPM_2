@@ -212,15 +212,17 @@ class BAU extends BaseController
         return view('bau/tampilan/reimburse', $data);
     }
 
-    public function detailReimburse($id_reimburse)
+    public function detailReimburse($id_reimburse, $idpenelitian)
     {
         $kegiatan_penelitian = $this->danaPenelitianModel->get_dana_by_reimburse($id_reimburse);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
             'dana_penelitian' => $kegiatan_penelitian[0]['dana_keluar'],
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'penelitian' => $this->penelitianModel->find($idpenelitian),
         ];
+        // dd($data['reimburse']);
 
         return view('bau/tampilan/persetujuanReimburse', $data);
     }

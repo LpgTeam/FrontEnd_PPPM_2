@@ -1,4 +1,4 @@
-<?= $this->extend('fixed/templatePkm') ?>
+<?= $this->extend('fixed/templatePkmDetail') ?>
 
 <?= $this->section('content'); ?>
 <style>

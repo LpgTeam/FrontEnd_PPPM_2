@@ -86,7 +86,11 @@ class PenelitianDetail extends BaseController
             'status_penelitian' => "Rangkaian penelitian selesai dilaksanakan"
         ]);
 
-
+        $this->danaPenelitianModel->save([
+            'id_penelitian'  => $Pen['id_penelitian'],
+            'tanggal'        => Time::now('Asia/jakarta'),
+            'dana_keluar'    => $this->request->getVar('totalDana'),
+        ]);
 
         for ($i = 1; $i <= $nLuaran; $i++) {
             $this->luaranModel->save([
@@ -198,11 +202,7 @@ class PenelitianDetail extends BaseController
             'status'        => 'Kegiatan selesai dilaksanakan'
         ]);
 
-        $this->danaPenelitianModel->save([
-            'id_penelitian'  => $Pen['id_penelitian'],
-            'tanggal'        => Time::now('Asia/jakarta'),
-            'dana_keluar'    => $this->request->getVar('totalDana'),
-        ]);
+       
 
         $this->laporanPenelitianModel->save([
             "id_laporan" => $laporan['id_laporan'],

@@ -61,7 +61,7 @@
                     ?>
                         <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                             <?php if ($penelitian['id_status'] > 4 && !($penelitian['id_status'] >= 7 && $penelitian['id_status'] <= 9)) { ?>
-                                <a href="<?= base_url('penelitianProses2') . "/" . $penelitian["id_penelitian"]; ?>">
+                                <a href="<?= base_url('penelitianProses2Kontrak') . "/" . $penelitian["id_penelitian"]; ?>">
                                     <div class="service-box orange">
                                     <?php } else { ?>
                                         <div class="service-box secondary   "> <?php } ?>

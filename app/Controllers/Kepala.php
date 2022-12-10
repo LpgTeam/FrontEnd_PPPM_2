@@ -238,12 +238,13 @@ class Kepala extends BaseController
         return view('kepala/tampilan/reimburse', $data);
     }
 
-    public function detailReimburse($id_reimburse)
+    public function detailReimburse($id_reimburse, $idpenelitian)
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             'reimburse' => $this->reimburseModel->find($id_reimburse),
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'penelitian' => $this->penelitianModel->find($idpenelitian),
         ];
         return view('kepala/tampilan/detailReimburse', $data);
     }
