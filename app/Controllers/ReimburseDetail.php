@@ -127,7 +127,7 @@ class ReimburseDetail extends BaseController
             'jenis_pkm'  => $pkm['jenis_pkm'],
             'judul_pkm'  => $pkm['topik_kegiatan'],
             'tanggal_pengajuan' => Time::now('Asia/jakarta'),
-            'biaya_dicairkan'       => $total_biaya[0]['dana_keluar'],
+            'biaya_dicairkan'      => $total_biaya[0]['dana_keluar'],
             'id_status'         => "1",
             'status_reimburse'  => "Reimbursement dalam proses",
         ]);

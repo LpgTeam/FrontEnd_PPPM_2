@@ -91,6 +91,9 @@
                                 surat keterangan telah melaksanakan kegiatan PKM dan memo Kepala PPPM </p>
                             <hr>
                             <?= $this->include('proposal/PKM/download_laporan_pkm'); ?>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -108,7 +111,34 @@
                 </div>
             </div>
     </section>
-
 </main>
+
+<div id="modal-view" class="modal modal-fullscreen fade" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full modal-fullscreen mx-auto">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#506396;">
+                <h5 class="modal-title" id="modal-title" style="color:white;"></h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times" style="color:white;"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row holds-the-iframe">
+                    <iframe id="iframe-doc" src="/bukti_kegiatan/pkm/Contoh_Proposal_1.pdf" style="width:100%; height: 85vh" class="my-auto"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function klik() {
+        file = $("#modal-doc").attr('data-file');
+        nama = $("#modal-doc").attr('data-nama');
+        $("#iframe-doc").attr("src", "/bukti_kegiatan/pkm/" + file);
+        $("#modal-title").html(nama);
+        $("#modal-view").modal('show');
+    };
+</script>
+
 <!-- End #main -->
 <?= $this->endSection(); ?>

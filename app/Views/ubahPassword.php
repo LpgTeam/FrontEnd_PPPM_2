@@ -32,7 +32,7 @@
                 <div class="form row gy-4 justify-content-md-center col-md-8">
                     <div class="form-body pt-3 col-md-14">
 
-                        <form action="<?= base_url('/user/act_ganti_password'); ?>" method="post" id="formGantiPass" >
+                        <form action="<?= base_url('/user/act_ganti_password') ?>" method="post" onsubmit="return submitForm(this);" id="formGantiPass" >
                             <div class="text-center mb-4">
                                 <h3><?= $title  ?></h3>
                             </div>
@@ -165,6 +165,29 @@
                     hide_eye.style.display = "none";
                 }
             }
+
+            function submitForm(form) {
+                swal({
+                        title: "Apakah Anda Yakin?",
+                        text: "",
+                        buttons: true,
+                    })
+                    .then(function(isOkay) {
+                        if (isOkay) {
+                            form.submit();
+                        }
+                    });
+                return false;
+            }
+
+            // function alertForm(form) {
+            //     swal({
+            //         title: "Gagal Submit",
+            //         icon: "error",
+            //         text: "Anda harus menyetujui persyaratan terlebih dahulu!",
+            //     })
+            //     return false;
+            // }
         </script>
     </section>
 

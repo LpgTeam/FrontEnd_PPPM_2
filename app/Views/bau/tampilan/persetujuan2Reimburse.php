@@ -14,7 +14,7 @@
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursement</h3>
@@ -98,17 +98,15 @@
                             </div>
                         </div>
                         <div class="main-timeline">
-                            <div class="timeline">
-                                <a href="#" class="timeline-content">
-                                    <div class="timeline-year">Reimbursement</div>
-                                    <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
-                                    <h3 class="title">Dana Reimbursement Sudah Dicairkan</h3>
-                                </a>
-                            </div>
-                        <?php
-                    }
-                        ?>
+                        <div class="timeline">
+                            <a href="#" class="timeline-content">
+                                <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                <h3 class="title">Dana Reimbursement Sudah Dicairkan</h3>
+                            </a>
                         </div>
+                            <?php
+                        }
+                            ?>
                     </div>
     </section>
 
@@ -129,7 +127,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                 <button type="button" class="btn btn-danger"
-                    onclick="location.href='/acc-reimbursePKMBAU/<?= $reimburse['id_reimburse']; ?>'">Ya</button>
+                    onclick="location.href='/acc-reimbursePKMBAU/<?//= $reimburse['id_reimburse']; ?>'">Ya</button>
             </div>
         </div>
     </div>

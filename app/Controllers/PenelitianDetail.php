@@ -60,7 +60,7 @@ class PenelitianDetail extends BaseController
 
         $fileLaporan = $this->request->getFile('uploadLaporan');
         $namaLaporan = $fileLaporan->getName();
-        $fileLaporan->move('laporan_penelitian', $namaLaporan);
+        $fileLaporan->move('bukti_luaran', $namaLaporan);
 
         $Pen = $this->penelitianModel->get_penelitian($idpenelitian);
         $laporan = $this->laporanPenelitianModel->find_by_idpenelitian($idpenelitian);

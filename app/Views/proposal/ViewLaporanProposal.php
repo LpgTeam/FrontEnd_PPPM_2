@@ -20,6 +20,7 @@
                             <h5 class="card-title text-center">Laporan Penelitian</h5>
                             <p>Judul penelitian : <?= $penelitian['judul_penelitian']; ?></p>
                             <hr>
+                            <!-- <iframe class="responsive-iframe resp-container" src="/laporan_akhir_penelitian/<?= $judul_penelitian ?>" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe> -->
                             <iframe class="responsive-iframe resp-container" src="/laporan_akhir_penelitian/<?= $judul_penelitian ?>" width="100%" height="650px"></iframe>
                         </div>
                     </div>

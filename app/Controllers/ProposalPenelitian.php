@@ -162,8 +162,10 @@ class ProposalPenelitian extends BaseController
         // dd($laporan);
         if ($penelitian['jenis_penelitian'] == 'Semi Mandiri') {
             $tambahanFile = 'bukti_pendanaan/' . $laporan['laporan_dana'];
+            $tambahanFile2 = 'bukti_luaran/' . $laporan['laporan_luaran'];
         } elseif (($penelitian['jenis_penelitian'] == 'Didanani Institusi') || ($penelitian['jenis_penelitian'] == 'Institusi')) {
             $tambahanFile = 'kontrak/' . $laporan['kontrak'];
+            $tambahanFile2 = 'bukti_luaran/' . $laporan['laporan_luaran'];
         } else {
             $tambahanFile = 'bukti_luaran/' . $laporan['laporan_luaran'];
         }
@@ -193,7 +195,16 @@ class ProposalPenelitian extends BaseController
         $html = view('proposal/all_Laporan', $dataPenelitian);
         // $Pdfgenerator->set_option('isRemoteEnabled', TRUE);
 
-        if (!file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
+        // if (!file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
+        if (!($penelitian['jenis_penelitian'] == 'Mandiri')) {
+            $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
+            $pdf = new \Jurosh\PDFMerge\PDFMerger;
+            $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
+                ->addPDF($tambahanFile, 'all')
+                ->addPDF($tambahanFile2, 'all');
+            $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
+        }
+        else{
             $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
             $pdf = new \Jurosh\PDFMerge\PDFMerger;
             $pdf->addPDF($direktori . '/' . $file_pdf . '.pdf', 'all', 'vertical')
@@ -202,6 +213,7 @@ class ProposalPenelitian extends BaseController
                 ->addPDF($bukti, 'all');
             $pdf->merge('file', $direktori . '/' . $file_pdf . ' - Akhir.pdf');
         }
+        // }
         $judul_penelitian = $file_pdf . " - Akhir.pdf";
         // dd($btn);
         if ($btn == 1) {

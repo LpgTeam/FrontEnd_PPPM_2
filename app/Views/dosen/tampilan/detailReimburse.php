@@ -14,7 +14,7 @@
             <!-- ======= Proses Section ======= -->
             <div class="container" data-aos="fade-up">
                 <div class="row gy-4 justify-content-md-center">
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-box blue service-box1">
                             <i class="ri-discuss-line icon"></i>
                             <h3>Reimbursement</h3>
@@ -40,13 +40,10 @@
                         <p>Reimbursement penelitian yang diajukan dosen
                             Politeknik Statistika STIS
                         </p>
-
                         <hr>
-                        
-                    
                         <div class="d-flex justify-content-end ms-1">
-                            <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning m-3  ">Download Memo Kepala PPPM</a>
-                            <a href="/penelitian/download-laporan/<?= $penelitian['id_penelitian']; ?>/2" class="btn btn-primary m-3">Lihat Laporan </a>
+                            <a href="/penelitian/download-memo-penelitian/<?= $penelitian['id_penelitian']; ?>" class="btn btn-warning m-1">Download Memo Kepala PPPM</a>
+                            <a href="/penelitian/view-laporan/<?= $penelitian['id_penelitian']; ?>/1" class="btn btn-success m-1">Lihat Laporan</a>
                         </div>
                         <hr>
                         <?php
@@ -142,7 +139,13 @@
                         <?php
                         } else if ($penelitian['id_status_reimburse'] == 1) {
                         ?>
-                            <h5 class="card-title text-center">Pengajuan Reimbursement Anda Sedang dalam Proses</h5>
+                            <div class="main-timeline">
+                                <div class="timeline">
+                                    <a href="#" class="timeline-content">
+                                        <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
+                                        <h5 class="title">Pengajuan Reimbursement Anda Sedang dalam Proses</h5>
+                                    </a>
+                                </div>
 
                         <?php
                         } else if ($penelitian['id_status_reimburse'] == 2) {
@@ -151,7 +154,6 @@
                             <div class="main-timeline">
                                 <div class="timeline">
                                     <a href="#" class="timeline-content">
-                                        <div class="timeline-year">Reimbursement</div>
                                         <div class="timeline-icon"><i class="bi bi-bookmark-check"></i></div>
                                         <h3 class="title">Dana Reimbursement Anda Sudah Dicairkan</h3>
                                         <p>Untuk informasi lebih lanjut mengenai detail pencairan, silahkan hubungi BAU</p>

@@ -95,6 +95,7 @@
                                             $i = 1; ?>
                                             <?php foreach ($pkm as $key => $post) :  ?>
 
+                                                <?php if(!($post['jenis_pkm']=="Mandiri")) : ?>
                                                 <tr>
                                                     <!-- <td><?php //echo $post['id_penelitian'] 
                                                                 ?></td> -->
@@ -108,7 +109,7 @@
                                                         } else if ($post['id_status_reimburse'] == 1) {
                                                             echo 'Reimbursement dalam proses';
                                                         } else if ($post['id_status_reimburse'] == 2) {
-                                                            echo 'Reimbursemen telah dicairkan';
+                                                            echo 'Reimbursement telah dicairkan';
                                                         }
                                                         ?>
                                                     </td>
@@ -117,6 +118,7 @@
                                                         <a href="detailReimburse2Dosen/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                     </td>
                                                 </tr>
+                                                <?php endif;?>
                                         <?php $i++;
                                             endforeach;
                                         } ?>
