@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\Pemberitahuan;
 use App\Models\PenelitianModel;
 use App\Models\StatusPenelitianModel;
 use App\Models\PkmModel;
@@ -14,9 +15,10 @@ use App\Models\AnggaranTotalModel;
 use App\Models\DanaAwalDosenModel;
 use App\Models\DanaPenelitianModel;
 use App\Models\DanaPKMModel;
+use App\Models\TimPenelitiModel;
 use App\Models\ReimburseModel;
 use CodeIgniter\API\ResponseTrait;
-// use App\Libraries\SendEmail;
+use App\Libraries\SendEmail;
 
 
 class Kepala extends BaseController
@@ -26,6 +28,7 @@ class Kepala extends BaseController
     protected $statusPenelitianModel;
     protected $pkmModel;
     protected $timpkmModel;
+    protected $timpenelitiModel;
     protected $statusPkmModel;
     protected $suratPkmModel;
     public function __construct()
@@ -34,6 +37,7 @@ class Kepala extends BaseController
         $this->statusPenelitianModel = new StatusPenelitianModel();
         $this->pkmModel = new PkmModel();
         $this->timpkmModel = new TimPKMModel();
+        $this->timpenelitiModel = new TimPenelitiModel();
         $this->statusPkmModel = new StatusPkmModel();
         $this->reimburseModel = new ReimburseModel();
         $this->suratPkmModel = new SuratKeteranganPkmModel();
@@ -131,10 +135,10 @@ class Kepala extends BaseController
             'status'        => 'Disetujui oleh Kepala PPPM'
         ]);
 
-        // $sendEmail = new SendEmail();
-        // $sendEmail->send_email_persetujuan('Kepala PPPM');
-        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
 
+        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
         return redirect()->to('/penelitianKepala');
     }
 
@@ -151,6 +155,9 @@ class Kepala extends BaseController
             'id_penelitian' => $id_penelitian,
             'status'        => 'Ditolak oleh Kepala PPPM'
         ]);
+
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
 
         session()->setFlashdata('pesan', 'Penelitian telah ditolak');
 
@@ -170,6 +177,9 @@ class Kepala extends BaseController
             'status' => 'Pengajuan dalam proses'
         ]);
 
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_pkm($id_pkm);
+
         session()->setFlashdata('pesan', 'PKM berhasil disetujui');
 
         return redirect()->to('/pkmKepala');
@@ -188,6 +198,9 @@ class Kepala extends BaseController
             'id_pkm' => $id_pkm,
             'status' => 'Ditolak Oleh Kepala PPPM'
         ]);
+
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_pkm($id_pkm);
 
         session()->setFlashdata('pesan', 'PKM telah ditolak');
 
@@ -218,6 +231,9 @@ class Kepala extends BaseController
             'id_status'         => 7,
             'status'            => 'Kegiatan telah selesai dilaksanakan'
         ]);
+
+        $notif = new Pemberitahuan();
+        $notif->Send_Pemberitahuan_pkm($id_pkm);
 
         session()->setFlashdata('pesan', 'PKM telah selesai dilaksanakan');
 
