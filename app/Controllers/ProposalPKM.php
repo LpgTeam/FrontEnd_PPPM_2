@@ -45,13 +45,18 @@ class ProposalPKM extends BaseController
     public function download_proposal($id_pkm)
     {
         $Pdfgenerator = new Pdfgenerator();
+        
+        $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm);
 
         $dataPkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
             'anggotapkm'   => $this->timpkmModel->get_anggota_timpkm($id_pkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
             'biaya' => $this->biayaModel->find_by_idpkm($id_pkm),
-            'settingTTD' => $this->settingTTD->find(1)
+            'settingTTD' => $this->settingTTD->find(1),
+            'ttdDirektur'   => $this->ttdDosenModel->get_ttd_by_nip(196710221990032002),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpkm[0]['nip']),
         ];
         // dd($dataPkm['timpkm']);
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
@@ -65,6 +70,8 @@ class ProposalPKM extends BaseController
     public function download_surat_keterangan($id_pkm)
     {
         $Pdfgenerator = new Pdfgenerator();
+        
+        $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm);
 
         $dataPkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
@@ -73,7 +80,9 @@ class ProposalPKM extends BaseController
             'peneliti' => $this->timpkmModel->get_timpkm_byid($id_pkm),
             'rincian'  => $this->rincianModel->find_by_idpkm($id_pkm),
             'no_surat'  => $this->suratPkmModel->get_by_id_pkm($id_pkm),
-            'settingTTD' => $this->settingTTD->find(1)
+            'settingTTD' => $this->settingTTD->find(1),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpkm[0]['nip']), 
         ];
 
         $file_pdf = 'Form Pengajuan Kegiatan PKM - ';
@@ -89,13 +98,18 @@ class ProposalPKM extends BaseController
     public function download_memo_pkm($id_pkm)
     {
         $Pdfgenerator = new Pdfgenerator();
+        
+        $timpkm = $this->timpkmModel->get_data_timpkm_byId_Pkm($id_pkm);
 
         $datapkm = [
             'pkm'    => $this->pkmModel->find($id_pkm),
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
             // 'targetpkm'  => $this->luaranModel->get_luaran_byid($id_pkm),
             'dana'       => $this->danapkmModel->get_dana_by_id($id_pkm),
-            'settingTTD' => $this->settingTTD->find(1)
+            'settingTTD' => $this->settingTTD->find(1),
+            'ttdDirektur'   => $this->ttdDosenModel->get_ttd_by_nip(196710221990032002),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpkm[0]['nip']), 
         ];
 
         $file_pdf = 'Memo Pembiayaan Publikasi - ' . $datapkm['pkm']['topik_kegiatan'];
@@ -119,6 +133,7 @@ class ProposalPKM extends BaseController
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($idpkm),
             'ketuapkm' => $this->dosenModel->get_nip_peneliti($timpkm[0]['nip']),
             'biaya' => $this->biayaModel->find_by_idpkm($idpkm),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpkm[0]['nip']),  
             'settingTTD' => $this->settingTTD->find(1)
         ];
 
@@ -152,7 +167,10 @@ class ProposalPKM extends BaseController
             'timpkm'   => $this->timpkmModel->get_timpkm_byid($id_pkm),
             'biaya' => $this->biayaModel->find_by_idpkm($id_pkm),
             'ketuapkm' => $this->dosenModel->get_nip_peneliti($timpkm[0]['nip']),
-            'settingTTD' => $this->settingTTD->find(1)
+            'settingTTD' => $this->settingTTD->find(1),
+            'ttdDirektur'   => $this->ttdDosenModel->get_ttd_by_nip(196710221990032002),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpkm[0]['nip']), 
         ];
 
 

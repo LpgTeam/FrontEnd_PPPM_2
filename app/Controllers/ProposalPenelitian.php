@@ -11,6 +11,7 @@ use App\Models\LuaranTargetModel;
 use App\Models\DanaPenelitianModel;
 use App\Libraries\Pdfgenerator;
 use App\Models\GlobalSettingModel;
+use App\Models\TandaTanganDosenModel;
 
 class ProposalPenelitian extends BaseController
 {
@@ -23,6 +24,7 @@ class ProposalPenelitian extends BaseController
     protected $luaranModel;
     protected $settingTTD;
     protected $danaPenelitianModel;
+    protected $ttdDosenModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
@@ -30,6 +32,7 @@ class ProposalPenelitian extends BaseController
         $this->timpenelitiModel = new TimPenelitiModel();
         $this->ketuatimpenelitiModel = new TimPenelitiModel();
         $this->dosenModel = new DosenModel();
+        $this->ttdDosenModel = new TandaTanganDosenModel();
         $this->luaranModel = new LuaranTargetModel();
         $this->settingTTD = new GlobalSettingModel();
         $this->danaPenelitianModel = new DanaPenelitianModel();
@@ -77,6 +80,9 @@ class ProposalPenelitian extends BaseController
             'tujuan'        => 'LUARAN DAN TARGET CAPAIAN',
             'target'        => 'TARGET',
             'judul'        => 'USULAN',
+            'ttdDirektur'   => $this->ttdDosenModel->get_ttd_by_nip(196710221990032002),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpeneliti[0]['NIP']),
             'settingTTD' => $this->settingTTD->find(1)
         ];
 
@@ -189,7 +195,10 @@ class ProposalPenelitian extends BaseController
             'target'            => '',
             'tujuan'            => 'LUARAN DAN CAPAIAN',
             'judul'             => 'LAPORAN',
-            'settingTTD' => $this->settingTTD->find(1)
+            'ttdDirektur'       => $this->ttdDosenModel->get_ttd_by_nip(196710221990032002),
+            'ttdKepala'         => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpeneliti[0]['NIP']),
+            'settingTTD'        => $this->settingTTD->find(1)
             // 'addProses2'        => $tambahanFile,
         ];
         // dd($dataPenelitian['timpeneliti']);
@@ -265,6 +274,8 @@ class ProposalPenelitian extends BaseController
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
             'targetpenelitian'  => $this->luaranModel->get_luaran_byid($id_penelitian),
             'dana'              => $this->danaPenelitianModel->get_dana_byid($id_penelitian),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpeneliti[0]['NIP']),
             'settingTTD' => $this->settingTTD->find(1)
         ];
 
