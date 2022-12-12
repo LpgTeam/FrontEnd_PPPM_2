@@ -81,7 +81,7 @@ class ProposalPenelitian extends BaseController
             'target'        => 'TARGET',
             'judul'        => 'USULAN',
             'ttdDirektur'   => $this->ttdDosenModel->get_ttd_by_nip(196710221990032002),
-            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021002),
             'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpeneliti[0]['NIP']),
             'settingTTD' => $this->settingTTD->find(1)
         ];
@@ -196,7 +196,7 @@ class ProposalPenelitian extends BaseController
             'tujuan'            => 'LUARAN DAN CAPAIAN',
             'judul'             => 'LAPORAN',
             'ttdDirektur'       => $this->ttdDosenModel->get_ttd_by_nip(196710221990032002),
-            'ttdKepala'         => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttdKepala'         => $this->ttdDosenModel->get_ttd_by_nip(198512222009021002),
             'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpeneliti[0]['NIP']),
             'settingTTD'        => $this->settingTTD->find(1)
             // 'addProses2'        => $tambahanFile,
@@ -274,7 +274,7 @@ class ProposalPenelitian extends BaseController
             'timpeneliti'   => $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian),
             'targetpenelitian'  => $this->luaranModel->get_luaran_byid($id_penelitian),
             'dana'              => $this->danaPenelitianModel->get_dana_byid($id_penelitian),
-            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021000),
+            'ttdKepala'   => $this->ttdDosenModel->get_ttd_by_nip(198512222009021002),
             'ttd'         => $this->ttdDosenModel->get_ttd_by_nip($timpeneliti[0]['NIP']),
             'settingTTD' => $this->settingTTD->find(1)
         ];
