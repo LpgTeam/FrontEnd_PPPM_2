@@ -13,6 +13,7 @@ use App\Models\TimPKMModel;
 use App\Models\DanaPKMModel;
 use App\Libraries\Pdfgenerator;
 use App\Models\GlobalSettingModel;
+use App\Models\TandaTanganDosenModel;
 
 class ProposalPKM extends BaseController
 {
@@ -21,6 +22,7 @@ class ProposalPKM extends BaseController
     protected $ketuatimpenelitiModel;
     protected $timpenelitiModel;
     protected $dosenModel;
+    protected $ttdDosenModel;
     protected $luaranModel;
     protected $pkmModel;
     protected $danapkmModel;
@@ -39,6 +41,7 @@ class ProposalPKM extends BaseController
         $this->rincianModel = new RincianPKMModel();
         $this->biayaModel = new PembiayaanPkmModel;
         $this->settingTTD = new GlobalSettingModel();
+        $this->ttdDosenModel = new TandaTanganDosenModel();
     }
 
     //(generate) dompdf awal (proses 1) tanpa merge hanya form pengajuan proposal 
