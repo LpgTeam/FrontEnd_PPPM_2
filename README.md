@@ -83,7 +83,9 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://pengajuan.stis.ac.id)
 
-Sistem Pengelolaan Penelitian dan Pengabdian Masyarakat (HaloPPPM) merupakan aplikasi berbasis web yang dapat memfasilitasi proses pengajuan kegiatan penelitian dan PKM dosen di Politeknik Statistika STIS. Penelitian dan pengabdian kepada masyarakat merupakan salah satu Tri Dharma Perguruan Tinggi dan misi Polstat STIS yang harus dilaksanakan oleh fungsional dosen. Salah satu unit yang memiliki tanggung jawab dalam menyukseskan pelaksanaan misi penelitian dan pengabdian kepada masyarakat di Polstat STIS adalah unit Pusat Penelitian dan Pengabdian Masyarakat (PPPM). Sistem Pengelolaan Penelitian dan Pengabdian Masyarakat ini dapat digunakan untuk meningkatkan efektifitas, efisiensi, dan produktivitas proses bisnis yang berkaitan dengan penelitian dan PKM. Cakupan dari proyek ini meliputi :
+Sistem Pengelolaan Penelitian dan Pengabdian Masyarakat (HaloPPPM) merupakan aplikasi berbasis web yang dapat memfasilitasi proses pengajuan kegiatan penelitian dan PKM dosen di Politeknik Statistika STIS.
+
+Sistem Pengelolaan Penelitian dan Pengabdian Masyarakat ini dapat digunakan untuk meningkatkan efektifitas, efisiensi, dan produktivitas proses bisnis yang berkaitan dengan penelitian dan PKM. Cakupan dari proyek ini meliputi :
 
 1. Pengajuan Kegiatan Penelitian
 
@@ -109,14 +111,16 @@ Use the `BLANK_README.md` to get started. -->
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+<!-- This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples. -->
 
-- [![Next][next.js]][next-url]
+<!-- - [![Next][next.js]][next-url]
 - [![React][react.js]][react-url]
 - [![Vue][vue.js]][vue-url]
 - [![Angular][angular.io]][angular-url]
 - [![Svelte][svelte.dev]][svelte-url]
-- [![Laravel][laravel.com]][laravel-url]
+- [![Laravel][laravel.com]][laravel-url] -->
+
+- [![Codeigniter][codeigniter.com]][codeigniter-url]
 - [![Bootstrap][bootstrap.com]][bootstrap-url]
 - [![JQuery][jquery.com]][jquery-url]
 
@@ -268,6 +272,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [bootstrap-url]: https://getbootstrap.com
 [jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [jquery-url]: https://jquery.com
+[codeigniter-url]: https://codeigniter.com
 
 buat database baru project_rpl (atau bebas sesuain env)
 
