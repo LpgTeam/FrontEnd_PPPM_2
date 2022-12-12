@@ -19,7 +19,7 @@ use App\Models\TimPenelitiModel;
 use App\Models\ReimburseModel;
 use CodeIgniter\API\ResponseTrait;
 use App\Libraries\SendEmail;
-
+use App\Models\TandaTanganDosenModel;
 
 class Kepala extends BaseController
 {
@@ -31,6 +31,7 @@ class Kepala extends BaseController
     protected $timpenelitiModel;
     protected $statusPkmModel;
     protected $suratPkmModel;
+    protected $ttdDosenModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
@@ -43,6 +44,7 @@ class Kepala extends BaseController
         $this->suratPkmModel = new SuratKeteranganPkmModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
+        $this->ttdDosenModel = new TandaTanganDosenModel();
     }
 
     public function index()
@@ -124,22 +126,29 @@ class Kepala extends BaseController
 
     public function acc_penelitian_kepala($id_penelitian)
     {
-        $this->penelitianModel->save([
-            'id_penelitian'     => $id_penelitian,
-            'id_status'         => 4,
-            'status_pengajuan'  => 'Disetujui oleh Kepala PPPM'
-        ]);
+        $ttd = $this->ttdDosenModel->get_ttd_by_nip(auth()->user()->nip);
+        if ($ttd['ttd_manual'] == null || $ttd['ttd_digital'] == null) {
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, upload tanda tangan terlebih dahulu');
 
-        $this->statusPenelitianModel->save([
-            'id_penelitian' => $id_penelitian,
-            'status'        => 'Disetujui oleh Kepala PPPM'
-        ]);
+            return redirect()->to('/penelitianKepala');
+        } else {
+            $this->penelitianModel->save([
+                'id_penelitian'     => $id_penelitian,
+                'id_status'         => 4,
+                'status_pengajuan'  => 'Disetujui oleh Kepala PPPM'
+            ]);
 
-        $notif = new Pemberitahuan();
-        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
+            $this->statusPenelitianModel->save([
+                'id_penelitian' => $id_penelitian,
+                'status'        => 'Disetujui oleh Kepala PPPM'
+            ]);
 
-        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
-        return redirect()->to('/penelitianKepala');
+            $notif = new Pemberitahuan();
+            $notif->Send_Pemberitahuan_penelitian($id_penelitian);
+
+            session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+            return redirect()->to('/penelitianKepala');
+        }
     }
 
     public function rjc_penelitian_kepala($id_penelitian)
@@ -166,23 +175,30 @@ class Kepala extends BaseController
 
     public function acc_pkm_kepala($id_pkm)
     {
-        $this->pkmModel->save([
-            'ID_pkm'            => $id_pkm,
-            'id_status'         => 2,
-            'status'            => 'Pengajuan dalam proses'
-        ]);
+        $ttd = $this->ttdDosenModel->get_ttd_by_nip(auth()->user()->nip);
+        if ($ttd['ttd_manual'] == null || $ttd['ttd_digital'] == null) {
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, upload tanda tangan terlebih dahulu');
 
-        $this->statusPkmModel->save([
-            'id_pkm' => $id_pkm,
-            'status' => 'Pengajuan dalam proses'
-        ]);
+            return redirect()->to('/pkmKepala');
+        } else {
+            $this->pkmModel->save([
+                'ID_pkm'            => $id_pkm,
+                'id_status'         => 2,
+                'status'            => 'Pengajuan dalam proses'
+            ]);
 
-        $notif = new Pemberitahuan();
-        $notif->Send_Pemberitahuan_pkm($id_pkm);
+            $this->statusPkmModel->save([
+                'id_pkm' => $id_pkm,
+                'status' => 'Pengajuan dalam proses'
+            ]);
 
-        session()->setFlashdata('pesan', 'PKM berhasil disetujui');
+            $notif = new Pemberitahuan();
+            $notif->Send_Pemberitahuan_pkm($id_pkm);
 
-        return redirect()->to('/pkmKepala');
+            session()->setFlashdata('pesan', 'PKM berhasil disetujui');
+
+            return redirect()->to('/pkmKepala');
+        }
     }
 
     public function rjc_pkm_kepala($id_pkm)
@@ -209,35 +225,42 @@ class Kepala extends BaseController
 
     public function accAkhir_pkm_kepala($id_pkm)
     {
-        // save no surat
-        $nSurat = $this->timpkmModel->get_row_timpkm_byId_Pkm($id_pkm);
-        // dd();
-        for ($i = 0; $i < $nSurat; $i++) {
-            # code...
-            $nomor = 'PKM/' . date('Y') . '/' . $id_pkm . '/' . ($i + 1);
-            // echo $nomor;
-            $this->suratPkmModel->save([
-                'no_surat'  => $nomor,
-                'id_pkm'    => $id_pkm
+        $ttd = $this->ttdDosenModel->get_ttd_by_nip(auth()->user()->nip);
+        if ($ttd['ttd_manual'] == null || $ttd['ttd_digital'] == null) {
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, upload tanda tangan terlebih dahulu');
+
+            return redirect()->to('/pkmKepala');
+        } else {
+            // save no surat
+            $nSurat = $this->timpkmModel->get_row_timpkm_byId_Pkm($id_pkm);
+            // dd();
+            for ($i = 0; $i < $nSurat; $i++) {
+                # code...
+                $nomor = 'PKM/' . date('Y') . '/' . $id_pkm . '/' . ($i + 1);
+                // echo $nomor;
+                $this->suratPkmModel->save([
+                    'no_surat'  => $nomor,
+                    'id_pkm'    => $id_pkm
+                ]);
+            }
+            //============endNoSurat=======================
+            $this->statusPkmModel->save([
+                'id_pkm' => $id_pkm,
+                'status' => 'Kegiatan telah selesai dilaksanakan'
             ]);
+            $this->pkmModel->save([
+                'ID_pkm'            => $id_pkm,
+                'id_status'         => 7,
+                'status'            => 'Kegiatan telah selesai dilaksanakan'
+            ]);
+
+            $notif = new Pemberitahuan();
+            $notif->Send_Pemberitahuan_pkm($id_pkm);
+
+            session()->setFlashdata('pesan', 'PKM telah selesai dilaksanakan');
+
+            return redirect()->to('/pkmKepala');
         }
-        //============endNoSurat=======================
-        $this->statusPkmModel->save([
-            'id_pkm' => $id_pkm,
-            'status' => 'Kegiatan telah selesai dilaksanakan'
-        ]);
-        $this->pkmModel->save([
-            'ID_pkm'            => $id_pkm,
-            'id_status'         => 7,
-            'status'            => 'Kegiatan telah selesai dilaksanakan'
-        ]);
-
-        $notif = new Pemberitahuan();
-        $notif->Send_Pemberitahuan_pkm($id_pkm);
-
-        session()->setFlashdata('pesan', 'PKM telah selesai dilaksanakan');
-
-        return redirect()->to('/pkmKepala');
     }
 
     public function reimburse()

@@ -15,6 +15,7 @@ use App\Models\StatusPkmModel;
 use App\Models\PkmModel;
 use App\Models\SuratKeteranganPkmModel;
 use App\Models\ReimburseModel;
+use App\Models\TandaTanganDosenModel;
 use App\Models\TimPKMModel;
 use CodeIgniter\API\ResponseTrait;
 
@@ -23,6 +24,7 @@ class Direktur extends BaseController
     use ResponseTrait;
     protected $penelitianModel;
     protected $statusPenelitianModel;
+    protected $ttdDosenModel;
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();
@@ -34,7 +36,7 @@ class Direktur extends BaseController
         $this->suratPkmModel = new SuratKeteranganPkmModel();
         $this->anggaranTotalModel = new AnggaranTotalModel();
         $this->anggaranAwalModel = new AnggaranAwalModel();
-        
+        $this->ttdDosenModel = new TandaTanganDosenModel();
     }
 
     public function index()
@@ -90,7 +92,7 @@ class Direktur extends BaseController
     //         }
     //     }
 
-     
+
     //     //semua dana
     //     $data = [
     //         'title'               => 'PPPM Politeknik Statistika STIS',
@@ -101,23 +103,23 @@ class Direktur extends BaseController
 
     //     return view('direktur/tampilan/anggaran', $data);
     // }
-    public function anggaran(){
+    public function anggaran()
+    {
         //current year
         $year = date("Y");
         $penelitianDiajukan = $this->penelitianModel->get_total_diajukan($year);
         $pkmDiajukan = $this->pkmModel->get_total_diajukan($year);
         $danaDiajukan = $penelitianDiajukan + $pkmDiajukan;
         $sisaAnggaran = $this->anggaranTotalModel->get_sisa_terakhir();
-        
-       $data = [
+
+        $data = [
             'title'             => 'PPPM Politeknik Statistika STIS',
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
             'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
-       ];
-       return view('direktur/tampilan/anggaran', $data);
-
+        ];
+        return view('direktur/tampilan/anggaran', $data);
     }
     public function penelitian()
     {
@@ -144,23 +146,31 @@ class Direktur extends BaseController
 
     public function acc_penelitian_direktur($id_penelitian)
     {
-        $this->penelitianModel->save([
-            'id_penelitian'     => $id_penelitian,
-            'id_status'         => 5,
-            'status_pengajuan'  => 'Disetujui oleh Direktur'
-        ]);
 
-        $this->statusPenelitianModel->save([
-            'id_penelitian' => $id_penelitian,
-            'status'        => 'Disetujui oleh Direktur'
-        ]);
+        $ttd = $this->ttdDosenModel->get_ttd_by_nip(auth()->user()->nip);
+        if ($ttd['ttd_manual'] == null || $ttd['ttd_digital'] == null) {
+            session()->setFlashdata('error', 'Anda belum upload tanda tangan, upload tanda tangan terlebih dahulu');
 
-        $notif = new Pemberitahuan();
-        $notif->Send_Pemberitahuan_penelitian($id_penelitian);
+            return redirect()->to('/penelitianDirektur');
+        } else {
+            $this->penelitianModel->save([
+                'id_penelitian'     => $id_penelitian,
+                'id_status'         => 5,
+                'status_pengajuan'  => 'Disetujui oleh Direktur'
+            ]);
 
-        session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+            $this->statusPenelitianModel->save([
+                'id_penelitian' => $id_penelitian,
+                'status'        => 'Disetujui oleh Direktur'
+            ]);
 
-        return redirect()->to('/penelitianDirektur');
+            $notif = new Pemberitahuan();
+            $notif->Send_Pemberitahuan_penelitian($id_penelitian);
+
+            session()->setFlashdata('pesan', 'Penelitian berhasil disetujui');
+
+            return redirect()->to('/penelitianDirektur');
+        }
     }
 
     public function reimburse()
@@ -180,7 +190,7 @@ class Direktur extends BaseController
         return view('direktur/tampilan/reimburse', $data);
     }
 
-    public function detailReimburse($id_reimburse,$idpenelitian)
+    public function detailReimburse($id_reimburse, $idpenelitian)
     {
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',

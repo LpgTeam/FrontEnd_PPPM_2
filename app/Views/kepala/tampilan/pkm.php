@@ -16,6 +16,11 @@
                 <?= session()->getFlashdata('pesan'); ?>
             </div>
         <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger" role="alert" data-aos="zoom-in-right">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
 
         <div class="container" data-aos="fade-up">
             <header class="section-header2">

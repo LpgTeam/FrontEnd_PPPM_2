@@ -23,6 +23,11 @@
                 <?= session()->getFlashdata('pesan'); ?>
             </div>
         <?php endif; ?>
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger" data-aos="zoom-in-right" role="alert">
+                <?= session()->getFlashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <div class="row" data-aos="fade-up">
             <div class="">
                 <div class="card">
