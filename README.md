@@ -38,7 +38,9 @@
   <p align="center">
     Website Pengajuan Penelitian dan Pengabdian Pada Masyarakat Politeknik Statistika STIS
     <br />
-    <a href="https://github.com/LpgTeam/FrontEnd_PPPM_2"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LpgTeam/FrontEnd_PPPM_2"><strong>Explore the docs in github»</strong></a>
+    <br />
+    <a href="https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan"><strong>Explore the docs in gitlab STIS»</strong></a>
     <br />
     <br />
     <a href="https://github.com/LpgTeam/FrontEnd_PPPM_2">View Demo</a>
