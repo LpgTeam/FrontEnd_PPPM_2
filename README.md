@@ -19,24 +19,24 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![Contributors][contributors-shield]][contributors-url]
+<!-- [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="public/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/bgpppm_readme.png" alt="Logo" width="440" height="169">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">HaloPPPM</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Website Pengajuan Penelitian dan Pengabdian Pada Masyarakat Politeknik Statistika STIS
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
