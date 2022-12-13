@@ -190,6 +190,58 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 
+## Contact
+
+LpgTeam
+
+<!-- - [@your_twitter](https://twitter.com/your_username) - email@example.com -->
+
+Project Link: [https://github.com/LpgTeam](https://github.com/LpgTeam/)
+
+Project Link: [https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan](https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Note
+
+buat database baru project_rpl (atau bebas sesuain env)
+
+php spark shield:setup
+
+php spark db:seed SeederNama (nama sendiri/role)
+
+mis :
+
+php spark db:seed SeederDosen ||
+php spark db:seed SeederDirektur ||
+php spark db:seed SeederKepalaPPPM ||
+php spark db:seed SeederBAU ||
+php spark db:seed SeederReviewer ||
+
+nb :
+akun user uda di seed sekalian di dalam itu
+
+setelah di seed, bisa login dengan akun :
+
+account :
+
+email : dosen@stis.ac.id
+|| Pass : dosen123
+
+email : direktur@stis.ac.id
+|| Pass : direktur123
+
+email : kepalapppm@stis.ac.id
+|| Pass : kepalapppm123
+
+email : bau@stis.ac.id
+|| Pass : bau123
+
+email : reviewer@stis.ac.id
+|| Pass : reviewer123
+
 ## Roadmap
 
 - [x] Add Changelog
@@ -230,17 +282,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- CONTACT -->
-
-## Contact
-
-LpgTeam - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/LpgTeam](https://github.com/LpgTeam/)
-Project Link: [https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan](https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
 
@@ -293,63 +334,3 @@ Use this space to list resources you find helpful and would like to give credit 
 [codeigniter-url]: https://codeigniter.com
 [mysql.com]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
 [mysql-url]: https://mysql.com
-
-buat database baru project_rpl (atau bebas sesuain env)
-
-php spark shield:setup
-
-php spark db:seed SeederNama (nama sendiri/role)
-
-mis :
-
-php spark db:seed SeederDosen ||
-php spark db:seed SeederDirektur ||
-php spark db:seed SeederKepalaPPPM ||
-php spark db:seed SeederBAU ||
-php spark db:seed SeederReviewer ||
-php spark db:seed SeederAfnan ||
-php spark db:seed SeederOkta ||
-php spark db:seed SeederTaufiq ||
-php spark db:seed SeederIntan ||
-php spark db:seed SeederFatya ||
-php spark db:seed SeederAtikah ||
-
-nb :
-akun user uda di seed sekalian di dalam itu
-
-setelah di seed, bisa login dengan akun :
-
-account :
-
-email : dosen@stis.ac.id
-|| Pass : dosen123
-
-email : direktur@stis.ac.id
-|| Pass : direktur123
-
-email : kepalapppm@stis.ac.id
-|| Pass : kepalapppm123
-
-email : bau@stis.ac.id
-|| Pass : bau123
-
-email : reviewer@stis.ac.id
-|| Pass : reviewer123
-
-email : 222011494@stis.ac.id
-|| Pass : afnan123
-
-email : 222011596@stis.ac.id
-|| Pass : okta123
-
-email : 222011361@stis.ac.id
-|| Pass : taufiq123
-
-email : 222011537@stis.ac.id
-|| Pass : intan123
-
-email : 222011295@stis.ac.id
-|| Pass : fatya123
-
-email : 222011453@stis.ac.id
-|| Pass : atikah123
