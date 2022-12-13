@@ -85,7 +85,9 @@
 
 Sistem Pengelolaan Penelitian dan Pengabdian Masyarakat (HaloPPPM) merupakan aplikasi berbasis web yang dapat memfasilitasi proses pengajuan kegiatan penelitian dan PKM dosen di Politeknik Statistika STIS.
 
-Sistem Pengelolaan Penelitian dan Pengabdian Masyarakat ini dapat digunakan untuk meningkatkan efektifitas, efisiensi, dan produktivitas proses bisnis yang berkaitan dengan penelitian dan PKM. Cakupan dari proyek ini meliputi :
+Sistem Pengelolaan Penelitian dan Pengabdian Masyarakat ini dapat digunakan untuk meningkatkan efektifitas, efisiensi, dan produktivitas proses bisnis yang berkaitan dengan penelitian dan PKM.
+
+Cakupan dari proyek ini meliputi :
 
 1. Pengajuan Kegiatan Penelitian
 
@@ -131,8 +133,8 @@ Use the `BLANK_README.md` to get started. -->
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+<!-- This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps. -->
 
 ### Prerequisites
 
@@ -227,20 +229,32 @@ setelah di seed, bisa login dengan akun :
 
 account :
 
-email : dosen@stis.ac.id
-|| Pass : dosen123
-
-email : direktur@stis.ac.id
-|| Pass : direktur123
-
-email : kepalapppm@stis.ac.id
-|| Pass : kepalapppm123
-
-email : bau@stis.ac.id
-|| Pass : bau123
-
-email : reviewer@stis.ac.id
-|| Pass : reviewer123
+<table>
+<tr>
+<th>Email</th>
+<th>Password</th>
+</tr>
+<tr>
+<td>dosen@stis.ac.id</td>
+<td>dosen123</td>
+</tr>
+<tr>
+<td>direktur@stis.ac.id</td>
+<td>direktur123</td>
+</tr>
+<tr>
+<td>kepalapppm@stis.ac.id</td>
+<td>kepalapppm123</td>
+</tr>
+<tr>
+<td>bau@stis.ac.id</td>
+<td>bau123</td>
+</tr>
+<tr>
+<td>reviewer@stis.ac.id</td>
+<td>reviewer123</td>
+</tr>
+</table>
 
 ## Roadmap
 
