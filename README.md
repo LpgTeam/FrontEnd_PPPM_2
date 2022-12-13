@@ -29,7 +29,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/LpgTeam/FrontEnd_PPPM_2">
+  <!-- <a href="https://github.com/LpgTeam/FrontEnd_PPPM_2">
+    <img src="public/bgpppm_readme.png" alt="Logo" width="440" height="169">
+  </a> -->
+  <a href="https://pengajuan.stis.ac.id">
     <img src="public/bgpppm_readme.png" alt="Logo" width="440" height="169">
   </a>
 
@@ -255,6 +258,14 @@ account :
 <td>reviewer123</td>
 </tr>
 </table>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Roadmap
 
