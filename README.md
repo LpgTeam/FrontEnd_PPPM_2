@@ -44,7 +44,7 @@
     <a href="https://github.com/LpgTeam/FrontEnd_PPPM_2"><strong>Explore the docs in github»</strong></a>
     <br />
     <a href="https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan"><strong>Explore the docs in gitlab STIS»</strong></a>
-    <br />gi
+    <br />
     <br />
     <a href="https://github.com/LpgTeam/FrontEnd_PPPM_2">View Demo</a>
     ·
@@ -166,10 +166,17 @@ _Berikut adalah salah satu cara setting project._
    ```sh
    git clone https://github.com/LpgTeam/FrontEnd_PPPM_2.git
    ```
+
 2. Install library shield di terminal
+   ```sh
+composer require codeigniter4/shield
+   ```
+
+3. Setup library shield di terminal
    ```sh
     php spark shield:setup
    ```
+
 3. Import database dengan nama pppm_pengajuan ke dalam database MySQL
 
 <!-- 2. Install NPM packages
