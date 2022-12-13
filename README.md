@@ -169,7 +169,7 @@ _Berikut adalah salah satu cara setting project._
 
 2. Install library shield di terminal
    ```sh
-composer require codeigniter4/shield
+    composer require codeigniter4/shield
    ```
 
 3. Setup library shield di terminal
