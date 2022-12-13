@@ -123,6 +123,7 @@ Use the `BLANK_README.md` to get started. -->
 - [![Codeigniter][codeigniter.com]][codeigniter-url]
 - [![Bootstrap][bootstrap.com]][bootstrap-url]
 - [![JQuery][jquery.com]][jquery-url]
+- [![MySQL][mysql.com]][mysql-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -146,19 +147,26 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+<!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
+
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/LpgTeam/FrontEnd_PPPM_2.git
    ```
-3. Install NPM packages
+2. Install library shield di terminal
+   ```sh
+    php spark shield:setup
+   ```
+3. Import database dengan nama pppm_pengajuan ke dalam database MySQL
+
+<!-- 2. Install NPM packages
    ```sh
    npm install
-   ```
-4. Enter your API in `config.js`
+   ``` -->
+<!-- 3. Enter your API in `config.js`
    ```js
    const API_KEY = "ENTER YOUR API";
-   ```
+   ``` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -217,9 +225,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+LpgTeam - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/LpgTeam](https://github.com/LpgTeam/)
+Project Link: [https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan](https://git.stis.ac.id/aljaffarsyah/pppm_pengajuan/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -274,6 +283,8 @@ Use this space to list resources you find helpful and would like to give credit 
 [jquery-url]: https://jquery.com
 [codeigniter.com]: https://img.shields.io/badge/CodeIgniter-%23EF4223.svg?style=for-the-badge&logo=codeIgniter&logoColor=white
 [codeigniter-url]: https://codeigniter.com
+[mysql.com]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
+[mysql-url]: https://mysql.com
 
 buat database baru project_rpl (atau bebas sesuain env)
 
