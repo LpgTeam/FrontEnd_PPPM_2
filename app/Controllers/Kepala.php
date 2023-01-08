@@ -32,6 +32,21 @@ class Kepala extends BaseController
     protected $statusPkmModel;
     protected $suratPkmModel;
     protected $ttdDosenModel;
+    protected $dosenModel;
+    protected $timPenelitiModel;
+    protected $timPKMModel;
+    protected $rincianModel;
+    protected $ttdDosen;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
+    protected $laporanPenelitianModel;
+    protected $detailStatus;
+    protected $detailStatusPkm;
+    protected $settingGlobal;
+    protected $reimburseModel;
+    protected $anggaranAwalModel;
+    protected $anggaranTotalModel;
+
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();

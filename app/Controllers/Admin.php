@@ -28,6 +28,11 @@ class Admin extends BaseController
     protected $detailStatus;
     protected $detailStatusPkm;
     protected $settingGlobal;
+    protected $reimburseModel;
+    protected $anggaranAwalModel;
+    protected $anggaranTotalModel;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
 
     public function __construct()
     {
@@ -103,7 +108,7 @@ class Admin extends BaseController
             'anggaranAwal'      => $this->anggaranAwalModel->get_dana(),
             'danaTerealisasi'   => $this->anggaranTotalModel->get_total($year),
             'danaDiajukan'      => $danaDiajukan,
-            'danaTersedia'      => $sisaAnggaran['sisa_anggaran'] - $danaDiajukan
+            'danaTersedia'      => (int)$sisaAnggaran['sisa_anggaran'] - (int)$danaDiajukan
         ];
         return view('adminPPPM/tampilan/anggaran', $data);
     }

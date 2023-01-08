@@ -23,6 +23,24 @@ class Penelitian extends BaseController
     protected $timpenelitiModel;
     protected $dosenModel;
     protected $luaranModel;
+    protected $pkmModel;
+    protected $timpkmModel;
+    protected $statusPkmModel;
+    protected $suratPkmModel;
+    protected $ttdDosenModel;
+    protected $timPenelitiModel;
+    protected $timPKMModel;
+    protected $rincianModel;
+    protected $ttdDosen;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
+    protected $laporanPenelitianModel;
+    protected $detailStatus;
+    protected $detailStatusPkm;
+    protected $settingGlobal;
+    protected $reimburseModel;
+    protected $anggaranAwalModel;
+    protected $anggaranTotalModel;
 
     public function __construct()
     {

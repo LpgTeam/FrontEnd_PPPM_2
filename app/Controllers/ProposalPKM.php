@@ -30,6 +30,7 @@ class ProposalPKM extends BaseController
     protected $biayaModel;
     protected $settingTTD;
     protected $suratPkmModel;
+    protected $timpkmModel;
 
     public function __construct()
     {

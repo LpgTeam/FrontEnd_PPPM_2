@@ -34,6 +34,15 @@ class Dosen extends BaseController
     protected $ttdDosen;
     protected $danaPenelitianModel;
     protected $danaPKMModel;
+    protected $statusPenelitianModel;
+    protected $laporanPenelitianModel;
+    protected $statusPkmModel;
+    protected $detailStatus;
+    protected $detailStatusPkm;
+    protected $settingGlobal;
+    protected $reimburseModel;
+    protected $anggaranAwalModel;
+    protected $anggaranTotalModel;
 
     public function __construct()
     {
@@ -199,6 +208,12 @@ class Dosen extends BaseController
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
         return view('dosen/tampilan/pkmjenis', $data);
+    }
+
+    public function kondefPPPM()
+    {
+        $data = ['title' => 'PPPM Politeknik Statistika STIS'];
+        return view('dosen/tampilan/kondefPPPM', $data);
     }
 
     public function penelitianjenis()

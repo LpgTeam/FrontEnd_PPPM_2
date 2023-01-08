@@ -77,6 +77,7 @@
                         <ul>
                             <li><a href="/penelitianDosen">Penelitian</a></li>
                             <li><a href="/pkmDosen">PKM</a></li>
+                            <li><a href="/kondefPPPM">Kondef PPPM</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="reimburseDosen">Reimbursement</a></li>

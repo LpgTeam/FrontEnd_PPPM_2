@@ -50,7 +50,7 @@ class AnggaranTotalModel extends Model
         $anggaran = $this->select('sisa_anggaran')->orderBy('id_total', 'DESC')->first();
         if($anggaran == null){
             $anggaran['sisa_anggaran'] =0;
-            return $anggaran;
+            return $anggaran;   
         } else {
             return $anggaran;
         }

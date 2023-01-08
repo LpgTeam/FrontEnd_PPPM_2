@@ -301,7 +301,7 @@ class ProposalPenelitian extends BaseController
     {
         $Pdfgenerator = new Pdfgenerator();
         // title dari pdf
-        $this->data['title_pdf'] = 'Proposal';
+        $data['title_pdf'] = 'Proposal';
 
         $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
         // $penelitian = $this->penelitianModel->find($id_penelitian);

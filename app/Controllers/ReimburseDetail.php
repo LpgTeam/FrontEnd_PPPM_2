@@ -13,6 +13,12 @@ use DateTime;
 
 class ReimburseDetail extends BaseController
 {
+    protected $penelitianModel;
+    protected $reimburseModel;
+    protected $pkmModel;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
+    protected $danaPenelitianModelaPKMModel;
 
     public function __construct()
     {

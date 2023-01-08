@@ -21,9 +21,17 @@ use CodeIgniter\API\ResponseTrait;
 
 class Reviewer extends BaseController
 {
+
     use ResponseTrait;
     protected $penelitianModel;
     protected $statusPenelitianModel;
+    protected $timpkmModel;
+    protected $pkmModel;
+    protected $statusPkmModel;
+    protected $reimburseModel;
+    protected $suratPkmModel;
+    protected $anggaranAwalModel;
+    protected $anggaranTotalModel;
 
     public function __construct()
     {
@@ -98,7 +106,7 @@ class Reviewer extends BaseController
             'id_penelitian' => $id_penelitian,
             'status'        => 'Menunggu Persetujuan Reviewer'
         ]);
-        
+
         $notif = new Pemberitahuan();
         $notif->Send_Pemberitahuan_penelitian($id_penelitian);
 

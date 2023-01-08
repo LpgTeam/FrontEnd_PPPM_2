@@ -23,8 +23,21 @@ class Direktur extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
+    protected $pkmModel;
     protected $statusPenelitianModel;
+    protected $statusPkmModel;
+    protected $detailStatus;
+    protected $detailStatusPkm;
+    protected $settingGlobal;
+    protected $reimburseModel;
+    protected $anggaranAwalModel;
+    protected $anggaranTotalModel;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
+    protected $timpkmModel;
+    protected $suratPkmModel;
     protected $ttdDosenModel;
+
     public function __construct()
     {
         $this->penelitianModel = new PenelitianModel();

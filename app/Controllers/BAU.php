@@ -22,9 +22,18 @@ class BAU extends BaseController
 {
     use ResponseTrait;
     protected $penelitianModel;
-    protected $statusPenelitianModel;
     protected $pkmModel;
+    protected $statusPenelitianModel;
     protected $statusPkmModel;
+    protected $detailStatus;
+    protected $detailStatusPkm;
+    protected $settingGlobal;
+    protected $reimburseModel;
+    protected $anggaranAwalModel;
+    protected $anggaranTotalModel;
+    protected $danaPenelitianModel;
+    protected $danaPKMModel;
+
     public function __construct()
     {
         $this->statusPenelitianModel = new StatusPenelitianModel();

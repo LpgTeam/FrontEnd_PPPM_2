@@ -30,8 +30,8 @@ class Pemberitahuan extends BaseController
         $jenis = "penelitian";
         $penelitian = $this->penelitianModel->find($id_penelitian);
         $timpeneliti = $this->timpenelitiModel->get_timpeneliti_byid($id_penelitian);
-        $sendEmail = new SendEmail();
-        $sendEmail->send_email_pemberitahuan($jenis, $penelitian, $timpeneliti);
+        // $sendEmail = new SendEmail();
+        // $sendEmail->send_email_pemberitahuan($jenis, $penelitian, $timpeneliti);
     }
 
     public function Send_Pemberitahuan_pkm($id_pkm)
@@ -39,7 +39,7 @@ class Pemberitahuan extends BaseController
         $jenis = "pkm";
         $pkm = $this->pkmModel->find($id_pkm);
         $timpkm = $this->timpkmModel->get_timpkm_byid($id_pkm);
-        $sendEmail = new SendEmail();
-        $sendEmail->send_email_pemberitahuan($jenis, $pkm, $timpkm);
+        // $sendEmail = new SendEmail();
+        // $sendEmail->send_email_pemberitahuan($jenis, $pkm, $timpkm);
     }
 }
