@@ -184,9 +184,9 @@ class ProposalPKM extends BaseController
         $direktori = 'laporan_akhir_pkm';
         $html = view('proposal/pkm/all_pkm_proposal', $datapkm);
 
-        if (file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
-            unlink($direktori . "/" . $file_pdf . ' - Akhir.pdf');
-        }
+        // if (file_exists($direktori . "/" . $file_pdf . ' - Akhir.pdf')) {
+        //     unlink($direktori . "/" . $file_pdf . ' - Akhir.pdf');
+        // }
         // save to local laporan
         $hasil = $Pdfgenerator->save_to_local($html, $file_pdf, $direktori, $paper, $orientation);
         //merge laporan + bukti kegiatan dan save ke local

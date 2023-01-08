@@ -17,7 +17,7 @@
             </header>
         </div>
         <div class="container" data-aos="fade-up">
-            <h1>PENELITIAN DOSEN</h1>
+            <h1>Penelitian</h1>
             <p>Sifat dan ruang lingkup penelitian di lingkungan Politeknik Statistika STIS sebagai berikut : </p>
             <ol>
                 <li>Penelitian adalah asli, belum pernah dilakukan dan/atau sedang dibiayai oleh
@@ -42,17 +42,21 @@
                     artikel (atau link artikel) terpublikasi dalam prosiding seminar nasional, prosiding seminar
                     internasional, jurnal nasional terakreditasi, atau jurnal internasional. Upload luaran penelitian
                     sebagai salah satu bukti kinerja tahunan dosen.</p>
+
                 <li>Penelitian perorangan/kelompok semi mandiri</li>
                 <b>Deskripsi</b>
                 <p>Penelitian yang dalam proses penelitiannya dibiayai secara mandiri oleh dosen atau tim dosen,
                     namun publikasi dalam bentuk seminar nasional/internasional atau jurnal nasional/
                     internasional didanai oleh Politeknik Statistika STIS</p>
+
                 <li>Penelitian perorangan/kelompok didanai institusi</li>
                 <b>Deskripsi</b>
                 <p>Penelitian yang dalam proses penyelesaian maupun publikasinya didanai oleh Politeknik
                     Statistika STIS. Penelitian yang dimaksud termasuk dalam jenis penelitian dasar dan penelitian
                     terapan yang pelaksanaan penelitiannya dalam satu tahun anggaran.</p>
+
                 <li>Penelitian perorangan/kelompok institusi</li>
+                <b>Deskripsi</b>
                 <p>Penelitian Institusi adalah penelitian yang dilakukan oleh institusi di dalam lingkungan Politeknik Statistika STIS, diantaranya penelitian yang dilaksanakan oleh Unit Kajian atau unit lain yang ditunjuk. Tujuan penelitian institusi adalah untuk memberikan masukan dan manfaat bagi pengembangan institusi, instansi induk serta meningkatkan sumber daya manusia yang ada didalamnya. Dalam penelitian ini termasuk juga jenis penelitian pengembangan, yang waktu pelaksanaannya dimungkinkan beberapa tahun (multiyears).</p>
 
                 <li>Penelitian kerjasama</li>
@@ -84,7 +88,7 @@
             <p>Adapun bentuk kegiatan PKM dosen di lingkungan Polstat STIS tersebut terdiri dari:</p>
             <ol type="1">
                 <li>terstruktur</li>
-                <b>deskripsi</b>
+                <b>Deskripsi</b>
                 <p>Kegiatan PKM yang kegiatannya dirancang oleh pengelola atau institusi. Kegiatan
                     dapat berkolaborasi dengan mahasiswa, instansi induk, atau instansi lain. </p>
                 <b>Bentuk kegiatan</b>
@@ -104,7 +108,7 @@
                     komponen lain yang dapat dipertanggungjawabkan</p>
 
                 <li>Perorangan/Kelompok</li>
-                <b>deskripsi </b>
+                <b>Deskripsi </b>
                 <p>Kegiatan PKM yang kegiatannya merupakan inisiatif dari dosen dengan fasilitas
                     dan/atau pembiayaan dari institusi. </p>
                 <b>Bentuk kegiatan</b>
@@ -134,10 +138,10 @@
                     <li>Politeknik Statistika STIS tidak memberikan honor sebagai narasumber bagi
                         dosen yang melaksanakan PKM</li>
                 </ol>
-
+                <br>
                 <li>Mandiri
                 </li>
-                <b>deskripsi </b>
+                <b>Deskripsi </b>
                 <p>kegiatan PKM yang merupakan inisiatif dosen dan tidak dibiayai oleh institusi (tanpa
                     menggunakan fasilitas dana dari institusi)</p>
 
