@@ -210,10 +210,10 @@ class Dosen extends BaseController
         return view('dosen/tampilan/pkmjenis', $data);
     }
 
-    public function kondefPPPM()
+    public function faq()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('dosen/tampilan/kondefPPPM', $data);
+        return view('dosen/tampilan/faq', $data);
     }
 
     public function penelitianjenis()
@@ -848,13 +848,13 @@ class Dosen extends BaseController
 
     public function detailReimburse2($id_kegiatan)
     {
-       // $kegiatan_pkm = $this->danaPKMModel->get_dana_by_id($id_kegiatan);
+        // $kegiatan_pkm = $this->danaPKMModel->get_dana_by_id($id_kegiatan);
         //dd($kegiatan_pkm);
         $data = [
             'title' => 'PPPM Politeknik Statistika STIS',
             // 'kegiatan' => $kegiatan,
             'pkm' => $this->pkmModel->find($id_kegiatan),
-            'dana_pkm' =>$this->danaPKMModel->get_dana_pkm_by_idpkm($id_kegiatan),
+            'dana_pkm' => $this->danaPKMModel->get_dana_pkm_by_idpkm($id_kegiatan),
             'validation' => \Config\Services::validation()
         ];
         // dd($data['dana_pkm']);

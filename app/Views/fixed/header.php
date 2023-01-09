@@ -77,10 +77,10 @@
                         <ul>
                             <li><a href="/penelitianDosen">Penelitian</a></li>
                             <li><a href="/pkmDosen">PKM</a></li>
-                            <li><a href="/kondefPPPM">Kondef PPPM</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="reimburseDosen">Reimbursement</a></li>
+                    <li><a class="nav-link scrollto" href="faq">FAQ</a></li>
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
                         <ul>

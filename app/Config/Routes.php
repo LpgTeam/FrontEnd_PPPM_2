@@ -58,7 +58,7 @@ $routes->get('/pkmDosen', 'Dosen::pkm');
 $routes->get('/pkmjenisDosen', 'Dosen::pkmjenis');
 $routes->get('/penelitianjenisDosen', 'Dosen::penelitianjenis');
 
-$routes->get('/kondefPPPM', 'Dosen::kondefPPPM');
+$routes->get('/faq', 'Dosen::faq');
 
 $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 
@@ -147,10 +147,10 @@ if (auth()->loggedIn()) {
         $routes->get('/deleteUser/(:any)', 'AdminUserSetting::deleteUser/$1');
         // delete role
         $routes->get('/deleteRoleUser/(:any)', 'AdminUserSetting::deleteRole/$1');
-        
+
         //Setting Global
         $routes->get('/Setting', 'Admin::setting');
-        
+
         //penelitian
         $routes->get('/adminProses1/(:any)', 'Admin::adminProses1/$1');
         $routes->get('/adminProses2/(:any)', 'Admin::adminProses2/$1');
@@ -379,7 +379,7 @@ service('auth')->routes($routes, ['except' => ['login', 'logout']]);
 // $routes->get('/login', 'Login::index');
 
 
-        /*
+/*
  * --------------------------------------------------------------------
  * Additional Routing
  * --------------------------------------------------------------------
