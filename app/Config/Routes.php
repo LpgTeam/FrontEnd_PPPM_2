@@ -285,6 +285,9 @@ $routes->get('/penelitian/view_laporan_proposal/(:any)/(:any)', 'ProposalPenelit
 $routes->get('/penelitian/download-laporan/(:any)/(:any)', 'ProposalPenelitian::printLaporan/$1/$2');
 $routes->get('/penelitian/download_laporan_proposal/(:any)/(:any)', 'ProposalPenelitian::download_laporan_proposal/$1/$2');
 
+//export rekap penelitian
+$routes->get('/penelitian/export-rekap', 'ProposalPenelitian::export_rekap');
+
 
 
 //============================download pkm===================================
@@ -301,6 +304,9 @@ $routes->get('/pkm/laporan-merge/(:any)/(:any)', 'ProposalPKM::laporan_merge/$1/
 $routes->get('/pkm/view_laporan_pkm/(:any)/(:any)', 'ProposalPKM::view_laporan_pkm/$1/$2');
 //download laporan pkm
 $routes->get('/pkm/download_laporan_pkm/(:any)/(:any)', 'ProposalPKM::download_laporan_pkm/$1/$2');
+
+//export rekap pkm
+$routes->get('/pkm/export-rekap', 'ProposalPKM::export_rekap');
 
 //error page routes
 $routes->get('/backurl', 'Error::index');

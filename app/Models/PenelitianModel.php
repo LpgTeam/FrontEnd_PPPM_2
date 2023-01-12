@@ -29,17 +29,6 @@ class PenelitianModel extends Model
         'id_status_reimburse',
         'alasan'
     ];
-    public function getData()
-    {
-        return $this->orderBy('tanggal_pengajuan', 'DESC')->findAll();
-        // return $this->findAll();
-    }
-    public function getDataBau()
-    {
-        return $this->where(['jenis_penelitian !=' => 'Mandiri'])
-            ->where(['jenis_penelitian !=' => 'Kerjasama'])->findAll();
-    }
-
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
@@ -63,6 +52,26 @@ class PenelitianModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getData()
+    {
+        return $this->orderBy('tanggal_pengajuan', 'DESC')->findAll();
+        // return $this->findAll();
+    }
+    public function getDataBau()
+    {
+        return $this->where(['jenis_penelitian !=' => 'Mandiri'])
+            ->where(['jenis_penelitian !=' => 'Kerjasama'])->findAll();
+    }
+
+    public function get_detail_penelitian()
+    {
+        return $this->join('tim_peneliti', 'tim_peneliti.id_penelitian = penelitian.id_penelitian')
+            ->join('laporan_penelitian', 'laporan_penelitian.id_penelitian = penelitian.id_penelitian')
+            ->join('target_penelitian', 'target_penelitian.id_penelitian = penelitian.id_penelitian')
+            ->join('dosen', 'dosen.NIP_dosen = tim_peneliti.NIP')
+            ->findAll();
+    }
 
     public function get_id_penelitian($judul_penelitian)
     {
@@ -115,11 +124,12 @@ class PenelitianModel extends Model
     }
 
     //total dana keluar setelah laporan
-    public function get_dana_keluar($tahun){
+    public function get_dana_keluar($tahun)
+    {
         $where3 = "id_status_reimburse='0' OR id_status_reimburse='1'";
         $keluar =  $this->join('dana_penelitian', 'dana_penelitian.id_penelitian = penelitian.id_penelitian')
-        ->select('dana_penelitian.dana_keluar')->select('penelitian.*')
-        ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
+            ->select('dana_penelitian.dana_keluar')->select('penelitian.*')
+            ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
         $total_keluar = 0;
         if ($keluar) {
             foreach ($keluar as $data_keluar) {

@@ -14,6 +14,8 @@ use App\Models\DanaPKMModel;
 use App\Libraries\Pdfgenerator;
 use App\Models\GlobalSettingModel;
 use App\Models\TandaTanganDosenModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProposalPKM extends BaseController
 {
@@ -223,5 +225,59 @@ class ProposalPKM extends BaseController
             'judul_pkm' => $judul_pkm,
         ];
         return $this->response->download('laporan_akhir_pkm/' . $judul_pkm, null);
+    }
+
+    public function export_rekap()
+    {
+        $detail_pkm = $this->pkmModel->get_detail_pkm();
+        $spreadsheet = new Spreadsheet();
+        // tulis header/nama kolom 
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'Nama')
+            ->setCellValue('B1', 'NIP')
+            ->setCellValue('C1', 'Jenis PKM')
+            ->setCellValue('D1', 'Topik PKM')
+            ->setCellValue('E1', 'Tanggal Kegiatan')
+            ->setCellValue('F1', 'Bentuk Kegiatan')
+            ->setCellValue('G1', 'Jumlah Anggota')
+            ->setCellValue('H1', 'Biaya')
+            ->setCellValue('I1', 'Program Studi')
+            ->setCellValue('J1', 'Bidang Keahlian')
+            ->setCellValue('K1', 'Sasaran')
+            ->setCellValue('L1', 'Target Peserta')
+            ->setCellValue('M1', 'Tempat Kegiatan')
+            ->setCellValue('N1', 'Tanggal Pengajuan');
+
+        $column = 2;
+        // tulis data mobil ke cell
+        foreach ($detail_pkm as $data) {
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $column, $data['nama_dosen'])
+                ->setCellValue('B' . $column, $data['NIP_dosen'])
+                ->setCellValue('C' . $column, $data['jenis_pkm'])
+                ->setCellValue('D' . $column, $data['topik_kegiatan'])
+                ->setCellValue('E' . $column, $data['waktu_kegiatan'])
+                ->setCellValue('F' . $column, $data['bentuk_kegiatan'])
+                ->setCellValue('G' . $column, $data['jumlah_anggota'])
+                ->setCellValue('H' . $column, $data['jumlah_biaya'])
+                ->setCellValue('I' . $column, $data['program_studi'])
+                ->setCellValue('J' . $column, $data['bidang_keahlian'])
+                ->setCellValue('K' . $column, $data['sasaran'])
+                ->setCellValue('L' . $column, $data['target_peserta'])
+                ->setCellValue('M' . $column, $data['tempat_kegiatan'])
+                ->setCellValue('N' . $column, $data['tanggal_pengajuan']);
+            $column++;
+        }
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Rekapitulasi Pengabdian Kepada Masyarakat ' . date("Y");
+
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit;
     }
 }

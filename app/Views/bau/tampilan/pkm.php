@@ -41,12 +41,11 @@
                         <!-- Table with stripped rows -->
                         <div class="content">
                             <div class="row mb-3">
-
                                 <?= $this->include('filter/jenisPKM'); ?>
-
                                 <?= $this->include('filter/prosesPKM'); ?>
-
                             </div>
+                            <br>
+                            <?= $this->include('proposal\PKM\export_rekapitulasi_pkm'); ?>
 
                             <div class="table-responsive">
                                 <table id="example" class="table">

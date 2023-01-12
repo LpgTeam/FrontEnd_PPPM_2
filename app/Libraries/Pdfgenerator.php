@@ -26,7 +26,8 @@ class Pdfgenerator extends BaseController
         // $font = "helvetica";
         // $canvas->page_text(72, 18, "Footer: {PAGE_NUM} of {PAGE_COUNT}", $font, 6, array(0, 0, 0));
         if ($stream) {
-            $dompdf->stream($filename . ".pdf", array("Attachment" => 0));
+            // $dompdf->stream($filename . ".pdf", array("Attachment" => 0));
+            $dompdf->stream($filename . ".pdf", ["Attachment" => false]);
         } else {
             return $dompdf->output();
         }

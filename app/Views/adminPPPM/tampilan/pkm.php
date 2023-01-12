@@ -42,6 +42,9 @@
                                 <?= $this->include('filter/prosesPKM'); ?>
 
                             </div>
+                            <br>
+                            <?= $this->include('proposal\PKM\export_rekapitulasi_pkm'); ?>
+
                             <div class="table-responsive">
                                 <table id="example" class="table">
                                     <thead>

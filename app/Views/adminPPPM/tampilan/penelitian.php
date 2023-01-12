@@ -60,7 +60,8 @@
                                 <?= $this->include('filter/prosesPenelitian'); ?>
 
                             </div>
-
+                            <br>
+                            <?= $this->include('proposal\export_rekapitulasi_penelitian'); ?>
                             <div class="table-responsive">
                                 <table id="example" class="table">
                                     <thead>

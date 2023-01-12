@@ -56,6 +56,15 @@ class PkmModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function get_detail_pkm()
+    {
+        return $this->join('tim_pkm', 'tim_pkm.id_pkm = pengajuan_pkm.id_pkm')
+            ->join('pkm', 'pkm.id_pkm = pengajuan_pkm.id_pkm')
+            ->join('pembiayaan_pkm', 'pembiayaan_pkm.id_pkm = pengajuan_pkm.id_pkm')
+            ->join('dosen', 'dosen.NIP_dosen = tim_pkm.NIP')
+            ->findAll();
+    }
+
     public function getData_bau()
     {
         return $this->where(['jenis_pkm !=' => 'Mandiri'])->orderBy('tanggal_pengajuan', 'DESC')->findAll();
@@ -110,11 +119,12 @@ class PkmModel extends Model
     }
 
     //total dana keluar setelah laporan 
-    public function get_dana_keluar($tahun){
+    public function get_dana_keluar($tahun)
+    {
         $where3 = "id_status_reimburse='0' OR id_status_reimburse='1'";
         $keluar =  $this->join('dana_pkm', 'dana_pkm.id_pkm = pengajuan_pkm.ID_pkm')
-        ->select('dana_pkm.dana_keluar')->select('pengajuan_pkm.*')
-        ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
+            ->select('dana_pkm.dana_keluar')->select('pengajuan_pkm.*')
+            ->where('year(tanggal_pengajuan)', $tahun)->where($where3)->findAll();
         $total_keluar = 0;
         if (!$keluar == null) {
             foreach ($keluar as $data_keluar) {

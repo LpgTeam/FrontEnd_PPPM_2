@@ -280,7 +280,7 @@ class BAU extends BaseController
             'id_reimburse'     => $id_reimburse,
             'total_biaya'       => $biayaDicairkan,
             'id_status'         => 2,
-            'status_reimburse'  => 'reimbursementt telah dicairkan'
+            'status_reimburse'  => 'reimbursement telah dicairkan'
         ]);
 
         $id_penelitian = $this->reimburseModel->get_id_penelitian_done($id_reimburse);
