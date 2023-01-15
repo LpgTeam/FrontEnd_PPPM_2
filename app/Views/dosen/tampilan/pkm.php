@@ -55,7 +55,7 @@
                                             <th scope="col">Tanggal Pengajuan</th>
                                             <th scope="col">Judul PKM</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Detail</th>
+                                            <th scope="col" colspan="2">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -99,6 +99,16 @@
                                                             <a href="/pkmProses4/<?= $post['ID_pkm']; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                         <?php } ?>
                                                     </td>
+                                                    </td>
+                                                    <form action="/deletePKM/<?= $post['ID_pkm']; ?>" method="post" onsubmit="return submitForm(this);" enctype="multipart/form-data">
+                                                        <td>
+                                                            <?php if ($post['id_status'] == 1) { ?>
+                                                                <button type="submit" class='btn btn-danger'><i class='bi bi-trash'></i></button>
+                                                            <?php } else { ?>
+                                                                <button type="submit" class='btn btn-danger disabled'><i class='bi bi-trash'></i></button>
+                                                            <?php } ?>
+                                                        </td>
+                                                    </form>
                                                 </tr>
                                         <?php $i++;
                                             endforeach;
@@ -107,6 +117,23 @@
                                 </table>
                             </div>
 
+                            <script>
+                                function submitForm(form) {
+                                    swal({
+                                            title: "Apakah Anda Yakin?",
+                                            text: "Pengajuan penelitian akan dibatalkan",
+                                            dangerMode: true,
+                                            buttons: true,
+                                            icon: "warning",
+                                        })
+                                        .then(function(isOkay) {
+                                            if (isOkay) {
+                                                form.submit();
+                                            }
+                                        });
+                                    return false;
+                                }
+                            </script>
 
                             <script>
                                 $(document).ready(function() {

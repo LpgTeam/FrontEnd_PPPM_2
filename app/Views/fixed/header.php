@@ -77,7 +77,6 @@
                         <ul>
                             <li><a href="/penelitianDosen">Penelitian</a></li>
                             <li><a href="/pkmDosen">PKM</a></li>
-                            <li><a href="/kondefPPPM">Tentang Kegiatan</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="reimburseDosen">Reimbursement</a></li>
@@ -102,7 +101,6 @@
                                 <ul>
                                     <li><a href="/penelitianAdmin">Penelitian</a></li>
                                     <li><a href="/pkmAdmin">PKM</a></li>
-                                    <li><a href="/kondefPPPM">Tentang Kegiatan</a></li>
                                 </ul>
                             </li>
                             <li><a class="nav-link scrollto" href="reimburseAdmin">Reimbursement</a></li>

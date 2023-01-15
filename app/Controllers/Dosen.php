@@ -19,8 +19,10 @@ use App\Models\PkmModel;
 use App\Models\TimPKMModel;
 use App\Models\DosenModel;
 use App\Models\StatusPenelitianModel;
+use App\Models\StatusPKMModel;
 use App\Models\ReimburseModel;
 use App\Models\LuaranTargetModel;
+use App\Models\PembiayaanPkmModel;
 use CodeIgniter\I18n\Time;
 
 
@@ -37,6 +39,7 @@ class Dosen extends BaseController
     protected $danaPenelitianModel;
     protected $danaPKMModel;
     protected $statusPenelitianModel;
+    protected $statusPKMModel;
     protected $laporanPenelitianModel;
     protected $statusPkmModel;
     protected $detailStatus;
@@ -46,6 +49,7 @@ class Dosen extends BaseController
     protected $anggaranAwalModel;
     protected $anggaranTotalModel;
     protected $luaranTargetModel;
+    protected $pembiayaanPkmModel;
 
     public function __construct()
     {
@@ -63,7 +67,9 @@ class Dosen extends BaseController
         $this->danaPKMModel = new DanaPKMModel();
         $this->danaPenelitianModel = new DanaPenelitianModel();
         $this->statusPenelitianModel = new StatusPenelitianModel();
+        $this->statusPKMModel = new StatusPKMModel();
         $this->luaranTargetModel = new LuaranTargetModel();
+        $this->pembiayaanPkmModel = new PembiayaanPkmModel();
     }
 
     public function index()
@@ -214,6 +220,18 @@ class Dosen extends BaseController
 
         session()->setFlashdata('pesan', 'Penelitian yang diajukan berhasil dibatalkan.');
         return redirect()->to('/penelitianDosen');
+    }
+
+    public function deletePKM($id_pkm)
+    {
+        $this->pkmModel->delete($id_pkm);
+        $this->timPKMModel->where(['id_pkm' => $id_pkm])->delete();
+        $this->rincianModel->where(['id_pkm' => $id_pkm])->delete();
+        $this->statusPKMModel->where(['id_pkm' => $id_pkm])->delete();
+        $this->pembiayaanPkmModel->where(['id_pkm' => $id_pkm])->delete();
+
+        session()->setFlashdata('pesan', 'PKM yang diajukan berhasil dibatalkan.');
+        return redirect()->to('/pkmDosen');
     }
 
     // ======================PKM Detail=========================

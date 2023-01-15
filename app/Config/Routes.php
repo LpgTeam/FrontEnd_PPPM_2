@@ -87,7 +87,8 @@ $routes->get('/pkmProses4/(:any)', 'Dosen::pkmDetail4/$1');
 $routes->post('/pkm/saveSurat/(:any)', 'PkmDetail::saveSurat/$1');
 //SetujuiSurat
 $routes->get('/pkm/setujuiSurat/(:any)', 'PkmDetail::setujuiSurat/$1');
-
+//delete = batalkan ajukan PKM
+$routes->post('/deletePKM/(:any)', 'Dosen::deletePKM/$1');
 
 $routes->get('/pkm/saveBukti/(:any)', 'PkmDetail::saveBukti/$1');
 // $routes->get('/penelitianSemiMandiri1/(:any)', 'Dosen::penelitianSemiMandiri1/$1');

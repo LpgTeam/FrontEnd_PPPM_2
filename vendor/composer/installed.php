@@ -210,7 +210,6 @@
             'install_path' => __DIR__ . '/../mikey179/vfsstream',
             'aliases' => array(),
             'reference' => '17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f',
-            'dev_requirement' => true,
         ),
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.11.0',
