@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <?//php if (!($jenis == "Kelompok" || $jenis == "Terstruktur")) : 
+                        <? //php if (!($jenis == "Kelompok" || $jenis == "Terstruktur")) : 
                         ?>
                         <hr>
                         <div class="row justify-content-md-center" data-aos="fade-up">
@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                         </div>
-                        <?//php endif; 
+                        <? //php endif; 
                         ?>
                         <script>
                             function rm() {
@@ -375,6 +375,276 @@
         </div>
         </div>
     </section>
+
+    <?php if (($jenis == "Mandiri")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">PKM Mandiri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Kegiatan PKM yang merupakan inisiatif dosen dan tidak dibiayai oleh institusi (tanpa menggunakan fasilitas dana dari institusi)
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if (($jenis == "Kelompok")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">PKM Perorangan/Kelompok</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Kegiatan PKM yang kegiatannya merupakan inisiatif dari dosen dengan fasilitas
+                                                dan/atau pembiayaan dari institusi.
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        <b>Bentuk Kegiatan</b>
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            Bentuk kegiatan menyesuaikan dengan kondisi dan kreativitas dosen dalam bentuk literasi statistik
+                                            berupa pendampingan, pelatihan, penyelesaian <i>official statistics, sampling, data science,</i> komputasi statistik,
+                                            atau bentuk lainnya.
+                                        </p>
+                                        <p>Dapat dilaksanakan dengan:</p>
+                                        <ul>
+                                            <li>
+                                                Di luar kota dan menginap
+                                            </li>
+                                            <li>
+                                                Di dalam Kota Jakarta, Depok, Bekasi, Bogor, Tangerang yang tidak menginap
+                                            </li>
+                                            <li>
+                                                Secara daring
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        <b>Persyaratan</b>
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Fungsional dosen atau calon fungsional dosen
+                                            </li>
+                                            <li>
+                                                Dapat perorangan atau tim
+                                            </li>
+                                            <li>
+                                                Pengusul adalah fungsional dosen sebagai ketua tim, dengan dosen dan/atau calon fungsional dosen sebagai anggota
+                                            </li>
+                                            <li>
+                                                Paling banyak satu kali satu tahun
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        <b>Pendanaan</b>
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <p>Komponen kegiatan PKM yang dibiayai meliputi: </p>
+                                        <ul>
+                                            <li>
+                                                Komponen biaya perjalanan untuk 3 hari (luar kota) dan 1 hari (dalam kota)
+                                            </li>
+                                            <li>
+                                                Biaya lainnya yang dapat dipertanggungjawabkan
+                                            </li>
+                                            <li>
+                                                Politeknik Statistika STIS tidak memberikan honor sebagai narasumber bagi dosen yang melaksanakan PKM
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if (($jenis == "Terstruktur")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">PKM Terstruktur</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Kegiatan PKM yang kegiatannya dirancang oleh pengelola atau institusi. Kegiatan dapat
+                                                berkolaborasi dengan mahasiswa, instansi induk, atau instansi lain.
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        <b>Bentuk Kegiatan</b>
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            Beberapa contoh kegiatan di sini antara lain;
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                Pemberdayaan Desa Tertinggal (PDT) yang merupakan kolaborasi dengan kegiatan mahasiswa
+                                            </li>
+                                            <li>
+                                                Penyelenggaraan Webinar Statistika terstruktur sebagai bentuk pengabdian kepada masyarakat
+                                            </li>
+                                            <li>
+                                                Keikutsertaan dalam Program Desa Cinta Statistik (DESA CANTIK) dari BPS
+                                            </li>
+                                            <li>
+                                                Pemasyarakatan Statistik lainnya yang dikelola oleh institusi
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        <b>Pendanaan</b>
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Pembiayaan ditanggung oleh institusi sesuai dengan ketentuan yang berlaku. Komponen
+                                                yang dibiayai mencakup transportasi, penginapan, uang harian, dan komponen lain yang
+                                                dapat dipertanggungjawabkan
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
 </main>
 <!-- End #main -->
 

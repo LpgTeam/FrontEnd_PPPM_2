@@ -116,7 +116,7 @@
                         <?php if (!($jenis == "Mandiri" || $jenis == "Kerjasama")) : ?>
                             <div class="row mb-3">
                                 <label for="biaya" class="col-md-4 col-lg-3 col-form-label">Biaya</label>
-                                
+
                                 <div class="col-md-8 col-lg-9">
                                     <input name="biaya" type="number" min="1" step="any" class="form-control" id="biaya" value="<?= old('biaya'); ?>" required placeholder="Masukkan 0 jika tidak ada biaya yang dikeluarkan">
                                 </div>
@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                                <!-- <label>Tanda tangan dalam format gambar (JPEG/JPG/PNG)</label>
+                            <!-- <label>Tanda tangan dalam format gambar (JPEG/JPG/PNG)</label>
                             </div> -->
                         <?php endif; ?>
 
@@ -362,12 +362,287 @@
                     </form><!-- Form End -->
                 </div>
 
+
             </div>
         </div>
 
         </div>
         </div>
     </section>
+    <!-- Button trigger modal -->
+
+    <?php if (($jenis == "Mandiri")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Penelitian Perorangan/Kelompok Mandiri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Penelitian yang dalam proses penyelesaian serta publikasinya didanai sendiri oleh dosen/peneliti.
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        <b>Ketentuan</b>
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                Dalam hal ini, dosen hanya diwajibkan meng-upload ke SIPADU bukti luaran penelitian berupa artikel
+                                                (atau link artikel) terpublikasi dalam prosiding seminar nasional, prosiding seminar internasional,
+                                                jurnal nasional terakreditasi, atau jurnal internasional. Upload luaran penelitian sebagai salah satu
+                                                bukti kinerja tahunan dosen.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if (($jenis == "Semi Mandiri")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Penelitian Perorangan/Kelompok Semi Mandiri</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Penelitian yang dalam proses penelitiannya dibiayai secara mandiri oleh dosen atau tim dosen, namun
+                                                publikasi dalam bentuk seminar nasional / internasional atau jurnal nasional / internasional didanai
+                                                oleh Politeknik Statistika STIS
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if (($jenis == "Didanai Institusi")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Penelitian Perorangan/Kelompok Didanai Institusi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Penelitian yang dalam proses penyelesaian maupun publikasinya didanai oleh Politeknik
+                                                Statistika STIS. Penelitian yang dimaksud termasuk dalam jenis penelitian dasar dan penelitian
+                                                terapan yang pelaksanaan penelitiannya dalam satu tahun anggaran. </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if (($jenis == "Institusi")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Penelitian Perorangan/Kelompok Institusi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Penelitian Institusi adalah penelitian yang dilakukan oleh institusi di dalam lingkungan
+                                                Politeknik Statistika STIS, diantaranya penelitian yang dilaksanakan oleh Unit Kajian atau
+                                                unit lain yang ditunjuk. Tujuan penelitian institusi adalah untuk memberikan masukan dan
+                                                manfaat bagi pengembangan institusi, instansi induk serta meningkatkan sumber daya manusia
+                                                yang ada didalamnya. Dalam penelitian ini termasuk juga jenis penelitian pengembangan, yang
+                                                waktu pelaksanaannya dimungkinkan beberapa tahun (multiyears).
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if (($jenis == "Kerjasama")) : ?>
+        <button type="button" class="btn btn-warning dropup position-fixed bottom-0 start-0 rounded-circle m-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-question-square-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Penelitian Kerjasama</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <b>Deskripsi</b>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <ul>
+                                            <li>
+                                                Penelitian yang dalam proses penyelesaian serta publikasinya didanai melalui mekanisme kerjasama
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        <b>Ketentuan</b>
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li>
+                                                Dalam hal adanya keikutsertaan pendanaan dari Politeknik Statistika STIS, dalam publikasi penelitian
+                                                diharuskan ikut mencantumkan Politeknik Statistika STIS dalam acknowledgement atau sumber pendanaan
+                                                (sources of funding). Dalam hal dihasilkannya hak cipta atau paten dari penelitian yang ikut didanai
+                                                Politeknik Statistika STIS tersebut agar memberikan juga porsi hak kepemilikan dan/atau akses kepada
+                                                Politeknik Statistika STIS.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+
 </main>
 <!-- End #main -->
 

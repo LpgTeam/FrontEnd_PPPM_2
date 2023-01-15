@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd6190f791e0eff7289f6026832fa460",
+    "content-hash": "890e615040e98b3b9e1d0fd1a8c494c0",
     "packages": [
         {
             "name": "clegginabox/pdf-merger",
@@ -49,16 +49,16 @@
         },
         {
             "name": "codeigniter4/framework",
-            "version": "v4.2.11",
+            "version": "v4.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "543dd5e5d3cadee764962712de29458b5524dd24"
+                "reference": "bc3f312a3ebaf53394fa099b090b7a52a29375c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/543dd5e5d3cadee764962712de29458b5524dd24",
-                "reference": "543dd5e5d3cadee764962712de29458b5524dd24",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/bc3f312a3ebaf53394fa099b090b7a52a29375c2",
+                "reference": "bc3f312a3ebaf53394fa099b090b7a52a29375c2",
                 "shasum": ""
             },
             "require": {
@@ -119,7 +119,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
-            "time": "2022-12-22T02:49:45+00:00"
+            "time": "2023-01-09T06:53:50+00:00"
         },
         {
             "name": "codeigniter4/settings",
@@ -1573,21 +1573,17 @@
         },
         {
             "name": "setasign/fpdf",
-            "version": "1.8.5",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDF.git",
-                "reference": "f4104a04c9a3f95c4c26a0a0531abebcc980987a"
+                "reference": "d77904018090c17dc9f3ab6e944679a7a47e710a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDF/zipball/f4104a04c9a3f95c4c26a0a0531abebcc980987a",
-                "reference": "f4104a04c9a3f95c4c26a0a0531abebcc980987a",
+                "url": "https://api.github.com/repos/Setasign/FPDF/zipball/d77904018090c17dc9f3ab6e944679a7a47e710a",
+                "reference": "d77904018090c17dc9f3ab6e944679a7a47e710a",
                 "shasum": ""
-            },
-            "require": {
-                "ext-gd": "*",
-                "ext-zlib": "*"
             },
             "type": "library",
             "autoload": {
@@ -1613,9 +1609,9 @@
                 "pdf"
             ],
             "support": {
-                "source": "https://github.com/Setasign/FPDF/tree/1.8.5"
+                "source": "https://github.com/Setasign/FPDF/tree/1.8.2"
             },
-            "time": "2022-11-18T07:02:00+00:00"
+            "time": "2019-12-08T10:32:10+00:00"
         },
         {
             "name": "setasign/fpdi",

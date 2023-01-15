@@ -58,7 +58,7 @@ $routes->get('/pkmDosen', 'Dosen::pkm');
 $routes->get('/pkmjenisDosen', 'Dosen::pkmjenis');
 $routes->get('/penelitianjenisDosen', 'Dosen::penelitianjenis');
 
-$routes->get('/kondefPPPM', 'Dosen::kondefPPPM');
+$routes->get('/faq', 'Dosen::faq');
 
 $routes->get('/penelitianForm/(:any)', 'Dosen::penelitianForm/$1');
 

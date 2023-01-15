@@ -81,6 +81,7 @@
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="reimburseDosen">Reimbursement</a></li>
+                    <li><a class="nav-link scrollto" href="faq">FAQ</a></li>
                     <li class="dropdown">
                         <a class="username scrollto" href="#"><span>Dosen</span></a>
                         <ul>

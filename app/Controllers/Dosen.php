@@ -134,10 +134,10 @@ class Dosen extends BaseController
         return view('dosen/tampilan/pkmjenis', $data);
     }
 
-    public function kondefPPPM()
+    public function faq()
     {
         $data = ['title' => 'PPPM Politeknik Statistika STIS'];
-        return view('dosen/tampilan/kondefPPPM', $data);
+        return view('dosen/tampilan/faq', $data);
     }
 
     public function penelitianjenis()
