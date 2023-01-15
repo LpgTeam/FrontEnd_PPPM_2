@@ -104,6 +104,8 @@ $routes->get('/penelitianProses2Kontrak/(:any)', 'Dosen::penelitianProses2Kontra
 $routes->get('/penelitianProses3/(:any)', 'Dosen::penelitianProses3/$1');
 $routes->get('/penelitianProses4/(:any)', 'Dosen::penelitianProses4/$1');
 
+$routes->post('/deletePenelitian/(:any)', 'Dosen::deletePenelitian/$1');
+
 $routes->post('/penelitian/saveKontrak/(:any)', 'PenelitianDetail::saveKontrak/$1');
 $routes->post('/penelitian/savePendanaan/(:any)', 'PenelitianDetail::savePendanaan/$1');
 $routes->post('/penelitianDetail/saveLaporan/(:any)', 'PenelitianDetail::saveLaporan/$1');
@@ -147,10 +149,10 @@ if (auth()->loggedIn()) {
         $routes->get('/deleteUser/(:any)', 'AdminUserSetting::deleteUser/$1');
         // delete role
         $routes->get('/deleteRoleUser/(:any)', 'AdminUserSetting::deleteRole/$1');
-        
+
         //Setting Global
         $routes->get('/Setting', 'Admin::setting');
-        
+
         //penelitian
         $routes->get('/adminProses1/(:any)', 'Admin::adminProses1/$1');
         $routes->get('/adminProses2/(:any)', 'Admin::adminProses2/$1');
@@ -385,7 +387,7 @@ service('auth')->routes($routes, ['except' => ['login', 'logout']]);
 // $routes->get('/login', 'Login::index');
 
 
-        /*
+/*
  * --------------------------------------------------------------------
  * Additional Routing
  * --------------------------------------------------------------------
